@@ -81,7 +81,7 @@ AutoreleasePool的内存结构就是一个双向链表。一个线程的autorele
 这个栈是由一个以page为节点双向链表组成，page根据需求进行增减。
 autoreleasepool对应的线程存储了指向最新page（也就是最新添加autorelease对象的page）的指针。
 
-##### 5.KVO内部实现原理
+### 5.KVO内部实现原理
 
 * KVO是基于runtime机制实现的
 * 当某个类的属性对象`第一次被观察`时，系统就会在运行期动态地创建该类的一个派生类，在这个派生类中重写基类中任何被观察属性的setter 方法。派生类在被重写的setter方法内实现真正的`通知机制`
@@ -92,7 +92,40 @@ autoreleasepool对应的线程存储了指向最新page（也就是最新添加a
 
 ![](http://okslxr2o0.bkt.clouddn.com/15213019185506.jpg)
 
+### 6.Runtime 是如何找到实例方法的具体实现的？
 
+一个OC方法被编译成objc_msgSend，因为OC中存在一种对象叫做类对象（Class Object），类对象中保存了方法的列表，superClass等信息。objc_msgSend这个C函数输入参数包括，id类型的self，SEL类型的_cmd,以及参数列表。很直观，id类型中一定存在一个可以找到类对象的指针。 
+
+* OC的对象通过isa找到类对象
+* 类对象查找自己存储的方法列表来找到对应的方法执行体
+* 方法执行体执行具体的代码，并返回值给调用者。
+
+我们来看一个例子， 
+定义一个
+
+```objectivec
+@interface CustomObject : NSObject
+-(NSString *)returnMeHelloWorld;
+@end
+@implementation CustomObject
+
+-(NSString *)returnMeHelloWorld{
+    return @"hello world";
+}
+@end
+```
+
+我们先只看调用这一行
+
+```objectivec
+    NSString * helloWorld =  [obj returnMeHelloWorld];
+```
+
+* 编译成如下id objc_msgSend(self,@selector(returnMeHelloWorld:));
+* 在self中沿着isa找到CustomObject的类对象
+* 类对象查找自己的方法list，找到对应的方法执行体Method
+* 把参数传递给IMP实际指向的执行代码
+* 代码执行返回结果给helloWorld
 
 
 ## 架构方面
@@ -194,5 +227,5 @@ HTTPS和HTTP的区别主要如下：
 ## 一些推荐阅读
 
 1. [《图解HTTP》知识点摘录](https://juejin.im/post/5aa62f93f265da23906ba830)
-2. 
+2. [iOS 消息发送与转发详解](https://juejin.im/post/5aa79411f265da237a4cb045)
 
