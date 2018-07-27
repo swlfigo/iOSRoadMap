@@ -73,7 +73,7 @@ objc在向一个对象发送消息时，runtime库会根据对象的isa指针找
 
 AutoreleasePool（自动释放池）是OC中的一种内存自动回收机制，它可以延迟加入AutoreleasePool中的变量release的时机。
 
-在没有手加Autorelease Pool的情况下，Autorelease对象是在当前的runloop迭代结束时释放的，而它能够释放的原因是系统在每个runloop迭代中都加入了自动释放池Push和Pop
+在没有手加Autorelease Pool的情况下， **Autorelease对象是在当前的runloop迭代结束时释放的，而它能够释放的原因是系统在每个runloop迭代中都加入了自动释放池Push和Pop**
 
 AutoreleasePool的内存结构就是一个双向链表。一个线程的autoreleasepool就是一个指针栈。
 栈中存放的指针指向加入需要release的对象或者POOL_SENTINEL（哨兵对象，用于分隔autoreleasepool）。
@@ -196,6 +196,15 @@ dispatch_async(队列,任务)
 4. GCD优点：GCD主要与block结合使用。
 
 
+**引申:**
+
+**使用NSOperation和NSOperationQueue的优点：**
+
+1. 可以取消操作：在运行任务前，可以在NSOperation对象调用cancel方法，标明此任务不需要执行。但是GCD队列是无法取消的，因为它遵循“安排好之后就不管了（fire and forget）”的原则。
+2. 可以指定操作间的依赖关系：例如从服务器下载并处理文件的动作可以用操作来表示。而在处理其他文件之前必须先下载“清单文件”。而后续的下载工作，都要依赖于先下载的清单文件这一操作。
+3. 监控NSOperation对象的属性：可以通过KVO来监听NSOperation的属性：可以通过isCancelled属性来判断任务是否已取消；通过isFinished属性来判断任务是否已经完成。
+4. 可以指定操作的优先级：操作的优先级表示此操作与队列中其他操作之间的优先关系，我们可以指定它
+
 
 
 ## 架构方面
@@ -298,4 +307,16 @@ HTTPS和HTTP的区别主要如下：
 
 1. [《图解HTTP》知识点摘录](https://juejin.im/post/5aa62f93f265da23906ba830)
 2. [iOS 消息发送与转发详解](https://juejin.im/post/5aa79411f265da237a4cb045)
+
+
+
+
+-------
+
+## 杂乱知识点
+
+### 1.App启动过程 - 链接
+
+
+
 
