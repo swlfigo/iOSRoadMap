@@ -315,7 +315,7 @@ HTTPS和HTTP的区别主要如下：
 
 ## 杂乱知识点
 
-### 1.App启动过程 - 链接
+ 1.App启动过程 - [链接](https://github.com/swlfigo/iOSInterview/blob/master/%E6%9D%82%E4%B9%B1%E7%9F%A5%E8%AF%86%E7%82%B9/App%E5%90%AF%E5%8A%A8.md)
 
 
 
