@@ -219,127 +219,19 @@ MVC最早存在于桌面程序中的, M是指业务数据, V是指用户界面, 
 
 
 ## 网络
-### 1.简述TCP的三次握手过程
+### 1.简述TCP的三次握手过程 - [链接](https://github.com/swlfigo/iOSInterview/blob/master/网络/简述TCP的三次握手过程.md)
 
-在TCP/IP协议中,TCP协议提供可靠的连接服务,采用三次握手建立一个连接.
-1）第一次握手：
-Client将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。
+### 2. 4次挥手过程详解 - [链接](https://github.com/swlfigo/iOSInterview/blob/master/网络/4次挥手过程详解.md)
 
-（2）第二次握手：
-Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=J+1，随机产生一个值seq=K，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态。
+### 3. TCP/UDP区别以及UDP如何实现可靠传输 - [链接](https://github.com/swlfigo/iOSInterview/blob/master/网络/TCP:UDP区别以及UDP如何实现可靠传输.md)
 
-（3）第三次握手：
-Client收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=K+1，并将该数据包发送给Server，Server检查ack是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。
+### 4. Http 和 Https 有什么关系和区别 - [链接](https://github.com/swlfigo/iOSInterview/blob/master/网络/Http%20和%20Https%20有什么关系和区别.md)
 
+### 5. get 和 post 区别 - [链接](https://github.com/swlfigo/iOSInterview/blob/master/网络/get%20和%20post%20区别.md)
 
-### 2. 4次挥手过程详解
+### 6. 什么是Http协议无状态协议?怎么解决Http协议无状态协议? - [链接](https://github.com/swlfigo/iOSInterview/blob/master/网络/什么是Http协议无状态协议%3F怎么解决Http协议无状态协议%3F.md)
 
- * 第一次挥手：
-Client发送一个FIN，用来关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态。
- * 第二次挥手：
-Server收到FIN后，发送一个ACK给Client，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号），Server进入CLOSE_WAIT状态。
- * 第三次挥手：
-Server发送一个FIN，用来关闭Server到Client的数据传送，Server进入LAST_ACK状态。
- * 第四次挥手：
-Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+1，Server进入CLOSED状态，完成四次挥手。
-
-
-### 3. TCP/UDP区别以及UDP如何实现可靠传输
-
-TCP和UDP是OSI模型中的运输层中的协议。TCP提供可靠的通信传输，而UDP则常被用于让广播和细节控制交给应用的通信传输。
-
-**TCP与UDP区别总结：**
-
-1、TCP面向连接（如打电话要先拨号建立连接）;UDP是无连接的，即发送数据之前不需要建立连接
-
-2、TCP提供可靠的服务。也就是说，通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP尽最大努力交付，即不保证可靠交付
-3、TCP面向字节流，实际上是TCP把数据看成一连串无结构的字节流;UDP是面向报文的
-UDP没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如IP电话，实时视频会议等）
-4、每一条TCP连接只能是点到点的;UDP支持一对一，一对多，多对一和多对多的交互通信
-5、TCP首部开销20字节;UDP的首部开销小，只有8个字节
-6、TCP的逻辑通信信道是全双工的可靠信道，UDP则是不可靠信道
-
-**UDP如何实现可靠传输**
-
-由于在传输层UDP已经是不可靠的连接，那就要在应用层自己实现一些保障可靠传输的机制
-
-简单来讲，要使用UDP来构建可靠的面向连接的数据传输，就要实现类似于TCP协议的
-
-超时重传（定时器）
-
-有序接受 （添加包序号）
-
-应答确认 （Seq/Ack应答机制）
-
-滑动窗口流量控制等机制 （滑动窗口协议）
-
-等于说要在传输层的上一层（或者直接在应用层）实现TCP协议的可靠数据传输机制，比如使用UDP数据包+序列号，UDP数据包+时间戳等方法。
-
-### 4. Http 和 Https 有什么关系和区别
-
-HTTP协议传输的数据都是未加密的，也就是明文的，因此使用HTTP协议传输隐私信息非常不安全，为了保证这些隐私数据能加密传输，于是网景公司设计了SSL（Secure Sockets Layer）协议用于对HTTP协议传输的数据进行加密
-
-HTTPS和HTTP的区别主要如下：
-
-　　1、https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。
-
-　　2、http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。
-
-　　3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。
-
-　　4、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。
-
-### 5. get 和 post 区别
-
-//简略回答就好
-
-* GET后退按钮/刷新无害，POST数据会被重新提交（浏览器应该告知用户数据会被重新提交）。
-* GET书签可收藏，POST为书签不可收藏。
-* GET能被缓存，POST不能缓存 
-* GET对数据长度有限制，当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。POST无限制。
-* GET只允许 ASCII 字符。POST没有限制。也允许二进制数据。与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。
-* GET的数据在 URL 中对所有人都是可见的。POST的数据不会显示在 URL 中。
-
-### 6. 什么是Http协议无状态协议?怎么解决Http协议无状态协议?
-
-无状态协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息
-也就是说，当客户端一次HTTP请求完成以后，客户端再发送一次HTTP请求，HTTP并不知道当前客户端是一个”老用户“。
-可以使用Cookie来解决无状态的问题，Cookie就相当于一个通行证，第一次访问的时候给客户端发送一个Cookie，当客户端再次来的时候，拿着Cookie(通行证)，那么服务器就知道这个是”老用户“。
-
-### 7. 一次完整的HTTP请求所经历的7个步骤
-
-HTTP通信机制是在一次完整的HTTP通信过程中，Web浏览器与Web服务器之间将完成下列7个步骤：
-
-* 建立TCP连接
-
-在HTTP工作开始之前，Web浏览器首先要通过网络与Web服务器建立连接，该连接是通过TCP来完成的，该协议与IP协议共同构建 Internet，即著名的TCP/IP协议族，因此Internet又被称作是TCP/IP网络。HTTP是比TCP更高层次的应用层协议，根据规则， 只有低层协议建立之后才能，才能进行更层协议的连接，因此，首先要建立TCP连接，一般TCP连接的端口号是80。
-
-* Web浏览器向Web服务器发送请求行
-
-一旦建立了TCP连接，Web浏览器就会向Web服务器发送请求命令。例如：GET /sample/hello.jsp HTTP/1.1。
-
-* Web浏览器发送请求头
-
-浏览器发送其请求命令之后，还要以头信息的形式向Web服务器发送一些别的信息，之后浏览器发送了一空白行来通知服务器，它已经结束了该头信息的发送。
-Web服务器应答
-客户机向服务器发出请求后，服务器会客户机回送应答， HTTP/1.1 200 OK ，应答的第一部分是协议的版本号和应答状态码。
-
-* Web服务器发送应答头
-
-正如客户端会随同请求发送关于自身的信息一样，服务器也会随同应答向用户发送关于它自己的数据及被请求的文档。
-
-* Web服务器向浏览器发送数据
-
-Web服务器向浏览器发送头信息后，它会发送一个空白行来表示头信息的发送到此为结束，接着，它就以Content-Type应答头信息所描述的格式发送用户所请求的实际数据。
-
-* Web服务器关闭TCP连接
-
-Connection:keep-alive
-
-一般情况下，一旦Web服务器向浏览器发送了请求数据，它就要关闭TCP连接，然后如果浏览器或者服务器在其头信息加入了这行代码：
-TCP连接在发送后将仍然保持打开状态，于是，浏览器可以继续通过相同的连接发送请求。保持连接节省了为每个请求建立新连接所需的时间，还节约了网络带宽。
-
-**建立TCP连接->发送请求行->发送请求头->（到达服务器）发送状态行->发送响应头->发送响应数据->断TCP连接**
+### 7. 一次完整的HTTP请求所经历的7个步骤 - [链接](https://github.com/swlfigo/iOSInterview/blob/master/网络/一次完整的HTTP请求所经历的7个步骤.md)
 
 ## 一些推荐阅读
 
