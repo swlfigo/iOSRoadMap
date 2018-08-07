@@ -1,6 +1,7 @@
 # 简述TCP的三次握手过程
 
 在TCP/IP协议中,TCP协议提供可靠的连接服务,采用三次握手建立一个连接.
+
 1）第一次握手：
 Client将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。
 

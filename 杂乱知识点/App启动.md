@@ -1,6 +1,13 @@
 
 
 # App启动过程 
+
+根据Apple官方的《WWDC Optimizing App Startup Time》，iOS应用的启动可分为pre-main阶段和main两个阶段，所以 **App总启动时间 = pre-main耗时 + main耗时**
+
+![](http://okslxr2o0.bkt.clouddn.com/15336131946912.jpg)
+
+
+
 一般说来，`pre-main` 阶段的定义为APP**开始启动**到**系统调用main**函数这一段时间；`main`阶段则代表从**main函数入口**到主UI框架的**viewDidAppear**函数调用的这一段时间
 
 App开始启动后，系统首先加载可执行文件（自身App的所有.o文件的集合），然后加载动态链接器dyld，dyld是一个专门用来加载动态链接库的库。 执行从dyld开始，dyld从可执行文件的依赖开始, 递归加载所有的依赖动态链接库。
@@ -100,5 +107,5 @@ ASLR（Address Space Layout Randomization）：地址空间布局随机化，镜
 
 ### Reference
 1. [iOS启动时间优化](http://www.zoomfeng.com/blog/launch-time.html)
-
+2. [iOS启动时间](http://lingyuncxb.com/2018/01/30/iOS%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96/)
 
