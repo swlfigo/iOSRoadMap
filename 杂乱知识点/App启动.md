@@ -104,6 +104,18 @@ ASLR（Address Space Layout Randomization）：地址空间布局随机化，镜
 * 动态库: 链接时不复制，在程序启动后用 dyld 加载，然后再决议符号，所以理论上动态库只用存在一份，好多个程序都可以动态链接到这个动态库上面，达到了节省内存(不是磁盘是内存中只有一份动态库)，还有另外一个好处，由于动态库并不绑定到可执行程序上，所以我们想升级这个动态库就很容易，windows 和 linux 上面一般插件和模块机制都是这样实现的。
 * Embedded Framework，这种动态库允许APP 和 APP Extension共享代码，但是这份动态库的生命被限定在一个 APP 进程内。简单点可以理解为 **被阉割的动态库**。
 
+#### 3.
+简单归纳:
+1、main之前的加载过程
+
+* dyld 开始将程序二进制文件初始化
+* 交由ImageLoader 读取 image，其中包含了我们的类，方法等各种符号（Class、Protocol 、Selector、 IMP）
+* 由于runtime 向dyld 绑定了回调，当image加载到内存后，dyld会通知runtime进行处理
+* runtime 接手后调用map_images做解析和处理
+* 接下来load_images 中调用call_load_methods方法，遍历所有加载进来的Class，按继承层次依次调用Class的+load和其他Category的+load方法
+* 至此 所有的信息都被加载到内存中
+* 最后dyld调用真正的main函数
+
 
 ### Reference
 1. [iOS启动时间优化](http://www.zoomfeng.com/blog/launch-time.html)
