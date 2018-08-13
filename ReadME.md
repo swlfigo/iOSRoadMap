@@ -157,7 +157,7 @@ weak 的实现原理可以概括一下三步：
 
 2. assign 可以用非 OC 对象,而 weak 必须用于 OC 对象
 
-### 3. Objective-C Associated Objects 的实现原理
+### 10. Objective-C Associated Objects 的实现原理
 
 1. 关联对象与被关联对象本身的存储并没有直接的关系，它是存储在单独的哈希表中的；
 2. 关联对象的五种关联策略与属性的限定符非常类似，在绝大多数情况下，我们都会使用 **OBJC_ASSOCIATION_RETAIN_NONATOMIC** 的关联策略，这可以保证我们持有关联对象；
