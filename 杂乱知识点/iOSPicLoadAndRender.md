@@ -16,11 +16,11 @@
 
 * `imageWithContentsOfFile:` 或 `imageWithData:` 同样会在图片第一次渲染到屏幕上的时候进行解码。底层会调用到 `CGImageSourceCreateWithData()` 方法，该方法可以指定是否要缓存解码后的数据，在64位机器上默认需要缓存（`kCGImageSourceShouldCache`）。与上面的方法不同，这种方式创建的缓存会随着UIImage的释放而被释放掉。
 
-3) 手动调用 `CGImageSourceCreateWithData()` 方法可以指定是否需要缓存（`kCGImageSourceShouldCache`），之后再调用 `CGImageSourceCreateImageAtIndex()` 可以设置是否需要立即进行解码（`kCGImageSourceShouldCacheImmediately`），如果设置为不需要立刻解码，则会在**将图片渲染到屏幕上时才进行解码。**（设置为立即解码会阻塞主线程，造成性能问题，详见 https://www.objc.io/issues/5-ios7/iOS7-hidden-gems-and-workarounds/）
+3. 手动调用 `CGImageSourceCreateWithData()` 方法可以指定是否需要缓存（`kCGImageSourceShouldCache`），之后再调用 `CGImageSourceCreateImageAtIndex()` 可以设置是否需要立即进行解码（`kCGImageSourceShouldCacheImmediately`），如果设置为不需要立刻解码，则会在**将图片渲染到屏幕上时才进行解码。**（设置为立即解码会阻塞主线程，造成性能问题，详见 https://www.objc.io/issues/5-ios7/iOS7-hidden-gems-and-workarounds/）
 
-3. UIImageView 的图层树（Layer Tree）发生变化，会生成一个 `Implicit Transaction`，这个`transaction`会自动在主线程的下一个 Runloop 进行提交。（Explicit Transaction 由显式调用 begin() 和 commit() 方法触发生成。）
+4. UIImageView 的图层树（Layer Tree）发生变化，会生成一个 `Implicit Transaction`，这个`transaction`会自动在主线程的下一个 Runloop 进行提交。（Explicit Transaction 由显式调用 begin() 和 commit() 方法触发生成。）
 
-4. 下一个Main Runloop中，Core Animation会提交这个 Implicit Transaction。如果用户内存中的位图数据没**有字节对齐** ，出于渲染性能考虑，**Core Animation会对数据进行拷贝，以进行字节对齐。**之后，GPU会渲染对齐后的位图数据，展示在屏幕上。
+5. 下一个Main Runloop中，Core Animation会提交这个 Implicit Transaction。如果用户内存中的位图数据没**有字节对齐** ，出于渲染性能考虑，**Core Animation会对数据进行拷贝，以进行字节对齐。**之后，GPU会渲染对齐后的位图数据，展示在屏幕上。
 
 ### Reference
 
