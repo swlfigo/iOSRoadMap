@@ -32,6 +32,7 @@
 
 [11. iOS中图片的加载与渲染过程](https://github.com/swlfigo/iOSInterview/blob/master/杂乱知识点/iOSPicLoadAndRender.md)
 
+[12. iOS 界面渲染流程](https://github.com/swlfigo/iOSInterview/blob/master/杂乱知识点/iOSRenderProgress.md)
 
 ## 线程
 
