@@ -9,7 +9,7 @@
 ## iOS
 
 [简述下 UIViewController 的生命周期](/iOS/UIViewController 的生命周期.md)
-[1](iOS/UIViewController%20%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
+[简述下 UIViewController 的生命周期](iOS/UIViewController%20%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
 ### 2. OC中向一个nil对象发送消息将会发生什么?为什么?
 
 **关于nil**
