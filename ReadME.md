@@ -18,82 +18,20 @@
 
 [5. KVO内部实现原理](iOS/KVO.md)
 
+[6. Runtime 是如何找到实例方法的具体实现的？](iOS/HowRuntimeFindMethod.md)
 
+[6. Runtime 是如何找到实例方法的具体实现的？](iOS/HowRuntimeFindMethod.md)
 
-### 6.Runtime 是如何找到实例方法的具体实现的？
+[7. __weak 实现原理的概括](iOS/__weak.md)
 
-一个OC方法被编译成objc_msgSend，因为OC中存在一种对象叫做类对象（Class Object），类对象中保存了方法的列表，superClass等信息。objc_msgSend这个C函数输入参数包括，id类型的self，SEL类型的_cmd,以及参数列表。很直观，id类型中一定存在一个可以找到类对象的指针。 
+[8. 离屏渲染](iOS/iOSOffScreenRender.md)
 
-* OC的对象通过isa找到类对象
-* 类对象查找自己存储的方法列表来找到对应的方法执行体
-* 方法执行体执行具体的代码，并返回值给调用者。
+[9. 什么情况使用 weak 关键字，相比 assign 有什么不同？](iOS/WeakAssgin.md)
 
-我们来看一个例子， 
-定义一个
+[10. Objective-C Associated Objects 的实现原理](iOS/WeakAssgin.md)
 
-```objectivec
-@interface CustomObject : NSObject
--(NSString *)returnMeHelloWorld;
-@end
-@implementation CustomObject
+[11. iOS中图片的加载与渲染过程](https://github.com/swlfigo/iOSInterview/blob/master/杂乱知识点/iOSPicLoadAndRender.md)
 
--(NSString *)returnMeHelloWorld{
-    return @"hello world";
-}
-@end
-```
-
-我们先只看调用这一行
-
-```objectivec
-    NSString * helloWorld =  [obj returnMeHelloWorld];
-```
-
-* 编译成如下id objc_msgSend(self,@selector(returnMeHelloWorld:));
-* 在self中沿着isa找到CustomObject的类对象
-* 类对象查找自己的方法list，找到对应的方法执行体Method
-* 把参数传递给IMP实际指向的执行代码
-* 代码执行返回结果给helloWorld
-
-### 7 __weak 实现原理的概括
-Runtime维护了一个weak表，用于存储指向某个对象的所有weak指针。weak表其实是一个hash（哈希）表，Key是所指对象的地址，Value是weak指针的地址（这个地址的值是所指对象的地址）数组。
-
-weak 的实现原理可以概括一下三步：
-
-1. 初始化时：runtime会调用objc_initWeak函数，初始化一个新的weak指针指向对象的地址。
-
-2. 添加引用时：objc_initWeak函数会调用 objc_storeWeak() 函数， objc_storeWeak() 的作用是更新指针指向，创建对应的弱引用表。
-
-3. 释放时，调用clearDeallocating函数。clearDeallocating函数首先根据对象地址获取所有weak指针地址的数组，然后遍历这个数组把其中的数据设为nil，最后把这个entry从weak表中删除，最后清理对象的记录。
-
-### 8. 离屏渲染
-
-* 当设置某些UI图层属性时候，如果指定为被未预合成之前，不能直接显示在屏幕上的时候，就触发了离屏渲染。离屏渲染是基于GPU层面上的，指GPU在当前屏幕缓冲区外开辟了一个缓冲区，进行渲染操作。
-
-**为何要避免离屏渲染?**
-
-离屏渲染发生在GPU层面上，因为离屏渲染使GPU触发Opengl多通道渲染管线，产生额外开销，所以要避免。
-在触发离屏渲染时候，会增加GPU工作量，增加GPU工作量，可能会导致GPU和CPU工作耗时的总耗时超出Vsync信号时间，导致UI卡顿或者掉帧。
-
-### 9. 什么情况使用 weak 关键字，相比 assign 有什么不同？
-
-在 ARC 中,在有可能出现循环引用的时候,往往要通过让其中一端使用 weak 来解决,比如: delegate 代理属性.
-
-不同点:
-
-1. weak 此特质表明该属性定义了一种“非拥有关系” (nonowning relationship)。为这种属性设置新值时，设置方法既不保留新值，也不释放旧值。此特质同assign类似， 然而在属性所指的对象遭到摧毁时，属性值也会清空(nil out)。 而 assign 的“设置方法”只会执行针对“纯量类型” (scalar type，例如 CGFloat 或 NSlnteger 等)的简单赋值操作。
-
-2. assign 可以用非 OC 对象,而 weak 必须用于 OC 对象
-
-### 10. Objective-C Associated Objects 的实现原理
-
-1. 关联对象与被关联对象本身的存储并没有直接的关系，它是存储在单独的哈希表中的；
-2. 关联对象的五种关联策略与属性的限定符非常类似，在绝大多数情况下，我们都会使用 **OBJC_ASSOCIATION_RETAIN_NONATOMIC** 的关联策略，这可以保证我们持有关联对象；
-3. 关联对象的释放时机与移除时机并不总是一致，比如实验中用关联策略 **OBJC_ASSOCIATION_ASSIGN** 进行关联的对象，很早就已经被释放了，但是并没有被移除，而再使用这个关联对象时就会造成 Crash 。
-
-### 11. iOS中图片的加载与渲染过程
-
- [详见子目录下md文件 - 传送门](https://github.com/swlfigo/iOSInterview/blob/master/杂乱知识点/iOSPicLoadAndRender.md)
 
 ## 线程
 
