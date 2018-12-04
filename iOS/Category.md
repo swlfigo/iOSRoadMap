@@ -34,3 +34,7 @@ category的定义也可以看出category的可为（可以添加实例方法，�
 2)、这么些个+load方法，调用顺序是咋样的呢？
 
 +load的执行顺序是先类，后category，而category的+load执行顺序是根据编译顺序决定的。
+
+## Reference
+[1. 深入理解Objective-C：Category](https://tech.meituan.com/DiveIntoCategory.html)
+[2. Objective-C Category 的实现原理](http://blog.leichunfeng.com/blog/2015/05/18/objective-c-category-implementation-principle/)
