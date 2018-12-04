@@ -34,6 +34,8 @@
 
 [12. iOS 界面渲染流程](https://github.com/swlfigo/iOSInterview/blob/master/杂乱知识点/iOSRenderProgress.md)
 
+[13. Category](iOS/Category.md)
+
 ## 线程
 
 ### 1. 浅谈GCD
