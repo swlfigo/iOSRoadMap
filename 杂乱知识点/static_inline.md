@@ -8,12 +8,12 @@
 
 没有使用 内联函数 static inLine:
 
-![](http://okslxr2o0.bkt.clouddn.com/15340864039309.jpg)
+![](http://img.isylar.com/media/15440048099753.png)
 
 
 使用内联函数 static inLine:
 
-![](http://okslxr2o0.bkt.clouddn.com/15340864325252.jpg)
+![](http://img.isylar.com/media/15440048170044.png)
 
 
 #### 结论:
