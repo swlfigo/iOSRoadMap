@@ -36,6 +36,8 @@
 
 [13. Category](iOS/Category.md)
 
+[14. isa 指针与调用方法](iOS/isaAndMethod.md)
+
 ## 线程
 
 ### 1. 浅谈GCD
