@@ -38,6 +38,8 @@
 
 [14. isa 指针与调用方法](iOS/isaAndMethod.md)
 
+[15. Method Cache](iOS/MethodCache.md)
+
 ## 线程
 
 ### 1. 浅谈GCD
