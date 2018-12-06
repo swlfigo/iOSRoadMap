@@ -41,3 +41,8 @@ objc_msgSend（就arm平台而言）的消息分发分为以下几个步骤：
 * list的方法还保存了除了selector和imp之外其他很多属性
 
 * 散列表是有空槽的，会浪费空间
+
+
+
+## Reference
+[1.深入理解Objective-C：方法缓存](https://tech.meituan.com/DiveIntoMethodCache.html)
