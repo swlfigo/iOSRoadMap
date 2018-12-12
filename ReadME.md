@@ -20,8 +20,6 @@
 
 [6. Runtime 是如何找到实例方法的具体实现的？](iOS/HowRuntimeFindMethod.md)
 
-[6. Runtime 是如何找到实例方法的具体实现的？](iOS/HowRuntimeFindMethod.md)
-
 [7. __weak 实现原理的概括](iOS/__weak.md)
 
 [8. 离屏渲染](iOS/iOSOffScreenRender.md)
@@ -39,6 +37,8 @@
 [14. isa 指针与调用方法](iOS/isaAndMethod.md)
 
 [15. Method Cache](iOS/MethodCache.md)
+
+[16. Runloop](iOS/Runloop.md)
 
 ## 线程
 
