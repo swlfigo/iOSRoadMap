@@ -28,9 +28,9 @@
 
 [10. Objective-C Associated Objects 的实现原理](iOS/WeakAssgin.md)
 
-[11. iOS中图片的加载与渲染过程](https://github.com/swlfigo/iOSInterview/blob/master/杂乱知识点/iOSPicLoadAndRender.md)
+[11. iOS中图片的加载与渲染过程](knowledge/iOSPicLoadAndRender.md)
 
-[12. iOS 界面渲染流程](https://github.com/swlfigo/iOSInterview/blob/master/杂乱知识点/iOSRenderProgress.md)
+[12. iOS 界面渲染流程](knowledge/iOSRenderProgress.md)
 
 [13. Category](iOS/Category.md)
 
@@ -148,7 +148,7 @@ MVC最早存在于桌面程序中的, M是指业务数据, V是指用户界面, 
 
 ## 杂乱知识点
 
- 1.App启动过程 - [链接](https://github.com/swlfigo/iOSInterview/blob/master/%E6%9D%82%E4%B9%B1%E7%9F%A5%E8%AF%86%E7%82%B9/App%E5%90%AF%E5%8A%A8.md)
+ 1.App启动过程 - [链接](knowledge/App启动.md)
 
 2.Cocoapods原理总结 - [链接](https://juejin.im/entry/59dd94b06fb9a0451463030b)
 
