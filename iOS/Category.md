@@ -35,6 +35,17 @@ category的定义也可以看出category的可为（可以添加实例方法，�
 
 +load的执行顺序是先类，后category，而category的+load执行顺序是根据编译顺序决定的。
 
+## 用分类做了那些事情
+1. 声明私有变量(.m写相关方法)
+2. 分解体积庞大的类文件
+3. 把 Framework 的私有方法公开
+
+## 分类可以添加哪些内容
+1. 实例方法
+2. 类方法
+3. 协议
+4. 属性(Runtime,只添加了get/set属性,没有添加方法)
+
 ## Reference
 [1. 深入理解Objective-C：Category](https://tech.meituan.com/DiveIntoCategory.html)
 [2. Objective-C Category 的实现原理](http://blog.leichunfeng.com/blog/2015/05/18/objective-c-category-implementation-principle/)
