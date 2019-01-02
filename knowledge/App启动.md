@@ -117,6 +117,11 @@ ASLR（Address Space Layout Randomization）：地址空间布局随机化，镜
 * 最后dyld调用真正的main函数
 
 
+使用动态库的优点:
+1. 防止重复,iOS系统中所有App公用一套系统动态库,防止重复的内存占用.
+2. 减少包体积.因为系统动态库被内置到iOS系统中，所以打包时不需要把这部分代码打进去，可以减少包体积
+3. 动态性.因为系统动态库是动态加载的，所以可以在更新系统后，将动态库换成新的动态库.
+
 ### Reference
 1. [iOS启动时间优化](http://www.zoomfeng.com/blog/launch-time.html)
 2. [iOS启动时间](http://lingyuncxb.com/2018/01/30/iOS%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96/)
