@@ -24,7 +24,7 @@
 
 [8. 离屏渲染](iOS/iOSOffScreenRender.md)
 
-[9. 什么情况使用 weak 关键字，相比 assign 有什么不同？](iOS/WeakAssgin.md)
+[9. 属性关键字](iOS/AttributesForProperties.md)
 
 [10. Objective-C Associated Objects 的实现原理](iOS/WeakAssgin.md)
 
@@ -42,7 +42,7 @@
 
 [17. Extension&Delegate&Notification](iOS/ExtensionAndDelegateAndNotification.md)
 
-[18. KVC](iOS/KVC.md)
+[18. KVC](iOS/KVC.md )
 
 ## 线程
 
