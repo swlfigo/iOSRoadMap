@@ -163,3 +163,5 @@ MVC最早存在于桌面程序中的, M是指业务数据, V是指用户界面, 
 3.内联函数,与宏的区别 - [链接](https://github.com/swlfigo/iOSInterview/blob/master/%E6%9D%82%E4%B9%B1%E7%9F%A5%E8%AF%86%E7%82%B9/static_inline.md)
 
 4.[单链表与顺序结构](/knowledge/listAndNode.md)
+
+5.[static区别](/knowledge/staticCompare.md)
