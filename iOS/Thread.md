@@ -196,3 +196,59 @@ dispatch_barrier_async(concurrent_queue,^{//写操作});
 
 **系统怎么移除一个 `isFinished==YES` 的NSOperation的**
 通过`KVO`
+
+
+## 锁
+### @synchronized
+一般在创建单例对象的时候使用
+### atomic
+修饰属性的关键字
+对被修饰对象进行原子操作(不负责使用)
+
+### OSSpinLock 自旋锁
+循环等待访问，不释放当前资源(while循环)
+用于轻量级数据访问,简单的int值 +1/-1操作
+
+### NSLock
+
+```
+-(void)methodA{
+    [lock lock];
+    [self methodB];
+    [lock unlock];
+}
+
+-(void)methodB{
+    [lock lock];
+    //xxxx
+    [lock unlock];
+}
+
+//会导致死锁,要使用递归锁
+
+```
+
+### NSRescursiveLock 递归锁
+
+```
+//递归锁的特点是可以重入
+-(void)methodA{
+    [recursiveLock lock];
+    [self methodB];
+    [recursiveLock unlock];
+}
+
+-(void)methodB{
+    [recursiveLock lock];
+    //xxxx
+    [recursiveLock unlock];
+}
+```
+
+### dispatch_semaphore_t 信号量
+
+阻塞是一个主动行为
+唤醒是一个被动行为
+
+## iOS系统为我们提供的几钟多线程技术各自的特点是怎样的
+iOS系统当中主要提供3种,`GCD`、`NSOperation&NSOperationQueue`、`NSThread`,一般使用 `GCD`实现简单线程同步，包括子线程分派，实现多读单写情景，`NSOperation`方便任务状态控制，添加依赖移除依赖,`NSThread`多用于常用线程
