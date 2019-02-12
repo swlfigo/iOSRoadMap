@@ -1,5 +1,7 @@
 # 简述TCP的三次握手过程
 
+
+## TCP 三次握手
 * TCP 提供一种面向连接的、可靠的字节流服务
 * 在一个 TCP 连接中，仅有两方进行彼此通信。广播和多播不能用于 TCP
 * TCP 使用校验和，确认和重传机制来保证可靠传输
@@ -27,3 +29,7 @@
 发送完毕后，客户端进入 ESTABLISHED 状态，当服务器端接收到这个包时，也进入 ESTABLISHED 状态，TCP 握手结束。
 
 ![](http://img.isylar.com/media/15439924019037.png)
+
+![](http://img.isylar.com/media/15499377203274.jpg)
+
+
