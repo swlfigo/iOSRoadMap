@@ -1,10 +1,43 @@
 #  16. Runloop
 
-Apple 官方给 `Runloop` 的定义：Runloop 是线程的基础支撑，是循环处理事件的机制，一个具体的 Runloop 就是一个事件处理循环。
+NSRunLoop是CFRunLoop的封装,提供了面向对象的API
+
+Apple 官方给 `Runloop` 的定义：
+Runloop 是线程的基础支撑，是循环处理事件的机制，一个具体的 Runloop 就是一个事件处理循环。
+
+**RunLoop是通过内部维护的事件循环来对事件/消息进行管理的一个对象**
+
+**事件循环指,没有消息需要处理时,休眠以避免资源占用,有消息需要处理时,立刻唤醒**
 
 **Runloop 的目的是使线程在没有事情可做时进入休眠状态，避免 CPU 空转。**
 
 > Run loops are part of the fundamental infrastructure associated with threads. A run loop is an event processing loop that you use to schedule work and coordinate the receipt of incoming events. The purpose of a run loop is to keep your thread busy when there is work to do and put your thread to sleep when there is none.
+
+## CFRunLoop
+![](http://img.isylar.com/media/15498932761656.jpg)
+
+##  CFRunLoopMode
+
+![](http://img.isylar.com/media/15498933418655.jpg)
+
+* source0
+需要手动唤醒线程
+* source1
+具备唤醒线程的能力
+
+## CFRunLoopObserver 观察者
+观察时间点
+* kCFRunLoopEntry
+* kCFRunLoopBeforeTimers
+* kCFRunLoopBeforeSources
+* kCFRunLoopBeforeWaiting
+* kCFRunLoopAfterWaiting
+* kCFRunLoopExit
+
+## 各个数据结构之间关系
+![](http://img.isylar.com/media/15498936308142.jpg)
+一个Runloop中包含很多个Mode,Mode中包含Source,Timer与Observer
+
 
 ## Runloop Modes
 

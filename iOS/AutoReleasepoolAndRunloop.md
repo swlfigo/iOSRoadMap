@@ -24,6 +24,10 @@
 ##  Runloop Mode
  `Runloop`总是运行在某种特定的CFRunLoopModeRef下,意思是每次`Runloop`开始时候会选择一个mode，执行这个mode里面的 `block`,`timer`等事件.这可以解释滑动过程中，`NSTimer`为什么会停止,因为滑动过程中`Runloop`处于 `TrackingMode`,`NSTimer`默认添加在`DefaultMode`,所以不执行
 
+### CommonMode的特殊性
+`NSRunLoopCommonModes`
+* CommonMode不是实际存在的一种Mode
+* 是同步Source/Timer/Observer到多个Mode中的一种技术方案
 
 ## Runloop 运用场景
  
