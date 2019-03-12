@@ -222,3 +222,4 @@ layer的delegate如果实现了`displayLayer:`方法，就会进入到异步绘�
 
 [1.iOS中图片的加载与渲染过程](http://blog.corneliamu.com/archives/95)
 
+[2.iOS 保持界面流畅的技巧](https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/)
