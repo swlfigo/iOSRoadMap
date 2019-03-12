@@ -12,11 +12,9 @@
 
 
 
-
-
-## UI基础
 <a id="UI Foundation">
 
+## UI基础
 ## 1. UITableView/UICollectionView
 
 ### 1.1 重用机制
@@ -177,9 +175,11 @@ layer的delegate如果实现了`displayLayer:`方法，就会进入到异步绘�
 
 
 
+<a id="iOS Render Progress">
+
 ## iOS 界面渲染流程
 
-<a id="iOS Render Progress">
+
 
 ![15420320733034](http://img.isylar.com/media/15420320733034-1.jpg)
 
