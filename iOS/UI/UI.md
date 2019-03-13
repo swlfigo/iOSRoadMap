@@ -6,7 +6,7 @@
 
 <a href="#iOS Render Progress">2. iOS 界面渲染流程</a>
 
-<a href="#iOS Image Load And Render Progress">2.iOS中图片的加载与渲染过程</a>
+<a href="#iOS Image Load And Render Progress">3.iOS中图片的加载与渲染过程</a>
 
 
 
