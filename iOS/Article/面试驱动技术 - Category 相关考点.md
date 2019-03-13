@@ -86,7 +86,7 @@ struct _class_t {
 
 
 
-![image-20190313220611521](./assets/image-20190313220611521.png)
+![image-20190313220611521](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142235.png)
 
 ```
 static void 
@@ -194,15 +194,15 @@ void attachLists(List* const * addedLists, uint32_t addedCount) {
 
 画图分析就是
 
-![image-20190313220715104](assets/image-20190313220715104.png)
+![image-20190313220715104](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142245.png)
 
-![image-20190313220747143](assets/image-20190313220747143.png)
+![image-20190313220747143](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142249.png)
 
-![image-20190313220827649](assets/image-20190313220827649.png)
+![image-20190313220827649](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142254.png)
 
-![image-20190313220840094](assets/image-20190313220840094.png)
+![image-20190313220840094](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142259.png)
 
-![image-20190313220900094](assets/image-20190313220900094.png)
+![image-20190313220900094](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142305.png)
 
 #### 3\. 实际开发中，你用 Category 做了哪些事？
 
@@ -318,7 +318,7 @@ static void schedule_class_load(Class cls)
 复制代码
 ```
 
-![image-20190313220920309](assets/image-20190313220920309.png)
+![image-20190313220920309](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142313.png)
 
 * * *
 
@@ -548,7 +548,7 @@ exo me again！怎么这么多！连 load 也有了？
 
 分类里面，生成属性，只会生成方法的声明，不会生成成员变量 && 方法实现！
 
-![image-20190313221010091](assets/image-20190313221010091.png)
+![image-20190313221010091](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142324.png)
 
 > 人工智障翻译：实例变量不能放在分类中
 
@@ -571,7 +571,7 @@ exo me again！怎么这么多！连 load 也有了？
 
 
 
-![image-20190313221032988](assets/image-20190313221032988.png)
+![image-20190313221032988](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142331.png)
 
 `person.age = 10`等价于 `[person setAge:10]`，所以证明了，给分类声明属性之后，并没有添加其对应的实现！
 
@@ -600,7 +600,7 @@ typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) {
 复制代码
 ```
 
-![image-20190313221116240](assets/image-20190313221116240.png)比如这里的 age 属性，默认声明是`@property (nonatomic, assign) NSInteger age;`，就是 assign，所以这里选择`OBJC_ASSOCIATION_ASSIGN`
+![image-20190313221116240](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142336.png)比如这里的 age 属性，默认声明是`@property (nonatomic, assign) NSInteger age;`，就是 assign，所以这里选择`OBJC_ASSOCIATION_ASSIGN`
 
 取值
 
@@ -633,7 +633,7 @@ int main(int argc, const char * argv[]) {
 复制代码
 ```
 
-![image-20190313221130229](assets/image-20190313221130229.png)
+![image-20190313221130229](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142345.png)
 
 > 原因，关联的对象是 person，关联的 value 是 test，test 变量 出了他们的`{}` 作用域之后，就会销毁; 此时通过 key 找到 对应的对象，访问对象内部的 value，因为 test 变量已经销毁了，所以程序崩溃了，这也说明了 => **内部 test 对 value 是强引用！**
 
@@ -687,7 +687,7 @@ class ObjcAssociation {
 复制代码
 ```
 
-![image-20190313221149179](assets/image-20190313221149179.png)
+![image-20190313221149179](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142352.jpg)
 
 *   关联对象并不是存储在被关联对象本身的内存中的
 *   关联对象，存储在全局的一个统一的`AssociationsManager`中
