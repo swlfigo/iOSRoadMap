@@ -166,7 +166,42 @@ for (uint32_t m = 0;
 
 （3）名字相同的分类会引起编译报错
 
-### 关联对象
+### 3. 关联对象
+
+#### 3.1 意义
+
+顾名思义，就是把一个对象关联到另外一个对象身上。使两者能够产生联系。
+
+使用场景:
+
+- 运行时给cagetory添加getter和setter。因为category中添加的property不会生成带下划线"_"的成员变量以及getter和setter的实现。所以可以通过关联对象实现getter和setter。**(主要)**
+- 有时需要在对象中存储一些额外的信息，我们通常会从对象所属的类中继承一个子类。然后给这个子类添加额外的属性，改用这个子类。然而并非所有的情况都能这么做，有时候类的实例可能是由某种机制创建的，而开发者无法另这种机制创建出自己所写的子类实例。此时可以使用“关联对象”。
+- 有时只是给某个类添加一个额外的属性，完全没有必要继承出来一个子类。此时可以使用“关联对象”。
+- delegate回调的方法中使用关联对象。有时候在一些delegate回调的方法中需要处理一些回调任务。比如发起网络请求和在delegate回调的方法中做UI的更新。这样一来，发起网络请求和在回调中更新UI的代码被分散到了两个地方，不利于管理和阅读。此时可以使用“关联对象”。
+
+#### 3.2 重要函数
+
+```objective-c
+id objc_getAssociatedObject(id object , const void *key)
+
+void objc_setAssociatedObject(id object,const void *key,id value, objc_AssociationPolicy policy)
+
+void objc_removeAssociatedObject(id object)
+
+```
+
+
+
+#### 3.3 关联对象本质
+
+- 关联对象由 `AssociationsManager` 管理并在 `AssiciationsHashMap` 存储。
+- 所有对象的关联内容都在同一个全局容器中。
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-14-095543.jpg)
+
+
+
+
 
 ## Reference
 
