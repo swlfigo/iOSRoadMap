@@ -84,9 +84,9 @@ struct _class_t {
 复制代码
 ```
 
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-14-040902.jpg)
 
 
-![image-20190313220611521](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142235.png)
 
 ```
 static void 
@@ -194,15 +194,15 @@ void attachLists(List* const * addedLists, uint32_t addedCount) {
 
 画图分析就是
 
-![image-20190313220715104](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142245.png)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-14-041106.jpg)
 
-![image-20190313220747143](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142249.png)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-14-041125.jpg)
 
-![image-20190313220827649](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142254.png)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-14-042435.jpg)
 
-![image-20190313220840094](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142259.png)
+![](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190314121618.png)
 
-![image-20190313220900094](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142305.png)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-14-042114.jpg)
 
 #### 3\. 实际开发中，你用 Category 做了哪些事？
 
@@ -600,7 +600,9 @@ typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) {
 复制代码
 ```
 
-![image-20190313221116240](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-13-142336.png)比如这里的 age 属性，默认声明是`@property (nonatomic, assign) NSInteger age;`，就是 assign，所以这里选择`OBJC_ASSOCIATION_ASSIGN`
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-14-042550.jpg)
+
+比如这里的 age 属性，默认声明是`@property (nonatomic, assign) NSInteger age;`，就是 assign，所以这里选择`OBJC_ASSOCIATION_ASSIGN`
 
 取值
 
