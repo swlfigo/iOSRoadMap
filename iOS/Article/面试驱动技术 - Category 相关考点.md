@@ -1,6 +1,6 @@
 > 面试驱动技术合集（初中级 iOS 开发），关注仓库，及时获取更新 [Interview-series](https://link.juejin.im?target=https%3A%2F%2Fgithub.com%2FminiLV%2FInterview-series)
 
-
+[原文: 面试驱动技术 - Category 相关考点](https://juejin.im/post/5c753bc251882505d52fba5c)
 
 _Category 相关的问题一般初中级问的比较多，一般最深的就问到关联对象，本文把比较常见的 Category 的问题都罗列解决了一下，如果还有其他常见的 Category 的试题欢迎补充~_
 
