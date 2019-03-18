@@ -201,9 +201,211 @@ void objc_removeAssociatedObject(id object)
 
 
 
+- 关联对象的释放时机与移除时机并不总是一致，比如实验中用关联策略 **OBJC_ASSOCIATION_ASSIGN** 进行**关联的对象**，很早就已经被释放了，但是并没有被移除，而再使用这个关联对象时就会造成 Crash 。[注意是用Assign关联对象(@property中用assign也会导致崩溃)]
 
+###  3. 扩展
+
+> A class extension bears some similarity to a category, **but it can only be added to a class for which you have the source code** at compile time (the class is compiled at the same time as the class extension). The methods declared by a class extension are implemented in the `@implementation` block for the original class so you can’t, for example, declare a class extension on a framework class, such as a Cocoa or Cocoa Touch class like `NSString`.
+>
+> //引用自苹果
+>
+> //重点核心意思:与分类相似，但是只能被添加到有源码的类文件中
+
+```objective-c
+//implementation file (.m) 
+//.m文件中实现
+@interface ClassName ()
+ 
+@end
+```
+
+一般用扩展做什么
+
+- 声明私有属性
+- 声明私有方法
+- 声明私有成员变量
+
+扩展的特点 (和分类的区别)
+
+- 编译时决议(内存结构规定后无法修改)
+- 只以声明的形式存在，多数情况下寄生于宿主类的.m中(即需要源码)
+- 不能为系统类添加扩展
+
+####  4.代理
+
+- 准确的说是一种软件设计模式
+- iOS当中以@protocol形式体现
+- 传递方式一对一
+- 一般声明为weak以规避循环引用
+
+![](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318144225.png)
+
+代理方:主动
+
+委托方:被动
+
+代理的实现流程:
+
+![](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318144307.png)
+
+
+
+###  5.通知
+
+- 是使用**观察者模式**来实现用于跨层传递消息的机制
+- 传递方式为一对多
+
+如何实现通知机制？（没有源代码）
+
+![](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318144554.png)
+
+###  6.KVO
+
+**Q:什么是KVO？**
+
+**A:** OC 对观察者模式的又一实现； Apple 使用了 **isa 混写**(isa-swizzling) 来实现KVO.
+
+![](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318144841.png)
+
+
+
+当调用了 `addObserver:forkeypath`方法之后，系统会动态创建 `NSKVONorifying_A`类，同时将A的isa指针指向 NSKVONorifying_A。
+
+iOS中`KVO`分为自动监听和手动触发两种形式
+
+手动触发:
+
+1. 重写监听属性的set、get方法
+2. 重写 `+ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key` 
+3. 在set方法中在赋值的前后分别调用：`willChangeValueForKey`和`didChangeValueForKey`
+4. 实现`willChangeValueForKey`和`didChangeValueForKey`方法
+
+其中需要重写
+
+```objective-c
++ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key{
+  if([key isEqualToString:@"age"]){
+  //取消自动发送通知
+    return NO;
+  }else{
+    return [super automaticallyNotifiesObserversForKey:key];
+  }
+}
+```
+
+
+
+### 7.KVC
+
+是一种键值对设计模式，破坏面对对象的编程思想。(不重写特定方法,找不到Key情况下会崩溃)
+
+主要方法
+
+```objective-c
+-(id)valueForKey:(NSString *)key
+-(void)setValue:(id)value forked:(NSString *)key;
+```
+
+
+
+寻找路径
+
+`setterKey(keySet方法)` -> `_key` -> `_isKey` -> `key` -> `iskey`
+
+![](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318150641.png)
+
+## 
+
+**KVC setvalue:forkey与setvalue:forkeypath的区别**:
+
+`forkey`用于简单路径,`forkeypath`用于复合路径(比如key是对象，可以直接赋值给这个对象的属性.eg:`setValue:@100 forKeyPath:@"person.number"`)
+
+
+
+### 8.属性关键字
+
+读写权限
+
+- readonly
+- readwrite      √默认关键字
+
+引用计数
+
+- retain / strong
+
+- weak / assign
+
+  assign:
+
+  修饰基本数据类型，如int, bool等
+
+  修饰对象类型时，不改变其引用计数
+
+  会产生悬垂指针：仍然指向内存地址，如果没覆盖后还调动变量就会crash
+
+  weak：
+
+  不改变修饰对象的引用计数
+
+  所指对象在释放之后会自动设置为nil
+
+- copy
+
+| name       | 浅拷贝 | 深拷贝 |
+| ---------- | ------ | ------ |
+| 新内存空间 | 不分配 | 分配   |
+| 引用计数   | 影响   | 不影响 |
+
+
+
+| 源对象类型    | 拷贝方式    | 目标对象类型 | 拷贝类型 |
+| ------------- | ----------- | ------------ | -------- |
+| mutable对象   | copy        | 不可变       | 深拷贝   |
+| mutable对象   | mutableCopy | 可变         | 深拷贝   |
+| immutable对象 | copy        | 不可变       | 浅拷贝   |
+| immutable对象 | mutableCopy | 可变         | 深拷贝   |
+
+原子性
+
+- atomic     √默认关键字
+- nonatomic
+
+atomic` 保证赋值获取是线程安全,是对成员属性的直接的获取安全，并不代表操作和访问安全.`
+比如 `atomic` 修饰的是一个数组,对数组**赋值获取**是安全的，但是对数组**进行操作**(添加对象，移除对象)是不保证线程不安全的.而且采用`atomic`消耗比较大
+
+```objective-c
+array = [[NSArray alloc]init];	//安全
+[array addobject:obj];	//也会存在不安全
+```
+
+
+
+### 9.常见问题
+
+#### 1.retain和strong
+
+都是强引用，除了某些情况下不一样，比如修饰block，其他的时候也是可以通用的。
+
+![](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/MRC、ARCBlock关键字.png)
+
+#### 2.深拷贝浅拷贝
+
+![](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318154344.png)
+
+![](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318154359.png)
+
+
+
+#### 3.copy返回的都是不可变对象
+
+```objective-c
+//提问， 这样写有什么问题 ?
+@property(copy)NSMutableArray *array?
+```
+
+无论复制过来的是可变还是不可变对象，都是NSArray，当调用方调用 Array 的添加对象和移除对象等操作，对于不可变 Array 就会产生程序异常
 
 ## Reference
 
-[1. 面试驱动技术 - Category 相关考点](https://juejin.im/post/5c753bc251882505d52fba5c)
+[1. 面试驱动技术 - Category 相关考点(Article文件夹有收藏)](https://juejin.im/post/5c753bc251882505d52fba5c)
 
