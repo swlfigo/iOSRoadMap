@@ -231,7 +231,7 @@ void objc_removeAssociatedObject(id object)
 - 只以声明的形式存在，多数情况下寄生于宿主类的.m中(即需要源码)
 - 不能为系统类添加扩展
 
-####  4.代理
+###  4.代理
 
 - 准确的说是一种软件设计模式
 - iOS当中以@protocol形式体现
