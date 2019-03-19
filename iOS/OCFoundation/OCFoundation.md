@@ -6,7 +6,7 @@
 
 ###  1. 成员变量 实例变量 属性
 
-![image-20190313113006579](./assets/image-20190313113006579.png)
+![image-20190313113006579](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-19-014905.png)
 
 图中的**Member Variable declarations**翻译过来就是**成员变量的声明**
 
