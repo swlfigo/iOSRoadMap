@@ -13,6 +13,8 @@
 
 [3.Runtime](/iOS/Runtime/Runtime.md)
 
+[4.Block](/iOS/Block/Block.md)
+
 [1. 简述下 UIViewController 的生命周期](iOS/UIViewController%20%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
 
 [3. Runloop与线程有什么关系?](iOS/RunloopAndThread.md)
@@ -24,8 +26,6 @@
 [16. Runloop](iOS/Runloop.md)
 
 [19. AutoReleasepool 与 Runloop & ARC关系](iOS/AutoReleasepoolAndRunloop.md)
-
-[20. Block](iOS/Block.md)
 
 [21. Memory](iOS/Memory.md)
 
