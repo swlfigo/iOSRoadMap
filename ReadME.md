@@ -15,29 +15,11 @@
 
 [1. 简述下 UIViewController 的生命周期](iOS/UIViewController%20%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
 
-[2. OC中向一个nil对象发送消息将会发生什么?为什么?](iOS/OCNilMessage.md)
-
 [3. Runloop与线程有什么关系?](iOS/RunloopAndThread.md)
 
 [4. Autoreleasepool 有什么作用 , 如何实现 , 什么时候释放](iOS/AutoReleasepool.md)
 
-[6. Runtime 是如何找到实例方法的具体实现的？](iOS/HowRuntimeFindMethod.md)
-
 [7. __weak 实现原理的概括](iOS/__weak.md)
-
-[8. 离屏渲染](iOS/iOSOffScreenRender.md)
-
-[10. Objective-C Associated Objects 的实现原理](iOS/WeakAssgin.md)
-
-[11. iOS中图片的加载与渲染过程](knowledge/iOSPicLoadAndRender.md)
-
-[12. iOS 界面渲染流程](knowledge/iOSRenderProgress.md)
-
-[13. Category](iOS/Category.md)
-
-[14. isa 指针与调用方法](iOS/isaAndMethod.md)
-
-[15. Method Cache](iOS/MethodCache.md)
 
 [16. Runloop](iOS/Runloop.md)
 
