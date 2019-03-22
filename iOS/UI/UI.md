@@ -25,7 +25,7 @@
 
 
 
-![image-20190312102829081](./assets/image-20190312102829081.png)
+![image-20190312102829081](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024811.png)
 
 ### 1.2  数据源同步
 
@@ -57,7 +57,7 @@
 
 
 
-![image-20190312105858402](./assets/image-20190312105858402.png)
+![image-20190312105858402](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024827.png)
 
 - 首先判断当前视图 !hidden &$ userInteractionEnable && alpha > 0.01 条件通过的时候，到下一步.   否则返回nil，找不到当前视图
 - 通过 pointInside 判断点击的点是否在当前范围内，为YES直接下一步.  不在则直接返回nil。
@@ -73,15 +73,15 @@ UIApplication -> UIWindow -> hitTest:withEvent:
 
 ### 视图响应链 (注意和事件传递是倆概念)
 
-![image-20190312112027519](./assets/image-20190312112027519.png)
+![image-20190312112027519](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024834.png)
 
 
 
 ## 3 图像显示原理
 
-![image-20190312113303637](./assets/image-20190312113303637.png)
+![image-20190312113303637](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024839.png)
 
-![image-20190312112603570](./assets/image-20190312112603570.png)
+![image-20190312112603570](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024844.png)
 
 CPU和GPU通过总线连接，CPU中计算出的往往是bitmap位图，通过总线由合适的时机传递给GPU，GPU拿到位图后，渲染到帧缓存区FrameBuffer,然后由视频控制器根据vsync信号在指定时间之前去帧缓冲区提取内容，显示到屏幕上。
 
@@ -95,7 +95,7 @@ CPU和GPU通过总线连接，CPU中计算出的往往是bitmap位图，通过�
 
 
 
-![image-20190312140156990](./assets/image-20190312140156990.png)
+![image-20190312140156990](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024849.png)
 
 在规定的16.7ms内，在下一个VSync信号到来之前，CPU和GPU并没有共同完成下一帧视频的合成，就会出现掉帧、卡顿。
 
@@ -130,7 +130,7 @@ CPU和GPU通过总线连接，CPU中计算出的往往是bitmap位图，通过�
 
 ### 4.UIView的绘制原理
 
-![image-20190312141642996](./assets/image-20190312141642996.png)
+![image-20190312141642996](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024854.png)
 
 `[UIView setNeedsDisplay]` 并没有发生当前视图立即绘制工作,打上需要重绘的脏标记，最后是在某个时机完成
 
@@ -142,7 +142,7 @@ CALayer的`display`方法中，首先会判断layer的delegate方法`displayLaye
 
 #### 4.1系统绘制流程
 
-![image-20190312142115333](./assets/image-20190312142115333.png)
+![image-20190312142115333](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024857.png)
 
 
 
@@ -152,11 +152,11 @@ CALayer的`display`方法中，首先会判断layer的delegate方法`displayLaye
 
 #### 4.2 异步绘制流程
 
-![image-20190312142425272](./assets/image-20190312142425272.png)
+![image-20190312142425272](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024902.png)
 
 layer的delegate如果实现了`displayLayer:`方法，就会进入到异步绘制的流程。在异步绘制的过程中，需要代理来生成对应的bitmap位图文件，并把此bitmap作为layer的contents属性
 
-![image-20190312142514299](./assets/image-20190312142514299.png)
+![image-20190312142514299](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024910.png)
 
 
 
