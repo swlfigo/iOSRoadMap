@@ -115,11 +115,13 @@ main runloop 作为整个 app 的神经中枢，很大程度上受系统所控�
 **可以看到，此情况下，runloop 直接退出，连 runloop observer 都不通知一下 (runloop 根本没有启动)！**
 
 下面再看一个更加复杂点的情况，添加第二个按钮，在其点击事件中向子线程发送 performSelector 消息：
+
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-23-054904.png)
 
 
 
 子线程的 timer handler、performSelector handler 如下：
+
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-23-054914.png)
 
 
