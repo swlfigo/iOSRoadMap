@@ -56,6 +56,21 @@ Input Source, Timer Source, Run Loop Observer 统称为 Mode Item，这里的 Mo
 
 之所以要引入 mode 的概念，是**希望 Runloop 在监听过程中过滤掉不关心的事件源，只专注于某些特定的事件。**
 
+
+
+ `Runloop`总是运行在某种特定的CFRunLoopModeRef下,意思是每次`Runloop`开始时候会选择一个mode，执行这个mode里面的 `block`,`timer`等事件.这可以解释滑动过程中，`NSTimer`为什么会停止,因为滑动过程中`Runloop`处于 `TrackingMode`,`NSTimer`默认添加在`DefaultMode`,所以不执行
+
+#### CommonMode的特殊性
+
+`NSRunLoopCommonModes`
+
+- CommonMode不是实际存在的一种Mode
+- 是同步Source/Timer/Observer到多个Mode中的一种技术方案
+
+
+
+
+
 ![](http://img.isylar.com/media/15441532587740.png)
 
 如果某个 `input source` 所属的 mode 不是当前监听的 mode，那 **其产生的所有事件都将被 hold 住，直到 runloop 运行在与其匹配的 mode 上。**
@@ -117,7 +132,7 @@ Run Loop 接收的事件来源 (source) 有两种。
 
 ## 注意点
 
-#### Timer Sources(NSTimer)
+### Timer Sources(NSTimer)
 
 Timer source 会在未来一个预定时间向线程同步分发事件。线程可以用 Timer 来通知自己做一些事情。比如用户在搜索栏输入一连串字符之后的某个时间自动搜索一次结果。正是因为有了个延时，才让用户有机会在自动搜索发生前尽可能打出想要的搜索字符串。
 
@@ -126,6 +141,42 @@ Timer source 会在未来一个预定时间向线程同步分发事件。线程�
 可以配置 timer 只生成一次或重复多次事件。重复的 timer 每次会根据已经编排的触发时间自动重新编排。如果实际的触发时间太过于延迟，甚至是晚了一个或多个周期，那么也只会触发一次，而非连续多次。**之后会重新编排下次触发时间**。
 
 
+
+## Runloop 运用场景
+
+以`AFNetworking2.x` 保活原理来说:
+
+```
+/*
+AFNetworking/NSURLConnection/AFURLConnectionOperation.m
+*/ 
++ (NSThread *)networkRequestThread {
+    static NSThread *_networkRequestThread = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        _networkRequestThread = [[NSThread alloc] initWithTarget:self selector:@selector(networkRequestThreadEntryPoint:) object:nil];
+        [_networkRequestThread start];
+    });
+
+    return _networkRequestThread;
+}
+------------------------------------------------------------------------
+/*
+AFNetworking/NSURLConnection/AFURLConnectionOperation.m
+*/    
+
++ (void)networkRequestThreadEntryPoint:(id)__unused object {
+    @autoreleasepool {
+        [[NSThread currentThread] setName:@"AFNetworking"];
+
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+        [runLoop run];
+    }
+}
+```
+
+如代码，为线程中Runloop添加一个 `[NSMachPort port]` `source1` 事件源，让线程不退出一直保活。直到 `AF3.x`,废弃了 `NSURLConnection`。因为`NSURLConnection`中,执行回调的要在子线程,可能回调回来线程已经销毁无法做回调.`3.x`版本中，使用了 `NSURLSession`,能指定`queue`回调，所以避免了问题
 
 ## Reference
 
