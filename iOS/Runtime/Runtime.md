@@ -20,13 +20,31 @@ Runtime内容流程
 
 ## 1.对象和类数据结构
 
+一个类的内部结构如下,
+
+![image-20190324153451659](https://ws1.sinaimg.cn/large/006tKfTcgy1g1dx878ulzj30be05pdgg.jpg)
+
+
+
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-19-023218.jpg)
 
-一个类的的结构体组成结构如上
+
+
+![image-20190324154051666](https://ws3.sinaimg.cn/large/006tKfTcgy1g1dxeeh8hvj30f106vq3o.jpg)
+
+![image-20190324154130013](https://ws2.sinaimg.cn/large/006tKfTcgy1g1dxf2y7uij30f60b4mz0.jpg)
+
+
 
 - superClass 指向当前类的父类
 - cache_t 提供消息传递过程当中的缓存方法查找 ， 实质上是装满了 bucket_t 的一个 **hash 表**。因为散列表检索起来更快，
 - class_data_bits_t 类的基础信息，包含了类的方法列表，协议列表等。
+
+
+
+method_t是一个方法的封装,里面包括了名称(SEL),返回值,参数,与函数体(实现)
+
+
 
 #### 1.1 class_data_bits_t 结构体
 
@@ -77,6 +95,14 @@ struct class_ro_t {
 
 
 
+#### 1.3 cache_t
+
+用于缓存方法
+
+![image-20190324153654016](https://ws3.sinaimg.cn/large/006tKfTcgy1g1dxaa5757j30lv0560tc.jpg)
+
+
+
 ## 2.类对象与元类对象
 
 #### 2.1 metaclass & class
@@ -84,6 +110,10 @@ struct class_ro_t {
 在objc中，class存储类的实例方法（-），meta class存储类的类方法（+），class的isa指针指向meta class。
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-19-023919.jpg)
+
+
+
+![image-20190324154213040](https://ws4.sinaimg.cn/large/006tKfTcgy1g1dxftgghzj30ad05gwf3.jpg)
 
 
 
