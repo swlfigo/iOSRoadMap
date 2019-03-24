@@ -171,3 +171,14 @@ static inline id *autoreleaseFast(id obj)
 ## Reference
 
 [1.自动释放池的前世今生 ---- 深入解析 autoreleasepool](https://draveness.me/autoreleasepool)
+
+[2. 解密Runloop](http://mrpeak.cn/blog/ios-runloop/)
+
+[3. 在ARC环境中autoreleasepool(runloop)的研究](https://juejin.im/post/59eabe2451882578ca2dc145)
+
+[4. 黑幕背后的Autorelease](https://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
+
+[5. iOS RunLoop详解](https://juejin.im/post/5aca2b0a6fb9a028d700e1f8)
+
+[6.深入了解Runloop](https://blog.ibireme.com/2015/05/18/runloop/)
+
