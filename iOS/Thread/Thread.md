@@ -69,7 +69,7 @@ dispatch_async(队列,任务)
 }
 ```
 
-![](http://img.isylar.com/media/15498666666148.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-143523.jpg)
 
 在主队列上提交了 `viewDidLoad` 与 `GCD Block的任务`,无论任务中哪一个，最终都要提交到`主线程`中处理.先分派`viewDidLoad`到主线程，由于队列`FIFO`,`viewDidLoad`的调用结束又要等待`Block`的调用结束，`Block`又在等待`viewDidLoad`
 
@@ -85,7 +85,7 @@ dispatch_async(队列,任务)
 }
 ```
 
-![](http://img.isylar.com/media/15498684664311.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-143708.jpg)
 
 `viewDidLoad`添加到主队列上,提交到`主线程`上执行.`viewDidLoad`执行到某个时段时候，同步提交一个任务到一个`串行队列`上面,由于是`同步提交`任务，意味着要在当前线程执行，所以`串行队列`提交的任务也是在`主线程`上面执行,`串行队列`任务在主线程上执行完之后，再继续执行`viewDidLoad`后面的任务
 
@@ -140,7 +140,7 @@ dispatch_async(global_queue,^{
 * 写者写者互斥
 
 ### 多读单写处理
-![](http://img.isylar.com/media/15498704537435.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-143713.jpg)
 
 ### 多读单写方案
 
