@@ -22,7 +22,7 @@ Runtime内容流程
 
 一个类的内部结构如下,
 
-![image-20190324153451659](https://ws1.sinaimg.cn/large/006tKfTcgy1g1dx878ulzj30be05pdgg.jpg)
+![image-20190324153451659](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085229.jpg)
 
 
 
@@ -30,9 +30,9 @@ Runtime内容流程
 
 
 
-![image-20190324154051666](https://ws3.sinaimg.cn/large/006tKfTcgy1g1dxeeh8hvj30f106vq3o.jpg)
+![image-20190324154051666](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085240.jpg)
 
-![image-20190324154130013](https://ws2.sinaimg.cn/large/006tKfTcgy1g1dxf2y7uij30f60b4mz0.jpg)
+![image-20190324154130013](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085336.jpg)
 
 
 
@@ -99,7 +99,7 @@ struct class_ro_t {
 
 用于缓存方法
 
-![image-20190324153654016](https://ws3.sinaimg.cn/large/006tKfTcgy1g1dxaa5757j30lv0560tc.jpg)
+![image-20190324153654016](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085245.jpg)
 
 
 
