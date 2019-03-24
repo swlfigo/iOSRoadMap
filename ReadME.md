@@ -1,6 +1,4 @@
-# iOS面试题总结归纳,不定期更新
-#### 总结面试过程中碰到问题
-
+# iOS RoadMap
 #### 更多博文可看传送门 ↓
 
 [传送门](http://isylar.com)
@@ -15,15 +13,11 @@
 
 [4.Block](/iOS/Block/Block.md)
 
+[5.Runloop](./iOS/Runloop/Runloop.md)
+
 [1. 简述下 UIViewController 的生命周期](iOS/UIViewController%20%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
 
-[3. Runloop与线程有什么关系?](iOS/RunloopAndThread.md)
-
 [4. Autoreleasepool 有什么作用 , 如何实现 , 什么时候释放](iOS/AutoReleasepool.md)
-
-[7. __weak 实现原理的概括](iOS/__weak.md)
-
-[16. Runloop](iOS/Runloop.md)
 
 [19. AutoReleasepool 与 Runloop & ARC关系](iOS/AutoReleasepoolAndRunloop.md)
 
