@@ -15,15 +15,11 @@
 
 [5.Runloop](./iOS/Runloop/Runloop.md)
 
-[1. 简述下 UIViewController 的生命周期](iOS/UIViewController%20%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
+[6.Memory内存管理](iOS/Memory/Memory.md)
 
-[4. Autoreleasepool 有什么作用 , 如何实现 , 什么时候释放](iOS/AutoReleasepool.md)
+[7. Autoreleasepool ](iOS/Autoreleasepool/Autoreleasepool.md)
 
-[19. AutoReleasepool 与 Runloop & ARC关系](iOS/AutoReleasepoolAndRunloop.md)
-
-[21. Memory](iOS/Memory/Memory.md)
-
-[22.Thread](iOS/Thread.md)
+[8.Thread](iOS/Thread/Thread.md)
 
 ## 架构方面
 
