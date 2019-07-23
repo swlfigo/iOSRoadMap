@@ -2,7 +2,7 @@
 
 TCP和UDP是OSI模型中的运输层中的协议。TCP提供可靠的通信传输，而UDP则常被用于让广播和细节控制交给应用的通信传输。
 
-![](http://img.isylar.com/media/15499536520892.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135126.jpg)
 
 ## UDP(用户数据报协议)
 ### 特点:
@@ -10,7 +10,7 @@ TCP和UDP是OSI模型中的运输层中的协议。TCP提供可靠的通信传�
 * 尽最大努力交付
 * 面向报文(既不合并，也不拆分)
 
-![](http://img.isylar.com/media/15499537866513.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135131.jpg)
 
 ### 功能:
 复用，分用，差错检测
@@ -36,14 +36,14 @@ TCP主要靠`停止等待协议`实现的
 * 确认丢失
 * 确认迟到
 
-![](http://img.isylar.com/media/15499555001877.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135135.jpg)
 
 
-![](http://img.isylar.com/media/15499555595704.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135139.jpg)
 
-![](http://img.isylar.com/media/15499556519909.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135143.jpg)
 
-![](http://img.isylar.com/media/15499557872727.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135147.jpg)
 
 
 

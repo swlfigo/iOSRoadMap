@@ -22,11 +22,11 @@ Runloop 是线程的基础支撑，是循环处理事件的机制，一个具体
 
 ## CFRunLoop
 
-![](http://img.isylar.com/media/15498932761656.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134756.jpg)
 
 ##  CFRunLoopMode
 
-![](http://img.isylar.com/media/15498933418655.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134804.jpg)
 
 * source0
   需要手动唤醒线程
@@ -71,7 +71,7 @@ Input Source, Timer Source, Run Loop Observer 统称为 Mode Item，这里的 Mo
 
 
 
-![](http://img.isylar.com/media/15441532587740.png)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134817.png)
 
 如果某个 `input source` 所属的 mode 不是当前监听的 mode，那 **其产生的所有事件都将被 hold 住，直到 runloop 运行在与其匹配的 mode 上。**
 
@@ -91,7 +91,7 @@ Input Source, Timer Source, Run Loop Observer 统称为 Mode Item，这里的 Mo
 
 ## Runtloop运行流程
 
-![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-031607.png)
+![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134820.png)
 
 Run Loop 接收的事件来源 (source) 有两种。
 

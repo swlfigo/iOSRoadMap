@@ -5,7 +5,7 @@ HTTP协议传输的数据都是未加密的，也就是明文的，因此使用H
 HTTPS = HTTP + SSL/TLS
 HTTPS是安全的HTTP.
 
-![](http://img.isylar.com/media/15499427689041.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135046.jpg)
 
 
 HTTPS和HTTP的区别主要如下：
@@ -20,7 +20,7 @@ HTTPS和HTTP的区别主要如下：
 
 ## HTTPS 连接简历流程是怎么样的
 
-![](http://img.isylar.com/media/15499430718209.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135050.jpg)
 
 ### 会话秘钥
 会话秘钥 = randomS + randomC + 预主秘钥
@@ -30,9 +30,9 @@ HTTPS和HTTP的区别主要如下：
 * 后续通讯过程是用对称加密
 
 ### 非对称加密
-![](http://img.isylar.com/media/15499433240342.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135055.jpg)
 
 
 ### 对称加密
 
-![](http://img.isylar.com/media/15499434404057.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135100.jpg)

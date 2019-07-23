@@ -28,9 +28,9 @@
 
 发送完毕后，客户端进入 ESTABLISHED 状态，当服务器端接收到这个包时，也进入 ESTABLISHED 状态，TCP 握手结束。
 
-![](http://img.isylar.com/media/15439924019037.png)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135114.png)
 
-![](http://img.isylar.com/media/15499377203274.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135118.jpg)
 
 
 1. 第一次握手：建立连接时，客户端发送同步序列编号到服务器，并进入发送状态，等待服务器确认

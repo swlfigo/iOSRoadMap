@@ -183,7 +183,7 @@ layer的delegate如果实现了`displayLayer:`方法，就会进入到异步绘�
 
 
 
-![15420320733034](http://img.isylar.com/media/15420320733034-1.jpg)
+![15420320733034](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134925.jpg)
 
 1. 首先一个视图由 CPU 进行 Frame 布局，准备视图和图层的层级关系，查询是否有重写 `drawRect:` 或 `drawLayer:inContext: `方法，**注意：如果有重写的话，这里的渲染是会占用CPU进行处理的。**
 2. CPU 会将处理视图和图层的层级关系打包，通过 IPC（内部处理通信）通道提交给渲染服务，渲染服务由 OpenGL ES 和 GPU 组成。

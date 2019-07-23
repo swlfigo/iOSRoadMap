@@ -82,7 +82,7 @@ refcnt_result += it->second >> SIDE_TABLE_RC_SHIFT;(将向右偏移操作)
 ```
 
 ### dealloc实现
-![deallo](http://img.isylar.com/media/dealloc.png)
+![deallo](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134647.png)
 
 ## 弱引用管理
 
@@ -98,7 +98,7 @@ refcnt_result += it->second >> SIDE_TABLE_RC_SHIFT;(将向右偏移操作)
 
 添加weak变量
 
-![](http://img.isylar.com/media/15475622619941.jpg)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134710.jpg)
 
 
 
