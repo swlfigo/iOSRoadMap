@@ -12,7 +12,8 @@
   * [Objective-C Runtime 机制简析](Article/Objective-C Runtime 机制简析.md)
   * [OC 消息机制和 super 关键字](Article/OC 消息机制和 super 关键字.md)
   * [UIViewController 预加载方案浅谈](Article/UIViewController 预加载方案浅谈.md)
-
+* [有赞移动 iOS 组件化（模块化）架构设计实践](Article/有赞移动 iOS 组件化（模块化）架构设计实践.md)
+  
 * [iOS技术总结](iOS/ReadME.md)
   * [1. UI视图](iOS/UI/UI.md)
   * [2.OC语言基础](/iOS/OCFoundation/OCFoundation.md)
