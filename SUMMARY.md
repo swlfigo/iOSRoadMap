@@ -23,6 +23,8 @@
   
   * [有赞移动 iOS 组件化（模块化）架构设计实践](Article/有赞移动 iOS 组件化（模块化）架构设计实践.md)
   
+  * [为什么你应该使用 Git 进行版本控制 · Why's THE Design?](Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design?.md)
+  
     
   
 * [iOS技术总结](iOS/ReadME.md)
