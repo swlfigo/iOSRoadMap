@@ -25,9 +25,12 @@
   
   * [为什么你应该使用 Git 进行版本控制 · Why's THE Design?](Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.md)
   
+  * [深入了解 iOS 的初始化.md](./Article/深入了解 iOS 的初始化.md)
+  
     
   
 * [iOS技术总结](iOS/ReadME.md)
+  
   * [1. UI视图](iOS/UI/UI.md)
   * [2.OC语言基础](/iOS/OCFoundation/OCFoundation.md)
   * [3.Runtime](/iOS/Runtime/Runtime.md)
@@ -35,8 +38,8 @@
   * [5.Runloop](./iOS/Runloop/Runloop.md)
   * [6.Memory内存管理](iOS/Memory/Memory.md)
   * [7. Autoreleasepool ](iOS/Autoreleasepool/Autoreleasepool.md)
-  * [8.Thread](iOS/Thread/Thread.md)
-
+* [8.Thread](iOS/Thread/Thread.md)
+  
 * [知识点](knowledge/ReadME.md)
   * [App启动过程](knowledge/App启动.md)
   *  [Cocoapods原理总结](https://juejin.im/entry/59dd94b06fb9a0451463030b)
