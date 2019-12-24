@@ -1,5 +1,7 @@
 
 
+
+
 # Mach-O 
 
 Mach-O 格式全称为 Mach Object 文件格式的缩写，是 mac 上可执行文件的格式，类似于 windows 上的 PE 格式 (Portable Executable ), linux 上的 elf 格式 (Executable and Linking Format)。
@@ -44,7 +46,9 @@ flags 的定义有：
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-12-03-030256.jpg)
 
-**Headers** 能帮助校验 Mach-O 合法性和定位文件的运行环境。
+
+
+**Headers** 能帮助**校验 Mach-O 合法性和定位文件的运行环境**。
 
 
 
@@ -65,3 +69,39 @@ Load Commands 的定义:
   - `LC_SYMTAB ` 描述在 `__LINKEDIT ` 段的哪找字符串表、符号表，
   - `LC_CODE_SIGNATURE` 代码签名等
 - cmdsize 字段，主要用以计算出到下一个 command 的偏移量。
+
+
+
+## Segment & Section
+
+### Segment:
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-12-24-023022.jpg)
+
+- cmd 就是上面的 command 类型
+- segname 在源码中定义的宏
+  - `#define SEG_PAGEZERO "__PAGEZERO" // 可执行文件捕获空指针的段 `
+  - `#define SEG_TEXT "__TEXT" // 代码段，只读数据段 `
+  - `#define SEG_DATA "__DATA" // 数据段 `
+  - `#define SEG_LINKEDIT "__LINKEDIT" // 包含动态链接器所需的符号、字符串表等数据 `
+- vmaddr 段的虚存地址（未偏移），由于 ALSR，程序会在进程加上一段偏移量（slide），真实的地址 = vm address + slide
+- vmsize 段的虚存大小
+- fileoff 段在文件的偏移
+- filesize 段在文件的大小
+- nsects 段中有多少个 section
+
+
+
+### Section:
+
+![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-12-24-031209.png)
+
+`__Text` 和 `__Data` 都有自己的 section
+
+- segname 就是所在段的名称
+- sectname section名称，部分列举：
+  - `Text.__text` 主程序代码
+  - `Text.__cstring` c 字符串
+  - `Text.__stubs` 桩代码
+  - `Text.__stub_helper`
+  - `Data.__data` 初始化可变的数据
