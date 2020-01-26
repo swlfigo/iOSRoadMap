@@ -38,7 +38,9 @@
   * [5.Runloop](./iOS/Runloop/Runloop.md)
   * [6.Memory内存管理](iOS/Memory/Memory.md)
   * [7. Autoreleasepool ](iOS/Autoreleasepool/Autoreleasepool.md)
-* [8.Thread](iOS/Thread/Thread.md)
+  * [8.Thread](iOS/Thread/Thread.md)
+    * [8.1 iOS线程知识点](iOS/Thread/iOSThread.md)
+    * [8.2 并发与并行区别](iOS/Thread/ConcurrentVSParallel.md)
   
 * [知识点](knowledge/ReadME.md)
   * [App启动过程](knowledge/App启动.md)
