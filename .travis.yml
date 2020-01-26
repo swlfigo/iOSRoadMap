@@ -1,7 +1,7 @@
  language: node_js
  node_js:
     - "lts/*"
-
+language: ruby
  cache: false
 
  # 邮件通知，这里配置不管成功或是失败都通知
