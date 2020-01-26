@@ -6,7 +6,12 @@ cache: false
 # 邮件通知，这里配置不管成功或是失败都通知
 notifications:
     email:false
- 
+    
+branches:
+    only:
+        - master
+before_install:
+    - export TZ='Asia/Shanghai'  # 设置时区
 
 # 安装环境
 install:
@@ -16,18 +21,27 @@ install:
 # gitbook生成静态文件
 script:
     - gitbook build
+deploy:  
+    provider: pages  
+    skip-cleanup: true  
+    github-token: ${TOKEN} # github 上的token环境变量  
+    #local-dir: ./_book/ ## 根据情况自定义到静态文件输出目录  
+    target-branch: gh-pages  
+    verbose: true 
+on:    
+    branch: master
 
 
-after_script:
-    - cd _book
-    - git init
-    - git remote add origin https://${GH_REF}
-    - git config user.name "Sylar"
-    - git config user.email "swlfigo@gmail.com"
-    - git add .
-    - git commit -m "Update GitBook By TravisCI With Build $TRAVIS_BUILD_NUMBER"
-    - git push --force --quiet "https://${TOKEN}@${GH_REF}" master:gh-pages
 
-branches:
-    only:
-        - master
+
+# after_script:
+#     - cd _book
+#     - git init
+#     - git remote add origin https://${GH_REF}
+#     - git config user.name "Sylar"
+#     - git config user.email "swlfigo@gmail.com"
+#     - git add .
+#     - git commit -m "Update GitBook By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+#     - git push --force --quiet "https://${TOKEN}@${GH_REF}" master:gh-pages
+
+
