@@ -1,7 +1,3 @@
-
-
-
-
 # iOS 事件响应链
 
 ## 什么是 iOS 的事件响应链机制？
@@ -14,7 +10,7 @@ iOS 的事件响应链（Responder Chain）就是**当 UI 收到某个信号的�
 
 
 
-# 事件传递
+## 事件传递
 
 可以使得一个触摸事件选择多个对象来处理，简单来说系统是通过 `hitTest:withEvent:` 方法找到此次触摸事件的响应视图，然后调用视图的 `touchesBegan:withEvent:` 方法来处理事件。
 
@@ -46,17 +42,17 @@ UIApplication -> UIWindow -> hitTest:withEvent:
 
 
 
-# 详细触摸事件
+## 详细触摸事件
 
 **以下的触摸事件更底层的解释:**
 
-## 事件的生命周期
+### 事件的生命周期
 
 当指尖触碰屏幕的那一刻，一个触摸事件就在系统中生成了。经过IPC进程间通信，事件最终被传递到了合适的应用。在应用内历经峰回路转的奇幻之旅后，最终被释放。大致经过如下图：
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-03-01-132050.jpg)
 
-## 系统响应阶段
+### 系统响应阶段
 
 1. 手指触碰屏幕，屏幕感应到触碰后，将事件交由IOKit处理。
 2. IOKit将触摸事件封装成一个IOHIDEvent对象，并通过mach port传递给SpringBoard进程。
@@ -73,9 +69,9 @@ UIApplication -> UIWindow -> hitTest:withEvent:
 
 
 
-## APP响应阶段
+### APP响应阶段
 
-.APP进程的mach port接受到SpringBoard进程传递来的触摸事件，主线程的runloop被唤醒，触发了source1回调。
+1.APP进程的mach port接受到SpringBoard进程传递来的触摸事件，主线程的runloop被唤醒，触发了source1回调。
 
 2.source1回调又触发了一个source0回调，将接收到的IOHIDEvent对象封装成UIEvent对象，此时APP将正式开始对于触摸事件的响应。
 
