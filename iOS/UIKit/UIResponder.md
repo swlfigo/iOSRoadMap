@@ -18,6 +18,8 @@ iOS 的事件响应链（Responder Chain）就是**当 UI 收到某个信号的�
 
 当我们点击屏幕时候的事件传递
 
+从逻辑上来说，探测链是最先发生的机制，当触摸事件发生后，iOS 系统根据 Hit-Testing 来确定触摸事件发生在哪个视图对象上。其中主要用到了两个 UIView 中的方法：
+
 ```shell
 UIApplication -> UIWindow -> hitTest:withEvent:
 ```
@@ -36,9 +38,99 @@ UIApplication -> UIWindow -> hitTest:withEvent:
 
 
 
-- 首先判断当前视图  `!hidden`  &&  `userInteractionEnable` &&  `alpha > 0.01` 条件通过的时候，到下一步. 否则返回nil，找不到当前视图
-- 通过 pointInside 判断点击的点是否在当前范围内，为YES直接下一步. 不在则直接返回nil。
-- `倒序遍历`所有子视图，同时调用 hitTest 方法，如果某一个子视图返回了对应的响应视图，这个子视图会直接作为最终的响应视图给响应方，如果为 nil 则继续遍历下一个子视图。如果全部遍历结束都返回nil，那会返回当前点击位置在当前的视图范围内的视图作为最终响应视图
+- ~~首先判断当前视图  `!hidden`  &&  `userInteractionEnable` &&  `alpha > 0.01` 条件通过的时候，到下一步. 否则返回nil，找不到当前视图~~
+- ~~通过 pointInside 判断点击的点是否在当前范围内，为YES直接下一步. 不在则直接返回nil。~~
+- ~~`倒序遍历`所有子视图，同时调用 hitTest 方法，如果某一个子视图返回了对应的响应视图，这个子视图会直接作为最终的响应视图给响应方，如果为 nil 则继续遍历下一个子视图。如果全部遍历结束都返回nil，那会返回当前点击位置在当前的视图范围内的视图作为最终响应视图~~
+
+更好的原理解析如下:
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-05-12-143231.jpg)
+
+**Example:**
+
+点击 View D
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-05-12-144602.jpg)
+
+```objective-c
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    NSLog(@"进入A_View---hitTest withEvent ---");
+    UIView * view = [super hitTest:point withEvent:event];
+    NSLog(@"离开A_View--- hitTest withEvent ---hitTestView:%@",view);
+    return view;
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(nullable UIEvent *)event
+{
+    NSLog(@"A_view--- pointInside withEvent ---");
+    BOOL isInside = [super pointInside:point withEvent:event];
+    NSLog(@"A_view--- pointInside withEvent --- isInside:%d",isInside);
+    return isInside;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"A_touchesBegan");
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+{
+    NSLog(@"A_touchesMoved");
+    [super touchesMoved:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event
+{
+    NSLog(@"A_touchesEnded");
+    [super touchesEnded:touches withEvent:event];
+}
+
+-(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"A_touchesCancelled");
+    [super touchesCancelled:touches withEvent:event];
+}
+
+
+
+进入A_View---hitTest withEvent ---
+A_view--- pointInside withEvent ---
+A_view--- pointInside withEvent --- isInside:1
+进入C_View---hitTest withEvent ---
+C_view---pointInside withEvent ---
+C_view---pointInside withEvent --- isInside:1
+进入E_View---hitTest withEvent ---
+E_view---pointInside withEvent ---
+E_view---pointInside withEvent --- isInside:0
+离开E_View---hitTest withEvent ---hitTestView:(null)
+进入D_View---hitTest withEvent ---
+D_view---pointInside withEvent ---
+D_view---pointInside withEvent --- isInside:1
+离开D_View---hitTest withEvent ---hitTestView:<DView: 0x12dd11e50; frame = (0 37; 240 61); autoresize = RM+BM; layer = <CALayer: 0x283f87b40>>
+离开C_View---hitTest withEvent ---hitTestView:<DView: 0x12dd11e50; frame = (0 37; 240 61); autoresize = RM+BM; layer = <CALayer: 0x283f87b40>>
+离开A_View--- hitTest withEvent ---hitTestView:<DView: 0x12dd11e50; frame = (0 37; 240 61); autoresize = RM+BM; layer = <CALayer: 0x283f87b40>>
+
+```
+
+如上图,最底层有一个 `AView`, 按顺序添加 `A` 的子View `B C`,  `CView`  按顺序添加 `D E`
+
+如Log, 从底到高传递事件(addSubView顺序倒序遍历 Subviews)
+
+递归执行`hitTest withEvent` 与  `pointInside withEvent` 
+
+如果在 `hitTest ` 后的 `pointInside`检测到该 View 不是触点View,则 `pointInside`返回 NO,` hitTest` 返回nil ,继续遍历 Subviews 倒序下一个,如此反复，直到遍历到最后
+
+**要么至死也没能找到能够响应的对象，最终释放。**
+
+
+
+**1. 系统通过 `hitTest:withEvent:` 方法沿视图层级树从底向上（从根视图开始）从后向前（从逻辑上更靠近屏幕的视图开始）进行遍历，最终返回一个适合响应触摸事件的 View。**
+
+**2. 原生触摸事件从 Hit-Testing 返回的 View 开始，沿着响应链从上向下进行传递。**
+
+
 
 
 
@@ -87,3 +179,4 @@ UIApplication -> UIWindow -> hitTest:withEvent:
 
 [iOS触摸事件全家桶](https://www.jianshu.com/p/c294d1bd963d)
 
+[深入理解 iOS 事件机制](https://juejin.im/post/5d396ef7518825453b605afa)
