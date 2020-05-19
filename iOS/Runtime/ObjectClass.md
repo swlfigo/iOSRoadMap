@@ -52,7 +52,11 @@ struct objc_class {
 
 objc_object中有一个isa指针，那么objc_class继承objc_object，也就同样拥有一个isa指针
 
+所有继承自 `NSObject` 的类实例化后的对象都会包含一个类型为 `isa_t` 的结构体。
 
+- `super_class` 指向当前类的父类
+- `cache` 用于缓存指针和 `vtable`，加速方法的调用
+- `bits` 就是存储类的方法、属性、遵循的协议等信息的地方
 
 ## 3. class_rw_t
 
