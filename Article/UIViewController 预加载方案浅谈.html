@@ -1,0 +1,1246 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>UIViewController 预加载方案浅谈 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="有赞移动 iOS 组件化（模块化）架构设计实践.html" />
+    
+    
+    <link rel="prev" href="OC 消息机制和 super 关键字.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ReadME.html">
+            
+                <a href="ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="面试驱动技术 - Category 相关考点.html">
+            
+                <a href="面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="iOS 编译过程的原理和应用.html">
+            
+                <a href="iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="Objective-C Runtime 机制简析.html">
+            
+                <a href="Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="OC 消息机制和 super 关键字.html">
+            
+                <a href="OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.9" data-path="UIViewController 预加载方案浅谈.html">
+            
+                <a href="UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="深入了解 iOS 的初始化.html">
+            
+                <a href="深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../iOS/ReadME.html">
+            
+                <a href="../iOS/ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../iOS/UIKit/UIResponder.html">
+            
+                <a href="../iOS/UIKit/UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                <a href="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="../iOS/UIKit/UIViewRender.html">
+            
+                <a href="../iOS/UIKit/UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.4" data-path="../(iOS/UIKit/UIImageRender.md">
+            
+                <span>
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../iOS/OCFoundation/OCFoundation.html">
+            
+                <a href="../iOS/OCFoundation/OCFoundation.html">
+            
+                    
+                    2.OC语言基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../iOS/Runtime/Runtime.md">
+            
+                <span>
+            
+                    
+                    3.Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../iOS/Block/Block.html">
+            
+                <a href="../iOS/Block/Block.html">
+            
+                    
+                    4.Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../iOS/Runloop/Runloop.html">
+            
+                <a href="../iOS/Runloop/Runloop.html">
+            
+                    
+                    5.Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../iOS/Memory/Memory.html">
+            
+                <a href="../iOS/Memory/Memory.html">
+            
+                    
+                    6.Memory内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../iOS/Autoreleasepool/Autoreleasepool.html">
+            
+                <a href="../iOS/Autoreleasepool/Autoreleasepool.html">
+            
+                    
+                    7. Autoreleasepool 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../iOS/Thread/Thread.html">
+            
+                <a href="../iOS/Thread/Thread.html">
+            
+                    
+                    8.Thread
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.7.1" data-path="../iOS/Thread/iOSThread.html">
+            
+                <a href="../iOS/Thread/iOSThread.html">
+            
+                    
+                    8.1 iOS线程知识点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.2" data-path="../iOS/Thread/ConcurrentVSParallel.html">
+            
+                <a href="../iOS/Thread/ConcurrentVSParallel.html">
+            
+                    
+                    8.2 并发与并行区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../knowledge/ReadME.html">
+            
+                <a href="../knowledge/ReadME.html">
+            
+                    
+                    知识点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../knowledge/App启动.html">
+            
+                <a href="../knowledge/App启动.html">
+            
+                    
+                    App启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" >
+            
+                <a target="_blank" href="https://juejin.im/entry/59dd94b06fb9a0451463030b">
+            
+                    
+                    Cocoapods原理总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../knowledge/static_inline.html">
+            
+                <a href="../knowledge/static_inline.html">
+            
+                    
+                    内联函数,与宏的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../knowledge/listAndNode.html">
+            
+                <a href="../knowledge/listAndNode.html">
+            
+                    
+                    单链表与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../knowledge/staticCompare.html">
+            
+                <a href="../knowledge/staticCompare.html">
+            
+                    
+                    static区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../knowledge/Mach-O.html">
+            
+                <a href="../knowledge/Mach-O.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../network/ReadME.html">
+            
+                <a href="../network/ReadME.html">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../network/TCP-Three-Way-Handshake.html">
+            
+                <a href="../network/TCP-Three-Way-Handshake.html">
+            
+                    
+                    1. 简述TCP的三次握手过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../network/4次挥手过程详解.html">
+            
+                <a href="../network/4次挥手过程详解.html">
+            
+                    
+                    2. 4次挥手过程详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../network/TCP:UDP区别以及UDP如何实现可靠传输.html">
+            
+                <a href="../network/TCP:UDP区别以及UDP如何实现可靠传输.html">
+            
+                    
+                    3. TCP/UDP区别以及UDP如何实现可靠传输
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="../network/Http%20和%20Https%20有什么关系和区别.md">
+            
+                <span>
+            
+                    
+                    4. Http 和 Https 有什么关系和区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.5" data-path="../network/get%20和%20post%20区别.md">
+            
+                <span>
+            
+                    
+                    5. get 和 post 区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.6" data-path="../network/什么是Http协议无状态协议%3F怎么解决Http协议无状态协议%3F.md">
+            
+                <span>
+            
+                    
+                    6. 什么是Http协议无状态协议?怎么解决Http协议无状态协议?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.7" data-path="../network/一次完整的HTTP请求所经历的7个步骤.html">
+            
+                <a href="../network/一次完整的HTTP请求所经历的7个步骤.html">
+            
+                    
+                    7. 一次完整的HTTP请求所经历的7个步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.8" data-path="../network/Socket.html">
+            
+                <a href="../network/Socket.html">
+            
+                    
+                    8. Socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.9" data-path="../network/Http&Socket.html">
+            
+                <a href="../network/Http&Socket.html">
+            
+                    
+                    9. Socket & Http
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../network/OSI.html">
+            
+                <a href="../network/OSI.html">
+            
+                    
+                    10.OSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../Interview/ReadME.html">
+            
+                <a href="../Interview/ReadME.html">
+            
+                    
+                    面试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="../Interview/2018 年最新 iOS 面试题及答案 (一">
+            
+                <span>
+            
+                    
+                    【2018 年最新】 iOS 面试题及答案 (一)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >UIViewController 预加载方案浅谈</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x8F6C;&#x81EA;: <a href="https://github.com/hite/ViewControllerPreRender" target="_blank">&#x77E5;&#x8BC6;&#x5C0F;&#x96C6;&#x63A8;&#x8350;</a></p>
+<h1 id="uiviewcontroller-&#x9884;&#x52A0;&#x8F7D;&#x65B9;&#x6848;&#x6D45;&#x8C08;">UIViewController &#x9884;&#x52A0;&#x8F7D;&#x65B9;&#x6848;&#x6D45;&#x8C08;</h1>
+<h3 id="&#x4E00;-&#x5F15;&#x5B50;">&#x4E00;. &#x5F15;&#x5B50;</h3>
+<p>&#x9884;&#x52A0;&#x8F7D;&#x4F5C;&#x4E3A;&#x5E38;&#x89C4;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x624B;&#x6BB5;&#xFF0C;&#x5728;&#x6240;&#x6709;&#x6027;&#x80FD;&#x654F;&#x611F;&#x7684;&#x573A;&#x666F;&#x90FD;&#x6709;&#x4F7F;&#x7528;&#x3002;&#x4E0D;&#x540C;&#x7684;&#x573A;&#x666F;&#x4F1A;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6848;&#x3002;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x7F51;&#x6613;&#x90AE;&#x7BB1;&#x7B80;&#x7EA6;&#x90AE;&#x91CC;&#xFF0C;&#x6536;&#x4EF6;&#x7BB1;&#x5217;&#x8868;&#x4F7F;&#x7528;&#x4E86;&#x6570;&#x636E;&#x9884;&#x52A0;&#x8F7D;&#xFF0C;&#x9996;&#x9875;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x540E;&#x4F1A;&#x52A0;&#x8F7D;&#x540E;&#x4E00;&#x9875;&#x7684;&#x5206;&#x9875;&#x6570;&#x636E;&#xFF0C;&#x5728;&#x7528;&#x6237;&#x7EE7;&#x7EED;&#x7FFB;&#x9875;&#x65F6;&#xFF0C;&#x80FD;&#x6781;&#x5927;&#x63D0;&#x5347;&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#xFF1B;&#x5728;&#x5FAE;&#x4FE1;&#x516C;&#x4F17;&#x53F7;&#x5217;&#x8868;&#xFF0C;&#x4E0D;&#x4EC5;&#x9884;&#x52A0;&#x8F7D;&#x4E86;&#x591A;&#x4E2A;&#x5206;&#x9875;&#x6570;&#x636E;&#xFF0C;&#x8FD8;&#x52A0;&#x8F7D;&#x4E86;&#x67D0;&#x4E2A;&#x516C;&#x4F17;&#x6587;&#x7AE0;&#x7684;&#x6587;&#x5B57;&#x90E8;&#x5206;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x5217;&#x8868;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;&#x4F60;&#x8D70;&#x5230;&#x4E86;&#x6CA1;&#x6709;&#x7F51;&#x7EDC;&#x7684;&#x7535;&#x68AF;&#x91CC;&#xFF0C;&#x4F9D;&#x7136;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x67D0;&#x4E2A;&#x6587;&#x5B57;&#xFF0C;&#x9605;&#x8BFB;&#x6587;&#x5B57;&#x90E8;&#x5206;&#xFF0C;&#x56FE;&#x7247;&#x662F;&#x7A7A;&#x767D;&#x3002;</p>
+<p>&#x5728; iOS &#x5E38;&#x89C4;&#x7684;&#x4F18;&#x5316;&#x65B9;&#x6848;&#x4E2D;&#xFF0C;&#x9884;&#x52A0;&#x8F7D;&#x4E5F;&#x662F;&#x6781;&#x5E38;&#x89C1;&#x7684;&#x624B;&#x6BB5;&#xFF0C;&#x591A;&#x89C1;&#x4E8E;&#xFF1A;&#x9884;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#x3001;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3001;&#x79BB;&#x7EBF;&#x5305;&#x7B49;&#x4E1A;&#x52A1;&#x8D44;&#x6E90;&#x3002;&#x67E5;&#x9605;&#x540E;&#x77E5;&#xFF0C; ASDK &#x6709;&#x4E00;&#x5957;&#x5F88;&#x667A;&#x80FD;&#x7684;&#x9884;&#x52A0;&#x8F7D;&#x7B56;&#x7565;&#xFF1B;</p>
+<blockquote>
+<p>&#x5728;&#x6EDA;&#x52A8;&#x65B9;&#x5411;&#xFF08;Leading&#xFF09;&#x4E0A; Fetch Data &#x533A;&#x57DF;&#x4F1A;&#x662F;&#x975E;&#x6EDA;&#x52A8;&#x65B9;&#x5411;&#xFF08;Trailing&#xFF09;&#x7684;&#x4E24;&#x500D;&#xFF0C;ASDK &#x4F1A;&#x6839;&#x636E;&#x6EDA;&#x52A8;&#x65B9;&#x5411;&#x7684;&#x53D8;&#x5316;&#x5B9E;&#x65F6;&#x6539;&#x53D8;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x4F4D;&#x7F6E;&#xFF1B;&#x5728;&#x5411;&#x4E0B;&#x6EDA;&#x52A8;&#x65F6;&#xFF0C;&#x4E0B;&#x9762;&#x7684; Fetch Data &#x533A;&#x57DF;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x7684;&#x4E24;&#x500D;&#xFF0C;&#x5411;&#x4E0A;&#x6EDA;&#x52A8;&#x65F6;&#xFF0C;&#x4E0A;&#x9762;&#x7684; Fetch Data &#x533A;&#x57DF;&#x5C31;&#x662F;&#x4E0B;&#x9762;&#x7684;&#x4E24;&#x500D;&#x3002;</p>
+</blockquote>
+<p>&#x7CFB;&#x7EDF;&#x5C42;&#x9762;&#xFF0C;iOS 10 &#x91CC;<code>UIKit</code> &#x8FD8;&#x4E3A;&#x5F00;&#x53D1;&#x8005;&#x65B0;&#x589E;&#x4E86;<code>UITableViewDataSourcePrefetching</code></p>
+<pre><code class="lang-objective-c">@protocol UITableViewDataSourcePrefetching &lt;NSObject&gt;
+@required
+
+// indexPaths are ordered ascending by geometric distance from the table view
+- (void)tableView:(UITableView *)tableView prefetchRowsAtIndexPaths:(NSArray&lt;NSIndexPath *&gt; *)indexPaths;
+
+@optional
+
+// indexPaths that previously were considered as candidates for pre-fetching, but were not actually used; may be a subset of the previous call to -tableView:prefetchRowsAtIndexPaths:
+- (void)tableView:(UITableView *)tableView cancelPrefetchingForRowsAtIndexPaths:(NSArray&lt;NSIndexPath *&gt; *)indexPaths;
+
+@end
+</code></pre>
+<p>&#x7B49;&#x65B0;&#x7684;&#x534F;&#x8BAE;&#x6765;&#x63D0;&#x4F9B;<code>UITableView\UICollectionView</code> &#x9884;&#x52A0;&#x8F7D; data &#x7684;&#x80FD;&#x529B;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x6574;&#x4E2A; App &#x7684;&#x6838;&#x5FC3;&#x7EC4;&#x4EF6; <code>UIViewController</code> &#x5374;&#x5C11;&#x89C1;&#x9884;&#x52A0;&#x8F7D;&#x7684;&#x7B56;&#x7565;&#x3002;&#x6781;&#x5C11;&#x6570;&#x573A;&#x666F;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;&#x6574;&#x4E2A;&#x754C;&#x9762;&#x5305;&#x542B;&#x591A;&#x4E2A; <code>UIViewController</code> &#x7684;&#x5C42;&#x7EA7;&#xFF0C;&#x9664;&#x4E86;&#x663E;&#x793A;&#x7B2C;&#x4E00;&#x4E2A; <code>UIViewController</code> &#x5916; &#xFF0C;&#x9884;&#x52A0;&#x8F7D;&#x5176;&#x4ED6;&#x7684;  <code>UIViewController</code> &#x3002;</p>
+<h3 id="&#x4E8C;-uiviewcontroller--&#x5230;&#x5E95;&#x80FD;&#x4E0D;&#x80FD;&#x9884;&#x52A0;&#x8F7D;&#xFF1F;">&#x4E8C;. <code>UIViewController</code>  &#x5230;&#x5E95;&#x80FD;&#x4E0D;&#x80FD;&#x9884;&#x52A0;&#x8F7D;&#xFF1F;</h3>
+<p>&#x5728;&#x548C;&#x540C;&#x4E8B;&#x89E3;&#x51B3;&#x4E25;&#x9009; App &#x5185;&#x201C;&#x9886;&#x53D6;&#x6D25;&#x8D34;&#x201D;&#x5F39;&#x7A97;&#x6162;&#x7684;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x6211;&#x601D;&#x8003;&#x4E86;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6240;&#x4EE5;&#x67E5;&#x9605;&#x4E86; <a href="apple-reference-documentation://hc25s7SuiZ" target="_blank"> Developer Documentation</a>&#xFF0C; &#x5927;&#x6982;&#x6709;&#x4EE5;&#x4E0B;&#x7684;&#x6536;&#x83B7;&#xFF1B;</p>
+<ol>
+<li>&#x5728;&#x540C;&#x4E00;&#x4E2A; <code>navigation stack</code>&#x91CC;&#x4E0D;&#x80FD; push &#x76F8;&#x540C;&#x7684;&#x4E00;&#x4E2A;<code>UIViewController</code>  &#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x5D29;&#x6E83;&#xFF1B;&#x800C;&#x6765;&#x81EA;&#x4E0D;&#x540C; <code>navigation stack</code> &#x7684; <code>UIViewController</code> &#x662F;&#x53EF;&#x4EE5;&#x88AB;&#x538B;&#x5165; stack &#x7684;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x9884;&#x52A0;&#x8F7D;&#x7684;&#x5173;&#x952E;&#x3002;</li>
+<li>&#x5F53;&#x67D0;&#x4E2A; <code>UIViewController</code> &#x6267;&#x884C;&#x4E86; <code>viewDidLoad()</code>&#x4E4B;&#x540E;&#xFF0C;&#x6574;&#x4E2A; <code>UIViewController</code> &#x5BF9;&#x8C61;&#x5DF2;&#x7ECF;&#x5728;&#x5185;&#x5B58;&#x5185;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x8981;&#x4F7F;&#x7528; VC &#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4ECE;&#x5185;&#x5B58;&#x91CC;&#x83B7;&#x53D6;&#xFF0C;&#x5C06;&#x4F1A;&#x83B7;&#x5F97;&#x901F;&#x5EA6;&#x63D0;&#x5347;</li>
+<li><code>UIViewController</code> &#x4F5C;&#x4E3A; <code>UIWindow</code> &#x548C; <code>vc.view</code>&#x4E2D;&#x95F4;&#x5C42;&#xFF0C;&#x8D1F;&#x8D23;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x3001;&#x54CD;&#x5E94;&#x94FE;&#xFF0C;  <code>UIViewController</code> &#x5B50;&#x5143;&#x7D20;&#x5BB9;&#x5668;&#xFF0C;&#x5B50;&#x5143;&#x7D20;&#x6839;&#x636E;  <code>UIViewController</code> &#x7684;&#x5C3A;&#x5BF8; layout</li>
+<li><code>UIViewController.view</code> &#x662F;&#x4E2A;&#x61D2;&#x52A0;&#x8F7D;&#x5C5E;&#x6027;&#xFF0C;&#x7531; <code>loadView()</code> &#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5728; viewDidLoad &#x4E8B;&#x4EF6;&#x5F00;&#x59CB;&#x65F6;&#xFF0C;&#x5C31;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;</li>
+<li><code>UIViewController</code> &#x5728;&#x88AB;&#x6DFB;&#x52A0;&#x5230; <code>navigation stack</code>&#x540E;&#x662F;&#x5426;&#x4F1A;&#x88AB;&#x6E32;&#x67D3;&#xFF0C;&#x53D6;&#x51B3;&#x4E8E;&#x6240;&#x5728;&#x7684; window &#x662F;&#x4E0D;&#x662F; hidden = NO&#xFF0C;&#x548C;&#x5728;&#x4E0D;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x6CA1;&#x6709;&#x5173;&#x7CFB;</li>
+</ol>
+<p><strong>&#x7B54;&#x6848;&#xFF1A;&#x53EF;&#x4EE5;&#x88AB;&#x9884;&#x52A0;&#x8F7D;&#xFF0C;&#x9664;&#x4E86;&#x672C;&#x6587;&#x5C1D;&#x8BD5;&#x7684;&#x591A;&#x4E2A;<code>navigation stack</code>&#x7684;&#x65B9;&#x5F0F;&#x5916;&#xFF0C; apple &#x81EA;&#x5DF1;&#x5728;&#x65E9;&#x671F;&#x63A8;&#x5E7F; storyboard &#x548C; xib &#x6587;&#x4EF6;&#x6A21;&#x5F0F;&#x5F00;&#x53D1; iOS &#x5E94;&#x7528;&#x65F6;&#xFF0C;&#x4E5F;&#x62B1;&#x6709;&#x76F8;&#x540C;&#x7684;&#x610F;&#x56FE;</strong></p>
+<h3 id="&#x4E09;-uiviewcontroller--&#x6E32;&#x67D3;&#x7684;&#x6D41;&#x7A0B;&#xFF1F;">&#x4E09;. <code>UIViewController</code>  &#x6E32;&#x67D3;&#x7684;&#x6D41;&#x7A0B;&#xFF1F;</h3>
+<p>&#x56E0;&#x4E3A; UIKit &#x6CA1;&#x6709;&#x5F00;&#x6E90;&#xFF0C;&#x6211;&#x4ECE; Apple Documents &#x548C; <code>Chameleon</code> project &#x7684;&#x91CD;&#x5199;&#x6E90;&#x7801;&#x91CC;&#x8BD5;&#x56FE;&#x8FD8;&#x539F;&#x771F;&#x5B9E;&#x7684; <code>UIViewController</code> &#x5728; UIKit &#x4E2D;&#x7684;&#x6E32;&#x67D3;&#x903B;&#x8F91;&#x3002;&#x4EE5;&#x4E0B;&#x662F;&#x6211;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x7406;&#x89E3;&#x753B;&#x7684; UIViewController &#x88AB;&#x6DFB;&#x52A0;&#x5230; UIWindow &#x7684;&#x6E32;&#x67D3;&#x6D41;&#x7A0B;&#xFF0C;&#x80AF;&#x5B9A;&#x6709;&#x9519;&#x8BEF;&#x548C;&#x9057;&#x6F0F;&#xFF0C;&#x4EC5;&#x4F9B;&#x7406;&#x89E3;&#x672C;&#x6587;&#x4F7F;&#x7528;&#x3002;</p>
+<p><strong>&#x56FE;&#x4F8B;&#x53C2;&#x8003; Safari</strong>&#xFF0C;&#x5E8F;&#x53F7;&#x540E;&#x9762;&#x7684;&#x56FE;&#x5F62;&#xFF0C;&#x8868;&#x793A;&#x672C;&#x9636;&#x6BB5; ViewController &#x7684; view &#x5C42;&#x7EA7;&#xFF0C;&#x8BA4;&#x6E05;&#x8FD9;&#x4E9B;&#x4E8B;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x54EA;&#x4E2A;&#x9636;&#x6BB5;&#x505A;&#x54EA;&#x4E9B;&#x64CD;&#x4F5C;&#x662F;&#x5408;&#x9002;&#x7684;&#xFF1F;
+<img src="https://upload-images.jianshu.io/upload_images/277783-622238450881ef36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="vc render flow.png">
+<em>&#x6CE8;&#x610F;&#xFF1A;&#x4EE5;&#x4E0A;&#x4E3A; iOS 12 &#x91CC;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5728; iOS 13 &#x91CC;&#xFF0C;&#x7B2C; 5 &#x5E8F;&#x53F7;&#x7684; View &#x6BD4;&#x76EE;&#x524D; iOS 12 &#x8981;&#x591A;&#x4E24;&#x4E2A; View&#xFF0C;<code>UIDropShadowView</code>,<code>UITransitionView</code></em>&#x3002;</p>
+<h3 id="&#x56DB;-viewcontrollerprerender">&#x56DB;. ViewControllerPreRender</h3>
+<p>&#x5728;&#x6574;&#x7406;&#x51FA;&#x4E0A;&#x9762;&#x7684;&#x6D41;&#x7A0B;&#x7ED3;&#x8BBA;&#x540E;&#xFF0C;&#x7F16;&#x5199;&#x4E86;<code>ViewControllerPreRender</code>&#xFF0C;&#x867D;&#x7136;&#x4E0D;&#x5230; 100 &#x884C;&#xFF0C;&#x524D;&#x540E;&#x5374;&#x82B1;&#x4E86;&#x4E00;&#x5468;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A; XCode &#x8B66;&#x544A;&#x3002;</p>
+<pre><code>&quot;Unbalanced calls to begin/end appearance transitions for &lt;UIViewController: 0xa98e050&gt;&quot;
+</code></pre><p>&#x5E78;&#x597D;&#x901A;&#x8FC7;&#x591A;&#x6B21;&#x5C1D;&#x8BD5;&#xFF0C;&#x6700;&#x7EC8;&#x89E3;&#x51B3;&#x6389;&#x3002;
+&#x4EE3;&#x7801;&#x5F88;&#x77ED;&#xFF0C;&#x5168;&#x6587;&#x6458;&#x5F55;&#xFF0C;&#x4EE5;&#x4E0B;&#x4EE5;&#x6CE8;&#x91CA;&#x7684;&#x65B9;&#x5F0F;&#x8BE6;&#x7EC6;&#x89E3;&#x8BFB;&#x3002;</p>
+<pre><code class="lang-objective-c">//.h &#x6587;&#x4EF6;
+@interface ViewControllerPreRender : NSObject
+
++ (instancetype)defaultRender;
+
+- (void)showRenderedViewController:(Class)viewControllerClass completion:(void (^)(UIViewController *vc))block;
+@end
+//.m &#x6587;&#x4EF6;
+#import &quot;ViewControllerPreRender.h&quot;
+
+@interface ViewControllerPreRender ()
+
+@property (nonatomic, strong) UIWindow *windowNO2;
+/**
+ &#x5DF2;&#x7ECF;&#x88AB;&#x6E32;&#x67D3;&#x8FC7;&#x540E;&#x7684; ViewController&#xFF0C;&#x6C60;&#x5B50;,&#x5728;&#x5FC5;&#x8981;&#x65F6;&#x5019; purge &#x6389;
+ */
+@property (nonatomic, strong) NSMutableDictionary *renderedViewControllers;
+@end
+
+static ViewControllerPreRender *_myRender = nil;
+@implementation ViewControllerPreRender
+
++ (instancetype)defaultRender{
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        _myRender = [ViewControllerPreRender new];
+        _myRender.renderedViewControllers = [NSMutableDictionary dictionaryWithCapacity:3];
+        // &#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x76D1;&#x542C;&#xFF0C;&#x5F53;&#x5185;&#x5B58;&#x7D27;&#x5F20;&#x65F6;&#xFF0C;&#x4E22;&#x5F03;&#x8FD9;&#x4E9B;&#x9884;&#x52A0;&#x8F7D;&#x7684;&#x5BF9;&#x8C61;&#x4E0D;&#x4F1A;&#x9020;&#x6210;&#x529F;&#x80FD;&#x9519;&#x8BEF;&#xFF0C;
+        // &#x8FD9;&#x6837;&#x4E5F;&#x8981;&#x6C42; UIViewController &#x7684; dealloc &#x90FD;&#x80FD;&#x6B63;&#x786E;&#x5904;&#x7406;&#x8D44;&#x6E90;&#x91CA;&#x653E;
+        [[NSNotificationCenter defaultCenter] addObserver:_myRender
+                                                 selector:@selector(dealMemoryWarnings:)
+                                                     name:UIApplicationDidReceiveMemoryWarningNotification
+                                                   object:nil];
+    });
+    return _myRender;
+}
+
+/**
+ &#x5185;&#x90E8;&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x6765;&#x4EA7;&#x751F;&#x53EF;&#x7528;&#x7684; ViewController&#xFF0C;&#x5982;&#x679C;&#x7B2C;&#x4E00;&#x6B21;&#x4F7F;&#x7528;&#x3002;
+ &#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x5168;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x9884;&#x70ED;&#x4E00;&#x4E2A;&#x76F8;&#x540C;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4F9B;&#x4E0B;&#x6B21;&#x4F7F;&#x7528;&#x3002;
+ &#x652F;&#x6301;&#x9884;&#x70ED;&#x591A;&#x4E2A; ViewController&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x6613;&#x8FC7;&#x591A;&#xFF0C;&#x5BB9;&#x6613;&#x5F15;&#x8D77;&#x5185;&#x5B58;&#x7D27;&#x5F20;
+
+ @param viewControllerClass UIViewController &#x5B50;&#x7C7B;
+ @return UIViewControllerd &#x5B9E;&#x4F8B;
+ */
+- (UIViewController *)getRendered:(Class)viewControllerClass{
+    if (_windowNO2 == nil) {
+        CGRect full = [UIScreen mainScreen].bounds;
+        // &#x5BF9;&#x4E8E; no2 &#x7684;&#x5C3A;&#x5BF8;&#x591A;&#x5C11;&#x4E3A;&#x5408;&#x9002;&#x3002;&#x6211;&#x81EA;&#x5DF1;&#x505A;&#x4E86;&#x4E0B;&#x5B9E;&#x9A8C;
+        // &#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x7684;&#x5C3A;&#x5BF8;&#x4F1A;&#x5F71;&#x54CD;&#x88AB;&#x7F13;&#x5B58;&#x7684; VC &#x5B9E;&#x4F8B;&#x7684;&#x5C3A;&#x5BF8;&#x3002;&#x4F46;&#x5728;&#x9884;&#x70ED;&#x597D;&#x7684; VC &#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x5F53;&#x524D;&#x5DE5;&#x4F5C;&#x7684; navigation stack &#x65F6;&#xFF0C;&#x5B83;&#x7684; View &#x7684;&#x5C3A;&#x5BF8;&#x662F;&#x6B63;&#x786E;&#x7684;&#x548C; no2 &#x7684;&#x5C3A;&#x5BF8;&#x65E0;&#x5173;&#x3002;
+        // &#x540C;&#x6837;&#x7684;&#xFF0C;&#x5728;&#x88AB;&#x6DFB;&#x52A0;&#x5230; navigation stack &#x65F6;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1; viewLayoutMarginsDidChange &#x4E8B;&#x4EF6;&#x3002;
+        // &#x800C;&#x4E14;&#x5BF9;&#x4E8E;&#x5185;&#x5B58;&#x800C;&#x8A00;&#xFF0C;&#x5C3A;&#x5BF8;&#x8D8A;&#x5C0F;&#x5185;&#x5B58;&#x5360;&#x7528;&#x8D8A;&#x5C11;&#xFF0C;&#x7406;&#x8BBA;&#x4E0A; &#xFF08;1&#xFF0C;1&#xFF0C;1&#xFF0C;1&#xFF09; &#x7684; no2 &#x6709;&#x80FD;&#x8FBE;&#x5230;&#x9884;&#x70ED; VC &#x7684;&#x6548;&#x679C;&#x3002;
+        // &#x4F46;&#x662F;&#x6709;&#x4E9B; view &#x4E0D;&#x662F;&#x88AB; presented &#x6216;&#x8005; pushed&#xFF0C;&#x800C;&#x662F;&#x4F5C;&#x4E3A;&#x5B50; ViewController &#x7684;&#x5B50; view &#x6765;&#x6E32;&#x67D3;&#x754C;&#x9762;&#x7684;&#x3002;&#x8FD9;&#x9700;&#x8981; view &#x6709;&#x6B63;&#x786E;&#x7684;&#x5C3A;&#x5BF8;&#x3002;
+        // &#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9884;&#x5148;&#x8BBE;&#x7F6E;&#x5C06;&#x6765;&#x771F;&#x6B63;&#x5C55;&#x793A;&#x65F6;&#x7684;&#x5C3A;&#x5BF8;&#xFF0C;&#x51CF;&#x5C11; resize&#x3001;&#x548C;&#x4F5C;&#x4E3A;&#x5B50; ViewController &#x4F7F;&#x7528;&#x65F6;&#x51FA;&#x9519;&#xFF0C;&#x5728;&#x672C; demo &#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4;&#x5927;&#x90E8;&#x5206;&#x7684;&#x5C3A;&#x5BF8;&#x662F;&#x5168;&#x5C4F;&#x3002;
+        UIWindow *no2 = [[UIWindow alloc] initWithFrame:CGRectOffset(full, CGRectGetWidth(full), 0)];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[UIViewController new]];
+        no2.rootViewController = nav;
+        no2.hidden = NO;// &#x5FC5;&#x987B;&#x662F;&#x663E;&#x793A;&#x7684; window&#xFF0C;&#x624D;&#x4F1A;&#x89E6;&#x53D1;&#x9884;&#x70ED; ViewController&#xFF0C;&#x9690;&#x85CF;&#x7684; window &#x4E0D;&#x53EF;&#x7528;&#x3002;&#x4F46;&#x662F;&#x548C;&#x662F;&#x5426;&#x5728;&#x5C4F;&#x5E55;&#x53EF;&#x89C1;&#x6CA1;&#x5173;&#x7CFB;
+        no2.windowLevel = UIWindowLevelStatusBar + 14;
+
+        _windowNO2= no2;
+    }
+
+    NSString *key = NSStringFromClass(viewControllerClass);
+    UIViewController *vc = [self.renderedViewControllers objectForKey:key];
+    if (vc == nil) { // &#x4E0B;&#x6B21;&#x4F7F;&#x7528;&#x7F13;&#x5B58;
+        vc = [viewControllerClass new];
+        // &#x89E3;&#x51B3; Unbalanced calls to begin/end appearance transitions for &lt;UIViewController: 0xa98e050&gt; &#x5173;&#x952E;&#x70B9;
+        // 1. &#x4F7F;&#x7528; UINavigationController  &#x4F5C;&#x4E3A; no2 &#x7684; rootViewController
+        // 2. &#x5982;&#x679C;&#x4F7F;&#x7528; UIViewController &#x4F5C;&#x4E3A; no2 &#x7684; rootViewController&#xFF0C;&#x59CB;&#x7EC8;&#x6709; Unbalanced calls &#x7684;&#x9519;&#x8BEF;
+        // &#x867D;&#x7136;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x8B66;&#x544A;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A; Unbalanced calls  &#x4F1A;&#x5F71;&#x54CD;&#x88AB;&#x7F13;&#x5B58;&#x7684; vc&#xFF0C; &#x5F53;&#x5B83;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x5F53;&#x524D;&#x6D3B;&#x52A8;&#x7684; UINavigation stack &#x65F6;&#xFF0C;&#x5B83;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x662F;&#x9519;&#x8BEF;&#x7684;
+        // &#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x8B66;&#x544A;&#x5FC5;&#x987B;&#x89E3;&#x51B3;&#x3002;
+        UINavigationController *nav = (UINavigationController *)_windowNO2.rootViewController;
+        [nav pushViewController:vc animated:NO];
+        [self.renderedViewControllers setObject:vc forKey:key];
+        //
+        return [viewControllerClass new];
+    }  else { // &#x672C;&#x6B21;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#xFF0C;&#x540C;&#x65F6;&#x50A8;&#x5907;&#x4E0B;&#x6B21;
+        // &#x5FC5;&#x987B;&#x662F;&#x5148;&#x8BBE;&#x7F6E; no2 &#x7684;&#x65B0; rootViewController&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x590D;&#x7528;&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x62FF;&#x5230;&#x7684; viewControllerClass&#x3002;&#x5426;&#x5219;&#x4F1A;&#x5954;&#x6E83;
+        UINavigationController *nav = (UINavigationController *)_windowNO2.rootViewController;
+        [nav popViewControllerAnimated:NO];
+        UIViewController *fresh = [viewControllerClass new];
+
+        [nav pushViewController:fresh animated:NO];
+        // &#x5728; setObject to renderedViewControllers &#x5B57;&#x5178;&#x65F6;&#xFF0C;&#x4FDD;&#x8BC1;&#x88AB;&#x6E32;&#x67D3;&#x8FC7;
+        [self.renderedViewControllers setObject:fresh forKey:key];
+
+        return vc;
+    }
+}
+
+/**
+ &#x4E3B;&#x65B9;&#x6CD5;&#x3002;&#x4F20;&#x5165;&#x4E00;&#x4E2A; UIViewController &#x7684; class &#x5BF9;&#x8C61;&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x7684; block &#x4E2D;&#x540C;&#x6B65;&#x7684;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9884;&#x5148;&#x88AB;&#x6E32;&#x67D3;&#x7684; ViewController
+
+ @param viewControllerClass  &#x5FC5;&#x987B;&#x662F; UIViewController &#x7684; Class &#x5BF9;&#x8C61;
+ @param block &#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x56DE;&#x8C03;
+ */
+- (void)showRenderedViewController:(Class)viewControllerClass completion:(void (^)(UIViewController *vc))block{
+    // CATransaction &#x4E3A;&#x4E86;&#x907F;&#x514D;&#x4E00;&#x4E2A; push &#x52A8;&#x753B;&#x548C;&#x53E6;&#x5916;&#x4E00;&#x4E2A; push &#x52A8;&#x753B;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#x7684;&#x95EE;&#x9898;&#x3002;
+    [CATransaction begin];
+    UIViewController *vc1 = [self getRendered:viewControllerClass];
+
+    // &#x8FD9;&#x91CC;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x9677;&#x9631;&#x2014;&#x2014; &#x5FC5;&#x987B;&#x5148;&#x6E32;&#x67D3;&#x5C06;&#x8981;&#x88AB; cached &#x7684; ViewController&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6267;&#x884C;&#x771F;&#x5B9E;&#x7684; block
+    // &#x7406;&#x60F3;&#x60C5;&#x51B5;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x5148;&#x6267;&#x884C; block&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C; cache ViewController&#xFF0C;&#x56E0;&#x4E3A; block &#x66F4;&#x91CD;&#x8981;&#x4E9B;&#x3002;&#x6682;&#x65F6;&#x6CA1;&#x60F3;&#x5230;&#x65B9;&#x6CD5;
+    [CATransaction setCompletionBlock:^{
+        block(vc1);
+    }];
+    [CATransaction commit];
+}
+
+- (void)dealMemoryWarnings:(id)notif
+{
+    NSLog(@&quot;release memory pressure&quot;);
+    [self.renderedViewControllers removeAllObjects];
+}
+@end
+</code></pre>
+<h3 id="&#x4E94;-&#x6027;&#x80FD;&#x63D0;&#x5347;&#x5982;&#x4F55;&#xFF1F;">&#x4E94;. &#x6027;&#x80FD;&#x63D0;&#x5347;&#x5982;&#x4F55;&#xFF1F;</h3>
+<p>&#x4EE5; native &#x4F53;&#x9A8C;&#x4E2D;&#x901A;&#x5E38;&#x4F53;&#x9A8C;&#x6700;&#x5DEE;&#x7684; webview &#x4E3A;&#x4F8B;&#xFF0C; &#x76EE;&#x6807;&#x662F;&#x4E25;&#x9009;&#x5546;&#x57CE;&#x7684; h5 &#xFF0C;<code>http://m.you.163.com</code>&#xFF0C;&#x5206;&#x522B;&#x4EE5;&#x4F20;&#x7EDF;&#x7684;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x65B0;&#x521B;&#x5EFA; <code>ViewController</code>&#x7684;&#x65B9;&#x5F0F;&#xFF1B;&#x7B2C;&#x4E8C;&#x6B21;&#x4E4B;&#x540E;&#x4F7F;&#x7528;&#x9884;&#x70ED;&#x7684; <code>ViewController</code>&#x52A0;&#x8F7D;&#x4E25;&#x9009;&#x9996;&#x9875;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x6D4B;&#x8BD5;&#xFF0C;&#x4FDD;&#x6301; <code>ViewController</code>&#x5185;&#x90E8;&#x903B;&#x8F91;&#x76F8;&#x540C;&#xFF0C;&#x8BE6;&#x89C1; demo &#x5DE5;&#x7A0B;&#x91CC;&#x6CE8;&#x91CA;&#x3002;</p>
+<p>&#x6D4B;&#x8BD5;&#x65B9;&#x6848;&#xFF1A;<em>&#x6A21;&#x62DF;&#x5668;&#xFF0C;&#x6BCF;&#x79CD;&#x65B9;&#x5F0F;&#x6D4B;&#x8BD5;&#x65F6;&#x90FD;&#x91CD;&#x542F;&#xFF0C;&#x5404;&#x6D4B;&#x8BD5;&#x4E86; 20 &#x6B21;&#x5DE6;&#x53F3;</em>&#xFF0C;&#x7EDF;&#x8BA1;&#x8868;&#x683C;&#x5982;&#x4E0B;&#xFF0C;navigationStart &#x4F5C;&#x4E3A;&#x7F51;&#x7EDC;&#x52A0;&#x8F7D;&#x65F6;&#x95F4;&#x7684;&#x5F00;&#x59CB;&#x6807;&#x5FD7;&#xFF0C;&#x4EE5; document.onload &#x4F5C;&#x4E3A;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x7684;&#x6807;&#x5FD7;&#xFF1B;
+&gt; 1. &#x4F20;&#x7EDF;&#x65B9;&#x5F0F;
+&#x70B9;&#x51FB;&#x5230;&#x7F51;&#x7EDC;&#x52A0;&#x8F7D;&#x65F6;&#x95F4;&#xFF08;ms&#xFF09;   |   &#x70B9;&#x51FB;&#x5230;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x65F6;&#x95F4;&#xFF08;ms&#xFF09;
+---|---
+409.042969  |      2237.258057
+382.000244  |      2294.206055
+421.780762  |      2377.906250
+435.476318  |      2358.933350
+443.190186  |      2261.447998
+379.502930  |      2243.837158
+386.897949  |      2322.465088
+508.499023  |      2385.695068
+490.614014  |      2639.933105
+407.436035  |      2384.422852
+478.447998  |      2305.270264
+426.408691  |      2340.742920
+598.571777  |      2465.007812
+453.924072  |      2424.213135
+441.053955  |      2371.049805
+399.669922  |      2218.141113
+779.028809  |      2659.640625
+68.835938  |       1934.873047
+515.513916  |      2552.829834
+439.666016  |      2268.033936
+440.330811  |      2357.508789
+<strong>Avg of 21:</strong> |
+443.14         |   2352.54
+&gt; 2. &#x4F7F;&#x7528;&#x9884;&#x52A0;&#x8F7D;&#x65B9;&#x5F0F;</p>
+<table>
+<thead>
+<tr>
+<th>&#x70B9;&#x51FB;&#x5230;&#x7F51;&#x7EDC;&#x52A0;&#x8F7D;&#x65F6;&#x95F4;&#xFF08;ms&#xFF09;</th>
+<th>&#x70B9;&#x51FB;&#x5230;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x65F6;&#x95F4;&#xFF08;ms&#xFF09;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>63.797852</td>
+<td>2538.381836</td>
+</tr>
+<tr>
+<td>63.152832</td>
+<td>2333.105957</td>
+</tr>
+<tr>
+<td>64.150146</td>
+<td>2302.843750</td>
+</tr>
+<tr>
+<td>59.484863</td>
+<td>2155.601074</td>
+</tr>
+<tr>
+<td>57.637207</td>
+<td>2382.412842</td>
+</tr>
+<tr>
+<td>55.749756</td>
+<td>2050.655762</td>
+</tr>
+<tr>
+<td>51.270020</td>
+<td>1895.146729</td>
+</tr>
+<tr>
+<td>54.883789</td>
+<td>1793.544922</td>
+</tr>
+<tr>
+<td>53.313965</td>
+<td>1897.723877</td>
+</tr>
+<tr>
+<td>78.262207</td>
+<td>1777.684814</td>
+</tr>
+<tr>
+<td>48.425049</td>
+<td>1828.953857</td>
+</tr>
+<tr>
+<td>50.403320</td>
+<td>2075.978027</td>
+</tr>
+<tr>
+<td>48.640625</td>
+<td>2168.324951</td>
+</tr>
+<tr>
+<td>58.913818</td>
+<td>1946.458984</td>
+</tr>
+<tr>
+<td>40.200928</td>
+<td>1850.614990</td>
+</tr>
+<tr>
+<td>54.635010</td>
+<td>2198.915039</td>
+</tr>
+<tr>
+<td>51.363770</td>
+<td>1956.969971</td>
+</tr>
+<tr>
+<td><strong>Avg of 17:</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>56.13</td>
+<td>2067.84</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#x4ECE;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x53EF;&#x89C1;</strong>&#xFF0C;&#x4F7F;&#x7528;&#x9884;&#x52A0;&#x8F7D;&#x7684;&#x65B9;&#x5F0F;&#x663E;&#x8457;&#x7684;&#x63D0;&#x5347;&#x4E86; <code>navigationStart</code>&#x7684;&#x6027;&#x80FD;&#xFF0C;<code>443 ms</code> &#x51CF;&#x5C11;&#x5230; <code>56 ms</code>&#xFF0C;&#x76F8;&#x5E94;&#x7684; <code>document.onload</code>&#x4E8B;&#x4EF6;&#x4E5F;&#x63D0;&#x524D;&#xFF0C;<code>2357</code> &#x5230; <code>2067</code>&#x3002;
+&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;&#x9884;&#x52A0;&#x8F7D;&#x65B9;&#x5F0F;&#x63D0;&#x524D; 400ms &#x53D1;&#x9001;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#xFF08;&#x4F46;&#x662F;&#x5B8C;&#x6210;&#x52A0;&#x8F7D;&#x8017;&#x65F6;&#x53EA;&#x5C11; 300ms&#xFF0C;&#x731C;&#x6D4B;&#x662F; CPU &#x8D44;&#x6E90;&#x8C03;&#x5EA6;&#x95EE;&#x9898;&#xFF09;&#x3002;&#x4EE5;&#x4E0A;&#x6570;&#x636E;&#x53EA;&#x4F5C;&#x4E3A;&#x6027;&#x80FD;&#x63D0;&#x5347;&#x53C2;&#x8003;&#xFF0C;&#x5BF9;&#x4E8E;&#x52A0;&#x8F7D; WebView &#x7684; VC &#x800C;&#x8A00;&#xFF0C;&#x9884;&#x521D;&#x59CB;&#x5316; WebView &#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x5143;&#x7D20;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x52A0;&#x8F7D; h5 &#x9875;&#x9762;&#x7684;&#x901F;&#x5EA6;&#x3002;</p>
+<h3 id="&#x516D;&#xFF0C;&#x539F;&#x56E0;&#x63A2;&#x6790;">&#x516D;&#xFF0C;&#x539F;&#x56E0;&#x63A2;&#x6790;</h3>
+<p>&#x5BF9; <code>ViewControllerPrerender</code>&#x7684;&#x903B;&#x8F91;&#x5206;&#x6790;&#x89E3;&#x91CA;&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x6709;&#x63D0;&#x901F;&#xFF0C;&#x5728;&#x4F7F;&#x7528;<code>ViewControllerPreRender</code>&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x7279;&#x522B;&#x7559;&#x610F;&#x4EC0;&#x4E48;&#x5730;&#x65B9;&#xFF0C;&#x4EE5;&#x514D;&#x6389;&#x5165;&#x8BEF;&#x533A;&#x3002;
+<strong>&#x6839;&#x636E; preRender &#x7684;&#x539F;&#x7406;</strong>&#xFF0C;&#x6211;&#x5927;&#x6982;&#x753B;&#x4E86;&#x56FE;&#x4F8B;&#x6765;&#x89E3;&#x91CA;&#x3002;
+<img src="https://upload-images.jianshu.io/upload_images/277783-e780286788d6f10a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="old vs new vc route.png"></p>
+<p>&#x4E0A;&#x534A;&#x90E8;&#x5206;&#xFF0C;&#x6240;&#x6709;&#x9636;&#x6BB5;&#x662F;&#x7EBF;&#x6027;&#x7684;&#xFF1B;&#x4E0B;&#x534A;&#x90E8;&#x5206;&#xFF0C;&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x5E76;&#x884C;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x7B2C;&#x4E09;&#x4E2A; VC &#x7684;&#x663E;&#x793A;&#xFF0C;&#x5C06;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x4E5F;&#x653E;&#x5230;&#x5E76;&#x884C;&#x903B;&#x8F91;&#x4E86;&#xFF0C;&#x8FD9;&#x5BF9;&#x6709;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x7684;&#x754C;&#x9762;&#x4F18;&#x5316;&#x4E0D;&#x5931;&#x4E3A;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;
+&#x603B;&#x7ED3;&#xFF1A;&#x9884;&#x52A0;&#x8F7D;&#x5229;&#x7528;&#x4E86;&#x5E76;&#x884C;&#x8FD9;&#x4E00;&#x4F20;&#x7EDF;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x6280;&#x672F;&#xFF0C;&#x540C;&#x65F6;&#x5BF9; ViewController &#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E5F;&#x63D0;&#x51FA;&#x66F4;&#x9AD8;&#x7684;&#x8981;&#x6C42;&#xFF0C;&#x8B6C;&#x5982;&#xFF1A;</p>
+<ol>
+<li>&#x88AB;&#x9884;&#x70ED;&#x7684; ViewController&#xFF0C;&#x9700;&#x8981;&#x5212;&#x5206;&#x804C;&#x8D23;&#xFF0C;&#x5728;<code>viewDidLoad</code>&#x91CC;&#x642D;&#x5EFA;&#x6846;&#x67B6;&#xFF0C;&#xFF0C;&#x800C;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x63A5;&#x53E3;&#x5982;&#x672C; demo &#x91CC;&#x7684;<code>setUrl</code>&#x7528;&#x6765;&#x4F7F;&#x7528;&#x4E1A;&#x52A1;&#x6570;&#x636E;&#x6E32;&#x67D3;&#x9875;&#x9762;&#x3002;</li>
+<li>&#x88AB;&#x9884;&#x52A0;&#x8F7D;&#x7684; ViewController &#x7684;<code>viewDidLoad</code> &#x4E0D;&#x5B9C;&#x5360;&#x7528;&#x592A;&#x591A;&#x4E3B;&#x7EBF;&#x7A0B;&#x8D44;&#x6E90;&#xFF0C;&#x907F;&#x514D;&#x5BF9;&#x5F53;&#x524D;&#x754C;&#x9762;&#x6253;&#x5F00;&#x4EA7;&#x751F;&#x8D1F;&#x9762;&#x5F71;&#x54CD;&#x3002;</li>
+</ol>
+<h3 id="&#x4E03;&#xFF0C;prerender-&#x9002;&#x5B9C;&#x7684;&#x573A;&#x666F;">&#x4E03;&#xFF0C;preRender &#x9002;&#x5B9C;&#x7684;&#x573A;&#x666F;</h3>
+<p>&#x5728; App &#x6027;&#x80FD;&#x95EE;&#x9898;&#x4E2D;&#xFF0C; native &#x81EA;&#x5DF1;&#x7684; ViewController&#x6027;&#x80FD;&#x8868;&#x73B0;&#x5E76;&#x4E0D;&#x662F;&#x74F6;&#x9888;&#xFF0C;&#x6240;&#x4EE5;&#x76EE;&#x524D;&#x4E1A;&#x754C;&#x5BF9; UIViewController &#x7684;&#x9884;&#x52A0;&#x8F7D;&#x5E76;&#x6CA1;&#x6709;&#x592A;&#x591A;&#x53EF;&#x53C2;&#x8003;&#x7684;&#x6848;&#x4F8B;&#xFF0C;&#x4E0D;&#x8FC7;&#x5BF9;&#x4E8E;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4F18;&#x5316;&#x8FD8;&#x662F;&#x6709;&#x6307;&#x5BFC;&#x610F;&#x4E49;&#x3002;&#x5728;&#x672C;&#x6587;&#x5F00;&#x59CB;&#x65F6;&#x63D0;&#x5230;&#x7684;&#x4E25;&#x9009;&#x5546;&#x54C1;&#x8BE6;&#x60C5;&#x9875;&#x91CC;&#x9886;&#x53D6;&#x6D25;&#x8D34;&#x662F;&#x5F39;&#x7A97;&#xFF0C;&#x5E38;&#x89C4;&#x60C5;&#x51B5;&#x4E0B;&#x5F39;&#x51FA;&#x662F;&#x6BD4;&#x8F83;&#x6162;&#x7684;&#xFF0C;&#x7ECF;&#x8FC7;&#x8BA8;&#x8BBA;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x51B3;&#x5B9A;&#x5BF9;&#x6D25;&#x8D34;&#x5F39;&#x7A97;&#x505A;&#x4E24;&#x4E2A;&#x4F18;&#x5316;</p>
+<ol>
+<li>&#x5728;&#x5F39;&#x7A97;&#x51FA;&#x73B0;&#x65F6;&#x4F7F;&#x7528;&#x7F29;&#x653E;&#x52A8;&#x753B;&#xFF0C;h5 &#x52A0;&#x8F7D;&#x4E5F;&#x4F7F;&#x7528; loading</li>
+<li>&#x4F7F;&#x7528;&#x9884;&#x52A0;&#x8F7D;&#x5F39;&#x7A97;&#x7684; ViewController&#x3002;
+&#x4ECE;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x6765;&#x770B;&#xFF0C;&#x4ECE;&#x70B9;&#x51FB;&#x5230;&#x6700;&#x540E;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#xFF0C;&#x5927;&#x6982;&#x8282;&#x7701;&#x4E86; 300 ms&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x8003;&#x8651; h5 &#x7684;&#x9875;&#x9762;&#x4F18;&#x5316;&#x3002;</li>
+</ol>
+<p>&#x9898;&#x5916;&#x8BDD;&#xFF0C;App &#x4F5C;&#x4E3A;&#x4E25;&#x9009;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x7684;&#x91CD;&#x8981;&#x8F7D;&#x4F53;&#xFF0C;App &#x6027;&#x80FD;&#x662F;&#x6781;&#x5176;&#x91CD;&#x8981;&#x4E00;&#x73AF;&#x3002;&#x6211;&#x4EEC;&#x5BF9;&#x5F39;&#x7A97;&#x7684;&#x4F53;&#x9A8C;&#x505A;&#x4E86;&#x5C11;&#x8BB8;&#x4F18;&#x5316;&#x3002;</p>
+<p>&#x5728;&#x4E25;&#x9009;&#x91CC;&#x5F39;&#x7A97;&#x6709;&#x4E24;&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x88AB;&#x52A8;&#x5F39;&#x7A97;&#xFF0C;&#x6BD4;&#x65B9;&#x8BF4;&#x4ECE;&#x540E;&#x53F0;&#x6570;&#x636E;&#x8FD4;&#x56DE;&#x4E2D;&#xFF0C;&#x5F97;&#x77E5;&#x6709;&#x5F39;&#x7A97;&#x9700;&#x8981;&#x663E;&#x793A;&#xFF0C;native &#x6839;&#x636E;&#x5168;&#x5C40;&#x5F39;&#x7A97;&#x6392;&#x5E8F;&#xFF0C;&#x51B3;&#x5B9A;&#x663E;&#x793A;&#x90A3;&#x4E2A;&#x2014;&#x2014;&#x5F53;&#x540E;&#x53F0;&#x6570;&#x636E;&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x7684; url &#x88AB;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x5F39;&#x51FA;&#x906E;&#x7F69;&#xFF0C;&#x663E;&#x793A;&#x88AB;&#x52A0;&#x8F7D;&#x597D;&#x7684; url&#xFF1B;&#x5982;&#x679C; url &#x52A0;&#x8F7D;&#x5931;&#x8D25;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x5F39;&#x51FA;&#x5F39;&#x7A97;&#x3002;
+&#x800C;&#x5BF9;&#x4E8E;&#x7528;&#x6237;&#x4E3B;&#x52A8;&#x5F39;&#x51FA;&#x7684;&#x5F39;&#x7A97;&#xFF0C;&#x5982;&#x7528;&#x6237;&#x5728;&#x8BE6;&#x60C5;&#x9875;&#x70B9;&#x51FB; cell&#xFF0C;&#x5F39;&#x51FA;&#x9886;&#x53D6;&#x6D25;&#x8D34;&#xFF0C;&#x6211;&#x4EEC;&#x5206; native &#x52A0;&#x901F;&#xFF08;&#x4F7F;&#x7528;&#x9884;&#x52A0;&#x8F7D;&#xFF09;&#x548C; h5 &#x52A0;&#x901F;&#x4E24;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#x6BD4;&#x8F83;&#x9002;&#x5408; preRender &#x7684;&#x5730;&#x65B9;&#x5982;&#xFF0C;</p>
+<ol>
+<li>&#x6211;&#x7684;&#x8BA2;&#x5355;&#x754C;&#x9762;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x67D0;&#x4E2A;&#x8BA2;&#x5355;&#x6709;&#x5546;&#x5BB6;&#x5DF2;&#x53D1;&#x8D27;&#x672A;&#x6536;&#x8D27;&#x65F6;&#xFF0C;&#x6839;&#x636E;&#x884C;&#x4E3A;&#x7EDF;&#x8BA1;&#xFF0C;&#x7528;&#x6237;&#x5927;&#x6982;&#x7387;&#x4F1A;&#x6253;&#x5F00;&#x7B2C;&#x4E00;&#x6761;&#x5DF2;&#x53D1;&#x8D27;&#x7684;&#x8BA2;&#x5355;&#x53BB;&#x67E5;&#x770B;&#x5F53;&#x524D;&#x7269;&#x6D41;&#xFF08;&#x7269;&#x6D41;&#x6570;&#x636E;&#x6765;&#x81EA;&#x7B2C;&#x4E09;&#x65B9;&#xFF0C;&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x6CA1;&#x6709;&#x4FDD;&#x8BC1;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x8FDB;&#x5165;&#x6211;&#x7684;&#x8BA2;&#x5355;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x9884;&#x5148;&#x52A0;&#x8F7D;&#x4E00;&#x4E2A;&#x67E5;&#x770B;&#x6700;&#x65B0;&#x672A;&#x5B8C;&#x6210;&#x8BA2;&#x5355;&#x7684;&#x7269;&#x6D41;&#x7684; ViewController&#x3002;</li>
+<li>&#x7528;&#x6237;&#x5728;&#x8BE6;&#x60C5;&#x9875;&#x9762;&#xFF0C;&#x70B9;&#x51FB;&#x4E86;&#x6211;&#x597D;&#x8BC4;&#x7387;&#xFF0C;&#x90A3;&#x4E48;&#x5927;&#x6982;&#x7387;&#xFF0C;&#x7528;&#x6237;&#x8FD8;&#x4F1A;&#x6253;&#x5F00;&#x7528;&#x6237;&#x6652;&#x5355;&#x7684;&#x89C6;&#x9891;&#x548C;&#x56FE;&#x7247;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x9884;&#x52A0;&#x8F7D;&#x4E00;&#x4E2A;&#x89C6;&#x9891;&#x64AD;&#x653E;&#x5668;&#x548C;&#x56FE;&#x7247;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x63D0;&#x4F9B;&#x7528;&#x6237;&#x7684;&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x7B49;&#x3002;
+<img src="https://upload-images.jianshu.io/upload_images/277783-27c0e5fd3badb36a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="&#x597D;&#x8BC4;&#x8DF3;&#x8F6C;&#x5230;&#x5E26;&#x56FE;&#x8BC4;&#x5206;&#x5217;&#x8868;"></li>
+</ol>
+<p>&#x5BF9;&#x4E8E;&#x5927;&#x90E8;&#x5206;&#x529F;&#x80FD;&#x4E5F;&#x80FD;&#x800C;&#x8A00;&#xFF0C; prefetch &#x5E76;&#x4E0D;&#x662F;&#x5FC5;&#x9009;&#x9879;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x6839;&#x636E;&#x81EA;&#x8EAB;&#x7684;&#x4E1A;&#x52A1;&#x6765;&#x51B3;&#x5B9A;&#x4F7F;&#x7528;&#x53EF;&#x4EE5; prefetch &#x7684;&#x601D;&#x60F3;&#x89E3;&#x51B3; App &#x4F53;&#x9A8C;&#x7684;&#x74F6;&#x9888;&#x95EE;&#x9898;&#xFF0C;&#x4E0D;&#x8981;&#x968F;&#x610F;&#x4F7F;&#x7528; <code>ViewControllerPrefetch</code>&#xFF0C;&#x589E;&#x52A0;&#x989D;&#x5916;&#x590D;&#x6742;&#x5EA6;&#x3002;</p>
+<h3 id="&#x516B;&#xFF0C;xib-&#x548C;-storyboard-&#x5E26;&#x6765;&#x7684;&#x542F;&#x793A;">&#x516B;&#xFF0C;xib &#x548C; storyboard &#x5E26;&#x6765;&#x7684;&#x542F;&#x793A;</h3>
+<p>&#x5F53;&#x6211;&#x63A5;&#x89E6; iOS &#x5F00;&#x53D1;&#x65F6;&#xFF0C;&#x5DF2;&#x7ECF;&#x5230;&#x4E86; iOS &#x63A8;&#x9500; storyboard &#x5F00;&#x53D1;&#x65B9;&#x5F0F;&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x53EF;&#x9700;&#x8981;&#x6301;&#x7EED;&#x8FED;&#x4EE3;&#x7684; App&#xFF0C;&#x5176;&#x5B9E;&#x4E0D;&#x9002;&#x5408;&#x7528; xib &#x548C; storyboard &#x6765;&#x5F00;&#x53D1;&#xFF0C;&#x5B83;&#x7684;&#x53EF;&#x89C6;&#x5316;&#x5E26;&#x6765;&#x7684;&#x597D;&#x5904;&#x76F8;&#x6BD4;&#x9879;&#x76EE;&#x534F;&#x4F5C;&#x8FED;&#x4EE3;&#x91CC;&#x9047;&#x5230;&#x7684; diff &#x56F0;&#x96BE;&#x3001;&#x590D;&#x7528;&#x56F0;&#x96BE;&#x3001;&#x542F;&#x52A8;&#x6162;&#x7B49;&#x574F;&#x5904;&#xFF0C;&#x4E0D;&#x503C;&#x4E00;&#x63D0;&#x3002;
+&#x65F6;&#x81F3;&#x4ECA;&#x65E5;&#xFF0C;&#x5F53;&#x6211;&#x601D;&#x8003;&#x9884;&#x52A0;&#x8F7D;&#x65B9;&#x5F0F;&#x5728; <code>viewDidiLoad</code> &#x91CC;&#x8FD8;&#x8981;&#x591A;&#x5C11;&#x64CD;&#x4F5C;&#x7A7A;&#x95F4;&#x65F6;&#xFF0C;&#x6211;&#x53D1;&#x73B0; xib &#x548C; storyboard &#x5728;&#x88AB;&#x82F9;&#x679C;&#x63A8;&#x5E7F;&#x65F6;&#x6CA1;&#x6709;&#x88AB;&#x63D0;&#x5230;&#x5B83;&#x9884;&#x52A0;&#x8F7D;&#x7684;&#x4F18;&#x70B9;&#xFF0C;&#x4E00;&#x76F4;&#x6CA1;&#x6709;&#x5F15;&#x8D77;&#x91CD;&#x89C6;&#x3002;
+&#x76F8;&#x540C;&#x7684; ViewController &#x4F7F;&#x7528;&#x7684; xib &#x548C; storyboard &#x6587;&#x4EF6;&#x88AB; init &#x4E3A; &#x5B9E;&#x4F8B;&#x4E4B;&#x540E;&#xFF0C;&#x540E;&#x7EED;&#x76F8;&#x540C;&#x7684;ViewController &#x90FD;&#x4F1A;&#x6765; copy &#x88AB;&#x521D;&#x59CB;&#x5316;&#x597D;&#x7684; storyboard &#x6765;&#x6784;&#x5EFA;&#x754C;&#x9762;&#x3002;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x521B;&#x5EFA;&#x5B8C; xib &#x548C; storyboard&#xFF0C;&#x9700;&#x8981;&#x6301;&#x4E45;&#x5316;&#x4E3A;&#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528; initWithCoder&#xFF1A;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x6253;&#x5F00; xib &#x548C; storyboard &#x65F6;&#xFF0C;&#x5148;&#x4ECE;&#x6587;&#x4EF6;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x89E3;&#x6790;&#x5F97;&#x5230; xml &#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x7528; xml &#x6587;&#x4EF6;&#x7ED8;&#x5236; interface builder&#x3002;&#x5B83;&#x7684;&#x5E95;&#x5C42;&#x673A;&#x5236;&#x51B3;&#x5B9A;&#x4E86;&#x5B83;&#x5728;&#x5F00;&#x53D1;&#x542F;&#x52A8;&#x3001;App &#x542F;&#x52A8;&#x65F6;&#x4F1A;&#x6709;&#x6027;&#x80FD;&#x635F;&#x8017;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E5F;&#x4E3A;&#x6211;&#x4EEC;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x2014;&#x2014; &#x5982;&#x4F55;&#x9884;&#x52A0;&#x8F7D; View &#x7247;&#x6BB5;&#x4E43;&#x81F3; ViewController &#x672C;&#x8EAB;&#x3002;&#x4EE5; storyboard &#x4E3A;&#x4F8B;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728; storyboard &#x91CC;&#x505A;&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;&#xFF1B;</p>
+<ol>
+<li>&#x7ED8;&#x5236; ViewController &#x7684; view &#x5C42;&#x6B21;&#xFF0C;&#x7279;&#x522B;&#x7684;&#xFF0C;&#x4F1A;&#x9996;&#x5148;&#x9650;&#x5236; storyboard &#x91CC;&#x7ED8;&#x5236;&#x7684;&#x9759;&#x6001;&#x6570;&#x636E;</li>
+<li>&#x6DFB;&#x52A0; view &#x4E4B;&#x95F4;&#x7684;&#x7EA6;&#x675F;</li>
+<li>&#x8F6C;&#x573A;&#xFF08;segue&#xFF09;&#x548C;&#x6309;&#x94AE;&#x52A8;&#x4F5C;&#x8DF3;&#x8F6C;</li>
+</ol>
+<p>&#x800C;&#x6700;&#x7EC8;&#x7684;&#x7528;&#x6237;&#x754C;&#x9762;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x7F51;&#x7EDC;&#x8FD4;&#x56DE;&#x771F;&#x5B9E;&#x6570;&#x636E;&#x540E;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#xFF0C;&#x5728;&#x6B64;&#x671F;&#x95F4;&#xFF0C;&#x663E;&#x793A;&#x9759;&#x6001;&#x7684;&#x7B49;&#x5F85;&#x754C;&#x9762;&#x3002;&#x6240;&#x4EE5;&#x5728;&#x9700;&#x8981;&#x88AB;&#x7F13;&#x5B58;&#x7684; <code>UIViewController</code>&#x9700;&#x8981;&#x53EF;&#x4EE5;&#x5B89;&#x5168;&#x7684;&#x7F16;&#x5199; UI&#x3001;&#x4E8B;&#x4EF6;&#x548C;&#x8F6C;&#x573A;&#x7B49;&#x903B;&#x8F91;&#xFF0C;&#x5C06;&#x52A8;&#x6001;&#x90E8;&#x5206;&#xFF08;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#xFF09;&#x7684;&#x53D1;&#x8D77;&#x903B;&#x8F91;&#x5199;&#x5728;&#x8F6C;&#x573A;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x3002;</p>
+<h3 id="&#x5341;&#xFF0C;&#x8865;&#x8BB0;">&#x5341;&#xFF0C;&#x8865;&#x8BB0;</h3>
+<ol>
+<li>[Unbalanced calls to begin/end appearance transitions for <uiviewcontroller: 0xa98e050=""> &#xFF0C;&#x8FD9;&#x4E2A;&#x8B66;&#x544A;&#x5FC5;&#x987B;&#x89E3;&#x51B3;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x5BFC;&#x81F4;&#x88AB;&#x7F13;&#x5B58;&#x7684; ViewController &#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x6D3B;&#x52A8; stack &#x65F6;&#xFF0C;&#x751F;&#x547D;&#x5468;&#x671F;&#x7D0A;&#x4E71;&#x5BFC;&#x81F4;&#x4E00;&#x4E9B;&#x4F9D;&#x8D56;&#x751F;&#x547D;&#x5468;&#x671F;&#x6267;&#x884C;&#x7684;&#x903B;&#x8F91;&#x5931;&#x6548;&#xFF0C;&#x5982;&#x7535;&#x5546;&#x884C;&#x4E1A;&#x91CC;&#x5F88;&#x770B;&#x91CD;&#x7684;&#x66DD;&#x5149;&#x7EDF;&#x8BA1;&#x6570;&#x636E;&#x4E0D;&#x6B63;&#x786E;</uiviewcontroller:></li>
+<li>Demo &#x5DE5;&#x7A0B;&#x91CC;&#x5DF2;&#x7ECF;&#x6709; calc.rb &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06;&#x4ECE; console &#x91CC;&#x62FF;&#x5230;&#x7684;&#x6570;&#x636E;&#x5B9E;&#x73B0;&#x4E3A;&#x62A5;&#x8868;&#xFF0C;&#x65B9;&#x4FBF;&#x4F60;&#x6D4B;&#x8BD5;&#x81EA;&#x5DF1;&#x7684;&#x9875;&#x9762;&#x6027;&#x80FD;&#x52A0;&#x8F7D;&#x63D0;&#x5347;&#x5BF9;&#x6BD4;&#x3002;</li>
+</ol>
+<h3 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h3>
+<p>[1] <a href="https://draveness.me/preload" target="_blank">&#x9884;&#x52A0;&#x8F7D;&#x4E0E;&#x667A;&#x80FD;&#x9884;&#x52A0;&#x8F7D;&#xFF08;iOS&#xFF09;</a></p>
+<p>[2] <a href="https://juejin.im/post/5b72aaf46fb9a009764bbb6a" target="_blank">iOS&#x6027;&#x80FD;&#x4F18;&#x5316;&#x7CFB;&#x5217;&#x7BC7;&#x4E4B;&#x201C;&#x5217;&#x8868;&#x6D41;&#x7545;&#x5EA6;&#x4F18;&#x5316;&#x201D;</a></p>
+<p>[3] <a href="https://github.com/BigZaphod/Chameleon/blob/master/UIKit/Classes/UIWindow.m" target="_blank">UIWindow &#x6E90;&#x7801; of Chameleons</a></p>
+<p>[4]<a href="https://developer.apple.com/documentation/uikit/uiviewcontroller?language=objc" target="_blank">https://developer.apple.com/documentation/uikit/uiviewcontroller?language=objc</a></p>
+<p>[5] <a href="https://stackoverflow.com/questions/9710676/sharing-the-same-uiviewcontroller-as-the-rootviewcontroller-with-two-uinavigatio" target="_blank">Sharing the Same UIViewController as the rootViewController with Two UINavigationControllers</a></p>
+<p>[6]  <a href="https://stackoverflow.com/questions/13834999/storyboards-vs-the-old-xib-way" target="_blank">Storyboards vs. the old XIB way</a></p>
+<p>[7]  <a href="https://stackoverflow.com/questions/14412890/unbalanced-calls-to-begin-end-appearance-transitions-for-uinavigationcontroller" target="_blank">Unbalanced calls to begin/end appearance transitions for <uinavigationcontroller: 0xa98e050=""></uinavigationcontroller:></a></p>
+<p>[8] <a href="https://github.com/hite/ViewControllerPreRender" target="_blank">ViewControllerPreRender</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="OC 消息机制和 super 关键字.html" class="navigation navigation-prev " aria-label="Previous page: OC 消息机制和 super 关键字">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="有赞移动 iOS 组件化（模块化）架构设计实践.html" class="navigation navigation-next " aria-label="Next page: 有赞移动 iOS 组件化（模块化）架构设计实践">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"UIViewController 预加载方案浅谈","level":"1.2.9","depth":2,"next":{"title":"有赞移动 iOS 组件化（模块化）架构设计实践","level":"1.2.10","depth":2,"path":"Article/有赞移动 iOS 组件化（模块化）架构设计实践.md","ref":"Article/有赞移动 iOS 组件化（模块化）架构设计实践.md","articles":[]},"previous":{"title":"OC 消息机制和 super 关键字","level":"1.2.8","depth":2,"path":"Article/OC 消息机制和 super 关键字.md","ref":"Article/OC 消息机制和 super 关键字.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Article/UIViewController 预加载方案浅谈.md","mtime":"2020-06-03T00:43:56.237Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-03T00:44:38.350Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

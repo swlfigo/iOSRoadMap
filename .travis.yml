@@ -1,0 +1,36 @@
+language: node_js
+node_js: stable
+
+cache: false
+
+# 邮件通知，这里配置不管成功或是失败都通知
+notifications:
+    email:false
+    
+branches:
+    only:
+        - master
+before_install:
+    - export TZ='Asia/Shanghai'  # 设置时区
+
+# 安装环境
+install:
+    - npm install -g gitbook-cli
+    - gitbook install
+
+# gitbook生成静态文件
+script:
+    - gitbook build
+
+
+after_script:
+    - cd _book
+    - git init
+    - git remote add origin https://${GH_REF}
+    - git config user.name "Sylar"
+    - git config user.email "swlfigo@gmail.com"
+    - git add .
+    - git commit -m "Update GitBook By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+    - git push --force --quiet "https://${TOKEN}@${GH_REF}" master:gh-pages
+
+

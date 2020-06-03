@@ -1,0 +1,923 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>static区别 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Mach-O.html" />
+    
+    
+    <link rel="prev" href="listAndNode.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Article/ReadME.html">
+            
+                <a href="../Article/ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../Article/谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../Article/谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../Article/面试驱动技术 - Category 相关考点.html">
+            
+                <a href="../Article/面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../Article/iOS 编译过程的原理和应用.html">
+            
+                <a href="../Article/iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../Article/Objective-C Runtime 机制简析.html">
+            
+                <a href="../Article/Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../Article/OC 消息机制和 super 关键字.html">
+            
+                <a href="../Article/OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../Article/UIViewController 预加载方案浅谈.html">
+            
+                <a href="../Article/UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../Article/深入了解 iOS 的初始化.html">
+            
+                <a href="../Article/深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../iOS/ReadME.html">
+            
+                <a href="../iOS/ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../iOS/UIKit/UIResponder.html">
+            
+                <a href="../iOS/UIKit/UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                <a href="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="../iOS/UIKit/UIViewRender.html">
+            
+                <a href="../iOS/UIKit/UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.4" data-path="../(iOS/UIKit/UIImageRender.md">
+            
+                <span>
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../iOS/OCFoundation/OCFoundation.html">
+            
+                <a href="../iOS/OCFoundation/OCFoundation.html">
+            
+                    
+                    2.OC语言基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../iOS/Runtime/Runtime.md">
+            
+                <span>
+            
+                    
+                    3.Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../iOS/Block/Block.html">
+            
+                <a href="../iOS/Block/Block.html">
+            
+                    
+                    4.Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../iOS/Runloop/Runloop.html">
+            
+                <a href="../iOS/Runloop/Runloop.html">
+            
+                    
+                    5.Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../iOS/Memory/Memory.html">
+            
+                <a href="../iOS/Memory/Memory.html">
+            
+                    
+                    6.Memory内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../iOS/Autoreleasepool/Autoreleasepool.html">
+            
+                <a href="../iOS/Autoreleasepool/Autoreleasepool.html">
+            
+                    
+                    7. Autoreleasepool 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../iOS/Thread/Thread.html">
+            
+                <a href="../iOS/Thread/Thread.html">
+            
+                    
+                    8.Thread
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.7.1" data-path="../iOS/Thread/iOSThread.html">
+            
+                <a href="../iOS/Thread/iOSThread.html">
+            
+                    
+                    8.1 iOS线程知识点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.2" data-path="../iOS/Thread/ConcurrentVSParallel.html">
+            
+                <a href="../iOS/Thread/ConcurrentVSParallel.html">
+            
+                    
+                    8.2 并发与并行区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="ReadME.html">
+            
+                <a href="ReadME.html">
+            
+                    
+                    知识点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="App启动.html">
+            
+                <a href="App启动.html">
+            
+                    
+                    App启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" >
+            
+                <a target="_blank" href="https://juejin.im/entry/59dd94b06fb9a0451463030b">
+            
+                    
+                    Cocoapods原理总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="static_inline.html">
+            
+                <a href="static_inline.html">
+            
+                    
+                    内联函数,与宏的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="listAndNode.html">
+            
+                <a href="listAndNode.html">
+            
+                    
+                    单链表与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.5" data-path="staticCompare.html">
+            
+                <a href="staticCompare.html">
+            
+                    
+                    static区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="Mach-O.html">
+            
+                <a href="Mach-O.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../network/ReadME.html">
+            
+                <a href="../network/ReadME.html">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../network/TCP-Three-Way-Handshake.html">
+            
+                <a href="../network/TCP-Three-Way-Handshake.html">
+            
+                    
+                    1. 简述TCP的三次握手过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../network/4次挥手过程详解.html">
+            
+                <a href="../network/4次挥手过程详解.html">
+            
+                    
+                    2. 4次挥手过程详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../network/TCP:UDP区别以及UDP如何实现可靠传输.html">
+            
+                <a href="../network/TCP:UDP区别以及UDP如何实现可靠传输.html">
+            
+                    
+                    3. TCP/UDP区别以及UDP如何实现可靠传输
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="../network/Http%20和%20Https%20有什么关系和区别.md">
+            
+                <span>
+            
+                    
+                    4. Http 和 Https 有什么关系和区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.5" data-path="../network/get%20和%20post%20区别.md">
+            
+                <span>
+            
+                    
+                    5. get 和 post 区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.6" data-path="../network/什么是Http协议无状态协议%3F怎么解决Http协议无状态协议%3F.md">
+            
+                <span>
+            
+                    
+                    6. 什么是Http协议无状态协议?怎么解决Http协议无状态协议?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.7" data-path="../network/一次完整的HTTP请求所经历的7个步骤.html">
+            
+                <a href="../network/一次完整的HTTP请求所经历的7个步骤.html">
+            
+                    
+                    7. 一次完整的HTTP请求所经历的7个步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.8" data-path="../network/Socket.html">
+            
+                <a href="../network/Socket.html">
+            
+                    
+                    8. Socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.9" data-path="../network/Http&Socket.html">
+            
+                <a href="../network/Http&Socket.html">
+            
+                    
+                    9. Socket & Http
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../network/OSI.html">
+            
+                <a href="../network/OSI.html">
+            
+                    
+                    10.OSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../Interview/ReadME.html">
+            
+                <a href="../Interview/ReadME.html">
+            
+                    
+                    面试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="../Interview/2018 年最新 iOS 面试题及答案 (一">
+            
+                <span>
+            
+                    
+                    【2018 年最新】 iOS 面试题及答案 (一)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >static区别</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="static&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0E;&#x666E;&#x901A;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x533A;&#x522B;&#xFF0F;static&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x548C;&#x666E;&#x901A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x533A;&#x522B;&#xFF0F;static&#x51FD;&#x6570;&#x4E0E;&#x666E;&#x901A;&#x51FD;&#x6570;&#x7684;&#x533A;&#x522B;">static&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0E;&#x666E;&#x901A;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x533A;&#x522B;&#xFF0F;static&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x548C;&#x666E;&#x901A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x533A;&#x522B;&#xFF0F;static&#x51FD;&#x6570;&#x4E0E;&#x666E;&#x901A;&#x51FD;&#x6570;&#x7684;&#x533A;&#x522B;</h1>
+<p>&#x5168;&#x5C40;&#x53D8;&#x91CF;(&#x5916;&#x90E8;&#x53D8;&#x91CF;)&#x7684;&#x8BF4;&#x660E;&#x4E4B;&#x524D;&#x518D;&#x51A0;&#x4EE5;static &#x5C31;&#x6784;&#x6210;&#x4E86;&#x9759;&#x6001;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3002;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x9759;&#x6001;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;&#xFF0C; &#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5F53;&#x7136;&#x4E5F;&#x662F;&#x9759;&#x6001;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x4E24;&#x8005;&#x5728;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;&#x4E0A;&#x5E76;&#x65E0;&#x4E0D;&#x540C;&#x3002;&#x8FD9;&#x4E24;&#x8005;&#x7684;&#x533A;&#x522B;&#x867D;&#x5728;&#x4E8E;<strong>&#x975E;&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;</strong>&#x7684;<strong>&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x6574;&#x4E2A;&#x6E90;&#x7A0B;&#x5E8F;</strong>&#xFF0C; &#x5F53;&#x4E00;&#x4E2A;&#x6E90;&#x7A0B;&#x5E8F;&#x7531;&#x591A;&#x4E2A;&#x6E90;&#x6587;&#x4EF6;&#x7EC4;&#x6210;&#x65F6;&#xFF0C;&#x975E;&#x9759;&#x6001;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5728;&#x5404;&#x4E2A;&#x6E90;&#x6587;&#x4EF6;&#x4E2D;&#x90FD;&#x662F;&#x6709;&#x6548;&#x7684;&#x3002; &#x800C;<strong>&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5219;&#x9650;&#x5236;&#x4E86;&#x5176;&#x4F5C;&#x7528;&#x57DF;&#xFF0C; &#x5373;&#x53EA;&#x5728;&#x5B9A;&#x4E49;&#x8BE5;&#x53D8;&#x91CF;&#x7684;&#x6E90;&#x6587;&#x4EF6;&#x5185;&#x6709;&#x6548;</strong>&#xFF0C; &#x5728;&#x540C;&#x4E00;&#x6E90;&#x7A0B;&#x5E8F;&#x7684;&#x5176;&#x5B83;&#x6E90;&#x6587;&#x4EF6;&#x4E2D;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x5B83;&#x3002;&#x7531;&#x4E8E;&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x5C40;&#x9650;&#x4E8E;&#x4E00;&#x4E2A;&#x6E90;&#x6587;&#x4EF6;&#x5185;&#xFF0C;&#x53EA;&#x80FD;&#x4E3A;&#x8BE5;&#x6E90;&#x6587;&#x4EF6;&#x5185;&#x7684;&#x51FD;&#x6570;&#x516C;&#x7528;&#xFF0C; &#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x5728;&#x5176;&#x5B83;&#x6E90;&#x6587;&#x4EF6;&#x4E2D;&#x5F15;&#x8D77;&#x9519;&#x8BEF;&#x3002;</p>
+<p>static&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0E;&#x666E;&#x901A;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1A;static&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x53EA;&#x521D;&#x4F7F;&#x5316;&#x4E00;&#x6B21;&#xFF0C;&#x9632;&#x6B62;&#x5728;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x5355;&#x5143;&#x4E2D;&#x88AB;&#x5F15;&#x7528;;
+static&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x548C;&#x666E;&#x901A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1A;static&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x53EA;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x6B21;&#xFF0C;&#x4E0B;&#x4E00;&#x6B21;&#x4F9D;&#x636E;&#x4E0A;&#x4E00;&#x6B21;&#x7ED3;&#x679C;&#x503C;&#xFF1B;
+static&#x51FD;&#x6570;&#x4E0E;&#x666E;&#x901A;&#x51FD;&#x6570;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1A;static&#x51FD;&#x6570;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x53EA;&#x6709;&#x4E00;&#x4EFD;&#xFF0C;&#x666E;&#x901A;&#x51FD;&#x6570;&#x5728;&#x6BCF;&#x4E2A;&#x88AB;&#x8C03;&#x7528;&#x4E2D;&#x7EF4;&#x6301;&#x4E00;&#x4EFD;&#x62F7;&#x8D1D;&#x3002;</p>
+<h2 id="reference">Reference</h2>
+<p><a href="http://www.cnblogs.com/cobain/archive/2008/01/31/1060216.html" target="_blank">1. staic</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="listAndNode.html" class="navigation navigation-prev " aria-label="Previous page: 单链表与顺序结构">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Mach-O.html" class="navigation navigation-next " aria-label="Next page: Mach-O">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"static区别","level":"4.1.5","depth":2,"next":{"title":"Mach-O","level":"4.2","depth":1,"path":"knowledge/Mach-O.md","ref":"knowledge/Mach-O.md","articles":[]},"previous":{"title":"单链表与顺序结构","level":"4.1.4","depth":2,"path":"knowledge/listAndNode.md","ref":"knowledge/listAndNode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"knowledge/staticCompare.md","mtime":"2020-06-03T00:43:56.237Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-03T00:44:38.350Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

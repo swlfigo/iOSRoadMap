@@ -1,0 +1,1267 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>OC 消息机制和 super 关键字 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="UIViewController 预加载方案浅谈.html" />
+    
+    
+    <link rel="prev" href="Objective-C Runtime 机制简析.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ReadME.html">
+            
+                <a href="ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="面试驱动技术 - Category 相关考点.html">
+            
+                <a href="面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="iOS 编译过程的原理和应用.html">
+            
+                <a href="iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="Objective-C Runtime 机制简析.html">
+            
+                <a href="Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.8" data-path="OC 消息机制和 super 关键字.html">
+            
+                <a href="OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="UIViewController 预加载方案浅谈.html">
+            
+                <a href="UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="深入了解 iOS 的初始化.html">
+            
+                <a href="深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../iOS/ReadME.html">
+            
+                <a href="../iOS/ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../iOS/UIKit/UIResponder.html">
+            
+                <a href="../iOS/UIKit/UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                <a href="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="../iOS/UIKit/UIViewRender.html">
+            
+                <a href="../iOS/UIKit/UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.4" data-path="../(iOS/UIKit/UIImageRender.md">
+            
+                <span>
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../iOS/OCFoundation/OCFoundation.html">
+            
+                <a href="../iOS/OCFoundation/OCFoundation.html">
+            
+                    
+                    2.OC语言基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../iOS/Runtime/Runtime.md">
+            
+                <span>
+            
+                    
+                    3.Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../iOS/Block/Block.html">
+            
+                <a href="../iOS/Block/Block.html">
+            
+                    
+                    4.Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../iOS/Runloop/Runloop.html">
+            
+                <a href="../iOS/Runloop/Runloop.html">
+            
+                    
+                    5.Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../iOS/Memory/Memory.html">
+            
+                <a href="../iOS/Memory/Memory.html">
+            
+                    
+                    6.Memory内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../iOS/Autoreleasepool/Autoreleasepool.html">
+            
+                <a href="../iOS/Autoreleasepool/Autoreleasepool.html">
+            
+                    
+                    7. Autoreleasepool 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../iOS/Thread/Thread.html">
+            
+                <a href="../iOS/Thread/Thread.html">
+            
+                    
+                    8.Thread
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.7.1" data-path="../iOS/Thread/iOSThread.html">
+            
+                <a href="../iOS/Thread/iOSThread.html">
+            
+                    
+                    8.1 iOS线程知识点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.2" data-path="../iOS/Thread/ConcurrentVSParallel.html">
+            
+                <a href="../iOS/Thread/ConcurrentVSParallel.html">
+            
+                    
+                    8.2 并发与并行区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../knowledge/ReadME.html">
+            
+                <a href="../knowledge/ReadME.html">
+            
+                    
+                    知识点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../knowledge/App启动.html">
+            
+                <a href="../knowledge/App启动.html">
+            
+                    
+                    App启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" >
+            
+                <a target="_blank" href="https://juejin.im/entry/59dd94b06fb9a0451463030b">
+            
+                    
+                    Cocoapods原理总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../knowledge/static_inline.html">
+            
+                <a href="../knowledge/static_inline.html">
+            
+                    
+                    内联函数,与宏的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../knowledge/listAndNode.html">
+            
+                <a href="../knowledge/listAndNode.html">
+            
+                    
+                    单链表与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../knowledge/staticCompare.html">
+            
+                <a href="../knowledge/staticCompare.html">
+            
+                    
+                    static区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../knowledge/Mach-O.html">
+            
+                <a href="../knowledge/Mach-O.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../network/ReadME.html">
+            
+                <a href="../network/ReadME.html">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../network/TCP-Three-Way-Handshake.html">
+            
+                <a href="../network/TCP-Three-Way-Handshake.html">
+            
+                    
+                    1. 简述TCP的三次握手过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../network/4次挥手过程详解.html">
+            
+                <a href="../network/4次挥手过程详解.html">
+            
+                    
+                    2. 4次挥手过程详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../network/TCP:UDP区别以及UDP如何实现可靠传输.html">
+            
+                <a href="../network/TCP:UDP区别以及UDP如何实现可靠传输.html">
+            
+                    
+                    3. TCP/UDP区别以及UDP如何实现可靠传输
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="../network/Http%20和%20Https%20有什么关系和区别.md">
+            
+                <span>
+            
+                    
+                    4. Http 和 Https 有什么关系和区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.5" data-path="../network/get%20和%20post%20区别.md">
+            
+                <span>
+            
+                    
+                    5. get 和 post 区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.6" data-path="../network/什么是Http协议无状态协议%3F怎么解决Http协议无状态协议%3F.md">
+            
+                <span>
+            
+                    
+                    6. 什么是Http协议无状态协议?怎么解决Http协议无状态协议?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.7" data-path="../network/一次完整的HTTP请求所经历的7个步骤.html">
+            
+                <a href="../network/一次完整的HTTP请求所经历的7个步骤.html">
+            
+                    
+                    7. 一次完整的HTTP请求所经历的7个步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.8" data-path="../network/Socket.html">
+            
+                <a href="../network/Socket.html">
+            
+                    
+                    8. Socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.9" data-path="../network/Http&Socket.html">
+            
+                <a href="../network/Http&Socket.html">
+            
+                    
+                    9. Socket & Http
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../network/OSI.html">
+            
+                <a href="../network/OSI.html">
+            
+                    
+                    10.OSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../Interview/ReadME.html">
+            
+                <a href="../Interview/ReadME.html">
+            
+                    
+                    面试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="../Interview/2018 年最新 iOS 面试题及答案 (一">
+            
+                <span>
+            
+                    
+                    【2018 年最新】 iOS 面试题及答案 (一)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >OC 消息机制和 super 关键字</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p> &#x539F;&#x6587;&#x5730;&#x5740; <a href="https://juejin.im/post/5c87a218f265da2dd868cfcd" target="_blank">https://juejin.im/post/5c87a218f265da2dd868cfcd</a></p>
+</blockquote>
+<p>&#x539F;&#x6587;&#x94FE;&#x63A5; <a href="https://link.juejin.im?target=https%3A%2F%2Fwww.neroxie.com%2F2019%2F03%2F12%2FOC%25E6%25B6%2588%25E6%2581%25AF%25E6%259C%25BA%25E5%2588%25B6%25E5%2592%258Csuper%25E5%2585%25B3%25E9%2594%25AE%25E5%25AD%2597%2F%23more" target="_blank">OC &#x6D88;&#x606F;&#x673A;&#x5236;&#x548C; super &#x5173;&#x952E;&#x5B57;</a></p>
+<h2 id="&#x6D88;&#x606F;&#x53D1;&#x9001;">&#x6D88;&#x606F;&#x53D1;&#x9001;</h2>
+<p>&#x5728; Objective-C &#x91CC;&#x9762;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;<code>[object method]</code>&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x4F1A;&#x5C06;&#x5B83;&#x7FFB;&#x8BD1;&#x6210;<code>objc_msgSend(id self, SEL op, ...)</code>&#x7684;&#x5F62;&#x5F0F;&#x3002;</p>
+<h3 id="objcmsgsend">objc_msgSend</h3>
+<p><code>objc_msgSend</code>&#x7684;&#x5B9E;&#x73B0;&#x5728;<code>objc-msg-arm.s</code>&#x3001;<code>objc-msg-arm64.s</code>&#x7B49;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x662F;&#x901A;&#x8FC7;&#x6C47;&#x7F16;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x770B;&#x5728;<code>arm64</code>&#x5373;<code>objc-msg-arm64.s</code>&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x7531;&#x4E8E;&#x6C47;&#x7F16;&#x4E0D;&#x719F;&#xFF0C;&#x91CC;&#x9762;&#x7684;&#x5B9E;&#x73B0;&#x53EA;&#x80FD;&#x8FDE;&#x770B;&#x5E26;&#x731C;&#x3002;</p>
+<pre><code>    ENTRY _objc_msgSend
+    UNWIND _objc_msgSend, NoFrame
+    MESSENGER_START
+
+    cmp    x0, #0            // nil check and tagged pointer check
+    b.le    LNilOrTagged        //  (MSB tagged pointer looks negative)
+    ldr    x13, [x0]        // x13 = isa
+    and    x16, x13, #ISA_MASK    // x16 = class    
+LGetIsaDone:
+    CacheLookup NORMAL        // calls imp or objc_msgSend_uncached
+
+LNilOrTagged:
+    /* nil check&#xFF0C;&#x5982;&#x679C;&#x4E3A;&#x7A7A;&#x5C31;&#x662F;&#x8C03;&#x7528;LReturnZero&#xFF0C;LReturnZero&#x91CC;&#x8C03;&#x7528;MESSENGER_END_NIL*/
+    b.eq    LReturnZero        // nil check
+
+    // tagged
+    mov    x10, #0xf000000000000000
+    cmp    x0, x10
+    b.hs    LExtTag
+    adrp    x10, _objc_debug_taggedpointer_classes@PAGE
+    add    x10, x10, _objc_debug_taggedpointer_classes@PAGEOFF
+    ubfx    x11, x0, #60, #4
+    ldr    x16, [x10, x11, LSL #3]
+    b    LGetIsaDone
+
+LExtTag:
+    // ext tagged
+    adrp    x10, _objc_debug_taggedpointer_ext_classes@PAGE
+    add    x10, x10, _objc_debug_taggedpointer_ext_classes@PAGEOFF
+    ubfx    x11, x0, #52, #8
+    ldr    x16, [x10, x11, LSL #3]
+    b    LGetIsaDone
+
+LReturnZero:
+    // x0 is already zero
+    mov    x1, #0
+    movi    d0, #0
+    movi    d1, #0
+    movi    d2, #0
+    movi    d3, #0
+    MESSENGER_END_NIL
+    ret
+
+    END_ENTRY _objc_msgSend
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x6D41;&#x7A0B;&#x53EF;&#x80FD;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<p> <img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318140410.png" alt=""></p>
+<p>&#x4ECE;<code>CacheLookup</code>&#x7684;&#x6CE8;&#x91CA;&#x6709;&#x4E24;&#x5904;&#xFF1A;</p>
+<ol>
+<li><code>calls imp or objc_msgSend_uncached</code></li>
+<li><code>Locate the implementation for a selector in a class method cache.</code></li>
+</ol>
+<p>&#x5373;&#x4F7F;&#x770B;&#x4E0D;&#x61C2;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#xFF0C;&#x4F46;&#x662F;&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x6CE8;&#x91CA;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x731C;&#x6D4B;&#xFF0C;&#x6D88;&#x606F;&#x673A;&#x5236;&#x4F1A;&#x5148;&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x53BB;&#x67E5;&#x627E;&#x3002;</p>
+<h3 id="objcmsgsenduncached">__objc_msgSend_uncached</h3>
+<p>&#x901A;&#x8FC7;&#x65B9;&#x6CD5;&#x540D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;&#x6CA1;&#x6709;&#x7F13;&#x5B58;&#x7684;&#x65F6;&#x5019;&#x5E94;&#x8BE5;&#x4F1A;&#x6267;&#x884C;<code>__objc_msgSend_uncached</code>&#x3002;</p>
+<pre><code>    STATIC_ENTRY __objc_msgSend_uncached
+    UNWIND __objc_msgSend_uncached, FrameWithNoSaves
+
+    // THIS IS NOT A CALLABLE C FUNCTION
+    // Out-of-band x16 is the class to search
+
+    MethodTableLookup
+    br    x17
+
+    END_ENTRY __objc_msgSend_uncached
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x8FD9;&#x91CC;&#x7684;<code>MethodTableLookup</code>&#x91CC;&#x6D89;&#x53CA;&#x5230;<code>objc-runtime-new.mm</code>&#x6587;&#x4EF6;&#x4E2D;&#x7684;<code>_class_lookupMethodAndLoadCache3</code>&#x3002;&#x8BE5;&#x51FD;&#x6570;&#x4F1A;&#x8C03;&#x7528;<code>lookUpImpOrForward</code>&#x51FD;&#x6570;&#x3002;</p>
+<h3 id="lookupimporforward">lookUpImpOrForward</h3>
+<p><code>lookUpImpOrForward</code>&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;<code>imp</code>&#xFF0C;&#x5B83;&#x7684;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x6BD4;&#x8F83;&#x957F;&#xFF0C;&#x4F46;&#x662F;&#x6CE8;&#x91CA;&#x5199;&#x7684;&#x975E;&#x5E38;&#x6E05;&#x695A;&#x3002;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x4E3B;&#x8981;&#x7531;&#x4EE5;&#x4E0B;&#x51E0;&#x6B65;&#xFF08;&#x8FD9;&#x91CC;&#x76F4;&#x63A5;&#x4ECE;&#x7F13;&#x5B58;&#x83B7;&#x53D6;&#x5F00;&#x59CB;&#xFF09;&#xFF1A;</p>
+<ol>
+<li>&#x901A;&#x8FC7;<code>cache_getImp</code>&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x83B7;&#x53D6;&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x5219;&#x8FD4;&#x56DE;&#xFF0C;&#x5426;&#x5219;&#x8FDB;&#x5165;&#x7B2C; 2 &#x6B65;&#xFF1B;</li>
+<li>&#x901A;&#x8FC7;<code>getMethodNoSuper_nolock</code>&#x4ECE;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x83B7;&#x53D6;&#xFF0C;&#x6709;&#x52A0;&#x5165;&#x7F13;&#x5B58;&#x4E2D;&#x5E76;&#x8FD4;&#x56DE;&#xFF0C;&#x5426;&#x5219;&#x8FDB;&#x5165;&#x7B2C; 3 &#x6B65;&#xFF1B;</li>
+<li>&#x901A;&#x8FC7;&#x7236;&#x7C7B;&#x7684;&#x7F13;&#x5B58;&#x548C;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x5BFB;&#x627E;&#x662F;&#x5426;&#x6709;&#x5BF9;&#x5E94;&#x7684; imp&#xFF0C;&#x6B64;&#x65F6;&#x4F1A;&#x8FDB;&#x5165;&#x4E00;&#x4E2A;<code>for</code>&#x5FAA;&#x73AF;&#xFF0C;&#x6CBF;&#x7740;&#x7C7B;&#x7684;&#x7236;&#x7C7B;&#x4E00;&#x76F4;&#x5F80;&#x4E0A;&#x627E;&#xFF0C;&#x76F4;&#x63A5;&#x627E;&#x5230; NSObject &#x4E3A;&#x6B62;&#x3002;&#x5982;&#x679C;&#x627E;&#x5230;&#x8FD4;&#x56DE;&#xFF0C;&#x5426;&#x5219;&#x8FDB;&#x5165;&#x7B2C; 4 &#x6B65;&#xFF1B;</li>
+<li>&#x8FDB;&#x5165;&#x65B9;&#x6CD5;&#x51B3;&#x8BAE;&#xFF08;method resolve&#xFF09;&#x7684;&#x8FC7;&#x7A0B;&#x5373;&#x8C03;&#x7528;<code>_class_resolveMethod</code>&#xFF0C;&#x5982;&#x679C;&#x5931;&#x8D25;&#xFF0C;&#x8FDB;&#x5165;&#x7B2C; 5 &#x6B65;&#xFF1B;</li>
+<li>&#x5728;&#x7F13;&#x5B58;&#x3001;&#x5F53;&#x524D;&#x7C7B;&#x3001;&#x7236;&#x7C7B;&#x4EE5;&#x53CA;&#x65B9;&#x6CD5;&#x51B3;&#x8BAE;&#x90FD;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Objective-C &#x8FD8;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x7FFB;&#x8EAB;&#x7684;&#x673A;&#x4F1A;&#xFF0C;&#x8C03;&#x7528;<code>_objc_msgForward_impcache</code>&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x8F6C;&#x53D1;&#xFF0C;&#x5982;&#x679C;&#x627E;&#x5230;&#x4FBF;&#x52A0;&#x5165;&#x7F13;&#x5B58;&#xFF1B;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5C31; crash&#x3002;</li>
+</ol>
+<p>&#x4E0A;&#x8FF0;&#x8FC7;&#x7A0B;&#x4E2D;&#x6709;&#x51E0;&#x4E2A;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
+<h4 id="classresolvemethod"><strong>_class_resolveMethod</strong></h4>
+<pre><code>void _class_resolveMethod(Class cls, SEL sel, id inst) {
+    if (! cls-&gt;isMetaClass()) {
+        // try [cls resolveInstanceMethod:sel]
+        _class_resolveInstanceMethod(cls, sel, inst);
+    } 
+    else {
+        // try [nonMetaClass resolveClassMethod:sel]
+        // and [cls resolveInstanceMethod:sel]
+        _class_resolveClassMethod(cls, sel, inst);
+        if (!lookUpImpOrNil(cls, sel, inst, 
+                            NO/*initialize*/, YES/*cache*/, NO/*resolver*/)) 
+        {
+            _class_resolveInstanceMethod(cls, sel, inst);
+        }
+    }
+}
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x4E0A;&#x8FF0;&#x51FD;&#x6570;&#x4F1A;&#x6839;&#x636E;&#x5F53;&#x524D;&#x4F20;&#x5165;&#x7684;&#x7C7B;&#x7684;&#x662F;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5143;&#x7C7B;&#xFF0C;&#x5728;<code>_class_resolveInstanceMethod</code>&#x548C;<code>_class_resolveClassMethod</code>&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x8FDB;&#x884C;&#x8C03;&#x7528;&#x3002;&#x6CE8;&#x91CA;&#x4E5F;&#x8BF4;&#x660E;&#x4E86;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x7C7B;&#x662F;&#x5426;&#x5B9E;&#x73B0;&#x4E86; <code>resolveInstanceMethod:</code>&#x6216;&#x8005;<code>resolveClassMethod:</code>&#x65B9;&#x6CD5;&#xFF0C;&#x7136;&#x540E;&#x7528;<code>objc_msgSend</code>&#x6267;&#x884C;&#x4E0A;&#x8FF0;&#x65B9;&#x6CD5;&#x3002;</p>
+<h4 id="classresolveclassmethod"><strong>_class_resolveClassMethod</strong></h4>
+<p><code>_class_resolveClassMethod</code>&#x548C;<code>_class_resolveInstanceMethod</code>&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x53EA;&#x770B;<code>_class_resolveClassMethod</code>&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<pre><code>static void _class_resolveClassMethod(Class cls, SEL sel, id inst) {
+    assert(cls-&gt;isMetaClass());
+
+    if (! lookUpImpOrNil(cls, SEL_resolveClassMethod, inst, 
+                         NO/*initialize*/, YES/*cache*/, NO/*resolver*/)) {
+         //&#x6CA1;&#x6709;&#x627E;&#x5230;resolveClassMethod&#x65B9;&#x6CD5;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;
+        return;
+    }
+
+    BOOL (*msg)(Class, SEL, SEL) = (typeof(msg))objc_msgSend;
+    bool resolved = msg(_class_getNonMetaClass(cls, inst), 
+                        SEL_resolveClassMethod, sel);
+
+    // &#x7F13;&#x5B58;&#x7ED3;&#x679C;
+    IMP imp = lookUpImpOrNil(cls, sel, inst, 
+                             NO/*initialize*/, YES/*cache*/, NO/*resolver*/);
+    // &#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x7701;&#x7565;&#x4E0D;&#x5F71;&#x54CD;&#x9605;&#x8BFB;                          
+}
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><h4 id="objcmsgforwardimpcache"><strong>_objc_msgForward_impcache</strong></h4>
+<pre><code>    STATIC_ENTRY __objc_msgForward_impcache
+
+    MESSENGER_START
+    nop
+    MESSENGER_END_SLOW
+
+    // No stret specialization.
+    b    __objc_msgForward
+
+    END_ENTRY __objc_msgForward_impcache
+
+    ENTRY __objc_msgForward
+
+    adrp    x17, __objc_forward_handler@PAGE
+    ldr    x17, [x17, __objc_forward_handler@PAGEOFF]
+    br    x17
+
+    END_ENTRY __objc_msgForward
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p><code>_objc_msgForward_impcache</code>&#x7528;&#x6765;&#x8FDB;&#x884C;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x771F;&#x6B63;&#x7684;&#x6838;&#x5FC3;&#x662F;&#x8C03;&#x7528;<code>_objc_msgForward</code>&#x3002;</p>
+<h3 id="&#x6D88;&#x606F;&#x8F6C;&#x53D1;">&#x6D88;&#x606F;&#x8F6C;&#x53D1;</h3>
+<p>&#x5173;&#x4E8E;<code>_objc_msgForward</code>&#x5728;<code>objc</code>&#x4E2D;&#x5E76;&#x6CA1;&#x6709;&#x5176;&#x76F8;&#x5173;&#x5B9E;&#x73B0;&#xFF0C;&#x53EA;&#x80FD;&#x770B;&#x5230;<code>_objc_forward_handler</code>&#x3002;&#x5176;&#x5B9E;<code>_objc_msgForward</code>&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x5728;<code>CFRuntime.c</code>&#x4E2D;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5F00;&#x6E90;&#x51FA;&#x6765;&#x7684;<code>CFRuntime.c</code>&#x5E76;&#x6CA1;&#x6709;&#x76F8;&#x5173;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x4E0D;&#x5F71;&#x54CD;&#x6211;&#x4EEC;&#x5BF9;&#x771F;&#x7406;&#x7684;&#x8FFD;&#x6C42;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x505A;&#x51E0;&#x4E2A;&#x5B9E;&#x9A8C;&#x6765;&#x9A8C;&#x8BC1;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x3002;</p>
+<h4 id="&#x6D88;&#x606F;&#x91CD;&#x5B9A;&#x5411;&#x6D4B;&#x8BD5;">&#x6D88;&#x606F;&#x91CD;&#x5B9A;&#x5411;&#x6D4B;&#x8BD5;</h4>
+<pre><code>// .h&#x6587;&#x4EF6;
+@interface AObject : NSObject
+
+- (void)sendMessage;
+
+@end
+// .m&#x6587;&#x4EF6;
+@implementation AObject
+
+/** &#x9A8C;&#x8BC1;&#x6D88;&#x606F;&#x91CD;&#x5B9A;&#x5411; */
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if (aSelector == @selector(sendMessage)) {
+         return [BObject new];
+    }
+
+    return [super forwardingTargetForSelector:aSelector];
+}
+
+@end
+
+// .h&#x6587;&#x4EF6;
+@interface BObject : NSObject
+
+- (void)sendMessage;
+
+@end
+
+// .m&#x6587;&#x4EF6;
+@implementation BObject
+
+- (void)sendMessage {
+    NSLog(@&quot;%@ send message&quot;, self.class);
+}
+
+@end
+
+// &#x8C03;&#x7528;
+AObject *a = [AObject new];
+[a sendMessage];
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>2019-03-12 10:18:54.252949+0800 iOSCodeLearning[18165:5967575] BObject send message
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x5728;<code>forwardingTargetForSelector:</code>&#x5904;&#x6253;&#x4E2A;&#x65AD;&#x70B9;&#xFF0C;&#x67E5;&#x770B;&#x4E00;&#x4E0B;&#x8C03;&#x7528;&#x6808;&#xFF1A;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318140550.png" alt=""></p>
+<p><code>_CF_forwarding_prep_0</code>&#x548C;<code>___forwarding___</code>&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x4F1A;&#x5148;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#xFF0C;&#x4E4B;&#x540E;&#x8C03;&#x7528;&#x4E86;<code>forwardingTargetForSelector:</code>&#x3002;</p>
+<h4 id="&#x65B9;&#x6CD5;&#x7B7E;&#x540D;&#x6D4B;&#x8BD5;">&#x65B9;&#x6CD5;&#x7B7E;&#x540D;&#x6D4B;&#x8BD5;</h4>
+<pre><code>// .h&#x6587;&#x4EF6;
+@interface AObject : NSObject
+
+- (void)sendMessage;
+
+@end
+// .m&#x6587;&#x4EF6;
+@implementation AObject
+
+/** &#x6D88;&#x606F;&#x91CD;&#x5B9A;&#x5411; */
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+   return nil;
+}
+
+/** &#x65B9;&#x6CD5;&#x7B7E;&#x540D;&#x6D4B;&#x8BD5; */
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+    if (aSelector == @selector(sendMessage)) {
+        return [BObject instanceMethodSignatureForSelector:@selector(sendMessage)];
+    }
+
+    return [super methodSignatureForSelector:aSelector];
+}
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    SEL selector = [anInvocation selector];
+    if (selector == @selector(sendMessage)) {
+        [anInvocation invokeWithTarget:[BObject new]];
+    } else {
+        [super forwardInvocation:anInvocation];
+    }
+}
+
+@end
+
+// .h&#x6587;&#x4EF6;
+@interface BObject : NSObject
+
+- (void)sendMessage;
+
+@end
+
+// .m&#x6587;&#x4EF6;
+@implementation BObject
+
+- (void)sendMessage {
+    NSLog(@&quot;%@ send message&quot;, self.class);
+}
+
+@end
+
+// &#x8C03;&#x7528;
+AObject *a = [AObject new];
+[a sendMessage];
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318140550.png" alt=""></p>
+<p>&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x548C;&#x6D88;&#x606F;&#x91CD;&#x5B9A;&#x5411;&#x6D4B;&#x8BD5;&#x7684;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x4E00;&#x81F4;&#x3002;<code>_CF_forwarding_prep_0</code>&#x548C;<code>___forwarding___</code>&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x53C8;&#x518D;&#x6B21;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#xFF0C;&#x4E4B;&#x540E;&#x4EE3;&#x7801;&#x4F1A;&#x5148;&#x6267;&#x884C;<code>forwardingTargetForSelector:</code>&#xFF08;&#x6D88;&#x606F;&#x91CD;&#x5B9A;&#x5411;&#xFF09;&#xFF0C;&#x6D88;&#x606F;&#x91CD;&#x5B9A;&#x5411;&#x5982;&#x679C;&#x5931;&#x8D25;&#x540E;&#x8C03;&#x7528;<code>methodSignatureForSelector:</code>&#x548C;<code>forwardInvocation:</code>&#x65B9;&#x6CD5;&#x7B7E;&#x540D;&#x3002;&#x6240;&#x4EE5;&#x8BF4;<code>___forwarding___</code>&#x65B9;&#x6CD5;&#x624D;&#x662F;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x7684;&#x771F;&#x6B63;&#x5B9E;&#x73B0;&#x3002;</p>
+<h4 id="crash-&#x6D4B;&#x8BD5;">crash &#x6D4B;&#x8BD5;</h4>
+<pre><code>// .h&#x6587;&#x4EF6;
+@interface AObject : NSObject
+
+- (void)sendMessage;
+
+@end
+// .m&#x6587;&#x4EF6;
+@implementation AObject
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    return nil;
+}
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+    return [super methodSignatureForSelector:aSelector];
+}
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+}
+
+/** &#x9A8C;&#x8BC1;Crash */
+- (void)doesNotRecognizeSelector:(SEL)aSelector {
+    if (aSelector == @selector(sendMessage)) {
+        NSLog(@&quot;%@ doesNotRecognizeSelector&quot;, self.class);
+    }
+}
+
+@end
+
+// .h&#x6587;&#x4EF6;
+@interface BObject : NSObject
+
+- (void)sendMessage;
+
+@end
+
+// .m&#x6587;&#x4EF6;
+@implementation BObject
+
+- (void)sendMessage {
+    NSLog(@&quot;%@ send message&quot;, self.class);
+}
+
+@end
+
+// &#x8C03;&#x7528;
+AObject *a = [AObject new];
+[a sendMessage];
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x80AF;&#x5B9A;&#x662F; crash&#xFF0C;&#x7ED3;&#x5408;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x4F1A;&#x8C03;&#x7528;<code>___forwarding___</code>&#x8FD9;&#x4E2A;&#x5185;&#x90E8;&#x65B9;&#x6CD5;&#x3002;<code>___forwarding___</code>&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x662F;<code>forwardingTargetForSelector:</code>-&gt;<code>methodSignatureForSelector:</code>-&gt;<code>doesNotRecognizeSelector:</code></p>
+<p>&#x6211;&#x4EEC;&#x7528;&#x4E00;&#x5F20;&#x56FE;&#x8868;&#x793A;&#x6574;&#x4E2A;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7684;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318140632.png" alt=""></p>
+<h2 id="super-&#x5173;&#x952E;&#x5B57;">super &#x5173;&#x952E;&#x5B57;</h2>
+<p>&#x6211;&#x4EEC;&#x5148;&#x67E5;&#x770B;&#x4E00;&#x4E0B;&#x6267;&#x884C;<code>[super init]</code>&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8C03;&#x7528;&#x4E86;&#x90A3;&#x4E9B;&#x65B9;&#x6CD5;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318140712.png" alt=""></p>
+<p><code>objc_msgSendSuper2</code>&#x7684;&#x58F0;&#x660E;&#x5728;<code>objc-abi.h</code>&#x4E2D;</p>
+<pre><code>// objc_msgSendSuper2() takes the current search class, not its superclass.
+OBJC_EXPORT id _Nullable
+objc_msgSendSuper2(struct objc_super * _Nonnull super, SEL _Nonnull op, ...)
+    OBJC_AVAILABLE(10.6, 2.0, 9.0, 1.0, 2.0);
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p><code>objc_super</code>&#x7684;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>struct objc_super {
+    /// Specifies an instance of a class.
+    __unsafe_unretained _Nonnull id receiver;
+
+    /// Specifies the particular superclass of the instance to message. 
+#if !defined(__cplusplus)  &amp;&amp;  !__OBJC2__
+    /* For compatibility with old objc-runtime.h header */
+    __unsafe_unretained _Nonnull Class class;
+#else
+    __unsafe_unretained _Nonnull Class super_class;
+#endif
+    /* super_class is the first class to search */
+};
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x5B9A;&#x4E49;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;<code>receiver</code>&#x5373;&#x6D88;&#x606F;&#x7684;&#x5B9E;&#x9645;&#x63A5;&#x6536;&#x8005;&#xFF0C; <code>super_class</code>&#x4E3A;&#x6307;&#x5411;&#x5F53;&#x524D;&#x7C7B;&#x7684;&#x7236;&#x7C7B;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x8BE5;&#x51FD;&#x6570;&#x5B9E;&#x9645;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#xFF1A;&#x4ECE;<code>objc_super</code>&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x5411;&#x7684;<code>super_class</code>&#x5F00;&#x59CB;&#x67E5;&#x627E;&#xFF0C;&#x76F4;&#x5230;&#x4F1A;&#x627E;&#x5230; NSObject &#x7684;&#x65B9;&#x6CD5;&#x4E3A;&#x6B62;&#x3002;&#x627E;&#x5230;&#x540E;&#x4EE5;<code>receiver</code>&#x53BB;&#x8C03;&#x7528;&#x3002;&#x5F53;&#x7136;&#x6574;&#x4E2A;&#x67E5;&#x627E;&#x7684;&#x8FC7;&#x7A0B;&#x8FD8;&#x662F;&#x548C;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7684;&#x6D41;&#x7A0B;&#x4E00;&#x6837;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x80FD;&#x7406;&#x89E3;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7684;&#x7ED3;&#x679C;&#x90FD;&#x662F;<code>AObject</code>&#x4E86;&#x5427;&#x3002;&#x867D;&#x7136;&#x4F7F;&#x7528;<code>[super class]</code>&#xFF0C;&#x4F46;&#x662F;&#x771F;&#x6B63;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x5BF9;&#x8C61;&#x8FD8;&#x662F;<code>AObject</code>&#x3002;</p>
+<pre><code>// &#x4EE3;&#x7801;
+@implementation AObject
+
+- (instancetype)init {
+    if (self = [super init]) {
+        NSLog(@&quot;%@&quot;, [super class]);
+        NSLog(@&quot;%@&quot;, [self class]);
+    }
+
+    return self;
+}
+
+@end
+
+// &#x6267;&#x884C;&#x7ED3;&#x679C;
+2019-03-12 19:44:46.003313+0800 iOSCodeLearning[34431:7234182] AObject
+2019-03-12 19:44:46.003442+0800 iOSCodeLearning[34431:7234182] AObject
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Objective-C Runtime 机制简析.html" class="navigation navigation-prev " aria-label="Previous page: Objective-C Runtime 机制简析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="UIViewController 预加载方案浅谈.html" class="navigation navigation-next " aria-label="Next page: UIViewController 预加载方案浅谈">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"OC 消息机制和 super 关键字","level":"1.2.8","depth":2,"next":{"title":"UIViewController 预加载方案浅谈","level":"1.2.9","depth":2,"path":"Article/UIViewController 预加载方案浅谈.md","ref":"Article/UIViewController 预加载方案浅谈.md","articles":[]},"previous":{"title":"Objective-C Runtime 机制简析","level":"1.2.7","depth":2,"path":"Article/Objective-C Runtime 机制简析.md","ref":"Article/Objective-C Runtime 机制简析.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Article/OC 消息机制和 super 关键字.md","mtime":"2020-06-03T00:43:56.209Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-03T00:44:38.350Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

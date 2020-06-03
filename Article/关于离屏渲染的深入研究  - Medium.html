@@ -1,0 +1,1040 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>关于离屏渲染的深入研究  - Medium · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="谜一样的 Runloop(1_2" />
+    
+    
+    <link rel="prev" href="贝聊 IAP 实战之满地是坑.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ReadME.html">
+            
+                <a href="ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="面试驱动技术 - Category 相关考点.html">
+            
+                <a href="面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="iOS 编译过程的原理和应用.html">
+            
+                <a href="iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="Objective-C Runtime 机制简析.html">
+            
+                <a href="Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="OC 消息机制和 super 关键字.html">
+            
+                <a href="OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="UIViewController 预加载方案浅谈.html">
+            
+                <a href="UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="深入了解 iOS 的初始化.html">
+            
+                <a href="深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../iOS/ReadME.html">
+            
+                <a href="../iOS/ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../iOS/UIKit/UIResponder.html">
+            
+                <a href="../iOS/UIKit/UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                <a href="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="../iOS/UIKit/UIViewRender.html">
+            
+                <a href="../iOS/UIKit/UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.4" data-path="../(iOS/UIKit/UIImageRender.md">
+            
+                <span>
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../iOS/OCFoundation/OCFoundation.html">
+            
+                <a href="../iOS/OCFoundation/OCFoundation.html">
+            
+                    
+                    2.OC语言基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../iOS/Runtime/Runtime.md">
+            
+                <span>
+            
+                    
+                    3.Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../iOS/Block/Block.html">
+            
+                <a href="../iOS/Block/Block.html">
+            
+                    
+                    4.Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../iOS/Runloop/Runloop.html">
+            
+                <a href="../iOS/Runloop/Runloop.html">
+            
+                    
+                    5.Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../iOS/Memory/Memory.html">
+            
+                <a href="../iOS/Memory/Memory.html">
+            
+                    
+                    6.Memory内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../iOS/Autoreleasepool/Autoreleasepool.html">
+            
+                <a href="../iOS/Autoreleasepool/Autoreleasepool.html">
+            
+                    
+                    7. Autoreleasepool 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../iOS/Thread/Thread.html">
+            
+                <a href="../iOS/Thread/Thread.html">
+            
+                    
+                    8.Thread
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.7.1" data-path="../iOS/Thread/iOSThread.html">
+            
+                <a href="../iOS/Thread/iOSThread.html">
+            
+                    
+                    8.1 iOS线程知识点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.2" data-path="../iOS/Thread/ConcurrentVSParallel.html">
+            
+                <a href="../iOS/Thread/ConcurrentVSParallel.html">
+            
+                    
+                    8.2 并发与并行区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../knowledge/ReadME.html">
+            
+                <a href="../knowledge/ReadME.html">
+            
+                    
+                    知识点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../knowledge/App启动.html">
+            
+                <a href="../knowledge/App启动.html">
+            
+                    
+                    App启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" >
+            
+                <a target="_blank" href="https://juejin.im/entry/59dd94b06fb9a0451463030b">
+            
+                    
+                    Cocoapods原理总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../knowledge/static_inline.html">
+            
+                <a href="../knowledge/static_inline.html">
+            
+                    
+                    内联函数,与宏的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../knowledge/listAndNode.html">
+            
+                <a href="../knowledge/listAndNode.html">
+            
+                    
+                    单链表与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../knowledge/staticCompare.html">
+            
+                <a href="../knowledge/staticCompare.html">
+            
+                    
+                    static区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../knowledge/Mach-O.html">
+            
+                <a href="../knowledge/Mach-O.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../network/ReadME.html">
+            
+                <a href="../network/ReadME.html">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../network/TCP-Three-Way-Handshake.html">
+            
+                <a href="../network/TCP-Three-Way-Handshake.html">
+            
+                    
+                    1. 简述TCP的三次握手过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../network/4次挥手过程详解.html">
+            
+                <a href="../network/4次挥手过程详解.html">
+            
+                    
+                    2. 4次挥手过程详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../network/TCP:UDP区别以及UDP如何实现可靠传输.html">
+            
+                <a href="../network/TCP:UDP区别以及UDP如何实现可靠传输.html">
+            
+                    
+                    3. TCP/UDP区别以及UDP如何实现可靠传输
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="../network/Http%20和%20Https%20有什么关系和区别.md">
+            
+                <span>
+            
+                    
+                    4. Http 和 Https 有什么关系和区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.5" data-path="../network/get%20和%20post%20区别.md">
+            
+                <span>
+            
+                    
+                    5. get 和 post 区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.6" data-path="../network/什么是Http协议无状态协议%3F怎么解决Http协议无状态协议%3F.md">
+            
+                <span>
+            
+                    
+                    6. 什么是Http协议无状态协议?怎么解决Http协议无状态协议?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.7" data-path="../network/一次完整的HTTP请求所经历的7个步骤.html">
+            
+                <a href="../network/一次完整的HTTP请求所经历的7个步骤.html">
+            
+                    
+                    7. 一次完整的HTTP请求所经历的7个步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.8" data-path="../network/Socket.html">
+            
+                <a href="../network/Socket.html">
+            
+                    
+                    8. Socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.9" data-path="../network/Http&Socket.html">
+            
+                <a href="../network/Http&Socket.html">
+            
+                    
+                    9. Socket & Http
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../network/OSI.html">
+            
+                <a href="../network/OSI.html">
+            
+                    
+                    10.OSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../Interview/ReadME.html">
+            
+                <a href="../Interview/ReadME.html">
+            
+                    
+                    面试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="../Interview/2018 年最新 iOS 面试题及答案 (一">
+            
+                <span>
+            
+                    
+                    【2018 年最新】 iOS 面试题及答案 (一)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >关于离屏渲染的深入研究  - Medium</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p>&#x672C;&#x6587;&#x7531; <a href="http://ksria.com/simpread/" target="_blank">&#x7B80;&#x60A6; SimpRead</a> &#x8F6C;&#x7801;&#xFF0C; &#x539F;&#x6587;&#x5730;&#x5740; <a href="https://medium.com/@jasonyuh/%E5%85%B3%E4%BA%8E%E7%A6%BB%E5%B1%8F%E6%B8%B2%E6%9F%93%E7%9A%84%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6-e776f56b3e60" target="_blank">https://medium.com/@jasonyuh/%E5%85%B3%E4%BA%8E%E7%A6%BB%E5%B1%8F%E6%B8%B2%E6%9F%93%E7%9A%84%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6-e776f56b3e60</a></p>
+</blockquote>
+<p>&#x5728;&#x5E73;&#x65F6;&#x7684; iOS &#x9762;&#x8BD5;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F1A;&#x8003;&#x5BDF;&#x6709;&#x5173;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#xFF08;Offscreen rendering&#xFF09;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x3002;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x4EBA;&#x90FD;&#x80FD;&#x7B54;&#x51FA; &#x201C;&#x5706;&#x89D2;&#x3001;mask&#x3001;&#x9634;&#x5F71;&#x4F1A;&#x89E6;&#x53D1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x201D;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x4EC5;&#x6B62;&#x4E8E;&#x6B64;&#x3002;&#x5982;&#x679C;&#x518D;&#x95EE;&#x5F97;&#x6DF1;&#x5165;&#x54EA;&#x6015;&#x4E00;&#x70B9;&#x70B9;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<ul>
+<li>&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x662F;&#x5728;&#x54EA;&#x4E00;&#x6B65;&#x8FDB;&#x884C;&#x7684;&#xFF1F;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;</li>
+<li>&#x8BBE;&#x7F6E; cornerRadius &#x4E00;&#x5B9A;&#x4F1A;&#x89E6;&#x53D1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x5417;&#xFF1F;</li>
+</ul>
+<p>90% &#x7684;&#x5019;&#x9009;&#x4EBA;&#x90FD;&#x6CA1;&#x6CD5;&#x975E;&#x5E38;&#x786E;&#x5B9A;&#x5730;&#x8BF4;&#x51FA;&#x7B54;&#x6848;&#x3002;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x5DE5;&#x7A0B;&#x5E08;&#xFF0C;&#x628A;&#x63A7;&#x6E32;&#x67D3;&#x6027;&#x80FD;&#x662F;&#x6700;&#x5173;&#x952E;&#x3001;&#x6700;&#x72EC;&#x5230;&#x7684;&#x6280;&#x672F;&#x8981;&#x70B9;&#x4E4B;&#x4E00;&#xFF0C;&#x5982;&#x679C;&#x4EC5;&#x4EC5;&#x4E86;&#x89E3;&#x8868;&#x9762;&#x77E5;&#x8BC6;&#xFF0C;&#x5230;&#x4E86;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x65F6;&#x5F80;&#x5F80;&#x4F1A;&#x5931;&#x4E4B;&#x6BEB;&#x5398;&#x8C2C;&#x4EE5;&#x5343;&#x91CC;&#xFF0C;&#x65E0;&#x6CD5;&#x5F97;&#x5230;&#x9884;&#x671F;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<h2 id="ios-&#x6E32;&#x67D3;&#x67B6;&#x6784;">iOS &#x6E32;&#x67D3;&#x67B6;&#x6784;</h2>
+<p>&#x5728; WWDC &#x7684; Advanced Graphics and Animations for iOS Apps&#xFF08;WWDC14 419&#xFF0C;&#x5173;&#x4E8E; UIKit &#x548C; Core Animation &#x57FA;&#x7840;&#x7684; session &#x5728;&#x65E9;&#x5E74;&#x7684; WWDC &#x4E2D;&#x6BD4;&#x8F83;&#x591A;&#xFF09;&#x4E2D;&#x6709;&#x8FD9;&#x6837;&#x4E00;&#x5F20;&#x56FE;&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150326.png" alt=""></p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5728; Application &#x8FD9;&#x4E00;&#x5C42;&#x4E2D;&#x4E3B;&#x8981;&#x662F; CPU &#x5728;&#x64CD;&#x4F5C;&#xFF0C;&#x800C;&#x5230;&#x4E86; Render Server &#x8FD9;&#x4E00;&#x5C42;&#xFF0C;CoreAnimation &#x4F1A;&#x5C06;&#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x8F6C;&#x6362;&#x6210;&#x53D1;&#x9001;&#x7ED9; GPU &#x7684; draw calls&#xFF08;&#x4EE5;&#x524D;&#x662F; call OpenGL ES&#xFF0C;&#x73B0;&#x5728;&#x6162;&#x6162;&#x8F6C;&#x5230;&#x4E86; Metal&#xFF09;&#xFF0C;&#x663E;&#x7136; CPU &#x548C; GPU &#x53CC;&#x65B9;&#x540C;&#x5904;&#x4E8E;&#x4E00;&#x4E2A;&#x6D41;&#x6C34;&#x7EBF;&#x4E2D;&#xFF0C;&#x534F;&#x4F5C;&#x5B8C;&#x6210;&#x6574;&#x4E2A;&#x6E32;&#x67D3;&#x5DE5;&#x4F5C;&#x3002;</p>
+<h2 id="&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7684;&#x5B9A;&#x4E49;">&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7684;&#x5B9A;&#x4E49;</h2>
+<p>&#x5982;&#x679C;&#x8981;&#x5728;&#x663E;&#x793A;&#x5C4F;&#x4E0A;&#x663E;&#x793A;&#x5185;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x81F3;&#x5C11;&#x9700;&#x8981;&#x4E00;&#x5757;&#x4E0E;&#x5C4F;&#x5E55;&#x50CF;&#x7D20;&#x6570;&#x636E;&#x91CF;&#x4E00;&#x6837;&#x5927;&#x7684; frame buffer&#xFF0C;&#x4F5C;&#x4E3A;&#x50CF;&#x7D20;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x533A;&#x57DF;&#xFF0C;&#x800C;&#x8FD9;&#x4E5F;&#x662F; GPU &#x5B58;&#x50A8;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x7684;&#x5730;&#x65B9;&#x3002;&#x5982;&#x679C;&#x6709;&#x65F6;&#x56E0;&#x4E3A;&#x9762;&#x4E34;&#x4E00;&#x4E9B;&#x9650;&#x5236;&#xFF0C;&#x65E0;&#x6CD5;&#x628A;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x76F4;&#x63A5;&#x5199;&#x5165; frame buffer&#xFF0C;&#x800C;&#x662F;&#x5148;&#x6682;&#x5B58;&#x5728;&#x53E6;&#x5916;&#x7684;&#x5185;&#x5B58;&#x533A;&#x57DF;&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x5199;&#x5165; frame buffer&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x88AB;&#x79F0;&#x4E4B;&#x4E3A;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150337.png" alt=""></p>
+<p>&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x5148;&#x7ECF;&#x8FC7;&#x4E86;&#x79BB;&#x5C4F; buffer&#xFF0C;&#x518D;&#x5230; frame buffer</p>
+<h2 id="cpu-&#x79BB;&#x5C4F;&#x6E32;&#x67D3;-">CPU&#x201D; &#x79BB;&#x5C4F;&#x6E32;&#x67D3; &#x201C;</h2>
+<p>&#x5927;&#x5BB6;&#x77E5;&#x9053;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728; UIView &#x4E2D;&#x5B9E;&#x73B0;&#x4E86; drawRect &#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x7B97;&#x5B83;&#x7684;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x90E8;&#x5B9E;&#x9645;&#x6CA1;&#x6709;&#x4EE3;&#x7801;&#xFF0C;&#x7CFB;&#x7EDF;&#x4E5F;&#x4F1A;&#x4E3A;&#x8FD9;&#x4E2A; view &#x7533;&#x8BF7;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x533A;&#x57DF;&#xFF0C;&#x7B49;&#x5F85; CoreGraphics &#x53EF;&#x80FD;&#x7684;&#x7ED8;&#x753B;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x7C7B;&#x4F3C;&#x8FD9;&#x79CD; &#x201C;&#x65B0;&#x5F00;&#x4E00;&#x5757; CGContext &#x6765;&#x753B;&#x56FE; &#x201C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6709;&#x5F88;&#x591A;&#x6587;&#x7AE0;&#x548C;&#x89C6;&#x9891;&#x4E5F;&#x79F0;&#x4E4B;&#x4E3A; &#x201C;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x201D;&#xFF08;&#x56E0;&#x4E3A;&#x50CF;&#x7D20;&#x6570;&#x636E;&#x662F;&#x6682;&#x65F6;&#x5B58;&#x5165;&#x4E86; CGContext&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x5230;&#x4E86; frame buffer&#xFF09;&#x3002;&#x8FDB;&#x4E00;&#x6B65;&#x6765;&#x8BF4;&#xFF0C;&#x5176;&#x5B9E;&#x6240;&#x6709; CPU &#x8FDB;&#x884C;&#x7684;&#x5149;&#x6805;&#x5316;&#x64CD;&#x4F5C;&#xFF08;&#x5982;&#x6587;&#x5B57;&#x6E32;&#x67D3;&#x3001;&#x56FE;&#x7247;&#x89E3;&#x7801;&#xFF09;&#xFF0C;&#x90FD;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x7ED8;&#x5236;&#x5230;&#x7531; GPU &#x638C;&#x7BA1;&#x7684; frame buffer&#xFF0C;&#x53EA;&#x80FD;&#x6682;&#x65F6;&#x5148;&#x653E;&#x5728;&#x53E6;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x4E4B;&#x4E2D;&#xFF0C;&#x8BF4;&#x8D77;&#x6765;&#x90FD;&#x5C5E;&#x4E8E; &#x201C;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x201D;&#x3002;</p>
+<p>&#x81EA;&#x7136;&#x6211;&#x4EEC;&#x4F1A;&#x8BA4;&#x4E3A;&#xFF0C;&#x56E0;&#x4E3A; CPU &#x4E0D;&#x64C5;&#x957F;&#x505A;&#x8FD9;&#x4EF6;&#x4E8B;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C3D;&#x91CF;&#x907F;&#x514D;&#x5B83;&#xFF0C;&#x5C31;&#x8BEF;&#x4EE5;&#x4E3A;&#x8FD9;&#x5C31;&#x662F;&#x9700;&#x8981;&#x907F;&#x514D;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7684;&#x539F;&#x56E0;&#x3002;&#x4F46;&#x662F;<a href="https://lobste.rs/s/ckm4uw/performance_minded_take_on_ios_design#c_itdkfh" target="_blank">&#x6839;&#x636E;&#x82F9;&#x679C;&#x5DE5;&#x7A0B;&#x5E08;&#x7684;&#x8BF4;&#x6CD5;</a>&#xFF0C;CPU &#x6E32;&#x67D3;&#x5E76;&#x975E;&#x771F;&#x6B63;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x3002;&#x53E6;&#x4E00;&#x4E2A;&#x8BC1;&#x636E;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684; view &#x5B9E;&#x73B0;&#x4E86; drawRect&#xFF0C;&#x6B64;&#x65F6;&#x6253;&#x5F00; Xcode &#x8C03;&#x8BD5;&#x7684; &#x201C;Color offscreen rendered yellow&#x201D; &#x5F00;&#x5173;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x8FD9;&#x7247;&#x533A;&#x57DF;&#x4E0D;&#x4F1A;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;&#x9EC4;&#x8272;&#xFF0C;&#x8BF4;&#x660E; Xcode &#x5E76;&#x4E0D;&#x8BA4;&#x4E3A;&#x8FD9;&#x5C5E;&#x4E8E;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x3002;</p>
+<p>&#x5176;&#x5B9E;&#x901A;&#x8FC7; CPU &#x6E32;&#x67D3;&#x5C31;&#x662F;&#x4FD7;&#x79F0;&#x7684; &#x201C;&#x8F6F;&#x4EF6;&#x6E32;&#x67D3;&#x201D;&#xFF0C;&#x800C;<strong>&#x771F;&#x6B63;&#x7684;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x53D1;&#x751F;&#x5728; GPU</strong>&#x3002;</p>
+<h2 id="gpu-&#x79BB;&#x5C4F;&#x6E32;&#x67D3;">GPU &#x79BB;&#x5C4F;&#x6E32;&#x67D3;</h2>
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x6E32;&#x67D3;&#x6D41;&#x6C34;&#x7EBF;&#x793A;&#x610F;&#x56FE;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4E3B;&#x8981;&#x7684;&#x6E32;&#x67D3;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x7531; CoreAnimation &#x7684; Render Server &#x6A21;&#x5757;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x663E;&#x5361;&#x9A71;&#x52A8;&#x6240;&#x63D0;&#x4F9B;&#x7684; OpenGL/Metal &#x63A5;&#x53E3;&#x6765;&#x6267;&#x884C;&#x7684;&#x3002;&#x901A;&#x5E38;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x5C42; layer&#xFF0C;Render Server &#x4F1A;&#x9075;&#x5FAA; &#x201C;<a href="https://en.wikipedia.org/wiki/Painter%27s_algorithm" target="_blank">&#x753B;&#x5BB6;&#x7B97;&#x6CD5;</a>&#x201D;&#xFF0C;&#x6309;&#x6B21;&#x5E8F;&#x8F93;&#x51FA;&#x5230; frame buffer&#xFF0C;&#x540E;&#x4E00;&#x5C42;&#x8986;&#x76D6;&#x524D;&#x4E00;&#x5C42;&#xFF0C;&#x5C31;&#x80FD;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x663E;&#x793A;&#x7ED3;&#x679C;&#xFF08;&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x4E0E;&#x4E00;&#x822C;&#x684C;&#x9762;&#x67B6;&#x6784;&#x4E0D;&#x540C;&#xFF0C;&#x5728; iOS &#x4E2D;&#xFF0C;&#x8BBE;&#x5907;&#x4E3B;&#x5B58;&#x548C; GPU &#x7684;&#x663E;&#x5B58;<a href="https://apple.stackexchange.com/questions/54977/how-much-gpu-memory-do-iphones-and-ipads-have" target="_blank">&#x5171;&#x4EAB;&#x7269;&#x7406;&#x5185;&#x5B58;</a>&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x7701;&#x53BB;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x5F00;&#x9500;&#xFF09;&#x3002;</p>
+<p><img src="https://miro.medium.com/max/600/1*Jl4ZS4Zy_p7cNg2NVjt-9A.png" alt=""></p>
+<p>&#x201D; &#x753B;&#x5BB6;&#x7B97;&#x6CD5; &#x201C;&#xFF0C;&#x628A;&#x6BCF;&#x4E00;&#x5C42;&#x4F9D;&#x6B21;&#x8F93;&#x51FA;&#x5230;&#x753B;&#x5E03;</p>
+<p>&#x7136;&#x800C;&#x6709;&#x4E9B;&#x573A;&#x666F;&#x5E76;&#x6CA1;&#x6709;&#x90A3;&#x4E48;&#x7B80;&#x5355;&#x3002;&#x4F5C;&#x4E3A; &#x201C;&#x753B;&#x5BB6;&#x201D; &#x7684; GPU &#x867D;&#x7136;&#x53EF;&#x4EE5;&#x4E00;&#x5C42;&#x4E00;&#x5C42;&#x5F80;&#x753B;&#x5E03;&#x4E0A;&#x8FDB;&#x884C;&#x8F93;&#x51FA;&#xFF0C;&#x4F46;&#x662F;&#x65E0;&#x6CD5;&#x5728;&#x67D0;&#x4E00;&#x5C42;&#x6E32;&#x67D3;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x56DE;&#x8FC7;&#x5934;&#x6765;&#x64E6;&#x9664; / &#x6539;&#x53D8;&#x5176;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x90E8;&#x5206;&#x2014;&#x2014;&#x56E0;&#x4E3A;&#x5728;&#x8FD9;&#x4E00;&#x5C42;&#x4E4B;&#x524D;&#x7684;&#x82E5;&#x5E72;&#x5C42; layer &#x50CF;&#x7D20;&#x6570;&#x636E;&#xFF0C;&#x5DF2;&#x7ECF;&#x5728;&#x6E32;&#x67D3;&#x4E2D;&#x88AB;&#x6C38;&#x4E45;&#x8986;&#x76D6;&#x4E86;&#x3002;&#x8FD9;&#x5C31;&#x610F;&#x5473;&#x7740;&#xFF0C;<strong>&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x5C42; layer&#xFF0C;&#x8981;&#x4E48;&#x80FD;&#x627E;&#x5230;&#x4E00;&#x79CD;&#x901A;&#x8FC7;&#x5355;&#x6B21;&#x904D;&#x5386;&#x5C31;&#x80FD;&#x5B8C;&#x6210;&#x6E32;&#x67D3;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x8981;&#x4E48;&#x5C31;&#x4E0D;&#x5F97;&#x4E0D;&#x53E6;&#x5F00;&#x4E00;&#x5757;&#x5185;&#x5B58;&#xFF0C;&#x501F;&#x52A9;&#x8FD9;&#x4E2A;&#x4E34;&#x65F6;&#x4E2D;&#x8F6C;&#x533A;&#x57DF;&#x6765;&#x5B8C;&#x6210;&#x4E00;&#x4E9B;&#x66F4;&#x590D;&#x6742;&#x7684;&#x3001;&#x591A;&#x6B21;&#x7684;&#x4FEE;&#x6539; / &#x526A;&#x88C1;&#x64CD;&#x4F5C;</strong>&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8981;&#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x5706;&#x89D2;&#x5E76;&#x526A;&#x5207;&#x5706;&#x89D2;&#x4EE5;&#x5916;&#x5185;&#x5BB9;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x3002;&#x6211;&#x7684;&#x731C;&#x60F3;&#x662F;&#xFF08;&#x5982;&#x679C;&#x8BFB;&#x8005;&#x4E2D;&#x6709;&#x56FE;&#x5F62;&#x5B66;&#x4E13;&#x5BB6;&#x5E0C;&#x671B;&#x80FD;&#x6307;&#x6B63;&#xFF09;&#xFF1A;</p>
+<ul>
+<li>&#x5C06;&#x4E00;&#x4E2A; layer &#x7684;&#x5185;&#x5BB9;&#x88C1;&#x526A;&#x6210;&#x5706;&#x89D2;&#xFF0C;&#x53EF;&#x80FD;&#x4E0D;&#x5B58;&#x5728;&#x4E00;&#x6B21;&#x904D;&#x5386;&#x5C31;&#x80FD;&#x5B8C;&#x6210;&#x7684;&#x65B9;&#x6CD5;</li>
+<li>&#x5BB9;&#x5668;&#x7684;&#x5B50; layer &#x56E0;&#x4E3A;&#x7236;&#x5BB9;&#x5668;&#x6709;&#x5706;&#x89D2;&#xFF0C;&#x90A3;&#x4E48;&#x4E5F;&#x4F1A;&#x9700;&#x8981;&#x88AB;&#x88C1;&#x526A;&#xFF0C;&#x800C;&#x8FD9;&#x65F6;&#x5B83;&#x4EEC;&#x8FD8;&#x5728;&#x6E32;&#x67D3;&#x961F;&#x5217;&#x4E2D;&#x6392;&#x961F;&#xFF0C;&#x5C1A;&#x672A;&#x88AB;&#x7EC4;&#x5408;&#x5230;&#x4E00;&#x5757;&#x753B;&#x5E03;&#x4E0A;&#xFF0C;&#x81EA;&#x7136;&#x4E5F;&#x65E0;&#x6CD5;&#x7EDF;&#x4E00;&#x88C1;&#x526A;</li>
+</ul>
+<p>&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x5F97;&#x4E0D;&#x5F00;&#x8F9F;&#x4E00;&#x5757;&#x72EC;&#x7ACB;&#x4E8E; frame buffer &#x7684;&#x7A7A;&#x767D;&#x5185;&#x5B58;&#xFF0C;&#x5148;&#x628A;&#x5BB9;&#x5668;&#x4EE5;&#x53CA;&#x5176;&#x6240;&#x6709;&#x5B50; layer &#x4F9D;&#x6B21;&#x753B;&#x597D;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x56DB;&#x4E2A;&#x89D2; &#x201C;&#x526A;&#x201D; &#x6210;&#x5706;&#x5F62;&#xFF0C;&#x518D;&#x628A;&#x7ED3;&#x679C;&#x753B;&#x5230; frame buffer &#x4E2D;&#x3002;&#x8FD9;&#x5C31;&#x662F; GPU &#x7684;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x3002;</p>
+<h2 id="&#x5E38;&#x89C1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x573A;&#x666F;&#x5206;&#x6790;">&#x5E38;&#x89C1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x573A;&#x666F;&#x5206;&#x6790;</h2>
+<ul>
+<li>cornerRadius+clipsToBounds&#xFF0C;&#x539F;&#x56E0;&#x5C31;&#x5982;&#x540C;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#xFF0C;&#x4E0D;&#x5F97;&#x5DF2;&#x53EA;&#x80FD;&#x53E6;&#x5F00;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x6765;&#x64CD;&#x4F5C;&#x3002;&#x800C;&#x5982;&#x679C;&#x53EA;&#x662F;&#x8BBE;&#x7F6E; cornerRadius&#xFF08;&#x5982;&#x4E0D;&#x9700;&#x8981;&#x526A;&#x5207;&#x5185;&#x5BB9;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5E26;&#x5706;&#x89D2;&#x7684;&#x8FB9;&#x6846;&#xFF09;&#xFF0C;&#x6216;&#x8005;&#x53EA;&#x662F;&#x9700;&#x8981;&#x88C1;&#x6389;&#x77E9;&#x5F62;&#x533A;&#x57DF;&#x4EE5;&#x5916;&#x7684;&#x5185;&#x5BB9;&#xFF08;&#x867D;&#x7136;&#x4E5F;&#x662F;&#x526A;&#x5207;&#xFF0C;&#x4F46;&#x662F;&#x7A0D;&#x5FAE;&#x60F3;&#x4E00;&#x4E0B;&#x5C31;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;&#x5BF9;&#x4E8E;&#x7EAF;&#x77E9;&#x5F62;&#x800C;&#x8A00;&#xFF0C;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x7B97;&#x6CD5;&#x4F3C;&#x4E4E;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x53E6;&#x5F00;&#x5185;&#x5B58;&#xFF09;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x3002;&#x5173;&#x4E8E;&#x526A;&#x5207;&#x5706;&#x89D2;&#x7684;&#x6027;&#x80FD;&#x4F18;&#x5316;&#xFF0C;&#x6839;&#x636E;&#x573A;&#x666F;&#x4E0D;&#x540C;&#x6709;&#x51E0;&#x4E2A;&#x65B9;&#x6848;&#x53EF;&#x4F9B;&#x9009;&#x62E9;&#xFF0C;&#x975E;&#x5E38;&#x63A8;&#x8350;&#x9605;&#x8BFB; <a href="https://texturegroup.org/docs/corner-rounding.html" target="_blank">AsyncDisplayKit &#x4E2D;&#x7684;&#x4E00;&#x7BC7;&#x6587;&#x6863;</a>&#x3002;</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150358.png" alt=""></p>
+<p>ASDK &#x4E2D;&#x5BF9;&#x4E8E;&#x5982;&#x4F55;&#x9009;&#x62E9;&#x5706;&#x89D2;&#x6E32;&#x67D3;&#x7B56;&#x7565;&#x7684;&#x6D41;&#x7A0B;&#x56FE;&#xFF0C;&#x975E;&#x5E38;&#x5B9E;&#x7528;</p>
+<ul>
+<li>shadow&#xFF0C;&#x5176;&#x539F;&#x56E0;&#x5728;&#x4E8E;&#xFF0C;&#x867D;&#x7136; layer &#x672C;&#x8EAB;&#x662F;&#x4E00;&#x5757;&#x77E9;&#x5F62;&#x533A;&#x57DF;&#xFF0C;&#x4F46;&#x662F;&#x9634;&#x5F71;&#x7684;&#x5F62;&#x72B6;&#x5374;&#x672A;&#x5FC5;&#x662F;&#x77E9;&#x5F62;&#xFF0C;&#x800C;&#x662F;&#x4E0E; layer &#x4E2D;&#x201D; &#x975E;&#x900F;&#x660E;&#x533A;&#x57DF; &#x201C;&#x7684;&#x5F62;&#x72B6;&#x4E00;&#x81F4;&#xFF0C;&#x8FD9;&#x5C31;&#x610F;&#x5473;&#x7740;&#x9700;&#x8981;&#x5148;&#x77E5;&#x9053; layer &#x4E0E;&#x5176;&#x6240;&#x6709;&#x5B50;&#x7ED3;&#x6784;&#x7EC4;&#x5408;&#x4E4B;&#x540E;&#x7684;&#x5F62;&#x72B6;&#x3002;&#x66F4;&#x5173;&#x952E;&#x7684;&#x662F;&#xFF0C;&#x9634;&#x5F71;&#x9700;&#x8981;&#x663E;&#x793A;&#x5728;&#x6240;&#x6709; layer &#x5185;&#x5BB9;&#x7684;&#x4E0B;&#x65B9;&#xFF0C;&#x90A3;&#x4E48;&#x6839;&#x636E;&#x753B;&#x5BB6;&#x7B97;&#x6CD5;&#xFF0C;&#x4E0B;&#x5C42;&#x5FC5;&#x987B;&#x5148;&#x88AB;&#x6E32;&#x67D3;&#xFF0C;&#x800C;<strong>&#x6B64;&#x65F6;&#x9634;&#x5F71;&#x7684;&#x672C;&#x4F53;&#xFF08;layer &#x548C;&#x5176;&#x5B50; layer&#xFF09;&#x90FD;&#x8FD8;&#x6CA1;&#x6709;&#x88AB;&#x7EC4;&#x5408;&#x5230;&#x4E00;&#x8D77;&#xFF0C;&#x600E;&#x4E48;&#x53EF;&#x80FD;&#x5728;&#x7B2C;&#x4E00;&#x6B65;&#x5C31;&#x753B;&#x51FA;&#x53EA;&#x6709;&#x5B8C;&#x6210;&#x6700;&#x540E;&#x4E00;&#x6B65;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x77E5;&#x9053;&#x7684;&#x5F62;&#x72B6;&#x5462;</strong>&#xFF1F;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x53C8;&#x53EA;&#x80FD;&#x53E6;&#x5916;&#x7533;&#x8BF7;&#x4E00;&#x5757;&#x5185;&#x5B58;&#xFF0C;&#x628A;&#x672C;&#x4F53;&#x5185;&#x5BB9;&#x90FD;&#x5148;&#x753B;&#x597D;&#xFF0C;&#x518D;&#x6839;&#x636E;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x7684;&#x5F62;&#x72B6;&#xFF0C;&#x6DFB;&#x52A0;&#x9634;&#x5F71;&#x5230; frame buffer&#xFF0C;&#x6700;&#x540E;&#x628A;&#x5185;&#x5BB9;&#x753B;&#x4E0A;&#x53BB;&#xFF08;&#x8FD9;&#x53EA;&#x662F;&#x6211;&#x7684;&#x731C;&#x6D4B;&#xFF0C;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x53EF;&#x80FD;&#x66F4;&#x590D;&#x6742;&#xFF09;&#x3002;&#x4E0D;&#x8FC7;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x9884;&#x5148;&#x544A;&#x8BC9; CoreAnimation&#xFF08;&#x901A;&#x8FC7; shadowPath &#x5C5E;&#x6027;&#xFF09;&#x9634;&#x5F71;&#x7684;&#x51E0;&#x4F55;&#x5F62;&#x72B6;&#xFF0C;&#x90A3;&#x4E48;&#x9634;&#x5F71;&#x5F53;&#x7136;&#x53EF;&#x4EE5;&#x5148;&#x88AB;&#x72EC;&#x7ACB;&#x6E32;&#x67D3;&#x51FA;&#x6765;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x4F9D;&#x8D56; layer &#x672C;&#x4F53;&#xFF0C;&#x4E5F;&#x5C31;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x4E86;&#x3002;</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150409.jpg" alt=""></p>
+<p>&#x9634;&#x5F71;&#x4F1A;&#x4F5C;&#x7528;&#x5728;&#x6240;&#x6709;&#x5B50; layer &#x6240;&#x7EC4;&#x6210;&#x7684;&#x5F62;&#x72B6;&#x4E0A;&#xFF0C;&#x90A3;&#x5C31;&#x53EA;&#x80FD;&#x7B49;&#x5168;&#x90E8;&#x5B50; layer &#x753B;&#x5B8C;&#x624D;&#x80FD;&#x5F97;&#x5230;</p>
+<ul>
+<li>group opacity&#xFF0C;&#x5176;&#x5B9E;&#x4ECE;&#x540D;&#x5B57;&#x5C31;&#x53EF;&#x4EE5;&#x731C;&#x5230;&#xFF0C;alpha &#x5E76;&#x4E0D;&#x662F;&#x5206;&#x522B;&#x5E94;&#x7528;&#x5728;&#x6BCF;&#x4E00;&#x5C42;&#x4E4B;&#x4E0A;&#xFF0C;&#x800C;&#x662F;&#x53EA;&#x6709;&#x5230;&#x6574;&#x4E2A; layer &#x6811;&#x753B;&#x5B8C;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x7EDF;&#x4E00;&#x52A0;&#x4E0A; alpha&#xFF0C;&#x6700;&#x540E;&#x548C;&#x5E95;&#x4E0B;&#x5176;&#x4ED6; layer &#x7684;&#x50CF;&#x7D20;&#x8FDB;&#x884C;&#x7EC4;&#x5408;&#x3002;&#x663E;&#x7136;&#x4E5F;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x4E00;&#x6B21;&#x904D;&#x5386;&#x5C31;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x3002;&#x5C06;&#x4E00;&#x5BF9;&#x84DD;&#x8272;&#x548C;&#x7EA2;&#x8272; layer &#x53E0;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x7236; layer &#x4E0A;&#x8BBE;&#x7F6E; opacity=0.5&#xFF0C;&#x5E76;&#x590D;&#x5236;&#x4E00;&#x4EFD;&#x5728;&#x65C1;&#x8FB9;&#x4F5C;&#x5BF9;&#x6BD4;&#x3002;&#x5DE6;&#x8FB9;&#x5173;&#x95ED; group opacity&#xFF0C;&#x53F3;&#x8FB9;&#x4FDD;&#x6301;&#x9ED8;&#x8BA4;&#xFF08;&#x4ECE; iOS7 &#x5F00;&#x59CB;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x663E;&#x5F0F;&#x6307;&#x5B9A;&#xFF0C;group opacity &#x4F1A;&#x9ED8;&#x8BA4;&#x6253;&#x5F00;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5F00; offscreen rendering &#x7684;&#x8C03;&#x8BD5;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x53F3;&#x8FB9;&#x7684;&#x90A3;&#x4E00;&#x7EC4;&#x786E;&#x5B9E;&#x662F;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x4E86;&#x3002;</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150417.jpg" alt=""></p>
+<p>&#x540C;&#x6837;&#x7684;&#x4E24;&#x4E2A; view&#xFF0C;&#x53F3;&#x8FB9;&#x6253;&#x5F00; group opacity&#xFF08;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#xFF09;&#x7684;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; Offscreen rendering</p>
+<ul>
+<li>mask&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053; mask &#x662F;&#x5E94;&#x7528;&#x5728; layer &#x548C;&#x5176;&#x6240;&#x6709;&#x5B50; layer &#x7684;&#x7EC4;&#x5408;&#x4E4B;&#x4E0A;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x53EF;&#x80FD;&#x5E26;&#x6709;&#x900F;&#x660E;&#x5EA6;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x5B9E;&#x548C; group opacity &#x7684;&#x539F;&#x7406;&#x7C7B;&#x4F3C;&#xFF0C;&#x4E0D;&#x5F97;&#x4E0D;&#x5728;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x4E2D;&#x5B8C;&#x6210;&#x3002;</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150427.png" alt=""></p>
+<p>WWDC &#x4E2D;&#x82F9;&#x679C;&#x7684;&#x89E3;&#x91CA;&#xFF0C;mask &#x9700;&#x8981;&#x904D;&#x5386;&#x81F3;&#x5C11;&#x4E09;&#x6B21;</p>
+<ul>
+<li>UIBlurEffect&#xFF0C;&#x540C;&#x6837;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x4E00;&#x6B21;&#x904D;&#x5386;&#x5B8C;&#x6210;&#xFF0C;&#x5176;&#x539F;&#x7406;&#x5728; WWDC &#x4E2D;&#x63D0;&#x5230;&#xFF1A;</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150442.png" alt=""></p>
+<ul>
+<li>&#x5176;&#x4ED6;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#xFF0C;&#x7C7B;&#x4F3C; allowsEdgeAntialiasing &#x7B49;&#x7B49;&#x4E5F;&#x53EF;&#x80FD;&#x4F1A;&#x89E6;&#x53D1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#xFF0C;&#x539F;&#x7406;&#x4E5F;&#x90FD;&#x662F;&#x7C7B;&#x4F3C;&#xFF1A;&#x5982;&#x679C;&#x4F60;&#x65E0;&#x6CD5;&#x4EC5;&#x4EC5;&#x4F7F;&#x7528; frame buffer &#x6765;&#x753B;&#x51FA;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#xFF0C;&#x90A3;&#x5C31;&#x53EA;&#x80FD;&#x53E6;&#x5F00;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x6765;&#x50A8;&#x5B58;&#x4E2D;&#x95F4;&#x7ED3;&#x679C;&#x3002;&#x8FD9;&#x4E9B;&#x539F;&#x7406;&#x5E76;&#x4E0D;&#x795E;&#x79D8;&#x3002;</li>
+</ul>
+<h2 id="gpu-&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7684;&#x6027;&#x80FD;&#x5F71;&#x54CD;">GPU &#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7684;&#x6027;&#x80FD;&#x5F71;&#x54CD;</h2>
+<p>GPU &#x7684;&#x64CD;&#x4F5C;&#x662F;&#x9AD8;&#x5EA6;&#x6D41;&#x6C34;&#x7EBF;&#x5316;&#x7684;&#x3002;&#x672C;&#x6765;&#x6240;&#x6709;&#x8BA1;&#x7B97;&#x5DE5;&#x4F5C;&#x90FD;&#x5728;&#x6709;&#x6761;&#x4E0D;&#x7D0A;&#x5730;&#x6B63;&#x5728;&#x5411; frame buffer &#x8F93;&#x51FA;&#xFF0C;&#x6B64;&#x65F6;&#x7A81;&#x7136;&#x6536;&#x5230;&#x6307;&#x4EE4;&#xFF0C;&#x9700;&#x8981;&#x8F93;&#x51FA;&#x5230;&#x53E6;&#x4E00;&#x5757;&#x5185;&#x5B58;&#xFF0C;&#x90A3;&#x4E48;&#x6D41;&#x6C34;&#x7EBF;&#x4E2D;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x7684;&#x4E00;&#x5207;&#x90FD;&#x4E0D;&#x5F97;&#x4E0D;&#x88AB;&#x4E22;&#x5F03;&#xFF0C;&#x5207;&#x6362;&#x5230;&#x53EA;&#x80FD;&#x670D;&#x52A1;&#x4E8E;&#x6211;&#x4EEC;&#x5F53;&#x524D;&#x7684; &#x201C;&#x5207;&#x5706;&#x89D2;&#x201D; &#x64CD;&#x4F5C;&#x3002;&#x7B49;&#x5230;&#x5B8C;&#x6210;&#x4EE5;&#x540E;&#x518D;&#x6B21;&#x6E05;&#x7A7A;&#xFF0C;&#x518D;&#x56DE;&#x5230;&#x5411; frame buffer &#x8F93;&#x51FA;&#x7684;&#x6B63;&#x5E38;&#x6D41;&#x7A0B;&#x3002;</p>
+<p>&#x5728; tableView &#x6216;&#x8005; collectionView &#x4E2D;&#xFF0C;&#x6EDA;&#x52A8;&#x7684;&#x6BCF;&#x4E00;&#x5E27;&#x53D8;&#x5316;&#x90FD;&#x4F1A;&#x89E6;&#x53D1;&#x6BCF;&#x4E2A; cell &#x7684;&#x91CD;&#x65B0;&#x7ED8;&#x5236;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x65E6;&#x5B58;&#x5728;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#xFF0C;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x5C31;&#x4F1A;&#x6BCF;&#x79D2;&#x53D1;&#x751F; 60 &#x6B21;&#xFF0C;&#x5E76;&#x4E14;&#x5F88;&#x53EF;&#x80FD;&#x6BCF;&#x4E00;&#x5E27;&#x6709;&#x51E0;&#x5341;&#x5F20;&#x7684;&#x56FE;&#x7247;&#x8981;&#x6C42;&#x8FD9;&#x4E48;&#x505A;&#xFF0C;&#x5BF9;&#x4E8E; GPU &#x7684;&#x6027;&#x80FD;&#x51B2;&#x51FB;&#x53EF;&#x60F3;&#x800C;&#x77E5;&#xFF08;GPU &#x975E;&#x5E38;&#x64C5;&#x957F;&#x5927;&#x89C4;&#x6A21;&#x5E76;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x60F3;&#x9891;&#x7E41;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x663E;&#x7136;&#x4E0D;&#x5728;&#x5176;&#x8BBE;&#x8BA1;&#x8003;&#x91CF;&#x4E4B;&#x4E2D;&#xFF09;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150450.png" alt=""></p>
+<p>&#x6BCF; 16ms &#x5C31;&#x9700;&#x8981;&#x6839;&#x636E;&#x5F53;&#x524D;&#x6EDA;&#x52A8;&#x4F4D;&#x7F6E;&#x6E32;&#x67D3;&#x6574;&#x4E2A; tableView&#xFF0C;&#x662F;&#x4E2A;&#x4E0D;&#x5C0F;&#x7684;&#x6027;&#x80FD;&#x6311;&#x6218;</p>
+<h2 id="&#x5584;&#x7528;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;">&#x5584;&#x7528;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;</h2>
+<p>&#x5C3D;&#x7BA1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x5F00;&#x9500;&#x5F88;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x6211;&#x4EEC;&#x65E0;&#x6CD5;&#x907F;&#x514D;&#x5B83;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x60F3;&#x529E;&#x6CD5;&#x628A;&#x6027;&#x80FD;&#x5F71;&#x54CD;&#x964D;&#x5230;&#x6700;&#x4F4E;&#x3002;&#x4F18;&#x5316;&#x601D;&#x8DEF;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#xFF1A;&#x65E2;&#x7136;&#x5DF2;&#x7ECF;&#x82B1;&#x4E86;&#x4E0D;&#x5C11;&#x7CBE;&#x529B;&#x628A;&#x56FE;&#x7247;&#x88C1;&#x51FA;&#x4E86;&#x5706;&#x89D2;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x80FD;&#x628A;&#x7ED3;&#x679C;&#x7F13;&#x5B58;&#x4E0B;&#x6765;&#xFF0C;&#x90A3;&#x4E48;&#x4E0B;&#x4E00;&#x5E27;&#x6E32;&#x67D3;&#x5C31;&#x53EF;&#x4EE5;&#x590D;&#x7528;&#x8FD9;&#x4E2A;&#x6210;&#x679C;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x91CD;&#x65B0;&#x753B;&#x4E00;&#x904D;&#x4E86;&#x3002;</p>
+<p>CALayer &#x4E3A;&#x8FD9;&#x4E2A;&#x65B9;&#x6848;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x5E94;&#x7684;&#x89E3;&#x6CD5;&#xFF1A;shouldRasterize&#x3002;&#x4E00;&#x65E6;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A; true&#xFF0C;Render Server &#x5C31;&#x4F1A;&#x5F3A;&#x5236;&#x628A; layer &#x7684;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#xFF08;&#x5305;&#x62EC;&#x5176;&#x5B50; layer&#xFF0C;&#x4EE5;&#x53CA;&#x5706;&#x89D2;&#x3001;&#x9634;&#x5F71;&#x3001;group opacity &#x7B49;&#x7B49;&#xFF09;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x5728;&#x4E0B;&#x4E00;&#x5E27;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x88AB;&#x590D;&#x7528;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x518D;&#x6B21;&#x89E6;&#x53D1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x3002;&#x6709;&#x51E0;&#x4E2A;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>shouldRasterize &#x7684;&#x4E3B;&#x65E8;&#x5728;&#x4E8E;<strong>&#x964D;&#x4F4E;&#x6027;&#x80FD;&#x635F;&#x5931;&#xFF0C;&#x4F46;&#x603B;&#x662F;&#x81F3;&#x5C11;&#x4F1A;&#x89E6;&#x53D1;&#x4E00;&#x6B21;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;</strong>&#x3002;&#x5982;&#x679C;&#x4F60;&#x7684; layer &#x672C;&#x6765;&#x5E76;&#x4E0D;&#x590D;&#x6742;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x5706;&#x89D2;&#x9634;&#x5F71;&#x7B49;&#x7B49;&#xFF0C;&#x6253;&#x5F00;&#x8FD9;&#x4E2A;&#x5F00;&#x5173;&#x53CD;&#x800C;&#x4F1A;&#x589E;&#x52A0;&#x4E00;&#x6B21;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;</li>
+<li>&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7F13;&#x5B58;&#x6709;&#x7A7A;&#x95F4;&#x4E0A;&#x9650;&#xFF0C;&#x6700;&#x591A;&#x4E0D;&#x8D85;&#x8FC7;&#x5C4F;&#x5E55;&#x603B;&#x50CF;&#x7D20;&#x7684; 2.5 &#x500D;&#x5927;&#x5C0F;</li>
+<li>&#x4E00;&#x65E6;&#x7F13;&#x5B58;&#x8D85;&#x8FC7; 100ms &#x6CA1;&#x6709;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x88AB;&#x4E22;&#x5F03;</li>
+<li>layer &#x7684;&#x5185;&#x5BB9;&#xFF08;&#x5305;&#x62EC;&#x5B50; layer&#xFF09;&#x5FC5;&#x987B;&#x662F;&#x9759;&#x6001;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x65E6;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF08;&#x5982; resize&#xFF0C;&#x52A8;&#x753B;&#xFF09;&#xFF0C;&#x4E4B;&#x524D;&#x8F9B;&#x82E6;&#x5904;&#x7406;&#x5F97;&#x5230;&#x7684;&#x7F13;&#x5B58;&#x5C31;&#x5931;&#x6548;&#x4E86;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4EF6;&#x4E8B;&#x9891;&#x7E41;&#x53D1;&#x751F;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53C8;&#x56DE;&#x5230;&#x4E86; &#x201C;&#x6BCF;&#x4E00;&#x5E27;&#x90FD;&#x9700;&#x8981;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x201D; &#x7684;&#x60C5;&#x666F;&#xFF0C;&#x800C;&#x8FD9;&#x6B63;&#x662F;&#x5F00;&#x53D1;&#x8005;&#x9700;&#x8981;&#x6781;&#x529B;&#x907F;&#x514D;&#x7684;&#x3002;&#x9488;&#x5BF9;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;Xcode &#x63D0;&#x4F9B;&#x4E86; &#x201C;Color Hits Green and Misses Red&#x201D; &#x7684;&#x9009;&#x9879;&#xFF0C;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x67E5;&#x770B;&#x7F13;&#x5B58;&#x7684;&#x4F7F;&#x7528;&#x662F;&#x5426;&#x7B26;&#x5408;&#x9884;&#x671F;</li>
+<li>&#x5176;&#x5B9E;&#x9664;&#x4E86;&#x89E3;&#x51B3;&#x591A;&#x6B21;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7684;&#x5F00;&#x9500;&#xFF0C;shouldRasterize &#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x573A;&#x666F;&#x4E2D;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF1A;&#x5982;&#x679C; layer &#x7684;&#x5B50;&#x7ED3;&#x6784;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x6E32;&#x67D3;&#x4E00;&#x6B21;&#x6240;&#x9700;&#x65F6;&#x95F4;&#x8F83;&#x957F;&#xFF0C;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x6253;&#x5F00;&#x8FD9;&#x4E2A;&#x5F00;&#x5173;&#xFF0C;&#x628A; layer &#x7ED8;&#x5236;&#x5230;&#x4E00;&#x5757;&#x7F13;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x63A5;&#x4E0B;&#x6765;&#x590D;&#x7528;&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x6BCF;&#x6B21;&#x90FD;&#x91CD;&#x65B0;&#x7ED8;&#x5236;&#x6574;&#x4E2A; layer &#x6811;&#x4E86;</li>
+</ul>
+<h2 id="&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9700;&#x8981;-cpu-&#x6E32;&#x67D3;">&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9700;&#x8981; CPU &#x6E32;&#x67D3;</h2>
+<p>&#x6E32;&#x67D3;&#x6027;&#x80FD;&#x7684;&#x8C03;&#x4F18;&#xFF0C;&#x5176;&#x5B9E;&#x59CB;&#x7EC8;&#x662F;&#x5728;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;&#xFF1A;<strong>&#x5E73;&#x8861; CPU &#x548C; GPU &#x7684;&#x8D1F;&#x8F7D;&#xFF0C;&#x8BA9;&#x4ED6;&#x4EEC;&#x5C3D;&#x91CF;&#x505A;&#x5404;&#x81EA;&#x6700;&#x64C5;&#x957F;&#x7684;&#x5DE5;&#x4F5C;</strong>&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150501.png" alt=""></p>
+<p>&#x5E73;&#x8861; CPU &#x548C; GPU &#x7684;&#x8D1F;&#x8F7D;</p>
+<p>&#x7EDD;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F97;&#x76CA;&#x4E8E; GPU &#x9488;&#x5BF9;&#x56FE;&#x5F62;&#x5904;&#x7406;&#x7684;&#x4F18;&#x5316;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x4F1A;&#x503E;&#x5411;&#x4E8E;&#x8BA9; GPU &#x6765;&#x5B8C;&#x6210;&#x6E32;&#x67D3;&#x4EFB;&#x52A1;&#xFF0C;&#x800C;&#x7ED9; CPU &#x7559;&#x51FA;&#x8DB3;&#x591F;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x5404;&#x79CD;&#x5404;&#x6837;&#x590D;&#x6742;&#x7684; App &#x903B;&#x8F91;&#x3002;&#x4E3A;&#x6B64; Core Animation &#x505A;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x5C3D;&#x91CF;&#x628A;&#x6E32;&#x67D3;&#x5DE5;&#x4F5C;&#x8F6C;&#x6362;&#x6210;&#x9002;&#x5408; GPU &#x5904;&#x7406;&#x7684;&#x5F62;&#x5F0F;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x6240;&#x8C13;&#x7684;&#x786C;&#x4EF6;&#x52A0;&#x901F;&#xFF0C;&#x5982; layer composition&#xFF0C;&#x8BBE;&#x7F6E; backgroundColor &#x7B49;&#x7B49;&#xFF09;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x4E00;&#x4E9B;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x6587;&#x5B57;&#xFF08;CoreText &#x4F7F;&#x7528; CoreGraphics &#x6E32;&#x67D3;&#xFF09;&#x548C;&#x56FE;&#x7247;&#xFF08;ImageIO&#xFF09;&#x6E32;&#x67D3;&#xFF0C;&#x7531;&#x4E8E; GPU &#x5E76;&#x4E0D;&#x64C5;&#x957F;&#x505A;&#x8FD9;&#x4E9B;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E0D;&#x5F97;&#x4E0D;&#x5148;&#x7531; CPU &#x6765;&#x5904;&#x7406;&#x597D;&#x4EE5;&#x540E;&#xFF0C;&#x518D;&#x628A;&#x7ED3;&#x679C;&#x4F5C;&#x4E3A; texture &#x4F20;&#x7ED9; GPU&#x3002;&#x9664;&#x6B64;&#x4EE5;&#x5916;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x4E5F;&#x4F1A;&#x9047;&#x5230; GPU &#x5B9E;&#x5728;&#x5FD9;&#x4E0D;&#x8FC7;&#x6765;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x800C; CPU &#x76F8;&#x5BF9;&#x7A7A;&#x95F2;&#xFF08;GPU &#x74F6;&#x9888;&#xFF09;&#xFF0C;&#x8FD9;&#x65F6;&#x53EF;&#x4EE5;&#x8BA9; CPU &#x5206;&#x62C5;&#x4E00;&#x90E8;&#x5206;&#x5DE5;&#x4F5C;&#xFF0C;&#x63D0;&#x9AD8;&#x6574;&#x4F53;&#x6548;&#x7387;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150514.png" alt=""></p>
+<p>&#x6765;&#x81EA; WWDC18 session 221&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230; Core Text &#x57FA;&#x4E8E; Core Graphics</p>
+<p>&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x4F8B;&#x5B50;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F1A;&#x4F7F;&#x7528; CoreGraphics &#x7ED9;&#x56FE;&#x7247;&#x52A0;&#x4E0A;&#x5706;&#x89D2;&#xFF08;&#x5C06;&#x56FE;&#x7247;&#x4E2D;&#x5706;&#x89D2;&#x4EE5;&#x5916;&#x7684;&#x90E8;&#x5206;&#x6E32;&#x67D3;&#x6210;&#x900F;&#x660E;&#xFF09;&#x3002;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x5168;&#x90E8;&#x662F;&#x7531; CPU &#x5B8C;&#x6210;&#x7684;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x65E2;&#x7136;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5F97;&#x5230;&#x4E86;&#x60F3;&#x8981;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x53E6;&#x5916;&#x7ED9;&#x56FE;&#x7247;&#x5BB9;&#x5668;&#x8BBE;&#x7F6E; cornerRadius&#x3002;&#x53E6;&#x4E00;&#x4E2A;&#x597D;&#x5904;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7075;&#x6D3B;&#x5730;&#x63A7;&#x5236;&#x88C1;&#x526A;&#x548C;&#x7F13;&#x5B58;&#x7684;&#x65F6;&#x673A;&#xFF0C;&#x5DE7;&#x5999;&#x907F;&#x5F00; CPU &#x548C; GPU &#x6700;&#x7E41;&#x5FD9;&#x7684;&#x65F6;&#x6BB5;&#xFF0C;&#x8FBE;&#x5230;&#x5E73;&#x6ED1;&#x6027;&#x80FD;&#x6CE2;&#x52A8;&#x7684;&#x76EE;&#x7684;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6709;&#x51E0;&#x4E2A;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x6E32;&#x67D3;&#x4E0D;&#x662F; CPU &#x7684;&#x5F3A;&#x9879;&#xFF0C;&#x8C03;&#x7528; CoreGraphics &#x4F1A;&#x6D88;&#x8017;&#x5176;&#x76F8;&#x5F53;&#x4E00;&#x90E8;&#x5206;&#x8BA1;&#x7B97;&#x65F6;&#x95F4;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x4EEC;&#x4E5F;&#x4E0D;&#x613F;&#x610F;&#x56E0;&#x6B64;&#x963B;&#x585E;&#x7528;&#x6237;&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x822C;&#x6765;&#x8BF4; CPU &#x6E32;&#x67D3;&#x90FD;&#x5728;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x5B8C;&#x6210;&#xFF08;&#x8FD9;&#x4E5F;&#x662F; AsyncDisplayKit &#x7684;&#x4E3B;&#x8981;&#x601D;&#x60F3;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x56DE;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0A;&#xFF0C;&#x628A;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x4F20;&#x56DE; CoreAnimation&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x591A;&#x7EBF;&#x7A0B;&#x95F4;&#x6570;&#x636E;&#x540C;&#x6B65;&#x4F1A;&#x589E;&#x52A0;&#x4E00;&#x5B9A;&#x7684;&#x590D;&#x6742;&#x5EA6;</li>
+<li>&#x540C;&#x6837;&#x56E0;&#x4E3A; CPU &#x6E32;&#x67D3;&#x901F;&#x5EA6;&#x4E0D;&#x591F;&#x5FEB;&#xFF0C;&#x56E0;&#x6B64;&#x53EA;&#x9002;&#x5408;&#x6E32;&#x67D3;&#x9759;&#x6001;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x6587;&#x5B57;&#x3001;&#x56FE;&#x7247;&#xFF08;&#x60F3;&#x8C61;&#x4E00;&#x4E0B;&#x6CA1;&#x6709;&#x786C;&#x4EF6;&#x52A0;&#x901F;&#x7684;&#x89C6;&#x9891;&#x89E3;&#x7801;&#xFF0C;&#x6027;&#x80FD;&#x60E8;&#x4E0D;&#x5FCD;&#x7779;&#xFF09;</li>
+<li>&#x4F5C;&#x4E3A;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x7684; bitmap &#x6570;&#x636E;&#x91CF;&#x8F83;&#x5927;&#xFF08;&#x5F62;&#x5F0F;&#x4E0A;&#x4E00;&#x822C;&#x4E3A;&#x89E3;&#x7801;&#x540E;&#x7684; UIImage&#xFF09;&#xFF0C;&#x6D88;&#x8017;&#x5185;&#x5B58;&#x8F83;&#x591A;&#xFF0C;&#x6240;&#x4EE5;&#x5E94;&#x8BE5;&#x5728;&#x4F7F;&#x7528;&#x5B8C;&#x53CA;&#x65F6;&#x91CA;&#x653E;&#xFF0C;&#x5E76;&#x5728;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x91CD;&#x65B0;&#x751F;&#x6210;&#xFF0C;&#x5426;&#x5219;&#x5F88;&#x5BB9;&#x6613;&#x5BFC;&#x81F4; OOM</li>
+<li>&#x5982;&#x679C;&#x4F60;&#x9009;&#x62E9;&#x4F7F;&#x7528; CPU &#x6765;&#x505A;&#x6E32;&#x67D3;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x6CA1;&#x6709;&#x7406;&#x7531;&#x518D;&#x89E6;&#x53D1; GPU &#x7684;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x4E86;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x540C;&#x65F6;&#x5B58;&#x5728;&#x4E24;&#x5757;&#x5185;&#x5BB9;&#x76F8;&#x540C;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x800C;&#x4E14; CPU &#x548C; GPU &#x90FD;&#x4F1A;&#x6BD4;&#x8F83;&#x8F9B;&#x82E6;</li>
+<li>&#x4E00;&#x5B9A;&#x8981;&#x4F7F;&#x7528; Instruments &#x7684;&#x4E0D;&#x540C;&#x5DE5;&#x5177;&#x6765;&#x6D4B;&#x8BD5;&#x6027;&#x80FD;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4EC5;&#x51ED;&#x731C;&#x6D4B;&#x6765;&#x505A;&#x51B3;&#x5B9A;</li>
+</ul>
+<h2 id="&#x5373;&#x523B;&#x7684;&#x4F18;&#x5316;">&#x5373;&#x523B;&#x7684;&#x4F18;&#x5316;</h2>
+<p>&#x7531;&#x4E8E;&#x5728; iOS10 &#x4E4B;&#x540E;&#xFF0C;&#x7CFB;&#x7EDF;&#x7684;&#x8BBE;&#x8BA1;&#x98CE;&#x683C;&#x6162;&#x6162;&#x4ECE;&#x6241;&#x5E73;&#x5316;&#x8F6C;&#x53D8;&#x6210;&#x5706;&#x89D2;&#x5361;&#x7247;&#xFF0C;&#x5373;&#x523B;&#x7684;&#x8BBE;&#x8BA1;&#x98CE;&#x683C;&#x4E5F;&#x968F;&#x4E4B;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x52A0;&#x5165;&#x4E86;&#x5927;&#x91CF;&#x5706;&#x89D2;&#x4E0E;&#x9634;&#x5F71;&#x6548;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x5904;&#x7406;&#x4E0A;&#x7A0D;&#x6709;&#x4E0D;&#x614E;&#xFF0C;&#x5C31;&#x5F88;&#x5BB9;&#x6613;&#x89E6;&#x53D1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x3002;&#x4E3A;&#x6B64;&#x6211;&#x4EEC;&#x91C7;&#x53D6;&#x4E86;&#x4EE5;&#x4E0B;&#x4E00;&#x4E9B;&#x63AA;&#x65BD;&#xFF1A;</p>
+<ul>
+<li>&#x5373;&#x523B;&#x5927;&#x91CF;&#x5E94;&#x7528; AsyncDisplayKit(Texture) &#x4F5C;&#x4E3A;&#x4E3B;&#x8981;&#x6E32;&#x67D3;&#x6846;&#x67B6;&#xFF0C;&#x5BF9;&#x4E8E;&#x6587;&#x5B57;&#x548C;&#x56FE;&#x7247;&#x7684;&#x5F02;&#x6B65;&#x6E32;&#x67D3;&#x64CD;&#x4F5C;&#x4EA4;&#x7531;&#x6846;&#x67B6;&#x6765;&#x5904;&#x7406;&#x3002;&#x5173;&#x4E8E;&#x8FD9;&#x65B9;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x6211;<a href="https://medium.com/jike-engineering/asyncdisplaykit%E4%BB%8B%E7%BB%8D-%E4%B8%80-6b871d29e005" target="_blank">&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x4E9B;&#x4ECB;&#x7ECD;</a></li>
+<li>&#x5BF9;&#x4E8E;&#x56FE;&#x7247;&#x7684;&#x5706;&#x89D2;&#xFF0C;&#x7EDF;&#x4E00;&#x91C7;&#x7528; &#x201C;precomposite&#x201D; &#x7684;&#x7B56;&#x7565;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0D;&#x7ECF;&#x7531;&#x5BB9;&#x5668;&#x6765;&#x505A;&#x526A;&#x5207;&#xFF0C;&#x800C;&#x662F;&#x9884;&#x5148;&#x4F7F;&#x7528; CoreGraphics &#x4E3A;&#x56FE;&#x7247;&#x88C1;&#x526A;&#x5706;&#x89D2;</li>
+<li>&#x5BF9;&#x4E8E;&#x89C6;&#x9891;&#x7684;&#x5706;&#x89D2;&#xFF0C;&#x7531;&#x4E8E;&#x5B9E;&#x65F6;&#x526A;&#x5207;&#x975E;&#x5E38;&#x6D88;&#x8017;&#x6027;&#x80FD;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x521B;&#x5EFA;&#x56DB;&#x4E2A;&#x767D;&#x8272;&#x5F27;&#x5F62;&#x7684; layer &#x76D6;&#x4F4F;&#x56DB;&#x4E2A;&#x89D2;&#xFF0C;&#x4ECE;&#x89C6;&#x89C9;&#x4E0A;&#x5236;&#x9020;&#x5706;&#x89D2;&#x7684;&#x6548;&#x679C;</li>
+<li>&#x5BF9;&#x4E8E; view &#x7684;&#x5706;&#x5F62;&#x8FB9;&#x6846;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709; backgroundColor&#xFF0C;&#x53EF;&#x4EE5;&#x653E;&#x5FC3;&#x4F7F;&#x7528; cornerRadius &#x6765;&#x505A;</li>
+<li>&#x5BF9;&#x4E8E;&#x6240;&#x6709;&#x7684;&#x9634;&#x5F71;&#xFF0C;&#x4F7F;&#x7528; shadowPath &#x6765;&#x89C4;&#x907F;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;</li>
+<li>&#x5BF9;&#x4E8E;&#x7279;&#x6B8A;&#x5F62;&#x72B6;&#x7684; view&#xFF0C;&#x4F7F;&#x7528; layer mask &#x5E76;&#x6253;&#x5F00; shouldRasterize &#x6765;&#x5BF9;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x7F13;&#x5B58;</li>
+<li>&#x5BF9;&#x4E8E;&#x6A21;&#x7CCA;&#x6548;&#x679C;&#xFF0C;&#x4E0D;&#x91C7;&#x7528;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684; UIVisualEffect&#xFF0C;&#x800C;&#x662F;&#x53E6;&#x5916;&#x5B9E;&#x73B0;&#x6A21;&#x7CCA;&#x6548;&#x679C;&#xFF08;CIGaussianBlur&#xFF09;&#xFF0C;&#x5E76;&#x624B;&#x52A8;&#x7BA1;&#x7406;&#x6E32;&#x67D3;&#x7ED3;&#x679C;</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-08-150523.png" alt=""></p>
+<p>&#x5373;&#x523B;&#x5BA2;&#x6237;&#x7AEF;&#x4E2D;&#x6709;&#x5927;&#x91CF;&#x7684;&#x5706;&#x89D2;&#x3001;&#x9634;&#x5F71;&#x7B49;&#x6548;&#x679C;</p>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<ul>
+<li>CPU &#x6E32;&#x67D3;&#x867D;&#x7136;&#x4E5F;&#x662F; &#x201C;&#x79BB;&#x5C4F;&#x201D;&#xFF0C;&#x4F46;&#x662F;&#x901A;&#x5E38;&#x63D0;&#x5230;&#x7684;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x662F;&#x53D1;&#x751F;&#x5728; GPU</li>
+<li>&#x5982;&#x679C;&#x4E00;&#x4E2A; layer &#x65E0;&#x6CD5;&#x5728;&#x4E00;&#x6B21;&#x904D;&#x5386;&#x5C31;&#x5B8C;&#x6210;&#x7ED8;&#x5236;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4E0D;&#x5F97;&#x4E0D;&#x89E6;&#x53D1;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;</li>
+<li>&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7684;&#x5F00;&#x9500;&#x4E3B;&#x8981;&#x5728;&#x4E0E; frame buffer &#x4E0E;&#x79BB;&#x5C4F; buffer &#x4E4B;&#x95F4;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x3002;&#x5982;&#x679C;&#x65E0;&#x6CD5;&#x907F;&#x514D;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6709;&#x6548;&#x5229;&#x7528; shouldRasterize&#xFF0C;&#x51CF;&#x5C11;&#x89E6;&#x53D1;&#x7684;&#x6B21;&#x6570;</li>
+<li>CPU &#x548C; GPU &#x662F;&#x76F8;&#x4E92;&#x6276;&#x6301;&#x7684;&#x5173;&#x7CFB;&#x3002;CPU &#x6E32;&#x67D3;&#x6548;&#x7387;&#x4E0D;&#x9AD8;&#xFF0C;&#x4F46;&#x662F;&#x8F83;&#x4E3A;&#x901A;&#x7528;&#x7075;&#x6D3B;&#xFF1B;GPU &#x64C5;&#x957F;&#x5E76;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x4F46;&#x4E5F;&#x6709;&#x6349;&#x895F;&#x89C1;&#x8098;&#x4E4B;&#x65F6;&#xFF0C;&#x6B64;&#x65F6; CPU &#x53EF;&#x4EE5;&#x9002;&#x5F53;&#x7ED9;&#x4E0E;&#x5E2E;&#x52A9;</li>
+</ul>
+<p>&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7275;&#x6D89;&#x4E86;&#x5F88;&#x591A; Core Animation&#x3001;GPU &#x548C;&#x56FE;&#x5F62;&#x5B66;&#x7B49;&#x7B49;&#x65B9;&#x9762;&#x7684;&#x77E5;&#x8BC6;&#xFF0C;&#x5728;&#x5B9E;&#x8DF5;&#x4E2D;&#x4E5F;&#x975E;&#x5E38;&#x8003;&#x9A8C;&#x4E00;&#x4E2A;&#x5DE5;&#x7A0B;&#x5E08;&#x6392;&#x67E5;&#x95EE;&#x9898;&#x7684;&#x57FA;&#x672C;&#x529F;&#x3001;&#x7ECF;&#x9A8C;&#x548C;&#x5224;&#x65AD;&#x80FD;&#x529B;&#x2014;&#x2014;&#x5982;&#x679C;&#x5728;&#x4E0D;&#x6070;&#x5F53;&#x7684;&#x65F6;&#x5019;&#x6253;&#x5F00;&#x4E86; shouldRasterize&#xFF0C;&#x53EA;&#x4F1A;&#x5F04;&#x5DE7;&#x6210;&#x62D9;&#x3002;</p>
+<p>&#x4ECE;&#x4E00;&#x4E2A;&#x66F4;&#x5E7F;&#x9614;&#x7684;&#x89C6;&#x89D2;&#x770B;&#xFF0C;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x4E5F;&#x4EC5;&#x4EC5;&#x662F;&#x6E32;&#x67D3;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x4E2D;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x800C;&#x80FD;&#x5426;&#x4FDD;&#x8BC1; UI &#x6027;&#x80FD;&#x8FC7;&#x5173;&#xFF0C;&#x5C06;&#x4F1A;&#x76F4;&#x63A5;&#x5F71;&#x54CD;&#x5230;&#x7528;&#x6237;&#x65E5;&#x5E38;&#x7684;&#x64CD;&#x4F5C;&#x4F53;&#x9A8C;&#x3002;&#x6E32;&#x67D3;&#x6280;&#x672F;&#x4F5C;&#x4E3A;&#x5BA2;&#x6237;&#x7AEF;&#x5DE5;&#x7A0B;&#x5E08;&#x7684;&#x5173;&#x952E;&#x6280;&#x672F;&#x80FD;&#x529B;&#x4E4B;&#x4E00;&#xFF0C;&#x503C;&#x5F97;&#x6301;&#x7EED;&#x7814;&#x7A76;&#x3002;</p>
+<h2 id="&#x63A8;&#x8350;&#x8D44;&#x6599;">&#x63A8;&#x8350;&#x8D44;&#x6599;</h2>
+<p><a href="https://lobste.rs/s/ckm4uw/performance_minded_take_on_ios_design#c_itdkfh" target="_blank">Andy Matuschak &#x5173;&#x4E8E;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7684;&#x89E3;&#x91CA;</a></p>
+<p><a href="https://www.objc.io/issues/3-views/moving-pixels-onto-the-screen" target="_blank">Objc.io: Moving Pixels onto the Screen</a></p>
+<p><a href="https://github.com/seedante/iOS-Note/wiki/Mastering-Offscreen-Render" target="_blank">Mastering Offscreen Render</a></p>
+<p>WWDC 2011 421 Core Animation Essentials</p>
+<p>WWDC 2011 121 Understanding UIKit Rendering</p>
+<p>WWDC 2014 419 Advanced Graphics and Animations for iOS Apps</p>
+<p>WWDC 2010 135 Advanced Performance Optimization on iPhone OS Part 1</p>
+<p><a href="https://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC" target="_blank">&#x300A;Core Animation: Advanced Techniques&#x300B;</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="贝聊 IAP 实战之满地是坑.html" class="navigation navigation-prev " aria-label="Previous page: 贝聊 IAP 实战之满地是坑">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="谜一样的 Runloop(1_2" class="navigation navigation-next " aria-label="Next page: 谜一样的 Runloop(1_2) ">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"关于离屏渲染的深入研究  - Medium","level":"1.2.2","depth":2,"next":{"title":"谜一样的 Runloop(1_2) ","level":"1.2.3","depth":2,"path":"Article/谜一样的 Runloop(1_2","ref":"Article/谜一样的 Runloop(1_2","articles":[]},"previous":{"title":"贝聊 IAP 实战之满地是坑","level":"1.2.1","depth":2,"path":"Article/贝聊 IAP 实战之满地是坑.md","ref":"Article/贝聊 IAP 实战之满地是坑.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Article/关于离屏渲染的深入研究  - Medium.md","mtime":"2020-06-03T00:43:56.237Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-03T00:44:38.350Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
