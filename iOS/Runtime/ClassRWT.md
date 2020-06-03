@@ -6,6 +6,27 @@
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-143952.jpg)
 
+
+
+```objective-c
+struct class_data_bits_t {
+
+    // Values are the FAST_ flags above.
+    uintptr_t bits;
+private:
+    bool getBit(uintptr_t bit)
+    {
+        return bits & bit;
+    }
+  
+  ...
+}
+```
+
+
+
+
+
  ObjC 中 `class_data_bits_t` 的结构体，其中只含有一个 64 位的 `bits` 用于存储与类有关的信息：
 
 
@@ -89,10 +110,6 @@ class_rw_t* data() {
 
 
 
-
-
-
-
 而成员变量信息则是存储在`class_ro_t`内部中的，我们来到`class_ro_t`内查看。
 `class_rw_t` 表示**read write**，`class_ro_t` 表示 **read only**。
 
@@ -100,4 +117,3 @@ class_rw_t* data() {
 
 
 
-## 
