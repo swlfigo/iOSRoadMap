@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     # 执行策略：运行环境的说明
     strategy:
       matrix:
