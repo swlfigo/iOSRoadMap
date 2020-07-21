@@ -16,3 +16,4 @@ jobs:
         time_zone: Asia/Shanghai
         git_name: Sylar
         git_email: swlfigo@gmail.com
+        publish_push_force: true
