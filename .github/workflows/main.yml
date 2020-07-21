@@ -24,15 +24,15 @@ jobs:
     - name: 安装gitbook及插件
       # bat命令都用call调用防止跨命令执行
       run: |
-        call npm install  -g gitbook-cli
-        call npm install -g gitbook-summary
-        call gitbook -v
-        call gitbook install
+        npm install  -g gitbook-cli
+        npm install -g gitbook-summary
+        gitbook -v
+        gitbook install
         
     - name: 生成_book
       run: |
-        call book sm
-        call gitbook build
+        book sm
+        gitbook build
     - name: push文件
       run: |
         cd _book
