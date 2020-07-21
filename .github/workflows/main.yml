@@ -1,0 +1,48 @@
+# 表明这个workflow的名称
+name: Auto GitBook
+# 指明触发条件
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    # 执行策略：运行环境的说明
+    strategy:
+      matrix:
+        node-version: [12]
+    steps:
+    - name: 拉取代码
+      uses: actions/checkout@v2
+    - name: 配置环境
+      uses: actions/setup-node@v1
+      with: 
+        node-version: ${{ matrix.node_version }}
+    - name: 安装gitbook及插件
+      # bat命令都用call调用防止跨命令执行
+      run: |
+        call npm install  -g gitbook-cli
+        call npm install -g gitbook-summary
+        call gitbook -v
+        call gitbook install
+        
+    - name: 生成_book
+      run: |
+        call book sm
+        call gitbook build
+    - name: push文件
+      run: |
+        cd _book
+        git init
+        git remote add origin https://${GH_REF}
+        git config user.name "Sylar"
+        git config user.email "swlfigo@gmail.com"
+        git add .
+        git commit -m "Update GitBook By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+        git push --force --quiet "https://${TOKEN}@${GH_REF}" master:gh-pages
+        
+      env:
+        CI: true
