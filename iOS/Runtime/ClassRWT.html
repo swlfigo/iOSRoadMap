@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>6.Memory内存管理 · GitBook</title>
+        <title>ClassRWT · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../Autoreleasepool/Autoreleasepool.html" />
+    <link rel="next" href="../OCFoundation/OCFoundation.html" />
     
     
-    <link rel="prev" href="../Runloop/Runloop.html" />
+    <link rel="prev" href="ObjectClass.html" />
     
 
     </head>
@@ -383,9 +383,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.2.1" data-path="../Runtime/Property.html">
+        <li class="chapter " data-level="2.1.2.1" data-path="Property.html">
             
-                <a href="../Runtime/Property.html">
+                <a href="Property.html">
             
                     
                     Propety属性
@@ -396,9 +396,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.2" data-path="../Runtime/ObjectClass.html">
+        <li class="chapter " data-level="2.1.2.2" data-path="ObjectClass.html">
             
-                <a href="../Runtime/ObjectClass.html">
+                <a href="ObjectClass.html">
             
                     
                     ObjectClass
@@ -409,9 +409,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.3" data-path="../Runtime/ClassRWT.html">
+        <li class="chapter active" data-level="2.1.2.3" data-path="ClassRWT.html">
             
-                <a href="../Runtime/ClassRWT.html">
+                <a href="ClassRWT.html">
             
                     
                     ClassRWT
@@ -440,7 +440,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4" data-path="../Runtime/Runtime.md">
+        <li class="chapter " data-level="2.1.4" data-path="Runtime.md">
             
                 <span>
             
@@ -479,9 +479,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.7" data-path="Memory.html">
+        <li class="chapter " data-level="2.1.7" data-path="../Memory/Memory.html">
             
-                <a href="Memory.html">
+                <a href="../Memory/Memory.html">
             
                     
                     6.Memory内存管理
@@ -863,7 +863,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >6.Memory内存管理</a>
+        <a href="../.." >ClassRWT</a>
     </h1>
 </div>
 
@@ -878,77 +878,141 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="memory&#x5185;&#x5B58;&#x7BA1;&#x7406;">Memory&#x5185;&#x5B58;&#x7BA1;&#x7406;</h1>
-<h2 id="1&#x5185;&#x5B58;&#x4E2D;&#x7684;5&#x5927;&#x533A;&#x5206;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;">1.&#x5185;&#x5B58;&#x4E2D;&#x7684;5&#x5927;&#x533A;&#x5206;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</h2>
-<ul>
-<li>&#x6808;&#x533A;&#xFF08;stack&#xFF09;&#xFF1A;&#x7531;&#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x52A8;&#x5206;&#x914D;&#x91CA;&#x653E; &#xFF0C;&#x5B58;&#x653E;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x503C;&#xFF0C;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x7B49;&#x3002;&#x5176; &#x64CD;&#x4F5C;&#x65B9;&#x5F0F;&#x7C7B;&#x4F3C;&#x4E8E;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#x7684;&#x6808;&#x3002;</li>
-<li>&#x5806;&#x533A;&#xFF08;heap&#xFF09;&#xFF1A;&#x4E00;&#x822C;&#x7531;&#x7A0B;&#x5E8F;&#x5458;&#x5206;&#x914D;&#x91CA;&#x653E;&#xFF0C; &#x82E5;&#x7A0B;&#x5E8F;&#x5458;&#x4E0D;&#x91CA;&#x653E;&#xFF0C;&#x7A0B;&#x5E8F;&#x7ED3;&#x675F;&#x65F6;&#x53EF;&#x80FD;&#x7531;OS&#x56DE;&#x6536; &#x3002;&#x6CE8;&#x610F;&#x5B83;&#x4E0E;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#x7684;&#x5806;&#x662F;&#x4E24;&#x56DE;&#x4E8B;&#xFF0C;&#x5206;&#x914D;&#x65B9;&#x5F0F;&#x5012;&#x662F;&#x7C7B;&#x4F3C;&#x4E8E;&#x94FE;&#x8868;&#x3002;</li>
-<li>&#x5168;&#x5C40;&#x533A;&#xFF08;&#x9759;&#x6001;&#x533A;&#xFF09;&#xFF08;static&#xFF09;&#xFF1A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x548C;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x7684;&#x5B58;&#x50A8;&#x662F;&#x653E;&#x5728;&#x4E00;&#x5757;&#x7684;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x7684; &#x5168;&#x5C40;&#x53D8;&#x91CF;&#x548C;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x5728;&#x4E00;&#x5757;&#x533A;&#x57DF;&#xFF0C; &#x672A;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x548C;&#x672A;&#x521D;&#x59CB;&#x5316;&#x7684;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x5728;&#x76F8;&#x90BB;&#x7684;&#x53E6;&#x4E00;&#x5757;&#x533A;&#x57DF;&#x3002; - &#x7A0B;&#x5E8F;&#x7ED3;&#x675F;&#x540E;&#x7531;&#x7CFB;&#x7EDF;&#x91CA;&#x653E;&#x3002;</li>
-<li>&#x6587;&#x5B57;&#x5E38;&#x91CF;&#x533A;&#xFF1A;&#x5E38;&#x91CF;&#x5B57;&#x7B26;&#x4E32;&#x5C31;&#x662F;&#x653E;&#x5728;&#x8FD9;&#x91CC;&#x7684;&#x3002; &#x7A0B;&#x5E8F;&#x7ED3;&#x675F;&#x540E;&#x7531;&#x7CFB;&#x7EDF;&#x91CA;&#x653E;&#x3002;</li>
-<li>&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x533A;&#xFF1A;&#x5B58;&#x653E;&#x51FD;&#x6570;&#x4F53;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x4EE3;&#x7801;&#x3002;</li>
-</ul>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085314.jpg" alt="image-20190324161722448"></p>
-<h2 id="2&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x65B9;&#x6848;">2.&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x65B9;&#x6848;</h2>
-<ul>
-<li>&#x7CFB;&#x7EDF;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x573A;&#x666F;&#x4E0B;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x65B9;&#x6848;&#x4E0D;&#x540C;&#xFF0C;&#x5982;&#x5C0F;&#x5BF9;&#x8C61;(NSNumber&#x7B49;)&#x91C7;&#x7528; <code>TaggedPointer</code> &#x5185;&#x5B58;&#x7BA1;&#x7406;&#x65B9;&#x6848;.</li>
-<li>&#x9488;&#x5BF9;64&#x4F4D;&#x4E0B;iOS&#x7A0B;&#x5E8F;&#x91C7;&#x7528; <code>NONPOINTER_ISA</code> &#x65B9;&#x6848;</li>
-<li>&#x6563;&#x5217;&#x8868;(&#x5305;&#x62EC;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#xFF0C;&#x5F31;&#x5F15;&#x7528;&#x8868;)</li>
-</ul>
-<h4 id="21-nonpointerisa">2.1 NONPOINTER_ISA</h4>
-<ul>
-<li>&#x7B2C;&#x4E00;&#x4F4D;&#x7684; 0 &#x6216; 1 &#x4EE3;&#x8868;&#x662F;&#x7EAF;&#x5730;&#x5740;&#x578B; isa &#x6307;&#x9488;&#xFF0C;&#x8FD8;&#x662F; NONPOINTER_ISA &#x6307;&#x9488;&#x3002;</li>
-<li>&#x7B2C;&#x4E8C;&#x4F4D;&#xFF0C;&#x4EE3;&#x8868;&#x662F;&#x5426;&#x6709;&#x5173;&#x8054;&#x5BF9;&#x8C61;</li>
-<li>&#x7B2C;&#x4E09;&#x4F4D;&#x4EE3;&#x8868;&#x662F;&#x5426;&#x6709; C++ &#x4EE3;&#x7801;&#x3002;</li>
-<li>&#x63A5;&#x4E0B;&#x6765;33&#x4F4D;&#x4EE3;&#x8868;&#x6307;&#x5411;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;</li>
-<li>&#x63A5;&#x4E0B;&#x6765;&#x6709; &#x5F31;&#x5F15;&#x7528; &#x7684;&#x6807;&#x8BB0;</li>
-<li>&#x63A5;&#x4E0B;&#x6765;&#x6709;&#x662F;&#x5426; delloc &#x7684;&#x6807;&#x8BB0;....&#x7B49;&#x7B49;</li>
-</ul>
-<h4 id="22-&#x6563;&#x5217;&#x8868;">2.2 &#x6563;&#x5217;&#x8868;</h4>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085318.jpg" alt="image-20190324165113450"></p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085324.jpg" alt="image-20190324165155926"></p>
-<p>SideTable&#x662F;&#x4E00;&#x5F20;&#x54C8;&#x5E0C;&#x8868;.&#x4F7F;&#x7528;&#x591A;&#x5F20; SideTable .&#x56E0;&#x4E3A;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x67E5;&#x627E;&#x6548;&#x7387;.&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x503C;&#x4FEE;&#x6539;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#xFF0C;&#x9700;&#x8981;&#x9501;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5B89;&#x5168;&#xFF0C;&#x5982;&#x679C;&#x7528;&#x540C;&#x4E00;&#x5F20;&#x8868;&#x4F1A;&#x5BFC;&#x81F4;&#x6548;&#x7387;&#x95EE;&#x9898;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>&#x5206;&#x79BB;&#x9501;</code>&#x5206;&#x79BB;&#x64CD;&#x4F5C;.</p>
-<h2 id="3&#x6570;&#x636E;&#x7ED3;&#x6784;">3.&#x6570;&#x636E;&#x7ED3;&#x6784;</h2>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085931.png" alt="image-20190324165929441"></p>
-<h2 id="4-&#x4EC0;&#x4E48;&#x662F;arc">4. &#x4EC0;&#x4E48;&#x662F;ARC</h2>
-<ul>
-<li>ARC &#x662F;LLVM&#x548C;Runtime&#x5171;&#x540C;&#x534F;&#x4F5C;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7684;&#x7BA1;&#x7406;</li>
-<li>ARC&#x4E2D;&#x7981;&#x6B62;&#x624B;&#x52A8;&#x8C03;&#x7528;retain/release/retaincount/dealloc</li>
-<li>ARC&#x4E2D;&#x65B0;&#x589E;weak&#xFF0C;strong&#x5C5E;&#x6027;&#x5173;&#x952E;&#x5B57;</li>
-</ul>
-<h2 id="5&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7BA1;&#x7406;">5.&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7BA1;&#x7406;</h2>
-<h3 id="alloc&#x5B9E;&#x73B0;">alloc&#x5B9E;&#x73B0;</h3>
-<p>&#x7ECF;&#x8FC7;&#x4E00;&#x7CFB;&#x5217;&#x8C03;&#x7528;&#xFF0C;&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x4E86;C&#x51FD;&#x6570;calloc,&#x6B64;&#x65F6;&#x5E76;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A;1</p>
-<h3 id="retain&#x5B9E;&#x73B0;">retain&#x5B9E;&#x73B0;</h3>
-<pre><code>SideTable &amp;table = SideTables()[this];
-//&#x5728;tables&#x91CC;&#x9762;&#xFF0C;&#x6839;&#x636E;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x6307;&#x9488;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;sidetable
+                                <h1 id="classdatabitst">class_data_bits_t</h1>
+<p>&#x7531;&#x524D;&#x9762;&#x53EF;&#x77E5;  <a href="ObjectClass.html">ObjectClass.md</a></p>
+<p><strong>objc_class</strong>&#x7684;&#x771F;&#x5B9E;&#x5B9A;&#x4E49;&#x5B9E;&#x9645;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ECE; <a href="https://opensource.apple.com/source/objc4/objc4-750.1/runtime/objc-runtime-new.h.auto.html" target="_blank">objc-runtime-new.h</a> &#x4E2D;&#x770B;&#x5230;(&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x7701;&#x7565;)&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-143952.jpg" alt=""></p>
+<pre><code class="lang-objective-c">struct class_data_bits_t {
 
-size_t &amp;refcntStorage = table.refcnts[this];
-//&#x83B7;&#x5F97;&#x5F15;&#x7528;&#x8BA1;&#x6570;
+    // Values are the FAST_ flags above.
+    uintptr_t bits;
+private:
+    bool getBit(uintptr_t bit)
+    {
+        return bits &amp; bit;
+    }
 
-//&#x6DFB;&#x52A0;&#x5F15;&#x7528;&#x8BA1;&#x6570;
-refcntStorage += SIDE_TABLE_RC_ONE(4,&#x4F4D;&#x8BA1;&#x7B97;)
-</code></pre><h3 id="release-&#x5B9E;&#x73B0;">release &#x5B9E;&#x73B0;</h3>
-<pre><code>SideTable &amp;table = SideTables()[this];
-RefcountMap::iterator it = table.refcnts.find[this];
-it-&gt;second -= SIDE_TABLE_RC_ONE
-</code></pre><h3 id="retiancount">retianCount</h3>
-<pre><code>SideTable &amp;table = SideTables()[this];
-size_t refcnt_result = 1;
-RefcountMap::iterator it = table.refcnts.find[this];
-refcnt_result += it-&gt;second &gt;&gt; SIDE_TABLE_RC_SHIFT;(&#x5C06;&#x5411;&#x53F3;&#x504F;&#x79FB;&#x64CD;&#x4F5C;)
-</code></pre><h3 id="dealloc&#x5B9E;&#x73B0;">dealloc&#x5B9E;&#x73B0;</h3>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134647.png" alt="deallo"></p>
-<h2 id="&#x5F31;&#x5F15;&#x7528;&#x7BA1;&#x7406;">&#x5F31;&#x5F15;&#x7528;&#x7BA1;&#x7406;</h2>
-<pre><code>{
-    id __weak obj1 = ob1; 
-    //  =&gt; &#x7F16;&#x8BD1; 
-    id objc1;
-    objc_initWeak(&amp;obj1,obj);
-    //obj1&#x5F31;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#xFF0C;obj&#x88AB;&#x4FEE;&#x9970;&#x5BF9;&#x8C61;
+  ...
 }
-</code></pre><p>&#x6DFB;&#x52A0;weak&#x53D8;&#x91CF;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134710.jpg" alt=""></p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-090109.png" alt="image-20190324170107697"></p>
+</code></pre>
+<p> ObjC &#x4E2D; <code>class_data_bits_t</code> &#x7684;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5176;&#x4E2D;&#x53EA;&#x542B;&#x6709;&#x4E00;&#x4E2A; 64 &#x4F4D;&#x7684; <code>bits</code> &#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x4E0E;&#x7C7B;&#x6709;&#x5173;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-05-19-141003.jpg" alt=""></p>
+<p><code>objc_class</code> &#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7684;&#x6CE8;&#x91CA;&#x5199;&#x5230; <code>class_data_bits_t</code> &#x76F8;&#x5F53;&#x4E8E; <code>class_rw_t</code> &#x6307;&#x9488;&#x52A0;&#x4E0A; rr/alloc &#x7684;&#x6807;&#x5FD7;&#x3002;</p>
+<pre><code class="lang-objective-c">class_data_bits_t bits;    // class_rw_t * plus custom rr/alloc flags
+</code></pre>
+<p>&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x4FBF;&#x6377;&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x8FD4;&#x56DE;&#x5176;&#x4E2D;&#x7684; <code>class_rw_t *</code> &#x6307;&#x9488;&#xFF1A;</p>
+<p><strong>objc_class</strong> &#x4E2D;&#x7684; data &#x8FD4;&#x56DE; <code>class_rw_t</code> &#x7ED3;&#x6784;&#xFF0C;&#x6B64;&#x7ED3;&#x6784;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144757.png" alt=""></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144612.jpg" alt=""></p>
+<p>&#x800C;<code>class_rw_t</code>&#x662F;&#x901A;&#x8FC7;bits&#x8C03;&#x7528;data&#x65B9;&#x6CD5;&#x5F97;&#x6765;&#x7684;&#xFF0C;&#x6765;&#x5230;data&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;data&#x51FD;&#x6570;&#x5185;&#x90E8;&#x4EC5;&#x4EC5;&#x5BF9;bits&#x8FDB;&#x884C;<code>&amp;FAST_DATA_MASK</code>&#x64CD;&#x4F5C;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144842.jpg" alt=""></p>
+<p>&#x5C06; <code>bits</code> &#x4E0E; <code>FAST_DATA_MASK</code> &#x8FDB;&#x884C;&#x4F4D;&#x8FD0;&#x7B97;&#xFF0C;&#x53EA;&#x53D6;&#x5176;&#x4E2D;&#x7684; <code>[3, 47]</code> &#x4F4D;&#x8F6C;&#x6362;&#x6210; <code>class_rw_t *</code> &#x8FD4;&#x56DE;&#x3002;</p>
+<blockquote>
+<p>&#x5728; x86_64 &#x67B6;&#x6784;&#x4E0A;&#xFF0C;Mac OS <strong>&#x53EA;&#x4F7F;&#x7528;&#x4E86;&#x5176;&#x4E2D;&#x7684; 47 &#x4F4D;&#x6765;&#x4E3A;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x5730;&#x5740;</strong>&#x3002;&#x800C;&#x4E14;&#x7531;&#x4E8E;&#x5730;&#x5740;&#x8981;&#x6309;&#x5B57;&#x8282;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x6309;&#x5B57;&#x8282;&#x5BF9;&#x9F50;&#xFF0C;&#x6240;&#x4EE5;&#x63A9;&#x7801;&#x7684;&#x540E;&#x4E09;&#x4F4D;&#x90FD;&#x662F; 0&#x3002;</p>
+</blockquote>
+<p>&#x56E0;&#x4E3A; <code>class_rw_t *</code> &#x6307;&#x9488;&#x53EA;&#x5B58;&#x4E8E;&#x7B2C; <code>[3, 47]</code> &#x4F4D;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6700;&#x540E;&#x4E09;&#x4F4D;&#x6765;&#x5B58;&#x50A8;&#x5173;&#x4E8E;&#x5F53;&#x524D;&#x7C7B;&#x7684;&#x5176;&#x4ED6;&#x4FE1;&#x606F;&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-05-19-144111.jpg" alt=""></p>
+<pre><code class="lang-objective-c">#define FAST_IS_SWIFT           (1UL&lt;&lt;0)
+#define FAST_HAS_DEFAULT_RR     (1UL&lt;&lt;1)
+#define FAST_REQUIRES_RAW_ISA   (1UL&lt;&lt;2)
+#define FAST_DATA_MASK          0x00007ffffffffff8UL
+</code></pre>
+<ul>
+<li><pre><code>isSwift()
+</code></pre><ul>
+<li><code>FAST_IS_SWIFT</code> &#x7528;&#x4E8E;&#x5224;&#x65AD; Swift &#x7C7B;</li>
+</ul>
+</li>
+<li><pre><code>hasDefaultRR()
+</code></pre><ul>
+<li><code>FAST_HAS_DEFAULT_RR</code> &#x5F53;&#x524D;&#x7C7B;&#x6216;&#x8005;&#x7236;&#x7C7B;&#x542B;&#x6709;&#x9ED8;&#x8BA4;&#x7684; <code>retain/release/autorelease/retainCount/_tryRetain/_isDeallocating/retainWeakReference/allowsWeakReference</code> &#x65B9;&#x6CD5;</li>
+</ul>
+</li>
+<li><pre><code>requiresRawIsa()
+</code></pre><ul>
+<li><code>FAST_REQUIRES_RAW_ISA</code> &#x5F53;&#x524D;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x9700;&#x8981; raw <code>isa</code></li>
+</ul>
+</li>
+</ul>
+<p>&#x6240;&#x4EE5;&#x8C03;&#x7528;&#x521D;&#x59CB;&#x5316;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-objective-c">// objc_class &#x4E2D;&#x7684; data() &#x65B9;&#x6CD5;
+class_data_bits_t bits;
+
+class_rw_t *data() {
+   return bits.data();
+}
+
+// class_data_bits_t &#x4E2D;&#x7684; data() &#x65B9;&#x6CD5;
+uintptr_t bits;
+
+class_rw_t* data() {
+   return (class_rw_t *)(bits &amp; FAST_DATA_MASK);
+}
+</code></pre>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144612.jpg" alt=""></p>
+<p>&#x800C;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#x5219;&#x662F;&#x5B58;&#x50A8;&#x5728;<code>class_ro_t</code>&#x5185;&#x90E8;&#x4E2D;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5230;<code>class_ro_t</code>&#x5185;&#x67E5;&#x770B;&#x3002;
+<code>class_rw_t</code> &#x8868;&#x793A;<strong>read write</strong>&#xFF0C;<code>class_ro_t</code> &#x8868;&#x793A; <strong>read only</strong>&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-145011.jpg" alt=""></p>
+<h3 id="classrwt-&#x548C;-classrot"><code>class_rw_t</code> &#x548C; <code>class_ro_t</code></h3>
+<p>ObjC &#x7C7B;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x3001;&#x65B9;&#x6CD5;&#x8FD8;&#x6709;&#x9075;&#x5FAA;&#x7684;&#x534F;&#x8BAE;&#x7B49;&#x4FE1;&#x606F;&#x90FD;&#x4FDD;&#x5B58;&#x5728; <code>class_rw_t</code> &#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-objective-c">struct class_rw_t {
+    uint32_t flags;
+    uint32_t version;
+
+    const class_ro_t *ro;
+
+    method_array_t methods;
+    property_array_t properties;
+    protocol_array_t protocols;
+
+    Class firstSubclass;
+    Class nextSiblingClass;
+};
+</code></pre>
+<p>&#x5176;&#x4E2D;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x5E38;&#x91CF;&#x7684;&#x6307;&#x9488; <code>ro</code>&#xFF0C;&#x5176;&#x4E2D;&#x5B58;&#x50A8;&#x4E86;<strong>&#x5F53;&#x524D;&#x7C7B;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x5C31;&#x5DF2;&#x7ECF;&#x786E;&#x5B9A;&#x7684;&#x5C5E;&#x6027;&#x3001;&#x65B9;&#x6CD5;&#x4EE5;&#x53CA;&#x9075;&#x5FAA;&#x7684;&#x534F;&#x8BAE;</strong>&#x3002;(&#x5982;&#x679C;&#x662F;&#x5F53;&#x524D;&#x7C7B;&#x6709;Category&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x65B0;&#x589E;&#x7684;&#x5C5E;&#x6027;&#x65B9;&#x6CD5;&#x4F1A;&#x653E;&#x5728; <code>class_rw_t</code> &#x7684; <code>methods</code> &#x3001;<code>properties</code> &#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;)</p>
+<pre><code class="lang-objective-c">struct class_ro_t {
+    uint32_t flags;
+    uint32_t instanceStart;
+    uint32_t instanceSize;
+    uint32_t reserved;
+
+    const uint8_t * ivarLayout;
+
+    const char * name;
+    method_list_t * baseMethodList;
+    protocol_list_t * baseProtocols;
+    const ivar_list_t * ivars;
+
+    const uint8_t * weakIvarLayout;
+    property_list_t *baseProperties;
+};
+</code></pre>
+<p><strong>&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x95F4;</strong>&#x7C7B;&#x7684;&#x7ED3;&#x6784;&#x4E2D;&#x7684; <code>class_data_bits_t *data</code> &#x6307;&#x5411;&#x7684;&#x662F;&#x4E00;&#x4E2A; <code>class_ro_t *</code> &#x6307;&#x9488;&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-07-30-140953.jpg" alt=""></p>
+<p>&#x7136;&#x540E;&#x5728;&#x52A0;&#x8F7D; <em>ObjC &#x8FD0;&#x884C;&#x65F6;</em>&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x5728; <code>realizeClass</code> &#x65B9;&#x6CD5;&#x4E2D;&#xFF1A;</p>
+<ol>
+<li>&#x4ECE; <code>class_data_bits_t</code> &#x8C03;&#x7528; <code>data</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x7ED3;&#x679C;&#x4ECE; <code>class_rw_t</code> &#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x4E3A; <code>class_ro_t</code> &#x6307;&#x9488;</li>
+<li>&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A; <code>class_rw_t</code> &#x7ED3;&#x6784;&#x4F53;</li>
+<li>&#x8BBE;&#x7F6E;&#x7ED3;&#x6784;&#x4F53; <code>ro</code> &#x7684;&#x503C;&#x4EE5;&#x53CA; <code>flag</code></li>
+<li>&#x6700;&#x540E;&#x8BBE;&#x7F6E;&#x6B63;&#x786E;&#x7684; <code>data</code>&#x3002;</li>
+</ol>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">const</span> class_ro_t *ro = (<span class="hljs-keyword">const</span> class_ro_t *)cls-&gt;data();
+class_rw_t *rw = (class_rw_t *)calloc(<span class="hljs-keyword">sizeof</span>(class_rw_t), <span class="hljs-number">1</span>);
+rw-&gt;ro = ro;
+rw-&gt;flags = RW_REALIZED|RW_REALIZING;
+cls-&gt;setData(rw);
+</code></pre>
+<p>&#x4E0B;&#x56FE;&#x662F; <code>realizeClass</code> &#x65B9;&#x6CD5;&#x6267;&#x884C;&#x8FC7;&#x540E;&#x7684;&#x7C7B;&#x6240;&#x5360;&#x7528;&#x5185;&#x5B58;&#x7684;&#x5E03;&#x5C40;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-07-30-141124.jpg" alt=""></p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x5728;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x4E4B;&#x540E; <code>class_rw_t</code> &#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5C5E;&#x6027;&#x4EE5;&#x53CA;&#x534F;&#x8BAE;&#x5217;&#x8868;&#x5747;&#x4E3A;&#x7A7A;&#x3002;&#x8FD9;&#x65F6;&#x9700;&#x8981; <code>realizeClass</code> &#x8C03;&#x7528; <code>methodizeClass</code> &#x65B9;&#x6CD5;&#x6765;<strong>&#x5C06;&#x7C7B;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#xFF08;&#x5305;&#x62EC;&#x5206;&#x7C7B;&#xFF09;&#x3001;&#x5C5E;&#x6027;&#x548C;&#x9075;&#x5FAA;&#x7684;&#x534F;&#x8BAE;&#x52A0;&#x8F7D;&#x5230; <code>methods</code>&#x3001; <code>properties</code> &#x548C; <code>protocols</code> &#x5217;&#x8868;&#x4E2D;</strong>&#x3002;</p>
+<h2 id="&#x5C0F;&#x7ED3;">&#x5C0F;&#x7ED3;</h2>
+<ol>
+<li>&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x95F4;&#x51B3;&#x5B9A;&#x7684;&#xFF0C;&#x5728;&#x4E4B;&#x540E;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li>&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x5C5E;&#x6027;&#x4EE5;&#x53CA;&#x534F;&#x8BAE;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x95F4;&#x5B58;&#x653E;&#x5230;&#x4E86;&#x201C;&#x9519;&#x8BEF;&#x201D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x76F4;&#x5230; <code>realizeClass</code> &#x6267;&#x884C;&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x653E;&#x5230;&#x4E86; <code>class_rw_t</code> &#x6307;&#x5411;&#x7684;&#x53EA;&#x8BFB;&#x533A;&#x57DF; <code>class_ro_t</code>&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5373;&#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4E3A; <code>class_rw_t</code> &#x6DFB;&#x52A0;&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x7C7B;&#x7684;&#x53EA;&#x8BFB;&#x7ED3;&#x6784;&#x3002;</li>
+<li>&#x5728; <code>class_ro_t</code> &#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x5728;&#x8FD0;&#x884C;&#x671F;&#x95F4;&#x5C31;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x4E86;&#xFF0C;&#x518D;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4F1A;&#x4FEE;&#x6539; <code>class_rw_t</code> &#x4E2D;&#x7684; <code>methods</code> &#x5217;&#x8868;&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>class_ro_t</code> &#x4E2D;&#x7684; <code>baseMethods</code>&#xFF0C;</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<p><a href="https://draveness.me/method-struct/" target="_blank">&#x6DF1;&#x5165;&#x89E3;&#x6790; ObjC &#x4E2D;&#x65B9;&#x6CD5;&#x7684;&#x7ED3;&#x6784;</a></p>
 
                                 
                                 </section>
@@ -976,12 +1040,12 @@ refcnt_result += it-&gt;second &gt;&gt; SIDE_TABLE_RC_SHIFT;(&#x5C06;&#x5411;&#x
 
             
                 
-                <a href="../Runloop/Runloop.html" class="navigation navigation-prev " aria-label="Previous page: 5.Runloop">
+                <a href="ObjectClass.html" class="navigation navigation-prev " aria-label="Previous page: ObjectClass">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../Autoreleasepool/Autoreleasepool.html" class="navigation navigation-next " aria-label="Next page: 7. Autoreleasepool ">
+                <a href="../OCFoundation/OCFoundation.html" class="navigation navigation-next " aria-label="Next page: 2.OC语言基础">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -992,7 +1056,7 @@ refcnt_result += it-&gt;second &gt;&gt; SIDE_TABLE_RC_SHIFT;(&#x5C06;&#x5411;&#x
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.Memory内存管理","level":"2.1.7","depth":2,"next":{"title":"7. Autoreleasepool ","level":"2.1.8","depth":2,"path":"iOS/Autoreleasepool/Autoreleasepool.md","ref":"iOS/Autoreleasepool/Autoreleasepool.md","articles":[]},"previous":{"title":"5.Runloop","level":"2.1.6","depth":2,"path":"iOS/Runloop/Runloop.md","ref":"./iOS/Runloop/Runloop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Memory/Memory.md","mtime":"2020-07-30T14:59:02.792Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-30T14:59:53.948Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ClassRWT","level":"2.1.2.3","depth":3,"next":{"title":"2.OC语言基础","level":"2.1.3","depth":2,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"ObjectClass","level":"2.1.2.2","depth":3,"path":"iOS/Runtime/ObjectClass.md","ref":"iOS/Runtime/ObjectClass.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/ClassRWT.md","mtime":"2020-07-30T14:59:02.792Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-30T14:59:53.948Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
