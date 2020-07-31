@@ -18,3 +18,4 @@ jobs:
         git_email: swlfigo@gmail.com
         publish_branch: gh-pages
         publish_push_force: false
+        publish_cname: roadmap.isylar.com
