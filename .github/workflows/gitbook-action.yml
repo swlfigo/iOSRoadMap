@@ -17,4 +17,4 @@ jobs:
         git_name: Sylar
         git_email: swlfigo@gmail.com
         publish_branch: gh-pages
-        publish_push_force: true
+        publish_push_force: false
