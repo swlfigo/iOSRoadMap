@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>4.Block · GitBook</title>
+        <title>ObjectClass · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../Runloop/Runloop.html" />
+    <link rel="next" href="ClassRWT.html" />
     
     
-    <link rel="prev" href="../Runtime/Runtime.md" />
+    <link rel="prev" href="isa.html" />
     
 
     </head>
@@ -383,9 +383,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.2.1" data-path="../Objc_Object/Property.html">
+        <li class="chapter " data-level="2.1.2.1" data-path="Property.html">
             
-                <a href="../Objc_Object/Property.html">
+                <a href="Property.html">
             
                     
                     Propety属性
@@ -396,9 +396,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.2" data-path="../Objc_Object/isa.html">
+        <li class="chapter " data-level="2.1.2.2" data-path="isa.html">
             
-                <a href="../Objc_Object/isa.html">
+                <a href="isa.html">
             
                     
                     isa
@@ -409,9 +409,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.3" data-path="../Objc_Object/ObjectClass.html">
+        <li class="chapter active" data-level="2.1.2.3" data-path="ObjectClass.html">
             
-                <a href="../Objc_Object/ObjectClass.html">
+                <a href="ObjectClass.html">
             
                     
                     ObjectClass
@@ -422,9 +422,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.4" data-path="../Objc_Object/ClassRWT.html">
+        <li class="chapter " data-level="2.1.2.4" data-path="ClassRWT.html">
             
-                <a href="../Objc_Object/ClassRWT.html">
+                <a href="ClassRWT.html">
             
                     
                     ClassRWT
@@ -466,9 +466,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.5" data-path="Block.html">
+        <li class="chapter " data-level="2.1.5" data-path="../Block/Block.html">
             
-                <a href="Block.html">
+                <a href="../Block/Block.html">
             
                     
                     4.Block
@@ -876,7 +876,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >4.Block</a>
+        <a href="../.." >ObjectClass</a>
     </h1>
 </div>
 
@@ -891,184 +891,67 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="block">Block</h1>
-<h2 id="1&#x4EC0;&#x4E48;&#x662F;block&#x4E0E;block&#x6784;&#x9020;">1.&#x4EC0;&#x4E48;&#x662F;Block&#x4E0E;Block&#x6784;&#x9020;</h2>
-<blockquote>
-<p>In programming languages, a closure is a function or reference to a function together with a referencing environment&#x2014;a table storing a reference to each of the non-local variables (also called free variables or upvalues) of that function.</p>
-</blockquote>
-<ul>
-<li><code>Block</code> &#x662F;&#x5C06;&#x51FD;&#x6570;&#x53CA;&#x5176;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x5C01;&#x88C5;&#x8D77;&#x6765;&#x7684;<code>&#x5BF9;&#x8C61;</code></li>
-<li><code>Block</code>&#x7684;&#x8C03;&#x7528;&#x5373;&#x662F;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;</li>
-</ul>
-<p>&#x5982;&#xFF1A;</p>
-<pre><code>int multiplier = 6
-int(^Block)(int) = ^int(int num){
-    return num * multiplier;
-}
-</code></pre><p>&#x4F7F;&#x7528; <code>clang</code> &#x91CD;&#x5199; </p>
-<pre><code>//&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x4E0E;&#x5B9A;&#x4E49;Block&#x5177;&#x6709;&#x76F8;&#x540C;&#x53C2;&#x6570;&#x4E0E;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;
-int(*Block)(int) = ((int(*)(int))&amp;xxx_block_impl_0[Block&#x6784;&#x9020;&#x51FD;&#x6570;](&#x51FD;&#x6570;&#x6307;&#x9488;,block&#x63CF;&#x8FF0;,multiplier[block&#x5916;&#x4F20;&#x5165;block&#x4F7F;&#x7528;&#x7684;&#x53C2;&#x6570;])
-</code></pre><p>&#x4E00;&#x4E2A;<code>OC Block</code> <code>Clang</code> &#x91CD;&#x5199;&#x4E4B;&#x540E;&#xFF0C;&#x7F16;&#x7A0B;&#x4E86;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#xFF0C;&#x4F20;&#x8FDB;&#x53BB;&#x7684;&#x662F;&#x51FD;&#x6570;&#x6307;&#x9488;(<code>Block</code>&#x7684;&#x5B9E;&#x73B0;,&#x4E0E;&#x5916;&#x90E8;&#x53D8;&#x91CF;,Block&#x63CF;&#x8FF0;)</p>
-<p><code>Block&#x7ED3;&#x6784;&#x4F53;</code></p>
-<pre><code>//&#x5982;&#x4E0A;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;
-struct xxx_block_impl_0{
-    struct __block_impl impl;
-    struct __xxx_block_desc_0 *Desc;    //Block&#x63CF;&#x8FF0;
-    xxx_block_impl_0(void *fp,struct ....[&#x4E0D;&#x8BE6;&#x7EC6;&#x5199;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x5C06;&#x4E0A;&#x9762;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4F20;&#x8FDB;&#x53BB;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x8FD9;&#x91CC;]){
-    impl.isa = &amp;_NSConcreteStackBlock;
-    ...
-    }
-    //&#x5176;&#x5B9E;&#x662F;C++ &#x91CC;&#x9762;&#x5BF9;&#x7ED3;&#x6784;&#x4F53;&#x751F;&#x6210;&#x7684;&#x58F0;&#x660E;
-}
-</code></pre><p>&#x8FD9;&#x4E2A;<code>Block</code>&#x7ED3;&#x6784;&#x4F53;&#x91CC;&#x9762;&#x6709;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210;<code>OC</code>&#x91CC;&#x9762;&#x7684;&#x4FBF;&#x5229;&#x6784;&#x9020;&#x5668;&#xFF0C;&#x4E0A;&#x9762;&#x901A;&#x8FC7;<code>Clang</code>&#x91CD;&#x5199;&#x4E86;<code>Block</code>&#x7684;&#x751F;&#x6210;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x91CC;&#x9762;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5C06;&#x53C2;&#x6570;&#x4F20;&#x8FDB;&#x53BB;&#x8D4B;&#x503C;&#x7ED9;&#x7ED3;&#x6784;&#x4F53;&#x91CC;&#x9762;&#x7684;&#x53D8;&#x91CF;</p>
-<h2 id="2&#x622A;&#x83B7;&#x53D8;&#x91CF;">2.&#x622A;&#x83B7;&#x53D8;&#x91CF;</h2>
-<p>&#x6570;&#x636E;&#x7C7B;&#x578B;:</p>
-<ul>
-<li>&#x5C40;&#x90E8;&#x53D8;&#x91CF;<ul>
-<li>&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</li>
-<li>&#x5BF9;&#x8C61;&#x7C7B;&#x578B;</li>
-</ul>
-</li>
-<li>&#x9759;&#x6001;&#x5C40;&#x90E8;&#x53D8;&#x91CF;</li>
-<li>&#x5168;&#x5C40;&#x9759;&#x6001;&#x53D8;&#x91CF;</li>
-<li>&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-</ul>
-<p>&#x5177;&#x4F53;&#x4E0D;&#x540C;&#x53C2;&#x8003;:<a href="../knowledge/staticCompare.md">staic</a></p>
-<p>&#x5982;&#x4F55;&#x622A;&#x53D6;:</p>
-<ul>
-<li>&#x5BF9;&#x4E8E;<strong>&#x57FA;&#x672C;&#x6570;&#x636E;</strong>&#x7C7B;&#x578B;&#x7684;<strong>&#x5C40;&#x90E8;&#x53D8;&#x91CF;</strong>&#x622A;&#x83B7;&#x5176;&#x503C;</li>
-<li>&#x5BF9;&#x4E8E;<strong>&#x5BF9;&#x8C61;</strong>&#x7C7B;&#x578B;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;<strong>&#x8FDE;&#x540C;&#x6240;&#x6709;&#x6743;&#x4FEE;&#x9970;&#x7B26;</strong>&#x4E00;&#x9F50;&#x622A;&#x83B7;(&#x53EF;&#x4EE5;&#x89E3;&#x91CA;&#x5FAA;&#x73AF;&#x5F15;&#x7528;)</li>
-<li>&#x4EE5;<strong>&#x6307;&#x9488;&#x5F62;&#x5F0F;</strong>&#x622A;&#x83B7;&#x5C40;&#x90E8;&#x9759;&#x6001;&#x53D8;&#x91CF;</li>
-<li><strong>&#x4E0D;&#x622A;&#x83B7;</strong>&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-</ul>
-<pre><code>//&#x5168;&#x5C40;&#x53D8;&#x91CF;
-int global_var = 4;
-//&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;
-static int static_global_var = 5;
+                                <h1 id="ios-&#x5BF9;&#x8C61;&#x4E0E;&#x6570;&#x636E;&#x7ED3;&#x6784;">iOS &#x5BF9;&#x8C61;&#x4E0E;&#x6570;&#x636E;&#x7ED3;&#x6784;</h1>
+<p>&#x4E0D;&#x7BA1;&#x662F;&#x7C7B;&#x5BF9;&#x8C61;&#x8FD8;&#x662F;&#x5143;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x7C7B;&#x578B;&#x90FD;&#x662F; Class&#xFF0C;class &#x548C; mete-class &#x7684;&#x5E95;&#x5C42;&#x90FD;&#x662F; objc_class &#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6307;&#x9488;&#x3002;</p>
+<pre><code class="lang-objective-c">typedef struct objc_class *Class;
+</code></pre>
+<p>&#x4E0D;&#x5C11;&#x7F51;&#x4E0A;&#x6587;&#x7AE0;&#x90FD;&#x662F;&#x590D;&#x5236;&#x7C98;&#x8D34;&#x9519;&#x7684;,&#x5982;&#x4E0B;</p>
+<p>#if !<strong>OBJC2</strong> &#x5728;2006&#x5E74;7&#x6708;WWDC&#x4E2D;&#xFF0C;Apple&#x53D1;&#x5E03;&#x4E86;&#x201C;Objective-C 2.0&#x201D;&#x3002;2.0&#x6709;&#x5F88;&#x591A;&#x7684;&#x8BED;&#x6CD5;&#x6539;&#x8FDB;&#x3001;runtime&#x6539;&#x8FDB;&#x3001;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#xFF08;&#x5DF2;&#x5E9F;&#x5F03;&#xFF09;&#x3001;&#x652F;&#x6301;64 &#x7B49;&#x3002;</p>
+<p>&#x4E0A;&#x9762;&#x201C;! <strong>OBJC2</strong> &#x201D; &#x4E4B;&#x95F4;&#x7684;&#x4EE3;&#x7801;&#x662F;Objective-C 2.0&#x4E4B;&#x524D;1.0&#x7248;&#x672C;&#x7684;&#x4E1C;&#x897F;&#x3002;2.0&#x5DF2;&#x7ECF;&#x4E0D;&#x652F;&#x6301;&#x4E86;&#x3002;</p>
+<h2 id="1objc1-objcclass-&#x7ED3;&#x6784;&#xFF08;&#x8FC7;&#x65F6;&#xFF09;">1.OBJC1 objc_class &#x7ED3;&#x6784;&#xFF08;&#x8FC7;&#x65F6;&#xFF09;</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> objc_class {
+    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;
 
--(void)method{
-    //&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;
-    int var = 1;
-    //&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;
-    __unsafe_unretained id unsafe_obj = nil;
-    __strong id strong_obj = nil;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> !__OBJC2__</span>
+    Class _Nullable super_class                              OBJC2_UNAVAILABLE;
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * _Nonnull name                               OBJC2_UNAVAILABLE;
+    <span class="hljs-keyword">long</span> version                                             OBJC2_UNAVAILABLE;
+    <span class="hljs-keyword">long</span> info                                                OBJC2_UNAVAILABLE;
+    <span class="hljs-keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;
+    <span class="hljs-keyword">struct</span> objc_ivar_list * _Nullable ivars                  OBJC2_UNAVAILABLE;
+    <span class="hljs-keyword">struct</span> objc_method_list * _Nullable * _Nullable methodLists                    OBJC2_UNAVAILABLE;
+    <span class="hljs-keyword">struct</span> objc_cache * _Nonnull cache                       OBJC2_UNAVAILABLE;
+    <span class="hljs-keyword">struct</span> objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 
-    //&#x5C40;&#x90E8;&#x9759;&#x6001;&#x53D8;&#x91CF;
-    static int static_var = 3;
-}
-</code></pre><h2 id="3block-&#x4FEE;&#x9970;&#x7B26;">3.__block &#x4FEE;&#x9970;&#x7B26;</h2>
-<p><strong>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;</strong>&#xFF0C;&#x5BF9;&#x88AB;&#x622A;&#x83B7;&#x53D8;&#x91CF;&#x8FDB;&#x884C;<strong>&#x8D4B;&#x503C;</strong>&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x6DFB;&#x52A0; <code>__block</code> &#x4FEE;&#x9970;&#x7B26;(<strong>&#x6CE8;&#x610F;&#x662F;&#x8D4B;&#x503C;!!</strong>, &#x8D4B;&#x503C;&#x2260;&#x4F7F;&#x7528;)</p>
-<pre><code>NSMutableArray *array = [NSMutableArray array];
-void(^Block)(void) = ^{
-    [array addObject:@123];
-}
-
-//&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0; __block,&#x56E0;&#x4E3A;&#x662F;&#x4F7F;&#x7528;
-</code></pre><p>&#x9700;&#x8981;__block&#x4FEE;&#x9970;&#x7B26;:</p>
-<ul>
-<li>&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</li>
-<li>&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;</li>
-</ul>
-<p>&#x4E0D;&#x9700;&#x8981;__block&#x4FEE;&#x9970;&#x7B26;:</p>
-<ul>
-<li>&#x9759;&#x6001;&#x5C40;&#x90E8;&#x53D8;&#x91CF;</li>
-<li>&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-<li>&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-</ul>
-<h3 id="31block&#x539F;&#x7406;">3.1__block&#x539F;&#x7406;</h3>
-<p><code>__block</code> &#x6240;&#x8D77;&#x5230;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x53EA;&#x8981;&#x89C2;&#x5BDF;&#x5230;&#x8BE5;&#x53D8;&#x91CF;&#x88AB; block &#x6240;&#x6301;&#x6709;&#xFF0C;&#x5C31;&#x5C06;&#x201C;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x201D;&#x5728;&#x6808;&#x4E2D;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;&#x653E;&#x5230;&#x4E86;&#x5806;&#x4E2D;&#x3002;&#x8FDB;&#x800C;&#x5728;block&#x5185;&#x90E8;&#x4E5F;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x3002;</p>
-<p>__block&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x6210;&#x4E86;&#x5BF9;&#x8C61;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051401.jpg" alt=""></p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051409.jpg" alt=""></p>
-<p><strong>&#x6808;&#x4E0A;</strong>&#x7684; __block &#x7684;  <code>__forwading</code> &#x6307;&#x9488;&#x6307;&#x5411;&#x81EA;&#x5DF1;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-23-035859.jpg" alt=""></p>
-<h4 id="32-forwarding&#x5B58;&#x5728;&#x610F;&#x4E49;">3.2 __forwarding&#x5B58;&#x5728;&#x610F;&#x4E49;</h4>
-<p>&#x4E0D;&#x8BBA;&#x5728;&#x4EFB;&#x4F55;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;,&#x90FD;&#x53EF;&#x4EE5;&#x987A;&#x5229;&#x8BBF;&#x95EE;&#x540C;&#x4E00;&#x4E2A;__block&#x53D8;&#x91CF;.</p>
-<h2 id="4block-&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;">4.Block &#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;</h2>
-<ul>
-<li>_NSConcreteGlobalBlock (&#x5168;&#x5C40;&#x7684;&#x9759;&#x6001; block&#xFF0C;&#x4E0D;&#x4F1A;&#x8BBF;&#x95EE;&#x4EFB;&#x4F55;&#x5916;&#x90E8;&#x53D8;&#x91CF;)</li>
-<li>_NSConcreteStackBlock ( &#x4FDD;&#x5B58;&#x5728;&#x6808;&#x4E2D;&#x7684; block&#xFF0C;&#x5F53;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x65F6;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;)</li>
-<li><p>_NSConcreateMallocBlock ( &#x4FDD;&#x5B58;&#x5728;&#x5806;&#x4E2D;&#x7684; block&#xFF0C;&#x5F53;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A; 0 &#x65F6;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;)</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051428.jpg" alt=""></p>
-</li>
-</ul>
-<h4 id="nsconcreteglobalblock">_NSConcreteGlobalBlock</h4>
-<p>&#x672A;&#x6355;&#x83B7;&#x4EFB;&#x4F55;&#x53D8;&#x91CF;&#x6216;&#x4EC5;&#x6355;&#x83B7;&#x7684;&#x53D8;&#x91CF;&#x4E3A;&#x4EE5;&#x4E0B;&#x7C7B;&#x578B;&#x7684; Block &#x662F; NSConcreteGlobalBlock&#x3002;</p>
-<ul>
-<li>&#x9759;&#x6001;&#x53D8;&#x91CF;</li>
-<li>&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-<li>&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-</ul>
-<pre><code class="lang-objective-c">void (^blk) () = ^{
-    printf(&quot;Block&quot;);
-};
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        blk();
-    }
-    return 0;
-}
+} OBJC2_UNAVAILABLE;
+<span class="hljs-comment">/* Use `Class` instead of `struct objc_class *` */</span>
 </code></pre>
-<p>&#x5168;&#x5C40;&#x5B9A;&#x4E49;&#x7684;Block&#x7ECF;&#x8FC7;&#x4EE3;&#x7801;&#x8F6C;&#x6362;&#x540E;</p>
-<pre><code class="lang-objective-c">struct __blk_block_impl_0 {
-  struct __block_impl impl;
-  struct __blk_block_desc_0* Desc;
-  __blk_block_impl_0(void *fp, struct __blk_block_desc_0 *desc, int flags=0) {
-    impl.isa = &amp;_NSConcreteGlobalBlock; //&#x8BBE;&#x7F6E;&#x5728;&#x6570;&#x636E;&#x533A;&#x7684;Block
-    impl.Flags = flags;
-    impl.FuncPtr = fp;
-    Desc = desc;
-  }
-};
-</code></pre>
-<h4 id="nsconcretestackblock">_NSConcreteStackBlock</h4>
-<p>&#x53EA;&#x8981;&#x6355;&#x83B7;&#x4E86;&#x4EE5;&#x4E0A;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#x4EE5;&#x5916;&#x7684;&#x53D8;&#x91CF;&#x7684; Block &#x662F; NSConcreteStackBlock&#x3002;</p>
-<pre><code class="lang-objective-c">int i = 0;
-void (^blk)() = ^() {
-    printf(&quot;%d&quot;, i);
-};
-blk();
-</code></pre>
-<p>&#x5C40;&#x90E8;&#x5B9A;&#x4E49;&#x7684;Block &#x7ECF;&#x8FC7;&#x4EE3;&#x7801;&#x8F6C;&#x6362;&#x540E;</p>
-<pre><code class="lang-objective-c">struct __main_block_impl_0 {
-  struct __block_impl impl;
-  struct __main_block_desc_0* Desc;
-  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) {
-    impl.isa = &amp;_NSConcreteStackBlock; //&#x8BBE;&#x7F6E;&#x5728;&#x6808;&#x533A;&#x7684;Block
-    impl.Flags = flags;
-    impl.FuncPtr = fp;
-    Desc = desc;
-  }
-};
-</code></pre>
-<p>&#x5927;&#x591A;&#x6570;&#x65F6;&#x5019;&#xFF0C;clang&#x8F6C;&#x6362;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#x901A;&#x5E38;&#x662F;<code>_NSConcreteStackBlock</code>&#x5BF9;&#x8C61;</p>
-<p><strong>&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x7406;&#x89E3;&#xFF0C;NSConcreteStackBlock&#x5C31;&#x662F;&#x5F15;&#x7528;&#x4E86;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x7684;block</strong></p>
-<h4 id="nsconcretemallocblock">NSConcreteMallocBlock</h4>
-<p>&#x7CFB;&#x7EDF;&#x4E0D;&#x63D0;&#x4F9B;&#x76F4;&#x63A5;&#x521B;&#x5EFA; <code>NSConcreteMallocBlock</code> &#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x5BF9; <code>NSConcreteStackBlock</code> &#x8FDB;&#x884C; copy &#x64CD;&#x4F5C;&#x6765;&#x751F;&#x6210; <code>NSConcreteMallocBlock</code></p>
-<p>&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#xFF0C;Block &#x4F1A;&#x8FDB;&#x884C; copy &#x64CD;&#x4F5C;&#xFF1A;</p>
+<h2 id="2-objc2-&#x7ED3;&#x6784;">2. OBJC2 &#x7ED3;&#x6784;</h2>
+<p><strong>objc_class</strong>&#x7684;&#x771F;&#x5B9E;&#x5B9A;&#x4E49;&#x5B9E;&#x9645;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ECE; <a href="https://opensource.apple.com/source/objc4/objc4-750.1/runtime/objc-runtime-new.h.auto.html" target="_blank">objc-runtime-new.h</a> &#x4E2D;&#x770B;&#x5230;(&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x7701;&#x7565;)&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-143952.jpg" alt=""></p>
+<p><strong>objc_object</strong>&#x7684;&#x771F;&#x5B9E;&#x5B9A;&#x4E49; &#x8BE6;&#x89C1; <a href="https://opensource.apple.com/source/objc4/objc4-750.1/runtime/objc-private.h.auto.html" target="_blank">objc-private.h&#x6587;&#x4EF6;</a></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144015.jpg" alt=""></p>
+<p>&#x5982;&#x4E0A;&#x56FE;,&#x5173;&#x7CFB;&#x4E5F;&#x5982;&#x65E7;&#x7248;&#x672C;&#x4E00;&#x6837;, <strong>objc_class</strong> &#x7EE7;&#x627F;&#x4E8E; <strong>objc_object</strong></p>
+<p>objc_object&#x4E2D;&#x6709;&#x4E00;&#x4E2A;isa&#x6307;&#x9488;&#xFF0C;&#x90A3;&#x4E48;objc_class&#x7EE7;&#x627F;objc_object&#xFF0C;&#x4E5F;&#x5C31;&#x540C;&#x6837;&#x62E5;&#x6709;&#x4E00;&#x4E2A;isa&#x6307;&#x9488;</p>
+<p>&#x6240;&#x6709;&#x7EE7;&#x627F;&#x81EA; <code>NSObject</code> &#x7684;&#x7C7B;&#x5B9E;&#x4F8B;&#x5316;&#x540E;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x4E3A; <code>isa_t</code> &#x7684;&#x7ED3;&#x6784;&#x4F53;&#x3002;</p>
 <ul>
-<li>&#x624B;&#x52A8;&#x6267;&#x884C; copy &#x65B9;&#x6CD5;</li>
-<li>&#x5C06; Block &#x8D4B;&#x503C;&#x7ED9; __strong &#x4FEE;&#x9970;&#x7B26;&#x4FEE;&#x9970;&#xFF08;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#xFF09;&#x7684; Block &#x6216;&#x8005; id &#x5BF9;&#x8C61;</li>
-<li>&#x4F5C;&#x4E3A;&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;</li>
-<li>&#x7CFB;&#x7EDF; API &#x4E2D;&#x542B;&#x6709; usingBlcok &#x7684;&#x65B9;&#x6CD5;</li>
+<li><code>super_class</code> &#x6307;&#x5411;&#x5F53;&#x524D;&#x7C7B;&#x7684;&#x7236;&#x7C7B;</li>
+<li><code>cache</code> &#x7528;&#x4E8E;&#x7F13;&#x5B58;&#x6307;&#x9488;&#x548C; <code>vtable</code>&#xFF0C;&#x52A0;&#x901F;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;</li>
+<li><code>bits</code> &#x5C31;&#x662F;&#x5B58;&#x50A8;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x5C5E;&#x6027;&#x3001;&#x9075;&#x5FAA;&#x7684;&#x534F;&#x8BAE;&#x7B49;&#x4FE1;&#x606F;&#x7684;&#x5730;&#x65B9;</li>
 </ul>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051433.jpg" alt=""></p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051439.jpg" alt=""></p>
-<h3 id="block&#x751F;&#x547D;&#x5468;&#x671F;">Block&#x751F;&#x547D;&#x5468;&#x671F;</h3>
-<p><code>NSConcreteStackBlock</code> &#x662F;&#x7531;&#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x52A8;&#x7BA1;&#x7406;&#xFF0C;&#x8D85;&#x8FC7;&#x4F5C;&#x7528;&#x57DF;&#x4E4B;&#x5916;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x4E86;&#x3002;&#x800C; <code>NSConcreteMallocBlock</code> &#x662F;&#x7531;&#x7A0B;&#x5E8F;&#x5458;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x88AB;&#x5F3A;&#x5F15;&#x7528;&#x4E5F;&#x4F1A;&#x88AB;&#x6D88;&#x8017;&#x3002;<code>NSConcreteGlobalBlock</code> &#x7531;&#x4E8E;&#x5B58;&#x5728;&#x4E8E;&#x5168;&#x5C40;&#x533A;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x4E00;&#x76F4;&#x4F34;&#x968F;&#x7740;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</p>
-<h2 id="5-weak-&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x7684;&#x6982;&#x62EC;">5 .__weak &#x5B9E;&#x73B0;&#x539F;&#x7406;&#x7684;&#x6982;&#x62EC;</h2>
-<p><code>Runtime</code>&#x7EF4;&#x62A4;&#x4E86;&#x4E00;&#x4E2A;<code>weak</code>&#x8868;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x6307;&#x5411;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;weak&#x6307;&#x9488;&#x3002;weak&#x8868;&#x5176;&#x5B9E;&#x662F;&#x4E00;&#x4E2A;hash&#xFF08;&#x54C8;&#x5E0C;&#xFF09;&#x8868;&#xFF0C;Key&#x662F;&#x6240;&#x6307;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#xFF0C;Value&#x662F;weak&#x6307;&#x9488;&#x7684;&#x5730;&#x5740;&#xFF08;&#x8FD9;&#x4E2A;&#x5730;&#x5740;&#x7684;&#x503C;&#x662F;&#x6240;&#x6307;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#xFF09;&#x6570;&#x7EC4;&#x3002;</p>
-<p>weak &#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x53EF;&#x4EE5;&#x6982;&#x62EC;&#x4E00;&#x4E0B;&#x4E09;&#x6B65;&#xFF1A;</p>
-<ol>
-<li>&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF1A;runtime&#x4F1A;&#x8C03;&#x7528;<code>objc_initWeak</code>&#x51FD;&#x6570;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x65B0;&#x7684;weak&#x6307;&#x9488;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#x3002;</li>
-<li>&#x6DFB;&#x52A0;&#x5F15;&#x7528;&#x65F6;&#xFF1A;objc_initWeak&#x51FD;&#x6570;&#x4F1A;&#x8C03;&#x7528; <code>objc_storeWeak()</code>&#x51FD;&#x6570;&#xFF0C; <code>objc_storeWeak()</code>&#x7684;&#x4F5C;&#x7528;&#x662F;&#x66F4;&#x65B0;&#x6307;&#x9488;&#x6307;&#x5411;&#xFF0C;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x8868;&#x3002;</li>
-<li>&#x91CA;&#x653E;&#x65F6;&#xFF0C;&#x8C03;&#x7528;<code>clearDeallocating</code>&#x51FD;&#x6570;&#x3002;<code>clearDeallocating</code>&#x51FD;&#x6570;&#x9996;&#x5148;&#x6839;&#x636E;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x83B7;&#x53D6;&#x6240;&#x6709;weak&#x6307;&#x9488;&#x5730;&#x5740;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x628A;&#x5176;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8BBE;&#x4E3A;nil&#xFF0C;&#x6700;&#x540E;&#x628A;&#x8FD9;&#x4E2A;entry&#x4ECE;weak&#x8868;&#x4E2D;&#x5220;&#x9664;&#xFF0C;&#x6700;&#x540E;&#x6E05;&#x7406;&#x5BF9;&#x8C61;&#x7684;&#x8BB0;&#x5F55;&#x3002;</li>
-</ol>
-<h2 id="6-&#x603B;&#x7ED3;">6. &#x603B;&#x7ED3;</h2>
-<p><code>__weak</code> &#x672C;&#x8EAB;&#x662F;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x4F1A;&#x5BFC;&#x81F4;&#x5916;&#x90E8;&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x4E86;&#x4E4B;&#x540E;&#xFF0C;block &#x5185;&#x90E8;&#x4E5F;&#x8BBF;&#x95EE;&#x4E0D;&#x5230;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728; block &#x5185;&#x90E8;&#x58F0;&#x660E;&#x4E00;&#x4E2A; <code>__strong</code> &#x7684;&#x53D8;&#x91CF;&#x6765;&#x6307;&#x5411; weakObj&#xFF0C;&#x4F7F;&#x5916;&#x90E8;&#x5BF9;&#x8C61;&#x65E2;&#x80FD;&#x5728; block &#x5185;&#x90E8;&#x4FDD;&#x6301;&#x4F4F;&#xFF0C;&#x53C8;&#x80FD;&#x907F;&#x514D;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
-<p><code>__block</code> &#x672C;&#x8EAB;&#x65E0;&#x6CD5;&#x907F;&#x514D;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728; block &#x5185;&#x90E8;&#x624B;&#x52A8;&#x628A; blockObj &#x8D4B;&#x503C;&#x4E3A; nil &#x7684;&#x65B9;&#x5F0F;&#x6765;&#x907F;&#x514D;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;&#x3002;&#x53E6;&#x5916;&#x4E00;&#x70B9;&#x5C31;&#x662F; <code>__block</code> &#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x5728; block &#x5185;&#x5916;&#x90FD;&#x662F;&#x552F;&#x4E00;&#x7684;&#xFF0C;&#x8981;&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x53EF;&#x80FD;&#x5E26;&#x6765;&#x7684;&#x9690;&#x60A3;&#x3002;</p>
-<h2 id="reference">Reference</h2>
-<p><a href="https://xiaozhuanlan.com/topic/2710695843" target="_blank">1.&#x6DF1;&#x5165;&#x7406;&#x89E3; Block</a></p>
+<h2 id="3-classrwt">3. class_rw_t</h2>
+<p><strong>objc_class</strong> &#x4E2D;&#x7684; data &#x8FD4;&#x56DE; <code>class_rw_t</code> &#x7ED3;&#x6784;&#xFF0C;&#x6B64;&#x7ED3;&#x6784;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144757.png" alt=""></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144612.jpg" alt=""></p>
+<p>&#x800C;<code>class_rw_t</code>&#x662F;&#x901A;&#x8FC7;bits&#x8C03;&#x7528;data&#x65B9;&#x6CD5;&#x5F97;&#x6765;&#x7684;&#xFF0C;&#x6765;&#x5230;data&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;data&#x51FD;&#x6570;&#x5185;&#x90E8;&#x4EC5;&#x4EC5;&#x5BF9;bits&#x8FDB;&#x884C;<code>&amp;FAST_DATA_MASK</code>&#x64CD;&#x4F5C;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144842.jpg" alt=""></p>
+<p>&#x800C;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#x5219;&#x662F;&#x5B58;&#x50A8;&#x5728;<code>class_ro_t</code>&#x5185;&#x90E8;&#x4E2D;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5230;<code>class_ro_t</code>&#x5185;&#x67E5;&#x770B;&#x3002;
+<code>class_rw_t</code> &#x8868;&#x793A;<strong>read write</strong>&#xFF0C;<code>class_ro_t</code> &#x8868;&#x793A; <strong>read only</strong>&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-145011.jpg" alt=""></p>
+<h2 id="4-&#x603B;&#x7ED3;">4. &#x603B;&#x7ED3;</h2>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-145054.jpg" alt=""></p>
+<p>&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x7ED3;&#x6784;&#x5982;&#x4E0B;,</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085229.jpg" alt="image-20190324153451659"></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-19-023218.jpg" alt=""></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085240.jpg" alt="image-20190324154051666"></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085336.jpg" alt="image-20190324154130013"></p>
+<ul>
+<li>superClass &#x6307;&#x5411;&#x5F53;&#x524D;&#x7C7B;&#x7684;&#x7236;&#x7C7B;</li>
+<li>cache_t &#x63D0;&#x4F9B;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x8FC7;&#x7A0B;&#x5F53;&#x4E2D;&#x7684;&#x7F13;&#x5B58;&#x65B9;&#x6CD5;&#x67E5;&#x627E; &#xFF0C; &#x5B9E;&#x8D28;&#x4E0A;&#x662F;&#x88C5;&#x6EE1;&#x4E86; bucket_t &#x7684;&#x4E00;&#x4E2A; <strong>hash &#x8868;</strong>&#x3002;&#x56E0;&#x4E3A;&#x6563;&#x5217;&#x8868;&#x68C0;&#x7D22;&#x8D77;&#x6765;&#x66F4;&#x5FEB;&#xFF0C;</li>
+<li>class_data_bits_t &#x7C7B;&#x7684;&#x57FA;&#x7840;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x542B;&#x4E86;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x534F;&#x8BAE;&#x5217;&#x8868;&#x7B49;&#x3002;</li>
+</ul>
+<p>method_t&#x662F;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x5C01;&#x88C5;,&#x91CC;&#x9762;&#x5305;&#x62EC;&#x4E86;&#x540D;&#x79F0;(SEL),&#x8FD4;&#x56DE;&#x503C;,&#x53C2;&#x6570;,&#x4E0E;&#x51FD;&#x6570;&#x4F53;(&#x5B9E;&#x73B0;)</p>
 
                                 
                                 </section>
@@ -1096,12 +979,12 @@ blk();
 
             
                 
-                <a href="../Runtime/Runtime.md" class="navigation navigation-prev " aria-label="Previous page: 3.Runtime">
+                <a href="isa.html" class="navigation navigation-prev " aria-label="Previous page: isa">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../Runloop/Runloop.html" class="navigation navigation-next " aria-label="Next page: 5.Runloop">
+                <a href="ClassRWT.html" class="navigation navigation-next " aria-label="Next page: ClassRWT">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1112,7 +995,7 @@ blk();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.Block","level":"2.1.5","depth":2,"next":{"title":"5.Runloop","level":"2.1.6","depth":2,"path":"iOS/Runloop/Runloop.md","ref":"./iOS/Runloop/Runloop.md","articles":[]},"previous":{"title":"3.Runtime","level":"2.1.4","depth":2,"path":"iOS/Runtime/Runtime.md","ref":"iOS/Runtime/Runtime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Block/Block.md","mtime":"2020-08-04T14:50:56.084Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-04T14:51:27.031Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ObjectClass","level":"2.1.2.3","depth":3,"next":{"title":"ClassRWT","level":"2.1.2.4","depth":3,"path":"iOS/Objc_Object/ClassRWT.md","ref":"iOS/Objc_Object/ClassRWT.md","articles":[]},"previous":{"title":"isa","level":"2.1.2.2","depth":3,"path":"iOS/Objc_Object/isa.md","ref":"iOS/Objc_Object/isa.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Objc_Object/ObjectClass.md","mtime":"2020-08-04T14:50:56.088Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-04T14:51:27.031Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
