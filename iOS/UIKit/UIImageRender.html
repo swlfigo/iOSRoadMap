@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Propety属性 · GitBook</title>
+        <title>iOS 图片的加载与渲染过程 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="isa.html" />
     
+    <link rel="prev" href="UIViewRender.html" />
     
 
     </head>
@@ -310,9 +310,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1.1" data-path="../UIKit/UIResponder.html">
+        <li class="chapter " data-level="2.1.1.1" data-path="UIResponder.html">
             
-                <a href="../UIKit/UIResponder.html">
+                <a href="UIResponder.html">
             
                     
                     UI触摸事件与事件响应
@@ -323,9 +323,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.1.2" data-path="../UIKit/UIOffScreenRendering.html">
+        <li class="chapter " data-level="2.1.1.2" data-path="UIOffScreenRendering.html">
             
-                <a href="../UIKit/UIOffScreenRendering.html">
+                <a href="UIOffScreenRendering.html">
             
                     
                     iOS 离屏渲染
@@ -336,9 +336,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.1.3" data-path="../UIKit/UIViewRender.html">
+        <li class="chapter " data-level="2.1.1.3" data-path="UIViewRender.html">
             
-                <a href="../UIKit/UIViewRender.html">
+                <a href="UIViewRender.html">
             
                     
                     iOS UIView刷新与渲染机制
@@ -349,9 +349,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.1.4" data-path="../UIKit/UIImageRender.html">
+        <li class="chapter active" data-level="2.1.1.4" data-path="UIImageRender.html">
             
-                <a href="../UIKit/UIImageRender.html">
+                <a href="UIImageRender.html">
             
                     
                     iOS 图片的加载与渲染过程
@@ -381,9 +381,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="2.1.2.1" data-path="Property.html">
+        <li class="chapter " data-level="2.1.2.1" data-path="../Objc_Object/Property.html">
             
-                <a href="Property.html">
+                <a href="../Objc_Object/Property.html">
             
                     
                     Propety属性
@@ -394,9 +394,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.2" data-path="isa.html">
+        <li class="chapter " data-level="2.1.2.2" data-path="../Objc_Object/isa.html">
             
-                <a href="isa.html">
+                <a href="../Objc_Object/isa.html">
             
                     
                     isa
@@ -407,9 +407,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.3" data-path="ObjectClass.html">
+        <li class="chapter " data-level="2.1.2.3" data-path="../Objc_Object/ObjectClass.html">
             
-                <a href="ObjectClass.html">
+                <a href="../Objc_Object/ObjectClass.html">
             
                     
                     ObjectClass
@@ -420,9 +420,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.4" data-path="ClassRWT.html">
+        <li class="chapter " data-level="2.1.2.4" data-path="../Objc_Object/ClassRWT.html">
             
-                <a href="ClassRWT.html">
+                <a href="../Objc_Object/ClassRWT.html">
             
                     
                     ClassRWT
@@ -874,7 +874,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Propety属性</a>
+        <a href="../.." >iOS 图片的加载与渲染过程</a>
     </h1>
 </div>
 
@@ -889,139 +889,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="ios-&#x5C5E;&#x6027;">iOS &#x5C5E;&#x6027;</h1>
-<h3 id="1&#x6210;&#x5458;&#x53D8;&#x91CF;-&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;-&#x5C5E;&#x6027;">1.&#x6210;&#x5458;&#x53D8;&#x91CF; &#x5B9E;&#x4F8B;&#x53D8;&#x91CF; &#x5C5E;&#x6027;</h3>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-19-014905.png" alt="image-20190313113006579"></p>
-<p>&#x56FE;&#x4E2D;&#x7684;<strong>Member Variable declarations</strong>&#x7FFB;&#x8BD1;&#x8FC7;&#x6765;&#x5C31;&#x662F;<strong>&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7684;&#x58F0;&#x660E;</strong></p>
-<pre><code class="lang-objective-c">&#x7C7B;&#xFF1A; Class (description/template for an object)
-&#x5B9E;&#x4F8B;&#xFF1A; Instance (manifestation of a class)
-&#x6D88;&#x606F;&#xFF1A; Message (sent to object to make it act)
-&#x65B9;&#x6CD5;&#xFF1A; Method (code invoked by a Message)
-&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF1A; Instance Variable (object-specific storage)
-&#x8D85;&#x7C7B;/&#x5B50;&#x7C7B;&#xFF1A; Superclass/Subclass (Inheritance)
-&#x534F;&#x8BAE;&#xFF1A;  Protocol (non-class-specific methods)
-</code></pre>
-<p>&#x4ECE;&#x7ED9;&#x51FA;&#x7684;&#x82F1;&#x6587;&#x8BF4;&#x660E;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF1A;&#x5B9E;&#x4F8B;&#xFF08;Instance&#xFF09;&#x662F;&#x9488;&#x5BF9; &#x7C7B;&#xFF08;class&#xFF09;&#x800C;&#x8A00;&#x7684;&#x3002;&#x5B9E;&#x4F8B;&#x662F;&#x6307;&#x7C7B;&#x7684;&#x58F0;&#x660E;&#xFF1B;&#x7531;&#x6B64;&#x63A8;&#x7406;&#xFF0C;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF08;Instance Variable&#xFF09; &#x662F;&#x6307;<strong>&#x7531;&#x7C7B;&#x58F0;&#x660E;&#x7684;&#x5BF9;&#x8C61;</strong>&#x3002;</p>
-<p> &#x4E25;&#x683C;&#x8BF4;&#x6765;&#xFF0C;&#x4E0A;&#x56FE;&#x4E2D;&#x7684;  int  count;  &#x662F;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x3002;&#x800C; <code>NSString name&#xFF1B;</code> &#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF08;NSString&#x662F;&#x4E00;&#x4E2A;&#x7C7B;).&#x81F3;&#x4E8E; id data &#x5E94;&#x8BE5;&#x5C5E;&#x4E8E;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x8FD8;&#x662F;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x5462;&#xFF1F;  &#x56E0;&#x4E3A; id &#x662F; OC&#x7279;&#x6709;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x4ECE;&#x672C;&#x8D28;&#x4E0A;&#x8BB2;&#xFF0C; id &#x7B49;&#x540C;&#x4E8E; &#xFF08;void *&#xFF09;&#x3002; &#x6240;&#x4EE5; id data &#x5E94;&#x5C5E;&#x4E8E; &#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x3002;</p>
-<p><strong>&#x6210;&#x5458;&#x53D8;&#x91CF;</strong>&#xFF1A;&#x901A;&#x5E38;&#x662F;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x6216;&#x662F;&#x57FA;&#x7840;&#x7C7B;&#x578B;&#xFF08;int, float&#xFF09;&#x7684;&#x7B80;&#x5355;&#x6307;&#x9488;&#x3002;&#x53EF;&#x4EE5;&#x5728;.h &#x6216;&#x662F; .m &#x6587;&#x4EF6;&#x4E2D;&#x58F0;&#x660E;&#xFF1A;</p>
-<p><strong>&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;</strong>&#xFF1A;&#x662F;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7684;&#x4E00;&#x79CD;&#xFF0C;&#x5B9E;&#x4F8B;&#x662F;&#x9488;&#x5BF9;&#x7C7B;&#x800C;&#x8A00;&#x7684;&#xFF0C;&#x662F;&#x6307;&#x5BF9;&#x7C7B;&#x7684;&#x58F0;&#x660E;&#xFF1B;&#x7531;&#x6B64;&#x63A8;&#x7406;&#xFF0C;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x662F;&#x6307;&#x7531;&#x7C7B;&#x58F0;&#x660E;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
-<h3 id="2--synthesizer">2.  @synthesizer</h3>
-<p>@synthesize &#x8BED;&#x53E5;&#x53EA;&#x80FD;&#x88AB;&#x7528;&#x5728; @implementation &#x4EE3;&#x7801;&#x6BB5;&#x4E2D;&#xFF0C;@synthesize&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8BA9;&#x7F16;&#x8BD1;&#x5668;&#x4E3A;&#x4F60;&#x81EA;&#x52A8;&#x751F;&#x6210;setter&#x4E0E;getter&#x65B9;&#x6CD5;&#xFF0C;@synthesize &#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x4F5C;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E0E;&#x5C5E;&#x6027;&#x5BF9;&#x5E94;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;&#x4F8B;&#x5982;@synthesize myButton = xxx&#xFF1B;&#x90A3;&#x4E48;self.myButton&#x5176;&#x5B9E;&#x662F;&#x64CD;&#x4F5C;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;xxx&#xFF0C;&#x800C;&#x4E0D;&#x662F;_myButton&#x4E86;&#x3002;</p>
-<p>&#x5982;&#x679C;.m&#x6587;&#x4EF6;&#x4E2D;&#x5199;&#x4E86;@synthesize myButton;&#x90A3;&#x4E48;&#x751F;&#x6210;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x5C31;&#x662F;myButton&#xFF1B;&#x5982;&#x679C;&#x6CA1;&#x5199;@synthesize myButton;&#x90A3;&#x4E48;&#x751F;&#x6210;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x5C31;&#x662F;_myButton&#x3002;</p>
-<h3 id="3--property">3.  @property</h3>
-<p>Objective-C2.0&#x4E2D;&#x7684;&#x65B0;&#x8BED;&#x6CD5;&#xFF1A;<strong>Properties</strong>&#x3002;<strong>&#x5B83;&#x5E2E;&#x6211;&#x4EEC;&#x81EA;&#x52A8;&#x751F;&#x6210;getter&#x548C;setter</strong></p>
-<p>&#x5199;<code>@property</code>&#x58F0;&#x660E;&#x5C5E;&#x6027;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x505A;&#x4E86;&#x4E09;&#x4EF6;&#x4E8B;</p>
-<ul>
-<li>.h: &#x58F0;&#x660E;&#x4E86;getter&#x548C;setter&#x65B9;&#x6CD5;&#xFF1B;</li>
-<li>.h: &#x58F0;&#x660E;&#x4E86;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;(&#x9ED8;&#x8BA4;:&#x4E0B;&#x5212;&#x7EBF;+&#x5C5E;&#x6027;&#x540D;)&#xFF1B;</li>
-<li><p>.m: &#x5B9E;&#x73B0;&#x4E86;getter&#x548C;setter&#x65B9;&#x6CD5;&#x3002;</p>
-<p><strong>@property = Ivar + getter + setter</strong></p>
-</li>
-</ul>
-<h3 id="4--property-&#x5173;&#x952E;&#x5B57;">4.  property &#x5173;&#x952E;&#x5B57;</h3>
-<p>&#x8BFB;&#x5199;&#x6743;&#x9650;</p>
-<ul>
-<li>readonly</li>
-<li>readwrite      &#x221A;&#x9ED8;&#x8BA4;&#x5173;&#x952E;&#x5B57;</li>
-</ul>
-<p>&#x5F15;&#x7528;&#x8BA1;&#x6570;</p>
-<ul>
-<li><p>retain / strong</p>
-<p>&#x90FD;&#x662F;&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x9664;&#x4E86;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6BD4;&#x5982;&#x4FEE;&#x9970;block&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x7528;&#x7684;&#x3002;</p>
-<p>(<strong>external</strong> &#x4E3A; Block &#x5916;&#x5C5E;&#x6027;)</p>
-<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/MRC&#x3001;ARCBlock&#x5173;&#x952E;&#x5B57;.png" alt=""></p>
-</li>
-<li><p>weak / assign</p>
-<p>assign:</p>
-<p>&#x4FEE;&#x9970;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5982;int, bool&#x7B49;</p>
-<p>&#x4FEE;&#x9970;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x4E0D;&#x6539;&#x53D8;&#x5176;&#x5F15;&#x7528;&#x8BA1;&#x6570;</p>
-<p>&#x4F1A;&#x4EA7;&#x751F;&#x60AC;&#x5782;&#x6307;&#x9488;&#xFF1A;&#x4ECD;&#x7136;&#x6307;&#x5411;&#x5185;&#x5B58;&#x5730;&#x5740;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x8986;&#x76D6;&#x540E;&#x8FD8;&#x8C03;&#x52A8;&#x53D8;&#x91CF;&#x5C31;&#x4F1A;crash</p>
-<p>weak&#xFF1A;</p>
-<p>&#x4E0D;&#x6539;&#x53D8;&#x4FEE;&#x9970;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;</p>
-<p>&#x6240;&#x6307;&#x5BF9;&#x8C61;&#x5728;&#x91CA;&#x653E;&#x4E4B;&#x540E;&#x4F1A;&#x81EA;&#x52A8;&#x8BBE;&#x7F6E;&#x4E3A;nil</p>
-</li>
-<li><p>copy</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>&#x6D45;&#x62F7;&#x8D1D;</th>
-<th>&#x6DF1;&#x62F7;&#x8D1D;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&#x65B0;&#x5185;&#x5B58;&#x7A7A;&#x95F4;</td>
-<td>&#x4E0D;&#x5206;&#x914D;</td>
-<td>&#x5206;&#x914D;</td>
-</tr>
-<tr>
-<td>&#x5F15;&#x7528;&#x8BA1;&#x6570;</td>
-<td>&#x5F71;&#x54CD;</td>
-<td>&#x4E0D;&#x5F71;&#x54CD;</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>&#x6E90;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;</th>
-<th>&#x62F7;&#x8D1D;&#x65B9;&#x5F0F;</th>
-<th>&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;</th>
-<th>&#x62F7;&#x8D1D;&#x7C7B;&#x578B;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mutable&#x5BF9;&#x8C61;</td>
-<td>copy</td>
-<td>&#x4E0D;&#x53EF;&#x53D8;</td>
-<td>&#x6DF1;&#x62F7;&#x8D1D;</td>
-</tr>
-<tr>
-<td>mutable&#x5BF9;&#x8C61;</td>
-<td>mutableCopy</td>
-<td>&#x53EF;&#x53D8;</td>
-<td>&#x6DF1;&#x62F7;&#x8D1D;</td>
-</tr>
-<tr>
-<td>immutable&#x5BF9;&#x8C61;</td>
-<td>copy</td>
-<td>&#x4E0D;&#x53EF;&#x53D8;</td>
-<td>&#x6D45;&#x62F7;&#x8D1D;</td>
-</tr>
-<tr>
-<td>immutable&#x5BF9;&#x8C61;</td>
-<td>mutableCopy</td>
-<td>&#x53EF;&#x53D8;</td>
-<td>&#x6DF1;&#x62F7;&#x8D1D;</td>
-</tr>
-</tbody>
-</table>
-<p>&#x539F;&#x5B50;&#x6027;</p>
-<ul>
-<li>atomic     &#x221A;&#x9ED8;&#x8BA4;&#x5173;&#x952E;&#x5B57;</li>
-<li>nonatomic</li>
-</ul>
-<p>atomic<code>&#x4FDD;&#x8BC1;&#x8D4B;&#x503C;&#x83B7;&#x53D6;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;,&#x662F;&#x5BF9;&#x6210;&#x5458;&#x5C5E;&#x6027;&#x7684;&#x76F4;&#x63A5;&#x7684;&#x83B7;&#x53D6;&#x5B89;&#x5168;&#xFF0C;&#x5E76;&#x4E0D;&#x4EE3;&#x8868;&#x64CD;&#x4F5C;&#x548C;&#x8BBF;&#x95EE;&#x5B89;&#x5168;.</code></p>
-<p><strong>atomic&#x662F;&#x81EA;&#x65CB;&#x9501;&#xFF0C;&#x5373;&#x5F53;&#x4E0A;&#x4E00;&#x7EBF;&#x7A0B;&#x6CA1;&#x6709;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#xFF08;&#x88AB;&#x9501;&#x4F4F;&#xFF09;&#xFF0C;&#x4E0B;&#x4E00;&#x7EBF;&#x7A0B;&#x4F1A;&#x4E00;&#x76F4;&#x7B49;&#x5F85;&#xFF08;&#x4E0D;&#x4F1A;&#x8FDB;&#x5165;&#x7761;&#x7720;&#x72B6;&#x6001;&#xFF09;&#xFF0C;&#x5F53;&#x4E0A;&#x4E00;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#xFF0C;&#x4E0B;&#x4E00;&#x7EBF;&#x7A0B;&#x7ACB;&#x5373;&#x6267;&#x884C;&#x3002;&#x4ED6;&#x533A;&#x522B;&#x4E8E;&#x4E92;&#x65A5;&#x9501;&#xFF0C;&#x4E92;&#x65A5;&#x9501;&#x5728;&#x7B49;&#x5F85;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x8FDB;&#x5165;&#x7761;&#x7720;&#x72B6;&#x6001;&#xFF0C;&#x5F53;&#x4E0A;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#xFF0C;&#x7761;&#x7720;&#x72B6;&#x6001;&#x5C31;&#x4F1A;&#x88AB;&#x5524;&#x9192;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6267;&#x884C;&#x3002;</strong></p>
-<p>&#x6BD4;&#x5982; <code>atomic</code> &#x4FEE;&#x9970;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;,&#x5BF9;&#x6570;&#x7EC4;<strong>&#x8D4B;&#x503C;&#x83B7;&#x53D6;</strong>&#x662F;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x6570;&#x7EC4;<strong>&#x8FDB;&#x884C;&#x64CD;&#x4F5C;</strong>(&#x6DFB;&#x52A0;&#x5BF9;&#x8C61;&#xFF0C;&#x79FB;&#x9664;&#x5BF9;&#x8C61;)&#x662F;&#x4E0D;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x4E0D;&#x5B89;&#x5168;&#x7684;.&#x800C;&#x4E14;&#x91C7;&#x7528;<code>atomic</code>&#x6D88;&#x8017;&#x6BD4;&#x8F83;&#x5927;</p>
-<pre><code class="lang-objective-c">array = [[NSArray alloc]init];    //&#x5B89;&#x5168;
-[array addobject:obj];    //&#x4E5F;&#x4F1A;&#x5B58;&#x5728;&#x4E0D;&#x5B89;&#x5168;
-</code></pre>
-<p>&#x8865;&#x5145;&#x4ECB;&#x7ECD; <strong><code>weak</code>&#x5173;&#x952E;&#x5B57;</strong>&#xFF1A;</p>
-<p>&#x5B9E;&#x73B0;&#x539F;&#x7406; <code>weak</code>&#x4FEE;&#x9970;&#x65F6;&#xFF0C;<code>runtime</code>&#x4F1A;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;<code>hash</code>&#x8868;&#xFF08;&#x4E5F;&#x79F0;&#x4E3A;<code>weak</code>&#x8868;&#xFF09;,&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;<code>weak</code>&#x6307;&#x9488;&#xFF0C;<code>hash</code>&#x8868;&#x7684;<code>key</code>&#x662F;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#xFF0C;<code>value</code>&#x4E3A;<code>weak</code>&#x6307;&#x9488;&#x7684;&#x5730;&#x5740;&#xFF08;&#x8FD9;&#x4E2A;&#x5730;&#x5740;&#x7684;&#x503C;&#x662F;&#x6240;&#x6307;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#xFF09;<strong>&#x6570;&#x7EC4;</strong>&#x3002;&#xFF08;&#x5907;&#x6CE8;<code>strong</code>&#x662F;&#x901A;&#x8FC7;<code>runtime</code>&#x7EF4;&#x62A4;&#x7684;&#x4E00;&#x4E2A;&#x81EA;&#x52A8;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#xFF09; </p>
-<p><code>weak</code>&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x603B;&#x7ED3;&#xFF1A;</p>
+                                <h1 id="ios-&#x56FE;&#x7247;&#x7684;&#x52A0;&#x8F7D;&#x4E0E;&#x6E32;&#x67D3;&#x8FC7;&#x7A0B;">iOS &#x56FE;&#x7247;&#x7684;&#x52A0;&#x8F7D;&#x4E0E;&#x6E32;&#x67D3;&#x8FC7;&#x7A0B;</h1>
 <ol>
-<li>&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF0C;<code>runtime</code>&#x4F1A;&#x8C03;&#x7528;<code>objc_initWeak</code>&#x51FD;&#x6570;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>weak</code>&#x6307;&#x9488;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#xFF1B;</li>
-<li>&#x6DFB;&#x52A0;&#x5F15;&#x7528;&#x65F6;&#xFF0C;<code>objc_initWeak</code>&#x51FD;&#x6570;&#x4F1A;&#x8C03;&#x7528;<code>objc_storeWeak</code>&#x51FD;&#x6570;&#xFF0C;<code>objc_storeWeak</code>&#x7684;&#x4F5C;&#x7528;&#x662F;&#x66F4;&#x65B0;&#x6307;&#x9488;&#x6307;&#x5411;&#xFF0C;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x8868;&#xFF08;hash&#x8868;)</li>
-<li>&#x91CA;&#x653E;&#x65F6;&#xFF0C;&#x8C03;&#x7528;<code>clearDeallocating</code>&#x51FD;&#x6570;&#x3002;<code>clearDeallocating</code>&#x51FD;&#x6570;&#x9996;&#x5148;&#x6839;&#x636E;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x83B7;&#x53D6;<code>weak</code>&#x6307;&#x9488;&#x5730;&#x5740;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x628A;&#x5176;&#x4E2D;&#x6307;&#x5411;&#x7A7A;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#x8BBE;&#x4E3A;<code>nil</code>&#xFF0C;&#x6700;&#x540E;&#x628A;&#x8FD9;&#x4E2A;&#x6307;&#x9488;&#x4ECE;<code>weak</code>&#x8868;&#x4E2D;&#x5220;&#x9664;,&#x6700;&#x540E;&#x6E05;&#x7406;&#x5BF9;&#x8C61;&#x7684;&#x8BB0;&#x5F55;&#x3002;</li>
+<li><p>&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x56FE;&#x7247;&#x6587;&#x4EF6;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x8C03;&#x7528; <code>mmap()</code> &#x6620;&#x5C04;&#x5230;&#x5185;&#x5B58;&#xFF0C;&#x901A;&#x8FC7; <code>CGImageSourceRef</code> &#x8BBF;&#x95EE;&#x56FE;&#x50CF;&#x6570;&#x636E;&#xFF0C;&#x521B;&#x5EFA;<code>CGImageRef</code>&#x3002;</p>
+</li>
+<li><p>&#x4F20;&#x7EDF;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;I/O&#x64CD;&#x4F5C;&#x4E3A;&#x6807;&#x51C6;I/O&#xFF0C;&#x5373;&#x7F13;&#x5B58;I/O&#x3002;&#x5728;&#x8FD9;&#x79CD;I/O&#x6A21;&#x578B;&#x4E0B;&#xFF0C;&#x6570;&#x636E;&#x5148;&#x4ECE;&#x78C1;&#x76D8;&#x62F7;&#x8D1D;&#x5230;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x7684;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x7136;&#x540E;&#x4ECE;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x7F13;&#x51B2;&#x533A;&#x62F7;&#x8D1D;&#x5230;&#x7528;&#x6237;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x4F18;&#x70B9;&#x662F;&#x51CF;&#x5C11;&#x4E86;&#x78C1;&#x76D8;&#x64CD;&#x4F5C;&#xFF0C;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#x3002;&#x4F46;&#x56E0;&#x4E3A;&#x6570;&#x636E;&#x5728;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x5728;&#x7528;&#x6237;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x548C;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x95F4;&#x8FDB;&#x884C;&#x591A;&#x6B21;&#x6570;&#x636E;&#x62F7;&#x8D1D;&#x64CD;&#x4F5C;&#xFF0C;&#x9020;&#x6210;&#x5F88;&#x5927;&#x7684;CPU&#x53CA;&#x5185;&#x5B58;&#x5F00;&#x9500;&#x3002;</p>
+</li>
+<li><code>mmap()</code> &#x5C06;&#x786C;&#x76D8;&#x6570;&#x636E;&#x76F4;&#x63A5;&#x6620;&#x5C04;&#x5230;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x5E94;&#x7528;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x5730;&#x5740;&#x6765;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x907F;&#x514D;&#x4E86;&#x6570;&#x636E;&#x5728;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x548C;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7684;&#x76F8;&#x4E92;&#x62F7;&#x8D1D;&#xFF0C;&#x6548;&#x7387;&#x66F4;&#x9AD8;&#x3002;&#x5728;<strong>&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x624D;&#x4F1A;&#x6839;&#x636E;&#x7F3A;&#x9875;&#x52A0;&#x8F7D;&#x7684;&#x673A;&#x5236;&#x4ECE;&#x78C1;&#x76D8;&#x52A0;&#x8F7D;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5757;&#x5230;&#x7269;&#x7406;&#x5185;&#x5B58;&#xFF0C;&#x5728;&#x8FD9;&#x4E4B;&#x524D;&#x4E0D;&#x4F1A;&#x6D88;&#x8017;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7684;&#x5185;&#x5B58;&#x3002;</strong> iOS&#x4E2D;&#xFF0C;&#x4F7F;&#x7528; imageNamed &#x6216;&#x8005;imageWithContentsOfFile &#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x8C03;&#x7528; mmap() &#x5C06;&#x56FE;&#x7247;&#x6587;&#x4EF6;&#x6620;&#x5C04;&#x5230;&#x865A;&#x62DF;&#x5185;&#x5B58;&#xFF0C;&#x5E76;&#x521B;&#x5EFA; CGImageRef &#x7528;&#x4E8E;&#x540E;&#x7EED;&#x8BBF;&#x95EE;&#x56FE;&#x7247;&#x6570;&#x636E;&#x3002;</li>
 </ol>
-<p>&#x5173;&#x4E8E;ARC&#x4E0B;&#xFF0C;&#x4E0D;&#x663E;&#x793A;&#x6307;&#x5B9A;&#x5C5E;&#x6027;&#x5173;&#x952E;&#x5B57;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x5173;&#x952E;&#x5B57;&#xFF1A;
-1.&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;atomic readwrite assign
-2.&#x666E;&#x901A;OC&#x5BF9;&#x8C61;&#xFF1A; atomic readwrite strong</p>
+<ol>
+<li><p>&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#xFF0C;&#x5C06;&#x56FE;&#x7247;&#x6570;&#x636E;&#x8D4B;&#x503C;&#x7ED9; UIImageView &#x3002;&#x5728;&#x4FDD;&#x5B58;&#x56FE;&#x7247;&#x65F6;&#xFF0C;&#x4E3A;&#x4E86;&#x8282;&#x7701;&#x7A7A;&#x95F4;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x5C06;&#x56FE;&#x7247;&#x7F16;&#x7801;&#xFF08;&#x538B;&#x7F29;&#xFF09;&#x540E;&#x518D;&#x8FDB;&#x884C;&#x5B58;&#x50A8;&#x3002;<strong>&#x5982;&#x679C;&#x8BFB;&#x53D6;&#x7684;&#x56FE;&#x7247;&#x6570;&#x636E;&#x4E3A;&#x538B;&#x7F29;&#x540E;&#x7684;&#x6570;&#x636E;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x5C31;&#x9700;&#x8981;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#x6210;&#x4F4D;&#x56FE;&#xFF08;Bitmap&#xFF09;&#x6570;&#x636E;&#x3002;</strong> &#x4E0D;&#x540C;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5728;&#x8FD9;&#x4E00;&#x6B65;&#x7684;&#x64CD;&#x4F5C;&#x4E0A;&#x4F1A;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
+</li>
+<li><p><code>imageNamed:</code> &#x4F1A;&#x5728;&#x56FE;&#x7247;&#x7B2C;&#x4E00;&#x6B21;&#x6E32;&#x67D3;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#xFF0C;&#x5E76;&#x7F13;&#x5B58;&#x89E3;&#x7801;&#x540E;&#x7684;&#x56FE;&#x7247;&#x6570;&#x636E;&#x3002;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5728;&#x5168;&#x5C40;&#x7F13;&#x5B58;&#x4E2D;&#xFF0C;&#x4E0D;&#x4F1A;&#x968F;&#x7740;UIImag&#x7684;&#x91CA;&#x653E;&#x800C;&#x91CA;&#x653E;&#x3002;</p>
+</li>
+<li><p><code>imageWithContentsOfFile:</code> &#x6216; <code>imageWithData:</code> &#x540C;&#x6837;&#x4F1A;&#x5728;&#x56FE;&#x7247;&#x7B2C;&#x4E00;&#x6B21;&#x6E32;&#x67D3;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#x3002;&#x5E95;&#x5C42;&#x4F1A;&#x8C03;&#x7528;&#x5230; <code>CGImageSourceCreateWithData()</code> &#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x662F;&#x5426;&#x8981;&#x7F13;&#x5B58;&#x89E3;&#x7801;&#x540E;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5728;64&#x4F4D;&#x673A;&#x5668;&#x4E0A;&#x9ED8;&#x8BA4;&#x9700;&#x8981;&#x7F13;&#x5B58;&#xFF08;<code>kCGImageSourceShouldCache</code>&#xFF09;&#x3002;&#x4E0E;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x7684;&#x7F13;&#x5B58;&#x4F1A;&#x968F;&#x7740;UIImage&#x7684;&#x91CA;&#x653E;&#x800C;&#x88AB;&#x91CA;&#x653E;&#x6389;&#x3002;</p>
+</li>
+<li><p>&#x624B;&#x52A8;&#x8C03;&#x7528; <code>CGImageSourceCreateWithData()</code> &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x662F;&#x5426;&#x9700;&#x8981;&#x7F13;&#x5B58;&#xFF08;<code>kCGImageSourceShouldCache</code>&#xFF09;&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x8C03;&#x7528; <code>CGImageSourceCreateImageAtIndex()</code> &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x662F;&#x5426;&#x9700;&#x8981;&#x7ACB;&#x5373;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#xFF08;<code>kCGImageSourceShouldCacheImmediately</code>&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;&#x4E0D;&#x9700;&#x8981;&#x7ACB;&#x523B;&#x89E3;&#x7801;&#xFF0C;&#x5219;&#x4F1A;&#x5728;<strong>&#x5C06;&#x56FE;&#x7247;&#x6E32;&#x67D3;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x65F6;&#x624D;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#x3002;</strong>&#xFF08;&#x8BBE;&#x7F6E;&#x4E3A;&#x7ACB;&#x5373;&#x89E3;&#x7801;&#x4F1A;&#x963B;&#x585E;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;&#x9020;&#x6210;&#x6027;&#x80FD;&#x95EE;&#x9898;&#xFF0C;&#x8BE6;&#x89C1; <a href="https://www.objc.io/issues/5-ios7/iOS7-hidden-gems-and-workarounds/&#xFF09;" target="_blank">https://www.objc.io/issues/5-ios7/iOS7-hidden-gems-and-workarounds/&#xFF09;</a></p>
+</li>
+<li>UIImageView &#x7684;&#x56FE;&#x5C42;&#x6811;&#xFF08;Layer Tree&#xFF09;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A; <code>Implicit Transaction</code>&#xFF0C;&#x8FD9;&#x4E2A;<code>transaction</code>&#x4F1A;&#x81EA;&#x52A8;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x4E0B;&#x4E00;&#x4E2A; Runloop &#x8FDB;&#x884C;&#x63D0;&#x4EA4;&#x3002;&#xFF08;<code>Explicit Transaction</code> &#x7531;&#x663E;&#x5F0F;&#x8C03;&#x7528; begin() &#x548C; commit() &#x65B9;&#x6CD5;&#x89E6;&#x53D1;&#x751F;&#x6210;&#x3002;&#xFF09;</li>
+<li>&#x4E0B;&#x4E00;&#x4E2A;Main Runloop&#x4E2D;&#xFF0C;Core Animation&#x4F1A;&#x63D0;&#x4EA4;&#x8FD9;&#x4E2A; Implicit Transaction&#x3002;&#x5982;&#x679C;&#x7528;&#x6237;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4F4D;&#x56FE;&#x6570;&#x636E;&#x6CA1;<strong>&#x6709;&#x5B57;&#x8282;&#x5BF9;&#x9F50;</strong> &#xFF0C;&#x51FA;&#x4E8E;&#x6E32;&#x67D3;&#x6027;&#x80FD;&#x8003;&#x8651;&#xFF0C; <strong>Core Animation&#x4F1A;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x62F7;&#x8D1D;&#xFF0C;&#x4EE5;&#x8FDB;&#x884C;&#x5B57;&#x8282;&#x5BF9;&#x9F50;&#x3002;</strong> &#x4E4B;&#x540E;&#xFF0C;GPU&#x4F1A;&#x6E32;&#x67D3;&#x5BF9;&#x9F50;&#x540E;&#x7684;&#x4F4D;&#x56FE;&#x6570;&#x636E;&#xFF0C;&#x5C55;&#x793A;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x3002;</li>
+</ol>
 
                                 
                                 </section>
@@ -1049,10 +936,10 @@
 
             
                 
-                
-                <a href="isa.html" class="navigation navigation-next navigation-unique" aria-label="Next page: isa">
-                    <i class="fa fa-angle-right"></i>
+                <a href="UIViewRender.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: iOS UIView刷新与渲染机制">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -1061,7 +948,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Propety属性","level":"2.1.2.1","depth":3,"next":{"title":"isa","level":"2.1.2.2","depth":3,"path":"iOS/Objc_Object/isa.md","ref":"iOS/Objc_Object/isa.md","articles":[]},"previous":{"title":"第二章 Objc_Object","level":"2.1.2","depth":2,"ref":"","articles":[{"title":"Propety属性","level":"2.1.2.1","depth":3,"path":"iOS/Objc_Object/Property.md","ref":"iOS/Objc_Object/Property.md","articles":[]},{"title":"isa","level":"2.1.2.2","depth":3,"path":"iOS/Objc_Object/isa.md","ref":"iOS/Objc_Object/isa.md","articles":[]},{"title":"ObjectClass","level":"2.1.2.3","depth":3,"path":"iOS/Objc_Object/ObjectClass.md","ref":"iOS/Objc_Object/ObjectClass.md","articles":[]},{"title":"ClassRWT","level":"2.1.2.4","depth":3,"path":"iOS/Objc_Object/ClassRWT.md","ref":"iOS/Objc_Object/ClassRWT.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Objc_Object/Property.md","mtime":"2020-09-20T10:00:47.335Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-20T10:01:13.568Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"iOS 图片的加载与渲染过程","level":"2.1.1.4","depth":3,"next":{"title":"第二章 Objc_Object","level":"2.1.2","depth":2,"ref":"","articles":[{"title":"Propety属性","level":"2.1.2.1","depth":3,"path":"iOS/Objc_Object/Property.md","ref":"iOS/Objc_Object/Property.md","articles":[]},{"title":"isa","level":"2.1.2.2","depth":3,"path":"iOS/Objc_Object/isa.md","ref":"iOS/Objc_Object/isa.md","articles":[]},{"title":"ObjectClass","level":"2.1.2.3","depth":3,"path":"iOS/Objc_Object/ObjectClass.md","ref":"iOS/Objc_Object/ObjectClass.md","articles":[]},{"title":"ClassRWT","level":"2.1.2.4","depth":3,"path":"iOS/Objc_Object/ClassRWT.md","ref":"iOS/Objc_Object/ClassRWT.md","articles":[]}]},"previous":{"title":"iOS UIView刷新与渲染机制","level":"2.1.1.3","depth":3,"path":"iOS/UIKit/UIViewRender.md","ref":"iOS/UIKit/UIViewRender.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/UIKit/UIImageRender.md","mtime":"2020-09-20T10:00:47.335Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-20T10:01:13.568Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
