@@ -35,7 +35,7 @@
     * 1.1  [UI触摸事件与事件响应](iOS/UIKit/UIResponder.md)
     * 1.2  [iOS 离屏渲染](iOS/UIKit/UIOffScreenRendering.md)
     * 1.3  [iOS UIView刷新与渲染机制](iOS/UIKit/UIViewRender.md)
-    * 1.4  [iOS 图片的加载与渲染过程]((iOS/UIKit/UIImageRender.md))
+    * 1.4  [iOS 图片的加载与渲染过程](iOS/UIKit/UIImageRender.md)
     
   * 第二章 Objc_Object
     * 2.1 [Propety属性](iOS/Objc_Object/Property.md) 
