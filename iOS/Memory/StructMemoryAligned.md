@@ -6,7 +6,7 @@
 
 首先我们定义了三个结构体LGStruct1、LGStruct2和LGStruct3，然后通过控制台打印出三个结构体类型的内存大小。
 
-```
+```objective-c
 struct LGStruct1 {
     double a;  
     char b;     
@@ -30,8 +30,9 @@ struct LGStruct3 {
 }struct3;
 
 NSLog(@"%lu-%lu-%lu",sizeof(struct1),sizeof(struct2),sizeof(struct3));
-复制代码
 ```
+
+
 
 可以看到，控制台的打印结果如下：
 
@@ -41,7 +42,7 @@ NSLog(@"%lu-%lu-%lu",sizeof(struct1),sizeof(struct2),sizeof(struct3));
 
 
 
-那么你是不是跟笔者存在同样的疑惑，LGStruct1、LGStruct2两个结构体拥有的变量数量跟类型都大同小异，到底是什么原因导致两个结构体在内存大小的表现上会有截然不同的结果？LGStruct3的内存大小又是如何计算出来的？
+LGStruct1、LGStruct2两个结构体拥有的变量数量跟类型都大同小异，到底是什么原因导致两个结构体在内存大小的表现上会有截然不同的结果？LGStruct3的内存大小又是如何计算出来的？
 
 ### 基本数据类型内存大小
 
