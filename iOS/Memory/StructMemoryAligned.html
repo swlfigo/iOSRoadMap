@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../OCFoundation/OCFoundation.html" />
+    <link rel="next" href="MemoryFiveMainSection.html" />
     
     
 
@@ -458,6 +458,19 @@
             
                     
                     iOS结构体内存对齐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="MemoryFiveMainSection.html">
+            
+                <a href="MemoryFiveMainSection.html">
+            
+                    
+                    内存中的5大区
             
                 </a>
             
@@ -937,7 +950,7 @@
                                 
                                 <h1 id="ios&#x7ED3;&#x6784;&#x4F53;&#x5185;&#x5B58;&#x5BF9;&#x9F50;">iOS&#x7ED3;&#x6784;&#x4F53;&#x5185;&#x5B58;&#x5BF9;&#x9F50;</h1>
 <p>&#x9996;&#x5148;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x4E09;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;LGStruct1&#x3001;LGStruct2&#x548C;LGStruct3&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x63A7;&#x5236;&#x53F0;&#x6253;&#x5370;&#x51FA;&#x4E09;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x7C7B;&#x578B;&#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x3002;</p>
-<pre><code>struct LGStruct1 {
+<pre><code class="lang-objective-c">struct LGStruct1 {
     double a;  
     char b;     
     int c;      
@@ -960,10 +973,10 @@ struct LGStruct3 {
 }struct3;
 
 NSLog(@&quot;%lu-%lu-%lu&quot;,sizeof(struct1),sizeof(struct2),sizeof(struct3));
-&#x590D;&#x5236;&#x4EE3;&#x7801;
-</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x7684;&#x6253;&#x5370;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x7684;&#x6253;&#x5370;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-09-28-150152.png" alt="img"></p>
-<p>&#x90A3;&#x4E48;&#x4F60;&#x662F;&#x4E0D;&#x662F;&#x8DDF;&#x7B14;&#x8005;&#x5B58;&#x5728;&#x540C;&#x6837;&#x7684;&#x7591;&#x60D1;&#xFF0C;LGStruct1&#x3001;LGStruct2&#x4E24;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x62E5;&#x6709;&#x7684;&#x53D8;&#x91CF;&#x6570;&#x91CF;&#x8DDF;&#x7C7B;&#x578B;&#x90FD;&#x5927;&#x540C;&#x5C0F;&#x5F02;&#xFF0C;&#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#x539F;&#x56E0;&#x5BFC;&#x81F4;&#x4E24;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x5728;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x7684;&#x8868;&#x73B0;&#x4E0A;&#x4F1A;&#x6709;&#x622A;&#x7136;&#x4E0D;&#x540C;&#x7684;&#x7ED3;&#x679C;&#xFF1F;LGStruct3&#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x53C8;&#x662F;&#x5982;&#x4F55;&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x7684;&#xFF1F;</p>
+<p>LGStruct1&#x3001;LGStruct2&#x4E24;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x62E5;&#x6709;&#x7684;&#x53D8;&#x91CF;&#x6570;&#x91CF;&#x8DDF;&#x7C7B;&#x578B;&#x90FD;&#x5927;&#x540C;&#x5C0F;&#x5F02;&#xFF0C;&#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#x539F;&#x56E0;&#x5BFC;&#x81F4;&#x4E24;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x5728;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x7684;&#x8868;&#x73B0;&#x4E0A;&#x4F1A;&#x6709;&#x622A;&#x7136;&#x4E0D;&#x540C;&#x7684;&#x7ED3;&#x679C;&#xFF1F;LGStruct3&#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x53C8;&#x662F;&#x5982;&#x4F55;&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x7684;&#xFF1F;</p>
 <h3 id="&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5185;&#x5B58;&#x5927;&#x5C0F;">&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5185;&#x5B58;&#x5927;&#x5C0F;</h3>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-09-28-150137.png" alt="img"></p>
 <h3 id="&#x5185;&#x5B58;&#x5BF9;&#x9F50;&#x7684;&#x539F;&#x5219;">&#x5185;&#x5B58;&#x5BF9;&#x9F50;&#x7684;&#x539F;&#x5219;</h3>
@@ -1029,7 +1042,7 @@ NSLog(@&quot;%lu-%lu-%lu&quot;,sizeof(struct1),sizeof(struct2),sizeof(struct3));
             
                 
                 
-                <a href="../OCFoundation/OCFoundation.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 2.OC语言基础">
+                <a href="MemoryFiveMainSection.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 内存中的5大区">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1040,7 +1053,7 @@ NSLog(@&quot;%lu-%lu-%lu&quot;,sizeof(struct1),sizeof(struct2),sizeof(struct3));
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"iOS结构体内存对齐","level":"2.1.3.1","depth":3,"next":{"title":"2.OC语言基础","level":"3.1","depth":1,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"第三章 Memory","level":"2.1.3","depth":2,"ref":"","articles":[{"title":"iOS结构体内存对齐","level":"2.1.3.1","depth":3,"path":"iOS/Memory/StructMemoryAligned.md","ref":"iOS/Memory/StructMemoryAligned.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Memory/StructMemoryAligned.md","mtime":"2020-09-28T15:09:57.469Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-28T15:10:24.080Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"iOS结构体内存对齐","level":"2.1.3.1","depth":3,"next":{"title":"内存中的5大区","level":"2.1.3.2","depth":3,"path":"iOS/Memory/MemoryFiveMainSection.md","ref":"iOS/Memory/MemoryFiveMainSection.md","articles":[]},"previous":{"title":"第三章 Memory","level":"2.1.3","depth":2,"ref":"","articles":[{"title":"iOS结构体内存对齐","level":"2.1.3.1","depth":3,"path":"iOS/Memory/StructMemoryAligned.md","ref":"iOS/Memory/StructMemoryAligned.md","articles":[]},{"title":"内存中的5大区","level":"2.1.3.2","depth":3,"path":"iOS/Memory/MemoryFiveMainSection.md","ref":"iOS/Memory/MemoryFiveMainSection.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Memory/StructMemoryAligned.md","mtime":"2020-10-28T09:39:56.006Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-28T09:40:24.339Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
