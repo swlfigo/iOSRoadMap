@@ -43,6 +43,7 @@
     * 2.4  [ClassRWT](iOS/Objc_Object/ClassRWT.md)
   * 第三章 Memory
     * 3.1  [iOS结构体内存对齐](iOS/Memory/StructMemoryAligned.md)
+    * 3.2 [内存中的5大区](iOS/Memory/MemoryFiveMainSection.md)
 
   
 
