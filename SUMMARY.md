@@ -45,6 +45,7 @@
     * 3.1  [iOS结构体内存对齐](iOS/Memory/StructMemoryAligned.md)
     * 3.2 [内存中的5大区](iOS/Memory/MemoryFiveMainSection.md)
     * 3.3 [Tagged Pointer](iOS/Memory/TaggedPointer.md)
+    * 3.4 [SideTables](iOS/Memory/SideTables.md)
 
   
 
