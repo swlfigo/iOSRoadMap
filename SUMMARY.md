@@ -36,20 +36,12 @@
     * 1.2  [iOS 离屏渲染](iOS/UIKit/UIOffScreenRendering.md)
     * 1.3  [iOS UIView刷新与渲染机制](iOS/UIKit/UIViewRender.md)
     * 1.4  [iOS 图片的加载与渲染过程](iOS/UIKit/UIImageRender.md)
-    
   * 第二章 Memory
     * 2.1 [iOS结构体内存对齐](iOS/Memory/StructMemoryAligned.md)
-    
     * 2.2 [内存中的5大区](iOS/Memory/MemoryFiveMainSection.md)
-    
     * 2.3  [Tagged Pointer](iOS/Memory/TaggedPointer.md)
-    
     * 2.4  [SideTables](iOS/Memory/SideTables.md)
-    
-      
-    
   * 第三章 Objc_Object
-    
     * 3.1 [Propety属性](iOS/Objc_Object/Property.md) 
     * 3.2 [isa](iOS/Objc_Object/isa.md)
     * 3.3 [ObjectClass](iOS/Objc_Object/ObjectClass.md)
