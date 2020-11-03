@@ -32,7 +32,28 @@
 
 可以看到，__x86_64__和__arm64__下的位域定义是不一样的，不过都是占满了所有的64位（1+1+1+33+6+1+1+1+19 = 64，__x86_64__同理），
 
- **nonpointer**：表示是否对isa开启指针优化 。0代表是纯isa指针，1代表除了地址外，还包含了类的一些信息、对象的引用计数等。 
+```objective-c
+union isa_t {  
+  Class cls;  ...  (还有很多其他的成员，包括引用计数数量) 
+}
+```
+
+ **nonpointer**：表示是否对isa开启指针优化 。0代表是纯isa指针，1代表除了地址外，还包含了类的一些信息、对象的引用计数等。 如果该实例对象启用了Non-pointer，那么会对isa的其他成员赋值，否则只会对cls赋值。
+
+
+
+是否关闭Non-pointer目前有这么几个判断条件，这些都可以在runtime源码objc-runtime-new.m中找到逻辑。
+
+```objective-c
+1：包含swift代码；
+2：sdk版本低于10.11；
+3：runtime读取image时发现这个image包含__objc_rawisa段；
+4：开发者自己添加了OBJC_DISABLE_NONPOINTER_ISA=YES到环境变量中；
+5：某些不能使用Non-pointer的类，GCD等；
+6：父类关闭。
+```
+
+
 
 **has_assoc**：关联对象标志位 
 
@@ -65,9 +86,25 @@
 
 
 
+对象的引用计数到底存哪里了
+
+```shell
+1：对象是否是Tagged Pointer对象；
+2：对象是否启用了Non-pointer；
+3：对象未启用Non-pointer。
+```
+
+满足1则不判断2，依次类推。
+
+
+
 ### 散列表  SideTables
 
 在runtime内存空间中，SideTables是一个hash数组，里面存储了SideTable。SideTables的hash键值就是一个对象obj的address。 因此可以说，一个obj，对应了一个SideTable。但是一个SideTable，会对应多个obj。因为SideTable的数量有限，所以会有很多obj共用同一个SideTable。
+
+
+
+**如果该对象不是Tagged Pointer且关闭了Non-pointer，那该对象的引用计数就使用SideTable来存。**
 
 
 
