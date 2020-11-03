@@ -97,14 +97,37 @@ struct {
 
 
 
-- **nonpointer**：表示是否对 isa 指针开启指针优化，0：纯isa指针，1：不⽌是类对象地址，isa 中包含了类信息、对象的引⽤计数等。
+- **nonpointer**：表示是否对 isa 指针开启指针优化，0：纯isa指针，1：不⽌是类对象地址，isa 中包含了类信息、对象的引⽤计数等。 如果该实例对象启用了Non-pointer，那么会对isa的其他成员赋值，否则只会对cls赋值。
+
+  
+
+  是否关闭Non-pointer目前有这么几个判断条件，这些都可以在runtime源码objc-runtime-new.m中找到逻辑。
+
+  ```objective-c
+  1：包含swift代码；
+  2：sdk版本低于10.11；
+  3：runtime读取image时发现这个image包含__objc_rawisa段；
+  4：开发者自己添加了OBJC_DISABLE_NONPOINTER_ISA=YES到环境变量中；
+  5：某些不能使用Non-pointer的类，GCD等；
+  6：父类关闭。
+  ```
+
+  
+
 - **has_assoc**：关联对象标志位，0没有，1存在。
+
 - **has_cxx_dtor**：该对象是否有 C++ 或者 Objc 的析构器，如果有析构函数，则需要做析构逻辑，如果没有，则可以更快的释放对象。
+
 - **shiftcls**：存储类指针的值。开启指针优化的情况下，在 arm64 架构中有 33 位⽤来存储类指针。
+
 - **magic**：⽤于调试器判断当前对象是真的对象还是没有初始化的空间。
+
 - **weakly_referenced**：志对象是否被指向或者曾经指向⼀个 ARC 的弱变量，没有弱引⽤的对象可以更快释放。
+
 - **deallocating**：标志对象是否正在释放内存。
+
 - **has_sidetable_rc**：当对象引⽤技术⼤于 10 时，则需要借⽤该变量存储进位。
+
 - **extra_rc**：当表示该对象的引⽤计数值，实际上是引⽤计数值减 1，例如，如果对象的引⽤计数为 10，那么 extra_rc 为 9。如果引⽤计数⼤于 10，则需要使⽤到上⾯的 has_sidetable_rc。
 
 
