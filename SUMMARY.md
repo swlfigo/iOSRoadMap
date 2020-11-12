@@ -47,6 +47,7 @@
     * 3.2 [isa](iOS/Objc_Object/isa.md)
     * 3.3 [ObjectClass](iOS/Objc_Object/ObjectClass.md)
     * 3.4 [ClassRWT](iOS/Objc_Object/ClassRWT.md)
+    * 3.5 [AllocInit](iOS/Objc_Object/OCAllocInit.md)
 
   
 
