@@ -86,7 +86,11 @@ union isa_t {
 
 
 
-对象的引用计数到底存哪里了
+> 引用计数存在哪？
+
+1. `Tagged Pointer`不需要引用计数
+2. `NONPOINTER ISA`(isa的第一位为1)的引用计数优先存在isa中(extra_rc)，大于524288了进位到`Side Tables`
+3. 非`NONPOINTER ISA`引用计数存在`Side Tables`
 
 ```shell
 1：对象是否是Tagged Pointer对象；
