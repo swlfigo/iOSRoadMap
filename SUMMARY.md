@@ -42,6 +42,7 @@
     * 2.3  [Tagged Pointer](iOS/Memory/TaggedPointer.md)
     * 2.4  [SideTables](iOS/Memory/SideTables.md)
     * 2.5 [RetainCount](iOS/Memory/RetainCount.md)
+    * 2.6 [WeakTable](iOS/Memory/WeakTable.md)
   * 第三章 Objc_Object
     * 3.1 [Propety属性](iOS/Objc_Object/Property.md) 
     * 3.2 [isa](iOS/Objc_Object/isa.md)
