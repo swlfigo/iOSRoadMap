@@ -13,7 +13,36 @@
 
 ## Extension && Category
 
- extension在编译期决议，它就是类的一部分，在编译期和头文件里的@interface以及实现文件里的@implement一起形成一个完整的类，它伴随类的产生而产生，亦随之一起消亡。extension一般用来隐藏类的私有信息，你必须有一个类的源码才能为一个类添加extension，所以你无法为系统的类比如NSString添加extension。
+#### 1.Category的特点
+
+- **运行时决议**
+  - 通过 `runtime` 动态将分类的方法合并到类对象、元类对象中
+  - 实例方法合并到类对象中，类方法合并到元类对象中
+- 可以为系统类添加分类
+
+#### 2.分类中可以添加哪些内容
+
+- 实例方法
+- 类方法
+- 协议
+- 属性
+
+
+
+#### *Class Extension(扩展)*
+
+- 声明私有属性
+- 声明私有方法
+- 声明私有成员变量
+- 编译时决议，Category 运行时决议
+- 不能为系统类添加扩展
+- 只能以声明的形式存在，多数情况下，寄生于宿主类的.m文件中
+
+
+
+
+
+ extension在**编译期决议**，它就是类的一部分，在编译期和头文件里的@interface以及实现文件里的@implement一起形成一个完整的类，它伴随类的产生而产生，亦随之一起消亡。extension一般用来隐藏类的私有信息，你必须有一个类的源码才能为一个类添加extension，所以你无法为系统的类比如NSString添加extension。
 
 但是category则完全不一样，它是在运行期决议的。 就category和extension的区别来看，我们可以推导出一个明显的事实，extension可以添加实例变量，而category是无法添加实例变量的（因为在运行期，对象的内存布局已经确定，如果添加实例变量就会破坏类的内部布局，这对编译型语言来说是灾难性的）。
 
@@ -21,54 +50,169 @@
 
 ## Category Runtime 结构
 
+使用 `xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc MNPerson+Test.m` 函数，生产一个cpp文件,窥探其底层结构(编译状态)
 
-
-所有的OC类和对象，在runtime层都是用struct表示的，category也不例外，在runtime层，category用结构体category_t（在objc-runtime-new.h中可以找到此定义），它包含了：
-
-- 1)、类的名字（name）
-- 2)、类（cls）
-- 3)、category中所有给类添加的实例方法的列表（instanceMethods）
-- 4)、category中所有添加的类方法的列表（classMethods）
-- 5)、category实现的所有协议的列表（protocols）
-- 6)、category中添加的所有属性（instanceProperties）
-
-```c
-typedef struct category_t {
+```objective-c
+struct _category_t {
+    //宿主类名称 - 这里的MNPerson
     const char *name;
-    classref_t cls;
-    struct method_list_t *instanceMethods;
-    struct method_list_t *classMethods;
-    struct protocol_list_t *protocols;
-    struct property_list_t *instanceProperties;
-} category_t;
+	
+    //宿主类对象,里面有isa
+    struct _class_t *cls;
+    
+    //实例方法列表
+    const struct _method_list_t *instance_methods;
+    
+    //类方法列表
+    const struct _method_list_t *class_methods;
+    
+    //协议列表
+    const struct _protocol_list_t *protocols;
+    
+    //属性列表
+    const struct _prop_list_t *properties;
+};
+
+//_class_t 结构
+struct _class_t {
+	struct _class_t *isa;
+	struct _class_t *superclass;
+	void *cache;
+	void *vtable;
+	struct _class_ro_t *ro;
+};
+
 ```
 
-从category的定义也可以看出category的可为（可以添加实例方法，类方法，甚至可以实现协议，添加属性）和不可为（无法添加实例变量）。
+- **每个分类都是独立的**
+- **每个分类的结构都一致**，都是`category_t`
 
 ## -category如何加载
 
-对于OC运行时，入口方法如下（在objc-os.mm文件中）：
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-033906.jpg)
 
-```c
-void _objc_init(void)
+
+
+```objective-c
+static void 
+attachCategories(Class cls, category_list *cats, bool flush_caches)
 {
-    static bool initialized = false;
-    if (initialized) return;
-    initialized = true;
-   
-    // fixme defer initialization until an objc-using image is found?
-    environ_init();
-    tls_init();
-    lock_init();
-    exception_init();
-       
-    // Register for unmap first, in case some +load unmaps something
-    _dyld_register_func_for_remove_image(&unmap_image);
-    dyld_register_image_state_change_handler(dyld_image_state_bound,
-                                             1/*batch*/, &map_images);
-    dyld_register_image_state_change_handler(dyld_image_state_dependents_initialized, 0/*not batch*/, &load_images);
+    if (!cats) return;
+    if (PrintReplacedMethods) printReplacements(cls, cats);
+
+    bool isMeta = cls->isMetaClass();
+
+    // fixme rearrange to remove these intermediate allocations
+    
+    /* 二维数组( **mlists => 两颗星星，一个)
+     [
+        [method_t,],
+        [method_t,method_t],
+        [method_t,method_t,method_t],
+     ]
+     
+     */
+    method_list_t **mlists = (method_list_t **)
+        malloc(cats->count * sizeof(*mlists));
+    property_list_t **proplists = (property_list_t **)
+        malloc(cats->count * sizeof(*proplists));
+    protocol_list_t **protolists = (protocol_list_t **)
+        malloc(cats->count * sizeof(*protolists));
+
+    // Count backwards through cats to get newest categories first
+    int mcount = 0;
+    int propcount = 0;
+    int protocount = 0;
+    int i = cats->count;//宿主类，分类的总数
+    bool fromBundle = NO;
+    while (i--) {//倒序遍历，最先访问最后编译的分类
+        
+        // 获取某一个分类
+        auto& entry = cats->list[i];
+
+        // 分类的方法列表
+        method_list_t *mlist = entry.cat->methodsForMeta(isMeta);
+        if (mlist) {
+            //最后编译的分类，最先添加到分类数组中
+            mlists[mcount++] = mlist;
+            fromBundle |= entry.hi->isBundle();
+        }
+
+        property_list_t *proplist = 
+            entry.cat->propertiesForMeta(isMeta, entry.hi);
+        if (proplist) {
+            proplists[propcount++] = proplist;
+        }
+
+        protocol_list_t *protolist = entry.cat->protocols;
+        if (protolist) {
+            protolists[protocount++] = protolist;
+        }
+    }
+
+    auto rw = cls->data();
+
+    prepareMethodLists(cls, mlists, mcount, NO, fromBundle);
+    
+    // 核心：将所有分类的对象方法，附加到类对象的方法列表中
+    rw->methods.attachLists(mlists, mcount);
+    free(mlists);
+    if (flush_caches  &&  mcount > 0) flushCaches(cls);
+
+    rw->properties.attachLists(proplists, propcount);
+    free(proplists);
+
+    rw->protocols.attachLists(protolists, protocount);
+    free(protolists);
+}
+
+```
+
+
+
+```objective-c
+void attachLists(List* const * addedLists, uint32_t addedCount) {
+    if (addedCount == 0) return;
+    
+    if (hasArray()) {
+        // many lists -> many lists
+        uint32_t oldCount = array()->count;
+        uint32_t newCount = oldCount + addedCount;
+        
+        //realloc - 重新分配内存 - 扩容了
+        setArray((array_t *)realloc(array(), array_t::byteSize(newCount)));
+        array()->count = newCount;
+        
+        //memmove,内存挪动
+        //array()->lists 原来的方法列表
+        memmove(array()->lists + addedCount,
+                array()->lists,
+                oldCount * sizeof(array()->lists[0]));
+        
+        //memcpy - 将分类的方法列表 copy 到原来的方法列表中
+        memcpy(array()->lists,
+               addedLists,
+               addedCount * sizeof(array()->lists[0]));
+    }
+    ...
 }
 ```
+
+
+
+画图分析
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-091909.jpg)
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-091928.jpg)
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-091943.jpg)
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-092006.jpg)
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-092019.jpg)
+
+
 
 category被附加到类上面是在map_images的时候发生的
 
