@@ -1041,49 +1041,174 @@
 <li>&#x58F0;&#x660E;&#x79C1;&#x6709;&#x65B9;&#x6CD5;</li>
 </ul>
 <h2 id="extension--category">Extension &amp;&amp; Category</h2>
-<p> extension&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x51B3;&#x8BAE;&#xFF0C;&#x5B83;&#x5C31;&#x662F;&#x7C7B;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x548C;&#x5934;&#x6587;&#x4EF6;&#x91CC;&#x7684;@interface&#x4EE5;&#x53CA;&#x5B9E;&#x73B0;&#x6587;&#x4EF6;&#x91CC;&#x7684;@implement&#x4E00;&#x8D77;&#x5F62;&#x6210;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x7C7B;&#xFF0C;&#x5B83;&#x4F34;&#x968F;&#x7C7B;&#x7684;&#x4EA7;&#x751F;&#x800C;&#x4EA7;&#x751F;&#xFF0C;&#x4EA6;&#x968F;&#x4E4B;&#x4E00;&#x8D77;&#x6D88;&#x4EA1;&#x3002;extension&#x4E00;&#x822C;&#x7528;&#x6765;&#x9690;&#x85CF;&#x7C7B;&#x7684;&#x79C1;&#x6709;&#x4FE1;&#x606F;&#xFF0C;&#x4F60;&#x5FC5;&#x987B;&#x6709;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x6E90;&#x7801;&#x624D;&#x80FD;&#x4E3A;&#x4E00;&#x4E2A;&#x7C7B;&#x6DFB;&#x52A0;extension&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x65E0;&#x6CD5;&#x4E3A;&#x7CFB;&#x7EDF;&#x7684;&#x7C7B;&#x6BD4;&#x5982;NSString&#x6DFB;&#x52A0;extension&#x3002;</p>
+<h4 id="1category&#x7684;&#x7279;&#x70B9;">1.Category&#x7684;&#x7279;&#x70B9;</h4>
+<ul>
+<li><strong>&#x8FD0;&#x884C;&#x65F6;&#x51B3;&#x8BAE;</strong><ul>
+<li>&#x901A;&#x8FC7; <code>runtime</code> &#x52A8;&#x6001;&#x5C06;&#x5206;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5408;&#x5E76;&#x5230;&#x7C7B;&#x5BF9;&#x8C61;&#x3001;&#x5143;&#x7C7B;&#x5BF9;&#x8C61;&#x4E2D;</li>
+<li>&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x5408;&#x5E76;&#x5230;&#x7C7B;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x7C7B;&#x65B9;&#x6CD5;&#x5408;&#x5E76;&#x5230;&#x5143;&#x7C7B;&#x5BF9;&#x8C61;&#x4E2D;</li>
+</ul>
+</li>
+<li>&#x53EF;&#x4EE5;&#x4E3A;&#x7CFB;&#x7EDF;&#x7C7B;&#x6DFB;&#x52A0;&#x5206;&#x7C7B;</li>
+</ul>
+<h4 id="2&#x5206;&#x7C7B;&#x4E2D;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x54EA;&#x4E9B;&#x5185;&#x5BB9;">2.&#x5206;&#x7C7B;&#x4E2D;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x54EA;&#x4E9B;&#x5185;&#x5BB9;</h4>
+<ul>
+<li>&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</li>
+<li>&#x7C7B;&#x65B9;&#x6CD5;</li>
+<li>&#x534F;&#x8BAE;</li>
+<li>&#x5C5E;&#x6027;</li>
+</ul>
+<h4 id="class-extension&#x6269;&#x5C55;"><em>Class Extension(&#x6269;&#x5C55;)</em></h4>
+<ul>
+<li>&#x58F0;&#x660E;&#x79C1;&#x6709;&#x5C5E;&#x6027;</li>
+<li>&#x58F0;&#x660E;&#x79C1;&#x6709;&#x65B9;&#x6CD5;</li>
+<li>&#x58F0;&#x660E;&#x79C1;&#x6709;&#x6210;&#x5458;&#x53D8;&#x91CF;</li>
+<li>&#x7F16;&#x8BD1;&#x65F6;&#x51B3;&#x8BAE;&#xFF0C;Category &#x8FD0;&#x884C;&#x65F6;&#x51B3;&#x8BAE;</li>
+<li>&#x4E0D;&#x80FD;&#x4E3A;&#x7CFB;&#x7EDF;&#x7C7B;&#x6DFB;&#x52A0;&#x6269;&#x5C55;</li>
+<li>&#x53EA;&#x80FD;&#x4EE5;&#x58F0;&#x660E;&#x7684;&#x5F62;&#x5F0F;&#x5B58;&#x5728;&#xFF0C;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5BC4;&#x751F;&#x4E8E;&#x5BBF;&#x4E3B;&#x7C7B;&#x7684;.m&#x6587;&#x4EF6;&#x4E2D;</li>
+</ul>
+<p> extension&#x5728;<strong>&#x7F16;&#x8BD1;&#x671F;&#x51B3;&#x8BAE;</strong>&#xFF0C;&#x5B83;&#x5C31;&#x662F;&#x7C7B;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x548C;&#x5934;&#x6587;&#x4EF6;&#x91CC;&#x7684;@interface&#x4EE5;&#x53CA;&#x5B9E;&#x73B0;&#x6587;&#x4EF6;&#x91CC;&#x7684;@implement&#x4E00;&#x8D77;&#x5F62;&#x6210;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x7C7B;&#xFF0C;&#x5B83;&#x4F34;&#x968F;&#x7C7B;&#x7684;&#x4EA7;&#x751F;&#x800C;&#x4EA7;&#x751F;&#xFF0C;&#x4EA6;&#x968F;&#x4E4B;&#x4E00;&#x8D77;&#x6D88;&#x4EA1;&#x3002;extension&#x4E00;&#x822C;&#x7528;&#x6765;&#x9690;&#x85CF;&#x7C7B;&#x7684;&#x79C1;&#x6709;&#x4FE1;&#x606F;&#xFF0C;&#x4F60;&#x5FC5;&#x987B;&#x6709;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x6E90;&#x7801;&#x624D;&#x80FD;&#x4E3A;&#x4E00;&#x4E2A;&#x7C7B;&#x6DFB;&#x52A0;extension&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x65E0;&#x6CD5;&#x4E3A;&#x7CFB;&#x7EDF;&#x7684;&#x7C7B;&#x6BD4;&#x5982;NSString&#x6DFB;&#x52A0;extension&#x3002;</p>
 <p>&#x4F46;&#x662F;category&#x5219;&#x5B8C;&#x5168;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5B83;&#x662F;&#x5728;&#x8FD0;&#x884C;&#x671F;&#x51B3;&#x8BAE;&#x7684;&#x3002; &#x5C31;category&#x548C;extension&#x7684;&#x533A;&#x522B;&#x6765;&#x770B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x63A8;&#x5BFC;&#x51FA;&#x4E00;&#x4E2A;&#x660E;&#x663E;&#x7684;&#x4E8B;&#x5B9E;&#xFF0C;extension&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;&#x800C;category&#x662F;&#x65E0;&#x6CD5;&#x6DFB;&#x52A0;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x7684;&#xFF08;&#x56E0;&#x4E3A;&#x5728;&#x8FD0;&#x884C;&#x671F;&#xFF0C;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5B58;&#x5E03;&#x5C40;&#x5DF2;&#x7ECF;&#x786E;&#x5B9A;&#xFF0C;&#x5982;&#x679C;&#x6DFB;&#x52A0;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x5C31;&#x4F1A;&#x7834;&#x574F;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x5E03;&#x5C40;&#xFF0C;&#x8FD9;&#x5BF9;&#x7F16;&#x8BD1;&#x578B;&#x8BED;&#x8A00;&#x6765;&#x8BF4;&#x662F;&#x707E;&#x96BE;&#x6027;&#x7684;&#xFF09;&#x3002;</p>
 <h2 id="category-runtime-&#x7ED3;&#x6784;">Category Runtime &#x7ED3;&#x6784;</h2>
-<p>&#x6240;&#x6709;&#x7684;OC&#x7C7B;&#x548C;&#x5BF9;&#x8C61;&#xFF0C;&#x5728;runtime&#x5C42;&#x90FD;&#x662F;&#x7528;struct&#x8868;&#x793A;&#x7684;&#xFF0C;category&#x4E5F;&#x4E0D;&#x4F8B;&#x5916;&#xFF0C;&#x5728;runtime&#x5C42;&#xFF0C;category&#x7528;&#x7ED3;&#x6784;&#x4F53;category_t&#xFF08;&#x5728;objc-runtime-new.h&#x4E2D;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x6B64;&#x5B9A;&#x4E49;&#xFF09;&#xFF0C;&#x5B83;&#x5305;&#x542B;&#x4E86;&#xFF1A;</p>
-<ul>
-<li>1)&#x3001;&#x7C7B;&#x7684;&#x540D;&#x5B57;&#xFF08;name&#xFF09;</li>
-<li>2)&#x3001;&#x7C7B;&#xFF08;cls&#xFF09;</li>
-<li>3)&#x3001;category&#x4E2D;&#x6240;&#x6709;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x7684;&#x5217;&#x8868;&#xFF08;instanceMethods&#xFF09;</li>
-<li>4)&#x3001;category&#x4E2D;&#x6240;&#x6709;&#x6DFB;&#x52A0;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x5217;&#x8868;&#xFF08;classMethods&#xFF09;</li>
-<li>5)&#x3001;category&#x5B9E;&#x73B0;&#x7684;&#x6240;&#x6709;&#x534F;&#x8BAE;&#x7684;&#x5217;&#x8868;&#xFF08;protocols&#xFF09;</li>
-<li>6)&#x3001;category&#x4E2D;&#x6DFB;&#x52A0;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#xFF08;instanceProperties&#xFF09;</li>
-</ul>
-<pre><code class="lang-c"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-keyword">category_t</span> {
-    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name;
-    <span class="hljs-keyword">classref_t</span> cls;
-    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">method_list_t</span> *instanceMethods;
-    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">method_list_t</span> *classMethods;
-    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">protocol_list_t</span> *protocols;
-    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">property_list_t</span> *instanceProperties;
-} <span class="hljs-keyword">category_t</span>;
+<p>&#x4F7F;&#x7528; <code>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc MNPerson+Test.m</code> &#x51FD;&#x6570;&#xFF0C;&#x751F;&#x4EA7;&#x4E00;&#x4E2A;cpp&#x6587;&#x4EF6;,&#x7AA5;&#x63A2;&#x5176;&#x5E95;&#x5C42;&#x7ED3;&#x6784;(&#x7F16;&#x8BD1;&#x72B6;&#x6001;)</p>
+<pre><code class="lang-objective-c">struct _category_t {
+    //&#x5BBF;&#x4E3B;&#x7C7B;&#x540D;&#x79F0; - &#x8FD9;&#x91CC;&#x7684;MNPerson
+    const char *name;
+
+    //&#x5BBF;&#x4E3B;&#x7C7B;&#x5BF9;&#x8C61;,&#x91CC;&#x9762;&#x6709;isa
+    struct _class_t *cls;
+
+    //&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x5217;&#x8868;
+    const struct _method_list_t *instance_methods;
+
+    //&#x7C7B;&#x65B9;&#x6CD5;&#x5217;&#x8868;
+    const struct _method_list_t *class_methods;
+
+    //&#x534F;&#x8BAE;&#x5217;&#x8868;
+    const struct _protocol_list_t *protocols;
+
+    //&#x5C5E;&#x6027;&#x5217;&#x8868;
+    const struct _prop_list_t *properties;
+};
+
+//_class_t &#x7ED3;&#x6784;
+struct _class_t {
+    struct _class_t *isa;
+    struct _class_t *superclass;
+    void *cache;
+    void *vtable;
+    struct _class_ro_t *ro;
+};
 </code></pre>
-<p>&#x4ECE;category&#x7684;&#x5B9A;&#x4E49;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x51FA;category&#x7684;&#x53EF;&#x4E3A;&#xFF08;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#xFF0C;&#x7C7B;&#x65B9;&#x6CD5;&#xFF0C;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x534F;&#x8BAE;&#xFF0C;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#xFF09;&#x548C;&#x4E0D;&#x53EF;&#x4E3A;&#xFF08;&#x65E0;&#x6CD5;&#x6DFB;&#x52A0;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF09;&#x3002;</p>
+<ul>
+<li><strong>&#x6BCF;&#x4E2A;&#x5206;&#x7C7B;&#x90FD;&#x662F;&#x72EC;&#x7ACB;&#x7684;</strong></li>
+<li><strong>&#x6BCF;&#x4E2A;&#x5206;&#x7C7B;&#x7684;&#x7ED3;&#x6784;&#x90FD;&#x4E00;&#x81F4;</strong>&#xFF0C;&#x90FD;&#x662F;<code>category_t</code></li>
+</ul>
 <h2 id="category&#x5982;&#x4F55;&#x52A0;&#x8F7D;">-category&#x5982;&#x4F55;&#x52A0;&#x8F7D;</h2>
-<p>&#x5BF9;&#x4E8E;OC&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x5165;&#x53E3;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF08;&#x5728;objc-os.mm&#x6587;&#x4EF6;&#x4E2D;&#xFF09;&#xFF1A;</p>
-<pre><code class="lang-c"><span class="hljs-keyword">void</span> _objc_init(<span class="hljs-keyword">void</span>)
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-033906.jpg" alt=""></p>
+<pre><code class="lang-objective-c">static void 
+attachCategories(Class cls, category_list *cats, bool flush_caches)
 {
-    <span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> initialized = <span class="hljs-literal">false</span>;
-    <span class="hljs-keyword">if</span> (initialized) <span class="hljs-keyword">return</span>;
-    initialized = <span class="hljs-literal">true</span>;
+    if (!cats) return;
+    if (PrintReplacedMethods) printReplacements(cls, cats);
 
-    <span class="hljs-comment">// fixme defer initialization until an objc-using image is found?</span>
-    environ_init();
-    tls_init();
-    lock_init();
-    exception_init();
+    bool isMeta = cls-&gt;isMetaClass();
 
-    <span class="hljs-comment">// Register for unmap first, in case some +load unmaps something</span>
-    _dyld_register_func_for_remove_image(&amp;unmap_image);
-    dyld_register_image_state_change_handler(dyld_image_state_bound,
-                                             <span class="hljs-number">1</span><span class="hljs-comment">/*batch*/</span>, &amp;map_images);
-    dyld_register_image_state_change_handler(dyld_image_state_dependents_initialized, <span class="hljs-number">0</span><span class="hljs-comment">/*not batch*/</span>, &amp;load_images);
+    // fixme rearrange to remove these intermediate allocations
+
+    /* &#x4E8C;&#x7EF4;&#x6570;&#x7EC4;( **mlists =&gt; &#x4E24;&#x9897;&#x661F;&#x661F;&#xFF0C;&#x4E00;&#x4E2A;)
+     [
+        [method_t,],
+        [method_t,method_t],
+        [method_t,method_t,method_t],
+     ]
+
+     */
+    method_list_t **mlists = (method_list_t **)
+        malloc(cats-&gt;count * sizeof(*mlists));
+    property_list_t **proplists = (property_list_t **)
+        malloc(cats-&gt;count * sizeof(*proplists));
+    protocol_list_t **protolists = (protocol_list_t **)
+        malloc(cats-&gt;count * sizeof(*protolists));
+
+    // Count backwards through cats to get newest categories first
+    int mcount = 0;
+    int propcount = 0;
+    int protocount = 0;
+    int i = cats-&gt;count;//&#x5BBF;&#x4E3B;&#x7C7B;&#xFF0C;&#x5206;&#x7C7B;&#x7684;&#x603B;&#x6570;
+    bool fromBundle = NO;
+    while (i--) {//&#x5012;&#x5E8F;&#x904D;&#x5386;&#xFF0C;&#x6700;&#x5148;&#x8BBF;&#x95EE;&#x6700;&#x540E;&#x7F16;&#x8BD1;&#x7684;&#x5206;&#x7C7B;
+
+        // &#x83B7;&#x53D6;&#x67D0;&#x4E00;&#x4E2A;&#x5206;&#x7C7B;
+        auto&amp; entry = cats-&gt;list[i];
+
+        // &#x5206;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;
+        method_list_t *mlist = entry.cat-&gt;methodsForMeta(isMeta);
+        if (mlist) {
+            //&#x6700;&#x540E;&#x7F16;&#x8BD1;&#x7684;&#x5206;&#x7C7B;&#xFF0C;&#x6700;&#x5148;&#x6DFB;&#x52A0;&#x5230;&#x5206;&#x7C7B;&#x6570;&#x7EC4;&#x4E2D;
+            mlists[mcount++] = mlist;
+            fromBundle |= entry.hi-&gt;isBundle();
+        }
+
+        property_list_t *proplist = 
+            entry.cat-&gt;propertiesForMeta(isMeta, entry.hi);
+        if (proplist) {
+            proplists[propcount++] = proplist;
+        }
+
+        protocol_list_t *protolist = entry.cat-&gt;protocols;
+        if (protolist) {
+            protolists[protocount++] = protolist;
+        }
+    }
+
+    auto rw = cls-&gt;data();
+
+    prepareMethodLists(cls, mlists, mcount, NO, fromBundle);
+
+    // &#x6838;&#x5FC3;&#xFF1A;&#x5C06;&#x6240;&#x6709;&#x5206;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;&#xFF0C;&#x9644;&#x52A0;&#x5230;&#x7C7B;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;
+    rw-&gt;methods.attachLists(mlists, mcount);
+    free(mlists);
+    if (flush_caches  &amp;&amp;  mcount &gt; 0) flushCaches(cls);
+
+    rw-&gt;properties.attachLists(proplists, propcount);
+    free(proplists);
+
+    rw-&gt;protocols.attachLists(protolists, protocount);
+    free(protolists);
 }
 </code></pre>
+<pre><code class="lang-objective-c">void attachLists(List* const * addedLists, uint32_t addedCount) {
+    if (addedCount == 0) return;
+
+    if (hasArray()) {
+        // many lists -&gt; many lists
+        uint32_t oldCount = array()-&gt;count;
+        uint32_t newCount = oldCount + addedCount;
+
+        //realloc - &#x91CD;&#x65B0;&#x5206;&#x914D;&#x5185;&#x5B58; - &#x6269;&#x5BB9;&#x4E86;
+        setArray((array_t *)realloc(array(), array_t::byteSize(newCount)));
+        array()-&gt;count = newCount;
+
+        //memmove,&#x5185;&#x5B58;&#x632A;&#x52A8;
+        //array()-&gt;lists &#x539F;&#x6765;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;
+        memmove(array()-&gt;lists + addedCount,
+                array()-&gt;lists,
+                oldCount * sizeof(array()-&gt;lists[0]));
+
+        //memcpy - &#x5C06;&#x5206;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868; copy &#x5230;&#x539F;&#x6765;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;
+        memcpy(array()-&gt;lists,
+               addedLists,
+               addedCount * sizeof(array()-&gt;lists[0]));
+    }
+    ...
+}
+</code></pre>
+<p>&#x753B;&#x56FE;&#x5206;&#x6790;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-091909.jpg" alt=""></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-091928.jpg" alt=""></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-091943.jpg" alt=""></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-092006.jpg" alt=""></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-092019.jpg" alt=""></p>
 <p>category&#x88AB;&#x9644;&#x52A0;&#x5230;&#x7C7B;&#x4E0A;&#x9762;&#x662F;&#x5728;map_images&#x7684;&#x65F6;&#x5019;&#x53D1;&#x751F;&#x7684;</p>
 <p>&#x8981;&#x6CE8;&#x610F;&#x7684;&#x6709;&#x4E24;&#x70B9;&#xFF1A;</p>
 <p>1)&#x3001;category&#x7684;&#x65B9;&#x6CD5;&#x6CA1;&#x6709;&#x201C;&#x5B8C;&#x5168;&#x66FF;&#x6362;&#x6389;&#x201D;&#x539F;&#x6765;&#x7C7B;&#x5DF2;&#x7ECF;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5982;&#x679C;category&#x548C;&#x539F;&#x6765;&#x7C7B;&#x90FD;&#x6709;methodA&#xFF0C;&#x90A3;&#x4E48;category&#x9644;&#x52A0;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x91CC;&#x4F1A;&#x6709;&#x4E24;&#x4E2A;methodA</p>
@@ -1151,7 +1276,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Category","level":"2.1.3.6","depth":3,"next":{"title":"2.OC语言基础","level":"3.1","depth":1,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"AllocInit","level":"2.1.3.5","depth":3,"path":"iOS/Objc_Object/OCAllocInit.md","ref":"iOS/Objc_Object/OCAllocInit.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Objc_Object/Category.md","mtime":"2020-12-15T15:14:46.204Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-15T15:15:13.985Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Category","level":"2.1.3.6","depth":3,"next":{"title":"2.OC语言基础","level":"3.1","depth":1,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"AllocInit","level":"2.1.3.5","depth":3,"path":"iOS/Objc_Object/OCAllocInit.md","ref":"iOS/Objc_Object/OCAllocInit.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Objc_Object/Category.md","mtime":"2021-01-05T10:36:35.126Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-05T10:37:03.917Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
