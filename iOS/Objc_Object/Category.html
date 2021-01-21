@@ -272,6 +272,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.13" data-path="../../Article/App 启动时间：过去，现在和未来.html">
+            
+                <a href="../../Article/App 启动时间：过去，现在和未来.html">
+            
+                    
+                    App 启动时间：过去，现在和未来
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1220,6 +1233,122 @@ attachCategories(Class cls, category_list *cats, bool flush_caches)
  <strong>2.&#x628A;&#x6240;&#x6709;Category&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x5C5E;&#x6027;&#x3001;&#x534F;&#x8BAE;&#x6570;&#x636E;&#xFF0C;&#x5408;&#x5E76;&#x5230;&#x4E00;&#x4E2A;&#x5927;&#x6570;&#x7EC4;&#x4E2D; &#x540E;&#x9762;&#x53C2;&#x4E0E;&#x7F16;&#x8BD1;&#x7684;Category&#x6570;&#x636E;&#xFF0C;&#x4F1A;&#x5728;&#x6570;&#x7EC4;&#x7684;&#x524D;&#x9762; </strong></p>
 <p><strong>3.&#x5C06;&#x5408;&#x5E76;&#x540E;&#x7684;&#x5206;&#x7C7B;&#x6570;&#x636E;&#xFF08;&#x65B9;&#x6CD5;&#x3001;&#x5C5E;&#x6027;&#x3001;&#x534F;&#x8BAE;&#xFF09;&#xFF0C;&#x63D2;&#x5165;&#x5230;&#x7C7B;&#x539F;&#x6765;&#x6570;&#x636E;&#x7684;&#x524D;&#x9762;</strong></p>
 <h2 id="&#x65C1;&#x679D;&#x672B;&#x53F6;-category&#x548C;load&#x65B9;&#x6CD5;">&#x65C1;&#x679D;&#x672B;&#x53F6;-category&#x548C;+load&#x65B9;&#x6CD5;</h2>
+<h3 id="load&#x5B9E;&#x73B0;&#x539F;&#x7406;">load&#x5B9E;&#x73B0;&#x539F;&#x7406;</h3>
+<blockquote>
+<ul>
+<li>&#x7C7B;&#x7B2C;&#x4E00;&#x6B21;&#x52A0;&#x8F7D;&#x8FDB;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x8C03;&#x7528; <code>+ load</code> &#x65B9;&#x6CD5;&#xFF0C;&#x65E0;&#x9700;&#x5BFC;&#x5165;&#xFF0C;&#x65E0;&#x9700;&#x4F7F;&#x7528;</li>
+<li>&#x6BCF;&#x4E2A;&#x7C7B;&#x3001;&#x5206;&#x7C7B;&#x7684; <code>+ load</code> &#x5728;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EA;&#x4F1A;&#x6267;&#x884C;&#x4E00;&#x6B21;</li>
+<li><code>+ load</code> &#x8D70;&#x7684;&#x4E0D;&#x662F;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7684; <code>objc_msgSend</code> &#x8C03;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x627E;&#x5230; <code>+ load</code> &#x51FD;&#x6570;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528;</li>
+</ul>
+</blockquote>
+<pre><code class="lang-objective-c">void call_load_methods(void)
+{
+    static bool loading = NO;
+    bool more_categories;
+
+    loadMethodLock.assertLocked();
+
+    // Re-entrant calls do nothing; the outermost call will finish the job.
+    if (loading) return;
+    loading = YES;
+
+    void *pool = objc_autoreleasePoolPush();
+
+    do {
+        // 1. Repeatedly call class +loads until there aren&#x2019;t any more
+        while (loadable_classes_used &gt; 0) {
+            //&#x5148;&#x52A0;&#x8F7D;&#x5BBF;&#x4E3B;&#x7C7B;&#x7684;load&#x65B9;&#x6CD5;(&#x6309;&#x7167;&#x7F16;&#x8BD1;&#x987A;&#x5E8F;&#xFF0C;&#x8C03;&#x7528;load&#x65B9;&#x6CD5;)
+            call_class_loads();
+        }
+
+        // 2. Call category +loads ONCE
+        more_categories = call_category_loads();
+
+        // 3. Run more +loads if there are classes OR more untried categories
+    } while (loadable_classes_used &gt; 0  ||  more_categories);
+
+    objc_autoreleasePoolPop(pool);
+
+    loading = NO;
+}
+</code></pre>
+<pre><code class="lang-objective-c">static void schedule_class_load(Class cls)
+{
+    if (!cls) return;
+    assert(cls-&gt;isRealized());  // _read_images should realize
+
+    if (cls-&gt;data()-&gt;flags &amp; RW_LOADED) return;
+
+    // Ensure superclass-first ordering
+    // &#x9012;&#x5F52;&#x8C03;&#x7528;&#xFF0C;&#x5148;&#x5C06;&#x7236;&#x7C7B;&#x6DFB;&#x52A0;&#x5230;load&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x518D;&#x5C06;&#x81EA;&#x5DF1;&#x52A0;&#x8FDB;&#x53BB;
+    schedule_class_load(cls-&gt;superclass);
+
+    add_class_to_loadable_list(cls);
+    cls-&gt;setInfo(RW_LOADED); 
+}
+</code></pre>
+<h4 id="&#x8C03;&#x7528;&#x987A;&#x5E8F;">&#x8C03;&#x7528;&#x987A;&#x5E8F;</h4>
+<ol>
+<li><p>&#x5148;&#x8C03;&#x7528;&#x5BBF;&#x4E3B;&#x7C7B;&#x7684; <strong>+ load</strong></p>
+<p> &#x51FD;&#x6570;</p>
+<ul>
+<li>&#x6309;&#x7167;&#x7F16;&#x8BD1;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x8C03;&#x7528;&#xFF08;&#x5148;&#x7F16;&#x8BD1;&#xFF0C;&#x5148;&#x8C03;&#x7528;&#xFF09;</li>
+<li>&#x8C03;&#x7528;&#x5B50;&#x7C7B;&#x7684;+load&#x4E4B;&#x524D;&#x4F1A;&#x5148;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;+load</li>
+</ul>
+</li>
+<li><p>&#x518D;&#x8C03;&#x7528;&#x5206;&#x7C7B;&#x7684;&#x7684; <strong>+ load</strong></p>
+<p> &#x51FD;&#x6570;</p>
+<ul>
+<li>&#x6309;&#x7167;&#x7F16;&#x8BD1;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x8C03;&#x7528;&#xFF08;&#x5148;&#x7F16;&#x8BD1;&#xFF0C;&#x5148;&#x8C03;&#x7528;&#xFF09;</li>
+</ul>
+</li>
+</ol>
+<p>&#x5B9E;&#x9A8C;&#x8BC1;&#x660E;&#xFF1A;&#x5BBF;&#x4E3B;&#x7C7B;&#x5148;&#x8C03;&#x7528;&#xFF0C;&#x5206;&#x7C7B;&#x518D;&#x8C03;&#x7528;</p>
+<pre><code class="lang-shell">2019-02-27 17:28:00.519862+0800 load-Initialize-Demo[91107:2281575] MNPerson + load
+2019-02-27 17:28:00.520032+0800 load-Initialize-Demo[91107:2281575] MNPerson (Play) + load
+2019-02-27 17:28:00.520047+0800 load-Initialize-Demo[91107:2281575] MNPerson (Eat) + load
+</code></pre>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-21-142204.jpg" alt=""></p>
+<pre><code class="lang-objective-c">2019-02-27 17:39:10.354050+0800 load-Initialize-Demo[91308:2303030] MNDog + load (&#x5BBF;&#x4E3B;&#x7C7B;1)
+2019-02-27 17:39:10.354237+0800 load-Initialize-Demo[91308:2303030] MNPerson + load (&#x5BBF;&#x4E3B;&#x7C7B;2)
+2019-02-27 17:39:10.354252+0800 load-Initialize-Demo[91308:2303030] MNDog (Rua) + load (&#x5206;&#x7C7B;1)
+2019-02-27 17:39:10.354263+0800 load-Initialize-Demo[91308:2303030] MNPerson (Play) + load(&#x5206;&#x7C7B;2)
+2019-02-27 17:39:10.354274+0800 load-Initialize-Demo[91308:2303030] MNPerson (Eat) + load(&#x5206;&#x7C7B;3)
+2019-02-27 17:39:10.354285+0800 load-Initialize-Demo[91308:2303030] MNDog (Run) + load(&#x5206;&#x7C7B;4)
+</code></pre>
+<p><strong>&#x7236;&#x7C7B;&#x548C;&#x672C;&#x7C7B;&#x7684;&#x8C03;&#x7528;&#xFF1A;</strong>&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x4F18;&#x5148;&#x4E8E;&#x5B50;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;+load&#x65B9;&#x6CD5;<strong>&#x4E0D;&#x7528;&#x5199;&#x660E;[super load]</strong>&#xFF0C;&#x7236;&#x7C7B;&#x5C31;&#x4F1A;&#x6536;&#x5230;&#x8C03;&#x7528;&#x3002;</p>
+<h4 id="initialize&#x5B9E;&#x73B0;&#x539F;&#x7406;">Initialize&#x5B9E;&#x73B0;&#x539F;&#x7406;</h4>
+<blockquote>
+<ul>
+<li>&#x7C7B;&#x7B2C;&#x4E00;&#x6B21;&#x63A5;&#x6536;&#x5230;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#xFF0C;&#x9700;&#x5BFC;&#x5165;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;</li>
+<li><code>+ Initialize</code> &#x8D70;&#x7684;&#x662F;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7684; <code>objc_msgSend</code> &#x8C03;&#x7528;</li>
+</ul>
+</blockquote>
+<h3 id="initialize-&#x4E0E;-load-&#x7684;&#x533A;&#x522B;">initialize &#x4E0E; load &#x7684;&#x533A;&#x522B;</h3>
+<ul>
+<li>load &#x662F;&#x7C7B;&#x7B2C;&#x4E00;&#x6B21;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;&#xFF0C;initialize &#x662F;&#x7C7B;&#x7B2C;&#x4E00;&#x6B21;&#x63A5;&#x6536;&#x5230;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;&#xFF0C;&#x6BCF;&#x4E2A;&#x7C7B;&#x53EA;&#x4F1A;initialize&#x4E00;&#x6B21;&#xFF08;&#x7236;&#x7C7B;&#x7684;initialize&#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x88AB;&#x8C03;&#x7528;&#x591A;&#x6B21;&#xFF09;</li>
+<li>load &#x548C; initialize&#xFF0C;&#x52A0;&#x8F7D;or&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90FD;&#x4F1A;&#x5148;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x5BF9;&#x5E94;&#x7684; <code>load</code> or <code>initialize</code> &#x65B9;&#x6CD5;&#xFF0C;&#x518D;&#x8C03;&#x7528;&#x81EA;&#x5DF1;&#x672C;&#x8EAB;&#x7684;;</li>
+<li>load &#x548C; initialize &#x90FD;&#x662F;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x8C03;&#x7528;&#x7684;&#x8BDD;&#xFF0C;&#x90FD;&#x53EA;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;</li>
+<li>&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#x4E5F;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;load &#x662F;&#x6839;&#x636E;&#x51FD;&#x6570;&#x5730;&#x5740;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#xFF0C;initialize &#x662F;&#x901A;&#x8FC7;<code>objc_msgSend</code></li>
+<li>&#x8C03;&#x7528;&#x65F6;&#x523B;&#xFF0C;load&#x662F;runtime&#x52A0;&#x8F7D;&#x7C7B;&#x3001;&#x5206;&#x7C7B;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;&#xFF08;&#x53EA;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF09;</li>
+<li>&#x8C03;&#x7528;&#x987A;&#x5E8F;:<ul>
+<li>load:<ul>
+<li>&#x5148;&#x8C03;&#x7528;&#x7C7B;&#x7684;load<ul>
+<li>&#x5148;&#x7F16;&#x8BD1;&#x7684;&#x7C7B;&#xFF0C;&#x4F18;&#x5148;&#x8C03;&#x7528;load</li>
+<li>&#x8C03;&#x7528;&#x5B50;&#x7C7B;&#x7684;load&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x5148;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;load</li>
+</ul>
+</li>
+<li>&#x5728;&#x8C03;&#x7528;&#x5206;&#x7C7B;&#x7684;load</li>
+</ul>
+</li>
+<li>initialize&#xFF1A;<ul>
+<li>&#x5148;&#x521D;&#x59CB;&#x5316;&#x7236;&#x5217;</li>
+<li>&#x518D;&#x521D;&#x59CB;&#x5316;&#x5B50;&#x7C7B;&#xFF08;&#x53EF;&#x80FD;&#x6700;&#x7EC8;&#x8C03;&#x7528;&#x7684;&#x662F;&#x7236;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#xFF09;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x5728;&#x7C7B;&#x548C;category&#x4E2D;&#x90FD;&#x53EF;&#x4EE5;&#x6709;+load&#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x6709;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
 <p>1)&#x3001;&#x5728;&#x7C7B;&#x7684;+load&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8C03;&#x7528;category&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;&#x4E48;&#xFF1F;</p>
 <p>2)&#x3001;&#x8FD9;&#x4E48;&#x4E9B;&#x4E2A;+load&#x65B9;&#x6CD5;&#xFF0C;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x662F;&#x548B;&#x6837;&#x7684;&#x5462;&#xFF1F;</p>
@@ -1276,7 +1405,7 @@ attachCategories(Class cls, category_list *cats, bool flush_caches)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Category","level":"2.1.3.6","depth":3,"next":{"title":"2.OC语言基础","level":"3.1","depth":1,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"AllocInit","level":"2.1.3.5","depth":3,"path":"iOS/Objc_Object/OCAllocInit.md","ref":"iOS/Objc_Object/OCAllocInit.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Objc_Object/Category.md","mtime":"2021-01-20T15:11:31.241Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-20T15:12:00.966Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Category","level":"2.1.3.6","depth":3,"next":{"title":"2.OC语言基础","level":"3.1","depth":1,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"AllocInit","level":"2.1.3.5","depth":3,"path":"iOS/Objc_Object/OCAllocInit.md","ref":"iOS/Objc_Object/OCAllocInit.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Objc_Object/Category.md","mtime":"2021-01-21T14:33:58.448Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-21T14:34:28.728Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
