@@ -27,6 +27,8 @@
   
   * [深入了解 iOS 的初始化.md](./Article/深入了解 iOS 的初始化.md)
   
+  * [App 启动时间：过去，现在和未来](./Article/App 启动时间：过去，现在和未来.md)
+  
     
   
 * [iOS技术总结](iOS/ReadME.md)

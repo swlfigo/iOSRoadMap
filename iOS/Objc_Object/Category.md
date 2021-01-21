@@ -237,6 +237,140 @@ category被附加到类上面是在map_images的时候发生的
 
 ## 旁枝末叶-category和+load方法
 
+### load实现原理
+
+> - 类第一次加载进内存的时候，会调用 `+ load` 方法，无需导入，无需使用
+> - 每个类、分类的 `+ load` 在程序运行过程中只会执行一次
+> - `+ load` 走的不是消息发送的 `objc_msgSend` 调用，而是找到 `+ load` 函数的地址，直接调用
+
+```objective-c
+void call_load_methods(void)
+{
+    static bool loading = NO;
+    bool more_categories;
+
+    loadMethodLock.assertLocked();
+
+    // Re-entrant calls do nothing; the outermost call will finish the job.
+    if (loading) return;
+    loading = YES;
+
+    void *pool = objc_autoreleasePoolPush();
+
+    do {
+        // 1. Repeatedly call class +loads until there aren’t any more
+        while (loadable_classes_used > 0) {
+            //先加载宿主类的load方法(按照编译顺序，调用load方法)
+            call_class_loads();
+        }
+
+        // 2. Call category +loads ONCE
+        more_categories = call_category_loads();
+
+        // 3. Run more +loads if there are classes OR more untried categories
+    } while (loadable_classes_used > 0  ||  more_categories);
+
+    objc_autoreleasePoolPop(pool);
+
+    loading = NO;
+}
+
+```
+
+
+
+```objective-c
+static void schedule_class_load(Class cls)
+{
+    if (!cls) return;
+    assert(cls->isRealized());  // _read_images should realize
+
+    if (cls->data()->flags & RW_LOADED) return;
+
+    // Ensure superclass-first ordering
+    // 递归调用，先将父类添加到load方法列表中，再将自己加进去
+    schedule_class_load(cls->superclass);
+
+    add_class_to_loadable_list(cls);
+    cls->setInfo(RW_LOADED); 
+}
+
+```
+
+
+
+#### 调用顺序
+
+1. 先调用宿主类的 **+ load**
+
+    函数
+
+   - 按照编译先后顺序调用（先编译，先调用）
+   - 调用子类的+load之前会先调用父类的+load
+
+2. 再调用分类的的 **+ load**
+
+    函数
+
+   - 按照编译先后顺序调用（先编译，先调用）
+
+实验证明：宿主类先调用，分类再调用
+
+```shell
+2019-02-27 17:28:00.519862+0800 load-Initialize-Demo[91107:2281575] MNPerson + load
+2019-02-27 17:28:00.520032+0800 load-Initialize-Demo[91107:2281575] MNPerson (Play) + load
+2019-02-27 17:28:00.520047+0800 load-Initialize-Demo[91107:2281575] MNPerson (Eat) + load
+
+```
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-21-142204.jpg)
+
+
+
+```objective-c
+2019-02-27 17:39:10.354050+0800 load-Initialize-Demo[91308:2303030] MNDog + load (宿主类1)
+2019-02-27 17:39:10.354237+0800 load-Initialize-Demo[91308:2303030] MNPerson + load (宿主类2)
+2019-02-27 17:39:10.354252+0800 load-Initialize-Demo[91308:2303030] MNDog (Rua) + load (分类1)
+2019-02-27 17:39:10.354263+0800 load-Initialize-Demo[91308:2303030] MNPerson (Play) + load(分类2)
+2019-02-27 17:39:10.354274+0800 load-Initialize-Demo[91308:2303030] MNPerson (Eat) + load(分类3)
+2019-02-27 17:39:10.354285+0800 load-Initialize-Demo[91308:2303030] MNDog (Run) + load(分类4)
+
+```
+
+
+
+**父类和本类的调用：**父类的方法优先于子类的方法。一个类的+load方法**不用写明[super load]**，父类就会收到调用。
+
+
+
+#### Initialize实现原理
+
+> - 类第一次接收到消息的时候，会调用该方法，需导入，并使用
+> - `+ Initialize` 走的是消息发送的 `objc_msgSend` 调用
+
+
+
+
+
+### initialize 与 load 的区别
+
+- load 是类第一次加载的时候调用，initialize 是类第一次接收到消息的时候调用，每个类只会initialize一次（父类的initialize方法可能被调用多次）
+- load 和 initialize，加载or调用的时候，都会先调用父类对应的 `load` or `initialize` 方法，再调用自己本身的;
+- load 和 initialize 都是系统自动调用的话，都只会调用一次
+- 调用方式也不一样，load 是根据函数地址直接调用，initialize 是通过`objc_msgSend`
+- 调用时刻，load是runtime加载类、分类的时候调用（只会调用一次）
+- 调用顺序:
+  - load:
+    - 先调用类的load
+      - 先编译的类，优先调用load
+      - 调用子类的load之前，会先调用父类的load
+    - 在调用分类的load
+  - initialize：
+    - 先初始化父列
+    - 再初始化子类（可能最终调用的是父类的初始化方法）
+
+
+
 我们知道，在类和category中都可以有+load方法，那么有两个问题：
 
 1)、在类的+load方法调用的时候，我们可以调用category中声明的方法么？
