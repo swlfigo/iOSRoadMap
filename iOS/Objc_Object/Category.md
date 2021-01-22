@@ -89,6 +89,46 @@ struct _class_t {
 
 ## -category如何加载
 
+```objective-c
+void _objc_init(void)
+{
+    static bool initialized = false;
+    if (initialized) return;
+    initialized = true;
+    
+    // fixme defer initialization until an objc-using image is found?
+    environ_init();
+    tls_init();
+    static_init();
+    runtime_init();
+    exception_init();
+    cache_init();
+    _imp_implementationWithBlock_init();
+
+    _dyld_objc_notify_register(&map_images, load_images, unmap_image);
+}
+
+```
+
+忽略掉一堆 init ,重点来看 
+
+`_dyld_objc_notify_register(&map_images, load_images, unmap_image);`
+
+这个方法会注册3个事件并给出回调。
+重点来看一下map_images和load_images；
+从这俩个回调方法里看，你会发现Category在map_images会加载完毕，而load_images会调用+load方法。
+
+**类的load方法中，能调用分类的方法。**
+
+作者：水煮杰尼龟
+链接：https://www.jianshu.com/p/fd176e806cf3
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+
+
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-033906.jpg)
 
 
@@ -396,3 +436,6 @@ static void schedule_class_load(Class cls)
 [1.深入理解Objective-C：Category](https://tech.meituan.com/2015/03/03/diveintocategory.html)
 
 [2. 面试驱动技术 - Category 相关考点(Article文件夹有收藏)](https://juejin.im/post/5c753bc251882505d52fba5c)
+
+[3.iOS 捋一捋Category加载流程及+load](https://www.jianshu.com/p/fd176e806cf3)
+
