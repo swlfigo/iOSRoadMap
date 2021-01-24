@@ -19,3 +19,9 @@
 
 [1.探索AssociatedObject关联对象的内部实现](https://www.jianshu.com/p/c109015e8c9a)
 
+
+https://juejin.cn/post/6875637139833372685
+
+https://www.jianshu.com/p/9a8502938dab
+
+https://www.jianshu.com/p/4fe17595e0ff
