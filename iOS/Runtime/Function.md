@@ -75,6 +75,10 @@ class protocol_array_t :
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-28-143707.jpg)
 
+
+
+### class_rw_t中是如何存储方法的
+
 ### method_t
 
 我们知道`method_array_t、property_array_t、protocol_array_t`中以`method_array_t`为例，`method_array_t`中最终存储的是`method_t`，`method_t`是对方法、函数的封装，每一个方法对象就是一个`method_t`。通过源码看一下`method_t`的结构体
@@ -124,3 +128,102 @@ Runtime-test[23738:8888825] 0x1017718a3,0x1017718a3
 ```
 
 SEL仅仅代表方法的名字，并且不同类中相同的方法名的SEL是全局唯一的。
+
+
+
+#### types
+
+`types`包含了函数返回值，参数编码的字符串。通过字符串拼接的方式将返回值和参数拼接成一个字符串，来代表函数返回值及参数。
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-31-135309.jpg)
+
+#### IMP
+
+`IMP`代表函数的具体实现，存储的内容是函数地址。也就是说当找到`imp`的时候就可以找到函数实现，进而对函数进行调用。
+
+
+
+### 方法缓存 cache_t
+
+回到类对象结构体，成员变量`cache`就是用来对方法进行缓存的。
+
+```cpp
+struct objc_class : objc_object {
+    // Class ISA;
+    Class superclass;
+    cache_t cache;             // formerly cache pointer and vtable
+    class_data_bits_t bits;    // class_rw_t * plus custom rr/alloc flags
+
+    class_rw_t *data() { 
+        return bits.data();
+    }
+    void setData(class_rw_t *newData) {
+        bits.setData(newData);
+    }
+}
+```
+
+**`cache_t cache;`用来缓存曾经调用过的方法，可以提高方法的查找速度。**
+
+回顾方法调用过程：调用方法的时候，需要去方法列表里面进行遍历查找。如果方法不在列表里面，就会通过`superclass`找到父类的类对象，在去父类类对象方法列表里面遍历查找。
+
+如果方法需要调用很多次的话，那就相当于每次调用都需要去遍历多次方法列表，为了能够快速查找方法，`apple`设计了`cache_t`来进行方法缓存。
+
+每当调用方法的时候，会先去`cache`中查找是否有缓存的方法，如果没有缓存，在去类对象方法列表中查找，以此类推直到找到方法之后，就会将方法直接存储在`cache`中，下一次在调用这个方法的时候，就会在类对象的`cache`里面找到这个方法，直接调用了。
+
+
+
+#### cache_t 如何进行缓存
+
+```cpp
+struct cache_t {
+    struct bucket_t *_buckets; // 散列表 数组
+    mask_t _mask; // 散列表的长度 -1
+    mask_t _occupied; // 已经缓存的方法数量
+};
+```
+
+`bucket_t`是以数组的方式存储方法列表的
+
+```cpp
+struct bucket_t {
+private:
+    cache_key_t _key; // SEL作为Key
+    IMP _imp; // 函数的内存地址
+};
+```
+
+源码中可以看出`bucket_t`中存储着`SEL`和`_imp`，通过`key->value`的形式，以`SEL`为`key`，`函数实现的内存地址 _imp`为`value`来存储方法。
+
+通过一张图来展示一下`cache_t`的结构。
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-31-145738.jpg)
+
+上述`bucket_t`列表我们称之为散列表（哈希表）
+ **散列表（Hash table，也叫哈希表），是根据关键码值(Key value)而直接进行访问的数据结构。也就是说，它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做散列函数，存放记录的数组叫做散列表。**
+
+
+
+#### 1.方法缓存存在什么地方？
+
+在objc中，class存储类的实例方法（-），meta class存储类的类方法（+），class的isa指针指向meta class。
+
+在类的定义里就有cache字段，类的所有缓存都存在metaclass上，所以每个类都只有一份方法缓存，而**不是每一个类的object都保存一份**
+
+#### 2.父类方法的缓存只存在父类么，还是子类也会缓存父类的方法？
+
+即便是从父类取到的方法，**也会存在类本身的方法缓存里**。而当用一个父类对象去调用那个方法的时候，也会在父类的metaclass里缓存一份。
+
+#### 3.为什么 类的方法列表 不直接做成散列表呢，做成list，还要单独缓存，多费事？
+
+- 散列表是没有顺序的，Objective-C的方法列表是一个list，是有顺序的；Objective-C在查找方法的时候会顺着list依次寻找，并且category的方法在原始方法list的前面，需要先被找到，如果直接用hash存方法，方法的顺序就没法保证。
+- list的方法还保存了除了selector和imp之外其他很多属性
+- 散列表是有空槽的，会浪费空间
+
+
+
+## Reference
+
+[1.iOS底层原理总结 - 探寻Runtime本质（二）](https://www.jianshu.com/p/27ee04f3ed7b)
+
+
