@@ -149,6 +149,23 @@ struct {
 
 
 
+## 为什么要设计metaclass
+
+metaClass是单一职责和扩展性:  instance的信息由Class所有;  Class的信息则由metaClass所有;
+
+否则类方法，实际方法都在同一个流程中，类对象、元类对象能够复用消息发送流程机制；
+
+- 根据消息接受者的`isa`指针找到`metaclass`（因为类方法存在元类中。如果调用的是实例方法，isa指针指向的是类对象。） 
+- 进入`CacheLookup`流程，这一步会去寻找方法缓存，如果缓存命中则直接调用方法的实现，如果缓存不存在则进入`objc_msgSend_uncached`流程。
+
+
+
+
+
+
+
+
+
 ## Reference
 
 [从 NSObject 的初始化了解 isa](https://draveness.me/isa/)
