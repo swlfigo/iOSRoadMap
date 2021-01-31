@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>ClassRWT · GitBook</title>
+        <title>Method · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="OCAllocInit.html" />
+    <link rel="next" href="../OCFoundation/OCFoundation.html" />
     
-    
-    <link rel="prev" href="ObjectClass.html" />
     
 
     </head>
@@ -493,9 +491,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.3.1" data-path="Property.html">
+        <li class="chapter " data-level="2.1.3.1" data-path="../Objc_Object/Property.html">
             
-                <a href="Property.html">
+                <a href="../Objc_Object/Property.html">
             
                     
                     Propety属性
@@ -506,9 +504,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3.2" data-path="isa.html">
+        <li class="chapter " data-level="2.1.3.2" data-path="../Objc_Object/isa.html">
             
-                <a href="isa.html">
+                <a href="../Objc_Object/isa.html">
             
                     
                     isa
@@ -519,9 +517,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3.3" data-path="ObjectClass.html">
+        <li class="chapter " data-level="2.1.3.3" data-path="../Objc_Object/ObjectClass.html">
             
-                <a href="ObjectClass.html">
+                <a href="../Objc_Object/ObjectClass.html">
             
                     
                     ObjectClass
@@ -532,9 +530,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.3.4" data-path="ClassRWT.html">
+        <li class="chapter " data-level="2.1.3.4" data-path="../Objc_Object/ClassRWT.html">
             
-                <a href="ClassRWT.html">
+                <a href="../Objc_Object/ClassRWT.html">
             
                     
                     ClassRWT
@@ -545,9 +543,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3.5" data-path="OCAllocInit.html">
+        <li class="chapter " data-level="2.1.3.5" data-path="../Objc_Object/OCAllocInit.html">
             
-                <a href="OCAllocInit.html">
+                <a href="../Objc_Object/OCAllocInit.html">
             
                     
                     AllocInit
@@ -558,9 +556,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3.6" data-path="Category.html">
+        <li class="chapter " data-level="2.1.3.6" data-path="../Objc_Object/Category.html">
             
-                <a href="Category.html">
+                <a href="../Objc_Object/Category.html">
             
                     
                     Category
@@ -571,9 +569,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3.7" data-path="AssociatedObject.html">
+        <li class="chapter " data-level="2.1.3.7" data-path="../Objc_Object/AssociatedObject.html">
             
-                <a href="AssociatedObject.html">
+                <a href="../Objc_Object/AssociatedObject.html">
             
                     
                     AssociatedObject
@@ -616,9 +614,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4.2" data-path="../Runtime/Method.html">
+        <li class="chapter active" data-level="2.1.4.2" data-path="Method.html">
             
-                <a href="../Runtime/Method.html">
+                <a href="Method.html">
             
                     
                     Method
@@ -659,7 +657,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../Runtime/Runtime.md">
+        <li class="chapter " data-level="3.2" data-path="Runtime.md">
             
                 <span>
             
@@ -1084,7 +1082,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >ClassRWT</a>
+        <a href="../.." >Method</a>
     </h1>
 </div>
 
@@ -1099,141 +1097,148 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="classdatabitst">class_data_bits_t</h1>
-<p>&#x7531;&#x524D;&#x9762;&#x53EF;&#x77E5;  <a href="ObjectClass.html">ObjectClass.md</a></p>
-<p><strong>objc_class</strong>&#x7684;&#x771F;&#x5B9E;&#x5B9A;&#x4E49;&#x5B9E;&#x9645;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ECE; <a href="https://opensource.apple.com/source/objc4/objc4-750.1/runtime/objc-runtime-new.h.auto.html" target="_blank">objc-runtime-new.h</a> &#x4E2D;&#x770B;&#x5230;(&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x7701;&#x7565;)&#xFF1A;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-143952.jpg" alt=""></p>
-<pre><code class="lang-objective-c">struct class_data_bits_t {
+                                <h1 id="method">Method</h1>
+<p>OC &#x662F;&#x4E00;&#x95E8;&#x52A8;&#x6001;&#x8BED;&#x8A00;&#xFF0C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x53D8;&#x6210;&#x4E86;&#x6D88;&#x606F;&#x53D1;&#x9001;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x4E0D;&#x80FD;&#x77E5;&#x9053;&#x8981;&#x8C03;&#x7528;&#x54EA;&#x4E2A;&#x51FD;&#x6570;&#x3002;&#x6240;&#x4EE5; Runtime &#x65E0;&#x975E;&#x5C31;&#x662F;&#x53BB;&#x89E3;&#x51B3;&#x5982;&#x4F55;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x671F;&#x627E;&#x5230;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x8FD9;&#x6837;&#x7684;&#x95EE;&#x9898;</p>
+<blockquote>
+<p>instance -&gt; class -&gt; method -&gt; SEL -&gt; IMP -&gt; &#x5B9E;&#x73B0;&#x51FD;&#x6570;</p>
+</blockquote>
+<p>&#x6839;&#x636E;<code>isa</code>&#x7279;&#x6027;&#x53EF;&#x4EE5;&#x89E3;&#x91CA;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x4E0E;&#x5BFB;&#x627E;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x539F;&#x7406;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-19-061439.jpg" alt=""></p>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x7684;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x9996;&#x5148;&#x67E5;&#x7F13;&#x5B58;&#xFF0C;&#x65E0;&#x7F13;&#x5B58;&#xFF0C;&#x67E5;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x4F9D;&#x7136;&#x6CA1;&#x547D;&#x4E2D;&#xFF0C;&#x518D;&#x987A;&#x6B21;&#x67E5;&#x627E;&#x5404;&#x4E2A;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x5982;&#x679C;&#x90FD;&#x6CA1;&#x6709;&#x540D;&#x5B57;&#xFF0C;&#x5C31;&#x8F6C;&#x5230;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x6D41;&#x7A0B;</p>
+<ul>
+<li>&#x5728;&#x7F13;&#x5B58;&#x67E5;&#x627E;&#x9636;&#x6BB5;&#x662F; &#x54C8;&#x5E0C;&#x67E5;&#x627E;</li>
+<li>&#x5F53;&#x524D;&#x7C7B;&#x65B9;&#x6CD5;&#x67E5;&#x627E; &#xFF0C; &#x5982;&#x679C;&#x662F;&#x5DF2;&#x6392;&#x5E8F;&#x7684;&#x5217;&#x8868;&#xFF0C;&#x5C31;&#x91C7;&#x7528;&#x4E8C;&#x5206;&#x67E5;&#x627E;,&#x6CA1;&#x6392;&#x5E8F;&#x7684;&#x91C7;&#x7528;&#x4E00;&#x822C;&#x904D;&#x5386;</li>
+<li>&#x9010;&#x7EA7;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;&#x67E5;&#x627E; &#xFF0C;&#x662F;&#x6839;&#x636E; superClass &#x6307;&#x9488;&#x9010;&#x7EA7;&#x904D;&#x5386;&#x6BCF;&#x4E00;&#x4E2A;&#x7236;&#x7C7B;</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144612.jpg" alt=""></p>
+<p>&#x4E0A;&#x8FF0;&#x6E90;&#x7801;&#x4E2D;&#xFF0C;<code>method_array_t&#x3001;property_array_t&#x3001;protocol_array_t</code>&#x5176;&#x5B9E;&#x90FD;&#x662F;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;&#xFF0C;&#x6765;&#x5230;<code>method_array_t&#x3001;property_array_t&#x3001;protocol_array_t</code>&#x5185;&#x90E8;&#x770B;&#x4E00;&#x4E0B;&#x3002;&#x8FD9;&#x91CC;&#x4EE5;<code>method_array_t</code>&#x4E3A;&#x4F8B;&#xFF0C;<code>method_array_t</code>&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x6570;&#x7EC4;&#x91CC;&#x9762;&#x5B58;&#x653E;&#x7684;&#x662F;&#x6570; <code>method_list_t</code>&#xFF0C;<code>method_list_t</code>&#x91CC;&#x9762;&#x6700;&#x7EC8;&#x5B58;&#x653E;&#x7684;&#x662F;<code>method_t</code></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> <span class="hljs-keyword">method_array_t</span> : 
+    <span class="hljs-keyword">public</span> list_array_tt&lt;<span class="hljs-keyword">method_t</span>, <span class="hljs-keyword">method_list_t</span>&gt; 
+{
+    <span class="hljs-keyword">typedef</span> list_array_tt&lt;<span class="hljs-keyword">method_t</span>, <span class="hljs-keyword">method_list_t</span>&gt; Super;
 
-    // Values are the FAST_ flags above.
-    uintptr_t bits;
-private:
-    bool getBit(uintptr_t bit)
-    {
-        return bits &amp; bit;
+ <span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">method_list_t</span> **beginCategoryMethodLists() {
+        <span class="hljs-keyword">return</span> beginLists();
     }
 
-  ...
+    <span class="hljs-keyword">method_list_t</span> **endCategoryMethodLists(Class cls);
+
+    <span class="hljs-keyword">method_array_t</span> duplicate() {
+        <span class="hljs-keyword">return</span> Super::duplicate&lt;<span class="hljs-keyword">method_array_t</span>&gt;();
+    }
+};
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-keyword">property_array_t</span> : 
+    <span class="hljs-keyword">public</span> list_array_tt&lt;<span class="hljs-keyword">property_t</span>, <span class="hljs-keyword">property_list_t</span>&gt; 
+{
+    <span class="hljs-keyword">typedef</span> list_array_tt&lt;<span class="hljs-keyword">property_t</span>, <span class="hljs-keyword">property_list_t</span>&gt; Super;
+
+ <span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">property_array_t</span> duplicate() {
+        <span class="hljs-keyword">return</span> Super::duplicate&lt;<span class="hljs-keyword">property_array_t</span>&gt;();
+    }
+};
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-keyword">protocol_array_t</span> : 
+    <span class="hljs-keyword">public</span> list_array_tt&lt;<span class="hljs-keyword">protocol_ref_t</span>, <span class="hljs-keyword">protocol_list_t</span>&gt; 
+{
+    <span class="hljs-keyword">typedef</span> list_array_tt&lt;<span class="hljs-keyword">protocol_ref_t</span>, <span class="hljs-keyword">protocol_list_t</span>&gt; Super;
+
+ <span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">protocol_array_t</span> duplicate() {
+        <span class="hljs-keyword">return</span> Super::duplicate&lt;<span class="hljs-keyword">protocol_array_t</span>&gt;();
+    }
+};
+</code></pre>
+<p><code>class_rw_t</code>&#x91CC;&#x9762;&#x7684;<code>methods&#x3001;properties&#x3001;protocols</code>&#x662F;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;&#xFF0C;&#x662F;&#x53EF;&#x8BFB;&#x53EF;&#x5199;&#x7684;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5185;&#x5BB9;&#x4EE5;&#x53CA;&#x5206;&#x7C7B;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x4EE5;<code>method_array_t</code>&#x4E3A;&#x4F8B;&#xFF0C;&#x56FE;&#x793A;&#x5176;&#x4E2D;&#x7684;&#x7ED3;&#x6784;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-28-143707.jpg" alt=""></p>
+<h3 id="classrwt&#x4E2D;&#x662F;&#x5982;&#x4F55;&#x5B58;&#x50A8;&#x65B9;&#x6CD5;&#x7684;">class_rw_t&#x4E2D;&#x662F;&#x5982;&#x4F55;&#x5B58;&#x50A8;&#x65B9;&#x6CD5;&#x7684;</h3>
+<h3 id="methodt">method_t</h3>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;<code>method_array_t&#x3001;property_array_t&#x3001;protocol_array_t</code>&#x4E2D;&#x4EE5;<code>method_array_t</code>&#x4E3A;&#x4F8B;&#xFF0C;<code>method_array_t</code>&#x4E2D;&#x6700;&#x7EC8;&#x5B58;&#x50A8;&#x7684;&#x662F;<code>method_t</code>&#xFF0C;<code>method_t</code>&#x662F;&#x5BF9;&#x65B9;&#x6CD5;&#x3001;&#x51FD;&#x6570;&#x7684;&#x5C01;&#x88C5;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5BF9;&#x8C61;&#x5C31;&#x662F;&#x4E00;&#x4E2A;<code>method_t</code>&#x3002;&#x901A;&#x8FC7;&#x6E90;&#x7801;&#x770B;&#x4E00;&#x4E0B;<code>method_t</code>&#x7684;&#x7ED3;&#x6784;&#x4F53;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> <span class="hljs-keyword">method_t</span> {
+    SEL name;  <span class="hljs-comment">// &#x51FD;&#x6570;&#x540D;</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *types;  <span class="hljs-comment">// &#x7F16;&#x7801;&#xFF08;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#xFF0C;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#xFF09;</span>
+    IMP imp; <span class="hljs-comment">// &#x6307;&#x5411;&#x51FD;&#x6570;&#x7684;&#x6307;&#x9488;&#xFF08;&#x51FD;&#x6570;&#x5730;&#x5740;&#xFF09;</span>
+};
+</code></pre>
+<p>method_t&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E09;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x6211;&#x4EEC;&#x4F9D;&#x6B21;&#x6765;&#x770B;&#x4E09;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x5206;&#x522B;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x3002;</p>
+<h4 id="sel">SEL</h4>
+<p>SEL&#x4EE3;&#x8868;&#x65B9;&#x6CD5;\&#x51FD;&#x6570;&#x540D;&#xFF0C;&#x4E00;&#x822C;&#x53EB;&#x505A;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x5E95;&#x5C42;&#x7ED3;&#x6784;&#x8DDF;<code>char *</code>&#x7C7B;&#x4F3C;
+ <code>typedef struct objc_selector *SEL;</code>&#xFF0C;&#x53EF;&#x4EE5;&#x628A;SEL&#x770B;&#x505A;&#x662F;&#x65B9;&#x6CD5;&#x540D;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<p>SEL&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>@selector()</code>&#x548C;<code>sel_registerName()</code>&#x83B7;&#x5F97;</p>
+<pre><code class="lang-kotlin">SEL sel1 = @selector(test);
+SEL sel2 = sel_registerName(<span class="hljs-string">&quot;test&quot;</span>);
+</code></pre>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>sel_getName()</code>&#x548C;<code>NSStringFromSelector()</code>&#x5C06;SEL&#x8F6C;&#x6210;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">char</span> *string = sel_getName(sel1);
+<span class="hljs-built_in">NSString</span> *string2 = <span class="hljs-built_in">NSStringFromSelector</span>(sel2);
+</code></pre>
+<p>&#x4E0D;&#x540C;&#x7C7B;&#x4E2D;&#x76F8;&#x540C;&#x540D;&#x5B57;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#x9009;&#x62E9;&#x5668;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</p>
+<pre><code class="lang-css"><span class="hljs-selector-tag">NSLog</span>(@<span class="hljs-keyword">&quot;%p,%p&quot;,</span> sel1,sel2);
+<span class="hljs-selector-tag">Runtime-test</span><span class="hljs-selector-attr">[23738:8888825]</span> 0<span class="hljs-selector-tag">x1017718a3</span>,0<span class="hljs-selector-tag">x1017718a3</span>
+</code></pre>
+<p>SEL&#x4EC5;&#x4EC5;&#x4EE3;&#x8868;&#x65B9;&#x6CD5;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x5E76;&#x4E14;&#x4E0D;&#x540C;&#x7C7B;&#x4E2D;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x540D;&#x7684;SEL&#x662F;&#x5168;&#x5C40;&#x552F;&#x4E00;&#x7684;&#x3002;</p>
+<h4 id="types">types</h4>
+<p><code>types</code>&#x5305;&#x542B;&#x4E86;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x53C2;&#x6570;&#x7F16;&#x7801;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x901A;&#x8FC7;&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#x7684;&#x65B9;&#x5F0F;&#x5C06;&#x8FD4;&#x56DE;&#x503C;&#x548C;&#x53C2;&#x6570;&#x62FC;&#x63A5;&#x6210;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6765;&#x4EE3;&#x8868;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;&#x53CA;&#x53C2;&#x6570;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-31-135309.jpg" alt=""></p>
+<h4 id="imp">IMP</h4>
+<p><code>IMP</code>&#x4EE3;&#x8868;&#x51FD;&#x6570;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#xFF0C;&#x5B58;&#x50A8;&#x7684;&#x5185;&#x5BB9;&#x662F;&#x51FD;&#x6570;&#x5730;&#x5740;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5F53;&#x627E;&#x5230;<code>imp</code>&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#xFF0C;&#x8FDB;&#x800C;&#x5BF9;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x8C03;&#x7528;&#x3002;</p>
+<h3 id="&#x65B9;&#x6CD5;&#x7F13;&#x5B58;-cachet">&#x65B9;&#x6CD5;&#x7F13;&#x5B58; cache_t</h3>
+<p>&#x56DE;&#x5230;&#x7C7B;&#x5BF9;&#x8C61;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x6210;&#x5458;&#x53D8;&#x91CF;<code>cache</code>&#x5C31;&#x662F;&#x7528;&#x6765;&#x5BF9;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x7F13;&#x5B58;&#x7684;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> objc_class : objc_object {
+    <span class="hljs-comment">// Class ISA;</span>
+    Class superclass;
+    <span class="hljs-keyword">cache_t</span> cache;             <span class="hljs-comment">// formerly cache pointer and vtable</span>
+    <span class="hljs-keyword">class_data_bits_t</span> bits;    <span class="hljs-comment">// class_rw_t * plus custom rr/alloc flags</span>
+
+    <span class="hljs-keyword">class_rw_t</span> *data() { 
+        <span class="hljs-keyword">return</span> bits.data();
+    }
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setData</span><span class="hljs-params">(class_rw_t *newData)</span> </span>{
+        bits.setData(newData);
+    }
 }
 </code></pre>
-<p> ObjC &#x4E2D; <code>class_data_bits_t</code> &#x7684;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5176;&#x4E2D;&#x53EA;&#x542B;&#x6709;&#x4E00;&#x4E2A; 64 &#x4F4D;&#x7684; <code>bits</code> &#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x4E0E;&#x7C7B;&#x6709;&#x5173;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-05-19-141003.jpg" alt=""></p>
-<p><code>objc_class</code> &#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7684;&#x6CE8;&#x91CA;&#x5199;&#x5230; <code>class_data_bits_t</code> &#x76F8;&#x5F53;&#x4E8E; <code>class_rw_t</code> &#x6307;&#x9488;&#x52A0;&#x4E0A; rr/alloc &#x7684;&#x6807;&#x5FD7;&#x3002;</p>
-<pre><code class="lang-objective-c">class_data_bits_t bits;    // class_rw_t * plus custom rr/alloc flags
+<p><strong><code>cache_t cache;</code>&#x7528;&#x6765;&#x7F13;&#x5B58;&#x66FE;&#x7ECF;&#x8C03;&#x7528;&#x8FC7;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x65B9;&#x6CD5;&#x7684;&#x67E5;&#x627E;&#x901F;&#x5EA6;&#x3002;</strong></p>
+<p>&#x56DE;&#x987E;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;&#xFF1A;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x53BB;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x91CC;&#x9762;&#x8FDB;&#x884C;&#x904D;&#x5386;&#x67E5;&#x627E;&#x3002;&#x5982;&#x679C;&#x65B9;&#x6CD5;&#x4E0D;&#x5728;&#x5217;&#x8868;&#x91CC;&#x9762;&#xFF0C;&#x5C31;&#x4F1A;&#x901A;&#x8FC7;<code>superclass</code>&#x627E;&#x5230;&#x7236;&#x7C7B;&#x7684;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x5728;&#x53BB;&#x7236;&#x7C7B;&#x7C7B;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x91CC;&#x9762;&#x904D;&#x5386;&#x67E5;&#x627E;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x8C03;&#x7528;&#x5F88;&#x591A;&#x6B21;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x90FD;&#x9700;&#x8981;&#x53BB;&#x904D;&#x5386;&#x591A;&#x6B21;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x4E3A;&#x4E86;&#x80FD;&#x591F;&#x5FEB;&#x901F;&#x67E5;&#x627E;&#x65B9;&#x6CD5;&#xFF0C;<code>apple</code>&#x8BBE;&#x8BA1;&#x4E86;<code>cache_t</code>&#x6765;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x7F13;&#x5B58;&#x3002;</p>
+<p>&#x6BCF;&#x5F53;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x5148;&#x53BB;<code>cache</code>&#x4E2D;&#x67E5;&#x627E;&#x662F;&#x5426;&#x6709;&#x7F13;&#x5B58;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x7F13;&#x5B58;&#xFF0C;&#x5728;&#x53BB;&#x7C7B;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x67E5;&#x627E;&#xFF0C;&#x4EE5;&#x6B64;&#x7C7B;&#x63A8;&#x76F4;&#x5230;&#x627E;&#x5230;&#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x5C06;&#x65B9;&#x6CD5;&#x76F4;&#x63A5;&#x5B58;&#x50A8;&#x5728;<code>cache</code>&#x4E2D;&#xFF0C;&#x4E0B;&#x4E00;&#x6B21;&#x5728;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x4F1A;&#x5728;&#x7C7B;&#x5BF9;&#x8C61;&#x7684;<code>cache</code>&#x91CC;&#x9762;&#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x4E86;&#x3002;</p>
+<h4 id="cachet-&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x7F13;&#x5B58;">cache_t &#x5982;&#x4F55;&#x8FDB;&#x884C;&#x7F13;&#x5B58;</h4>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> <span class="hljs-keyword">cache_t</span> {
+    <span class="hljs-keyword">struct</span> <span class="hljs-keyword">bucket_t</span> *_buckets; <span class="hljs-comment">// &#x6563;&#x5217;&#x8868; &#x6570;&#x7EC4;</span>
+    <span class="hljs-keyword">mask_t</span> _mask; <span class="hljs-comment">// &#x6563;&#x5217;&#x8868;&#x7684;&#x957F;&#x5EA6; -1</span>
+    <span class="hljs-keyword">mask_t</span> _occupied; <span class="hljs-comment">// &#x5DF2;&#x7ECF;&#x7F13;&#x5B58;&#x7684;&#x65B9;&#x6CD5;&#x6570;&#x91CF;</span>
+};
 </code></pre>
-<p>&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x4FBF;&#x6377;&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x8FD4;&#x56DE;&#x5176;&#x4E2D;&#x7684; <code>class_rw_t *</code> &#x6307;&#x9488;&#xFF1A;</p>
-<p><strong>objc_class</strong> &#x4E2D;&#x7684; data &#x8FD4;&#x56DE; <code>class_rw_t</code> &#x7ED3;&#x6784;&#xFF0C;&#x6B64;&#x7ED3;&#x6784;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144757.png" alt=""></p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144612.jpg" alt=""></p>
-<p>&#x800C;<code>class_rw_t</code>&#x662F;&#x901A;&#x8FC7;bits&#x8C03;&#x7528;data&#x65B9;&#x6CD5;&#x5F97;&#x6765;&#x7684;&#xFF0C;&#x6765;&#x5230;data&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;data&#x51FD;&#x6570;&#x5185;&#x90E8;&#x4EC5;&#x4EC5;&#x5BF9;bits&#x8FDB;&#x884C;<code>&amp;FAST_DATA_MASK</code>&#x64CD;&#x4F5C;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144842.jpg" alt=""></p>
-<p>&#x5C06; <code>bits</code> &#x4E0E; <code>FAST_DATA_MASK</code> &#x8FDB;&#x884C;&#x4F4D;&#x8FD0;&#x7B97;&#xFF0C;&#x53EA;&#x53D6;&#x5176;&#x4E2D;&#x7684; <code>[3, 47]</code> &#x4F4D;&#x8F6C;&#x6362;&#x6210; <code>class_rw_t *</code> &#x8FD4;&#x56DE;&#x3002;</p>
-<blockquote>
-<p>&#x5728; x86_64 &#x67B6;&#x6784;&#x4E0A;&#xFF0C;Mac OS <strong>&#x53EA;&#x4F7F;&#x7528;&#x4E86;&#x5176;&#x4E2D;&#x7684; 47 &#x4F4D;&#x6765;&#x4E3A;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x5730;&#x5740;</strong>&#x3002;&#x800C;&#x4E14;&#x7531;&#x4E8E;&#x5730;&#x5740;&#x8981;&#x6309;&#x5B57;&#x8282;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x6309;&#x5B57;&#x8282;&#x5BF9;&#x9F50;&#xFF0C;&#x6240;&#x4EE5;&#x63A9;&#x7801;&#x7684;&#x540E;&#x4E09;&#x4F4D;&#x90FD;&#x662F; 0&#x3002;</p>
-</blockquote>
-<p>&#x56E0;&#x4E3A; <code>class_rw_t *</code> &#x6307;&#x9488;&#x53EA;&#x5B58;&#x4E8E;&#x7B2C; <code>[3, 47]</code> &#x4F4D;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6700;&#x540E;&#x4E09;&#x4F4D;&#x6765;&#x5B58;&#x50A8;&#x5173;&#x4E8E;&#x5F53;&#x524D;&#x7C7B;&#x7684;&#x5176;&#x4ED6;&#x4FE1;&#x606F;&#xFF1A;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-05-19-144111.jpg" alt=""></p>
-<pre><code class="lang-objective-c">#define FAST_IS_SWIFT           (1UL&lt;&lt;0)
-#define FAST_HAS_DEFAULT_RR     (1UL&lt;&lt;1)
-#define FAST_REQUIRES_RAW_ISA   (1UL&lt;&lt;2)
-#define FAST_DATA_MASK          0x00007ffffffffff8UL
+<p><code>bucket_t</code>&#x662F;&#x4EE5;&#x6570;&#x7EC4;&#x7684;&#x65B9;&#x5F0F;&#x5B58;&#x50A8;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x7684;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> <span class="hljs-keyword">bucket_t</span> {
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">cache_key_t</span> _key; <span class="hljs-comment">// SEL&#x4F5C;&#x4E3A;Key</span>
+    IMP _imp; <span class="hljs-comment">// &#x51FD;&#x6570;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;</span>
+};
 </code></pre>
+<p>&#x6E90;&#x7801;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;<code>bucket_t</code>&#x4E2D;&#x5B58;&#x50A8;&#x7740;<code>SEL</code>&#x548C;<code>_imp</code>&#xFF0C;&#x901A;&#x8FC7;<code>key-&gt;value</code>&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x4EE5;<code>SEL</code>&#x4E3A;<code>key</code>&#xFF0C;<code>&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740; _imp</code>&#x4E3A;<code>value</code>&#x6765;&#x5B58;&#x50A8;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x4E00;&#x5F20;&#x56FE;&#x6765;&#x5C55;&#x793A;&#x4E00;&#x4E0B;<code>cache_t</code>&#x7684;&#x7ED3;&#x6784;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-31-145738.jpg" alt=""></p>
+<p>&#x4E0A;&#x8FF0;<code>bucket_t</code>&#x5217;&#x8868;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;&#x6563;&#x5217;&#x8868;&#xFF08;&#x54C8;&#x5E0C;&#x8868;&#xFF09;
+ <strong>&#x6563;&#x5217;&#x8868;&#xFF08;Hash table&#xFF0C;&#x4E5F;&#x53EB;&#x54C8;&#x5E0C;&#x8868;&#xFF09;&#xFF0C;&#x662F;&#x6839;&#x636E;&#x5173;&#x952E;&#x7801;&#x503C;(Key value)&#x800C;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5B83;&#x901A;&#x8FC7;&#x628A;&#x5173;&#x952E;&#x7801;&#x503C;&#x6620;&#x5C04;&#x5230;&#x8868;&#x4E2D;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x6765;&#x8BBF;&#x95EE;&#x8BB0;&#x5F55;&#xFF0C;&#x4EE5;&#x52A0;&#x5FEB;&#x67E5;&#x627E;&#x7684;&#x901F;&#x5EA6;&#x3002;&#x8FD9;&#x4E2A;&#x6620;&#x5C04;&#x51FD;&#x6570;&#x53EB;&#x505A;&#x6563;&#x5217;&#x51FD;&#x6570;&#xFF0C;&#x5B58;&#x653E;&#x8BB0;&#x5F55;&#x7684;&#x6570;&#x7EC4;&#x53EB;&#x505A;&#x6563;&#x5217;&#x8868;&#x3002;</strong></p>
+<h4 id="1&#x65B9;&#x6CD5;&#x7F13;&#x5B58;&#x5B58;&#x5728;&#x4EC0;&#x4E48;&#x5730;&#x65B9;&#xFF1F;">1.&#x65B9;&#x6CD5;&#x7F13;&#x5B58;&#x5B58;&#x5728;&#x4EC0;&#x4E48;&#x5730;&#x65B9;&#xFF1F;</h4>
+<p>&#x5728;objc&#x4E2D;&#xFF0C;class&#x5B58;&#x50A8;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#xFF08;-&#xFF09;&#xFF0C;meta class&#x5B58;&#x50A8;&#x7C7B;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;&#xFF08;+&#xFF09;&#xFF0C;class&#x7684;isa&#x6307;&#x9488;&#x6307;&#x5411;meta class&#x3002;</p>
+<p>&#x5728;&#x7C7B;&#x7684;&#x5B9A;&#x4E49;&#x91CC;&#x5C31;&#x6709;cache&#x5B57;&#x6BB5;&#xFF0C;&#x7C7B;&#x7684;&#x6240;&#x6709;&#x7F13;&#x5B58;&#x90FD;&#x5B58;&#x5728;metaclass&#x4E0A;&#xFF0C;&#x6240;&#x4EE5;&#x6BCF;&#x4E2A;&#x7C7B;&#x90FD;&#x53EA;&#x6709;&#x4E00;&#x4EFD;&#x65B9;&#x6CD5;&#x7F13;&#x5B58;&#xFF0C;&#x800C;<strong>&#x4E0D;&#x662F;&#x6BCF;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;object&#x90FD;&#x4FDD;&#x5B58;&#x4E00;&#x4EFD;</strong></p>
+<h4 id="2&#x7236;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x7F13;&#x5B58;&#x53EA;&#x5B58;&#x5728;&#x7236;&#x7C7B;&#x4E48;&#xFF0C;&#x8FD8;&#x662F;&#x5B50;&#x7C7B;&#x4E5F;&#x4F1A;&#x7F13;&#x5B58;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF1F;">2.&#x7236;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x7F13;&#x5B58;&#x53EA;&#x5B58;&#x5728;&#x7236;&#x7C7B;&#x4E48;&#xFF0C;&#x8FD8;&#x662F;&#x5B50;&#x7C7B;&#x4E5F;&#x4F1A;&#x7F13;&#x5B58;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF1F;</h4>
+<p>&#x5373;&#x4FBF;&#x662F;&#x4ECE;&#x7236;&#x7C7B;&#x53D6;&#x5230;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;<strong>&#x4E5F;&#x4F1A;&#x5B58;&#x5728;&#x7C7B;&#x672C;&#x8EAB;&#x7684;&#x65B9;&#x6CD5;&#x7F13;&#x5B58;&#x91CC;</strong>&#x3002;&#x800C;&#x5F53;&#x7528;&#x4E00;&#x4E2A;&#x7236;&#x7C7B;&#x5BF9;&#x8C61;&#x53BB;&#x8C03;&#x7528;&#x90A3;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x4F1A;&#x5728;&#x7236;&#x7C7B;&#x7684;metaclass&#x91CC;&#x7F13;&#x5B58;&#x4E00;&#x4EFD;&#x3002;</p>
+<h4 id="3&#x4E3A;&#x4EC0;&#x4E48;-&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;-&#x4E0D;&#x76F4;&#x63A5;&#x505A;&#x6210;&#x6563;&#x5217;&#x8868;&#x5462;&#xFF0C;&#x505A;&#x6210;list&#xFF0C;&#x8FD8;&#x8981;&#x5355;&#x72EC;&#x7F13;&#x5B58;&#xFF0C;&#x591A;&#x8D39;&#x4E8B;&#xFF1F;">3.&#x4E3A;&#x4EC0;&#x4E48; &#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868; &#x4E0D;&#x76F4;&#x63A5;&#x505A;&#x6210;&#x6563;&#x5217;&#x8868;&#x5462;&#xFF0C;&#x505A;&#x6210;list&#xFF0C;&#x8FD8;&#x8981;&#x5355;&#x72EC;&#x7F13;&#x5B58;&#xFF0C;&#x591A;&#x8D39;&#x4E8B;&#xFF1F;</h4>
 <ul>
-<li><pre><code>isSwift()
-</code></pre><ul>
-<li><code>FAST_IS_SWIFT</code> &#x7528;&#x4E8E;&#x5224;&#x65AD; Swift &#x7C7B;</li>
+<li>&#x6563;&#x5217;&#x8868;&#x662F;&#x6CA1;&#x6709;&#x987A;&#x5E8F;&#x7684;&#xFF0C;Objective-C&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x662F;&#x4E00;&#x4E2A;list&#xFF0C;&#x662F;&#x6709;&#x987A;&#x5E8F;&#x7684;&#xFF1B;Objective-C&#x5728;&#x67E5;&#x627E;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x987A;&#x7740;list&#x4F9D;&#x6B21;&#x5BFB;&#x627E;&#xFF0C;&#x5E76;&#x4E14;category&#x7684;&#x65B9;&#x6CD5;&#x5728;&#x539F;&#x59CB;&#x65B9;&#x6CD5;list&#x7684;&#x524D;&#x9762;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x88AB;&#x627E;&#x5230;&#xFF0C;&#x5982;&#x679C;&#x76F4;&#x63A5;&#x7528;hash&#x5B58;&#x65B9;&#x6CD5;&#xFF0C;&#x65B9;&#x6CD5;&#x7684;&#x987A;&#x5E8F;&#x5C31;&#x6CA1;&#x6CD5;&#x4FDD;&#x8BC1;&#x3002;</li>
+<li>list&#x7684;&#x65B9;&#x6CD5;&#x8FD8;&#x4FDD;&#x5B58;&#x4E86;&#x9664;&#x4E86;selector&#x548C;imp&#x4E4B;&#x5916;&#x5176;&#x4ED6;&#x5F88;&#x591A;&#x5C5E;&#x6027;</li>
+<li>&#x6563;&#x5217;&#x8868;&#x662F;&#x6709;&#x7A7A;&#x69FD;&#x7684;&#xFF0C;&#x4F1A;&#x6D6A;&#x8D39;&#x7A7A;&#x95F4;</li>
 </ul>
-</li>
-<li><pre><code>hasDefaultRR()
-</code></pre><ul>
-<li><code>FAST_HAS_DEFAULT_RR</code> &#x5F53;&#x524D;&#x7C7B;&#x6216;&#x8005;&#x7236;&#x7C7B;&#x542B;&#x6709;&#x9ED8;&#x8BA4;&#x7684; <code>retain/release/autorelease/retainCount/_tryRetain/_isDeallocating/retainWeakReference/allowsWeakReference</code> &#x65B9;&#x6CD5;</li>
-</ul>
-</li>
-<li><pre><code>requiresRawIsa()
-</code></pre><ul>
-<li><code>FAST_REQUIRES_RAW_ISA</code> &#x5F53;&#x524D;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x9700;&#x8981; raw <code>isa</code></li>
-</ul>
-</li>
-</ul>
-<p>&#x6240;&#x4EE5;&#x8C03;&#x7528;&#x521D;&#x59CB;&#x5316;&#x5982;&#x4E0B;</p>
-<pre><code class="lang-objective-c">// objc_class &#x4E2D;&#x7684; data() &#x65B9;&#x6CD5;
-class_data_bits_t bits;
-
-class_rw_t *data() {
-   return bits.data();
-}
-
-// class_data_bits_t &#x4E2D;&#x7684; data() &#x65B9;&#x6CD5;
-uintptr_t bits;
-
-class_rw_t* data() {
-   return (class_rw_t *)(bits &amp; FAST_DATA_MASK);
-}
-</code></pre>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144612.jpg" alt=""></p>
-<p>&#x800C;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#x5219;&#x662F;&#x5B58;&#x50A8;&#x5728;<code>class_ro_t</code>&#x5185;&#x90E8;&#x4E2D;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5230;<code>class_ro_t</code>&#x5185;&#x67E5;&#x770B;&#x3002;
-<code>class_rw_t</code> &#x8868;&#x793A;<strong>read write</strong>&#xFF0C;<code>class_ro_t</code> &#x8868;&#x793A; <strong>read only</strong>&#x3002;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-145011.jpg" alt=""></p>
-<h3 id="classrwt-&#x548C;-classrot"><code>class_rw_t</code> &#x548C; <code>class_ro_t</code></h3>
-<p>ObjC &#x7C7B;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x3001;&#x65B9;&#x6CD5;&#x8FD8;&#x6709;&#x9075;&#x5FAA;&#x7684;&#x534F;&#x8BAE;&#x7B49;&#x4FE1;&#x606F;&#x90FD;&#x4FDD;&#x5B58;&#x5728; <code>class_rw_t</code> &#x4E2D;&#xFF1A;</p>
-<pre><code class="lang-objective-c">struct class_rw_t {
-    uint32_t flags;
-    uint32_t version;
-
-    const class_ro_t *ro;
-
-    method_array_t methods;
-    property_array_t properties;
-    protocol_array_t protocols;
-
-    Class firstSubclass;
-    Class nextSiblingClass;
-};
-</code></pre>
-<p>&#x5176;&#x4E2D;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x5E38;&#x91CF;&#x7684;&#x6307;&#x9488; <code>ro</code>&#xFF0C;&#x5176;&#x4E2D;&#x5B58;&#x50A8;&#x4E86;<strong>&#x5F53;&#x524D;&#x7C7B;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x5C31;&#x5DF2;&#x7ECF;&#x786E;&#x5B9A;&#x7684;&#x5C5E;&#x6027;&#x3001;&#x65B9;&#x6CD5;&#x4EE5;&#x53CA;&#x9075;&#x5FAA;&#x7684;&#x534F;&#x8BAE;</strong>&#x3002;(&#x5982;&#x679C;&#x662F;&#x5F53;&#x524D;&#x7C7B;&#x6709;Category&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x65B0;&#x589E;&#x7684;&#x5C5E;&#x6027;&#x65B9;&#x6CD5;&#x4F1A;&#x653E;&#x5728; <code>class_rw_t</code> &#x7684; <code>methods</code> &#x3001;<code>properties</code> &#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;)</p>
-<pre><code class="lang-objective-c">struct class_ro_t {
-    uint32_t flags;
-    uint32_t instanceStart;
-    uint32_t instanceSize;
-    uint32_t reserved;
-
-    const uint8_t * ivarLayout;
-
-    const char * name;
-    method_list_t * baseMethodList;
-    protocol_list_t * baseProtocols;
-    const ivar_list_t * ivars;
-
-    const uint8_t * weakIvarLayout;
-    property_list_t *baseProperties;
-};
-</code></pre>
-<p><strong>&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x95F4;</strong>&#x7C7B;&#x7684;&#x7ED3;&#x6784;&#x4E2D;&#x7684; <code>class_data_bits_t *data</code> &#x6307;&#x5411;&#x7684;&#x662F;&#x4E00;&#x4E2A; <code>class_ro_t *</code> &#x6307;&#x9488;&#xFF1A;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-07-30-140953.jpg" alt=""></p>
-<p>&#x7136;&#x540E;&#x5728;&#x52A0;&#x8F7D; <em>ObjC &#x8FD0;&#x884C;&#x65F6;</em>&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x5728; <code>realizeClass</code> &#x65B9;&#x6CD5;&#x4E2D;&#xFF1A;</p>
-<ol>
-<li>&#x4ECE; <code>class_data_bits_t</code> &#x8C03;&#x7528; <code>data</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x7ED3;&#x679C;&#x4ECE; <code>class_rw_t</code> &#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x4E3A; <code>class_ro_t</code> &#x6307;&#x9488;</li>
-<li>&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A; <code>class_rw_t</code> &#x7ED3;&#x6784;&#x4F53;</li>
-<li>&#x8BBE;&#x7F6E;&#x7ED3;&#x6784;&#x4F53; <code>ro</code> &#x7684;&#x503C;&#x4EE5;&#x53CA; <code>flag</code></li>
-<li>&#x6700;&#x540E;&#x8BBE;&#x7F6E;&#x6B63;&#x786E;&#x7684; <code>data</code>&#x3002;</li>
-</ol>
-<pre><code class="lang-objectivec"><span class="hljs-keyword">const</span> class_ro_t *ro = (<span class="hljs-keyword">const</span> class_ro_t *)cls-&gt;data();
-class_rw_t *rw = (class_rw_t *)calloc(<span class="hljs-keyword">sizeof</span>(class_rw_t), <span class="hljs-number">1</span>);
-rw-&gt;ro = ro;
-rw-&gt;flags = RW_REALIZED|RW_REALIZING;
-cls-&gt;setData(rw);
-</code></pre>
-<p>&#x4E0B;&#x56FE;&#x662F; <code>realizeClass</code> &#x65B9;&#x6CD5;&#x6267;&#x884C;&#x8FC7;&#x540E;&#x7684;&#x7C7B;&#x6240;&#x5360;&#x7528;&#x5185;&#x5B58;&#x7684;&#x5E03;&#x5C40;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-07-30-141124.jpg" alt=""></p>
-<p>&#x4F46;&#x662F;&#xFF0C;&#x5728;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x4E4B;&#x540E; <code>class_rw_t</code> &#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5C5E;&#x6027;&#x4EE5;&#x53CA;&#x534F;&#x8BAE;&#x5217;&#x8868;&#x5747;&#x4E3A;&#x7A7A;&#x3002;&#x8FD9;&#x65F6;&#x9700;&#x8981; <code>realizeClass</code> &#x8C03;&#x7528; <code>methodizeClass</code> &#x65B9;&#x6CD5;&#x6765;<strong>&#x5C06;&#x7C7B;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#xFF08;&#x5305;&#x62EC;&#x5206;&#x7C7B;&#xFF09;&#x3001;&#x5C5E;&#x6027;&#x548C;&#x9075;&#x5FAA;&#x7684;&#x534F;&#x8BAE;&#x52A0;&#x8F7D;&#x5230; <code>methods</code>&#x3001; <code>properties</code> &#x548C; <code>protocols</code> &#x5217;&#x8868;&#x4E2D;</strong>&#x3002;</p>
-<h2 id="&#x5C0F;&#x7ED3;">&#x5C0F;&#x7ED3;</h2>
-<ol>
-<li>&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x95F4;&#x51B3;&#x5B9A;&#x7684;&#xFF0C;&#x5728;&#x4E4B;&#x540E;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
-<li>&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x5C5E;&#x6027;&#x4EE5;&#x53CA;&#x534F;&#x8BAE;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x95F4;&#x5B58;&#x653E;&#x5230;&#x4E86;&#x201C;&#x9519;&#x8BEF;&#x201D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x76F4;&#x5230; <code>realizeClass</code> &#x6267;&#x884C;&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x653E;&#x5230;&#x4E86; <code>class_rw_t</code> &#x6307;&#x5411;&#x7684;&#x53EA;&#x8BFB;&#x533A;&#x57DF; <code>class_ro_t</code>&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5373;&#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4E3A; <code>class_rw_t</code> &#x6DFB;&#x52A0;&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x7C7B;&#x7684;&#x53EA;&#x8BFB;&#x7ED3;&#x6784;&#x3002;</li>
-<li>&#x5728; <code>class_ro_t</code> &#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x5728;&#x8FD0;&#x884C;&#x671F;&#x95F4;&#x5C31;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x4E86;&#xFF0C;&#x518D;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4F1A;&#x4FEE;&#x6539; <code>class_rw_t</code> &#x4E2D;&#x7684; <code>methods</code> &#x5217;&#x8868;&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>class_ro_t</code> &#x4E2D;&#x7684; <code>baseMethods</code>&#xFF0C;</li>
-</ol>
 <h2 id="reference">Reference</h2>
-<p><a href="https://draveness.me/method-struct/" target="_blank">&#x6DF1;&#x5165;&#x89E3;&#x6790; ObjC &#x4E2D;&#x65B9;&#x6CD5;&#x7684;&#x7ED3;&#x6784;</a></p>
+<p><a href="https://www.jianshu.com/p/27ee04f3ed7b" target="_blank">1.iOS&#x5E95;&#x5C42;&#x539F;&#x7406;&#x603B;&#x7ED3; - &#x63A2;&#x5BFB;Runtime&#x672C;&#x8D28;&#xFF08;&#x4E8C;&#xFF09;</a></p>
 
                                 
                                 </section>
@@ -1261,12 +1266,8 @@ cls-&gt;setData(rw);
 
             
                 
-                <a href="ObjectClass.html" class="navigation navigation-prev " aria-label="Previous page: ObjectClass">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="OCAllocInit.html" class="navigation navigation-next " aria-label="Next page: AllocInit">
+                <a href="../OCFoundation/OCFoundation.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 2.OC语言基础">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1277,7 +1278,7 @@ cls-&gt;setData(rw);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ClassRWT","level":"2.1.3.4","depth":3,"next":{"title":"AllocInit","level":"2.1.3.5","depth":3,"path":"iOS/Objc_Object/OCAllocInit.md","ref":"iOS/Objc_Object/OCAllocInit.md","articles":[]},"previous":{"title":"ObjectClass","level":"2.1.3.3","depth":3,"path":"iOS/Objc_Object/ObjectClass.md","ref":"iOS/Objc_Object/ObjectClass.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Objc_Object/ClassRWT.md","mtime":"2021-01-31T15:39:38.693Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-31T15:40:07.842Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Method","level":"2.1.4.2","depth":3,"next":{"title":"2.OC语言基础","level":"3.1","depth":1,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"4.1 Block","level":"2.1.4.1","depth":3,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/Method.md","mtime":"2021-01-31T15:39:38.693Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-31T15:40:07.842Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
