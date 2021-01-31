@@ -1,4 +1,4 @@
-# Function 函数
+# Method 
 
 
 
