@@ -75,6 +75,24 @@ Unknown selector 触发的三个回调介绍完毕，简单总结一下。
 
 
 
+## NSProxy
+
+> NSProxy is an abstract superclass defining an API for objects that act as stand-ins for other objects or for objects that don’t exist yet. Typically, a message to a proxy is forwarded to the real object or causes the proxy to load (or transform itself into) the real object. Subclasses of NSProxy can be used to implement transparent distributed messaging (for example, NSDistantObject) or for lazy instantiation of objects that are expensive to create.
+
+NSProxy是一个抽象的超类，它定义了一个对象的API，用来充当其他对象或者一些不存在的对象的替身。通常，发送给Proxy的消息会被转发给实际对象，或使Proxy加载（转化为）实际对象。 NSProxy的子类可以用于实现透明的分布式消息传递(例如，NSDistantObject)，或者用于创建开销较大的对象的惰性实例化。
+
+作为抽象类，它不实现初始化方法，并且会在收到任何它不响应的消息时引发异常。因此，具体子类必须实现一个初始化或者创建方法，并且重写- (void)forwardInvocation:(NSInvocation *)invocation;和- (nullable NSMethodSignature *)methodSignatureForSelector:(SEL)sel方法，来转发它没实现的方法。这也是NSProxy的主要功能，负责把消息转发给真正的target的代理类，NSProxy正是代理的意思。
+
+
+
+### 总结:
+
+**NSProxy专门为消息转发而生**
+
+
+
 ## Reference
 
 [1.NSObject 的消息转发机制](https://zhangbuhuai.com/post/message-forwarding.html)
+
+[2.NSProxy的理解和使用](https://juejin.cn/post/6844903606483681288)
