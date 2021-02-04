@@ -1118,6 +1118,8 @@
 <ul>
 <li><code>Block</code> &#x662F;&#x5C06;&#x51FD;&#x6570;&#x53CA;&#x5176;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x5C01;&#x88C5;&#x8D77;&#x6765;&#x7684;<code>&#x5BF9;&#x8C61;</code></li>
 <li><code>Block</code>&#x7684;&#x8C03;&#x7528;&#x5373;&#x662F;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;</li>
+<li><code>Block</code>&#x672C;&#x8D28;&#x4E0A;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;OC&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x5185;&#x90E8;&#x4E5F;&#x6709;&#x4E2A;isa&#x6307;&#x9488;</li>
+<li><code>Block</code>&#x662F;&#x5C01;&#x88C5;&#x4E86;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4EE5;&#x53CA;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x73AF;&#x5883;&#x7684;OC&#x5BF9;&#x8C61;</li>
 </ul>
 <p>Block&#x5728;OC&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-objective-c">struct Block_layout {
@@ -1148,7 +1150,7 @@ int(^Block)(int) = ^int(int num){
 }
 </code></pre>
 <h2 id="clang-&#x91CD;&#x5199;block">Clang &#x91CD;&#x5199;Block</h2>
-<h3 id="1block&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x5B9E;&#x8D28;">1.Block&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x5B9E;&#x8D28;</h3>
+<h3 id="block&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x5B9E;&#x8D28;">Block&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x5B9E;&#x8D28;</h3>
 <p>&#x8BF4;&#x5230;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x5148;&#x8BF4;&#x4E00;&#x4E0B;C&#x8BED;&#x8A00;&#x4E2D;&#x53D8;&#x91CF;&#x6709;&#x54EA;&#x51E0;&#x79CD;&#x3002;&#x4E00;&#x822C;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E00;&#x4E0B;5&#x79CD;&#xFF1A;</p>
 <ul>
 <li>&#x81EA;&#x52A8;&#x53D8;&#x91CF;</li>
@@ -1165,94 +1167,326 @@ int(^Block)(int) = ^int(int num){
 <li>&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
 <li>&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
 </ul>
-<pre><code class="lang-objective-c">#import &lt;Foundation/Foundation.h&gt;
+<p>&#x5982;&#x4E0B;&#x4EE3;&#x7801;</p>
+<pre><code class="lang-objective-c">int age = 20;
+void (^block)(void) =  ^{
+     NSLog(@&quot;age is %d&quot;,age);
+ };
 
-int global_i = 1;
-
-static int static_global_j = 2;
-
-int main(int argc, const char * argv[]) {
-
-    static int static_k = 3;
-    int val = 4;
-
-    void (^myBlock)(void) = ^{
-        global_i ++;
-        static_global_j ++;
-        static_k ++;
-        NSLog(@&quot;Block&#x4E2D; global_i = %d,static_global_j = %d,static_k = %d,val = %d&quot;,global_i,static_global_j,static_k,val);
-    };
-
-    global_i ++;
-    static_global_j ++;
-    static_k ++;
-    val ++;
-    NSLog(@&quot;Block&#x5916; global_i = %d,static_global_j = %d,static_k = %d,val = %d&quot;,global_i,static_global_j,static_k,val);
-
-    myBlock();
-
-    return 0;
-}
+block();
 </code></pre>
-<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;</p>
-<pre><code class="lang-vim">Block &#x5916;  global_i = <span class="hljs-number">2</span>,static_global_j = <span class="hljs-number">3</span>,static_k = <span class="hljs-number">4</span>,val = <span class="hljs-number">5</span>
-Block &#x4E2D;  global_i = <span class="hljs-number">3</span>,static_global_j = <span class="hljs-number">4</span>,static_k = <span class="hljs-number">5</span>,val = <span class="hljs-number">4</span>
+<ul>
+<li>&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#xFF0C;cd&#x5230;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;</li>
+</ul>
+<blockquote>
+<p>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m</p>
+</blockquote>
+<p>&#x751F;&#x6210;<code>main.cpp</code></p>
+<h4 id="block-&#x7ED3;&#x6784;&#x5206;&#x6790;">block &#x7ED3;&#x6784;&#x5206;&#x6790;</h4>
+<pre><code class="lang-cpp"><span class="hljs-keyword">int</span> age = <span class="hljs-number">20</span>;
+
+<span class="hljs-comment">// block&#x7684;&#x5B9A;&#x4E49;</span>
+<span class="hljs-keyword">void</span> (*block)(<span class="hljs-keyword">void</span>) = ((<span class="hljs-keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="hljs-keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, age));
+<span class="hljs-comment">// block&#x7684;&#x8C03;&#x7528;</span>
+((<span class="hljs-keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);
 </code></pre>
-<p>1.&#x4E3A;&#x4EC0;&#x4E48;&#x5728;Block&#x91CC;&#x9762;&#x4E0D;&#x52A0;__bolck&#x4E0D;&#x5141;&#x8BB8;&#x66F4;&#x6539;&#x53D8;&#x91CF;&#xFF1F;
-2.&#x4E3A;&#x4EC0;&#x4E48;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x6CA1;&#x6709;&#x589E;&#x52A0;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x51E0;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x662F;&#x589E;&#x52A0;&#x7684;&#xFF1F;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x662F;&#x4EC0;&#x4E48;&#x72B6;&#x6001;&#x4E0B;&#x88AB;block&#x6355;&#x83B7;&#x8FDB;&#x53BB;&#x7684;&#xFF1F;</p>
-<pre><code class="lang-objective-c">int global_i = 1;
-
-static int static_global_j = 2;
-
-struct __main_block_impl_0 {
-  struct __block_impl impl;
-  struct __main_block_desc_0* Desc;
-  int *static_k;
-  int val;
-  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int *_static_k, int _val, int flags=0) : static_k(_static_k), val(_val) {
+<p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5220;&#x9664;&#x6389;&#x4E00;&#x4E9B;&#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x5C31;&#x5269;&#x4E0B;&#x5982;&#x4E0B;&#x6240;&#x793A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">int</span> age = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">void</span> (*block)(<span class="hljs-keyword">void</span>) = &amp;__main_block_impl_0(
+                        __main_block_func_0, 
+                        &amp;__main_block_desc_0_DATA, 
+                        age
+                        );
+<span class="hljs-comment">// block&#x7684;&#x8C03;&#x7528;</span>
+block-&gt;FuncPtr(block);
+</code></pre>
+<p>&#x770B;&#x51FA;block&#x7684;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x5BF9;&#x8C61;&#xFF0C;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> __main_block_impl_0 {
+  <span class="hljs-keyword">struct</span> __block_impl impl;
+  <span class="hljs-keyword">struct</span> __main_block_desc_0* Desc;
+  <span class="hljs-keyword">int</span> age;
+    <span class="hljs-comment">//&#x6784;&#x9020;&#x51FD;&#x6570;(&#x7C7B;&#x4F3C;&#x4E8E;OC&#x4E2D;&#x7684;init&#x65B9;&#x6CD5;) _age&#x662F;&#x5916;&#x9762;&#x4F20;&#x5165;&#x7684;</span>
+  __main_block_impl_0(<span class="hljs-keyword">void</span> *fp, <span class="hljs-keyword">struct</span> __main_block_desc_0 *desc, <span class="hljs-keyword">int</span> _age, <span class="hljs-keyword">int</span> flags=<span class="hljs-number">0</span>) : age(_age) {
+    <span class="hljs-comment">//isa&#x6307;&#x5411;_NSConcreteStackBlock &#x8BF4;&#x660E;&#x8FD9;&#x4E2A;block&#x5C31;&#x662F;_NSConcreteStackBlock&#x7C7B;&#x578B;&#x7684;</span>
     impl.isa = &amp;_NSConcreteStackBlock;
     impl.Flags = flags;
     impl.FuncPtr = fp;
     Desc = desc;
   }
 };
-static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
-  int *static_k = __cself-&gt;static_k; // bound by copy
-  int val = __cself-&gt;val; // bound by copy
-
-        global_i ++;
-        static_global_j ++;
-        (*static_k) ++;
-        NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_45_k1d9q7c52vz50wz1683_hk9r0000gn_T_main_6fe658_mi_0,global_i,static_global_j,(*static_k),val);
-    }
-
-static struct __main_block_desc_0 {
+</code></pre>
+<p>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;<code>struct __block_impl impl;</code></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> __block_impl {
+      <span class="hljs-keyword">void</span> *isa;
+      <span class="hljs-keyword">int</span> Flags;
+      <span class="hljs-keyword">int</span> Reserved;
+      <span class="hljs-keyword">void</span> *FuncPtr;
+};
+</code></pre>
+<p>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;<code>__main_block_desc_0;</code></p>
+<pre><code>static struct __main_block_desc_0 {
   size_t reserved;
-  size_t Block_size;
-} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
+  size_t Block_size; // &#x7ED3;&#x6784;&#x4F53;__main_block_impl_0 &#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;
+}
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7B2C;&#x4E09;&#x4E2A;&#x662F;<code>age</code></p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x6355;&#x83B7;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF; <code>age</code></p>
+<pre><code class="lang-cpp">__main_block_func_0
+<span class="hljs-comment">//&#x5C01;&#x88C5;&#x4E86;block&#x6267;&#x884C;&#x903B;&#x8F91;&#x7684;&#x51FD;&#x6570;</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __main_block_func_0(<span class="hljs-keyword">struct</span> __main_block_impl_0 *__cself) {
+    <span class="hljs-keyword">int</span> age = __cself-&gt;age; <span class="hljs-comment">// bound by copy</span>
 
+    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb32m0000gn_T_main_7f3f1b_mi_0,age);
+}
+</code></pre>
+<p>&#x7528;&#x4E00;&#x5E45;&#x56FE;&#x6765;&#x8868;&#x793A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-04-151812.jpg" alt="img"></p>
+<h3 id="&#x53D8;&#x91CF;&#x6355;&#x83B7;">&#x53D8;&#x91CF;&#x6355;&#x83B7;</h3>
+<p>&#x5176;&#x5B9E;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x770B;&#x5F97;&#x51FA;&#x6765;&#x53D8;&#x91CF;&#x6355;&#x83B7;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x7EE7;&#x7EED;&#x8BE6;&#x7EC6;&#x5206;&#x6790;&#x4E00;&#x4E0B;</p>
+<table>
+<thead>
+<tr>
+<th>&#x53D8;&#x91CF;&#x7C7B;&#x578B;</th>
+<th>&#x6355;&#x83B7;&#x5230;block&#x5185;&#x90E8;</th>
+<th>&#x8BBF;&#x95EE;&#x65B9;&#x5F0F;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF; auto</td>
+<td>&#x221A;</td>
+<td>&#x503C;&#x4F20;&#x9012;</td>
+</tr>
+<tr>
+<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF; static</td>
+<td>&#x221A;</td>
+<td>&#x6307;&#x9488;&#x4F20;&#x9012;</td>
+</tr>
+<tr>
+<td>&#x5168;&#x5C40;&#x53D8;&#x91CF;</td>
+<td>&#xD7;</td>
+<td>&#x76F4;&#x63A5;&#x8BBF;&#x95EE;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1&#x5C40;&#x90E8;&#x53D8;&#x91CF;auto&#x81EA;&#x52A8;&#x53D8;&#x91CF;">1.&#x5C40;&#x90E8;&#x53D8;&#x91CF;auto(&#x81EA;&#x52A8;&#x53D8;&#x91CF;)</h3>
+<ul>
+<li>&#x6211;&#x4EEC;&#x5E73;&#x65F6;&#x5199;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x9ED8;&#x8BA4;&#x5C31;&#x6709; auto(&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#xFF0C;&#x79BB;&#x5F00;&#x4F5C;&#x7528;&#x57DF;&#x5C31;&#x9500;&#x6BC1;)</li>
+</ul>
+<h5 id="&#x8FD0;&#x884C;&#x4EE3;&#x7801;">&#x8FD0;&#x884C;&#x4EE3;&#x7801;</h5>
+<p>&#x4F8B;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;</p>
+<pre><code class="lang-objective-c">int age = 20;
+void (^block)(void) =  ^{
+     NSLog(@&quot;age is %d&quot;,age);
+};
+age = 25;
+
+block();
+</code></pre>
+<p>&#x7B49;&#x540C;&#x4E8E;</p>
+<pre><code class="lang-objective-c">auto int age = 20;
+void (^block)(void) =  ^{
+     NSLog(@&quot;age is %d&quot;,age);
+};
+age = 25;
+
+block();
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre>
+<p>&#x8F93;&#x51FA;</p>
+<blockquote>
+<p>20</p>
+</blockquote>
+<h5 id="&#x5206;&#x6790;">&#x5206;&#x6790;</h5>
+<blockquote>
+<p>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m</p>
+</blockquote>
+<p>&#x751F;&#x6210;<code>main.cpp</code></p>
+<p>&#x5982;&#x56FE;&#x6240;&#x793A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-04-152053.jpg" alt="img"></p>
+<pre><code>int age = 20;
+void (*block)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, age));
+age = 25;
+
+((void (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);
+
+struct __main_block_impl_0 *blockStruct = (__bridge struct __main_block_impl_0 *)block;
+
+NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb32m0000gn_T_main_d36452_mi_5);
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;&#x76F4;&#x63A5;&#x628A;age&#x7684;&#x503C; 20&#x4F20;&#x5230;&#x4E86;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x4E2D;&#xFF0C;&#x540E;&#x9762;&#x518D;&#x4FEE;&#x6539;<code>age = 25</code>&#x5E76;&#x4E0D;&#x80FD;&#x6539;&#x53D8;block&#x91CC;&#x9762;&#x7684;&#x503C;</p>
+<h2 id="2&#x5C40;&#x90E8;&#x53D8;&#x91CF;-static">2.&#x5C40;&#x90E8;&#x53D8;&#x91CF; static</h2>
+<p>static&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x4E0D;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;</p>
+<h5 id="&#x8FD0;&#x884C;&#x4EE3;&#x7801;">&#x8FD0;&#x884C;&#x4EE3;&#x7801;</h5>
+<p>eg</p>
+<pre><code class="lang-objective-c">static int height  = 30;
+int age = 20;
+void (^block)(void) =  ^{
+     NSLog(@&quot;age is %d height = %d&quot;,age,height);
+};
+age = 25;
+height = 35;
+block();
+</code></pre>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E3A;</p>
+<pre><code class="lang-shell">age is 20 height = 35
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5F97;&#x51FA;&#x6765;&#xFF0C;block&#x5916;&#x90E8;&#x4FEE;&#x6539;height&#x7684;&#x503C;&#xFF0C;&#x4F9D;&#x7136;&#x80FD;&#x5F71;&#x54CD;block&#x5185;&#x90E8;&#x7684;&#x503C;</p>
+<h5 id="&#x6790;">&#x6790;</h5>
+<blockquote>
+<p>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m</p>
+</blockquote>
+<p>&#x751F;&#x6210;<code>main.cpp</code></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-04-152048.jpg" alt="img"></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __main_block_func_0(<span class="hljs-keyword">struct</span> __main_block_impl_0 *__cself) {
+  <span class="hljs-keyword">int</span> age = __cself-&gt;age; <span class="hljs-comment">// bound by copy</span>
+  <span class="hljs-keyword">int</span> *height = __cself-&gt;height; <span class="hljs-comment">// bound by copy</span>
+
+            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb32m0000gn_T_main_3146e1_mi_4,age,(*height));
+        }
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> __main_block_desc_0 {
+  <span class="hljs-keyword">size_t</span> reserved;
+  <span class="hljs-keyword">size_t</span> Block_size;
+} __main_block_desc_0_DATA = { <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> __main_block_impl_0)};
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    <span class="hljs-comment">/* @autoreleasepool */</span> { __AtAutoreleasePool __autoreleasepool; 
+
+
+
+        <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> height = <span class="hljs-number">30</span>;
+        <span class="hljs-keyword">int</span> age = <span class="hljs-number">20</span>;
+        <span class="hljs-keyword">void</span> (*block)(<span class="hljs-keyword">void</span>) = ((<span class="hljs-keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="hljs-keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, age, &amp;height));
+        age = <span class="hljs-number">25</span>;
+        height = <span class="hljs-number">35</span>;
+        ((<span class="hljs-keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);
+</code></pre>
+<p>&#x5982;&#x56FE;&#x6240;&#x793A;&#xFF0C;<code>age</code>&#x662F;&#x76F4;&#x63A5;&#x503C;&#x4F20;&#x9012;&#xFF0C;<code>height</code>&#x4F20;&#x9012;&#x7684;&#x662F;<code>*height</code> &#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x76F4;&#x63A5;&#x628A;&#x5185;&#x5B58;&#x5730;&#x5740;&#x4F20;&#x8FDB;&#x53BB;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x4E86;&#x3002;</p>
+<h3 id="3&#x5168;&#x5C40;&#x53D8;&#x91CF;">3.&#x5168;&#x5C40;&#x53D8;&#x91CF;</h3>
+<h5 id="&#x8FD0;&#x884C;&#x4EE3;&#x7801;">&#x8FD0;&#x884C;&#x4EE3;&#x7801;</h5>
+<pre><code class="lang-objective-c">int age1 = 11;
+static int height1 = 22;
 
 int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        void (^block)(void) =  ^{
+            NSLog(@&quot;age1 is %d height1 = %d&quot;,age1,height1);
+        };
+        age1 = 25;
+        height1 = 35;
+        block();
 
-    static int static_k = 3;
-    int val = 4;
-
-    void (*myBlock)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, &amp;static_k, val));
-
-    global_i ++;
-    static_global_j ++;
-    static_k ++;
-    val ++;
-    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_45_k1d9q7c52vz50wz1683_hk9r0000gn_T_main_6fe658_mi_1,global_i,static_global_j,static_k,val);
-
-    ((void (*)(__block_impl *))((__block_impl *)myBlock)-&gt;FuncPtr)((__block_impl *)myBlock);
-
+    }
     return 0;
 }
 </code></pre>
-<p>&#x9996;&#x5148;&#x5168;&#x5C40;&#x53D8;&#x91CF;global_i&#x548C;&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;static_global_j&#x7684;&#x503C;&#x589E;&#x52A0;&#xFF0C;&#x4EE5;&#x53CA;&#x5B83;&#x4EEC;&#x88AB;Block&#x6355;&#x83B7;&#x8FDB;&#x53BB;&#xFF0C;&#x8FD9;&#x4E00;&#x70B9;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x5168;&#x5C40;&#x7684;&#xFF0C;&#x4F5C;&#x7528;&#x57DF;&#x5F88;&#x5E7F;&#xFF0C;&#x6240;&#x4EE5;Block&#x6355;&#x83B7;&#x4E86;&#x5B83;&#x4EEC;&#x8FDB;&#x53BB;&#x4E4B;&#x540E;&#xFF0C;&#x5728;Block&#x91CC;&#x9762;&#x8FDB;&#x884C;++&#x64CD;&#x4F5C;&#xFF0C;Block&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x503C;&#x4F9D;&#x65E7;&#x53EF;&#x4EE5;&#x5F97;&#x4EE5;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;&#x3002;</p>
+<p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A;</p>
+<pre><code class="lang-shell">age1 is 25 height1 = 35
+</code></pre>
+<h5 id="&#x5206;&#x6790;">&#x5206;&#x6790;</h5>
+<blockquote>
+<p>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m</p>
+</blockquote>
+<p>&#x751F;&#x6210;<code>main.cpp</code></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-04-152316.jpg" alt="img"></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> __main_block_impl_0 {
+    <span class="hljs-keyword">struct</span> __block_impl impl;
+    <span class="hljs-keyword">struct</span> __main_block_desc_0* Desc;
+    __main_block_impl_0(<span class="hljs-keyword">void</span> *fp, <span class="hljs-keyword">struct</span> __main_block_desc_0 *desc, <span class="hljs-keyword">int</span> flags=<span class="hljs-number">0</span>) {
+        impl.isa = &amp;_NSConcreteStackBlock;
+        impl.Flags = flags;
+        impl.FuncPtr = fp;
+        Desc = desc;
+    }
+};
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __main_block_func_0(<span class="hljs-keyword">struct</span> __main_block_impl_0 *__cself) {
+
+    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb32m0000gn_T_main_4e8c40_mi_4,age1,height1);
+}
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> __main_block_desc_0 {
+    <span class="hljs-keyword">size_t</span> reserved;
+    <span class="hljs-keyword">size_t</span> Block_size;
+} __main_block_desc_0_DATA = { <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> __main_block_impl_0)};
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    <span class="hljs-comment">/* @autoreleasepool */</span> { __AtAutoreleasePool __autoreleasepool; 
+
+        <span class="hljs-keyword">void</span> (*block)(<span class="hljs-keyword">void</span>) = ((<span class="hljs-keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="hljs-keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA));
+        age1 = <span class="hljs-number">25</span>;
+        height1 = <span class="hljs-number">35</span>;
+        ((<span class="hljs-keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);
+
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>&#x4ECE;cpp&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x6355;&#x83B7;&#x5168;&#x5C40;&#x53D8;&#x91CF;age1&#x548C;height1,&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x76F4;&#x63A5;&#x53BB;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x6839;&#x672C;&#x4E0D;&#x9700;&#x8981;&#x6355;&#x83B7;</p>
+<h4 id="&#x5C0F;&#x7ED3;">&#x5C0F;&#x7ED3;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x53D8;&#x91CF;&#x7C7B;&#x578B;</th>
+<th>&#x6355;&#x83B7;&#x5230;block&#x5185;&#x90E8;</th>
+<th>&#x8BBF;&#x95EE;&#x65B9;&#x5F0F;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF; auto</td>
+<td>&#x221A;</td>
+<td>&#x503C;&#x4F20;&#x9012;</td>
+</tr>
+<tr>
+<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF; static</td>
+<td>&#x221A;</td>
+<td>&#x6307;&#x9488;&#x4F20;&#x9012;</td>
+</tr>
+<tr>
+<td>&#x5168;&#x5C40;&#x53D8;&#x91CF;</td>
+<td>&#xD7;</td>
+<td>&#x76F4;&#x63A5;&#x8BBF;&#x95EE;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>auto&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x662F;&#x503C;&#x4F20;&#x9012;</li>
+<li>static&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x662F;&#x6307;&#x9488;&#x4F20;&#x9012;</li>
+</ul>
+<p>&#x5176;&#x5B9E;&#x4E5F;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x56E0;&#x4E3A;auto&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x79BB;&#x5F00;&#x4F5C;&#x7528;&#x57DF;&#x5C31;&#x9500;&#x6BC1;&#x4E86;&#x3002;&#x90A3;&#x5982;&#x679C;&#x662F;&#x6307;&#x9488;&#x4F20;&#x9012;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BE5;&#x53D8;&#x91CF;&#x5DF2;&#x7ECF;&#x9500;&#x6BC1;&#x4E86;&#x3002;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A;&#x51FA;&#x95EE;&#x9898;&#x3002;&#x800C;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x672C;&#x6765;&#x5C31;&#x662F;&#x5728;&#x54EA;&#x91CC;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x65E0;&#x9700;&#x6355;&#x83B7;&#x3002;</p>
+<h2 id="block&#x6709;3&#x79CD;&#x7C7B;&#x578B;">block&#x6709;3&#x79CD;&#x7C7B;&#x578B;</h2>
+<p>block&#x6709;3&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;class&#x65B9;&#x6CD5;&#x6216;&#x8005;isa&#x6307;&#x9488;&#x67E5;&#x770B;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#xFF0C;&#x6700;&#x7EC8;&#x90FD;&#x662F;&#x7EE7;&#x627F;&#x81EA;NSBlock&#x7C7B;&#x578B;</p>
+<ul>
+<li><code>__NSGlobalBlock__ &#xFF08; _NSConcreteGlobalBlock &#xFF09;</code> (&#x5168;&#x5C40;&#x7684;&#x9759;&#x6001; block&#xFF0C;&#x4E0D;&#x4F1A;&#x8BBF;&#x95EE;&#x4EFB;&#x4F55;&#x5916;&#x90E8;&#x53D8;&#x91CF;)</li>
+<li><code>__NSStackBlock__ &#xFF08; _NSConcreteStackBlock &#xFF09;</code> ( &#x4FDD;&#x5B58;&#x5728;&#x6808;&#x4E2D;&#x7684; block&#xFF0C;&#x5F53;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x65F6;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;)</li>
+<li><code>__NSMallocBlock__ &#xFF08; _NSConcreteMallocBlock &#xFF09;</code> ( &#x4FDD;&#x5B58;&#x5728;&#x5806;&#x4E2D;&#x7684; block&#xFF0C;&#x5F53;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A; 0 &#x65F6;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;)</li>
+</ul>
+<p>&#x5176;&#x4E2D;&#x4E09;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x578B;&#x548C;&#x73AF;&#x5883;&#x5BF9;&#x5E94;&#x5982;&#x4E0B;</p>
+<table>
+<thead>
+<tr>
+<th>block&#x7C7B;&#x578B;</th>
+<th>&#x73AF;&#x5883;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__NSGlobalBlock__</code></td>
+<td>&#x6CA1;&#x6709;&#x8BBF;&#x95EE;auto&#x53D8;&#x91CF;</td>
+</tr>
+<tr>
+<td><code>__NSStackBlock__</code></td>
+<td>&#x8BBF;&#x95EE;&#x4E86;auto&#x53D8;&#x91CF;</td>
+</tr>
+<tr>
+<td><code>__NSMallocBlock__</code></td>
+<td><code>__NSStackBlock__</code>&#x8C03;&#x7528;&#x4E86;copy</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051428.jpg" alt=""></p>
 <h2 id="reference">Reference</h2>
 <p><a href="https://halfrost.com/ios_block/" target="_blank">1 &#x6DF1;&#x5165;&#x7814;&#x7A76; Block &#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x548C; __block &#x5B9E;&#x73B0;&#x539F;&#x7406;</a></p>
+<p><a href="https://juejin.cn/post/6844903893176958983" target="_blank">2 &#x6DF1;&#x5165;&#x7406;&#x89E3;iOS&#x7684;block</a></p>
 
                                 
                                 </section>
@@ -1292,7 +1526,7 @@ int main(int argc, const char * argv[]) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Block","level":"2.1.4.1","depth":3,"next":{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},"previous":{"title":"第四章 OC Native","level":"2.1.4","depth":2,"ref":"","articles":[{"title":"Block","level":"2.1.4.1","depth":3,"path":"iOS/Runtime/Block.md","ref":"iOS/Runtime/Block.md","articles":[]},{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},{"title":"MessageForwarding","level":"2.1.4.3","depth":3,"path":"iOS/Runtime/MessageForwarding.md","ref":"iOS/Runtime/MessageForwarding.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/Block.md","mtime":"2021-02-03T10:21:04.194Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-03T10:21:41.486Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Block","level":"2.1.4.1","depth":3,"next":{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},"previous":{"title":"第四章 OC Native","level":"2.1.4","depth":2,"ref":"","articles":[{"title":"Block","level":"2.1.4.1","depth":3,"path":"iOS/Runtime/Block.md","ref":"iOS/Runtime/Block.md","articles":[]},{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},{"title":"MessageForwarding","level":"2.1.4.3","depth":3,"path":"iOS/Runtime/MessageForwarding.md","ref":"iOS/Runtime/MessageForwarding.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/Block.md","mtime":"2021-02-04T15:30:06.123Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-04T15:30:39.098Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
