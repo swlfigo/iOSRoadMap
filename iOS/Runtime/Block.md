@@ -427,7 +427,9 @@ block有3种类型，可以通过调用class方法或者isa指针查看具体类
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051428.jpg)
 
+### Block生命周期
 
+`NSConcreteStackBlock` 是由编译器自动管理，超过作用域之外就会自动释放了。而 `NSConcreteMallocBlock` 是由程序员自己管理，如果没有被强引用也会被消耗。`NSConcreteGlobalBlock` 由于存在于全局区，所以会一直伴随着应用程序。
 
 
 
