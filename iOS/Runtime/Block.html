@@ -1454,6 +1454,7 @@ int main(int argc, const char * argv[]) {
 </ul>
 <p>&#x5176;&#x5B9E;&#x4E5F;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x56E0;&#x4E3A;auto&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x79BB;&#x5F00;&#x4F5C;&#x7528;&#x57DF;&#x5C31;&#x9500;&#x6BC1;&#x4E86;&#x3002;&#x90A3;&#x5982;&#x679C;&#x662F;&#x6307;&#x9488;&#x4F20;&#x9012;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BE5;&#x53D8;&#x91CF;&#x5DF2;&#x7ECF;&#x9500;&#x6BC1;&#x4E86;&#x3002;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A;&#x51FA;&#x95EE;&#x9898;&#x3002;&#x800C;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x672C;&#x6765;&#x5C31;&#x662F;&#x5728;&#x54EA;&#x91CC;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x65E0;&#x9700;&#x6355;&#x83B7;&#x3002;</p>
 <h2 id="block&#x6709;3&#x79CD;&#x7C7B;&#x578B;">block&#x6709;3&#x79CD;&#x7C7B;&#x578B;</h2>
+<h4 id="block&#x4E5F;&#x662F;&#x4E00;&#x4E2A;oc&#x5BF9;&#x8C61;">block&#x4E5F;&#x662F;&#x4E00;&#x4E2A;OC&#x5BF9;&#x8C61;</h4>
 <p>block&#x6709;3&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;class&#x65B9;&#x6CD5;&#x6216;&#x8005;isa&#x6307;&#x9488;&#x67E5;&#x770B;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#xFF0C;&#x6700;&#x7EC8;&#x90FD;&#x662F;&#x7EE7;&#x627F;&#x81EA;NSBlock&#x7C7B;&#x578B;</p>
 <ul>
 <li><code>__NSGlobalBlock__ &#xFF08; _NSConcreteGlobalBlock &#xFF09;</code> (&#x5168;&#x5C40;&#x7684;&#x9759;&#x6001; block&#xFF0C;&#x4E0D;&#x4F1A;&#x8BBF;&#x95EE;&#x4EFB;&#x4F55;&#x5916;&#x90E8;&#x53D8;&#x91CF;)</li>
@@ -1486,6 +1487,46 @@ int main(int argc, const char * argv[]) {
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051428.jpg" alt=""></p>
 <h3 id="block&#x751F;&#x547D;&#x5468;&#x671F;">Block&#x751F;&#x547D;&#x5468;&#x671F;</h3>
 <p><code>NSConcreteStackBlock</code> &#x662F;&#x7531;&#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x52A8;&#x7BA1;&#x7406;&#xFF0C;&#x8D85;&#x8FC7;&#x4F5C;&#x7528;&#x57DF;&#x4E4B;&#x5916;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x4E86;&#x3002;&#x800C; <code>NSConcreteMallocBlock</code> &#x662F;&#x7531;&#x7A0B;&#x5E8F;&#x5458;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x88AB;&#x5F3A;&#x5F15;&#x7528;&#x4E5F;&#x4F1A;&#x88AB;&#x6D88;&#x8017;&#x3002;<code>NSConcreteGlobalBlock</code> &#x7531;&#x4E8E;&#x5B58;&#x5728;&#x4E8E;&#x5168;&#x5C40;&#x533A;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x4E00;&#x76F4;&#x4F34;&#x968F;&#x7740;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#x65E0;&#x8BBA;&#x662F;MAC&#x8FD8;&#x662F;ARC</p>
+<ul>
+<li>&#x5F53;block&#x4E3A;<code>__NSStackBlock__</code>&#x7C7B;&#x578B;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x5728;&#x6808;&#x7A7A;&#x95F4;&#xFF0C;&#x65E0;&#x8BBA;&#x5BF9;&#x5916;&#x9762;&#x4F7F;&#x7528;&#x7684;&#x662F;strong &#x8FD8;&#x662F;weak &#x90FD;&#x4E0D;&#x4F1A;&#x5BF9;&#x5916;&#x9762;&#x7684;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x5F3A;&#x5F15;&#x7528;</li>
+<li>&#x5F53;block&#x4E3A;<code>__NSMallocBlock__</code>&#x7C7B;&#x578B;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x5728;&#x5806;&#x7A7A;&#x95F4;&#xFF0C;block&#x662F;&#x5185;&#x90E8;&#x7684;<code>_Block_object_assign</code>&#x51FD;&#x6570;&#x4F1A;&#x6839;&#x636E;<code>strong</code>&#x6216;&#x8005; <code>weak</code>&#x5BF9;&#x5916;&#x754C;&#x7684;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x5F3A;&#x5F15;&#x7528;&#x6216;&#x8005;&#x5F31;&#x5F15;&#x7528;&#x3002;</li>
+</ul>
+<p>&#x5176;&#x5B9E;&#x4E5F;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x56E0;&#x4E3A;block&#x672C;&#x8EAB;&#x5C31;&#x5728;&#x6808;&#x4E0A;&#xFF0C;&#x81EA;&#x5DF1;&#x90FD;&#x968F;&#x65F6;&#x53EF;&#x80FD;&#x6D88;&#x5931;&#xFF0C;&#x600E;&#x4E48;&#x80FD;&#x4FDD;&#x4F4F;&#x522B;&#x4EBA;&#x7684;&#x547D;&#x5462;&#xFF1F;</p>
+<ul>
+<li>&#x5F53;block&#x5185;&#x90E8;&#x8BBF;&#x95EE;&#x4E86;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x7684;auto&#x53D8;&#x91CF;&#x65F6;</li>
+<li>&#x5982;&#x679C;block&#x662F;&#x5728;&#x6808;&#x4E0A;&#xFF0C;&#x5C06;&#x4E0D;&#x4F1A;&#x5BF9;auto&#x53D8;&#x91CF;&#x4EA7;&#x751F;&#x5F3A;&#x5F15;&#x7528;</li>
+<li>&#x5982;&#x679C;block&#x88AB;&#x62F7;&#x8D1D;&#x5230;&#x5806;&#x4E0A;<ul>
+<li>&#x4F1A;&#x8C03;&#x7528;block&#x5185;&#x90E8;&#x7684;copy&#x51FD;&#x6570;</li>
+<li>copy&#x51FD;&#x6570;&#x5185;&#x90E8;&#x4F1A;&#x8C03;&#x7528;<code>_Block_object_assign</code>&#x51FD;&#x6570;</li>
+<li><code>_Block_object_assign</code>&#x51FD;&#x6570;&#x4F1A;&#x6839;&#x636E;auto&#x53D8;&#x91CF;&#x7684;&#x4FEE;&#x9970;&#x7B26;<code>&#xFF08;__strong&#x3001;__weak&#x3001;__unsafe_unretained&#xFF09;</code>&#x505A;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5F62;&#x6210;&#x5F3A;&#x5F15;&#x7528;&#xFF08;retain&#xFF09;&#x6216;&#x8005;&#x5F31;&#x5F15;&#x7528;</li>
+</ul>
+</li>
+<li>&#x5982;&#x679C;block&#x4ECE;&#x5806;&#x4E0A;&#x79FB;&#x9664;<ul>
+<li>&#x4F1A;&#x8C03;&#x7528;block&#x5185;&#x90E8;&#x7684;dispose&#x51FD;&#x6570;</li>
+<li>dispose&#x51FD;&#x6570;&#x5185;&#x90E8;&#x4F1A;&#x8C03;&#x7528;<code>_Block_object_dispose</code>&#x51FD;&#x6570;</li>
+<li><code>_Block_object_dispose</code>&#x51FD;&#x6570;&#x4F1A;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x5F15;&#x7528;&#x7684;auto&#x53D8;&#x91CF;&#xFF08;release&#xFF09;</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x51FD;&#x6570;</th>
+<th>&#x8C03;&#x7528;&#x65F6;&#x673A;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>copy&#x51FD;&#x6570;</td>
+<td>&#x6808;&#x4E0A;&#x7684;Block&#x590D;&#x5236;&#x5230;&#x5806;&#x4E0A;</td>
+</tr>
+<tr>
+<td>dispose&#x51FD;&#x6570;</td>
+<td>&#x5806;&#x4E0A;&#x7684;block&#x88AB;&#x5E9F;&#x5F03;&#x65F6;</td>
+</tr>
+</tbody>
+</table>
 <h2 id="reference">Reference</h2>
 <p><a href="https://halfrost.com/ios_block/" target="_blank">1 &#x6DF1;&#x5165;&#x7814;&#x7A76; Block &#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x548C; __block &#x5B9E;&#x73B0;&#x539F;&#x7406;</a></p>
 <p><a href="https://juejin.cn/post/6844903893176958983" target="_blank">2 &#x6DF1;&#x5165;&#x7406;&#x89E3;iOS&#x7684;block</a></p>
@@ -1528,7 +1569,7 @@ int main(int argc, const char * argv[]) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Block","level":"2.1.4.1","depth":3,"next":{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},"previous":{"title":"第四章 OC Native","level":"2.1.4","depth":2,"ref":"","articles":[{"title":"Block","level":"2.1.4.1","depth":3,"path":"iOS/Runtime/Block.md","ref":"iOS/Runtime/Block.md","articles":[]},{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},{"title":"MessageForwarding","level":"2.1.4.3","depth":3,"path":"iOS/Runtime/MessageForwarding.md","ref":"iOS/Runtime/MessageForwarding.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/Block.md","mtime":"2021-02-05T14:26:25.017Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-05T14:26:54.283Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Block","level":"2.1.4.1","depth":3,"next":{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},"previous":{"title":"第四章 OC Native","level":"2.1.4","depth":2,"ref":"","articles":[{"title":"Block","level":"2.1.4.1","depth":3,"path":"iOS/Runtime/Block.md","ref":"iOS/Runtime/Block.md","articles":[]},{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},{"title":"MessageForwarding","level":"2.1.4.3","depth":3,"path":"iOS/Runtime/MessageForwarding.md","ref":"iOS/Runtime/MessageForwarding.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/Block.md","mtime":"2021-02-06T15:21:41.793Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-06T15:22:10.568Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
