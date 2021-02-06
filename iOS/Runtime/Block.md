@@ -410,6 +410,8 @@ int main(int argc, const char * argv[]) {
 
 ## block有3种类型
 
+#### block也是一个OC对象
+
 block有3种类型，可以通过调用class方法或者isa指针查看具体类型，最终都是继承自NSBlock类型
 
 - `__NSGlobalBlock__ （ _NSConcreteGlobalBlock ）` (全局的静态 block，不会访问任何外部变量)
@@ -430,6 +432,29 @@ block有3种类型，可以通过调用class方法或者isa指针查看具体类
 ### Block生命周期
 
 `NSConcreteStackBlock` 是由编译器自动管理，超过作用域之外就会自动释放了。而 `NSConcreteMallocBlock` 是由程序员自己管理，如果没有被强引用也会被消耗。`NSConcreteGlobalBlock` 由于存在于全局区，所以会一直伴随着应用程序。
+
+无论是MAC还是ARC
+
+- 当block为`__NSStackBlock__`类型时候，是在栈空间，无论对外面使用的是strong 还是weak 都不会对外面的对象进行强引用
+- 当block为`__NSMallocBlock__`类型时候，是在堆空间，block是内部的`_Block_object_assign`函数会根据`strong`或者 `weak`对外界的对象进行强引用或者弱引用。
+
+其实也很好理解，因为block本身就在栈上，自己都随时可能消失，怎么能保住别人的命呢？
+
+- 当block内部访问了对象类型的auto变量时
+- 如果block是在栈上，将不会对auto变量产生强引用
+- 如果block被拷贝到堆上
+  - 会调用block内部的copy函数
+  - copy函数内部会调用`_Block_object_assign`函数
+  - `_Block_object_assign`函数会根据auto变量的修饰符`（__strong、__weak、__unsafe_unretained）`做出相应的操作，形成强引用（retain）或者弱引用
+- 如果block从堆上移除
+  - 会调用block内部的dispose函数
+  - dispose函数内部会调用`_Block_object_dispose`函数
+  - `_Block_object_dispose`函数会自动释放引用的auto变量（release）
+
+| 函数        | 调用时机              |
+| ----------- | --------------------- |
+| copy函数    | 栈上的Block复制到堆上 |
+| dispose函数 | 堆上的block被废弃时   |
 
 
 
