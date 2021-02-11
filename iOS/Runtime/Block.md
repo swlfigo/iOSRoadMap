@@ -1,6 +1,6 @@
 #   Block
 
-## Block构造
+## 1. Block构造
 
 > In programming languages, a closure is a function or reference to a function together with a referencing environment—a table storing a reference to each of the non-local variables (also called free variables or upvalues) of that function.
 
@@ -35,7 +35,7 @@ struct Block_descriptor {
 
 
 
-## Block 写法
+## 2. Block 写法
 
 ```objective-c
 
@@ -49,7 +49,7 @@ int(^Block)(int) = ^int(int num){
 
 
 
-## Clang 重写Block
+## 3. Clang 重写Block
 
 ### Block捕获外部变量实质
 
@@ -151,12 +151,12 @@ struct __block_impl {
 
 结构体中第二个是`__main_block_desc_0;`
 
-```
+```cpp
 static struct __main_block_desc_0 {
   size_t reserved;
   size_t Block_size; // 结构体__main_block_impl_0 占用的内存大小
 }
-复制代码
+
 ```
 
 结构体中第三个是`age`
@@ -189,7 +189,7 @@ static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
 | 局部变量 static | √               | 指针传递 |
 | 全局变量        | ×               | 直接访问 |
 
-### 1.局部变量auto(自动变量)
+### 3.1 局部变量auto(自动变量)
 
 - 我们平时写的局部变量，默认就有 auto(自动变量，离开作用域就销毁)
 
@@ -251,7 +251,7 @@ NSLog((NSString *)&__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb3
 
 可以知道，直接把age的值 20传到了结构体`__main_block_impl_0`中，后面再修改`age = 25`并不能改变block里面的值
 
-## 2.局部变量 static
+### 3.2 局部变量 static
 
 static修饰的局部变量，不会被销毁
 
@@ -318,7 +318,7 @@ int main(int argc, const char * argv[]) {
 
 如图所示，`age`是直接值传递，`height`传递的是`*height` 也就是说直接把内存地址传进去进行修改了。
 
-### 3.全局变量
+### 3.3 全局变量
 
 ##### 运行代码
 
@@ -408,7 +408,7 @@ int main(int argc, const char * argv[]) {
 
 
 
-## block有3种类型
+## 4 block有3种类型
 
 #### block也是一个OC对象
 
@@ -429,7 +429,7 @@ block有3种类型，可以通过调用class方法或者isa指针查看具体类
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051428.jpg)
 
-### Block生命周期
+### 5 Block生命周期
 
 `NSConcreteStackBlock` 是由编译器自动管理，超过作用域之外就会自动释放了。而 `NSConcreteMallocBlock` 是由程序员自己管理，如果没有被强引用也会被消耗。`NSConcreteGlobalBlock` 由于存在于全局区，所以会一直伴随着应用程序。
 
@@ -456,7 +456,51 @@ block有3种类型，可以通过调用class方法或者isa指针查看具体类
 | copy函数    | 栈上的Block复制到堆上 |
 | dispose函数 | 堆上的block被废弃时   |
 
+## 6 __block 修饰符
 
+**一般情况下**，对被截获变量进行**赋值**操作需要添加 `__block` 修饰符(**注意是赋值!!**, 赋值≠使用)
+
+```
+NSMutableArray *array = [NSMutableArray array];
+void(^Block)(void) = ^{
+    [array addObject:@123];
+}
+
+//不需要添加 __block,因为是使用
+```
+
+需要__block修饰符:
+
+* 局部变量基本数据类型
+* 局部变量对象类型
+
+不需要__block修饰符:
+
+* 静态局部变量
+* 全局变量
+* 静态全局变量
+
+### 6.1 __block原理
+
+`__block` 所起到的作用就是只要观察到该变量被 block 所持有，就将“外部变量”在栈中的内存地址放到了堆中。进而在block内部也可以修改外部变量的值。
+
+__block修饰的变量成了对象
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051401.jpg)
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051409.jpg)
+
+**栈上**的 \__block 的  ` __forwading` 指针指向自己
+
+
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-23-035859.jpg)
+
+
+
+### 6.3  __forwarding存在意义
+
+不论在任何内存位置,都可以顺利访问同一个__block变量.
 
 ## Reference
 
