@@ -1484,6 +1484,40 @@ int main(int argc, const char * argv[]) {
 </tr>
 </tbody>
 </table>
+<p>&#x6BCF;&#x4E00;&#x79CD;&#x7C7B;&#x578B;&#x7684; block &#x8C03;&#x7528; copy &#x540E;&#x7684;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x6240;&#x793A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Block &#x7684;&#x7C7B;</th>
+<th style="text-align:center">&#x526F;&#x672C;&#x6E90;&#x7684;&#x914D;&#x7F6E;&#x5B58;&#x50A8;&#x57DF;</th>
+<th style="text-align:center">&#x590D;&#x5236;&#x6548;&#x679C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>_NSConcreteGlobalBlock</code></td>
+<td style="text-align:center">&#x7A0B;&#x5E8F;&#x7684;&#x6570;&#x636E;&#x533A;&#x57DF;</td>
+<td style="text-align:center">&#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x505A;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>_NSConcreteStackBlock</code></td>
+<td style="text-align:center">&#x6808;</td>
+<td style="text-align:center">&#x4ECE;&#x6808;&#x590D;&#x5236;&#x5230;&#x5806;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>_NSConcreteMallocBlock</code></td>
+<td style="text-align:center">&#x5806;</td>
+<td style="text-align:center">&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x589E;&#x52A0;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5728; ARC &#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x6839;&#x636E;&#x60C5;&#x51B5;&#x81EA;&#x52A8;&#x5C06;&#x6808;&#x4E0A;&#x7684; block &#x590D;&#x5236;&#x5230;&#x5806;&#x4E0A;&#xFF0C;&#x6BD4;&#x5982;&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li>block &#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;&#x65F6;</li>
+<li>&#x5C06; block &#x8D4B;&#x503C;&#x7ED9; __strong &#x6307;&#x9488;&#x65F6;</li>
+<li>block &#x4F5C;&#x4E3A; Cocoa API &#x4E2D;&#x65B9;&#x6CD5;&#x540D;&#x542B;&#x6709; using Block &#x7684;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x65F6;</li>
+<li>Block &#x4F5C;&#x4E3A; GCD APIE &#x7684;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x65F6;</li>
+</ul>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051428.jpg" alt=""></p>
 <h3 id="5-block&#x751F;&#x547D;&#x5468;&#x671F;">5 Block&#x751F;&#x547D;&#x5468;&#x671F;</h3>
 <p><code>NSConcreteStackBlock</code> &#x662F;&#x7531;&#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x52A8;&#x7BA1;&#x7406;&#xFF0C;&#x8D85;&#x8FC7;&#x4F5C;&#x7528;&#x57DF;&#x4E4B;&#x5916;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x4E86;&#x3002;&#x800C; <code>NSConcreteMallocBlock</code> &#x662F;&#x7531;&#x7A0B;&#x5E8F;&#x5458;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x88AB;&#x5F3A;&#x5F15;&#x7528;&#x4E5F;&#x4F1A;&#x88AB;&#x6D88;&#x8017;&#x3002;<code>NSConcreteGlobalBlock</code> &#x7531;&#x4E8E;&#x5B58;&#x5728;&#x4E8E;&#x5168;&#x5C40;&#x533A;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x4E00;&#x76F4;&#x4F34;&#x968F;&#x7740;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</p>
@@ -1558,6 +1592,7 @@ void(^Block)(void) = ^{
 <h2 id="reference">Reference</h2>
 <p><a href="https://halfrost.com/ios_block/" target="_blank">1 &#x6DF1;&#x5165;&#x7814;&#x7A76; Block &#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x548C; __block &#x5B9E;&#x73B0;&#x539F;&#x7406;</a></p>
 <p><a href="https://juejin.cn/post/6844903893176958983" target="_blank">2 &#x6DF1;&#x5165;&#x7406;&#x89E3;iOS&#x7684;block</a></p>
+<p><a href="https://www.jianshu.com/p/404ff9d3cd42" target="_blank">3 iOS&#x4E2D;__block &#x5173;&#x952E;&#x5B57;&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x539F;&#x7406;</a></p>
 
                                 
                                 </section>
@@ -1597,7 +1632,7 @@ void(^Block)(void) = ^{
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Block","level":"2.1.4.1","depth":3,"next":{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},"previous":{"title":"第四章 OC Native","level":"2.1.4","depth":2,"ref":"","articles":[{"title":"Block","level":"2.1.4.1","depth":3,"path":"iOS/Runtime/Block.md","ref":"iOS/Runtime/Block.md","articles":[]},{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},{"title":"MessageForwarding","level":"2.1.4.3","depth":3,"path":"iOS/Runtime/MessageForwarding.md","ref":"iOS/Runtime/MessageForwarding.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/Block.md","mtime":"2021-02-11T16:11:20.931Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-11T16:11:50.077Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Block","level":"2.1.4.1","depth":3,"next":{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},"previous":{"title":"第四章 OC Native","level":"2.1.4","depth":2,"ref":"","articles":[{"title":"Block","level":"2.1.4.1","depth":3,"path":"iOS/Runtime/Block.md","ref":"iOS/Runtime/Block.md","articles":[]},{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/Runtime/Method.md","ref":"iOS/Runtime/Method.md","articles":[]},{"title":"MessageForwarding","level":"2.1.4.3","depth":3,"path":"iOS/Runtime/MessageForwarding.md","ref":"iOS/Runtime/MessageForwarding.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/Block.md","mtime":"2021-02-13T13:05:22.004Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-13T13:06:00.330Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
