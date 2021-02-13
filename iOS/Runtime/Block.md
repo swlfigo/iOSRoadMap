@@ -1,3 +1,5 @@
+
+
 #   Block
 
 ## 1. Block构造
@@ -426,6 +428,24 @@ block有3种类型，可以通过调用class方法或者isa指针查看具体类
 | `__NSStackBlock__`  | 访问了auto变量               |
 | `__NSMallocBlock__` | `__NSStackBlock__`调用了copy |
 
+每一种类型的 block 调用 copy 后的结果如下所示
+
+|        Block 的类        | 副本源的配置存储域 |   复制效果   |
+| :----------------------: | :----------------: | :----------: |
+| `_NSConcreteGlobalBlock` |   程序的数据区域   |  什么也不做  |
+| `_NSConcreteStackBlock`  |         栈         | 从栈复制到堆 |
+| `_NSConcreteMallocBlock` |         堆         | 引用计数增加 |
+
+
+
+在 ARC 环境下，编译器会根据情况自动将栈上的 block 复制到堆上，比如以下情况：
+
+- block 作为函数返回值时
+- 将 block 赋值给 __strong 指针时
+- block 作为 Cocoa API 中方法名含有 using Block 的方法参数时
+- Block 作为 GCD APIE 的方法参数时
+
+
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051428.jpg)
 
@@ -507,4 +527,6 @@ __block修饰的变量成了对象
 [1 深入研究 Block 捕获外部变量和 __block 实现原理](https://halfrost.com/ios_block/)
 
 [2 深入理解iOS的block](https://juejin.cn/post/6844903893176958983)
+
+[3 iOS中__block 关键字的底层实现原理](https://www.jianshu.com/p/404ff9d3cd42)
 
