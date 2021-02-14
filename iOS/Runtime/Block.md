@@ -502,6 +502,122 @@ void(^Block)(void) = ^{
 
 ### 6.1 __block原理
 
+1. 当__block修饰外界变量时
+
+```
+int main(){
+    
+    __block int a = 10;
+    void(^block)(void) = ^{
+        printf("Felix %d ", a);
+    };
+    
+    block();
+    return 0;
+}
+```
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-084559.jpg)
+
+
+
+#### 将代码编译成C++源码
+
+
+
+```objective-c
+// 原代码
+__block int a = 10;
+// c++源码
+__attribute__((__blocks__(byref))) __Block_byref_a_0 a = {
+    (void*)0,
+    (__Block_byref_a_0 *)&a, 
+    0, 
+    sizeof(__Block_byref_a_0), 
+    10
+};
+```
+
+可以看到 变量a 变成了 结构体类型`__Block_byref_a_0`
+
+下面再看看结构体`__Block_byref_a_0`的构造
+
+
+
+```cpp
+struct __Block_byref_a_0 {
+  void *__isa;
+__Block_byref_a_0 *__forwarding;
+ int __flags;
+ int __size;
+ int a;
+};
+```
+
+通过上面结构体的初始化和结构体的构造，
+ 可以获得以下信息：
+
+> 1. __forwarding存放的是自己本身的地址
+> 2. 结构体内的a变量存放的是外部变量a的值
+
+主结构体`__main_block_impl_0`的变化
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-085104.jpg)
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-085118.jpg)
+
+
+
+首先说明一点，
+ 在block初始化过程中，有一个由栈block指向堆block的过程。
+
+一开始，栈空间的block有一个`__Block_byref_a_0`结构体，
+ 指向外部`__Block_byref_a_0`的地址，
+ 其中它的__forwarding指针指向自身，
+
+当block从栈copy到堆时，
+
+堆空间的block有一个`__Block_byref_a_0`结构体，
+ 指向外部`__Block_byref_a_0`的地址，
+ 其中它的__forwarding指针指向自身（复读机）
+
+## 如何从栈指向堆，并建立联系呢？
+
+apple源码，如图：
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-085605.jpg)
+
+copy->forwarding = copy;
+ 就是将堆结构体的__forwarding指针指向自身
+ src->forwarding = copy;
+ 就是将栈结构体的__forwarding指针指向堆结构体
+
+这样，苹果工程师在背后悄悄地将block copy到了堆上，
+ 而且栈上的block从未被我们利用过。
+
+在看看block入口静态函数
+
+
+
+```rust
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+  __Block_byref_a_0 *a = __cself->a; // bound by ref
+  (a->__forwarding->a)++;
+}
+```
+
+通过当前栈空间主结构体上的`__Block_byref_a_0`结构体指针，访问指向堆空间的`__forwarding`成员，并获取堆空间上变量的值。
+
+**当然，不仅__block修饰的变量会这样，前文的对象类型变量同样会在copy函数内部被转化成类似的结构体进行处理。**
+
+
+
+
+
+`__block`修饰的属性在底层会生成响应的结构体，保存原始变量的指针，并传递一个指针地址给block——因此是指针拷贝
+
+
+
 `__block` 所起到的作用就是只要观察到该变量被 block 所持有，就将“外部变量”在栈中的内存地址放到了堆中。进而在block内部也可以修改外部变量的值。
 
 __block修饰的变量成了对象
@@ -530,3 +646,6 @@ __block修饰的变量成了对象
 
 [3 iOS中__block 关键字的底层实现原理](https://www.jianshu.com/p/404ff9d3cd42)
 
+[4 iOS探索 全方位解读Block](https://juejin.cn/post/6844904181778612231)
+
+[5 iOS - block原理解读（三）](https://www.jianshu.com/p/9af777c7d222)
