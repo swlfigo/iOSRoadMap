@@ -81,10 +81,55 @@ static void *ChildNameContext = &ChildNameContext;
 }
 ```
 
-#### 
 
 
-作者：我是好宝宝
-链接：https://juejin.cn/post/6844904090569277447
-来源：掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+## KVO原理——isa-swizzling
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-16-135638.jpg)
+
+`Key-Value Observing Programming Guide`中有一段底层实现原理的叙述
+
+
+
+- KVO是使用`isa-swizzling`技术实现的
+- 顾名思义，isa指针指向维护分配表的对象的类，该分派表实质上包含指向该类实现的方法的指针以及其他数据
+- 在为对象的属性注册观察者时，将修改观察对象的isa指针，指向中间类而不是真实类。isa指针的值不一定反映实例的实际类
+- 您永远不应依靠isa指针来确定类成员身份。相反，您应该使用class方法来确定对象实例的类
+
+- 注册观察者之前：类对象为
+
+  ```
+  FXPerson
+  ```
+
+  ，实例对象isa指向
+
+  ```
+  FXPerson
+  ```
+
+  ![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-16-135759.jpg)
+
+- 注册观察者之后：类对象为 `FXPerson`，实例对象isa指向 `NSKVONotifying_FXPerson`
+
+  ![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-16-135804.jpg)
+
+从这两图中可以得出一个结论：观察者注册前后`FXPerson类`没发生变化，但实例对象的`isa`指向发生变化
+
+## 总结
+
+1. `automaticallyNotifiesObserversForKey`为`YES`时注册观察属性会生成动态子类`NSKVONotifying_XXX`
+2. 动态子类观察的是`setter`方法
+3. 动态子类重写了观察属性的`setter`方法 `dealloc` `class` `_isKVOA`方法
+   - `setter`方法用于观察键值
+   - `dealloc`方法用于释放时对isa指向进行操作
+   - `class`方法用于指回动态子类的父类
+   - `_isKVOA`用来标识是否是在观察者状态的一个标志位
+4. `dealloc`之后`isa`指向元类
+5. `dealloc`之后动态子类不会销毁
+
+
+
+## Reference
+
+[1 iOS探索 KVO原理及自定义](https://juejin.cn/post/6844904090569277447)
