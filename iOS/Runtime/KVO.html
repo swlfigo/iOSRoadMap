@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Tagged Pointer · GitBook</title>
+        <title>KVO · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="SideTables.html" />
+    <link rel="next" href="../OCFoundation/OCFoundation.html" />
     
     
-    <link rel="prev" href="MemoryFiveMainSection.html" />
+    <link rel="prev" href="MessageForwarding.html" />
     
 
     </head>
@@ -396,9 +396,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.2.1" data-path="StructMemoryAligned.html">
+        <li class="chapter " data-level="2.1.2.1" data-path="../Memory/StructMemoryAligned.html">
             
-                <a href="StructMemoryAligned.html">
+                <a href="../Memory/StructMemoryAligned.html">
             
                     
                     iOS结构体内存对齐
@@ -409,9 +409,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.2" data-path="MemoryFiveMainSection.html">
+        <li class="chapter " data-level="2.1.2.2" data-path="../Memory/MemoryFiveMainSection.html">
             
-                <a href="MemoryFiveMainSection.html">
+                <a href="../Memory/MemoryFiveMainSection.html">
             
                     
                     内存中的5大区
@@ -422,9 +422,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.2.3" data-path="TaggedPointer.html">
+        <li class="chapter " data-level="2.1.2.3" data-path="../Memory/TaggedPointer.html">
             
-                <a href="TaggedPointer.html">
+                <a href="../Memory/TaggedPointer.html">
             
                     
                     Tagged Pointer
@@ -435,9 +435,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.4" data-path="SideTables.html">
+        <li class="chapter " data-level="2.1.2.4" data-path="../Memory/SideTables.html">
             
-                <a href="SideTables.html">
+                <a href="../Memory/SideTables.html">
             
                     
                     SideTables
@@ -448,9 +448,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.5" data-path="RetainCount.html">
+        <li class="chapter " data-level="2.1.2.5" data-path="../Memory/RetainCount.html">
             
-                <a href="RetainCount.html">
+                <a href="../Memory/RetainCount.html">
             
                     
                     RetainCount
@@ -461,9 +461,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2.6" data-path="WeakTable.html">
+        <li class="chapter " data-level="2.1.2.6" data-path="../Memory/WeakTable.html">
             
-                <a href="WeakTable.html">
+                <a href="../Memory/WeakTable.html">
             
                     
                     WeakTable
@@ -603,9 +603,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.4.1" data-path="../Runtime/Block.html">
+        <li class="chapter " data-level="2.1.4.1" data-path="Block.html">
             
-                <a href="../Runtime/Block.html">
+                <a href="Block.html">
             
                     
                     Block
@@ -616,9 +616,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4.2" data-path="../Runtime/Method.html">
+        <li class="chapter " data-level="2.1.4.2" data-path="Method.html">
             
-                <a href="../Runtime/Method.html">
+                <a href="Method.html">
             
                     
                     Method
@@ -629,9 +629,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4.3" data-path="../Runtime/MessageForwarding.html">
+        <li class="chapter " data-level="2.1.4.3" data-path="MessageForwarding.html">
             
-                <a href="../Runtime/MessageForwarding.html">
+                <a href="MessageForwarding.html">
             
                     
                     MessageForwarding
@@ -642,9 +642,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4.4" data-path="../Runtime/KVO.html">
+        <li class="chapter active" data-level="2.1.4.4" data-path="KVO.html">
             
-                <a href="../Runtime/KVO.html">
+                <a href="KVO.html">
             
                     
                     KVO
@@ -685,7 +685,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../Runtime/Runtime.md">
+        <li class="chapter " data-level="3.2" data-path="Runtime.md">
             
                 <span>
             
@@ -724,9 +724,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="Memory.html">
+        <li class="chapter " data-level="3.5" data-path="../Memory/Memory.html">
             
-                <a href="Memory.html">
+                <a href="../Memory/Memory.html">
             
                     
                     6.Memory内存管理
@@ -1110,7 +1110,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Tagged Pointer</a>
+        <a href="../.." >KVO</a>
     </h1>
 </div>
 
@@ -1125,150 +1125,109 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tagged-pointer">Tagged Pointer</h1>
-<p>Tagged Pointer&#x662F;&#x82F9;&#x679C;&#x5728;64bit&#x8BBE;&#x5907;&#x63D0;&#x51FA;&#x7684;&#x4E00;&#x79CD;&#x5B58;&#x50A8;&#x5C0F;&#x5BF9;&#x8C61;&#x7684;&#x6280;&#x672F;&#xFF0C;&#x5B83;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x70B9;</p>
+                                <h1 id="kvo">KVO</h1>
+<h2 id="kvo&#x521D;&#x63A2;">KVO&#x521D;&#x63A2;</h2>
+<p><code>KVO&#xFF08;Key-Value Observing&#xFF09;</code>&#x662F;&#x82F9;&#x679C;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x5957;&#x4E8B;&#x4EF6;&#x901A;&#x77E5;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x79CD;&#x673A;&#x5236;&#x5141;&#x8BB8;&#x5C06;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x7684;&#x7279;&#x5B9A;&#x5C5E;&#x6027;&#x7684;&#x66F4;&#x6539;&#x901A;&#x77E5;&#x7ED9;&#x5BF9;&#x8C61;&#x3002;iOS&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>KVO</code> &#x6765;&#x68C0;&#x6D4B;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x7684;&#x53D8;&#x5316;&#x3001;&#x5FEB;&#x901F;&#x505A;&#x51FA;&#x54CD;&#x5E94;&#xFF0C;&#x8FD9;&#x80FD;&#x591F;&#x4E3A;&#x6211;&#x4EEC;&#x5728;&#x5F00;&#x53D1;&#x5F3A;&#x4EA4;&#x4E92;&#x3001;&#x54CD;&#x5E94;&#x5F0F;&#x5E94;&#x7528;&#x4EE5;&#x53CA;&#x5B9E;&#x73B0;&#x89C6;&#x56FE;&#x548C;&#x6A21;&#x578B;&#x7684;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x65F6;&#x63D0;&#x4F9B;&#x5927;&#x91CF;&#x7684;&#x5E2E;&#x52A9;&#x3002;</p>
+<p>&#x5728;<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html" target="_blank">Documentation Archieve</a>&#x4E2D;&#x63D0;&#x5230;&#x4E00;&#x53E5;&#x60F3;&#x8981;&#x7406;&#x89E3;<code>KVO</code>&#xFF0C;&#x5FC5;&#x987B;&#x5148;&#x7406;&#x89E3;<code>KVC</code>&#xFF0C;&#x56E0;&#x4E3A;<code>&#x952E;&#x503C;&#x89C2;&#x5BDF;</code>&#x662F;&#x5EFA;&#x7ACB;&#x5728;<code>&#x952E;&#x503C;&#x7F16;&#x7801;</code>&#x7684;&#x57FA;&#x7840;&#x4E0A;</p>
+<blockquote>
+<p>In order to understand key-value observing, you must first understand key-value coding.&#x2014;&#x2014;Key-Value Observing Programming Guide</p>
+</blockquote>
+<p>&#x800C;<code>KVO</code>&#x548C;<code>NSNotificatioCenter</code>&#x90FD;&#x662F;iOS&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#xFF0C;&#x4E24;&#x8005;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF1A;</p>
 <ul>
-<li>Tagged Pointer&#x6307;&#x9488;&#x7684;&#x503C;&#x4E0D;&#x518D;&#x662F;&#x5730;&#x5740;&#x4E86;&#xFF0C;&#x800C;&#x662F;&#x771F;&#x6B63;&#x7684;&#x503C;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5B83;&#x4E0D;&#x518D;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E86;&#xFF0C;&#x5B83;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x62AB;&#x7740;&#x5BF9;&#x8C61;&#x76AE;&#x7684;&#x666E;&#x901A;&#x53D8;&#x91CF;&#x800C;&#x5DF2;&#x3002;</li>
-<li>&#x5B83;&#x7684;&#x5185;&#x5B58;&#x5E76;&#x4E0D;&#x5B58;&#x50A8;&#x5728;&#x5806;&#x4E2D;&#xFF0C;&#x4E5F;&#x4E0D;&#x9700;&#x8981; malloc &#x548C; free&#xFF0C;&#x4E0D;&#x8D70;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x90A3;&#x4E00;&#x5957;&#x903B;&#x8F91;&#xFF0C;&#x7531;&#x7CFB;&#x7EDF;&#x6765;&#x5904;&#x7406;&#x91CA;&#x653E;</li>
-<li>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;<code>OBJC_DISABLE_TAGGED_POINTERS</code>&#x6765;&#x6709;&#x5F00;&#x53D1;&#x8005;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x4F7F;&#x7528;&#x8FD9;&#x9879;&#x6280;&#x672F;</li>
+<li>&#x76F8;&#x5BF9;&#x4E8E;&#x88AB;&#x89C2;&#x5BDF;&#x8005;&#x548C;&#x89C2;&#x5BDF;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;<code>KVO</code>&#x662F;&#x4E00;&#x5BF9;&#x4E00;&#x7684;&#xFF0C;<code>NSNotificatioCenter</code>&#x662F;&#x4E00;&#x5BF9;&#x591A;&#x7684;</li>
+<li><code>KVO</code>&#x5BF9;&#x88AB;&#x76D1;&#x542C;&#x5BF9;&#x8C61;&#x65E0;&#x4FB5;&#x5165;&#x6027;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x5176;&#x5185;&#x90E8;&#x4EE3;&#x7801;&#x5373;&#x53EF;&#x5B9E;&#x73B0;&#x76D1;&#x542C;</li>
 </ul>
-<p>&#x4ECE;32&#x4F4D;&#x8FC1;&#x79FB;&#x5230;64&#x4F4D;CPU&#xFF0C;&#x903B;&#x8F91;&#x4E0A;&#x867D;&#x7136;&#x4E0D;&#x4F1A;&#x6709;&#x4EFB;&#x4F55;&#x53D8;&#x5316;&#xFF0C;&#x4F46;&#x662F;&#x6240;&#x5360;&#x6709;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x5374;&#x4F1A;<strong>&#x7FFB;&#x500D;</strong>&#x3002;&#x4E0B;&#x9762;&#x4EE5;NSNumber&#x5BF9;&#x8C61;&#x4E3A;&#x4F8B;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x6E05;&#x6670;&#x770B;&#x51FA;NSNumber&#x5BF9;&#x8C61;&#x5728;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x4E0A;&#x7684;&#x53D8;&#x5316;&#x60C5;&#x51B5;&#xFF1A;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-10-28-144308.jpg" alt=""></p>
-<h2 id="&#x6E90;&#x7801;">&#x6E90;&#x7801;</h2>
-<pre><code class="lang-powershell"><span class="hljs-comment">#if (TARGET_OS_OSX || TARGET_OS_IOSMAC) &amp;&amp; __x86_64__</span>
-    // <span class="hljs-number">64</span>-bit Mac - tag bit is LSB
-<span class="hljs-comment">#   define OBJC_MSB_TAGGED_POINTERS 0</span>
-<span class="hljs-comment">#else</span>
-    // Everything <span class="hljs-keyword">else</span> - tag bit is MSB
-<span class="hljs-comment">#   define OBJC_MSB_TAGGED_POINTERS 1 // &#x6700;&#x9AD8;&#x6709;&#x6548;&#x4F4D;</span>
-<span class="hljs-comment">#endif</span>
-
-<span class="hljs-comment">#define _OBJC_TAG_INDEX_MASK 0x7 // 0b111&#x8868;&#x793A;&#x6709;&#x6269;&#x5C55;&#x7684;&#x6807;&#x8BB0;&#x4F4D;&#xFF0C;&#x6269;&#x5C55;&#x6807;&#x8BB0;&#x4F4D;&#x5360;8&#x4F4D;</span>
-// array slot includes the tag bit itself
-<span class="hljs-comment">#define _OBJC_TAG_SLOT_COUNT 16</span>
-<span class="hljs-comment">#define _OBJC_TAG_SLOT_MASK 0xf // 0b1111 taggedpointer + &#x6709;&#x6269;&#x5C55;&#x6807;&#x8BB0;&#x4F4D;&#x7684;mask</span>
-
-<span class="hljs-comment">#define _OBJC_TAG_EXT_INDEX_MASK 0xff</span>
-// array slot has no extra bits
-<span class="hljs-comment">#define _OBJC_TAG_EXT_SLOT_COUNT 256 // &#x6269;&#x5C55;&#x6807;&#x8BB0;&#x4F4D;&#x80FD;&#x8868;&#x793A;&#x7684;&#x4E2A;&#x6570;</span>
-<span class="hljs-comment">#define _OBJC_TAG_EXT_SLOT_MASK 0xff // 0b1111 1111</span>
-
-<span class="hljs-comment">#if OBJC_MSB_TAGGED_POINTERS</span>
-<span class="hljs-comment">#   define _OBJC_TAG_MASK (1UL&lt;&lt;63) // &#x662F;&#x5426;&#x662F;tagged pointer&#x7684;&#x6807;&#x8BB0;&#x4F4D; 1&#x8868;&#x793A;&#x662F; 0&#x8868;&#x793A;&#x4E0D;&#x662F;</span>
-<span class="hljs-comment">#   define _OBJC_TAG_INDEX_SHIFT 60 // &#x57FA;&#x7840;tag&#x4F4D;&#x7684;&#x504F;&#x79FB;&#xFF0C;&#x4ECE;2-4bit&#xFF0C;&#x7ED3;&#x5408;_OBJC_TAG_INDEX_MASK&#x6765;&#x83B7;&#x53D6;&#x5230;&#x57FA;&#x7840;tag&#x7684;&#x503C;</span>
-<span class="hljs-comment">#   define _OBJC_TAG_SLOT_SHIFT 60</span>
-<span class="hljs-comment">#   define _OBJC_TAG_PAYLOAD_LSHIFT 4 // LSHIFT&#x548C;RSHIFT&#x914D;&#x5408;&#x4F7F;&#x7528;&#x7528;&#x6765;&#x5BF9;&#x6570;&#x636E;&#x79FB;&#x4F4D;&#x6DF7;&#x6DC6;&#x53CA;&#x6062;&#x590D;</span>
-<span class="hljs-comment">#   define _OBJC_TAG_PAYLOAD_RSHIFT 4</span>
-<span class="hljs-comment">#   define _OBJC_TAG_EXT_MASK (0xfUL&lt;&lt;60) // 1111 0000 ... 0000 0000 &#x662F;&#x5426;&#x6709;&#x6269;&#x5C55;&#x6807;&#x8BB0;&#x4F4D; tag&#x4F4D;111&#x8868;&#x793A;&#x6709;&#x6269;&#x5C55;&#x6807;&#x8BB0;&#x4F4D;</span>
-<span class="hljs-comment">#   define _OBJC_TAG_EXT_INDEX_SHIFT 52 // &#x6269;&#x5C55;tag&#x4F4D;&#x7684;&#x504F;&#x79FB;&#xFF0C;&#x4ECE;5-12bit&#x5171;8&#x4F4D;&#xFF0C;&#x7ED3;&#x5408;_OBJC_TAG_EXT_INDEX_MASK&#x6765;&#x83B7;&#x53D6;&#x6269;&#x5C55;tag&#x7684;&#x503C;</span>
-<span class="hljs-comment">#   define _OBJC_TAG_EXT_SLOT_SHIFT 52</span>
-<span class="hljs-comment">#   define _OBJC_TAG_EXT_PAYLOAD_LSHIFT 12</span>
-<span class="hljs-comment">#   define _OBJC_TAG_EXT_PAYLOAD_RSHIFT 12</span>
-<span class="hljs-comment">#else</span>
-<span class="hljs-comment">#   define _OBJC_TAG_MASK 1UL</span>
-<span class="hljs-comment">#   define _OBJC_TAG_INDEX_SHIFT 1</span>
-<span class="hljs-comment">#   define _OBJC_TAG_SLOT_SHIFT 0</span>
-<span class="hljs-comment">#   define _OBJC_TAG_PAYLOAD_LSHIFT 0</span>
-<span class="hljs-comment">#   define _OBJC_TAG_PAYLOAD_RSHIFT 4</span>
-<span class="hljs-comment">#   define _OBJC_TAG_EXT_MASK 0xfUL</span>
-<span class="hljs-comment">#   define _OBJC_TAG_EXT_INDEX_SHIFT 4</span>
-<span class="hljs-comment">#   define _OBJC_TAG_EXT_SLOT_SHIFT 4</span>
-<span class="hljs-comment">#   define _OBJC_TAG_EXT_PAYLOAD_LSHIFT 0</span>
-<span class="hljs-comment">#   define _OBJC_TAG_EXT_PAYLOAD_RSHIFT 12</span>
-<span class="hljs-comment">#endif</span>
+<h2 id="kvo&#x4F7F;&#x7528;&#x53CA;&#x6CE8;&#x610F;&#x70B9;">KVO&#x4F7F;&#x7528;&#x53CA;&#x6CE8;&#x610F;&#x70B9;</h2>
+<h4 id="1&#x57FA;&#x672C;&#x4F7F;&#x7528;">1.&#x57FA;&#x672C;&#x4F7F;&#x7528;</h4>
+<p>KVO&#x4F7F;&#x7528;&#x4E09;&#x90E8;&#x66F2;&#xFF1A;</p>
+<ul>
+<li>&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x8005;</li>
+</ul>
+<pre><code class="lang-objective-c">[self.person addObserver:self forKeyPath:@&quot;name&quot; options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
 </code></pre>
-<p>&#x5B9A;&#x4E49;&#x4E86;&#x5F88;&#x591A;&#x4F4D;&#x4FE1;&#x606F;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x7684;&#x51E0;&#x4E2A;&#xFF1A;</p>
 <ul>
-<li>_OBJC_TAG_MASK &#xFF1A;&#x6807;&#x8BB0;&#x4F4D;&#x6807;&#x8BB0;&#x8BE5;&#x6307;&#x9488;&#x662F;&#x5426;&#x662F;tagged pointer</li>
-<li>_OBJC_TAG_INDEX_MASK &#xFF1A;tag&#x7684;&#x503C;&#x662F;7&#x8868;&#x793A;&#x6709;&#x6269;&#x5C55;&#x7684;tag&#x4F4D;</li>
-<li>&#x5176;&#x4ED6;&#x7684;&#x90FD;&#x662F;&#x4E00;&#x4E9B;&#x5B9A;&#x4E49;&#xFF0C;&#x7528;&#x6765;&#x901A;&#x8FC7;&#x4F4D;&#x8FD0;&#x7B97;&#x6765;&#x83B7;&#x53D6;tag&#x7684;&#x503C;&#x3001;ext tag&#x7684;&#x503C;&#x7684;mask&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x7684;&#x5DE6;&#x79FB;&#x53F3;&#x79FB;&#x4F4D;</li>
+<li>&#x5B9E;&#x73B0;&#x56DE;&#x8C03;</li>
 </ul>
-<h5 id="&#x5982;&#x4F55;&#x5224;&#x65AD;&#x662F;tagged-pointer">&#x5982;&#x4F55;&#x5224;&#x65AD;&#x662F;tagged pointer</h5>
-<p>&#x6709;&#x4E00;&#x4E2A;&#x6807;&#x8BB0;&#x4F4D;&#x6765;&#x6807;&#x8BC6;&#x6307;&#x9488;&#x662F;&#x5426;&#x662F;tagged pointer&#x7684;</p>
-<pre><code class="lang-objectivec"><span class="hljs-keyword">static</span> <span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> 
-_objc_isTaggedPointer(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> * _Nullable ptr)
-{
-    <span class="hljs-keyword">return</span> ((uintptr_t)ptr &amp; _OBJC_TAG_MASK) == _OBJC_TAG_MASK;
+<pre><code class="lang-objective-c">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSKeyValueChangeKey,id&gt; *)change context:(void *)context {
+    if ([keyPath isEqualToString:@&quot;name&quot;]) NSLog(@&quot;%@&quot;, change);
 }
 </code></pre>
-<p>&#x901A;&#x8FC7;&#x4F4D;&#x8FD0;&#x7B97;&#x83B7;&#x53D6;&#x6807;&#x8BC6;&#x4F4D;&#x7684;&#x503C;&#x6765;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x662F;tagged pointer&#xFF1B;&#x9700;&#x8981;&#x7559;&#x610F;&#x7684;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x67B6;&#x6784;&#x6807;&#x8BB0;&#x4F4D;&#x4E0D;&#x592A;&#x4E00;&#x6837;&#xFF0C;&#x6709;&#x7684;&#x662F;&#x7528;&#x6700;&#x4F4E;&#x4F4D;&#x3001;&#x6709;&#x7684;&#x4F7F;&#x7528;&#x6700;&#x9AD8;&#x4F4D;&#x3002;</p>
-<h5 id="&#x7CFB;&#x7EDF;&#x5BF9;tagged-pointer&#x7684;&#x52A0;&#x5BC6;">&#x7CFB;&#x7EDF;&#x5BF9;tagged pointer&#x7684;&#x52A0;&#x5BC6;</h5>
-<p>&#x5728;iOS12&#x7CFB;&#x7EDF;&#x4E4B;&#x524D;&#xFF0C;&#x53D1;&#x73B0;&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6253;&#x5370;tagged pointer&#x7684;&#x503C;&#x7684;&#xFF0C;&#x53EF;&#x8BFB;&#x6027;&#x975E;&#x5E38;&#x597D;&#xFF0C;&#x4F46;&#x662F;12&#x4E4B;&#x540E;&#x518D;&#x6253;&#x5370;&#x5C31;&#x53D1;&#x73B0;&#x5B8C;&#x5168;&#x770B;&#x4E0D;&#x61C2;&#x4E86;&#x3002;</p>
-<pre><code class="lang-objectivec">- (<span class="hljs-keyword">void</span>)testCase {
-    <span class="hljs-built_in">NSString</span> *stringWithFormat1 = [<span class="hljs-built_in">NSString</span> stringWithFormat:<span class="hljs-string">@&quot;y&quot;</span>];
-    [<span class="hljs-keyword">self</span> formatedLogObject:stringWithFormat1];
-}
+<ul>
+<li>&#x79FB;&#x9664;&#x89C2;&#x5BDF;&#x8005;</li>
+</ul>
+<pre><code class="lang-objective-c">[self.person removeObserver:self forKeyPath:@&quot;name&quot;];
+</code></pre>
+<h4 id="2context&#x7684;&#x4F7F;&#x7528;">2.context&#x7684;&#x4F7F;&#x7528;</h4>
+<p><code>Key-Value Observing Programming Guide</code>&#x662F;&#x8FD9;&#x4E48;&#x63CF;&#x8FF0;<code>context</code>&#x7684;</p>
+<blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2020/3/14/170d77a1fa7cf438?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>&#x6D88;&#x606F;&#x4E2D;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x6307;&#x9488;&#x5305;&#x542B;&#x4EFB;&#x610F;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x5C06;&#x5728;&#x76F8;&#x5E94;&#x7684;&#x66F4;&#x6539;&#x901A;&#x77E5;&#x4E2D;&#x4F20;&#x9012;&#x56DE;&#x89C2;&#x5BDF;&#x8005;&#xFF1B;&#x60A8;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;NULL&#x5E76;&#x5B8C;&#x5168;&#x4F9D;&#x8D56;&#x952E;&#x8DEF;&#x5F84;&#x5B57;&#x7B26;&#x4E32;&#x6765;&#x786E;&#x5B9A;&#x66F4;&#x6539;&#x901A;&#x77E5;&#x7684;&#x6765;&#x6E90;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x5BF9;&#x8C61;&#x7684;&#x7236;&#x7C7B;&#x7531;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x539F;&#x56E0;&#x800C;&#x89C2;&#x5BDF;&#x5230;&#x76F8;&#x540C;&#x7684;&#x952E;&#x8DEF;&#x5F84;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#xFF1B;&#x4E00;&#x79CD;&#x66F4;&#x5B89;&#x5168;&#xFF0C;&#x66F4;&#x53EF;&#x6269;&#x5C55;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x4F7F;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x786E;&#x4FDD;&#x60A8;&#x6536;&#x5230;&#x7684;&#x901A;&#x77E5;&#x662F;&#x53D1;&#x7ED9;&#x89C2;&#x5BDF;&#x8005;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8D85;&#x7C7B;&#x7684;&#x3002;</p>
+</blockquote>
+<p>&#x8FD9;&#x91CC;&#x63D0;&#x51FA;&#x4E00;&#x4E2A;&#x5047;&#x60F3;&#xFF0C;&#x5982;&#x679C;&#x7236;&#x7C7B;&#x4E2D;&#x6709;&#x4E2A;<code>name</code>&#x5C5E;&#x6027;&#xFF0C;&#x5B50;&#x7C7B;&#x4E2D;&#x4E5F;&#x6709;&#x4E2A;<code>name</code>&#x5C5E;&#x6027;&#xFF0C;&#x4E24;&#x8005;&#x90FD;&#x6CE8;&#x518C;&#x5BF9;<code>name</code>&#x7684;&#x89C2;&#x5BDF;&#xFF0C;&#x90A3;&#x4E48;&#x4EC5;&#x901A;&#x8FC7;<code>keyPath</code>&#x5DF2;&#x7ECF;&#x533A;&#x5206;&#x4E0D;&#x4E86;&#x662F;&#x54EA;&#x4E2A;<code>name</code>&#x53D1;&#x751F;&#x53D8;&#x5316;&#x4E86;&#xFF0C;&#x73B0;&#x6709;&#x4E24;&#x4E2A;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x591A;&#x52A0;&#x4E00;&#x5C42;&#x5224;&#x65AD;&#x2014;&#x2014;&#x5224;&#x65AD;<code>object</code>&#xFF0C;&#x663E;&#x7136;&#x4E3A;&#x4E86;&#x6EE1;&#x8DB3;&#x4E1A;&#x52A1;&#x9700;&#x6C42;&#x800C;&#x53BB;&#x589E;&#x52A0;&#x903B;&#x8F91;&#x5224;&#x65AD;&#x662F;&#x4E0D;&#x53EF;&#x53D6;&#x7684;</li>
+<li>&#x4F7F;&#x7528;<code>context</code>&#x4F20;&#x9012;&#x4FE1;&#x606F;&#xFF0C;&#x66F4;&#x5B89;&#x5168;&#x3001;&#x66F4;&#x53EF;&#x6269;&#x5C55;</li>
+</ul>
+<p><strong><code>context</code>&#x4F7F;&#x7528;&#x603B;&#x7ED3;:</strong></p>
+<ul>
+<li>&#x4E0D;&#x4F7F;&#x7528;context&#x4F5C;&#x4E3A;&#x89C2;&#x5BDF;&#x503C;</li>
+</ul>
+<pre><code class="lang-objective-c">// context&#x662F; void * &#x7C7B;&#x578B;&#xFF0C;&#x5E94;&#x8BE5;&#x586B; NULL &#x800C;&#x4E0D;&#x662F; nil
+[self.person addObserver:self forKeyPath:@&quot;name&quot; options:(NSKeyValueObservingOptionNew) context:NULL];
+</code></pre>
+<ul>
+<li>&#x4F7F;&#x7528;context&#x4F20;&#x9012;&#x4FE1;&#x606F;</li>
+</ul>
+<pre><code class="lang-objective-c">static void *PersonNameContext = &amp;PersonNameContext;
+static void *ChildNameContext = &amp;ChildNameContext;
 
-- (<span class="hljs-keyword">void</span>)formatedLogObject:(<span class="hljs-keyword">id</span>)object {
-    <span class="hljs-keyword">if</span> (@available(iOS <span class="hljs-number">12.0</span>, *)) {
-        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;%p %@ %@&quot;</span>, object, object, object_getClass(object));
-    } <span class="hljs-keyword">else</span> {
-        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;0x%6lx %@ %@&quot;</span>, object, object, object_getClass(object));
+[self.person addObserver:self forKeyPath:@&quot;name&quot; options:(NSKeyValueObservingOptionNew) context:PersonNameContext];
+[self.child addObserver:self forKeyPath:@&quot;name&quot; options:(NSKeyValueObservingOptionNew) context:ChildNameContext];
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSKeyValueChangeKey,id&gt; *)change context:(void *)context {
+    if (context == PersonNameContext) {
+        NSLog(@&quot;%@&quot;, change);
+    } else if (context == ChildNameContext) {
+        NSLog(@&quot;%@&quot;, change);
     }
 }
-
-&#x590D;&#x5236;&#x4EE3;&#x7801;
 </code></pre>
-<p>&#x4E0A;&#x9762;&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#xFF0C;&#x5728;12&#x4E4B;&#x524D;&#x8F93;&#x51FA;&#xFF1A; 0x79&#x662F;ASCII&#x5BF9;&#x5E94;&#x7684;y&#x5B57;&#x7B26;&#x7684;&#x503C;</p>
-<pre><code class="lang-powershell"><span class="hljs-number">0</span>xa000000000000791 y NSTaggedPointerString
-</code></pre>
-<p>iOS12&#x4E4B;&#x540E;&#x8F93;&#x51FA;&#xFF1A;</p>
-<pre><code class="lang-powershell"><span class="hljs-number">0</span>xcb47b8d98a2fa15f y NSTaggedPointerString
-</code></pre>
-<p>iOS12&#x4E4B;&#x524D;&#x6253;&#x5370;&#x6307;&#x9488;&#x7684;&#x503C;&#x80FD;&#x5F88;&#x6E05;&#x6670;&#x7684;&#x770B;&#x5230;&#x6570;&#x636E;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;iOS12&#x4E4B;&#x540E;&#x7CFB;&#x7EDF;&#x5219;&#x6253;&#x5370;&#x7684;&#x5B8C;&#x5168;&#x770B;&#x4E0D;&#x61C2;&#x4E86;&#xFF0C;&#x770B;&#x4E86;&#x6E90;&#x4EE3;&#x7801;&#x53D1;&#x73B0;&#x82F9;&#x679C;&#x662F;&#x505A;&#x4E86;&#x6DF7;&#x6DC6;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5F97;&#x5230;&#x503C;&#xFF0C;&#x4ECE;&#x800C;&#x907F;&#x514D;&#x6211;&#x4EEC;&#x53BB;&#x5F88;&#x5BB9;&#x6613;&#x5C31;&#x4F2A;&#x9020;&#x51FA;&#x4E00;&#x4E2A;tagged pointer&#x5BF9;&#x8C61;</p>
-<h5 id="tagged-pointer&#x5BF9;&#x8C61;">Tagged Pointer&#x5BF9;&#x8C61;</h5>
-<p>&#x7CFB;&#x7EDF;&#x901A;&#x8FC7;3bit&#x7684;&#x6807;&#x8BB0;&#x4F4D;&#x6765;&#x6807;&#x8BC6;tagged pointer&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#xFF0C;&#x5B83;&#x7684;&#x5B9A;&#x4E49;&#x5728;<code>objc_tag_index_t</code>&#x4E2D; &#x6BD4;&#x5982;2&#x8868;&#x793A;&#x662F;NSString&#x3001;6&#x8868;&#x793A;&#x662F;NSDate&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;3bit&#x80FD;&#x8868;&#x793A;&#x7684;&#x6700;&#x5927;&#x503C;&#x662F;7&#xFF0C;&#x8FD9;&#x4E2A;7&#x7CFB;&#x7EDF;&#x7528;&#x6765;&#x9884;&#x7559;&#xFF0C;&#x7528;&#x6765;&#x6807;&#x8BB0;&#x662F;&#x5426;&#x6709;&#x989D;&#x5916;&#x7684;&#x6807;&#x8BB0;&#x4F4D;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x80FD;&#x652F;&#x6301;&#x66F4;&#x591A;&#x7684;&#x7C7B;&#x652F;&#x6301;tagged pointer</p>
-<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> __has_feature(objc_fixed_enum)  ||  __cplusplus &gt;= 201103L</span>
-<span class="hljs-keyword">enum</span> <span class="hljs-keyword">objc_tag_index_t</span> : <span class="hljs-keyword">uint16_t</span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span>
-<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">uint16_t</span> <span class="hljs-keyword">objc_tag_index_t</span>;
-<span class="hljs-keyword">enum</span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
-{
-    <span class="hljs-comment">// 60-bit payloads</span>
-    OBJC_TAG_NSAtom            = <span class="hljs-number">0</span>, 
-    OBJC_TAG_1                 = <span class="hljs-number">1</span>, 
-    OBJC_TAG_NSString          = <span class="hljs-number">2</span>, 
-    OBJC_TAG_NSNumber          = <span class="hljs-number">3</span>, 
-    OBJC_TAG_NSIndexPath       = <span class="hljs-number">4</span>, 
-    OBJC_TAG_NSManagedObjectID = <span class="hljs-number">5</span>, 
-    OBJC_TAG_NSDate            = <span class="hljs-number">6</span>,
-
-    <span class="hljs-comment">// 60-bit reserved</span>
-    OBJC_TAG_RESERVED_7        = <span class="hljs-number">7</span>, 
-
-    <span class="hljs-comment">// 52-bit payloads</span>
-    OBJC_TAG_Photos_1          = <span class="hljs-number">8</span>,
-    OBJC_TAG_Photos_2          = <span class="hljs-number">9</span>,
-    OBJC_TAG_Photos_3          = <span class="hljs-number">10</span>,
-    OBJC_TAG_Photos_4          = <span class="hljs-number">11</span>,
-    OBJC_TAG_XPC_1             = <span class="hljs-number">12</span>,
-    OBJC_TAG_XPC_2             = <span class="hljs-number">13</span>,
-    OBJC_TAG_XPC_3             = <span class="hljs-number">14</span>,
-    OBJC_TAG_XPC_4             = <span class="hljs-number">15</span>,
-    OBJC_TAG_NSColor           = <span class="hljs-number">16</span>,
-    OBJC_TAG_UIColor           = <span class="hljs-number">17</span>,
-    OBJC_TAG_CGColor           = <span class="hljs-number">18</span>,
-    OBJC_TAG_NSIndexSet        = <span class="hljs-number">19</span>,
-
-    OBJC_TAG_First60BitPayload = <span class="hljs-number">0</span>, 
-    OBJC_TAG_Last60BitPayload  = <span class="hljs-number">6</span>, 
-    OBJC_TAG_First52BitPayload = <span class="hljs-number">8</span>, 
-    OBJC_TAG_Last52BitPayload  = <span class="hljs-number">263</span>, 
-
-    OBJC_TAG_RESERVED_264      = <span class="hljs-number">264</span>
-};
-<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> __has_feature(objc_fixed_enum)  &amp;&amp;  !defined(__cplusplus)</span>
-<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">enum</span> <span class="hljs-keyword">objc_tag_index_t</span> <span class="hljs-keyword">objc_tag_index_t</span>;
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
-</code></pre>
-<h2 id="&#x7ED3;&#x8BBA;">&#x7ED3;&#x8BBA;</h2>
-<p>1&#x3001;Tagged Pointer&#x6709;&#x957F;&#x5EA6;&#x9650;&#x5236;&#xFF0C;&#x8FC7;&#x957F;&#x4F1A;&#x4F9D;&#x7136;&#x4F1A;&#x91C7;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x5F62;&#x5F0F;&#x4FDD;&#x5B58;</p>
-<p>2&#x3001;Tagged Pointer&#x6CA1;&#x6709;isa&#x6307;&#x9488;&#xFF0C;&#x5B83;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x4F2A;&#x88C5;&#x6210;&#x5BF9;&#x8C61;&#x7684;&#x666E;&#x901A;&#x53D8;&#x91CF;&#x800C;&#x5DF2;&#x3002;</p>
-<p>3&#x3001;Tagged Pointer&#x662F;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x4E0D;&#x6307;&#x5411;&#x4EFB;&#x4F55;&#x5B9E;&#x8D28;&#x5730;&#x5740;&#x3002; </p>
+<h2 id="kvo&#x539F;&#x7406;&#x2014;&#x2014;isa-swizzling">KVO&#x539F;&#x7406;&#x2014;&#x2014;isa-swizzling</h2>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-16-135638.jpg" alt=""></p>
+<p><code>Key-Value Observing Programming Guide</code>&#x4E2D;&#x6709;&#x4E00;&#x6BB5;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x7684;&#x53D9;&#x8FF0;</p>
+<ul>
+<li>KVO&#x662F;&#x4F7F;&#x7528;<code>isa-swizzling</code>&#x6280;&#x672F;&#x5B9E;&#x73B0;&#x7684;</li>
+<li>&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;isa&#x6307;&#x9488;&#x6307;&#x5411;&#x7EF4;&#x62A4;&#x5206;&#x914D;&#x8868;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#xFF0C;&#x8BE5;&#x5206;&#x6D3E;&#x8868;&#x5B9E;&#x8D28;&#x4E0A;&#x5305;&#x542B;&#x6307;&#x5411;&#x8BE5;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x6307;&#x9488;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x6570;&#x636E;</li>
+<li>&#x5728;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x8005;&#x65F6;&#xFF0C;&#x5C06;&#x4FEE;&#x6539;&#x89C2;&#x5BDF;&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;&#xFF0C;&#x6307;&#x5411;&#x4E2D;&#x95F4;&#x7C7B;&#x800C;&#x4E0D;&#x662F;&#x771F;&#x5B9E;&#x7C7B;&#x3002;isa&#x6307;&#x9488;&#x7684;&#x503C;&#x4E0D;&#x4E00;&#x5B9A;&#x53CD;&#x6620;&#x5B9E;&#x4F8B;&#x7684;&#x5B9E;&#x9645;&#x7C7B;</li>
+<li><p>&#x60A8;&#x6C38;&#x8FDC;&#x4E0D;&#x5E94;&#x4F9D;&#x9760;isa&#x6307;&#x9488;&#x6765;&#x786E;&#x5B9A;&#x7C7B;&#x6210;&#x5458;&#x8EAB;&#x4EFD;&#x3002;&#x76F8;&#x53CD;&#xFF0C;&#x60A8;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;class&#x65B9;&#x6CD5;&#x6765;&#x786E;&#x5B9A;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7684;&#x7C7B;</p>
+</li>
+<li><p>&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x8005;&#x4E4B;&#x524D;&#xFF1A;&#x7C7B;&#x5BF9;&#x8C61;&#x4E3A;</p>
+<pre><code>FXPerson
+</code></pre><p>&#xFF0C;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;isa&#x6307;&#x5411;</p>
+<pre><code>FXPerson
+</code></pre><p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-16-135759.jpg" alt="img"></p>
+</li>
+<li><p>&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x8005;&#x4E4B;&#x540E;&#xFF1A;&#x7C7B;&#x5BF9;&#x8C61;&#x4E3A; <code>FXPerson</code>&#xFF0C;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;isa&#x6307;&#x5411; <code>NSKVONotifying_FXPerson</code></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-16-135804.jpg" alt="img"></p>
+</li>
+</ul>
+<p>&#x4ECE;&#x8FD9;&#x4E24;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x4E00;&#x4E2A;&#x7ED3;&#x8BBA;&#xFF1A;&#x89C2;&#x5BDF;&#x8005;&#x6CE8;&#x518C;&#x524D;&#x540E;<code>FXPerson&#x7C7B;</code>&#x6CA1;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x4F46;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x7684;<code>isa</code>&#x6307;&#x5411;&#x53D1;&#x751F;&#x53D8;&#x5316;</p>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<ol>
+<li><code>automaticallyNotifiesObserversForKey</code>&#x4E3A;<code>YES</code>&#x65F6;&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x5C5E;&#x6027;&#x4F1A;&#x751F;&#x6210;&#x52A8;&#x6001;&#x5B50;&#x7C7B;<code>NSKVONotifying_XXX</code></li>
+<li>&#x52A8;&#x6001;&#x5B50;&#x7C7B;&#x89C2;&#x5BDF;&#x7684;&#x662F;<code>setter</code>&#x65B9;&#x6CD5;</li>
+<li>&#x52A8;&#x6001;&#x5B50;&#x7C7B;&#x91CD;&#x5199;&#x4E86;&#x89C2;&#x5BDF;&#x5C5E;&#x6027;&#x7684;<code>setter</code>&#x65B9;&#x6CD5; <code>dealloc</code> <code>class</code> <code>_isKVOA</code>&#x65B9;&#x6CD5;<ul>
+<li><code>setter</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x89C2;&#x5BDF;&#x952E;&#x503C;</li>
+<li><code>dealloc</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x91CA;&#x653E;&#x65F6;&#x5BF9;isa&#x6307;&#x5411;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;</li>
+<li><code>class</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x6307;&#x56DE;&#x52A8;&#x6001;&#x5B50;&#x7C7B;&#x7684;&#x7236;&#x7C7B;</li>
+<li><code>_isKVOA</code>&#x7528;&#x6765;&#x6807;&#x8BC6;&#x662F;&#x5426;&#x662F;&#x5728;&#x89C2;&#x5BDF;&#x8005;&#x72B6;&#x6001;&#x7684;&#x4E00;&#x4E2A;&#x6807;&#x5FD7;&#x4F4D;</li>
+</ul>
+</li>
+<li><code>dealloc</code>&#x4E4B;&#x540E;<code>isa</code>&#x6307;&#x5411;&#x5143;&#x7C7B;</li>
+<li><code>dealloc</code>&#x4E4B;&#x540E;&#x52A8;&#x6001;&#x5B50;&#x7C7B;&#x4E0D;&#x4F1A;&#x9500;&#x6BC1;</li>
+</ol>
 <h2 id="reference">Reference</h2>
-<p><a href="https://www.jianshu.com/p/408128f1dae3" target="_blank">1.iOS&#x7279;&#x6709;&#x6982;&#x5FF5;TaggedPointer</a></p>
-<p><a href="https://juejin.im/post/6887543378628902925" target="_blank">2.OC&#x5185;&#x5B58;&#x7BA1;&#x7406;-Tagged Pointer&#x521D;&#x63A2;</a></p>
+<p><a href="https://juejin.cn/post/6844904090569277447" target="_blank">1 iOS&#x63A2;&#x7D22; KVO&#x539F;&#x7406;&#x53CA;&#x81EA;&#x5B9A;&#x4E49;</a></p>
 
                                 
                                 </section>
@@ -1296,12 +1255,12 @@ _objc_isTaggedPointer(<span class="hljs-keyword">const</span> <span class="hljs-
 
             
                 
-                <a href="MemoryFiveMainSection.html" class="navigation navigation-prev " aria-label="Previous page: 内存中的5大区">
+                <a href="MessageForwarding.html" class="navigation navigation-prev " aria-label="Previous page: MessageForwarding">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="SideTables.html" class="navigation navigation-next " aria-label="Next page: SideTables">
+                <a href="../OCFoundation/OCFoundation.html" class="navigation navigation-next " aria-label="Next page: 2.OC语言基础">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1312,7 +1271,7 @@ _objc_isTaggedPointer(<span class="hljs-keyword">const</span> <span class="hljs-
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Tagged Pointer","level":"2.1.2.3","depth":3,"next":{"title":"SideTables","level":"2.1.2.4","depth":3,"path":"iOS/Memory/SideTables.md","ref":"iOS/Memory/SideTables.md","articles":[]},"previous":{"title":"内存中的5大区","level":"2.1.2.2","depth":3,"path":"iOS/Memory/MemoryFiveMainSection.md","ref":"iOS/Memory/MemoryFiveMainSection.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Memory/TaggedPointer.md","mtime":"2021-02-16T14:05:59.558Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-16T14:06:30.972Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"KVO","level":"2.1.4.4","depth":3,"next":{"title":"2.OC语言基础","level":"3.1","depth":1,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"MessageForwarding","level":"2.1.4.3","depth":3,"path":"iOS/Runtime/MessageForwarding.md","ref":"iOS/Runtime/MessageForwarding.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/KVO.md","mtime":"2021-02-16T14:05:59.562Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-16T14:06:30.972Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
