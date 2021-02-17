@@ -4,6 +4,19 @@
 
 
 
+发送消息会有以下⼏个流程：
+
+1. 快速查找流程——通过汇编`objc_msgSend`查找缓存`cache_t`是否有imp实现
+2. 慢速查找流程——通过C++中`lookUpImpOrForward`递归查找`当前类和父类的rw`中`methodlist`的方法
+3. 动态方法解析——通过调用`resolveInstanceMethod`和`resolveClassMethod`来动态方法决议——实现消息动态处理
+4. 快速转发流程——通过`CoreFoundation`来触发消息转发流程，`forwardingTargetForSelector`实现快速转发，由其他对象来实现处理方法
+5. 慢速转发流程——先调用`methodSignatureForSelector`获取到方法的签名，生成对应的`invocation`；再通过`forwardInvocation`来进行处理
+6. 以上流程均无法挽救就崩溃并报错
+
+
+
+
+
 当一个 OC 对象（receiver）接收到 Unknown selector 时，会进入如图流程，用户可以在这三个步骤中 override receiver 的相关方法，进而避免`doesNotRecognizeSelector:`异常。
 
 《Effective Objective-C 2.0》的描述是：

@@ -10,6 +10,15 @@ OC 是一门动态语言，函数调用变成了消息发送，在编译期不�
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-19-061439.jpg)
 
+发送消息会有以下⼏个流程：
+
+1. 快速查找流程——通过汇编`objc_msgSend`查找缓存`cache_t`是否有imp实现
+2. 慢速查找流程——通过C++中`lookUpImpOrForward`递归查找`当前类和父类的rw`中`methodlist`的方法
+3. 动态方法解析——通过调用`resolveInstanceMethod`和`resolveClassMethod`来动态方法决议——实现消息动态处理
+4. 快速转发流程——通过`CoreFoundation`来触发消息转发流程，`forwardingTargetForSelector`实现快速转发，由其他对象来实现处理方法
+5. 慢速转发流程——先调用`methodSignatureForSelector`获取到方法的签名，生成对应的`invocation`；再通过`forwardInvocation`来进行处理
+6. 以上流程均无法挽救就崩溃并报错
+
 
 
 这就是消息传递的一个流程，首先查缓存，无缓存，查方法列表，依然没命中，再顺次查找各个父类方法列表，如果都没有名字，就转到消息转发流程
