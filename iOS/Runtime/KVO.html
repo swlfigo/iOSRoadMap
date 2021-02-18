@@ -60,7 +60,7 @@
     <link rel="next" href="../OCFoundation/OCFoundation.html" />
     
     
-    <link rel="prev" href="MessageForwarding.html" />
+    <link rel="prev" href="KVC.html" />
     
 
     </head>
@@ -642,7 +642,20 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.4.4" data-path="KVO.html">
+        <li class="chapter " data-level="2.1.4.4" data-path="KVC.html">
+            
+                <a href="KVC.html">
+            
+                    
+                    KVC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.1.4.5" data-path="KVO.html">
             
                 <a href="KVO.html">
             
@@ -1212,6 +1225,35 @@ static void *ChildNameContext = &amp;ChildNameContext;
 </li>
 </ul>
 <p>&#x4ECE;&#x8FD9;&#x4E24;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x4E00;&#x4E2A;&#x7ED3;&#x8BBA;&#xFF1A;&#x89C2;&#x5BDF;&#x8005;&#x6CE8;&#x518C;&#x524D;&#x540E;<code>FXPerson&#x7C7B;</code>&#x6CA1;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x4F46;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x7684;<code>isa</code>&#x6307;&#x5411;&#x53D1;&#x751F;&#x53D8;&#x5316;</p>
+<p>&#x5BF9;&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x53C8;&#x4E00;&#x5B9E;&#x73B0;&#xFF1B; Apple &#x4F7F;&#x7528;&#x4E86; <strong>isa &#x6DF7;&#x5199;</strong>(isa-swizzling) &#x6765;&#x5B9E;&#x73B0;KVO.</p>
+<ul>
+<li>KVO&#x662F;&#x57FA;&#x4E8E;runtime&#x673A;&#x5236;&#x5B9E;&#x73B0;&#x7684;</li>
+<li><p>&#x5F53;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x5BF9;&#x8C61;<code>&#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x89C2;&#x5BDF;</code>&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C31;&#x4F1A;&#x5728;&#x8FD0;&#x884C;&#x671F;&#x52A8;&#x6001;&#x5730;&#x521B;&#x5EFA;&#x8BE5;&#x7C7B;&#x7684;&#x4E00;&#x4E2A;&#x6D3E;&#x751F;&#x7C7B;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x6D3E;&#x751F;&#x7C7B;&#x4E2D;&#x91CD;&#x5199;&#x57FA;&#x7C7B;&#x4E2D;&#x4EFB;&#x4F55;&#x88AB;&#x89C2;&#x5BDF;&#x5C5E;&#x6027;&#x7684;setter &#x65B9;&#x6CD5;&#x3002;&#x6D3E;&#x751F;&#x7C7B;&#x5728;&#x88AB;&#x91CD;&#x5199;&#x7684;setter&#x65B9;&#x6CD5;&#x5185;&#x5B9E;&#x73B0;&#x771F;&#x6B63;&#x7684;<code>&#x901A;&#x77E5;&#x673A;&#x5236;</code></p>
+</li>
+<li><p>&#x6BCF;&#x4E2A;&#x7C7B;&#x5BF9;&#x8C61;&#x4E2D;&#x90FD;&#x6709;&#x4E00;&#x4E2A;isa&#x6307;&#x9488;&#x6307;&#x5411;&#x5F53;&#x524D;&#x7C7B;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x7C7B;&#x5BF9;&#x8C61;&#x7684;&#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x89C2;&#x5BDF;&#xFF0C;&#x90A3;&#x4E48;&#x7CFB;&#x7EDF;&#x4F1A;&#x5077;&#x5077;&#x5C06;isa&#x6307;&#x9488;&#x6307;&#x5411;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#x6D3E;&#x751F;&#x7C7B;&#xFF0C;&#x4ECE;&#x800C;&#x5728;&#x7ED9;&#x88AB;&#x76D1;&#x63A7;&#x5C5E;&#x6027;&#x8D4B;&#x503C;&#x65F6;&#x6267;&#x884C;&#x7684;&#x662F;&#x6D3E;&#x751F;&#x7C7B;&#x7684;setter&#x65B9;&#x6CD5;</p>
+</li>
+<li>KVO&#x7684;&#x8FD9;&#x5957;&#x5B9E;&#x73B0;&#x673A;&#x5236;&#x4E2D;&#x82F9;&#x679C;&#x8FD8;&#x5077;&#x5077;&#x91CD;&#x5199;&#x4E86;class&#x65B9;&#x6CD5;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x8BEF;&#x8BA4;&#x4E3A;&#x8FD8;&#x662F;&#x4F7F;&#x7528;&#x7684;&#x5F53;&#x524D;&#x7C7B;&#xFF0C;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x9690;&#x85CF;&#x751F;&#x6210;&#x7684;&#x6D3E;&#x751F;&#x7C7B;</li>
+</ul>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318144841.png" alt=""></p>
+<p>&#x5F53;&#x8C03;&#x7528;&#x4E86; <code>addObserver:forkeypath</code>&#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x52A8;&#x6001;&#x521B;&#x5EFA; <code>NSKVONorifying_A</code>&#x7C7B;&#xFF0C;&#x540C;&#x65F6;&#x5C06;A&#x7684;isa&#x6307;&#x9488;&#x6307;&#x5411; NSKVONorifying_A&#x3002;</p>
+<p>iOS&#x4E2D;<code>KVO</code>&#x5206;&#x4E3A;&#x81EA;&#x52A8;&#x76D1;&#x542C;&#x548C;&#x624B;&#x52A8;&#x89E6;&#x53D1;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;</p>
+<p>&#x624B;&#x52A8;&#x89E6;&#x53D1;:</p>
+<ol>
+<li>&#x91CD;&#x5199;&#x76D1;&#x542C;&#x5C5E;&#x6027;&#x7684;set&#x3001;get&#x65B9;&#x6CD5;</li>
+<li>&#x91CD;&#x5199; <code>+ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key</code> </li>
+<li>&#x5728;set&#x65B9;&#x6CD5;&#x4E2D;&#x5728;&#x8D4B;&#x503C;&#x7684;&#x524D;&#x540E;&#x5206;&#x522B;&#x8C03;&#x7528;&#xFF1A;<code>willChangeValueForKey</code>&#x548C;<code>didChangeValueForKey</code></li>
+<li>&#x5B9E;&#x73B0;<code>willChangeValueForKey</code>&#x548C;<code>didChangeValueForKey</code>&#x65B9;&#x6CD5;</li>
+</ol>
+<p>&#x5176;&#x4E2D;&#x9700;&#x8981;&#x91CD;&#x5199;</p>
+<pre><code class="lang-objective-c">+ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key{
+  if([key isEqualToString:@&quot;age&quot;]){
+  //&#x53D6;&#x6D88;&#x81EA;&#x52A8;&#x53D1;&#x9001;&#x901A;&#x77E5;
+    return NO;
+  }else{
+    return [super automaticallyNotifiesObserversForKey:key];
+  }
+}
+</code></pre>
 <h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
 <ol>
 <li><code>automaticallyNotifiesObserversForKey</code>&#x4E3A;<code>YES</code>&#x65F6;&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x5C5E;&#x6027;&#x4F1A;&#x751F;&#x6210;&#x52A8;&#x6001;&#x5B50;&#x7C7B;<code>NSKVONotifying_XXX</code></li>
@@ -1255,7 +1297,7 @@ static void *ChildNameContext = &amp;ChildNameContext;
 
             
                 
-                <a href="MessageForwarding.html" class="navigation navigation-prev " aria-label="Previous page: MessageForwarding">
+                <a href="KVC.html" class="navigation navigation-prev " aria-label="Previous page: KVC">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1271,7 +1313,7 @@ static void *ChildNameContext = &amp;ChildNameContext;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"KVO","level":"2.1.4.4","depth":3,"next":{"title":"2.OC语言基础","level":"3.1","depth":1,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"MessageForwarding","level":"2.1.4.3","depth":3,"path":"iOS/Runtime/MessageForwarding.md","ref":"iOS/Runtime/MessageForwarding.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/KVO.md","mtime":"2021-02-17T15:30:07.434Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-17T15:30:40.133Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"KVO","level":"2.1.4.5","depth":3,"next":{"title":"2.OC语言基础","level":"3.1","depth":1,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"KVC","level":"2.1.4.4","depth":3,"path":"iOS/Runtime/KVC.md","ref":"iOS/Runtime/KVC.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Runtime/KVO.md","mtime":"2021-02-18T14:37:02.534Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-18T14:37:35.237Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
