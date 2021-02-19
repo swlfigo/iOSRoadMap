@@ -20,7 +20,7 @@
 `objc_initWeak()` 这个方法。在进行编译过程前，clang 其实对 __weak 做了转换，将声明方式做出了如下调整。
 
 ```objective-c
-NSObject objc_initWeak(&p, 对象指针);
+NSObject objc_initWeak(&p1, 对象指针);
 ```
 
 
@@ -29,7 +29,7 @@ NSObject objc_initWeak(&p, 对象指针);
 
 
 
-其中的对象指针，就是代码中的 `[[NSObject alloc] init]` ，而 p 是我们传入的一个弱引用指针。而对于 `objc_initWeak()` 方法的实现，在 runtime 中的源码如下：
+其中的对象指针，就是代码中的 `[[NSObject alloc] init]` ，而 p1 是我们传入的一个弱引用指针。而对于 `objc_initWeak()` 方法的实现，在 runtime 中的源码如下：
 
 ```c
 id objc_initWeak(id *location, id newObj) {
@@ -384,9 +384,105 @@ weaktable在每个sidetable中以结构体 `weak_entry_t` 存在,sidetable中储
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-12-04-150728.jpg)
 
+***
+
+## weak置空原理
+
+
+
+#### 1.weak创建过程
+
+①objc_initWeak
+
+- `location`：表示`__weak指针`的地址（我们研究的就是`__weak指针`指向的内容怎么置为nil）
+- `newObj`：所引用的对象，即例子中的`person`
+
+```
+id
+objc_initWeak(id *location, id newObj)
+{
+    if (!newObj) {
+        *location = nil;
+        return nil;
+    }
+
+    return storeWeak<DontHaveOld, DoHaveNew, DoCrashIfDeallocating>
+        (location, (objc_object*)newObj);
+}
+复制代码
+```
+
+②storeWeak
+
+- `HaveOld`：weak指针之前是否已经指向了一个弱引用
+- `HaveNew`：weak指针是否需要指向一个新引用
+- `CrashIfDeallocating`：如果被弱引用的对象正在析构，此时再弱引用该对象，是否应该crash
+
+storeWeak最主要的两个逻辑点（源码太长，这里不贴了）
+
+![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-19-095555.jpg)
+
+
+
+> 由于是第一次调用，所以走`haveNew`分支——获取到的是新的散列表SideTable，主要执行了weak_register_no_lock方法来进行插入
+
+③weak_register_no_lock
+
+- 主要进行了`isTaggedPointer`和`deallocating`条件判断
+- 将被弱引用对象所在的`weak_table`中的`weak_entry_t`哈希数组中取出对应的`weak_entry_t`
+- 如果`weak_entry_t`不存在，则会新建一个并插入
+- 如果存在就将指向被弱引用对象地址的指针`referrer`通过函数`append_referrer`插入到对应的`weak_entry_t`引用数组
+
+
+
+![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-19-095600.jpg)
+
+
+
+④append_referrer
+
+找到弱引用对象的对应的`weak_entry`哈希数组中插入
+
+![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-19-095604.jpg)
+
+
+
+#### 2.weak创建流程
+
+
+
+![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-19-095608.jpg)
+
+
+
+#### 3.weak销毁过程
+
+> 由于弱引用在析构dealloc时自动置空，所以查看dealloc的底层实现并LLVM调试
+
+- `_objc_rootDealloc`->`rootDealloc`
+- `rootDealloc`->`object_dispose`
+- `object_dispose`->`objc_destructInstance`
+- `objc_destructInstance`->`clearDeallocating`
+- `clearDeallocating`->`sidetable_clearDeallocating`
+- `sidetable_clearDeallocating3`->`table.refcnts.erase(it)`
+
+#### 4.weak销毁流程
+
+具体可查阅[iOS底层学习 - 内存管理之weak原理探究](https://juejin.im/post/6844904051029573645#heading-19)
+
+![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-19-095612.jpg)
+
+
+
+
+
+
+
 
 ## Reference
 
 [1.iOS底层原理：weak的实现原理](https://juejin.cn/post/6844904101839372295)
 
 [2.weak 弱引用的实现方式](https://www.desgard.com/iOS-Source-Probe/Objective-C/Runtime/weak%20%E5%BC%B1%E5%BC%95%E7%94%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html)
+
+https://juejin.cn/post/6844904079957688328
