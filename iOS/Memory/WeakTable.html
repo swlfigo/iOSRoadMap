@@ -1147,10 +1147,10 @@
 <p>&#x6B64;&#x6253;&#x65AD;&#x70B9;&#x8DDF;&#x8E2A;&#x6C47;&#x7F16;&#x4FE1;&#x606F;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5E95;&#x5C42;&#x5E93;&#x8C03;&#x4E86;<code>objc_initWeak</code>&#x51FD;&#x6570;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-11-25-143524.jpg" alt=""></p>
 <p><code>objc_initWeak()</code> &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;&#x5728;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x524D;&#xFF0C;clang &#x5176;&#x5B9E;&#x5BF9; __weak &#x505A;&#x4E86;&#x8F6C;&#x6362;&#xFF0C;&#x5C06;&#x58F0;&#x660E;&#x65B9;&#x5F0F;&#x505A;&#x51FA;&#x4E86;&#x5982;&#x4E0B;&#x8C03;&#x6574;&#x3002;</p>
-<pre><code class="lang-objective-c">NSObject objc_initWeak(&amp;p, &#x5BF9;&#x8C61;&#x6307;&#x9488;);
+<pre><code class="lang-objective-c">NSObject objc_initWeak(&amp;p1, &#x5BF9;&#x8C61;&#x6307;&#x9488;);
 </code></pre>
 <h2 id="objcinitweak">objc_initWeak()</h2>
-<p>&#x5176;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x6307;&#x9488;&#xFF0C;&#x5C31;&#x662F;&#x4EE3;&#x7801;&#x4E2D;&#x7684; <code>[[NSObject alloc] init]</code> &#xFF0C;&#x800C; p &#x662F;&#x6211;&#x4EEC;&#x4F20;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x5F31;&#x5F15;&#x7528;&#x6307;&#x9488;&#x3002;&#x800C;&#x5BF9;&#x4E8E; <code>objc_initWeak()</code> &#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5728; runtime &#x4E2D;&#x7684;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x5176;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x6307;&#x9488;&#xFF0C;&#x5C31;&#x662F;&#x4EE3;&#x7801;&#x4E2D;&#x7684; <code>[[NSObject alloc] init]</code> &#xFF0C;&#x800C; p1 &#x662F;&#x6211;&#x4EEC;&#x4F20;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x5F31;&#x5F15;&#x7528;&#x6307;&#x9488;&#x3002;&#x800C;&#x5BF9;&#x4E8E; <code>objc_initWeak()</code> &#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5728; runtime &#x4E2D;&#x7684;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-c"><span class="hljs-function">id <span class="hljs-title">objc_initWeak</span><span class="hljs-params">(id *location, id newObj)</span> </span>{
     <span class="hljs-comment">// &#x67E5;&#x770B;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x662F;&#x5426;&#x6709;&#x6548;</span>
     <span class="hljs-comment">// &#x65E0;&#x6548;&#x5BF9;&#x8C61;&#x76F4;&#x63A5;&#x5BFC;&#x81F4;&#x6307;&#x9488;&#x91CA;&#x653E;</span>
@@ -1455,9 +1455,69 @@ static id storeWeak(id *location, objc_object *newObj) {
 <p><strong>3&#x3001;&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x65F6;&#xFF0C;&#x8C03;&#x7528;<code>clearDeallocating</code>&#x51FD;&#x6570;&#x6839;&#x636E;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x83B7;&#x53D6;&#x6240;&#x6709;weak&#x6307;&#x9488;&#x5730;&#x5740;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x628A;&#x5176;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8BBE;&#x4E3A;nil&#xFF0C;&#x6700;&#x540E;&#x628A;&#x8FD9;&#x4E2A;entry&#x4ECE;weak&#x8868;&#x4E2D;&#x5220;&#x9664;&#xFF0C;&#x6700;&#x540E;&#x6E05;&#x7406;&#x5BF9;&#x8C61;&#x7684;&#x8BB0;&#x5F55;&#x3002;</strong></p>
 <p><strong>4&#x3001;&#x6587;&#x7AE0;&#x4E2D;&#x4ECB;&#x7ECD;&#x4E86;SideTable&#x3001;weak_table_t&#x3001;weak_entry_t&#x8FD9;&#x6837;&#x4E09;&#x4E2A;&#x7ED3;&#x6784;&#xFF0C;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x3002;</strong></p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-12-04-150728.jpg" alt=""></p>
+<hr>
+<h2 id="weak&#x7F6E;&#x7A7A;&#x539F;&#x7406;">weak&#x7F6E;&#x7A7A;&#x539F;&#x7406;</h2>
+<h4 id="1weak&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;">1.weak&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;</h4>
+<p>&#x2460;objc_initWeak</p>
+<ul>
+<li><code>location</code>&#xFF1A;&#x8868;&#x793A;<code>__weak&#x6307;&#x9488;</code>&#x7684;&#x5730;&#x5740;&#xFF08;&#x6211;&#x4EEC;&#x7814;&#x7A76;&#x7684;&#x5C31;&#x662F;<code>__weak&#x6307;&#x9488;</code>&#x6307;&#x5411;&#x7684;&#x5185;&#x5BB9;&#x600E;&#x4E48;&#x7F6E;&#x4E3A;nil&#xFF09;</li>
+<li><code>newObj</code>&#xFF1A;&#x6240;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5373;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;<code>person</code></li>
+</ul>
+<pre><code>id
+objc_initWeak(id *location, id newObj)
+{
+    if (!newObj) {
+        *location = nil;
+        return nil;
+    }
+
+    return storeWeak&lt;DontHaveOld, DoHaveNew, DoCrashIfDeallocating&gt;
+        (location, (objc_object*)newObj);
+}
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x2461;storeWeak</p>
+<ul>
+<li><code>HaveOld</code>&#xFF1A;weak&#x6307;&#x9488;&#x4E4B;&#x524D;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x6307;&#x5411;&#x4E86;&#x4E00;&#x4E2A;&#x5F31;&#x5F15;&#x7528;</li>
+<li><code>HaveNew</code>&#xFF1A;weak&#x6307;&#x9488;&#x662F;&#x5426;&#x9700;&#x8981;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x65B0;&#x5F15;&#x7528;</li>
+<li><code>CrashIfDeallocating</code>&#xFF1A;&#x5982;&#x679C;&#x88AB;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x6B63;&#x5728;&#x6790;&#x6784;&#xFF0C;&#x6B64;&#x65F6;&#x518D;&#x5F31;&#x5F15;&#x7528;&#x8BE5;&#x5BF9;&#x8C61;&#xFF0C;&#x662F;&#x5426;&#x5E94;&#x8BE5;crash</li>
+</ul>
+<p>storeWeak&#x6700;&#x4E3B;&#x8981;&#x7684;&#x4E24;&#x4E2A;&#x903B;&#x8F91;&#x70B9;&#xFF08;&#x6E90;&#x7801;&#x592A;&#x957F;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x8D34;&#x4E86;&#xFF09;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-19-095555.jpg" alt="img"></p>
+<blockquote>
+<p>&#x7531;&#x4E8E;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x8D70;<code>haveNew</code>&#x5206;&#x652F;&#x2014;&#x2014;&#x83B7;&#x53D6;&#x5230;&#x7684;&#x662F;&#x65B0;&#x7684;&#x6563;&#x5217;&#x8868;SideTable&#xFF0C;&#x4E3B;&#x8981;&#x6267;&#x884C;&#x4E86;weak_register_no_lock&#x65B9;&#x6CD5;&#x6765;&#x8FDB;&#x884C;&#x63D2;&#x5165;</p>
+</blockquote>
+<p>&#x2462;weak_register_no_lock</p>
+<ul>
+<li>&#x4E3B;&#x8981;&#x8FDB;&#x884C;&#x4E86;<code>isTaggedPointer</code>&#x548C;<code>deallocating</code>&#x6761;&#x4EF6;&#x5224;&#x65AD;</li>
+<li>&#x5C06;&#x88AB;&#x5F31;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x6240;&#x5728;&#x7684;<code>weak_table</code>&#x4E2D;&#x7684;<code>weak_entry_t</code>&#x54C8;&#x5E0C;&#x6570;&#x7EC4;&#x4E2D;&#x53D6;&#x51FA;&#x5BF9;&#x5E94;&#x7684;<code>weak_entry_t</code></li>
+<li>&#x5982;&#x679C;<code>weak_entry_t</code>&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x4F1A;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5E76;&#x63D2;&#x5165;</li>
+<li>&#x5982;&#x679C;&#x5B58;&#x5728;&#x5C31;&#x5C06;&#x6307;&#x5411;&#x88AB;&#x5F31;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x7684;&#x6307;&#x9488;<code>referrer</code>&#x901A;&#x8FC7;&#x51FD;&#x6570;<code>append_referrer</code>&#x63D2;&#x5165;&#x5230;&#x5BF9;&#x5E94;&#x7684;<code>weak_entry_t</code>&#x5F15;&#x7528;&#x6570;&#x7EC4;</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-19-095600.jpg" alt="img"></p>
+<p>&#x2463;append_referrer</p>
+<p>&#x627E;&#x5230;&#x5F31;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x5BF9;&#x5E94;&#x7684;<code>weak_entry</code>&#x54C8;&#x5E0C;&#x6570;&#x7EC4;&#x4E2D;&#x63D2;&#x5165;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-19-095604.jpg" alt="img"></p>
+<h4 id="2weak&#x521B;&#x5EFA;&#x6D41;&#x7A0B;">2.weak&#x521B;&#x5EFA;&#x6D41;&#x7A0B;</h4>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-19-095608.jpg" alt="img"></p>
+<h4 id="3weak&#x9500;&#x6BC1;&#x8FC7;&#x7A0B;">3.weak&#x9500;&#x6BC1;&#x8FC7;&#x7A0B;</h4>
+<blockquote>
+<p>&#x7531;&#x4E8E;&#x5F31;&#x5F15;&#x7528;&#x5728;&#x6790;&#x6784;dealloc&#x65F6;&#x81EA;&#x52A8;&#x7F6E;&#x7A7A;&#xFF0C;&#x6240;&#x4EE5;&#x67E5;&#x770B;dealloc&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x5E76;LLVM&#x8C03;&#x8BD5;</p>
+</blockquote>
+<ul>
+<li><code>_objc_rootDealloc</code>-&gt;<code>rootDealloc</code></li>
+<li><code>rootDealloc</code>-&gt;<code>object_dispose</code></li>
+<li><code>object_dispose</code>-&gt;<code>objc_destructInstance</code></li>
+<li><code>objc_destructInstance</code>-&gt;<code>clearDeallocating</code></li>
+<li><code>clearDeallocating</code>-&gt;<code>sidetable_clearDeallocating</code></li>
+<li><code>sidetable_clearDeallocating3</code>-&gt;<code>table.refcnts.erase(it)</code></li>
+</ul>
+<h4 id="4weak&#x9500;&#x6BC1;&#x6D41;&#x7A0B;">4.weak&#x9500;&#x6BC1;&#x6D41;&#x7A0B;</h4>
+<p>&#x5177;&#x4F53;&#x53EF;&#x67E5;&#x9605;<a href="https://juejin.im/post/6844904051029573645#heading-19" target="_blank">iOS&#x5E95;&#x5C42;&#x5B66;&#x4E60; - &#x5185;&#x5B58;&#x7BA1;&#x7406;&#x4E4B;weak&#x539F;&#x7406;&#x63A2;&#x7A76;</a></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-19-095612.jpg" alt="img"></p>
 <h2 id="reference">Reference</h2>
 <p><a href="https://juejin.cn/post/6844904101839372295" target="_blank">1.iOS&#x5E95;&#x5C42;&#x539F;&#x7406;&#xFF1A;weak&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;</a></p>
 <p><a href="https://www.desgard.com/iOS-Source-Probe/Objective-C/Runtime/weak%20%E5%BC%B1%E5%BC%95%E7%94%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.html" target="_blank">2.weak &#x5F31;&#x5F15;&#x7528;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;</a></p>
+<p><a href="https://juejin.cn/post/6844904079957688328" target="_blank">https://juejin.cn/post/6844904079957688328</a></p>
 
                                 
                                 </section>
@@ -1497,7 +1557,7 @@ static id storeWeak(id *location, objc_object *newObj) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"WeakTable","level":"2.1.2.6","depth":3,"next":{"title":"第三章 Objc_Object","level":"2.1.3","depth":2,"ref":"","articles":[{"title":"Propety属性","level":"2.1.3.1","depth":3,"path":"iOS/Objc_Object/Property.md","ref":"iOS/Objc_Object/Property.md","articles":[]},{"title":"isa","level":"2.1.3.2","depth":3,"path":"iOS/Objc_Object/isa.md","ref":"iOS/Objc_Object/isa.md","articles":[]},{"title":"ObjectClass","level":"2.1.3.3","depth":3,"path":"iOS/Objc_Object/ObjectClass.md","ref":"iOS/Objc_Object/ObjectClass.md","articles":[]},{"title":"ClassRWT","level":"2.1.3.4","depth":3,"path":"iOS/Objc_Object/ClassRWT.md","ref":"iOS/Objc_Object/ClassRWT.md","articles":[]},{"title":"AllocInit","level":"2.1.3.5","depth":3,"path":"iOS/Objc_Object/OCAllocInit.md","ref":"iOS/Objc_Object/OCAllocInit.md","articles":[]},{"title":"Category","level":"2.1.3.6","depth":3,"path":"iOS/Objc_Object/Category.md","ref":"iOS/Objc_Object/Category.md","articles":[]},{"title":"AssociatedObject","level":"2.1.3.7","depth":3,"path":"iOS/Objc_Object/AssociatedObject.md","ref":"iOS/Objc_Object/AssociatedObject.md","articles":[]}]},"previous":{"title":"RetainCount","level":"2.1.2.5","depth":3,"path":"iOS/Memory/RetainCount.md","ref":"iOS/Memory/RetainCount.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Memory/WeakTable.md","mtime":"2021-02-18T14:49:14.915Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-18T14:49:44.937Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"WeakTable","level":"2.1.2.6","depth":3,"next":{"title":"第三章 Objc_Object","level":"2.1.3","depth":2,"ref":"","articles":[{"title":"Propety属性","level":"2.1.3.1","depth":3,"path":"iOS/Objc_Object/Property.md","ref":"iOS/Objc_Object/Property.md","articles":[]},{"title":"isa","level":"2.1.3.2","depth":3,"path":"iOS/Objc_Object/isa.md","ref":"iOS/Objc_Object/isa.md","articles":[]},{"title":"ObjectClass","level":"2.1.3.3","depth":3,"path":"iOS/Objc_Object/ObjectClass.md","ref":"iOS/Objc_Object/ObjectClass.md","articles":[]},{"title":"ClassRWT","level":"2.1.3.4","depth":3,"path":"iOS/Objc_Object/ClassRWT.md","ref":"iOS/Objc_Object/ClassRWT.md","articles":[]},{"title":"AllocInit","level":"2.1.3.5","depth":3,"path":"iOS/Objc_Object/OCAllocInit.md","ref":"iOS/Objc_Object/OCAllocInit.md","articles":[]},{"title":"Category","level":"2.1.3.6","depth":3,"path":"iOS/Objc_Object/Category.md","ref":"iOS/Objc_Object/Category.md","articles":[]},{"title":"AssociatedObject","level":"2.1.3.7","depth":3,"path":"iOS/Objc_Object/AssociatedObject.md","ref":"iOS/Objc_Object/AssociatedObject.md","articles":[]}]},"previous":{"title":"RetainCount","level":"2.1.2.5","depth":3,"path":"iOS/Memory/RetainCount.md","ref":"iOS/Memory/RetainCount.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Memory/WeakTable.md","mtime":"2021-02-19T10:18:45.476Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-19T10:19:15.481Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
