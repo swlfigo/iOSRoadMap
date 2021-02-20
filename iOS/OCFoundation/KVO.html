@@ -1,0 +1,1352 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>KVO · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="OCFoundation.md" />
+    
+    
+    <link rel="prev" href="KVC.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../Article/ReadME.html">
+            
+                <a href="../../Article/ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="../../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="../../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../Article/谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../Article/谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../Article/面试驱动技术 - Category 相关考点.html">
+            
+                <a href="../../Article/面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../../Article/iOS 编译过程的原理和应用.html">
+            
+                <a href="../../Article/iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../../Article/Objective-C Runtime 机制简析.html">
+            
+                <a href="../../Article/Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../../Article/OC 消息机制和 super 关键字.html">
+            
+                <a href="../../Article/OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../../Article/UIViewController 预加载方案浅谈.html">
+            
+                <a href="../../Article/UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="../../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="../../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../../Article/深入了解 iOS 的初始化.html">
+            
+                <a href="../../Article/深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../../Article/App 启动时间：过去，现在和未来.html">
+            
+                <a href="../../Article/App 启动时间：过去，现在和未来.html">
+            
+                    
+                    App 启动时间：过去，现在和未来
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../ReadME.html">
+            
+                <a href="../ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../UIKit/UIResponder.html">
+            
+                <a href="../UIKit/UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../UIKit/UIOffScreenRendering.html">
+            
+                <a href="../UIKit/UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="../UIKit/UIViewRender.html">
+            
+                <a href="../UIKit/UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.4" data-path="../UIKit/UIImageRender.html">
+            
+                <a href="../UIKit/UIImageRender.html">
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    第二章 Memory
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../Memory/StructMemoryAligned.html">
+            
+                <a href="../Memory/StructMemoryAligned.html">
+            
+                    
+                    iOS结构体内存对齐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../Memory/MemoryFiveMainSection.html">
+            
+                <a href="../Memory/MemoryFiveMainSection.html">
+            
+                    
+                    内存中的5大区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.3" data-path="../Memory/TaggedPointer.html">
+            
+                <a href="../Memory/TaggedPointer.html">
+            
+                    
+                    Tagged Pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.4" data-path="../Memory/SideTables.html">
+            
+                <a href="../Memory/SideTables.html">
+            
+                    
+                    SideTables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.5" data-path="../Memory/RetainCount.html">
+            
+                <a href="../Memory/RetainCount.html">
+            
+                    
+                    RetainCount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.6" data-path="../Memory/WeakTable.html">
+            
+                <a href="../Memory/WeakTable.html">
+            
+                    
+                    WeakTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    第三章 Objc_Object
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../Objc_Object/Property.html">
+            
+                <a href="../Objc_Object/Property.html">
+            
+                    
+                    Propety属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../Objc_Object/isa.html">
+            
+                <a href="../Objc_Object/isa.html">
+            
+                    
+                    isa
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.3" data-path="../Objc_Object/ObjectClass.html">
+            
+                <a href="../Objc_Object/ObjectClass.html">
+            
+                    
+                    ObjectClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.4" data-path="../Objc_Object/ClassRWT.html">
+            
+                <a href="../Objc_Object/ClassRWT.html">
+            
+                    
+                    ClassRWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.5" data-path="../Objc_Object/OCAllocInit.html">
+            
+                <a href="../Objc_Object/OCAllocInit.html">
+            
+                    
+                    AllocInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.6" data-path="../Objc_Object/Category.html">
+            
+                <a href="../Objc_Object/Category.html">
+            
+                    
+                    Category
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.7" data-path="../Objc_Object/AssociatedObject.html">
+            
+                <a href="../Objc_Object/AssociatedObject.html">
+            
+                    
+                    AssociatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    第四章 OC Foundation
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="Block.html">
+            
+                <a href="Block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="Method.html">
+            
+                <a href="Method.html">
+            
+                    
+                    Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.3" data-path="MessageForwarding.html">
+            
+                <a href="MessageForwarding.html">
+            
+                    
+                    MessageForwarding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.4" data-path="KVC.html">
+            
+                <a href="KVC.html">
+            
+                    
+                    KVC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.1.4.5" data-path="KVO.html">
+            
+                <a href="KVO.html">
+            
+                    
+                    KVO
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="OCFoundation.md">
+            
+                <span>
+            
+                    
+                    2.OC语言基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../Runtime/Runtime.md">
+            
+                <span>
+            
+                    
+                    3.Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../Block/Block.html">
+            
+                <a href="../Block/Block.html">
+            
+                    
+                    4.Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../Runloop/Runloop.html">
+            
+                <a href="../Runloop/Runloop.html">
+            
+                    
+                    5.Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../Memory/Memory.html">
+            
+                <a href="../Memory/Memory.html">
+            
+                    
+                    6.Memory内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../Autoreleasepool/Autoreleasepool.html">
+            
+                <a href="../Autoreleasepool/Autoreleasepool.html">
+            
+                    
+                    7. Autoreleasepool 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../Thread/Thread.html">
+            
+                <a href="../Thread/Thread.html">
+            
+                    
+                    8.Thread
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.7.1" data-path="../Thread/iOSThread.html">
+            
+                <a href="../Thread/iOSThread.html">
+            
+                    
+                    8.1 iOS线程知识点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.2" data-path="../Thread/ConcurrentVSParallel.html">
+            
+                <a href="../Thread/ConcurrentVSParallel.html">
+            
+                    
+                    8.2 并发与并行区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../knowledge/ReadME.html">
+            
+                <a href="../../knowledge/ReadME.html">
+            
+                    
+                    知识点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../knowledge/App启动.html">
+            
+                <a href="../../knowledge/App启动.html">
+            
+                    
+                    App启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" >
+            
+                <a target="_blank" href="https://juejin.im/entry/59dd94b06fb9a0451463030b">
+            
+                    
+                    Cocoapods原理总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../knowledge/static_inline.html">
+            
+                <a href="../../knowledge/static_inline.html">
+            
+                    
+                    内联函数,与宏的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../knowledge/listAndNode.html">
+            
+                <a href="../../knowledge/listAndNode.html">
+            
+                    
+                    单链表与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../../knowledge/staticCompare.html">
+            
+                <a href="../../knowledge/staticCompare.html">
+            
+                    
+                    static区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../knowledge/Mach-O.html">
+            
+                <a href="../../knowledge/Mach-O.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../../network/ReadME.html">
+            
+                <a href="../../network/ReadME.html">
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../network/TCP-Three-Way-Handshake.html">
+            
+                <a href="../../network/TCP-Three-Way-Handshake.html">
+            
+                    
+                    1. 简述TCP的三次握手过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../network/4次挥手过程详解.html">
+            
+                <a href="../../network/4次挥手过程详解.html">
+            
+                    
+                    2. 4次挥手过程详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../../network/TCP:UDP区别以及UDP如何实现可靠传输.html">
+            
+                <a href="../../network/TCP:UDP区别以及UDP如何实现可靠传输.html">
+            
+                    
+                    3. TCP/UDP区别以及UDP如何实现可靠传输
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.4" data-path="../../network/Http%20和%20Https%20有什么关系和区别.md">
+            
+                <span>
+            
+                    
+                    4. Http 和 Https 有什么关系和区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.5" data-path="../../network/get%20和%20post%20区别.md">
+            
+                <span>
+            
+                    
+                    5. get 和 post 区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.6" data-path="../../network/什么是Http协议无状态协议%3F怎么解决Http协议无状态协议%3F.md">
+            
+                <span>
+            
+                    
+                    6. 什么是Http协议无状态协议?怎么解决Http协议无状态协议?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.7" data-path="../../network/一次完整的HTTP请求所经历的7个步骤.html">
+            
+                <a href="../../network/一次完整的HTTP请求所经历的7个步骤.html">
+            
+                    
+                    7. 一次完整的HTTP请求所经历的7个步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.8" data-path="../../network/Socket.html">
+            
+                <a href="../../network/Socket.html">
+            
+                    
+                    8. Socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.9" data-path="../../network/Http&Socket.html">
+            
+                <a href="../../network/Http&Socket.html">
+            
+                    
+                    9. Socket & Http
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../../network/OSI.html">
+            
+                <a href="../../network/OSI.html">
+            
+                    
+                    10.OSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../../Interview/ReadME.html">
+            
+                <a href="../../Interview/ReadME.html">
+            
+                    
+                    面试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.5.1" data-path="../../Interview/2018 年最新 iOS 面试题及答案 (一">
+            
+                <span>
+            
+                    
+                    【2018 年最新】 iOS 面试题及答案 (一)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >KVO</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="kvo">KVO</h1>
+<h2 id="kvo&#x521D;&#x63A2;">KVO&#x521D;&#x63A2;</h2>
+<p><code>KVO&#xFF08;Key-Value Observing&#xFF09;</code>&#x662F;&#x82F9;&#x679C;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x5957;&#x4E8B;&#x4EF6;&#x901A;&#x77E5;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x79CD;&#x673A;&#x5236;&#x5141;&#x8BB8;&#x5C06;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x7684;&#x7279;&#x5B9A;&#x5C5E;&#x6027;&#x7684;&#x66F4;&#x6539;&#x901A;&#x77E5;&#x7ED9;&#x5BF9;&#x8C61;&#x3002;iOS&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>KVO</code> &#x6765;&#x68C0;&#x6D4B;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x7684;&#x53D8;&#x5316;&#x3001;&#x5FEB;&#x901F;&#x505A;&#x51FA;&#x54CD;&#x5E94;&#xFF0C;&#x8FD9;&#x80FD;&#x591F;&#x4E3A;&#x6211;&#x4EEC;&#x5728;&#x5F00;&#x53D1;&#x5F3A;&#x4EA4;&#x4E92;&#x3001;&#x54CD;&#x5E94;&#x5F0F;&#x5E94;&#x7528;&#x4EE5;&#x53CA;&#x5B9E;&#x73B0;&#x89C6;&#x56FE;&#x548C;&#x6A21;&#x578B;&#x7684;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x65F6;&#x63D0;&#x4F9B;&#x5927;&#x91CF;&#x7684;&#x5E2E;&#x52A9;&#x3002;</p>
+<p>&#x5728;<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html" target="_blank">Documentation Archieve</a>&#x4E2D;&#x63D0;&#x5230;&#x4E00;&#x53E5;&#x60F3;&#x8981;&#x7406;&#x89E3;<code>KVO</code>&#xFF0C;&#x5FC5;&#x987B;&#x5148;&#x7406;&#x89E3;<code>KVC</code>&#xFF0C;&#x56E0;&#x4E3A;<code>&#x952E;&#x503C;&#x89C2;&#x5BDF;</code>&#x662F;&#x5EFA;&#x7ACB;&#x5728;<code>&#x952E;&#x503C;&#x7F16;&#x7801;</code>&#x7684;&#x57FA;&#x7840;&#x4E0A;</p>
+<blockquote>
+<p>In order to understand key-value observing, you must first understand key-value coding.&#x2014;&#x2014;Key-Value Observing Programming Guide</p>
+</blockquote>
+<p>&#x800C;<code>KVO</code>&#x548C;<code>NSNotificatioCenter</code>&#x90FD;&#x662F;iOS&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#xFF0C;&#x4E24;&#x8005;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF1A;</p>
+<ul>
+<li>&#x76F8;&#x5BF9;&#x4E8E;&#x88AB;&#x89C2;&#x5BDF;&#x8005;&#x548C;&#x89C2;&#x5BDF;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;<code>KVO</code>&#x662F;&#x4E00;&#x5BF9;&#x4E00;&#x7684;&#xFF0C;<code>NSNotificatioCenter</code>&#x662F;&#x4E00;&#x5BF9;&#x591A;&#x7684;</li>
+<li><code>KVO</code>&#x5BF9;&#x88AB;&#x76D1;&#x542C;&#x5BF9;&#x8C61;&#x65E0;&#x4FB5;&#x5165;&#x6027;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x5176;&#x5185;&#x90E8;&#x4EE3;&#x7801;&#x5373;&#x53EF;&#x5B9E;&#x73B0;&#x76D1;&#x542C;</li>
+</ul>
+<h2 id="kvo&#x4F7F;&#x7528;&#x53CA;&#x6CE8;&#x610F;&#x70B9;">KVO&#x4F7F;&#x7528;&#x53CA;&#x6CE8;&#x610F;&#x70B9;</h2>
+<h4 id="1&#x57FA;&#x672C;&#x4F7F;&#x7528;">1.&#x57FA;&#x672C;&#x4F7F;&#x7528;</h4>
+<p>KVO&#x4F7F;&#x7528;&#x4E09;&#x90E8;&#x66F2;&#xFF1A;</p>
+<ul>
+<li>&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x8005;</li>
+</ul>
+<pre><code class="lang-objective-c">[self.person addObserver:self forKeyPath:@&quot;name&quot; options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
+</code></pre>
+<ul>
+<li>&#x5B9E;&#x73B0;&#x56DE;&#x8C03;</li>
+</ul>
+<pre><code class="lang-objective-c">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSKeyValueChangeKey,id&gt; *)change context:(void *)context {
+    if ([keyPath isEqualToString:@&quot;name&quot;]) NSLog(@&quot;%@&quot;, change);
+}
+</code></pre>
+<ul>
+<li>&#x79FB;&#x9664;&#x89C2;&#x5BDF;&#x8005;</li>
+</ul>
+<pre><code class="lang-objective-c">[self.person removeObserver:self forKeyPath:@&quot;name&quot;];
+</code></pre>
+<h4 id="2context&#x7684;&#x4F7F;&#x7528;">2.context&#x7684;&#x4F7F;&#x7528;</h4>
+<p><code>Key-Value Observing Programming Guide</code>&#x662F;&#x8FD9;&#x4E48;&#x63CF;&#x8FF0;<code>context</code>&#x7684;</p>
+<blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2020/3/14/170d77a1fa7cf438?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>&#x6D88;&#x606F;&#x4E2D;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x6307;&#x9488;&#x5305;&#x542B;&#x4EFB;&#x610F;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x5C06;&#x5728;&#x76F8;&#x5E94;&#x7684;&#x66F4;&#x6539;&#x901A;&#x77E5;&#x4E2D;&#x4F20;&#x9012;&#x56DE;&#x89C2;&#x5BDF;&#x8005;&#xFF1B;&#x60A8;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;NULL&#x5E76;&#x5B8C;&#x5168;&#x4F9D;&#x8D56;&#x952E;&#x8DEF;&#x5F84;&#x5B57;&#x7B26;&#x4E32;&#x6765;&#x786E;&#x5B9A;&#x66F4;&#x6539;&#x901A;&#x77E5;&#x7684;&#x6765;&#x6E90;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x5BF9;&#x8C61;&#x7684;&#x7236;&#x7C7B;&#x7531;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x539F;&#x56E0;&#x800C;&#x89C2;&#x5BDF;&#x5230;&#x76F8;&#x540C;&#x7684;&#x952E;&#x8DEF;&#x5F84;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#xFF1B;&#x4E00;&#x79CD;&#x66F4;&#x5B89;&#x5168;&#xFF0C;&#x66F4;&#x53EF;&#x6269;&#x5C55;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x4F7F;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x786E;&#x4FDD;&#x60A8;&#x6536;&#x5230;&#x7684;&#x901A;&#x77E5;&#x662F;&#x53D1;&#x7ED9;&#x89C2;&#x5BDF;&#x8005;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8D85;&#x7C7B;&#x7684;&#x3002;</p>
+</blockquote>
+<p>&#x8FD9;&#x91CC;&#x63D0;&#x51FA;&#x4E00;&#x4E2A;&#x5047;&#x60F3;&#xFF0C;&#x5982;&#x679C;&#x7236;&#x7C7B;&#x4E2D;&#x6709;&#x4E2A;<code>name</code>&#x5C5E;&#x6027;&#xFF0C;&#x5B50;&#x7C7B;&#x4E2D;&#x4E5F;&#x6709;&#x4E2A;<code>name</code>&#x5C5E;&#x6027;&#xFF0C;&#x4E24;&#x8005;&#x90FD;&#x6CE8;&#x518C;&#x5BF9;<code>name</code>&#x7684;&#x89C2;&#x5BDF;&#xFF0C;&#x90A3;&#x4E48;&#x4EC5;&#x901A;&#x8FC7;<code>keyPath</code>&#x5DF2;&#x7ECF;&#x533A;&#x5206;&#x4E0D;&#x4E86;&#x662F;&#x54EA;&#x4E2A;<code>name</code>&#x53D1;&#x751F;&#x53D8;&#x5316;&#x4E86;&#xFF0C;&#x73B0;&#x6709;&#x4E24;&#x4E2A;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x591A;&#x52A0;&#x4E00;&#x5C42;&#x5224;&#x65AD;&#x2014;&#x2014;&#x5224;&#x65AD;<code>object</code>&#xFF0C;&#x663E;&#x7136;&#x4E3A;&#x4E86;&#x6EE1;&#x8DB3;&#x4E1A;&#x52A1;&#x9700;&#x6C42;&#x800C;&#x53BB;&#x589E;&#x52A0;&#x903B;&#x8F91;&#x5224;&#x65AD;&#x662F;&#x4E0D;&#x53EF;&#x53D6;&#x7684;</li>
+<li>&#x4F7F;&#x7528;<code>context</code>&#x4F20;&#x9012;&#x4FE1;&#x606F;&#xFF0C;&#x66F4;&#x5B89;&#x5168;&#x3001;&#x66F4;&#x53EF;&#x6269;&#x5C55;</li>
+</ul>
+<p><strong><code>context</code>&#x4F7F;&#x7528;&#x603B;&#x7ED3;:</strong></p>
+<ul>
+<li>&#x4E0D;&#x4F7F;&#x7528;context&#x4F5C;&#x4E3A;&#x89C2;&#x5BDF;&#x503C;</li>
+</ul>
+<pre><code class="lang-objective-c">// context&#x662F; void * &#x7C7B;&#x578B;&#xFF0C;&#x5E94;&#x8BE5;&#x586B; NULL &#x800C;&#x4E0D;&#x662F; nil
+[self.person addObserver:self forKeyPath:@&quot;name&quot; options:(NSKeyValueObservingOptionNew) context:NULL];
+</code></pre>
+<ul>
+<li>&#x4F7F;&#x7528;context&#x4F20;&#x9012;&#x4FE1;&#x606F;</li>
+</ul>
+<pre><code class="lang-objective-c">static void *PersonNameContext = &amp;PersonNameContext;
+static void *ChildNameContext = &amp;ChildNameContext;
+
+[self.person addObserver:self forKeyPath:@&quot;name&quot; options:(NSKeyValueObservingOptionNew) context:PersonNameContext];
+[self.child addObserver:self forKeyPath:@&quot;name&quot; options:(NSKeyValueObservingOptionNew) context:ChildNameContext];
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSKeyValueChangeKey,id&gt; *)change context:(void *)context {
+    if (context == PersonNameContext) {
+        NSLog(@&quot;%@&quot;, change);
+    } else if (context == ChildNameContext) {
+        NSLog(@&quot;%@&quot;, change);
+    }
+}
+</code></pre>
+<h2 id="kvo&#x539F;&#x7406;&#x2014;&#x2014;isa-swizzling">KVO&#x539F;&#x7406;&#x2014;&#x2014;isa-swizzling</h2>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-16-135638.jpg" alt=""></p>
+<p><code>Key-Value Observing Programming Guide</code>&#x4E2D;&#x6709;&#x4E00;&#x6BB5;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x7684;&#x53D9;&#x8FF0;</p>
+<ul>
+<li>KVO&#x662F;&#x4F7F;&#x7528;<code>isa-swizzling</code>&#x6280;&#x672F;&#x5B9E;&#x73B0;&#x7684;</li>
+<li>&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;isa&#x6307;&#x9488;&#x6307;&#x5411;&#x7EF4;&#x62A4;&#x5206;&#x914D;&#x8868;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#xFF0C;&#x8BE5;&#x5206;&#x6D3E;&#x8868;&#x5B9E;&#x8D28;&#x4E0A;&#x5305;&#x542B;&#x6307;&#x5411;&#x8BE5;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x6307;&#x9488;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x6570;&#x636E;</li>
+<li>&#x5728;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x8005;&#x65F6;&#xFF0C;&#x5C06;&#x4FEE;&#x6539;&#x89C2;&#x5BDF;&#x5BF9;&#x8C61;&#x7684;isa&#x6307;&#x9488;&#xFF0C;&#x6307;&#x5411;&#x4E2D;&#x95F4;&#x7C7B;&#x800C;&#x4E0D;&#x662F;&#x771F;&#x5B9E;&#x7C7B;&#x3002;isa&#x6307;&#x9488;&#x7684;&#x503C;&#x4E0D;&#x4E00;&#x5B9A;&#x53CD;&#x6620;&#x5B9E;&#x4F8B;&#x7684;&#x5B9E;&#x9645;&#x7C7B;</li>
+<li><p>&#x60A8;&#x6C38;&#x8FDC;&#x4E0D;&#x5E94;&#x4F9D;&#x9760;isa&#x6307;&#x9488;&#x6765;&#x786E;&#x5B9A;&#x7C7B;&#x6210;&#x5458;&#x8EAB;&#x4EFD;&#x3002;&#x76F8;&#x53CD;&#xFF0C;&#x60A8;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;class&#x65B9;&#x6CD5;&#x6765;&#x786E;&#x5B9A;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7684;&#x7C7B;</p>
+</li>
+<li><p>&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x8005;&#x4E4B;&#x524D;&#xFF1A;&#x7C7B;&#x5BF9;&#x8C61;&#x4E3A;</p>
+<pre><code>FXPerson
+</code></pre><p>&#xFF0C;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;isa&#x6307;&#x5411;</p>
+<pre><code>FXPerson
+</code></pre><p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-16-135759.jpg" alt="img"></p>
+</li>
+<li><p>&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x8005;&#x4E4B;&#x540E;&#xFF1A;&#x7C7B;&#x5BF9;&#x8C61;&#x4E3A; <code>FXPerson</code>&#xFF0C;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;isa&#x6307;&#x5411; <code>NSKVONotifying_FXPerson</code></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-16-135804.jpg" alt="img"></p>
+</li>
+</ul>
+<p>&#x4ECE;&#x8FD9;&#x4E24;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x4E00;&#x4E2A;&#x7ED3;&#x8BBA;&#xFF1A;&#x89C2;&#x5BDF;&#x8005;&#x6CE8;&#x518C;&#x524D;&#x540E;<code>FXPerson&#x7C7B;</code>&#x6CA1;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x4F46;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x7684;<code>isa</code>&#x6307;&#x5411;&#x53D1;&#x751F;&#x53D8;&#x5316;</p>
+<p>&#x5BF9;&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x53C8;&#x4E00;&#x5B9E;&#x73B0;&#xFF1B; Apple &#x4F7F;&#x7528;&#x4E86; <strong>isa &#x6DF7;&#x5199;</strong>(isa-swizzling) &#x6765;&#x5B9E;&#x73B0;KVO.</p>
+<ul>
+<li>KVO&#x662F;&#x57FA;&#x4E8E;runtime&#x673A;&#x5236;&#x5B9E;&#x73B0;&#x7684;</li>
+<li><p>&#x5F53;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x5BF9;&#x8C61;<code>&#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x89C2;&#x5BDF;</code>&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C31;&#x4F1A;&#x5728;&#x8FD0;&#x884C;&#x671F;&#x52A8;&#x6001;&#x5730;&#x521B;&#x5EFA;&#x8BE5;&#x7C7B;&#x7684;&#x4E00;&#x4E2A;&#x6D3E;&#x751F;&#x7C7B;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x6D3E;&#x751F;&#x7C7B;&#x4E2D;&#x91CD;&#x5199;&#x57FA;&#x7C7B;&#x4E2D;&#x4EFB;&#x4F55;&#x88AB;&#x89C2;&#x5BDF;&#x5C5E;&#x6027;&#x7684;setter &#x65B9;&#x6CD5;&#x3002;&#x6D3E;&#x751F;&#x7C7B;&#x5728;&#x88AB;&#x91CD;&#x5199;&#x7684;setter&#x65B9;&#x6CD5;&#x5185;&#x5B9E;&#x73B0;&#x771F;&#x6B63;&#x7684;<code>&#x901A;&#x77E5;&#x673A;&#x5236;</code></p>
+</li>
+<li><p>&#x6BCF;&#x4E2A;&#x7C7B;&#x5BF9;&#x8C61;&#x4E2D;&#x90FD;&#x6709;&#x4E00;&#x4E2A;isa&#x6307;&#x9488;&#x6307;&#x5411;&#x5F53;&#x524D;&#x7C7B;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x7C7B;&#x5BF9;&#x8C61;&#x7684;&#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x89C2;&#x5BDF;&#xFF0C;&#x90A3;&#x4E48;&#x7CFB;&#x7EDF;&#x4F1A;&#x5077;&#x5077;&#x5C06;isa&#x6307;&#x9488;&#x6307;&#x5411;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#x6D3E;&#x751F;&#x7C7B;&#xFF0C;&#x4ECE;&#x800C;&#x5728;&#x7ED9;&#x88AB;&#x76D1;&#x63A7;&#x5C5E;&#x6027;&#x8D4B;&#x503C;&#x65F6;&#x6267;&#x884C;&#x7684;&#x662F;&#x6D3E;&#x751F;&#x7C7B;&#x7684;setter&#x65B9;&#x6CD5;</p>
+</li>
+<li>KVO&#x7684;&#x8FD9;&#x5957;&#x5B9E;&#x73B0;&#x673A;&#x5236;&#x4E2D;&#x82F9;&#x679C;&#x8FD8;&#x5077;&#x5077;&#x91CD;&#x5199;&#x4E86;class&#x65B9;&#x6CD5;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x8BEF;&#x8BA4;&#x4E3A;&#x8FD8;&#x662F;&#x4F7F;&#x7528;&#x7684;&#x5F53;&#x524D;&#x7C7B;&#xFF0C;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x9690;&#x85CF;&#x751F;&#x6210;&#x7684;&#x6D3E;&#x751F;&#x7C7B;</li>
+</ul>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/20190318144841.png" alt=""></p>
+<p>&#x5F53;&#x8C03;&#x7528;&#x4E86; <code>addObserver:forkeypath</code>&#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x52A8;&#x6001;&#x521B;&#x5EFA; <code>NSKVONorifying_A</code>&#x7C7B;&#xFF0C;&#x540C;&#x65F6;&#x5C06;A&#x7684;isa&#x6307;&#x9488;&#x6307;&#x5411; NSKVONorifying_A&#x3002;</p>
+<p>iOS&#x4E2D;<code>KVO</code>&#x5206;&#x4E3A;&#x81EA;&#x52A8;&#x76D1;&#x542C;&#x548C;&#x624B;&#x52A8;&#x89E6;&#x53D1;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;</p>
+<p>&#x624B;&#x52A8;&#x89E6;&#x53D1;:</p>
+<ol>
+<li>&#x91CD;&#x5199;&#x76D1;&#x542C;&#x5C5E;&#x6027;&#x7684;set&#x3001;get&#x65B9;&#x6CD5;</li>
+<li>&#x91CD;&#x5199; <code>+ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key</code> </li>
+<li>&#x5728;set&#x65B9;&#x6CD5;&#x4E2D;&#x5728;&#x8D4B;&#x503C;&#x7684;&#x524D;&#x540E;&#x5206;&#x522B;&#x8C03;&#x7528;&#xFF1A;<code>willChangeValueForKey</code>&#x548C;<code>didChangeValueForKey</code></li>
+<li>&#x5B9E;&#x73B0;<code>willChangeValueForKey</code>&#x548C;<code>didChangeValueForKey</code>&#x65B9;&#x6CD5;</li>
+</ol>
+<p>&#x5176;&#x4E2D;&#x9700;&#x8981;&#x91CD;&#x5199;</p>
+<pre><code class="lang-objective-c">+ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key{
+  if([key isEqualToString:@&quot;age&quot;]){
+  //&#x53D6;&#x6D88;&#x81EA;&#x52A8;&#x53D1;&#x9001;&#x901A;&#x77E5;
+    return NO;
+  }else{
+    return [super automaticallyNotifiesObserversForKey:key];
+  }
+}
+</code></pre>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<ol>
+<li><code>automaticallyNotifiesObserversForKey</code>&#x4E3A;<code>YES</code>&#x65F6;&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x5C5E;&#x6027;&#x4F1A;&#x751F;&#x6210;&#x52A8;&#x6001;&#x5B50;&#x7C7B;<code>NSKVONotifying_XXX</code></li>
+<li>&#x52A8;&#x6001;&#x5B50;&#x7C7B;&#x89C2;&#x5BDF;&#x7684;&#x662F;<code>setter</code>&#x65B9;&#x6CD5;</li>
+<li>&#x52A8;&#x6001;&#x5B50;&#x7C7B;&#x91CD;&#x5199;&#x4E86;&#x89C2;&#x5BDF;&#x5C5E;&#x6027;&#x7684;<code>setter</code>&#x65B9;&#x6CD5; <code>dealloc</code> <code>class</code> <code>_isKVOA</code>&#x65B9;&#x6CD5;<ul>
+<li><code>setter</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x89C2;&#x5BDF;&#x952E;&#x503C;</li>
+<li><code>dealloc</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x91CA;&#x653E;&#x65F6;&#x5BF9;isa&#x6307;&#x5411;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;</li>
+<li><code>class</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x6307;&#x56DE;&#x52A8;&#x6001;&#x5B50;&#x7C7B;&#x7684;&#x7236;&#x7C7B;</li>
+<li><code>_isKVOA</code>&#x7528;&#x6765;&#x6807;&#x8BC6;&#x662F;&#x5426;&#x662F;&#x5728;&#x89C2;&#x5BDF;&#x8005;&#x72B6;&#x6001;&#x7684;&#x4E00;&#x4E2A;&#x6807;&#x5FD7;&#x4F4D;</li>
+</ul>
+</li>
+<li><code>dealloc</code>&#x4E4B;&#x540E;<code>isa</code>&#x6307;&#x5411;&#x5143;&#x7C7B;</li>
+<li><code>dealloc</code>&#x4E4B;&#x540E;&#x52A8;&#x6001;&#x5B50;&#x7C7B;&#x4E0D;&#x4F1A;&#x9500;&#x6BC1;</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<p><a href="https://juejin.cn/post/6844904090569277447" target="_blank">1 iOS&#x63A2;&#x7D22; KVO&#x539F;&#x7406;&#x53CA;&#x81EA;&#x5B9A;&#x4E49;</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="KVC.html" class="navigation navigation-prev " aria-label="Previous page: KVC">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="OCFoundation.md" class="navigation navigation-next " aria-label="Next page: 2.OC语言基础">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"KVO","level":"2.1.4.5","depth":3,"next":{"title":"2.OC语言基础","level":"3.1","depth":1,"path":"iOS/OCFoundation/OCFoundation.md","ref":"iOS/OCFoundation/OCFoundation.md","articles":[]},"previous":{"title":"KVC","level":"2.1.4.4","depth":3,"path":"iOS/OCFoundation/KVC.md","ref":"iOS/OCFoundation/KVC.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/KVO.md","mtime":"2021-02-20T14:46:13.219Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T14:46:46.375Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
