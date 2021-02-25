@@ -119,18 +119,23 @@ Input Source, Timer Source, Run Loop Observer 统称为 Mode Item，这里的 Mo
 4. `GSEventReceiveRunLoopMode`: 接受系统事件的内部 Mode，通常用不到。
 5. `kCFRunLoopCommonModes`: 伪模式，这是一个占位的 Mode，没有实际作用。
 
-#### 
 
-## CFRunLoopObserver 观察者
-观察时间点
-* kCFRunLoopEntry
-* kCFRunLoopBeforeTimers
-* kCFRunLoopBeforeSources
-* kCFRunLoopBeforeWaiting
-* kCFRunLoopAfterWaiting
-* kCFRunLoopExit
 
-#### 
+伪模式（`kCFRunLoopCommonModes`），这其实不是一种真实的模式，而是一种标记模式，意思就是可以在打上`Common Modes`标记的模式下运行。
+
+那么哪些模式被标记上了Common Modes呢？
+
+`NSDefaultRunLoopMode` 和 `UITrackingRunLoopMode`。
+
+
+
+
+作者：ibiaoma
+链接：https://juejin.cn/post/6930891193748307981
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
 
 ## Runloop Modes
 
@@ -171,6 +176,17 @@ Input Source, Timer Source, Run Loop Observer 统称为 Mode Item，这里的 Mo
 
 
 
+## CFRunLoopObserver 观察者
+观察时间点
+* kCFRunLoopEntry
+* kCFRunLoopBeforeTimers
+* kCFRunLoopBeforeSources
+* kCFRunLoopBeforeWaiting
+* kCFRunLoopAfterWaiting
+* kCFRunLoopExit
+
+
+
 ## Runtloop运行流程
 
 ![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134820.png)
@@ -179,6 +195,27 @@ Run Loop 接收的事件来源 (source) 有两种。
 
 - Input Source 传送来自其他应用或线程的异步事件/消息；
 - Timer Source 传送的是基于定时器的同步事件，可以定时或重复发送。
+
+`Source0`:
+
+- 触摸事件处理
+- `performSelector: onThread:`
+
+`Source1`:
+
+- 基于`port`的线程通信
+- 系统事件捕捉
+
+`Timers`:
+
+- `NSTimer`
+- `performSelector:withObject:afterDelay:`
+
+`Observers`:
+
+- 用于监听`RunLoop`的状态
+- UI刷新（BeforeWaiting）
+- `Autoreleasepool`(BeforeWaiting)
 
 
 
@@ -189,6 +226,99 @@ Run Loop 接收的事件来源 (source) 有两种。
 但只有 `main thread` 的 `runloop` **默认是开启**的，**其他线程如果希望持续存活下去，就需要手动开启Runloop**。对于子线程来说，runloop是懒加载的，只有当我们使用的时候才会创建，所以在子线程用定时器要注意：确保子线程的runloop被创建，不然定时器不会回调。
 
 `Runloop`是来管理线程的，当线程的runloop被开启后，线程会在执行完任务后进入休眠状态，有了任务就会被唤醒去执行任务。
+
+## RunLoop相关类
+
+Core Foundation框架下关于RunLoop的5个类：
+
+1. CFRunLoopRef：代表RunLoop的对象
+2. CFRunLoopModeRef：RunLoop的运行模式
+3. CFRunLoopSourceRef：就是RunLoop模型图中提到的输入源/事件源
+4. CFRunLoopTimerRef：就是RunLoop模型图中提到的定时源
+5. CFRunLoopObserverRef：观察者，能够监听RunLoop的状态改变
+
+我们可通过以下方式来获取RunLoop对象：
+
+- Core Foundation
+  - `CFRunLoopGetCurrent(); // 获得当前线程的RunLoop对象`
+  - `CFRunLoopGetMain(); // 获得主线程的RunLoop对象`
+- Foundation
+  - `[NSRunLoop currentRunLoop]; // 获得当前线程的RunLoop对象`
+  - `[NSRunLoop mainRunLoop]; // 获得主线程的RunLoop对象`
+
+
+
+`CFRunLoopGetCurrent` :
+
+```cpp
+CFRunLoopRef CFRunLoopGetCurrent(void) {
+    CHECK_FOR_FORK();
+    CFRunLoopRef rl = (CFRunLoopRef)_CFGetTSD(__CFTSDKeyRunLoop);
+    if (rl) return rl;
+    return _CFRunLoopGet0(pthread_self());
+}
+```
+
+查看`_CFRunLoopGet0`方法内部
+
+```cpp
+CF_EXPORT CFRunLoopRef _CFRunLoopGet0(pthread_t t) {
+    if (pthread_equal(t, kNilPthreadT)) {
+	t = pthread_main_thread_np();
+    }
+    __CFLock(&loopsLock);
+    if (!__CFRunLoops) {
+        __CFUnlock(&loopsLock);
+        // 创建一个dict
+	CFMutableDictionaryRef dict = CFDictionaryCreateMutable(kCFAllocatorSystemDefault, 0, NULL, &kCFTypeDictionaryValueCallBacks);
+        // 根据传入的主线程获取主线程对应的RunLoop
+	CFRunLoopRef mainLoop = __CFRunLoopCreate(pthread_main_thread_np());
+        // 保存主线程 将主线程-key和RunLoop-Value保存到字典中
+	CFDictionarySetValue(dict, pthreadPointer(pthread_main_thread_np()), mainLoop);
+    
+	if (!OSAtomicCompareAndSwapPtrBarrier(NULL, dict, (void * volatile *)&__CFRunLoops)) {
+	    CFRelease(dict);
+	}
+	CFRelease(mainLoop);
+        __CFLock(&loopsLock);
+    }
+    
+    // 从字典里面拿，将线程作为key从字典里获取一个loop
+    CFRunLoopRef loop = (CFRunLoopRef)CFDictionaryGetValue(__CFRunLoops, pthreadPointer(t));
+    __CFUnlock(&loopsLock);
+
+    // 如果loop为空，则创建一个新的loop，所以runloop会在第一次获取的时候创建
+    if (!loop) {
+	CFRunLoopRef newLoop = __CFRunLoopCreate(t);
+        __CFLock(&loopsLock);
+	loop = (CFRunLoopRef)CFDictionaryGetValue(__CFRunLoops, pthreadPointer(t));
+    
+        // 创建好之后，以线程为key runloop为value，一对一存储在字典中，下次获取的时候，则直接返回字典内的runloop
+	if (!loop) {
+	    CFDictionarySetValue(__CFRunLoops, pthreadPointer(t), newLoop);
+	    loop = newLoop;
+	}
+        // don't release run loops inside the loopsLock, because CFRunLoopDeallocate may end up taking it
+        __CFUnlock(&loopsLock);
+	CFRelease(newLoop);
+    }
+    if (pthread_equal(t, pthread_self())) {
+        _CFSetTSD(__CFTSDKeyRunLoop, (void *)loop, NULL);
+        if (0 == _CFGetTSD(__CFTSDKeyRunLoopCntr)) {
+            _CFSetTSD(__CFTSDKeyRunLoopCntr, (void *)(PTHREAD_DESTRUCTOR_ITERATIONS-1), (void (*)(void *))__CFFinalizeRunLoop);
+        }
+    }
+    return loop;
+}
+```
+
+
+
+**线程和 RunLoop 之间是一一对应的，其关系是保存在一个 Dictionary 里。所以我们创建子线程RunLoop时，只需在子线程中获取当前线程的RunLoop对象即可`[NSRunLoop currentRunLoop];`**
+
+**如果不获取，那子线程就不会创建与之相关联的RunLoop，并且只能在一个线程的内部获取其 RunLoop `[NSRunLoop currentRunLoop];`**
+
+**方法调用时，会先看一下字典里有没有存子线程相对用的RunLoop，如果有则直接返回RunLoop，如果没有则会创建一个，并将与之对应的子线程存入字典中。当线程结束时，RunLoop会被销毁。**
 
 
 
