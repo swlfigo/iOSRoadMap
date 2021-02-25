@@ -20,11 +20,66 @@ Runloop 是线程的基础支撑，是循环处理事件的机制，一个具体
 - 用户态: 应用程序一般都运行在用户态上
 - 内核态: 系统调用，需要使用到一些操作系统以及一些底层内核指令或者API
 
-## CFRunLoop
+
+
+一般来讲，一个线程一次只能执行一个任务，执行完成后线程就会退出。如果我们需要一个机制，让线程能随时处理事件但并不退出，这种模型通常被称作 Event Loop。 iOS里的`RunLoop`也是。
+
+实现这种模型的关键点在于：如何管理事件/消息，如何让线程在没有处理消息时休眠以避免资源占用、在有消息到来时立刻被唤醒。
+
+`RunLoop`实际上是一个对象，这个对象在循环中用来处理程序运行过程中出现的各种事件（比如说触摸事件、UI刷新事件、定时器事件、Selector事件），从而保持程序的持续运行；而且在没有事件处理的时候，会进入睡眠模式，从而节省CPU资源，提高程序性能。
+
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-25-092153.jpg)
+
+
+
+**RunLoop就是线程中的一个循环，RunLoop在循环中会不断检测，通过Input sources（输入源）和Timer sources（定时源）两种来源等待接受事件；然后对接受到的事件通知线程进行处理，并在没有事件的时候进行休息。**
+
+
+
+## iOS中有两套API来访问和使用Runloop 
+
+Foundation： NSRunLoop
+
+Core Foundation : CFRunLoopRef
+
+#### Runloop的结构
+
+```cpp
+struct __CFRunLoop {
+    CFRuntimeBase _base;
+    pthread_mutex_t _lock;			/* locked for accessing mode list */
+    __CFPort _wakeUpPort;			// used for CFRunLoopWakeUp 
+    Boolean _unused;
+    volatile _per_run_data *_perRunData;              // reset for runs of the run loop
+    pthread_t _pthread;
+    uint32_t _winthread;
+    CFMutableSetRef _commonModes;
+    CFMutableSetRef _commonModeItems;	
+    CFRunLoopModeRef _currentMode;		//当前Mode
+    CFMutableSetRef _modes;			//所有mode的集合
+    struct _block_item *_blocks_head;
+    struct _block_item *_blocks_tail;
+    CFAbsoluteTime _runTime;
+    CFAbsoluteTime _sleepTime;
+    CFTypeRef _counterpart;
+};
+```
+
+mode类型的`CFRunLoopModeRef`
+
+`CFRunLoopModeRef` 其实是指向`__CFRunLoopMode`结构体的指针:
+
+```cpp
+typedef struct __CFRunLoopMode *CFRunLoopModeRef;
+```
+
+
+
+### CFRunLoop
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134756.jpg)
 
-##  CFRunLoopMode
+###  CFRunLoopMode
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134804.jpg)
 
@@ -32,6 +87,39 @@ Runloop 是线程的基础支撑，是循环处理事件的机制，一个具体
   需要手动唤醒线程
 * source1
   具备唤醒线程的能力
+
+
+
+## 各个数据结构之间关系
+
+
+
+一个Runloop中包含很多个Mode,Mode中包含Source,Timer与Observer
+
+Input Source, Timer Source, Run Loop Observer 统称为 Mode Item，这里的 Mode 指的是 Run Loop Mode。一个 Run Loop 包含若干个 Mode，每个 Mode 又包含若干个 Item。Item 与 Mode 是多对多的关系，没有 Item 的 Mode 会立刻退出
+
+
+
+**CFRunLoopModeRef代表RunLoop的运行模式**
+
+**一个RunLoop包含若干个Mode，每个Mode又包含若干个Source0/Source1/Timer/Observer**
+
+**RunLoop启动时只能选择其中一个Mode作为currentMode。**
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-25-095932.jpg)
+
+一个RunLoop对象（CFRunLoopRef）中包含若干个运行模式（CFRunLoopModeRef）。而每一个运行模式下又包含若干个输入源（CFRunLoopSourceRef）、定时源（CFRunLoopTimerRef）、观察者（CFRunLoopObserverRef）
+
+
+
+系统默认注册了5个Mode:
+
+1. `kCFRunLoopDefaultMode`: App的默认 Mode，通常主线程是在这个 Mode 下运行的。
+2. `UITrackingRunLoopMode`: 界面跟踪 Mode，用于 ScrollView 追踪触摸滑动，保证界面滑动时不受其他 Mode 影响。
+3. `UIInitializationRunLoopMode`: 在刚启动 App 时第进入的第一个 Mode，启动完成后就不再使用。
+4. `GSEventReceiveRunLoopMode`: 接受系统事件的内部 Mode，通常用不到。
+5. `kCFRunLoopCommonModes`: 伪模式，这是一个占位的 Mode，没有实际作用。
+
+#### 
 
 ## CFRunLoopObserver 观察者
 观察时间点
@@ -42,13 +130,7 @@ Runloop 是线程的基础支撑，是循环处理事件的机制，一个具体
 * kCFRunLoopAfterWaiting
 * kCFRunLoopExit
 
-## 各个数据结构之间关系
-![](http://img.isylar.com/media/15498936308142.jpg)
-一个Runloop中包含很多个Mode,Mode中包含Source,Timer与Observer
-
-Input Source, Timer Source, Run Loop Observer 统称为 Mode Item，这里的 Mode 指的是 Run Loop Mode。一个 Run Loop 包含若干个 Mode，每个 Mode 又包含若干个 Item。Item 与 Mode 是多对多的关系，没有 Item 的 Mode 会立刻退出
-
-
+#### 
 
 ## Runloop Modes
 
