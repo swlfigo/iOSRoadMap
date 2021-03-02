@@ -62,12 +62,15 @@
     * [Runloop](iOS/OCFoundation/Runloop.md)
     * [MultiThreading](iOS/OCFoundation/MultiThreading.md)
     * [GCD-Usage](iOS/OCFoundation/GCDUsage.md)
-  * 网络
+    * [GCD-Thread](iOS/OCFoundation/GCDThread.md)
+    * [Lock](iOS/OCFoundation/Lock.md)
+    * [AutoReleasePool](iOS/OCFoundation/AutoReleasePool.md)
+* 网络
     * [TCP粘包](Network/TCPMessageFrame.md)
-  
 
   
-
+  
+  
   
   * [2.OC语言基础](iOS/OCFoundation/OCFoundation.md)
 * [3.Runtime](iOS/Runtime/Runtime.md)
@@ -75,10 +78,9 @@
   * [5.Runloop](./iOS/Runloop/Runloop.md)
   * [6.Memory内存管理](iOS/Memory/Memory.md)
   * [7. Autoreleasepool ](iOS/Autoreleasepool/Autoreleasepool.md)
-  * [8.Thread](iOS/Thread/Thread.md)
-    * [8.1 iOS线程知识点](iOS/Thread/iOSThread.md)
-    * [8.2 并发与并行区别](iOS/Thread/ConcurrentVSParallel.md)
-  
+
+    
+
 * [知识点](knowledge/ReadME.md)
   * [App启动过程](knowledge/App启动.md)
   *  [Cocoapods原理总结](https://juejin.im/entry/59dd94b06fb9a0451463030b)
