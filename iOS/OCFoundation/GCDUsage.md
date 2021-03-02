@@ -1,4 +1,4 @@
-# GCDThread
+# GCD Usage
 
 GCD全称是`Grand Central Dispatch`，它是纯 C 语言，并且提供了非常多强大的函数
 
