@@ -1221,7 +1221,6 @@
 <p><strong>&#x6CE8;&#xFF1A;&#x4E0D;&#x8981;&#x5C06;&#x8FC7;&#x591A;&#x7684;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;&#x4EE3;&#x7801;&#x653E;&#x5230;&#x9501;&#x91CC;&#x9762;&#xFF0C;&#x5426;&#x5219;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#x53E6;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5C31;&#x4E00;&#x76F4;&#x5728;&#x7B49;&#x5F85;&#xFF0C;&#x5C31;&#x65E0;&#x6CD5;&#x53D1;&#x6325;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x4F5C;&#x7528;&#x4E86;</strong></p>
 <h4 id="4&#x9501;&#x7684;&#x5206;&#x7C7B;">4.&#x9501;&#x7684;&#x5206;&#x7C7B;</h4>
 <p>&#x5728;iOS&#x4E2D;&#x9501;&#x7684;&#x57FA;&#x672C;&#x79CD;&#x7C7B;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#xFF1A;<code>&#x4E92;&#x65A5;&#x9501;</code>&#x3001;<code>&#x81EA;&#x65CB;&#x9501;</code>&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x6BD4;&#x5982;<code>&#x6761;&#x4EF6;&#x9501;</code>&#x3001;<code>&#x9012;&#x5F52;&#x9501;</code>&#x3001;<code>&#x4FE1;&#x53F7;&#x91CF;</code>&#x90FD;&#x662F;&#x4E0A;&#x5C42;&#x7684;&#x5C01;&#x88C5;&#x548C;&#x5B9E;&#x73B0;</p>
-<p>&#x800C;&#x5728;JAVA&#x4E2D;&#x9501;&#x5360;&#x6709;&#x66F4;&#x5927;&#x4EFD;&#x989D;&#xFF0C;&#x6709;&#x5174;&#x8DA3;&#x53EF;&#x4EE5;&#x53BB;&#x7814;&#x7A76;&#x4E00;&#x4E0B;</p>
 <h4 id="5-&#x4E92;&#x65A5;&#x9501;">5. &#x4E92;&#x65A5;&#x9501;</h4>
 <p><code>&#x4E92;&#x65A5;&#x9501;</code>(Mutual exclusion&#xFF0C;&#x7F29;&#x5199;<code>Mutex</code>)&#x9632;&#x6B62;&#x4E24;&#x6761;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x5BF9;&#x540C;&#x4E00;&#x516C;&#x5171;&#x8D44;&#x6E90;(&#x6BD4;&#x5982;&#x5168;&#x5C40;&#x53D8;&#x91CF;)&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#x7684;&#x673A;&#x5236;&#x3002;&#x5F53;&#x83B7;&#x53D6;&#x9501;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#x65F6;&#xFF0C;&#x7EBF;&#x7A0B;&#x4F1A;&#x8FDB;&#x5165;&#x7761;&#x7720;&#xFF0C;&#x7B49;&#x5F85;&#x9501;&#x91CA;&#x653E;&#x65F6;&#x88AB;&#x5524;&#x9192;</p>
 <p><code>&#x4E92;&#x65A5;&#x9501;</code>&#x53C8;&#x5206;&#x4E3A;&#xFF1A;</p>
@@ -1237,6 +1236,824 @@
 <li><code>&#x4E92;&#x65A5;&#x9501;</code>&#x5728;&#x7EBF;&#x7A0B;&#x83B7;&#x53D6;&#x9501;&#x4F46;&#x6CA1;&#x6709;&#x83B7;&#x53D6;&#x5230;&#x65F6;&#xFF0C;&#x7EBF;&#x7A0B;&#x4F1A;&#x8FDB;&#x5165;&#x4F11;&#x7720;&#x72B6;&#x6001;&#xFF0C;&#x7B49;&#x9501;&#x88AB;&#x91CA;&#x653E;&#x65F6;&#x7EBF;&#x7A0B;&#x4F1A;&#x88AB;&#x5524;&#x9192;</li>
 <li><code>&#x81EA;&#x65CB;&#x9501;</code>&#x7684;&#x7EBF;&#x7A0B;&#x5219;&#x4F1A;&#x4E00;&#x76F4;&#x5904;&#x4E8E;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF08;&#x5FD9;&#x7B49;&#x5F85;&#xFF09;&#x4E0D;&#x4F1A;&#x8FDB;&#x5165;&#x4F11;&#x7720;&#x2014;&#x2014;&#x56E0;&#x6B64;&#x6548;&#x7387;&#x9AD8;</li>
 </ul>
+<h2 id="&#x4E8C;&#x3001;&#x81EA;&#x65CB;&#x9501;">&#x4E8C;&#x3001;&#x81EA;&#x65CB;&#x9501;</h2>
+<h4 id="1osspinlock">1.OSSpinLock</h4>
+<p>&#x81EA;&#x4ECE;<code>OSSpinLock</code>&#x51FA;&#x73B0;&#x4E86;&#x5B89;&#x5168;&#x95EE;&#x9898;&#x4E4B;&#x540E;&#x5C31;&#x5E9F;&#x5F03;&#x4E86;&#x3002;&#x81EA;&#x65CB;&#x9501;&#x4E4B;&#x6240;&#x4EE5;&#x4E0D;&#x5B89;&#x5168;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x81EA;&#x65CB;&#x9501;&#x7531;&#x4E8E;&#x83B7;&#x53D6;&#x9501;&#x65F6;&#xFF0C;&#x7EBF;&#x7A0B;&#x4F1A;&#x4E00;&#x76F4;&#x5904;&#x4E8E;&#x5FD9;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x9020;&#x6210;&#x4E86;&#x4EFB;&#x52A1;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x53CD;&#x8F6C;</p>
+<p>&#x800C;<code>OSSpinLock</code>&#x5FD9;&#x7B49;&#x7684;&#x673A;&#x5236;&#x5C31;&#x53EF;&#x80FD;&#x9020;&#x6210;&#x9AD8;&#x4F18;&#x5148;&#x7EA7;&#x4E00;&#x76F4;<code>running&#x7B49;&#x5F85;</code>&#xFF0C;&#x5360;&#x7528;CPU&#x65F6;&#x95F4;&#x7247;&#xFF1B;&#x800C;&#x4F4E;&#x4F18;&#x5148;&#x7EA7;&#x4EFB;&#x52A1;&#x65E0;&#x6CD5;&#x62A2;&#x5360;&#x65F6;&#x95F4;&#x7247;&#xFF0C;&#x53D8;&#x6210;&#x8FDF;&#x8FDF;&#x5B8C;&#x4E0D;&#x6210;&#xFF0C;&#x4E0D;&#x91CA;&#x653E;&#x9501;&#x7684;&#x60C5;&#x51B5;</p>
+<h4 id="2atomic">2.atomic</h4>
+<h6 id="21-atomic&#x539F;&#x7406;">2.1 atomic&#x539F;&#x7406;</h6>
+<p>&#x5728;<a href="https://juejin.im/post/6844904086744104968#heading-3" target="_blank">iOS&#x63A2;&#x7D22; KVC&#x539F;&#x7406;&#x53CA;&#x81EA;&#x5B9A;&#x4E49;</a>&#x4E2D;&#x6709;&#x63D0;&#x5230;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684;setter&#x65B9;&#x6CD5;&#x4F1A;&#x6839;&#x636E;&#x4FEE;&#x9970;&#x7B26;&#x4E0D;&#x540C;&#x8C03;&#x7528;&#x4E0D;&#x540C;&#x65B9;&#x6CD5;&#xFF0C;&#x6700;&#x540E;&#x7EDF;&#x4E00;&#x8C03;&#x7528;<code>reallySetProperty</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;&#x5C31;&#x6709;&#x4E00;&#x6BB5;&#x5173;&#x4E8E;<code>atomic</code>&#x4FEE;&#x9970;&#x8BCD;&#x7684;&#x4EE3;&#x7801;</p>
+<pre><code class="lang-objective-c">static inline void reallySetProperty(id self, SEL _cmd, id newValue, ptrdiff_t offset, bool atomic, bool copy, bool mutableCopy)
+{
+    if (offset == 0) {
+        object_setClass(self, newValue);
+        return;
+    }
+
+    id oldValue;
+    id *slot = (id*) ((char*)self + offset);
+
+    if (copy) {
+        newValue = [newValue copyWithZone:nil];
+    } else if (mutableCopy) {
+        newValue = [newValue mutableCopyWithZone:nil];
+    } else {
+        if (*slot == newValue) return;
+        newValue = objc_retain(newValue);
+    }
+
+    if (!atomic) {
+        oldValue = *slot;
+        *slot = newValue;
+    } else {
+        spinlock_t&amp; slotlock = PropertyLocks[slot];
+        slotlock.lock();
+        oldValue = *slot;
+        *slot = newValue;        
+        slotlock.unlock();
+    }
+
+    objc_release(oldValue);
+}
+</code></pre>
+<p>&#x6BD4;&#x5BF9;&#x4E00;&#x4E0B;<code>atomic</code>&#x7684;&#x903B;&#x8F91;&#x5206;&#x652F;&#xFF1A;</p>
+<ul>
+<li>&#x539F;&#x5B50;&#x6027;&#x4FEE;&#x9970;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x4E86;<code>spinlock</code>&#x52A0;&#x9501;&#x5904;&#x7406;</li>
+<li>&#x975E;&#x539F;&#x5B50;&#x6027;&#x7684;&#x5C5E;&#x6027;&#x9664;&#x4E86;&#x6CA1;&#x52A0;&#x9501;&#xFF0C;&#x5176;&#x4ED6;&#x903B;&#x8F91;&#x4E0E;<code>atomic</code>&#x4E00;&#x822C;&#x65E0;&#x4E8C;</li>
+</ul>
+<p>&#x7B49;&#x7B49;&#xFF0C;&#x524D;&#x9762;&#x4E0D;&#x662F;&#x521A;&#x8BF4;<code>OSSpinLock</code>&#x56E0;&#x4E3A;&#x5B89;&#x5168;&#x95EE;&#x9898;&#x88AB;&#x5E9F;&#x5F03;&#x4E86;&#x5417;&#xFF0C;&#x4F46;&#x662F;&#x82F9;&#x679C;&#x6E90;&#x7801;&#x600E;&#x4E48;&#x8FD8;&#x5728;&#x4F7F;&#x7528;&#x5462;&#xFF1F;&#x5176;&#x5B9E;&#x70B9;&#x8FDB;&#x53BB;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x7528;<code>os_unfair_lock</code>&#x66FF;&#x4EE3;&#x4E86;<code>OSSpinLock</code>&#xFF08;iOS10&#x4E4B;&#x540E;&#x66FF;&#x6362;&#xFF09;</p>
+<pre><code class="lang-objective-c">using spinlock_t = mutex_tt&lt;LOCKDEBUG&gt;;
+
+class mutex_tt : nocopy_t {
+    os_unfair_lock mLock;
+    ...
+}
+</code></pre>
+<blockquote>
+<p>&#x540C;&#x65F6;&#x4E3A;&#x4E86;&#x54C8;&#x5E0C;&#x4E0D;&#x51B2;&#x7A81;&#xFF0C;&#x8FD8;&#x4F7F;&#x7528;<code>&#x52A0;&#x76D0;&#x64CD;&#x4F5C;</code>&#x8FDB;&#x884C;&#x52A0;&#x9501;</p>
+</blockquote>
+<p><code>getter</code>&#x65B9;&#x6CD5;&#x4EA6;&#x662F;&#x5982;&#x6B64;&#xFF1A;atomic&#x4FEE;&#x9970;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x52A0;&#x9501;&#x5904;&#x7406;</p>
+<pre><code class="lang-objective-c">id objc_getProperty(id self, SEL _cmd, ptrdiff_t offset, BOOL atomic) {
+    if (offset == 0) {
+        return object_getClass(self);
+    }
+
+    // Retain release world
+    id *slot = (id*) ((char*)self + offset);
+    if (!atomic) return *slot;
+
+    // Atomic retain release world
+    spinlock_t&amp; slotlock = PropertyLocks[slot];
+    slotlock.lock();
+    id value = objc_retain(*slot);
+    slotlock.unlock();
+
+    // for performance, we (safely) issue the autorelease OUTSIDE of the spinlock.
+    return objc_autoreleaseReturnValue(value);
+}
+</code></pre>
+<h6 id="22-atomic&#x4FEE;&#x9970;&#x7684;&#x5C5E;&#x6027;&#x7EDD;&#x5BF9;&#x5B89;&#x5168;&#x5417;&#xFF1F;">2.2 atomic&#x4FEE;&#x9970;&#x7684;&#x5C5E;&#x6027;&#x7EDD;&#x5BF9;&#x5B89;&#x5168;&#x5417;&#xFF1F;</h6>
+<p><code>atomic</code>&#x53EA;&#x80FD;&#x4FDD;&#x8BC1;setter&#x3001;getter&#x65B9;&#x6CD5;&#x7684;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x5E76;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5B89;&#x5168;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-04-083856.jpg" alt="img"></p>
+<p>&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x88AB;<code>atomic</code>&#x4FEE;&#x9970;&#x7684;<code>index&#x53D8;&#x91CF;</code>&#x5206;&#x522B;&#x5728;&#x4E24;&#x6B21;&#x5E76;&#x53D1;&#x5F02;&#x6B65;for&#x5FAA;&#x73AF;<code>10000&#x6B21;</code>&#x540E;&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x5E76;&#x4E0D;&#x7B49;&#x4E8E;<code>20000</code>&#x3002;&#x7531;&#x6B64;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x7ED3;&#x8BBA;&#xFF1A;</p>
+<ul>
+<li><code>atomic</code>&#x4FDD;&#x8BC1;&#x53D8;&#x91CF;&#x5728;&#x53D6;&#x503C;&#x548C;&#x8D4B;&#x503C;&#x65F6;&#x7684;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</li>
+<li>&#x4F46;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;<code>self.index+1</code>&#x4E5F;&#x662F;&#x5B89;&#x5168;&#x7684;</li>
+<li>&#x5982;&#x679C;&#x6539;&#x6210;<code>self.index=i</code>&#x662F;&#x80FD;&#x4FDD;&#x8BC1;setter&#x65B9;&#x6CD5;&#x7684;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;</li>
+</ul>
+<h4 id="3-&#x8BFB;&#x5199;&#x9501;">3. &#x8BFB;&#x5199;&#x9501;</h4>
+<p><code>&#x8BFB;&#x5199;&#x9501;</code>&#x5B9E;&#x9645;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;<code>&#x81EA;&#x65CB;&#x9501;</code>&#xFF0C;&#x5B83;&#x628A;&#x5BF9;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#x8005;&#x5212;&#x5206;&#x6210;&#x8BFB;&#x8005;&#x548C;&#x5199;&#x8005;&#xFF0C;&#x8BFB;&#x8005;&#x53EA;&#x5BF9;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x8FDB;&#x884C;&#x8BFB;&#x8BBF;&#x95EE;&#xFF0C;&#x5199;&#x8005;&#x5219;&#x9700;&#x8981;&#x5BF9;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x8FDB;&#x884C;&#x5199;&#x64CD;&#x4F5C;&#x3002;&#x8FD9;&#x79CD;&#x9501;&#x76F8;&#x5BF9;&#x4E8E;<code>&#x81EA;&#x65CB;&#x9501;</code>&#x800C;&#x8A00;&#xFF0C;&#x80FD;&#x63D0;&#x9AD8;&#x5E76;&#x53D1;&#x6027;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x591A;&#x5904;&#x7406;&#x5668;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x5B83;&#x5141;&#x8BB8;&#x540C;&#x65F6;&#x6709;&#x591A;&#x4E2A;&#x8BFB;&#x8005;&#x6765;&#x8BBF;&#x95EE;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#xFF0C;&#x6700;&#x5927;&#x53EF;&#x80FD;&#x7684;&#x8BFB;&#x8005;&#x6570;&#x4E3A;&#x5B9E;&#x9645;&#x7684;<code>CPU</code>&#x6570;</p>
+<ul>
+<li>&#x5199;&#x8005;&#x662F;&#x6392;&#x4ED6;&#x6027;&#x7684;&#xFF0C;&#x2F00;&#x4E2A;&#x8BFB;&#x5199;&#x9501;&#x540C;&#x65F6;&#x53EA;&#x80FD;&#x6709;&#x2F00;&#x4E2A;&#x5199;&#x8005;&#x6216;&#x591A;&#x4E2A;&#x8BFB;&#x8005;&#xFF08;&#x4E0E;CPU&#x6570;&#x76F8;&#x5173;&#xFF09;&#xFF0C;&#x4F46;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x65E2;&#x6709;&#x8BFB;&#x8005;&#x2F1C;&#x6709;&#x5199;&#x8005;&#x3002;&#x5728;&#x8BFB;&#x5199;&#x9501;&#x4FDD;&#x6301;&#x671F;&#x95F4;&#x4E5F;&#x662F;&#x62A2;&#x5360;&#x5931;&#x6548;&#x7684;</li>
+<li>&#x5982;&#x679C;&#x8BFB;&#x5199;&#x9501;&#x5F53;&#x524D;&#x6CA1;&#x6709;&#x8BFB;&#x8005;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x5199;&#x8005;&#xFF0C;&#x90A3;&#x4E48;&#x5199;&#x8005;&#x53EF;&#x4EE5;&#x2F74;&#x523B;&#x83B7;&#x5F97;&#x8BFB;&#x5199;&#x9501;&#xFF0C;&#x5426;&#x5219;&#x5B83;&#x5FC5;&#x987B;&#x2F83;&#x65CB;&#x5728;&#x90A3;&#x2FA5;&#xFF0C;&#x76F4;&#x5230;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5199;&#x8005;&#x6216;&#x8BFB;&#x8005;&#x3002;&#x5982;&#x679C;&#x8BFB;&#x5199;&#x9501;&#x6CA1;&#x6709;&#x5199;&#x8005;&#xFF0C;&#x90A3;&#x4E48;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x2F74;&#x5373;&#x83B7;&#x5F97;&#x8BE5;&#x8BFB;&#x5199;&#x9501;&#xFF0C;&#x5426;&#x5219;&#x8BFB;&#x8005;&#x5FC5;&#x987B;&#x2F83;&#x65CB;&#x5728;&#x90A3;&#x2FA5;&#xFF0C;&#x76F4;&#x5230;&#x5199;&#x8005;&#x91CA;&#x653E;&#x8BE5;&#x8BFB;&#x5199;&#x9501;</li>
+</ul>
+<pre><code>// &#x5BFC;&#x5165;&#x5934;&#x6587;&#x4EF6;
+#import &lt;pthread.h&gt;
+// &#x5168;&#x5C40;&#x58F0;&#x660E;&#x8BFB;&#x5199;&#x9501;
+pthread_rwlock_t lock;
+// &#x521D;&#x59CB;&#x5316;&#x8BFB;&#x5199;&#x9501;
+pthread_rwlock_init(&amp;lock, NULL);
+// &#x8BFB;&#x64CD;&#x4F5C;-&#x52A0;&#x9501;
+pthread_rwlock_rdlock(&amp;lock);
+// &#x8BFB;&#x64CD;&#x4F5C;-&#x5C1D;&#x8BD5;&#x52A0;&#x9501;
+pthread_rwlock_tryrdlock(&amp;lock);
+// &#x5199;&#x64CD;&#x4F5C;-&#x52A0;&#x9501;
+pthread_rwlock_wrlock(&amp;lock);
+// &#x5199;&#x64CD;&#x4F5C;-&#x5C1D;&#x8BD5;&#x52A0;&#x9501;
+pthread_rwlock_trywrlock(&amp;lock);
+// &#x89E3;&#x9501;
+pthread_rwlock_unlock(&amp;lock);
+// &#x91CA;&#x653E;&#x9501;
+pthread_rwlock_destroy(&amp;lock);
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x5E73;&#x65F6;&#x5F88;&#x5C11;&#x4F1A;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8BFB;&#x5199;&#x9501;<code>pthread_rwlock_t</code>&#xFF0C;&#x66F4;&#x591A;&#x7684;&#x662F;&#x91C7;&#x7528;&#x5176;&#x4ED6;&#x65B9;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;&#x4F7F;&#x7528;<a href="https://juejin.im/post/6844904138623418376#heading-6" target="_blank">&#x6805;&#x680F;&#x51FD;&#x6570;</a>&#x5B8C;&#x6210;&#x8BFB;&#x5199;&#x9501;&#x7684;&#x9700;&#x6C42;</p>
+<h2 id="&#x4E09;&#x3001;&#x4E92;&#x65A5;&#x9501;">&#x4E09;&#x3001;&#x4E92;&#x65A5;&#x9501;</h2>
+<h4 id="1pthreadmutex">1.pthread_mutex</h4>
+<p><code>pthread_mutex</code>&#x5C31;&#x662F;<code>&#x4E92;&#x65A5;&#x9501;</code>&#x672C;&#x8EAB;&#x2014;&#x2014;&#x5F53;&#x9501;&#x88AB;&#x5360;&#x7528;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x7533;&#x8BF7;&#x9501;&#x65F6;&#xFF0C;&#x4E0D;&#x662F;&#x4F7F;&#x7528;&#x5FD9;&#x7B49;&#xFF0C;&#x800C;&#x662F;&#x963B;&#x585E;&#x7EBF;&#x7A0B;&#x5E76;&#x7761;&#x7720;</p>
+<p>&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objective-c">// &#x5BFC;&#x5165;&#x5934;&#x6587;&#x4EF6;
+#import &lt;pthread.h&gt;
+// &#x5168;&#x5C40;&#x58F0;&#x660E;&#x4E92;&#x65A5;&#x9501;
+pthread_mutex_t _lock;
+// &#x521D;&#x59CB;&#x5316;&#x4E92;&#x65A5;&#x9501;
+pthread_mutex_init(&amp;_lock, NULL);
+// &#x52A0;&#x9501;
+pthread_mutex_lock(&amp;_lock);
+// &#x8FD9;&#x91CC;&#x505A;&#x9700;&#x8981;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x64CD;&#x4F5C;
+// ...
+// &#x89E3;&#x9501; 
+pthread_mutex_unlock(&amp;_lock);
+// &#x91CA;&#x653E;&#x9501;
+pthread_mutex_destroy(&amp;_lock);
+</code></pre>
+<p><a href="https://github.com/ibireme/YYKit/blob/3869686e0e560db0b27a7140188fad771e271508/YYKit/Cache/YYMemoryCache.m" target="_blank">YYKit&#x7684;YYMemoryCach</a>&#x6709;&#x4F7F;&#x7528;&#x5230;<code>pthread_mutex</code></p>
+<h4 id="2synchronized">2.@synchronized</h4>
+<p><code>@synchronized</code>&#x53EF;&#x80FD;&#x662F;&#x65E5;&#x5E38;&#x5F00;&#x53D1;&#x4E2D;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x4E00;&#x79CD;&#x4E92;&#x65A5;&#x9501;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x7684;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x662F;&#x5728;&#x4EFB;&#x610F;&#x573A;&#x666F;&#x4E0B;&#x90FD;&#x80FD;&#x4F7F;&#x7528;<code>@synchronized</code>&#xFF0C;&#x4E14;&#x5B83;&#x7684;&#x6027;&#x80FD;&#x8F83;&#x4F4E;</p>
+<pre><code class="lang-objective-c">@synchronized (obj) {}
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x901A;&#x8FC7;&#x6E90;&#x7801;&#x63A2;&#x7D22;&#x6765;&#x770B;&#x4E00;&#x4E0B;<code>@synchronized</code>&#x5728;&#x4F7F;&#x7528;&#x4E2D;&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</p>
+<ul>
+<li>&#x901A;&#x8FC7;<strong>&#x6C47;&#x7F16;</strong>&#x80FD;&#x53D1;&#x73B0;<code>@synchronized</code>&#x5C31;&#x662F;&#x5B9E;&#x73B0;&#x4E86;<code>objc_sync_enter</code>&#x548C; <code>objc_sync_exit</code>&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;</li>
+<li>&#x901A;&#x8FC7;<strong>&#x7B26;&#x53F7;&#x65AD;&#x70B9;</strong>&#x80FD;&#x77E5;&#x9053;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x90FD;&#x662F;&#x5728;<code>objc&#x6E90;&#x7801;</code>&#x4E2D;&#x7684;</li>
+<li>&#x901A;&#x8FC7;<strong>clang</strong>&#x4E5F;&#x80FD;&#x5F97;&#x5230;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-objective-c">int main(int argc, char * argv[]) {
+    NSString * appDelegateClassName;
+    /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
+
+        appDelegateClassName = NSStringFromClass(((Class (*)(id, SEL))(void *)objc_msgSend)((id)objc_getClass(&quot;AppDelegate&quot;), sel_registerName(&quot;class&quot;)));
+        {
+            id _rethrow = 0;
+            id _sync_obj = (id)appDelegateClassName;
+            objc_sync_enter(_sync_obj);
+            try {
+                struct _SYNC_EXIT {
+                    _SYNC_EXIT(id arg) : sync_exit(arg) {}
+                    ~_SYNC_EXIT() {
+                        objc_sync_exit(sync_exit);
+                    }
+                    id sync_exit;
+                }
+                _sync_exit(_sync_obj);
+            }
+            catch (id e) {_rethrow = e;}
+            {
+                struct _FIN { _FIN(id reth) : rethrow(reth) {}
+                    ~_FIN() { if (rethrow) objc_exception_throw(rethrow); }
+                    id rethrow;
+                }_fin_force_rethow(_rethrow);
+            }
+        }
+    }
+    return UIApplicationMain(argc, argv, __null, appDelegateClassName);
+}
+</code></pre>
+<h6 id="21-&#x6E90;&#x7801;&#x5206;&#x6790;">2.1 &#x6E90;&#x7801;&#x5206;&#x6790;</h6>
+<p>&#x5728;<code>objc&#x6E90;&#x7801;</code>&#x4E2D;&#x627E;&#x5230;<code>objc_sync_enter</code>&#x548C;<code>objc_sync_exit</code></p>
+<pre><code class="lang-objective-c">// Begin synchronizing on &apos;obj&apos;. 
+// Allocates recursive mutex associated with &apos;obj&apos; if needed.
+// Returns OBJC_SYNC_SUCCESS once lock is acquired.  
+int objc_sync_enter(id obj)
+{
+    int result = OBJC_SYNC_SUCCESS;
+
+    if (obj) {
+        SyncData* data = id2data(obj, ACQUIRE);
+        assert(data);
+        data-&gt;mutex.lock();
+    } else {
+        // @synchronized(nil) does nothing
+        if (DebugNilSync) {
+            _objc_inform(&quot;NIL SYNC DEBUG: @synchronized(nil); set a breakpoint on objc_sync_nil to debug&quot;);
+        }
+        objc_sync_nil();
+    }
+
+    return result;
+}
+
+// End synchronizing on &apos;obj&apos;. 
+// Returns OBJC_SYNC_SUCCESS or OBJC_SYNC_NOT_OWNING_THREAD_ERROR
+int objc_sync_exit(id obj)
+{
+    int result = OBJC_SYNC_SUCCESS;
+
+    if (obj) {
+        SyncData* data = id2data(obj, RELEASE); 
+        if (!data) {
+            result = OBJC_SYNC_NOT_OWNING_THREAD_ERROR;
+        } else {
+            bool okay = data-&gt;mutex.tryUnlock();
+            if (!okay) {
+                result = OBJC_SYNC_NOT_OWNING_THREAD_ERROR;
+            }
+        }
+    } else {
+        // @synchronized(nil) does nothing
+    }
+
+    return result;
+}
+</code></pre>
+<ol>
+<li>&#x9996;&#x5148;&#x4ECE;&#x5B83;&#x7684;&#x6CE8;&#x91CA;&#x4E2D;<code>recursive mutex</code>&#x53EF;&#x4EE5;&#x5F97;&#x51FA;<code>@synchronized</code>&#x662F;&#x9012;&#x5F52;&#x9501;</li>
+<li>&#x5982;&#x679C;&#x9501;&#x7684;&#x5BF9;&#x8C61;<code>obj</code>&#x4E0D;&#x5B58;&#x5728;&#x65F6;&#x5206;&#x522B;&#x4F1A;&#x8D70;<code>objc_sync_nil()</code>&#x548C;<code>&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;</code>&#xFF08;&#x6E90;&#x7801;&#x5206;&#x6790;&#x53EF;&#x4EE5;&#x5148;&#x89E3;&#x51B3;&#x7B80;&#x5355;&#x7684;&#x903B;&#x8F91;&#x5206;&#x652F;&#xFF09;</li>
+</ol>
+<pre><code class="lang-objective-c">BREAKPOINT_FUNCTION(
+    void objc_sync_nil(void)
+);
+</code></pre>
+<p>&#x8FD9;&#x4E5F;&#x662F;<code>@synchronized</code>&#x4F5C;&#x4E3A;&#x9012;&#x5F52;&#x9501;&#x4F46;&#x80FD;&#x9632;&#x6B62;&#x6B7B;&#x9501;&#x7684;&#x539F;&#x56E0;&#x6240;&#x5728;&#xFF1A;&#x5728;&#x4E0D;&#x65AD;&#x9012;&#x5F52;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x5982;&#x679C;&#x5BF9;&#x8C61;&#x4E0D;&#x5B58;&#x5728;&#x4E86;&#x5C31;&#x4F1A;&#x505C;&#x6B62;&#x9012;&#x5F52;&#x4ECE;&#x800C;&#x9632;&#x6B62;&#x6B7B;&#x9501;</p>
+<ol>
+<li><p>&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF08;obj&#x5B58;&#x5728;&#xFF09;&#x4F1A;&#x901A;&#x8FC7;<code>id2data</code>&#x65B9;&#x6CD5;&#x751F;&#x6210;&#x4E00;&#x4E2A;<code>SyncData</code>&#x5BF9;&#x8C61;</p>
+</li>
+<li><p><code>nextData</code>&#x6307;&#x7684;&#x662F;&#x94FE;&#x8868;&#x4E2D;&#x4E0B;&#x4E00;&#x4E2A;SyncData</p>
+</li>
+<li><code>object</code>&#x6307;&#x7684;&#x662F;&#x5F53;&#x524D;&#x52A0;&#x9501;&#x7684;&#x5BF9;&#x8C61;</li>
+<li><code>threadCount</code>&#x8868;&#x793A;&#x4F7F;&#x7528;&#x8BE5;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x52A0;&#x9501;&#x7684;&#x7EBF;&#x7A0B;&#x6570;</li>
+<li><code>mutex</code>&#x5373;&#x5BF9;&#x8C61;&#x6240;&#x5173;&#x8054;&#x7684;&#x9501;</li>
+</ol>
+<pre><code class="lang-objective-c">typedef struct alignas(CacheLineSize) SyncData {
+    struct SyncData* nextData;
+    DisguisedPtr&lt;objc_object&gt; object;
+    int32_t threadCount;  // number of THREADS using this block
+    recursive_mutex_t mutex;
+} SyncData;
+</code></pre>
+<h6 id="22-&#x51C6;&#x5907;syncdata">2.2 &#x51C6;&#x5907;SyncData</h6>
+<pre><code class="lang-objective-c">static SyncData* id2data(id object, enum usage why)
+{
+    spinlock_t *lockp = &amp;LOCK_FOR_OBJ(object);
+    SyncData **listp = &amp;LIST_FOR_OBJ(object);
+    SyncData* result = NULL;
+    ...
+}
+</code></pre>
+<p><code>id2data</code>&#x5148;&#x5C06;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;<code>SyncData&#x7C7B;&#x578B;&#x7684;result</code>&#x51C6;&#x5907;&#x597D;&#xFF0C;&#x540E;&#x7EED;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x586B;&#x5145;</p>
+<pre><code class="lang-objective-c">#define LOCK_FOR_OBJ(obj) sDataLists[obj].lock
+#define LIST_FOR_OBJ(obj) sDataLists[obj].data
+
+static StripedMap&lt;SyncList&gt; sDataLists;
+
+struct SyncList {
+    SyncData *data;
+    spinlock_t lock;
+
+    constexpr SyncList() : data(nil), lock(fork_unsafe_lock) { }
+};
+</code></pre>
+<p>&#x5176;&#x4E2D;&#x901A;&#x8FC7;&#x4E24;&#x4E2A;&#x5B8F;&#x5B9A;&#x4E49;&#x53BB;&#x53D6;&#x5F97;<code>SyncList</code>&#x4E2D;&#x7684;<code>data</code>&#x548C;<code>lock</code>&#x2014;&#x2014;<code>static StripedMap&lt;SyncList&gt; sDataLists</code> &#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210; <code>NSArray&lt;id&gt; list</code></p>
+<p>&#x65E2;&#x7136;<code>@synchronized</code>&#x80FD;&#x5728;&#x4EFB;&#x610F;&#x5730;&#x65B9;&#xFF08;VC&#x3001;View&#x3001;Model&#x7B49;&#xFF09;&#x4F7F;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x5E95;&#x5C42;&#x5FC5;&#x7136;&#x7EF4;&#x62A4;&#x7740;&#x4E00;&#x5F20;&#x5168;&#x5C40;&#x7684;&#x8868;&#xFF08;&#x7C7B;&#x4F3C;&#x4E8E;weak&#x8868;&#xFF09;&#x3002;&#x800C;&#x4ECE;<code>SyncList</code>&#x548C;<code>SyncData</code>&#x7684;&#x7ED3;&#x6784;&#x53EF;&#x4EE5;&#x8BC1;&#x5B9E;&#x7CFB;&#x7EDF;&#x786E;&#x5B9E;&#x5728;&#x5E95;&#x5C42;&#x7EF4;&#x62A4;&#x7740;&#x4E00;&#x5F20;&#x54C8;&#x5E0C;&#x8868;&#xFF0C;&#x91CC;&#x9762;&#x5B58;&#x50A8;&#x7740;<code>SyncList&#x7ED3;&#x6784;</code>&#x7684;&#x6570;&#x636E;&#x3002;<code>SyncList</code>&#x548C;<code>SyncData</code>&#x7684;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-04-092008.jpg" alt="img"></p>
+<h6 id="23-&#x4F7F;&#x7528;&#x5FEB;&#x901F;&#x7F13;&#x5B58;">2.3 &#x4F7F;&#x7528;&#x5FEB;&#x901F;&#x7F13;&#x5B58;</h6>
+<pre><code class="lang-objective-c">static SyncData* id2data(id object, enum usage why)
+{
+    ...
+#if SUPPORT_DIRECT_THREAD_KEYS
+    // Check per-thread single-entry fast cache for matching object
+    // &#x68C0;&#x67E5;&#x6BCF;&#x7EBF;&#x7A0B;&#x5355;&#x9879;&#x5FEB;&#x901F;&#x7F13;&#x5B58;&#x4E2D;&#x662F;&#x5426;&#x6709;&#x5339;&#x914D;&#x7684;&#x5BF9;&#x8C61;
+    bool fastCacheOccupied = NO;
+    SyncData *data = (SyncData *)tls_get_direct(SYNC_DATA_DIRECT_KEY);
+    if (data) {
+        fastCacheOccupied = YES;
+
+        if (data-&gt;object == object) {
+            // Found a match in fast cache.
+            uintptr_t lockCount;
+
+            result = data;
+            lockCount = (uintptr_t)tls_get_direct(SYNC_COUNT_DIRECT_KEY);
+            if (result-&gt;threadCount &lt;= 0  ||  lockCount &lt;= 0) {
+                _objc_fatal(&quot;id2data fastcache is buggy&quot;);
+            }
+
+            switch(why) {
+            case ACQUIRE: {
+                lockCount++;
+                tls_set_direct(SYNC_COUNT_DIRECT_KEY, (void*)lockCount);
+                break;
+            }
+            case RELEASE:
+                lockCount--;
+                tls_set_direct(SYNC_COUNT_DIRECT_KEY, (void*)lockCount);
+                if (lockCount == 0) {
+                    // remove from fast cache
+                    tls_set_direct(SYNC_DATA_DIRECT_KEY, NULL);
+                    // atomic because may collide with concurrent ACQUIRE
+                    OSAtomicDecrement32Barrier(&amp;result-&gt;threadCount);
+                }
+                break;
+            case CHECK:
+                // do nothing
+                break;
+            }
+
+            return result;
+        }
+    }
+#endif
+    ...
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6709;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x2014;&#x2014;<code>TLS</code>&#xFF1A;<code>TLS</code>&#x5168;&#x79F0;&#x4E3A;<code>Thread Local Storage</code>&#xFF0C;&#x5728;iOS&#x4E2D;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x62E5;&#x6709;&#x81EA;&#x5DF1;&#x7684;<code>TLS</code>&#xFF0C;&#x8D1F;&#x8D23;&#x4FDD;&#x5B58;&#x672C;&#x7EBF;&#x7A0B;&#x7684;&#x4E00;&#x4E9B;&#x53D8;&#x91CF;&#xFF0C; &#x4E14;<code>TLS</code>&#x65E0;&#x9700;&#x9501;&#x4FDD;&#x62A4;, <code>&#x5FEB;&#x901F;&#x7F13;&#x5B58;</code>&#x7684;&#x542B;&#x4E49;&#x4E3A;&#xFF1A;&#x5B9A;&#x4E49;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;<code>SYNC_DATA_DIRECT_KEY/SYNC_COUNT_DIRECT_KEY</code>&#xFF0C;&#x4E0E;<code>tsl_get_direct/tls_set_direct</code>&#x914D;&#x5408;&#x53EF;&#x4EE5;&#x4ECE;&#x7EBF;&#x7A0B;&#x5C40;&#x90E8;&#x7F13;&#x5B58;&#x4E2D;&#x5FEB;&#x901F;&#x53D6;&#x5F97;<code>SyncCacheItem.data</code>&#x548C;`SyncCacheItem.lockCount</p>
+<p>&#x5982;&#x679C;&#x5728;&#x7F13;&#x5B58;&#x4E2D;&#x627E;&#x5230;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#xFF0C;&#x5C31;&#x62FF;&#x51FA;&#x5F53;&#x524D;&#x88AB;&#x9501;&#x7684;&#x6B21;&#x6570;<code>lockCount</code>&#xFF0C;&#x518D;&#x6839;&#x636E;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x7C7B;&#x578B;(&#x83B7;&#x53D6;&#x3001;&#x91CA;&#x653E;&#x3001;&#x67E5;&#x770B;)&#x5BF9;<code>lockCount</code>&#x5206;&#x522B;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;</p>
+<ul>
+<li>&#x83B7;&#x53D6;&#x8D44;&#x6E90;<code>ACQUIRE</code>&#xFF1A;<code>lockCount++</code>&#x5E76;&#x6839;&#x636E;<code>key</code>&#x503C;&#x5B58;&#x5165;&#x88AB;&#x9501;&#x6B21;&#x6570;</li>
+<li>&#x91CA;&#x653E;&#x8D44;&#x6E90;<code>RELEASE</code>&#xFF1A;<code>lockCount++</code>&#x5E76;&#x6839;&#x636E;<code>key</code>&#x503C;&#x5B58;&#x5165;&#x88AB;&#x9501;&#x6B21;&#x6570;&#x3002;&#x5982;&#x679C;&#x6B21;&#x6570;&#x53D8;&#x4E3A;0&#xFF0C;&#x6B64;&#x65F6;&#x9501;&#x4E5F;&#x4E0D;&#x590D;&#x5B58;&#x5728;&#xFF0C;&#x9700;&#x8981;&#x4ECE;&#x5FEB;&#x901F;&#x7F13;&#x5B58;&#x79FB;&#x9664;&#x5E76;&#x6E05;&#x7A7A;&#x7EBF;&#x7A0B;&#x6570;<code>threadCount</code></li>
+<li>&#x67E5;&#x770B;&#x8D44;&#x6E90;<code>check</code>&#xFF1A;&#x4E0D;&#x64CD;&#x4F5C;</li>
+</ul>
+<blockquote>
+<p>lockCount&#x8868;&#x793A;&#x88AB;&#x9501;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x80FD;&#x591A;&#x6B21;&#x8FDB;&#x5165;&#xFF0C;&#x4ECE;&#x4FA7;&#x9762;&#x8868;&#x73B0;&#x51FA;&#x4E86;&#x9012;&#x5F52;&#x6027;</p>
+</blockquote>
+<h6 id="24-&#x83B7;&#x53D6;&#x8BE5;&#x7EBF;&#x7A0B;&#x4E0B;&#x7684;synccache">2.4 &#x83B7;&#x53D6;&#x8BE5;&#x7EBF;&#x7A0B;&#x4E0B;&#x7684;SyncCache</h6>
+<p>&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#x5206;&#x652F;&#x662F;&#x627E;&#x4E0D;&#x5230;&#x786E;&#x5207;&#x7684;&#x7EBF;&#x7A0B;&#x6807;&#x8BB0;&#x53EA;&#x80FD;&#x8FDB;&#x884C;&#x6240;&#x6709;&#x7684;&#x7F13;&#x5B58;&#x904D;&#x5386;</p>
+<pre><code class="lang-objective-c">static SyncData* id2data(id object, enum usage why)
+{
+    ...
+    SyncCache *cache = fetch_cache(NO);
+    if (cache) {
+        unsigned int i;
+        for (i = 0; i &lt; cache-&gt;used; i++) {
+            SyncCacheItem *item = &amp;cache-&gt;list[i];
+            if (item-&gt;data-&gt;object != object) continue;
+
+            // Found a match.
+            result = item-&gt;data;
+            if (result-&gt;threadCount &lt;= 0  ||  item-&gt;lockCount &lt;= 0) {
+                _objc_fatal(&quot;id2data cache is buggy&quot;);
+            }
+
+            switch(why) {
+            case ACQUIRE:
+                item-&gt;lockCount++;
+                break;
+            case RELEASE:
+                item-&gt;lockCount--;
+                if (item-&gt;lockCount == 0) {
+                    // remove from per-thread cache
+                    cache-&gt;list[i] = cache-&gt;list[--cache-&gt;used];
+                    // atomic because may collide with concurrent ACQUIRE
+                    OSAtomicDecrement32Barrier(&amp;result-&gt;threadCount);
+                }
+                break;
+            case CHECK:
+                // do nothing
+                break;
+            }
+
+            return result;
+        }
+    }
+    ...
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;<code>SyncCache</code>&#x548C;<code>SyncCacheItem</code></p>
+<pre><code class="lang-objective-c">typedef struct {
+    SyncData *data;             //&#x8BE5;&#x7F13;&#x5B58;&#x6761;&#x76EE;&#x5BF9;&#x5E94;&#x7684;SyncData
+    unsigned int lockCount;     //&#x8BE5;&#x5BF9;&#x8C61;&#x5728;&#x8BE5;&#x7EBF;&#x7A0B;&#x4E2D;&#x88AB;&#x52A0;&#x9501;&#x7684;&#x6B21;&#x6570;
+} SyncCacheItem;
+
+typedef struct SyncCache {
+    unsigned int allocated;     //&#x8BE5;&#x7F13;&#x5B58;&#x6B64;&#x65F6;&#x5BF9;&#x5E94;&#x7684;&#x7F13;&#x5B58;&#x5927;&#x5C0F;
+    unsigned int used;          //&#x8BE5;&#x7F13;&#x5B58;&#x6B64;&#x65F6;&#x5BF9;&#x5E94;&#x7684;&#x5DF2;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x5927;&#x5C0F;
+    SyncCacheItem list[0];      //SyncCacheItem&#x6570;&#x7EC4;
+} SyncCache;
+</code></pre>
+<ul>
+<li><code>SyncCacheItem</code>&#x7528;&#x6765;&#x8BB0;&#x5F55;&#x67D0;&#x4E2A;<code>SyncData</code>&#x5728;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x88AB;&#x52A0;&#x9501;&#x7684;&#x8BB0;&#x5F55;&#xFF0C;&#x4E00;&#x4E2A;<code>SyncData</code>&#x53EF;&#x4EE5;&#x88AB;&#x591A;&#x4E2A;<code>SyncCacheItem</code>&#x6301;&#x6709;</li>
+<li><code>SyncCache</code>&#x7528;&#x6765;&#x8BB0;&#x5F55;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x6240;&#x6709;<code>SyncCacheItem</code>&#xFF0C;&#x5E76;&#x4E14;&#x8BB0;&#x5F55;&#x4E86;&#x7F13;&#x5B58;&#x5927;&#x5C0F;&#x4EE5;&#x53CA;&#x5DF2;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x5927;&#x5C0F;</li>
+</ul>
+<h6 id="25-&#x5168;&#x5C40;&#x54C8;&#x5E0C;&#x8868;&#x67E5;&#x627E;">2.5 &#x5168;&#x5C40;&#x54C8;&#x5E0C;&#x8868;&#x67E5;&#x627E;</h6>
+<p>&#x5FEB;&#x901F;&#x3001;&#x6162;&#x901F;&#x6D41;&#x7A0B;&#x90FD;&#x6CA1;&#x627E;&#x5230;&#x7F13;&#x5B58;&#x5C31;&#x4F1A;&#x6765;&#x5230;&#x8FD9;&#x6B65;&#x2014;&#x2014;&#x5728;&#x7CFB;&#x7EDF;&#x4FDD;&#x5B58;&#x7684;&#x54C8;&#x5E0C;&#x8868;&#x8FDB;&#x884C;&#x94FE;&#x5F0F;&#x67E5;&#x627E;</p>
+<pre><code class="lang-objective-c">static SyncData* id2data(id object, enum usage why)
+{
+    ...
+    lockp-&gt;lock();
+    {
+        SyncData* p;
+        SyncData* firstUnused = NULL;
+        for (p = *listp; p != NULL; p = p-&gt;nextData) {
+            if ( p-&gt;object == object ) {
+                result = p;
+                // atomic because may collide with concurrent RELEASE
+                OSAtomicIncrement32Barrier(&amp;result-&gt;threadCount);
+                goto done;
+            }
+            if ( (firstUnused == NULL) &amp;&amp; (p-&gt;threadCount == 0) )
+                firstUnused = p;
+        }
+
+        // no SyncData currently associated with object
+        if ( (why == RELEASE) || (why == CHECK) )
+            goto done;
+
+        // an unused one was found, use it
+        if ( firstUnused != NULL ) {
+            result = firstUnused;
+            result-&gt;object = (objc_object *)object;
+            result-&gt;threadCount = 1;
+            goto done;
+        }
+    }
+    ...
+}
+</code></pre>
+<ol>
+<li><code>lockp-&gt;lock()</code>&#x5E76;&#x4E0D;&#x662F;&#x5728;&#x5E95;&#x5C42;&#x5BF9;&#x9501;&#x8FDB;&#x884C;&#x4E86;&#x5C01;&#x88C5;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x67E5;&#x627E;&#x8FC7;&#x7A0B;&#x524D;&#x540E;&#x8FDB;&#x884C;&#x4E86;&#x52A0;&#x9501;&#x64CD;&#x4F5C;</li>
+<li><code>for&#x5FAA;&#x73AF;</code>&#x904D;&#x5386;&#x94FE;&#x8868;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x7B26;&#x5408;&#x7684;&#x5C31;<code>goto done</code><ul>
+<li>&#x5BFB;&#x627E;&#x94FE;&#x8868;&#x4E2D;&#x672A;&#x4F7F;&#x7528;&#x7684;<code>SyncData</code>&#x5E76;&#x4F5C;&#x6807;&#x8BB0;</li>
+</ul>
+</li>
+<li>&#x5982;&#x679C;&#x662F;<code>RELEASE</code>&#x6216;<code>CHECK</code>&#x76F4;&#x63A5;<code>goto done</code></li>
+<li>&#x5982;&#x679C;&#x7B2C;&#x4E8C;&#x6B65;&#x4E2D;&#x6709;&#x53D1;&#x73B0;&#x7B2C;&#x4E00;&#x6B21;&#x4F7F;&#x7528;&#x7684;&#x7684;&#x5BF9;&#x8C61;&#x5C31;&#x5C06;<code>threadCount</code>&#x6807;&#x8BB0;&#x4E3A;1&#x4E14;<code>goto done</code></li>
+</ol>
+<h6 id="26-&#x751F;&#x6210;&#x65B0;&#x6570;&#x636E;&#x5E76;&#x5199;&#x5165;&#x7F13;&#x5B58;">2.6 &#x751F;&#x6210;&#x65B0;&#x6570;&#x636E;&#x5E76;&#x5199;&#x5165;&#x7F13;&#x5B58;</h6>
+<pre><code class="lang-objective-c">static SyncData* id2data(id object, enum usage why)
+{
+    ...
+    posix_memalign((void **)&amp;result, alignof(SyncData), sizeof(SyncData));
+    result-&gt;object = (objc_object *)object;
+    result-&gt;threadCount = 1;
+    new (&amp;result-&gt;mutex) recursive_mutex_t(fork_unsafe_lock);
+    result-&gt;nextData = *listp;
+    *listp = result;
+
+ done:
+    lockp-&gt;unlock();
+    if (result) {
+        // Only new ACQUIRE should get here.
+        // All RELEASE and CHECK and recursive ACQUIRE are 
+        // handled by the per-thread caches above.
+        if (why == RELEASE) {
+            // Probably some thread is incorrectly exiting 
+            // while the object is held by another thread.
+            return nil;
+        }
+        if (why != ACQUIRE) _objc_fatal(&quot;id2data is buggy&quot;);
+        if (result-&gt;object != object) _objc_fatal(&quot;id2data is buggy&quot;);
+
+#if SUPPORT_DIRECT_THREAD_KEYS
+        if (!fastCacheOccupied) {
+            // Save in fast thread cache
+            tls_set_direct(SYNC_DATA_DIRECT_KEY, result);
+            tls_set_direct(SYNC_COUNT_DIRECT_KEY, (void*)1);
+        } else 
+#endif
+        {
+            // Save in thread cache
+            if (!cache) cache = fetch_cache(YES);
+            cache-&gt;list[cache-&gt;used].data = result;
+            cache-&gt;list[cache-&gt;used].lockCount = 1;
+            cache-&gt;used++;
+        }
+    }
+    ...
+}
+</code></pre>
+<ol>
+<li><p>&#x7B2C;&#x4E09;&#x6B65;&#x60C5;&#x51B5;&#x5747;&#x4E0D;&#x6EE1;&#x8DB3;&#xFF08;&#x5373;&#x94FE;&#x8868;&#x4E0D;&#x5B58;&#x5728;&#x2014;&#x2014;&#x5BF9;&#x8C61;&#x5BF9;&#x4E8E;&#x5168;&#x90E8;&#x7EBF;&#x7A0B;&#x6765;&#x8BF4;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x52A0;&#x9501;&#xFF09;&#x5C31;&#x4F1A;&#x521B;&#x5EFA;<code>SyncData</code>&#x5E76;&#x5B58;&#x5728;<code>result</code>&#x91CC;&#xFF0C;&#x65B9;&#x4FBF;&#x4E0B;&#x6B21;&#x8FDB;&#x884C;&#x5B58;&#x50A8;</p>
+</li>
+<li><p>done&#x5206;&#x6790;&#xFF1A;</p>
+<ul>
+<li><p>&#x5148;&#x5C06;&#x524D;&#x9762;&#x7684;lock&#x9501;&#x89E3;&#x5F00;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x662F;<code>RELEASE</code>&#x7C7B;&#x578B;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;nil</p>
+</li>
+<li><p>&#x5BF9;<code>ACQUIRE</code>&#x7C7B;&#x578B;&#x548C;&#x5BF9;&#x8C61;&#x7684;&#x65AD;&#x8A00;&#x5224;&#x65AD;</p>
+</li>
+<li><p><code>!fastCacheOccupied</code>&#x5206;&#x652F;&#x8868;&#x793A;&#x652F;&#x6301;&#x5FEB;&#x901F;&#x7F13;&#x5B58;&#x4E14;&#x5FEB;&#x901F;&#x7F13;&#x5B58;&#x88AB;&#x5360;&#x7528;&#x4E86;&#xFF0C;&#x5C06;&#x8BE5;<code>SyncCacheItem</code>&#x6570;&#x636E;&#x5199;&#x5165;&#x5FEB;&#x901F;&#x7F13;&#x5B58;&#x4E2D;</p>
+</li>
+<li><p>&#x5426;&#x5219;&#x5C06;&#x8BE5;<code>SyncCacheItem</code>&#x5B58;&#x5165;&#x8BE5;&#x7EBF;&#x7A0B;&#x5BF9;&#x5E94;&#x7684;<code>SyncCache</code>&#x4E2D;</p>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code> 2.7 &#x7591;&#x96BE;&#x89E3;&#x7B54;
+</code></pre><ol>
+<li>&#x4E0D;&#x80FD;&#x4F7F;&#x7528;<code>&#x975E;OC&#x5BF9;&#x8C61;</code>&#x4F5C;&#x4E3A;&#x52A0;&#x9501;&#x6761;&#x4EF6;&#x2014;&#x2014;<code>id2data</code>&#x4E2D;&#x63A5;&#x6536;&#x53C2;&#x6570;&#x4E3A;id&#x7C7B;&#x578B;</li>
+<li>&#x591A;&#x6B21;&#x9501;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4F1A;&#x6709;&#x4EC0;&#x4E48;&#x540E;&#x679C;&#x5417;&#x2014;&#x2014;&#x4F1A;&#x4ECE;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x4E2D;&#x62FF;&#x5230;data&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x4F1A;&#x9501;&#x4E00;&#x6B21;&#x5BF9;&#x8C61;</li>
+<li>&#x90FD;&#x8BF4;@synchronized&#x6027;&#x80FD;&#x4F4E;&#x2014;&#x2014;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x5E95;&#x5C42;<code>&#x589E;&#x5220;&#x6539;&#x67E5;</code>&#x6D88;&#x8017;&#x4E86;&#x5927;&#x91CF;&#x6027;&#x80FD;</li>
+<li>&#x52A0;&#x9501;&#x5BF9;&#x8C61;&#x4E0D;&#x80FD;&#x4E3A;nil&#xFF0C;&#x5426;&#x5219;&#x52A0;&#x9501;&#x65E0;&#x6548;&#xFF0C;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</li>
+</ol>
+<pre><code class="lang-objective-c">- (void)test {
+    _testArray = [NSMutableArray array];
+    for (int i = 0; i &lt; 200000; i++) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            @synchronized (self.testArray) {
+                self.testArray = [NSMutableArray array];
+            }
+        });
+    }
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E00;&#x8FD0;&#x884C;&#x5C31;&#x4F1A;&#x5D29;&#x6E83;&#xFF0C;&#x539F;&#x56E0;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x67D0;&#x4E00;&#x77AC;&#x95F4;<code>testArray</code>&#x91CA;&#x653E;&#x4E86;&#x4E3A;nil&#xFF0C;&#x4F46;&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#x5B58;&#x7684;&#x5BF9;&#x8C61;&#x4E5F;&#x53D8;&#x6210;&#x4E86;nil&#xFF0C;&#x5BFC;&#x81F4;<code>synchronized</code>&#x65E0;&#x6548;&#x5316;</p>
+<p>&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</p>
+<ul>
+<li>&#x5BF9;<code>self</code>&#x8FDB;&#x884C;&#x540C;&#x6B65;&#x9501;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F3C;&#x4E4E;&#x592A;&#x81C3;&#x80BF;&#x4E86;</li>
+<li>&#x4F7F;&#x7528;<code>NSLock</code></li>
+</ul>
+<h4 id="3nslock">3.NSLock</h4>
+<h6 id="31-&#x4F7F;&#x7528;">3.1 &#x4F7F;&#x7528;</h6>
+<p><code>NSLock</code>&#x662F;&#x5BF9;<code>&#x4E92;&#x65A5;&#x9501;</code>&#x7684;&#x7B80;&#x5355;&#x5C01;&#x88C5;&#xFF0C;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objective-c">- (void)test {
+    self.testArray = [NSMutableArray array];
+    NSLock *lock = [[NSLock alloc] init];
+    for (int i = 0; i &lt; 200000; i++) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [lock lock];
+            self.testArray = [NSMutableArray array];
+            [lock unlock];
+        });
+    }
+}
+</code></pre>
+<p><code>NSLock</code>&#x5728;<a href="https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLSessionManager.m" target="_blank">AFNetworking&#x7684;AFURLSessionManager.m</a>&#x4E2D;&#x6709;&#x4F7F;&#x7528;&#x5230;</p>
+<p>&#x60F3;&#x8981;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;<code>NSLock</code>&#x7684;&#x5E95;&#x5C42;&#x539F;&#x7406;&#xFF0C;&#x4F46;&#x53D1;&#x73B0;&#x5176;&#x662F;&#x5728;&#x672A;&#x5F00;&#x6E90;&#x7684;<code>Foundation</code>&#x6E90;&#x7801;&#x4E0B;&#x9762;&#x7684;&#xFF0C;&#x4F46;&#x4F46;&#x662F;Swift&#x5BF9;<code>Foundation</code>&#x5374;&#x5F00;&#x6E90;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;<a href="https://github.com/apple/swift-corelibs-foundation" target="_blank">swift-corelibs-foundation</a>&#x4E0B;&#x8F7D;&#x5230;&#x6E90;&#x7801;&#x6765;&#x4E00;&#x63A2;&#x7A76;&#x7ADF;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-04-092326.jpg" alt="img"></p>
+<p>&#x4ECE;&#x6E90;&#x7801;&#x6765;&#x770B;&#x5C31;&#x662F;&#x5BF9;&#x4E92;&#x65A5;&#x9501;&#x7684;&#x7B80;&#x5355;&#x5C01;&#x88C5;</p>
+<h6 id="32-&#x6CE8;&#x610F;&#x4E8B;&#x9879;">3.2 &#x6CE8;&#x610F;&#x4E8B;&#x9879;</h6>
+<p>&#x4F7F;&#x7528;&#x4E92;&#x65A5;&#x9501;<code>NSLock</code>&#x5F02;&#x6B65;&#x5E76;&#x53D1;&#x8C03;&#x7528;block&#x5757;&#xFF0C;block&#x5757;&#x5185;&#x90E8;&#x9012;&#x5F52;&#x8C03;&#x7528;&#x81EA;&#x5DF1;&#xFF0C;&#x95EE;&#x6253;&#x5370;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<pre><code class="lang-objective-c">- (void)test {
+    NSLock *lock = [[NSLock alloc] init];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        static void (^block)(int);
+
+        block = ^(int value) {
+            NSLog(@&quot;&#x52A0;&#x9501;&#x524D;&quot;);
+            [lock lock];
+            NSLog(@&quot;&#x52A0;&#x9501;&#x540E;&quot;);
+            if (value &gt; 0) {
+                NSLog(@&quot;value&#x2014;&#x2014;%d&quot;, value);
+                block(value - 1);
+            }
+            [lock unlock];
+        };
+        block(10);
+    });
+}
+</code></pre>
+<p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5E76;&#x6CA1;&#x6709;&#x6309;&#x4EE3;&#x7801;&#x8868;&#x9762;&#x7684;&#x60F3;&#x6CD5;&#x53BB;&#x8D70;&#xFF0C;&#x800C;&#x662F;&#x53EA;&#x6253;&#x5370;&#x4E86;&#x4E00;&#x6B21;value&#x503C;</p>
+<pre><code class="lang-shell">&#x52A0;&#x9501;&#x524D;
+&#x52A0;&#x9501;&#x540E;
+value&#x2014;&#x2014;10
+&#x52A0;&#x9501;&#x524D;
+</code></pre>
+<p><strong>&#x539F;&#x56E0;&#xFF1A;</strong> &#x4E92;&#x65A5;&#x9501;&#x5728;&#x9012;&#x5F52;&#x8C03;&#x7528;&#x65F6;&#x4F1A;&#x9020;&#x6210;&#x5835;&#x585E;&#xFF0C;&#x5E76;&#x975E;&#x6B7B;&#x9501;&#x2014;&#x2014;&#x8FD9;&#x91CC;&#x7684;&#x95EE;&#x9898;&#x662F;&#x540E;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x65E0;&#x6CD5;&#x6267;&#x884C;&#x4E0B;&#x53BB;</p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x6B21;&#x52A0;&#x5B8C;&#x9501;&#x4E4B;&#x540E;&#x8FD8;&#x6CA1;&#x51FA;&#x9501;&#x5C31;&#x8FDB;&#x884C;&#x9012;&#x5F52;&#x8C03;&#x7528;</li>
+<li>&#x7B2C;&#x4E8C;&#x6B21;&#x52A0;&#x9501;&#x5C31;&#x5835;&#x585E;&#x4E86;&#x7EBF;&#x7A0B;&#xFF08;&#x56E0;&#x4E3A;&#x4E0D;&#x4F1A;&#x67E5;&#x8BE2;&#x7F13;&#x5B58;&#xFF09;</li>
+</ul>
+<p><strong>&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</strong> &#x4F7F;&#x7528;&#x9012;&#x5F52;&#x9501;<code>NSRecursiveLock</code>&#x66FF;&#x6362;<code>NSLock</code></p>
+<h4 id="4nsrecursivelock">4.NSRecursiveLock</h4>
+<h6 id="41-&#x4F7F;&#x7528;">4.1 &#x4F7F;&#x7528;</h6>
+<p><code>NSRecursiveLock</code>&#x4F7F;&#x7528;&#x548C;<code>NSLock</code>&#x7C7B;&#x4F3C;&#xFF0C;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x5C31;&#x80FD;&#x89E3;&#x51B3;&#x4E0A;&#x4E2A;&#x95EE;&#x9898;</p>
+<pre><code class="lang-objective-c">- (void)test {
+    NSRecursiveLock *lock = [[NSRecursiveLock alloc] init];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        static void (^block)(int);
+
+        block = ^(int value) {
+            [lock lock];
+            if (value &gt; 0) {
+                NSLog(@&quot;value&#x2014;&#x2014;%d&quot;, value);
+                block(value - 1);
+            }
+            [lock unlock];
+        };
+        block(10);
+    });
+}
+</code></pre>
+<p><code>NSRecursiveLock</code>&#x5728;<a href="https://github.com/ibireme/YYKit/blob/4e1bd1cfcdb3331244b219cbd37cc9b1ccb62b7a/YYKit/Image/YYWebImageOperation.m" target="_blank">YYKit&#x4E2D;YYWebImageOperation.m</a>&#x4E2D;&#x6709;&#x7528;&#x5230;</p>
+<h6 id="42-&#x6CE8;&#x610F;&#x4E8B;&#x9879;">4.2 &#x6CE8;&#x610F;&#x4E8B;&#x9879;</h6>
+<p>&#x9012;&#x5F52;&#x9501;&#x5728;&#x4F7F;&#x7528;&#x65F6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x6B7B;&#x9501;&#x95EE;&#x9898;&#x2014;&#x2014;&#x524D;&#x540E;&#x4EE3;&#x7801;&#x76F8;&#x4E92;&#x7B49;&#x5F85;&#x4FBF;&#x4F1A;&#x4EA7;&#x751F;&#x6B7B;&#x9501;</p>
+<p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x5728;&#x5916;&#x5C42;&#x52A0;&#x4E2A;<code>for&#x5FAA;&#x73AF;</code>&#xFF0C;&#x95EE;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1F;</p>
+<pre><code class="lang-objective-c">- (void)test {
+    NSRecursiveLock *lock = [[NSRecursiveLock alloc] init];
+    for (int i = 0; i &lt; 10; i++) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            static void (^block)(int);
+
+            block = ^(int value) {
+                [lock lock];
+                if (value &gt; 0) {
+                    NSLog(@&quot;value&#x2014;&#x2014;%d&quot;, value);
+                    block(value - 1);
+                }
+                [lock unlock];
+            };
+            block(10);
+        });
+    }
+}
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x4EE3;&#x7801;&#x4F1A;&#x5D29;&#x6E83;&#xFF0C;&#x5E76;&#x4F1A;&#x63D0;&#x793A;<code>&#x91CE;&#x6307;&#x9488;</code>&#x9519;&#x8BEF;</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/5/23/172421e6eaef52c7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><strong>&#x539F;&#x56E0;&#xFF1A;</strong> for&#x5FAA;&#x73AF;&#x5728;block&#x5185;&#x90E8;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x4E86;&#x591A;&#x6B21;&#x9501;&#x64CD;&#x4F5C;&#xFF0C;&#x76F4;&#x5230;&#x8FD9;&#x4E2A;&#x8D44;&#x6E90;&#x8EAB;&#x4E0A;&#x6302;&#x7740;N&#x628A;&#x9501;&#xFF0C;&#x6700;&#x540E;&#x5927;&#x5BB6;&#x90FD;&#x65E0;&#x6CD5;&#x4E00;&#x6B21;&#x6027;&#x89E3;&#x9501;&#x2014;&#x2014;&#x627E;&#x4E0D;&#x5230;&#x89E3;&#x9501;&#x7684;&#x51FA;&#x53E3;</p>
+<p>&#x5373; &#x7EBF;&#x7A0B;1&#x4E2D;&#x52A0;&#x9501;1&#x3001;&#x540C;&#x65F6;&#x7EBF;&#x7A0B;2&#x4E2D;&#x52A0;&#x9501;2-&gt; &#x89E3;&#x9501;1&#x7B49;&#x5F85;&#x89E3;&#x9501;2 -&gt; &#x89E3;&#x9501;2&#x7B49;&#x5F85;&#x89E3;&#x9501;1 -&gt; &#x65E0;&#x6CD5;&#x7ED3;&#x675F;&#x89E3;&#x9501;&#x2014;&#x2014;&#x5F62;&#x6210;&#x6B7B;&#x9501;</p>
+<p><strong>&#x89E3;&#x51B3;&#xFF1A;</strong> &#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x7684;<code>@synchronized</code>&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5BF9;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x9501;&#x64CD;&#x4F5C;&#xFF0C;&#x4F1A;&#x5148;&#x4ECE;&#x7F13;&#x5B58;&#x67E5;&#x627E;&#x662F;&#x5426;&#x6709;&#x9501;<code>syncData</code>&#x5B58;&#x5728;&#x3002;&#x5982;&#x679C;&#x6709;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x800C;&#x4E0D;&#x52A0;&#x9501;&#xFF0C;&#x4FDD;&#x8BC1;&#x9501;&#x7684;&#x552F;&#x4E00;&#x6027;</p>
+<h4 id="5dispatchsemaphore">5.dispatch_semaphore</h4>
+<p>&#x5728;<a href="https://juejin.im/post/6844904122068500487#heading-25" target="_blank">GCD&#x5E94;&#x7528;&#x7BC7;&#x7AE0;</a>&#x5DF2;&#x7ECF;&#x5BF9;&#x4FE1;&#x53F7;&#x91CF;&#x8FDB;&#x884C;&#x8FC7;&#x8BB2;&#x89E3;</p>
+<h4 id="6nscondition">6.NSCondition</h4>
+<p><code>NSCondition</code>&#x662F;&#x4E00;&#x4E2A;&#x6761;&#x4EF6;&#x9501;&#xFF0C;&#x53EF;&#x80FD;&#x5E73;&#x65F6;&#x7528;&#x7684;&#x4E0D;&#x591A;&#xFF0C;&#x4F46;&#x4E0E;&#x4FE1;&#x53F7;&#x91CF;&#x76F8;&#x4F3C;&#xFF1A;&#x7EBF;&#x7A0B;1&#x9700;&#x8981;&#x7B49;&#x5230;&#x6761;&#x4EF6;1&#x6EE1;&#x8DB3;&#x624D;&#x4F1A;&#x5F80;&#x4E0B;&#x8D70;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x4F1A;&#x5835;&#x585E;&#x7B49;&#x5F85;&#xFF0C;&#x76F4;&#x81F3;&#x6761;&#x4EF6;&#x6EE1;&#x8DB3;</p>
+<p>&#x540C;&#x6837;&#x7684;&#x80FD;&#x5728;<code>Swift&#x6E90;&#x7801;</code>&#x4E2D;&#x627E;&#x5230;&#x5173;&#x4E8E;<code>NSCondition</code>&#x90E8;&#x5206;</p>
+<pre><code class="lang-swift">open <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NSCondition</span>: <span class="hljs-title">NSObject</span>, <span class="hljs-title">NSLocking</span> </span>{
+    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">var</span> mutex = _MutexPointer.allocate(capacity: <span class="hljs-number">1</span>)
+    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">var</span> cond = _ConditionVariablePointer.allocate(capacity: <span class="hljs-number">1</span>)
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">init</span>() {
+        pthread_mutex_init(mutex, <span class="hljs-literal">nil</span>)
+        pthread_cond_init(cond, <span class="hljs-literal">nil</span>)
+    }
+
+    <span class="hljs-keyword">deinit</span> {
+        pthread_mutex_destroy(mutex)
+        pthread_cond_destroy(cond)
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">lock</span><span class="hljs-params">()</span></span> {
+        pthread_mutex_lock(mutex)
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">unlock</span><span class="hljs-params">()</span></span> {
+        pthread_mutex_unlock(mutex)
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">wait</span><span class="hljs-params">()</span></span> {
+        pthread_cond_wait(cond, mutex)
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">wait</span><span class="hljs-params">(until limit: Date)</span></span> -&gt; <span class="hljs-type">Bool</span> {
+        <span class="hljs-keyword">guard</span> <span class="hljs-keyword">var</span> timeout = timeSpecFrom(date: limit) <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+        }
+        <span class="hljs-keyword">return</span> pthread_cond_timedwait(cond, mutex, &amp;timeout) == <span class="hljs-number">0</span>
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">signal</span><span class="hljs-params">()</span></span> {
+        pthread_cond_signal(cond)
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">broadcast</span><span class="hljs-params">()</span></span> {
+        pthread_cond_broadcast(cond) <span class="hljs-comment">// wait  signal</span>
+    }
+
+    open <span class="hljs-keyword">var</span> name: <span class="hljs-type">String</span>?
+}
+</code></pre>
+<p>&#x4ECE;&#x4E0A;&#x8FF0;&#x7CBE;&#x7B80;&#x540E;&#x7684;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9;&#xFF1A;</p>
+<ul>
+<li><code>NSCondition</code>&#x662F;&#x5BF9;<code>mutex</code>&#x548C;<code>cond</code>&#x7684;&#x4E00;&#x79CD;&#x5C01;&#x88C5;&#xFF08;<code>cond</code>&#x5C31;&#x662F;&#x7528;&#x4E8E;&#x8BBF;&#x95EE;&#x548C;&#x64CD;&#x4F5C;&#x7279;&#x5B9A;&#x7C7B;&#x578B;&#x6570;&#x636E;&#x7684;&#x6307;&#x9488;&#xFF09;</li>
+<li><code>wait</code>&#x64CD;&#x4F5C;&#x4F1A;&#x963B;&#x585E;&#x7EBF;&#x7A0B;&#xFF0C;&#x4F7F;&#x5176;&#x8FDB;&#x5165;&#x4F11;&#x7720;&#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x81F3;&#x8D85;&#x65F6;</li>
+<li><code>signal</code>&#x64CD;&#x4F5C;&#x662F;&#x5524;&#x9192;&#x4E00;&#x4E2A;&#x6B63;&#x5728;&#x4F11;&#x7720;&#x7B49;&#x5F85;&#x7684;&#x7EBF;&#x7A0B;</li>
+<li><code>broadcast</code>&#x4F1A;&#x5524;&#x9192;&#x6240;&#x6709;&#x6B63;&#x5728;&#x7B49;&#x5F85;&#x7684;&#x7EBF;&#x7A0B;</li>
+</ul>
+<h4 id="7nsconditionlock">7.NSConditionLock</h4>
+<p>&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x5C31;&#x662F;<code>NSCondition</code> + <code>Lock</code></p>
+<p>&#x90A3;&#x4E48;&#x548C;<code>NSCondition</code>&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x54EA;&#x91CC;&#x5462;&#xFF1F;&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x4E00;&#x4E0B;<code>NSConditionLock</code>&#x6E90;&#x7801;</p>
+<pre><code class="lang-swift">open <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NSConditionLock</span> : <span class="hljs-title">NSObject</span>, <span class="hljs-title">NSLocking</span> </span>{
+    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">var</span> _cond = <span class="hljs-type">NSCondition</span>()
+    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">var</span> _value: <span class="hljs-type">Int</span>
+    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">var</span> _thread: _swift_CFThreadRef?
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">convenience</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">init</span>() {
+        <span class="hljs-keyword">self</span>.<span class="hljs-keyword">init</span>(condition: <span class="hljs-number">0</span>)
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">init</span>(condition: <span class="hljs-type">Int</span>) {
+        _value = condition
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">lock</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-keyword">let</span> <span class="hljs-number">_</span> = lock(before: <span class="hljs-type">Date</span>.distantFuture)
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">unlock</span><span class="hljs-params">()</span></span> {
+        _cond.lock()
+        _thread = <span class="hljs-literal">nil</span>
+        _cond.broadcast()
+        _cond.unlock()
+    }
+
+    open <span class="hljs-keyword">var</span> condition: <span class="hljs-type">Int</span> {
+        <span class="hljs-keyword">return</span> _value
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">lock</span><span class="hljs-params">(whenCondition condition: Int)</span></span> {
+        <span class="hljs-keyword">let</span> <span class="hljs-number">_</span> = lock(whenCondition: condition, before: <span class="hljs-type">Date</span>.distantFuture)
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> `<span class="hljs-title">try</span>`<span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">Bool</span> {
+        <span class="hljs-keyword">return</span> lock(before: <span class="hljs-type">Date</span>.distantPast)
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">tryLock</span><span class="hljs-params">(whenCondition condition: Int)</span></span> -&gt; <span class="hljs-type">Bool</span> {
+        <span class="hljs-keyword">return</span> lock(whenCondition: condition, before: <span class="hljs-type">Date</span>.distantPast)
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">unlock</span><span class="hljs-params">(withCondition condition: Int)</span></span> {
+        _cond.lock()
+        _thread = <span class="hljs-literal">nil</span>
+        _value = condition
+        _cond.broadcast()
+        _cond.unlock()
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">lock</span><span class="hljs-params">(before limit: Date)</span></span> -&gt; <span class="hljs-type">Bool</span> {
+        _cond.lock()
+        <span class="hljs-keyword">while</span> _thread != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">if</span> !_cond.wait(until: limit) {
+                _cond.unlock()
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
+        }
+        _thread = pthread_self()
+        _cond.unlock()
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    }
+
+    open <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">lock</span><span class="hljs-params">(whenCondition condition: Int, before limit: Date)</span></span> -&gt; <span class="hljs-type">Bool</span> {
+        _cond.lock()
+        <span class="hljs-keyword">while</span> _thread != <span class="hljs-literal">nil</span> || _value != condition {
+            <span class="hljs-keyword">if</span> !_cond.wait(until: limit) {
+                _cond.unlock()
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
+        }
+        _thread = pthread_self()
+        _cond.unlock()
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    }
+
+    open <span class="hljs-keyword">var</span> name: <span class="hljs-type">String</span>?
+}
+</code></pre>
+<p>&#x4ECE;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9;&#xFF1A;</p>
+<ul>
+<li><code>NSConditionLock</code>&#x662F;<code>NSCondition</code>&#x52A0;&#x7EBF;&#x7A0B;&#x6570;&#x7684;&#x5C01;&#x88C5;</li>
+<li><code>NSConditionLock</code>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x9501;&#x6761;&#x4EF6;&#xFF0C;&#x800C;<code>NSCondition</code>&#x53EA;&#x662F;&#x65E0;&#x8111;&#x7684;&#x901A;&#x77E5;&#x4FE1;&#x53F7;</li>
+</ul>
+<h4 id="8osunfairlock">8.os_unfair_lock</h4>
+<p>&#x7531;&#x4E8E;<code>OSSpinLock</code>&#x81EA;&#x65CB;&#x9501;&#x7684;bug&#xFF0C;&#x66FF;&#x4EE3;&#x65B9;&#x6848;&#x662F;&#x5185;&#x90E8;&#x5C01;&#x88C5;&#x4E86;<code>os_unfair_lock</code>&#xFF0C;&#x800C;<code>os_unfair_lock</code>&#x5728;&#x52A0;&#x9501;&#x65F6;&#x4F1A;&#x5904;&#x4E8E;&#x4F11;&#x7720;&#x72B6;&#x6001;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x81EA;&#x65CB;&#x9501;&#x7684;&#x5FD9;&#x7B49;&#x72B6;&#x6001;</p>
+<h4 id="9&#x4E92;&#x65A5;&#x9501;&#x6027;&#x80FD;&#x5BF9;&#x6BD4;">9.&#x4E92;&#x65A5;&#x9501;&#x6027;&#x80FD;&#x5BF9;&#x6BD4;</h4>
+<p><img src="https://user-gold-cdn.xitu.io/2020/5/24/172447ad4a4c4340?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<h2 id="&#x9501;">&#x9501;</h2>
+<h3 id="synchronized">@synchronized</h3>
+<p>&#x4E00;&#x822C;&#x5728;&#x521B;&#x5EFA;&#x5355;&#x4F8B;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528;</p>
+<h3 id="atomic">atomic</h3>
+<p>&#x4FEE;&#x9970;&#x5C5E;&#x6027;&#x7684;&#x5173;&#x952E;&#x5B57;
+&#x5BF9;&#x88AB;&#x4FEE;&#x9970;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x539F;&#x5B50;&#x64CD;&#x4F5C;(&#x4E0D;&#x8D1F;&#x8D23;&#x4F7F;&#x7528;)</p>
+<h3 id="osspinlock-&#x81EA;&#x65CB;&#x9501;">OSSpinLock &#x81EA;&#x65CB;&#x9501;</h3>
+<p>&#x5FAA;&#x73AF;&#x7B49;&#x5F85;&#x8BBF;&#x95EE;&#xFF0C;&#x4E0D;&#x91CA;&#x653E;&#x5F53;&#x524D;&#x8D44;&#x6E90;(while&#x5FAA;&#x73AF;)
+&#x7528;&#x4E8E;&#x8F7B;&#x91CF;&#x7EA7;&#x6570;&#x636E;&#x8BBF;&#x95EE;,&#x7B80;&#x5355;&#x7684;int&#x503C; +1/-1&#x64CD;&#x4F5C;</p>
+<h3 id="nslock">NSLock</h3>
+<pre><code class="lang-objective-c">-(void)methodA{
+    [lock lock];
+    [self methodB];
+    [lock unlock];
+}
+
+-(void)methodB{
+    [lock lock];
+    //xxxx
+    [lock unlock];
+}
+
+//&#x4F1A;&#x5BFC;&#x81F4;&#x6B7B;&#x9501;,&#x8981;&#x4F7F;&#x7528;&#x9012;&#x5F52;&#x9501;
+</code></pre>
+<h3 id="nsrescursivelock-&#x9012;&#x5F52;&#x9501;">NSRescursiveLock &#x9012;&#x5F52;&#x9501;</h3>
+<pre><code class="lang-objective-c">//&#x9012;&#x5F52;&#x9501;&#x7684;&#x7279;&#x70B9;&#x662F;&#x53EF;&#x4EE5;&#x91CD;&#x5165;
+-(void)methodA{
+    [recursiveLock lock];
+    [self methodB];
+    [recursiveLock unlock];
+}
+
+-(void)methodB{
+    [recursiveLock lock];
+    //xxxx
+    [recursiveLock unlock];
+}
+</code></pre>
+<h3 id="dispatchsemaphoret-&#x4FE1;&#x53F7;&#x91CF;">dispatch_semaphore_t &#x4FE1;&#x53F7;&#x91CF;</h3>
+<p>&#x963B;&#x585E;&#x662F;&#x4E00;&#x4E2A;&#x4E3B;&#x52A8;&#x884C;&#x4E3A;
+&#x5524;&#x9192;&#x662F;&#x4E00;&#x4E2A;&#x88AB;&#x52A8;&#x884C;&#x4E3A;</p>
+<h2 id="ios&#x7CFB;&#x7EDF;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x7684;&#x51E0;&#x949F;&#x591A;&#x7EBF;&#x7A0B;&#x6280;&#x672F;&#x5404;&#x81EA;&#x7684;&#x7279;&#x70B9;&#x662F;&#x600E;&#x6837;&#x7684;">iOS&#x7CFB;&#x7EDF;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x7684;&#x51E0;&#x949F;&#x591A;&#x7EBF;&#x7A0B;&#x6280;&#x672F;&#x5404;&#x81EA;&#x7684;&#x7279;&#x70B9;&#x662F;&#x600E;&#x6837;&#x7684;</h2>
+<p>iOS&#x7CFB;&#x7EDF;&#x5F53;&#x4E2D;&#x4E3B;&#x8981;&#x63D0;&#x4F9B;3&#x79CD;,<code>GCD</code>&#x3001;<code>NSOperation&amp;NSOperationQueue</code>&#x3001;<code>NSThread</code>,&#x4E00;&#x822C;&#x4F7F;&#x7528; <code>GCD</code>&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#x7EBF;&#x7A0B;&#x540C;&#x6B65;&#xFF0C;&#x5305;&#x62EC;&#x5B50;&#x7EBF;&#x7A0B;&#x5206;&#x6D3E;&#xFF0C;&#x5B9E;&#x73B0;&#x591A;&#x8BFB;&#x5355;&#x5199;&#x60C5;&#x666F;&#xFF0C;<code>NSOperation</code>&#x65B9;&#x4FBF;&#x4EFB;&#x52A1;&#x72B6;&#x6001;&#x63A7;&#x5236;&#xFF0C;&#x6DFB;&#x52A0;&#x4F9D;&#x8D56;&#x79FB;&#x9664;&#x4F9D;&#x8D56;,<code>NSThread</code>&#x591A;&#x7528;&#x4E8E;&#x5E38;&#x7528;&#x7EBF;&#x7A0B;</p>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<ul>
+<li><code>OSSpinLock</code>&#x4E0D;&#x518D;&#x5B89;&#x5168;&#xFF0C;&#x5E95;&#x5C42;&#x7528;<code>os_unfair_lock</code>&#x66FF;&#x4EE3;</li>
+<li><code>atomic</code>&#x53EA;&#x80FD;&#x4FDD;&#x8BC1;setter&#x3001;getter&#x65F6;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x6240;&#x4EE5;&#x66F4;&#x591A;&#x7684;&#x4F7F;&#x7528;<code>nonatomic</code>&#x6765;&#x4FEE;&#x9970;</li>
+<li><code>&#x8BFB;&#x5199;&#x9501;</code>&#x66F4;&#x591A;&#x4F7F;&#x7528;&#x6805;&#x680F;&#x51FD;&#x6570;&#x6765;&#x5B9E;&#x73B0;</li>
+<li><code>@synchronized</code>&#x5728;&#x5E95;&#x5C42;&#x7EF4;&#x62A4;&#x4E86;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x94FE;&#x8868;&#x8FDB;&#x884C;<code>data</code>&#x7684;&#x5B58;&#x50A8;&#xFF0C;&#x4F7F;&#x7528;<code>recursive_mutex_t</code>&#x8FDB;&#x884C;&#x52A0;&#x9501;</li>
+<li><code>NSLock</code>&#x3001;<code>NSRecursiveLock</code>&#x3001;<code>NSCondition</code>&#x548C;<code>NSConditionLock</code>&#x5E95;&#x5C42;&#x90FD;&#x662F;&#x5BF9;<code>pthread_mutex</code>&#x7684;&#x5C01;&#x88C5;</li>
+<li><code>NSCondition</code>&#x548C;<code>NSConditionLock</code>&#x662F;&#x6761;&#x4EF6;&#x9501;&#xFF0C;&#x5F53;&#x6EE1;&#x8DB3;&#x67D0;&#x4E00;&#x4E2A;&#x6761;&#x4EF6;&#x65F6;&#x624D;&#x80FD;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x548C;&#x4FE1;&#x53F7;&#x91CF;<code>dispatch_semaphore</code>&#x7C7B;&#x4F3C;</li>
+<li>&#x666E;&#x901A;&#x573A;&#x666F;&#x4E0B;&#x6D89;&#x53CA;&#x5230;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;<code>NSLock</code></li>
+<li>&#x5FAA;&#x73AF;&#x8C03;&#x7528;&#x65F6;&#x7528;<code>NSRecursiveLock</code></li>
+<li>&#x5FAA;&#x73AF;&#x8C03;&#x7528;&#x4E14;&#x6709;&#x7EBF;&#x7A0B;&#x5F71;&#x54CD;&#x65F6;&#xFF0C;&#x8BF7;&#x6CE8;&#x610F;&#x6B7B;&#x9501;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x6B7B;&#x9501;&#x95EE;&#x9898;&#x8BF7;&#x4F7F;&#x7528;<code>@synchronized</code></li>
+</ul>
+<h2 id="reference">Reference</h2>
+<p><a href="https://juejin.cn/post/6844904167010467854" target="_blank">1. iOS&#x63A2;&#x7D22; &#x7EC6;&#x6570;iOS&#x4E2D;&#x7684;&#x90A3;&#x4E9B;&#x9501;</a></p>
 
                                 
                                 </section>
@@ -1280,7 +2097,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Lock","level":"2.1.4.10","depth":3,"next":{"title":"AutoReleasePool","level":"2.1.4.11","depth":3,"path":"iOS/OCFoundation/AutoReleasePool.md","ref":"iOS/OCFoundation/AutoReleasePool.md","articles":[]},"previous":{"title":"GCD-Thread","level":"2.1.4.9","depth":3,"path":"iOS/OCFoundation/GCDThread.md","ref":"iOS/OCFoundation/GCDThread.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/Lock.md","mtime":"2021-03-03T11:00:04.097Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-03T11:00:36.184Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Lock","level":"2.1.4.10","depth":3,"next":{"title":"AutoReleasePool","level":"2.1.4.11","depth":3,"path":"iOS/OCFoundation/AutoReleasePool.md","ref":"iOS/OCFoundation/AutoReleasePool.md","articles":[]},"previous":{"title":"GCD-Thread","level":"2.1.4.9","depth":3,"path":"iOS/OCFoundation/GCDThread.md","ref":"iOS/OCFoundation/GCDThread.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/Lock.md","mtime":"2021-03-04T09:38:33.862Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-04T09:39:02.727Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

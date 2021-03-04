@@ -1391,47 +1391,6 @@ dispatch_async(&#x961F;&#x5217;,&#x4EFB;&#x52A1;)</p>
 </ul>
 <p><strong>&#x7CFB;&#x7EDF;&#x600E;&#x4E48;&#x79FB;&#x9664;&#x4E00;&#x4E2A; <code>isFinished==YES</code> &#x7684;NSOperation&#x7684;</strong>
 &#x901A;&#x8FC7;<code>KVO</code></p>
-<h2 id="&#x9501;">&#x9501;</h2>
-<h3 id="synchronized">@synchronized</h3>
-<p>&#x4E00;&#x822C;&#x5728;&#x521B;&#x5EFA;&#x5355;&#x4F8B;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528;</p>
-<h3 id="atomic">atomic</h3>
-<p>&#x4FEE;&#x9970;&#x5C5E;&#x6027;&#x7684;&#x5173;&#x952E;&#x5B57;
-&#x5BF9;&#x88AB;&#x4FEE;&#x9970;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x539F;&#x5B50;&#x64CD;&#x4F5C;(&#x4E0D;&#x8D1F;&#x8D23;&#x4F7F;&#x7528;)</p>
-<h3 id="osspinlock-&#x81EA;&#x65CB;&#x9501;">OSSpinLock &#x81EA;&#x65CB;&#x9501;</h3>
-<p>&#x5FAA;&#x73AF;&#x7B49;&#x5F85;&#x8BBF;&#x95EE;&#xFF0C;&#x4E0D;&#x91CA;&#x653E;&#x5F53;&#x524D;&#x8D44;&#x6E90;(while&#x5FAA;&#x73AF;)
-&#x7528;&#x4E8E;&#x8F7B;&#x91CF;&#x7EA7;&#x6570;&#x636E;&#x8BBF;&#x95EE;,&#x7B80;&#x5355;&#x7684;int&#x503C; +1/-1&#x64CD;&#x4F5C;</p>
-<h3 id="nslock">NSLock</h3>
-<pre><code>-(void)methodA{
-    [lock lock];
-    [self methodB];
-    [lock unlock];
-}
-
--(void)methodB{
-    [lock lock];
-    //xxxx
-    [lock unlock];
-}
-
-//&#x4F1A;&#x5BFC;&#x81F4;&#x6B7B;&#x9501;,&#x8981;&#x4F7F;&#x7528;&#x9012;&#x5F52;&#x9501;
-</code></pre><h3 id="nsrescursivelock-&#x9012;&#x5F52;&#x9501;">NSRescursiveLock &#x9012;&#x5F52;&#x9501;</h3>
-<pre><code>//&#x9012;&#x5F52;&#x9501;&#x7684;&#x7279;&#x70B9;&#x662F;&#x53EF;&#x4EE5;&#x91CD;&#x5165;
--(void)methodA{
-    [recursiveLock lock];
-    [self methodB];
-    [recursiveLock unlock];
-}
-
--(void)methodB{
-    [recursiveLock lock];
-    //xxxx
-    [recursiveLock unlock];
-}
-</code></pre><h3 id="dispatchsemaphoret-&#x4FE1;&#x53F7;&#x91CF;">dispatch_semaphore_t &#x4FE1;&#x53F7;&#x91CF;</h3>
-<p>&#x963B;&#x585E;&#x662F;&#x4E00;&#x4E2A;&#x4E3B;&#x52A8;&#x884C;&#x4E3A;
-&#x5524;&#x9192;&#x662F;&#x4E00;&#x4E2A;&#x88AB;&#x52A8;&#x884C;&#x4E3A;</p>
-<h2 id="ios&#x7CFB;&#x7EDF;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x7684;&#x51E0;&#x949F;&#x591A;&#x7EBF;&#x7A0B;&#x6280;&#x672F;&#x5404;&#x81EA;&#x7684;&#x7279;&#x70B9;&#x662F;&#x600E;&#x6837;&#x7684;">iOS&#x7CFB;&#x7EDF;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x7684;&#x51E0;&#x949F;&#x591A;&#x7EBF;&#x7A0B;&#x6280;&#x672F;&#x5404;&#x81EA;&#x7684;&#x7279;&#x70B9;&#x662F;&#x600E;&#x6837;&#x7684;</h2>
-<p>iOS&#x7CFB;&#x7EDF;&#x5F53;&#x4E2D;&#x4E3B;&#x8981;&#x63D0;&#x4F9B;3&#x79CD;,<code>GCD</code>&#x3001;<code>NSOperation&amp;NSOperationQueue</code>&#x3001;<code>NSThread</code>,&#x4E00;&#x822C;&#x4F7F;&#x7528; <code>GCD</code>&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#x7EBF;&#x7A0B;&#x540C;&#x6B65;&#xFF0C;&#x5305;&#x62EC;&#x5B50;&#x7EBF;&#x7A0B;&#x5206;&#x6D3E;&#xFF0C;&#x5B9E;&#x73B0;&#x591A;&#x8BFB;&#x5355;&#x5199;&#x60C5;&#x666F;&#xFF0C;<code>NSOperation</code>&#x65B9;&#x4FBF;&#x4EFB;&#x52A1;&#x72B6;&#x6001;&#x63A7;&#x5236;&#xFF0C;&#x6DFB;&#x52A0;&#x4F9D;&#x8D56;&#x79FB;&#x9664;&#x4F9D;&#x8D56;,<code>NSThread</code>&#x591A;&#x7528;&#x4E8E;&#x5E38;&#x7528;&#x7EBF;&#x7A0B;</p>
 
                                 
                                 </section>
@@ -1475,7 +1434,7 @@ dispatch_async(&#x961F;&#x5217;,&#x4EFB;&#x52A1;)</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GCD-Thread","level":"2.1.4.9","depth":3,"next":{"title":"Lock","level":"2.1.4.10","depth":3,"path":"iOS/OCFoundation/Lock.md","ref":"iOS/OCFoundation/Lock.md","articles":[]},"previous":{"title":"GCD-Usage","level":"2.1.4.8","depth":3,"path":"iOS/OCFoundation/GCDUsage.md","ref":"iOS/OCFoundation/GCDUsage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/GCDThread.md","mtime":"2021-03-03T11:00:04.093Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-03T11:00:36.184Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GCD-Thread","level":"2.1.4.9","depth":3,"next":{"title":"Lock","level":"2.1.4.10","depth":3,"path":"iOS/OCFoundation/Lock.md","ref":"iOS/OCFoundation/Lock.md","articles":[]},"previous":{"title":"GCD-Usage","level":"2.1.4.8","depth":3,"path":"iOS/OCFoundation/GCDUsage.md","ref":"iOS/OCFoundation/GCDUsage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/GCDThread.md","mtime":"2021-03-04T09:38:33.858Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-04T09:39:02.727Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
