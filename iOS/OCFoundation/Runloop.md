@@ -129,14 +129,6 @@ Input Source, Timer Source, Run Loop Observer 统称为 Mode Item，这里的 Mo
 
 
 
-
-作者：ibiaoma
-链接：https://juejin.cn/post/6930891193748307981
-来源：掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
-
-
 ## Runloop Modes
 
 `Runloop Mode` 是`事件源的集合` + `Runloop`观察者的集合。**Runloop 每次都运行在某个特定的 mode 上。**
@@ -389,6 +381,48 @@ AFNetworking/NSURLConnection/AFURLConnectionOperation.m
 ```
 
 如代码，为线程中Runloop添加一个 `[NSMachPort port]` `source1` 事件源，让线程不退出一直保活。直到 `AF3.x`,废弃了 `NSURLConnection`。因为`NSURLConnection`中,执行回调的要在子线程,可能回调回来线程已经销毁无法做回调.`3.x`版本中，使用了 `NSURLSession`,能指定`queue`回调，所以避免了问题
+
+
+
+## RunLoop中Source0和Source1的区别
+
+`Source0`并不能主动触发事件。使用时，你需要先调用`CFRunLoopSourceSignal`，将这个Source标记为待处理，然后手动调用`CFRunLoopWakeUp`来唤醒RunLoop，让其处理这个事件。
+
+`Source1`能主动触发事件。其中它有一个`mach_port_t`，mach_port是用于内核向线程发送消息的。
+
+使用`Source0`的情况：
+
+- 触摸事件处理；
+- 调用`performSelector:onThread:withObject:waitUntilDone:`方法；
+
+使用`Source1`的情况：
+
+- 基于端口的线程间通信（A线程通过端口发送消息到B线程，这个消息是`Source1`的；
+- 系统事件的捕捉，先触发是`Source1`，接着分发到`Source0`去处理。
+
+## RunLoop响应用户操作
+
+以按钮点击触发事件为例，点击屏幕的时候，首先系统内部捕获到这个点击事件，这是在`Source1`中处理的，`Source1`会包装成事件丢到事件队列中，交给`Source0`处理。
+
+## RunLoop与UI刷新
+
+当UI需要更新的时候，比如改变了`frame`、更新了`UIView`/`CALayer`的层次时，或者手动调用了`setNeedsLayout`/`setNeedsDisplay`方法后，这个`UIView`/`CALayer`就被标记为待处理，并被提交到一个全局的容器去。
+
+苹果注册了一个`Observer`监听`BeforeWaiting`(即将进入休眠) 和 `Exit`(即将退出Loop) 事件，回调去执行一个很长的函数：`CA::Transaction::observer_callback(__CFRunLoopObserver*, unsigned long, void*)()` 这个函数里会遍历所有待处理的`UIView`/`CAlayer`以执行实际的绘制和调整，并更新界面。
+
+![RunLoop与UI刷新](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-05-032038.jpg)
+
+## RunLoop与AutoreleasePool
+
+在程序启动之后，主线程会创建一个Runloop，也会创建两个Observer，回调工作都是在`_wrapRunLoopWithAutoreleasePoolHandler`函数中。
+
+第一个Observer监听的是Entry（即将进入Loop），回调是在`_objc_autoreleasePoolPush()`中创建自动释放池的，优先级是最高的，保证创建释放池是在所有回调之前。
+
+第二个Observer监听有两个事件：BeforeWaiting（进入休眠）时调用`_objc_autoreleasePoolPop`和`_objc_autoreleasePoolPush`释放旧的释放池以及创建新的释放池；Exit（退出Loop）调用`_objc_autoreleasePoolPop`来释放自动释放池。这个优先级是最低的，保证释放池发生在所有回调之后调用。
+
+
+
+
 
 ## Reference
 
