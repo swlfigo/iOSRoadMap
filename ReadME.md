@@ -1,5 +1,5 @@
 # iOS RoadMap
-![buildAction](https://github.com/swlfigo/iOSRoadMap/workflows/Gitbook%20Build/badge.svg)
+![buildAction](https://img.shields.io/github/workflow/status/swlfigo/iOSRoadMap/Gitbook%20Build)
 
 #### 更多博文可看传送门 ↓
 
