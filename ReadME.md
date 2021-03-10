@@ -1,4 +1,6 @@
 # iOS RoadMap
+![buildAction](https://github.com/swlfigo/iOSRoadMap/workflows/Gitbook%20Build/badge.svg)
+
 #### 更多博文可看传送门 ↓
 
 [传送门](http://isylar.com)
