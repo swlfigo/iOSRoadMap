@@ -96,7 +96,79 @@ struct mach_header_64 {
 `mach_header_64` 相较于 `mach_header` , 也就是 `32` 位头文件 , 只是多了一个保留字段 . `mach_header` 是链接器加载时最先读取的内容 , 它决定了一些基础架构 , 系统类型 , 指令条数等信息.
 
 
-作者：李斌同学
-链接：https://juejin.cn/post/6844903983841214472
-来源：掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+### Load Commands
+
+`Load Commands` 详细保存着加载指令的内容 , 告诉链接器如何去加载这个 `Mach-O` 文件.
+
+通过查看内存地址我们发现 , 在内存中 , `Load Commands` 是紧跟在 `Mach_header` 之后的 .
+
+那么这些 `Load Commands` 对应了什么呢 ? 我们以 arm64 为例.
+
+![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-11-092013.jpg)
+
+其中 **_TEXT** 段和 **_DATA** 段 , 是我们经常需要研究的 , `MachOView` 下面也有详细列出.
+
+![img](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-11-092018.jpg)
+
+### 
+
+### _TEXT 段
+
+我们来看看 `_TEXT` 段里都存放了什么 , 其实真正开始读取就是从 `_TEXT` 段开始读取的 .
+
+| 名称                      | 内容             |
+| ------------------------- | ---------------- |
+| `_text`                   | 主程序代码       |
+| `_stubs` , `_stub_helper` | 动态链接         |
+| `_objc_methodname`        | 方法名称         |
+| `_objc_classname`         | 类名称           |
+| `_objc_methtype`          | 方法类型 ( v@: ) |
+| `_cstring`                | 静态字符串常量   |
+
+### _DATA 段
+
+`_DATA` 在内存中是紧跟在 `_TEXT` 段之后的.
+
+| 名称                                    | 内容           |
+| --------------------------------------- | -------------- |
+| `_got` : Non-Lazy Symbol Pointers       | 非懒加载符号表 |
+| `_la_symbol_ptr` : Lazy Symbol Pointers | 懒加载符号表   |
+| `_objc_classlist`                       | 类列表         |
+
+
+
+下面列举一些常见的 Section。
+
+| Section                   | 用途                                                         |
+| ------------------------- | ------------------------------------------------------------ |
+| `__TEXT.__text`           | 主程序代码                                                   |
+| `__TEXT.__cstring`        | C 语言字符串                                                 |
+| `__TEXT.__const`          | `const` 关键字修饰的常量                                     |
+| `__TEXT.__stubs`          | 用于 Stub 的占位代码，很多地方称之为*桩代码*。               |
+| `__TEXT.__stubs_helper`   | 当 Stub 无法找到真正的符号地址后的最终指向                   |
+| `__TEXT.__objc_methname`  | Objective-C 方法名称                                         |
+| `__TEXT.__objc_methtype`  | Objective-C 方法类型                                         |
+| `__TEXT.__objc_classname` | Objective-C 类名称                                           |
+| `__DATA.__data`           | 初始化过的可变数据                                           |
+| `__DATA.__la_symbol_ptr`  | lazy binding 的指针表，表中的指针一开始都指向 `__stub_helper` |
+| `__DATA.nl_symbol_ptr`    | 非 lazy binding 的指针表，每个表项中的指针都指向一个在装载过程中，被动态链机器搜索完成的符号 |
+| `__DATA.__const`          | 没有初始化过的常量                                           |
+| `__DATA.__cfstring`       | 程序中使用的 Core Foundation 字符串（`CFStringRefs`）        |
+| `__DATA.__bss`            | BSS，存放为初始化的全局变量，即常说的静态内存分配            |
+| `__DATA.__common`         | 没有初始化过的符号声明                                       |
+| `__DATA.__objc_classlist` | Objective-C 类列表                                           |
+| `__DATA.__objc_protolist` | Objective-C 原型                                             |
+| `__DATA.__objc_imginfo`   | Objective-C 镜像信息                                         |
+| `__DATA.__objc_selfrefs`  | Objective-C `self` 引用                                      |
+| `__DATA.__objc_protorefs` | Objective-C 原型引用                                         |
+| `__DATA.__objc_superrefs` | Objective-C 超类引用                                         |
+
+
+
+## Reference
+
+[1. Macho-O文件](https://juejin.cn/post/6844903983841214472)
+
+[2.Mach-O 文件格式探索](https://www.desgard.com/iOS-Source-Probe/C/mach-o/Mach-O%20%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E6%8E%A2%E7%B4%A2.html)
+
