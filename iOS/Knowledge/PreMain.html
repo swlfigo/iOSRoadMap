@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>iOS 图片的加载与渲染过程 · GitBook</title>
+        <title>PreMain · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -58,7 +58,7 @@
 
     
     
-    <link rel="prev" href="UIViewRender.html" />
+    <link rel="prev" href="MachO.html" />
     
 
     </head>
@@ -323,9 +323,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1.1" data-path="UIResponder.html">
+        <li class="chapter " data-level="2.1.1.1" data-path="../UIKit/UIResponder.html">
             
-                <a href="UIResponder.html">
+                <a href="../UIKit/UIResponder.html">
             
                     
                     UI触摸事件与事件响应
@@ -336,9 +336,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.1.2" data-path="UIOffScreenRendering.html">
+        <li class="chapter " data-level="2.1.1.2" data-path="../UIKit/UIOffScreenRendering.html">
             
-                <a href="UIOffScreenRendering.html">
+                <a href="../UIKit/UIOffScreenRendering.html">
             
                     
                     iOS 离屏渲染
@@ -349,9 +349,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.1.3" data-path="UIViewRender.html">
+        <li class="chapter " data-level="2.1.1.3" data-path="../UIKit/UIViewRender.html">
             
-                <a href="UIViewRender.html">
+                <a href="../UIKit/UIViewRender.html">
             
                     
                     iOS UIView刷新与渲染机制
@@ -362,9 +362,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.1.4" data-path="UIImageRender.html">
+        <li class="chapter " data-level="2.1.1.4" data-path="../UIKit/UIImageRender.html">
             
-                <a href="UIImageRender.html">
+                <a href="../UIKit/UIImageRender.html">
             
                     
                     iOS 图片的加载与渲染过程
@@ -813,9 +813,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.2.1" data-path="../Knowledge/Dyld.html">
+        <li class="chapter " data-level="2.2.1" data-path="Dyld.html">
             
-                <a href="../Knowledge/Dyld.html">
+                <a href="Dyld.html">
             
                     
                     Dyld
@@ -826,9 +826,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.2" data-path="../Knowledge/MachO.html">
+        <li class="chapter " data-level="2.2.2" data-path="MachO.html">
             
-                <a href="../Knowledge/MachO.html">
+                <a href="MachO.html">
             
                     
                     Mach-O
@@ -839,9 +839,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.3" data-path="../Knowledge/PreMain.html">
+        <li class="chapter active" data-level="2.2.3" data-path="PreMain.html">
             
-                <a href="../Knowledge/PreMain.html">
+                <a href="PreMain.html">
             
                     
                     PreMain
@@ -1341,7 +1341,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >iOS 图片的加载与渲染过程</a>
+        <a href="../.." >PreMain</a>
     </h1>
 </div>
 
@@ -1356,26 +1356,54 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="ios-&#x56FE;&#x7247;&#x7684;&#x52A0;&#x8F7D;&#x4E0E;&#x6E32;&#x67D3;&#x8FC7;&#x7A0B;">iOS &#x56FE;&#x7247;&#x7684;&#x52A0;&#x8F7D;&#x4E0E;&#x6E32;&#x67D3;&#x8FC7;&#x7A0B;</h1>
-<ol>
-<li><p>&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x56FE;&#x7247;&#x6587;&#x4EF6;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x8C03;&#x7528; <code>mmap()</code> &#x6620;&#x5C04;&#x5230;&#x5185;&#x5B58;&#xFF0C;&#x901A;&#x8FC7; <code>CGImageSourceRef</code> &#x8BBF;&#x95EE;&#x56FE;&#x50CF;&#x6570;&#x636E;&#xFF0C;&#x521B;&#x5EFA;<code>CGImageRef</code>&#x3002;</p>
-</li>
-<li><p>&#x4F20;&#x7EDF;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;I/O&#x64CD;&#x4F5C;&#x4E3A;&#x6807;&#x51C6;I/O&#xFF0C;&#x5373;&#x7F13;&#x5B58;I/O&#x3002;&#x5728;&#x8FD9;&#x79CD;I/O&#x6A21;&#x578B;&#x4E0B;&#xFF0C;&#x6570;&#x636E;&#x5148;&#x4ECE;&#x78C1;&#x76D8;&#x62F7;&#x8D1D;&#x5230;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x7684;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x7136;&#x540E;&#x4ECE;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x7F13;&#x51B2;&#x533A;&#x62F7;&#x8D1D;&#x5230;&#x7528;&#x6237;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x4F18;&#x70B9;&#x662F;&#x51CF;&#x5C11;&#x4E86;&#x78C1;&#x76D8;&#x64CD;&#x4F5C;&#xFF0C;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#x3002;&#x4F46;&#x56E0;&#x4E3A;&#x6570;&#x636E;&#x5728;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x5728;&#x7528;&#x6237;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x548C;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x95F4;&#x8FDB;&#x884C;&#x591A;&#x6B21;&#x6570;&#x636E;&#x62F7;&#x8D1D;&#x64CD;&#x4F5C;&#xFF0C;&#x9020;&#x6210;&#x5F88;&#x5927;&#x7684;CPU&#x53CA;&#x5185;&#x5B58;&#x5F00;&#x9500;&#x3002;</p>
-</li>
-<li><code>mmap()</code> &#x5C06;&#x786C;&#x76D8;&#x6570;&#x636E;&#x76F4;&#x63A5;&#x6620;&#x5C04;&#x5230;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x5E94;&#x7528;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x5730;&#x5740;&#x6765;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x907F;&#x514D;&#x4E86;&#x6570;&#x636E;&#x5728;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x548C;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7684;&#x76F8;&#x4E92;&#x62F7;&#x8D1D;&#xFF0C;&#x6548;&#x7387;&#x66F4;&#x9AD8;&#x3002;&#x5728;<strong>&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x624D;&#x4F1A;&#x6839;&#x636E;&#x7F3A;&#x9875;&#x52A0;&#x8F7D;&#x7684;&#x673A;&#x5236;&#x4ECE;&#x78C1;&#x76D8;&#x52A0;&#x8F7D;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5757;&#x5230;&#x7269;&#x7406;&#x5185;&#x5B58;&#xFF0C;&#x5728;&#x8FD9;&#x4E4B;&#x524D;&#x4E0D;&#x4F1A;&#x6D88;&#x8017;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x7684;&#x5185;&#x5B58;&#x3002;</strong> iOS&#x4E2D;&#xFF0C;&#x4F7F;&#x7528; imageNamed &#x6216;&#x8005;imageWithContentsOfFile &#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x8C03;&#x7528; mmap() &#x5C06;&#x56FE;&#x7247;&#x6587;&#x4EF6;&#x6620;&#x5C04;&#x5230;&#x865A;&#x62DF;&#x5185;&#x5B58;&#xFF0C;&#x5E76;&#x521B;&#x5EFA; CGImageRef &#x7528;&#x4E8E;&#x540E;&#x7EED;&#x8BBF;&#x95EE;&#x56FE;&#x7247;&#x6570;&#x636E;&#x3002;</li>
-</ol>
-<ol>
-<li><p>&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#xFF0C;&#x5C06;&#x56FE;&#x7247;&#x6570;&#x636E;&#x8D4B;&#x503C;&#x7ED9; UIImageView &#x3002;&#x5728;&#x4FDD;&#x5B58;&#x56FE;&#x7247;&#x65F6;&#xFF0C;&#x4E3A;&#x4E86;&#x8282;&#x7701;&#x7A7A;&#x95F4;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x5C06;&#x56FE;&#x7247;&#x7F16;&#x7801;&#xFF08;&#x538B;&#x7F29;&#xFF09;&#x540E;&#x518D;&#x8FDB;&#x884C;&#x5B58;&#x50A8;&#x3002;<strong>&#x5982;&#x679C;&#x8BFB;&#x53D6;&#x7684;&#x56FE;&#x7247;&#x6570;&#x636E;&#x4E3A;&#x538B;&#x7F29;&#x540E;&#x7684;&#x6570;&#x636E;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x5C31;&#x9700;&#x8981;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#x6210;&#x4F4D;&#x56FE;&#xFF08;Bitmap&#xFF09;&#x6570;&#x636E;&#x3002;</strong> &#x4E0D;&#x540C;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5728;&#x8FD9;&#x4E00;&#x6B65;&#x7684;&#x64CD;&#x4F5C;&#x4E0A;&#x4F1A;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
-</li>
-<li><p><code>imageNamed:</code> &#x4F1A;&#x5728;&#x56FE;&#x7247;&#x7B2C;&#x4E00;&#x6B21;&#x6E32;&#x67D3;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#xFF0C;&#x5E76;&#x7F13;&#x5B58;&#x89E3;&#x7801;&#x540E;&#x7684;&#x56FE;&#x7247;&#x6570;&#x636E;&#x3002;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5728;&#x5168;&#x5C40;&#x7F13;&#x5B58;&#x4E2D;&#xFF0C;&#x4E0D;&#x4F1A;&#x968F;&#x7740;UIImag&#x7684;&#x91CA;&#x653E;&#x800C;&#x91CA;&#x653E;&#x3002;</p>
-</li>
-<li><p><code>imageWithContentsOfFile:</code> &#x6216; <code>imageWithData:</code> &#x540C;&#x6837;&#x4F1A;&#x5728;&#x56FE;&#x7247;&#x7B2C;&#x4E00;&#x6B21;&#x6E32;&#x67D3;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#x3002;&#x5E95;&#x5C42;&#x4F1A;&#x8C03;&#x7528;&#x5230; <code>CGImageSourceCreateWithData()</code> &#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x662F;&#x5426;&#x8981;&#x7F13;&#x5B58;&#x89E3;&#x7801;&#x540E;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5728;64&#x4F4D;&#x673A;&#x5668;&#x4E0A;&#x9ED8;&#x8BA4;&#x9700;&#x8981;&#x7F13;&#x5B58;&#xFF08;<code>kCGImageSourceShouldCache</code>&#xFF09;&#x3002;&#x4E0E;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x7684;&#x7F13;&#x5B58;&#x4F1A;&#x968F;&#x7740;UIImage&#x7684;&#x91CA;&#x653E;&#x800C;&#x88AB;&#x91CA;&#x653E;&#x6389;&#x3002;</p>
-</li>
-<li><p>&#x624B;&#x52A8;&#x8C03;&#x7528; <code>CGImageSourceCreateWithData()</code> &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x662F;&#x5426;&#x9700;&#x8981;&#x7F13;&#x5B58;&#xFF08;<code>kCGImageSourceShouldCache</code>&#xFF09;&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x8C03;&#x7528; <code>CGImageSourceCreateImageAtIndex()</code> &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x662F;&#x5426;&#x9700;&#x8981;&#x7ACB;&#x5373;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#xFF08;<code>kCGImageSourceShouldCacheImmediately</code>&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;&#x4E0D;&#x9700;&#x8981;&#x7ACB;&#x523B;&#x89E3;&#x7801;&#xFF0C;&#x5219;&#x4F1A;&#x5728;<strong>&#x5C06;&#x56FE;&#x7247;&#x6E32;&#x67D3;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x65F6;&#x624D;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#x3002;</strong>&#xFF08;&#x8BBE;&#x7F6E;&#x4E3A;&#x7ACB;&#x5373;&#x89E3;&#x7801;&#x4F1A;&#x963B;&#x585E;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;&#x9020;&#x6210;&#x6027;&#x80FD;&#x95EE;&#x9898;&#xFF0C;&#x8BE6;&#x89C1; <a href="https://www.objc.io/issues/5-ios7/iOS7-hidden-gems-and-workarounds/&#xFF09;" target="_blank">https://www.objc.io/issues/5-ios7/iOS7-hidden-gems-and-workarounds/&#xFF09;</a></p>
-</li>
-<li>UIImageView &#x7684;&#x56FE;&#x5C42;&#x6811;&#xFF08;Layer Tree&#xFF09;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A; <code>Implicit Transaction</code>&#xFF0C;&#x8FD9;&#x4E2A;<code>transaction</code>&#x4F1A;&#x81EA;&#x52A8;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x4E0B;&#x4E00;&#x4E2A; Runloop &#x8FDB;&#x884C;&#x63D0;&#x4EA4;&#x3002;&#xFF08;<code>Explicit Transaction</code> &#x7531;&#x663E;&#x5F0F;&#x8C03;&#x7528; begin() &#x548C; commit() &#x65B9;&#x6CD5;&#x89E6;&#x53D1;&#x751F;&#x6210;&#x3002;&#xFF09;</li>
-<li>&#x4E0B;&#x4E00;&#x4E2A;Main Runloop&#x4E2D;&#xFF0C;Core Animation&#x4F1A;&#x63D0;&#x4EA4;&#x8FD9;&#x4E2A; Implicit Transaction&#x3002;&#x5982;&#x679C;&#x7528;&#x6237;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4F4D;&#x56FE;&#x6570;&#x636E;&#x6CA1;<strong>&#x6709;&#x5B57;&#x8282;&#x5BF9;&#x9F50;</strong> &#xFF0C;&#x51FA;&#x4E8E;&#x6E32;&#x67D3;&#x6027;&#x80FD;&#x8003;&#x8651;&#xFF0C; <strong>Core Animation&#x4F1A;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x62F7;&#x8D1D;&#xFF0C;&#x4EE5;&#x8FDB;&#x884C;&#x5B57;&#x8282;&#x5BF9;&#x9F50;&#x3002;</strong> &#x4E4B;&#x540E;&#xFF0C;GPU&#x4F1A;&#x6E32;&#x67D3;&#x5BF9;&#x9F50;&#x540E;&#x7684;&#x4F4D;&#x56FE;&#x6570;&#x636E;&#xFF0C;&#x5C55;&#x793A;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x3002;</li>
-</ol>
+                                <h1 id="main-&#x51FD;&#x6570;&#x4E4B;&#x524D;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;">main &#x51FD;&#x6570;&#x4E4B;&#x524D;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;</h1>
+<p>&#x5927;&#x4F53;&#x5206;&#x4E3A;&#x5982;&#x4E0B;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<p>(1) &#x7CFB;&#x7EDF;&#x4E3A;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x505A;&#x597D;&#x51C6;&#x5907;</p>
+<p>(2) &#x7CFB;&#x7EDF;&#x5C06;&#x63A7;&#x5236;&#x6743;&#x4EA4;&#x7ED9; Dyld&#xFF0C;Dyld &#x4F1A;&#x8D1F;&#x8D23;&#x540E;&#x7EED;&#x7684;&#x5DE5;&#x4F5C;</p>
+<p>(3) Dyld &#x52A0;&#x8F7D;&#x7A0B;&#x5E8F;&#x6240;&#x9700;&#x7684;&#x52A8;&#x6001;&#x5E93;</p>
+<p>(3) Dyld &#x5BF9;&#x7A0B;&#x5E8F;&#x8FDB;&#x884C; rebase &#x4EE5;&#x53CA; bind &#x64CD;&#x4F5C;</p>
+<p>(4) Objc SetUp</p>
+<p>(5) &#x8FD0;&#x884C;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;</p>
+<p>(6) &#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684; main &#x51FD;&#x6570;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;dyld2&#x548C;dyld3&#x7684;&#x52A0;&#x8F7D;&#x65B9;&#x5F0F;&#x7565;&#x6709;&#x4E0D;&#x540C;&#x3002;dyld2&#x662F;&#x7EAF;&#x7CB9;&#x7684;in-process&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5728;&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;&#x5185;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x610F;&#x5473;&#x7740;&#x53EA;&#x6709;&#x5F53;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x88AB;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;dyld2&#x624D;&#x80FD;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x3002;dyld3&#x5219;&#x662F;&#x90E8;&#x5206;out-of-process&#xFF0C;&#x90E8;&#x5206;in-process&#x3002;</p>
+<p>dyld2&#x7684;&#x8FC7;&#x7A0B;&#x662F;&#xFF1A;&#x52A0;&#x8F7D;dyld&#x5230;App&#x8FDB;&#x7A0B;&#xFF0C;&#x52A0;&#x8F7D;&#x52A8;&#x6001;&#x5E93;&#xFF08;&#x5305;&#x62EC;&#x6240;&#x4F9D;&#x8D56;&#x7684;&#x6240;&#x6709;&#x52A8;&#x6001;&#x5E93;&#xFF09;&#xFF0C;Rebase&#xFF0C;Bind&#xFF0C;&#x521D;&#x59CB;&#x5316;Objective C Runtime&#x548C;&#x5176;&#x5B83;&#x7684;&#x521D;&#x59CB;&#x5316;&#x4EE3;&#x7801;&#x3002;</p>
+<p>dyld3&#x7684;out-of-process&#x4F1A;&#x505A;&#x5982;&#x4E0B;&#x4E8B;&#x60C5;&#xFF1A;&#x5206;&#x6790;Mach-o Headers&#xFF0C;&#x5206;&#x6790;&#x4F9D;&#x8D56;&#x7684;&#x52A8;&#x6001;&#x5E93;&#xFF0C;&#x67E5;&#x627E;&#x9700;&#x8981;Rebase &amp; Bind&#x4E4B;&#x7C7B;&#x7684;&#x7B26;&#x53F7;&#xFF0C;&#x628A;&#x4E0A;&#x8FF0;&#x7ED3;&#x679C;&#x5199;&#x5165;&#x7F13;&#x5B58;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5728;&#x5E94;&#x7528;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x52A0;&#x5FEB;&#x52A0;&#x8F7D;&#x901F;&#x5EA6;&#x3002;</p>
+<h4 id="dyld">Dyld</h4>
+<p>Dyld &#x662F; iOS &#x7CFB;&#x7EDF;&#x7684;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5668;&#xFF0C; &#x5728;dyldStartup.s &#x6587;&#x4EF6;&#x4E2D;&#x6709;&#x4E2A;&#x540D;&#x4E3A; __dyld_start &#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x4F1A;&#x53BB;&#x8C03;&#x7528; dyldbootstrap::start() &#x65B9;&#x6CD5;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x4E00;&#x6B65;&#x8C03;&#x7528; dyld::_main() &#x65B9;&#x6CD5;&#xFF0C;&#x91CC;&#x9762;&#x5305;&#x542B; App &#x7684;&#x6574;&#x4E2A;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F; main &#x51FD;&#x6570;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x6700;&#x540E; Dyld &#x4F1A;&#x53BB;&#x8C03;&#x7528;&#x5B83;&#x3002;</p>
+<p>&#x4E4B;&#x540E;&#x4F1A;&#x53BB;&#x52A0;&#x8F7D;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x5E38;&#x88AB;&#x79F0;&#x4E3A; image&#xFF0C;&#x5305;&#x62EC;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3001;&#x52A8;&#x6001;&#x5E93;&#x7B49;&#xFF0C;ImageLoader &#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x5C06;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x8FDB;&#x5185;&#x5B58;&#x3002;dyld::_main() &#x65B9;&#x6CD5;&#x5728;&#x8BBE;&#x7F6E;&#x597D;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x540E;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;instantiateFromLoadedImage &#x51FD;&#x6570;&#x5C06;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x8FDB;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;&#x5206;&#x4E3A;&#x4E09;&#x6B65;&#xFF1A;</p>
+<pre><code class="lang-undefined">&#x5408;&#x6CD5;&#x6027;&#x68C0;&#x67E5;&#x3002;&#x4E3B;&#x8981;&#x662F;&#x68C0;&#x67E5;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5408;&#x6CD5;&#xFF0C;&#x662F;&#x5426;&#x80FD;&#x5728;&#x5F53;&#x524D;&#x7684; CPU &#x67B6;&#x6784;&#x4E0B;&#x8FD0;&#x884C;&#x3002;
+&#x9009;&#x62E9; ImageLoader &#x52A0;&#x8F7D;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;&#x7CFB;&#x7EDF;&#x4F1A;&#x53BB;&#x5224;&#x65AD;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x9009;&#x62E9;&#x76F8;&#x5E94;&#x7684; ImageLoader &#x5C06;&#x5176;&#x52A0;&#x8F7D;&#x8FDB;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x4E2D;&#x3002;
+&#x6CE8;&#x518C; image &#x4FE1;&#x606F;&#x3002;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x8C03;&#x7528; addImage &#x51FD;&#x6570;&#x5C06;&#x5176;&#x7BA1;&#x7406;&#x8D77;&#x6765;&#xFF0C;&#x5E76;&#x66F4;&#x65B0;&#x5185;&#x5B58;&#x5206;&#x5E03;&#x4FE1;&#x606F;&#x3002;
+</code></pre>
+<p>&#x4EE5;&#x4E0A;&#x4E09;&#x6B65;&#x5B8C;&#x6210;&#x540E;&#xFF0C;Dyld &#x4F1A;&#x8C03;&#x7528; link &#x51FD;&#x6570;&#x5F00;&#x59CB;&#x4E4B;&#x540E;&#x7684;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x67E5;&#x770B;-&gt;   <a href="Dyld.html">Dyld</a></p>
+<h2 id="&#x603B;&#x7ED3;&#xFF1A;">&#x603B;&#x7ED3;&#xFF1A;</h2>
+<h4 id="main&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4E4B;&#x524D;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x505A;&#x4E86;&#x5F88;&#x591A;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E3B;&#x8981;&#x662F;dyld&#x8FD9;&#x4E2A;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5668;&#x5728;&#x8D1F;&#x8D23;&#xFF0C;&#x6838;&#x5FC3;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;">main()&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4E4B;&#x524D;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x505A;&#x4E86;&#x5F88;&#x591A;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E3B;&#x8981;&#x662F;dyld&#x8FD9;&#x4E2A;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5668;&#x5728;&#x8D1F;&#x8D23;&#xFF0C;&#x6838;&#x5FC3;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;:</h4>
+<h5 id="1-&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x4ECE;dyldstar&#x5F00;&#x59CB;">1. &#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x4ECE;_dyld_star&#x5F00;&#x59CB;</h5>
+<ul>
+<li>1.1. &#x8BFB;&#x53D6;macho&#x6587;&#x4EF6;&#x4FE1;&#x606F;&#xFF0C;&#x8BBE;&#x7F6E;&#x865A;&#x62DF;&#x5730;&#x5740;&#x504F;&#x79FB;&#x91CF;&#xFF0C;&#x7528;&#x4E8E;&#x91CD;&#x5B9A;&#x5411;&#x3002;</li>
+<li>1.2. &#x8C03;&#x7528;dyld::_main&#x65B9;&#x6CD5;&#x8FDB;&#x5165;macho&#x6587;&#x4EF6;&#x7684;&#x4E3B;&#x7A0B;&#x5E8F;&#x3002;</li>
+</ul>
+<h5 id="2-&#x914D;&#x7F6E;&#x4E00;&#x4E9B;&#x73AF;&#x5883;&#x53D8;&#x91CF;">2. &#x914D;&#x7F6E;&#x4E00;&#x4E9B;&#x73AF;&#x5883;&#x53D8;&#x91CF;</h5>
+<ul>
+<li>2.1. &#x8BBE;&#x7F6E;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x6253;&#x5370;&#x51FA;&#x66F4;&#x591A;&#x7684;&#x4FE1;&#x606F;&#x3002;</li>
+<li>2.1. &#x8C03;&#x7528;getHostInfo()&#x6765;&#x83B7;&#x53D6;machO&#x5934;&#x90E8;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x8FD0;&#x884C;&#x67B6;&#x6784;&#x7684;&#x4FE1;&#x606F;&#x3002;</li>
+</ul>
+<h5 id="3-&#x5B9E;&#x4F8B;&#x5316;&#x4E3B;&#x7A0B;&#x5E8F;&#x5373;macho&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;">3. &#x5B9E;&#x4F8B;&#x5316;&#x4E3B;&#x7A0B;&#x5E8F;,&#x5373;macho&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;</h5>
+<h5 id="4-&#x52A0;&#x8F7D;&#x5171;&#x4EAB;&#x7F13;&#x5B58;&#x5E93;&#x3002;">4. &#x52A0;&#x8F7D;&#x5171;&#x4EAB;&#x7F13;&#x5B58;&#x5E93;&#x3002;</h5>
+<h5 id="5-&#x63D2;&#x5165;&#x52A8;&#x6001;&#x7F13;&#x5B58;&#x5E93;&#x3002;">5. &#x63D2;&#x5165;&#x52A8;&#x6001;&#x7F13;&#x5B58;&#x5E93;&#x3002;</h5>
+<h5 id="6-&#x94FE;&#x63A5;&#x4E3B;&#x7A0B;&#x5E8F;&#x3002;">6. &#x94FE;&#x63A5;&#x4E3B;&#x7A0B;&#x5E8F;&#x3002;</h5>
+<h5 id="7-&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x3002;">7. &#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x3002;</h5>
+<ul>
+<li>7.1. &#x7ECF;&#x8FC7;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x6700;&#x7EC8;&#x8C03;&#x7528;notifSingle&#x51FD;&#x6570;&#x3002;</li>
+<li>7.2. &#x6B64;&#x56DE;&#x8C03;&#x662F;&#x88AB;&#x8FD0;&#x884C;&#x65F6;_objc_init&#x521D;&#x59CB;&#x5316;&#x65F6;&#x8D4B;&#x503C;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;load_images</li>
+<li>7.3. load_images&#x91CC;&#x9762;&#x6267;&#x884C;call_load_methods&#x51FD;&#x6570;&#xFF0C;&#x5FAA;&#x73AF;&#x8C03;&#x7528;&#x6240;&#x7528;&#x7C7B;&#x4EE5;&#x53CA;&#x5206;&#x7C7B;&#x7684;load&#x65B9;&#x6CD5;&#x3002;</li>
+<li>7.4. doModInitFunctions&#x51FD;&#x6570;&#xFF0C;&#x5185;&#x90E8;&#x4F1A;&#x8C03;&#x7528;&#x5168;&#x5C40;C++&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5373;<em> </em> attribute<em> </em>((constructor))&#x8FD9;&#x6837;&#x7684;&#x51FD;&#x6570;&#x3002;</li>
+</ul>
+<h5 id="8-&#x8FD4;&#x56DE;&#x4E3B;&#x7A0B;&#x5E8F;&#x7684;&#x5165;&#x53E3;&#x51FD;&#x6570;&#xFF0C;&#x5F00;&#x59CB;&#x8FDB;&#x5165;&#x4E3B;&#x7A0B;&#x5E8F;&#x7684;main&#xFF08;&#xFF09;&#x51FD;&#x6570;&#x3002;">8. &#x8FD4;&#x56DE;&#x4E3B;&#x7A0B;&#x5E8F;&#x7684;&#x5165;&#x53E3;&#x51FD;&#x6570;&#xFF0C;&#x5F00;&#x59CB;&#x8FDB;&#x5165;&#x4E3B;&#x7A0B;&#x5E8F;&#x7684;main&#xFF08;&#xFF09;&#x51FD;&#x6570;&#x3002;</h5>
+<h2 id="reference">Reference</h2>
+<p><a href="https://juejin.cn/post/6844903783160348685" target="_blank">1. iOS App&#x4ECE;&#x70B9;&#x51FB;&#x5230;&#x542F;&#x52A8;</a></p>
+<p><a href="https://juejin.cn/post/6844903783160348685" target="_blank">2. &#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x5E26;&#x4F60;&#x63ED;&#x5F00;main&#x51FD;&#x6570;&#x4E4B;&#x524D;&#x7684;&#x9762;&#x7EB1;</a></p>
 
                                 
                                 </section>
@@ -1403,7 +1431,7 @@
 
             
                 
-                <a href="UIViewRender.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: iOS UIView刷新与渲染机制">
+                <a href="MachO.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Mach-O">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1415,7 +1443,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"iOS 图片的加载与渲染过程","level":"2.1.1.4","depth":3,"next":{"title":"第二章 Memory","level":"2.1.2","depth":2,"ref":"","articles":[{"title":"iOS结构体内存对齐","level":"2.1.2.1","depth":3,"path":"iOS/Memory/StructMemoryAligned.md","ref":"iOS/Memory/StructMemoryAligned.md","articles":[]},{"title":"内存中的5大区","level":"2.1.2.2","depth":3,"path":"iOS/Memory/MemoryFiveMainSection.md","ref":"iOS/Memory/MemoryFiveMainSection.md","articles":[]},{"title":"Tagged Pointer","level":"2.1.2.3","depth":3,"path":"iOS/Memory/TaggedPointer.md","ref":"iOS/Memory/TaggedPointer.md","articles":[]},{"title":"SideTables","level":"2.1.2.4","depth":3,"path":"iOS/Memory/SideTables.md","ref":"iOS/Memory/SideTables.md","articles":[]},{"title":"RetainCount","level":"2.1.2.5","depth":3,"path":"iOS/Memory/RetainCount.md","ref":"iOS/Memory/RetainCount.md","articles":[]},{"title":"WeakTable","level":"2.1.2.6","depth":3,"path":"iOS/Memory/WeakTable.md","ref":"iOS/Memory/WeakTable.md","articles":[]}]},"previous":{"title":"iOS UIView刷新与渲染机制","level":"2.1.1.3","depth":3,"path":"iOS/UIKit/UIViewRender.md","ref":"iOS/UIKit/UIViewRender.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/UIKit/UIImageRender.md","mtime":"2021-03-31T10:07:54.163Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-31T10:08:28.408Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PreMain","level":"2.2.3","depth":2,"next":{"title":"网络","level":"3.1","depth":1,"ref":"","articles":[{"title":"TCP粘包","level":"3.1.1","depth":2,"path":"Network/TCPMessageFrame.md","ref":"Network/TCPMessageFrame.md","articles":[]},{"title":"Https","level":"3.1.2","depth":2,"path":"Network/Https.md","ref":"Network/Https.md","articles":[]},{"title":"TCPHandShake","level":"3.1.3","depth":2,"path":"Network/TCPHandShake.md","ref":"Network/TCPHandShake.md","articles":[]},{"title":"TCP&UDP","level":"3.1.4","depth":2,"path":"Network/TCPUDP","ref":"Network/TCPUDP","articles":[]}]},"previous":{"title":"Mach-O","level":"2.2.2","depth":2,"path":"iOS/Knowledge/MachO.md","ref":"iOS/Knowledge/MachO.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Knowledge/PreMain.md","mtime":"2021-03-31T10:07:54.159Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-31T10:08:28.408Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
