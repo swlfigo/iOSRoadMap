@@ -25,13 +25,19 @@ AVPlayer *player = [AVPlayer playerWithURL:proxyURL];
 
 
 
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-07-140250.jpg)
+
+KTVHTTPCache 由 HTTP Server 和 Data Storage 两大模块组成。前者负责与 Client 交互，后者负责资源加载及缓存处理。
+
+
+
 几个核心类实现：
 
 **1、KTVHCHTTPServer：**
  用来搭建local server的，内部使用第三方库HTTPServer实现:
  创建自己的Connection类继承自HTTPConnection
 
-
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-07-140701.jpg)
 
 ```objective-c
 @interface KTVHCHTTPConnection : HTTPConnection
@@ -337,4 +343,6 @@ AVPlayer *player = [AVPlayer playerWithURL:proxyURL];
 ## Reference
 
 [1. iOS 视频缓存KTVHTTPCache原理和实现](https://www.jianshu.com/p/7daec9ce6390)
+
+[2. 读懂「 唱吧KTVHTTPCache 」设计思想](https://www.jianshu.com/p/2314782a16c3)
 
