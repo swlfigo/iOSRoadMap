@@ -180,3 +180,5 @@ D_view---pointInside withEvent --- isInside:1
 [iOS触摸事件全家桶](https://www.jianshu.com/p/c294d1bd963d)
 
 [深入理解 iOS 事件机制](https://juejin.im/post/5d396ef7518825453b605afa)
+
+[iOS事件处理，看我就够了~](https://juejin.cn/post/6948318786005139493)
