@@ -29,6 +29,10 @@
   
   * [App 启动时间：过去，现在和未来](./Article/App 启动时间：过去，现在和未来.md)
   
+  * [iOS事件处理，看我就够了~](./Article/iOSUIResponderChain.md)
+  
+  * [iOS 代码瘦身实践_ 删除无用的类](./Article/iOS 代码瘦身实践_ 删除无用的类.md)
+  
     
   
 * [iOS技术总结](iOS/ReadME.md)
