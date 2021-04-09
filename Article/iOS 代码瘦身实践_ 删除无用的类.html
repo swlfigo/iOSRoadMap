@@ -1,0 +1,1576 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>iOS 代码瘦身实践_ 删除无用的类 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../iOS/ReadME.html" />
+    
+    
+    <link rel="prev" href="iOSUIResponderChain.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ReadME.html">
+            
+                <a href="ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="面试驱动技术 - Category 相关考点.html">
+            
+                <a href="面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="iOS 编译过程的原理和应用.html">
+            
+                <a href="iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="Objective-C Runtime 机制简析.html">
+            
+                <a href="Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="OC 消息机制和 super 关键字.html">
+            
+                <a href="OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="UIViewController 预加载方案浅谈.html">
+            
+                <a href="UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="深入了解 iOS 的初始化.html">
+            
+                <a href="深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="App 启动时间：过去，现在和未来.html">
+            
+                <a href="App 启动时间：过去，现在和未来.html">
+            
+                    
+                    App 启动时间：过去，现在和未来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="iOSUIResponderChain.html">
+            
+                <a href="iOSUIResponderChain.html">
+            
+                    
+                    iOS事件处理，看我就够了~
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.15" data-path="iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                <a href="iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                    
+                    iOS 代码瘦身实践_ 删除无用的类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../iOS/ReadME.html">
+            
+                <a href="../iOS/ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../iOS/UIKit/UIResponder.html">
+            
+                <a href="../iOS/UIKit/UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                <a href="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="../iOS/UIKit/UIViewRender.html">
+            
+                <a href="../iOS/UIKit/UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.4" data-path="../iOS/UIKit/UIImageRender.html">
+            
+                <a href="../iOS/UIKit/UIImageRender.html">
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    第二章 Memory
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../iOS/Memory/StructMemoryAligned.html">
+            
+                <a href="../iOS/Memory/StructMemoryAligned.html">
+            
+                    
+                    iOS结构体内存对齐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../iOS/Memory/MemoryFiveMainSection.html">
+            
+                <a href="../iOS/Memory/MemoryFiveMainSection.html">
+            
+                    
+                    内存中的5大区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.3" data-path="../iOS/Memory/TaggedPointer.html">
+            
+                <a href="../iOS/Memory/TaggedPointer.html">
+            
+                    
+                    Tagged Pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.4" data-path="../iOS/Memory/SideTables.html">
+            
+                <a href="../iOS/Memory/SideTables.html">
+            
+                    
+                    SideTables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.5" data-path="../iOS/Memory/RetainCount.html">
+            
+                <a href="../iOS/Memory/RetainCount.html">
+            
+                    
+                    RetainCount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.6" data-path="../iOS/Memory/WeakTable.html">
+            
+                <a href="../iOS/Memory/WeakTable.html">
+            
+                    
+                    WeakTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    第三章 Objc_Object
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../iOS/Objc_Object/Property.html">
+            
+                <a href="../iOS/Objc_Object/Property.html">
+            
+                    
+                    Propety属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../iOS/Objc_Object/isa.html">
+            
+                <a href="../iOS/Objc_Object/isa.html">
+            
+                    
+                    isa
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.3" data-path="../iOS/Objc_Object/ObjectClass.html">
+            
+                <a href="../iOS/Objc_Object/ObjectClass.html">
+            
+                    
+                    ObjectClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.4" data-path="../iOS/Objc_Object/ClassRWT.html">
+            
+                <a href="../iOS/Objc_Object/ClassRWT.html">
+            
+                    
+                    ClassRWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.5" data-path="../iOS/Objc_Object/OCAllocInit.html">
+            
+                <a href="../iOS/Objc_Object/OCAllocInit.html">
+            
+                    
+                    AllocInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.6" data-path="../iOS/Objc_Object/Category.html">
+            
+                <a href="../iOS/Objc_Object/Category.html">
+            
+                    
+                    Category
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.7" data-path="../iOS/Objc_Object/AssociatedObject.html">
+            
+                <a href="../iOS/Objc_Object/AssociatedObject.html">
+            
+                    
+                    AssociatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    第四章 OC Foundation
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../iOS/OCFoundation/Block.html">
+            
+                <a href="../iOS/OCFoundation/Block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../iOS/OCFoundation/Method.html">
+            
+                <a href="../iOS/OCFoundation/Method.html">
+            
+                    
+                    Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.3" data-path="../iOS/OCFoundation/MessageForwarding.html">
+            
+                <a href="../iOS/OCFoundation/MessageForwarding.html">
+            
+                    
+                    MessageForwarding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.4" data-path="../iOS/OCFoundation/KVC.html">
+            
+                <a href="../iOS/OCFoundation/KVC.html">
+            
+                    
+                    KVC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.5" data-path="../iOS/OCFoundation/KVO.html">
+            
+                <a href="../iOS/OCFoundation/KVO.html">
+            
+                    
+                    KVO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.6" data-path="../iOS/OCFoundation/Runloop.html">
+            
+                <a href="../iOS/OCFoundation/Runloop.html">
+            
+                    
+                    Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.7" data-path="../iOS/OCFoundation/MultiThreading.html">
+            
+                <a href="../iOS/OCFoundation/MultiThreading.html">
+            
+                    
+                    MultiThreading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.8" data-path="../iOS/OCFoundation/GCDUsage.html">
+            
+                <a href="../iOS/OCFoundation/GCDUsage.html">
+            
+                    
+                    GCD-Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.9" data-path="../iOS/OCFoundation/GCDThread.html">
+            
+                <a href="../iOS/OCFoundation/GCDThread.html">
+            
+                    
+                    GCD-Thread
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.10" data-path="../iOS/OCFoundation/Lock.html">
+            
+                <a href="../iOS/OCFoundation/Lock.html">
+            
+                    
+                    Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.11" data-path="../iOS/OCFoundation/AutoReleasePool.html">
+            
+                <a href="../iOS/OCFoundation/AutoReleasePool.html">
+            
+                    
+                    AutoReleasePool
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    第五章 源码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../iOS/SourceCode/YYASyncLayer.html">
+            
+                <a href="../iOS/SourceCode/YYASyncLayer.html">
+            
+                    
+                    YYAsyncLayer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5.2" data-path="../iOS/SourceCode/FluentDarkModeKit.html">
+            
+                <a href="../iOS/SourceCode/FluentDarkModeKit.html">
+            
+                    
+                    FluentDarkModeKit 
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    第六章 iOS知识点
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../iOS/Knowledge/Dyld.html">
+            
+                <a href="../iOS/Knowledge/Dyld.html">
+            
+                    
+                    Dyld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../iOS/Knowledge/MachO.html">
+            
+                <a href="../iOS/Knowledge/MachO.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../iOS/Knowledge/PreMain.html">
+            
+                <a href="../iOS/Knowledge/PreMain.html">
+            
+                    
+                    PreMain
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    网络
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../Network/TCPMessageFrame.html">
+            
+                <a href="../Network/TCPMessageFrame.html">
+            
+                    
+                    TCP粘包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../Network/Https.html">
+            
+                <a href="../Network/Https.html">
+            
+                    
+                    Https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../Network/TCPHandShake.html">
+            
+                <a href="../Network/TCPHandShake.html">
+            
+                    
+                    TCPHandShake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../Network/TCPUDP">
+            
+                <span>
+            
+                    
+                    TCP&UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../iOS/OCFoundation/OCFoundation.md">
+            
+                <span>
+            
+                    
+                    2.OC语言基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../iOS/Runtime/Runtime.md">
+            
+                <span>
+            
+                    
+                    3.Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../iOS/Block/Block.md">
+            
+                <span>
+            
+                    
+                    4.Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../iOS/Runloop/Runloop.md">
+            
+                <span>
+            
+                    
+                    5.Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../iOS/Memory/Memory.html">
+            
+                <a href="../iOS/Memory/Memory.html">
+            
+                    
+                    6.Memory内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../iOS/Autoreleasepool/Autoreleasepool.md">
+            
+                <span>
+            
+                    
+                    7. Autoreleasepool 
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../knowledge/ReadME.html">
+            
+                <a href="../knowledge/ReadME.html">
+            
+                    
+                    知识点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../knowledge/App启动.html">
+            
+                <a href="../knowledge/App启动.html">
+            
+                    
+                    App启动过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" >
+            
+                <a target="_blank" href="https://juejin.im/entry/59dd94b06fb9a0451463030b">
+            
+                    
+                    Cocoapods原理总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../knowledge/static_inline.html">
+            
+                <a href="../knowledge/static_inline.html">
+            
+                    
+                    内联函数,与宏的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../knowledge/listAndNode.html">
+            
+                <a href="../knowledge/listAndNode.html">
+            
+                    
+                    单链表与顺序结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../knowledge/staticCompare.html">
+            
+                <a href="../knowledge/staticCompare.html">
+            
+                    
+                    static区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../knowledge/Mach-O.html">
+            
+                <a href="../knowledge/Mach-O.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../network/ReadME.md">
+            
+                <span>
+            
+                    
+                    网络
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="../network/TCP-Three-Way-Handshake.md">
+            
+                <span>
+            
+                    
+                    1. 简述TCP的三次握手过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="../network/4次挥手过程详解.md">
+            
+                <span>
+            
+                    
+                    2. 4次挥手过程详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.3" data-path="../network/TCP:UDP区别以及UDP如何实现可靠传输.md">
+            
+                <span>
+            
+                    
+                    3. TCP/UDP区别以及UDP如何实现可靠传输
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.4" data-path="../network/Http%20和%20Https%20有什么关系和区别.md">
+            
+                <span>
+            
+                    
+                    4. Http 和 Https 有什么关系和区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.5" data-path="../network/get%20和%20post%20区别.md">
+            
+                <span>
+            
+                    
+                    5. get 和 post 区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.6" data-path="../network/什么是Http协议无状态协议%3F怎么解决Http协议无状态协议%3F.md">
+            
+                <span>
+            
+                    
+                    6. 什么是Http协议无状态协议?怎么解决Http协议无状态协议?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.7" data-path="../network/一次完整的HTTP请求所经历的7个步骤.md">
+            
+                <span>
+            
+                    
+                    7. 一次完整的HTTP请求所经历的7个步骤
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.8" data-path="../network/Socket.md">
+            
+                <span>
+            
+                    
+                    8. Socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.9" data-path="../network/Http&Socket.md">
+            
+                <span>
+            
+                    
+                    9. Socket & Http
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../network/OSI.md">
+            
+                <span>
+            
+                    
+                    10.OSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../Interview/ReadME.html">
+            
+                <a href="../Interview/ReadME.html">
+            
+                    
+                    面试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.5.1" data-path="../Interview/2018 年最新 iOS 面试题及答案 (一">
+            
+                <span>
+            
+                    
+                    【2018 年最新】 iOS 面试题及答案 (一)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >iOS 代码瘦身实践_ 删除无用的类</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p>&#x672C;&#x6587;&#x7531; <a href="http://ksria.com/simpread/" target="_blank">&#x7B80;&#x60A6; SimpRead</a> &#x8F6C;&#x7801;&#xFF0C; &#x539F;&#x6587;&#x5730;&#x5740; <a href="https://juejin.cn/post/6844903921169727496" target="_blank">juejin.cn</a></p>
+</blockquote>
+<p>&#x672C;&#x6587;&#x5C06;&#x63D0;&#x4F9B;&#x4E00;&#x79CD;&#x9759;&#x6001;&#x5206;&#x6790;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x7528;&#x4E8E;&#x67E5;&#x627E;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6; Mach-o &#x4E2D;&#x672A;&#x4F7F;&#x7528;&#x7684;&#x7C7B;&#xFF0C;&#x6E90;&#x7801;&#x94FE;&#x63A5;:<a href="https://github.com/xuezhulian/classunref" target="_blank">xuezhulian/classunref</a>&#x3002;</p>
+<p><code>Mach-o</code>&#x6587;&#x4EF6;&#x4E2D;<code>__DATA __objc_classrefs</code>&#x6BB5;&#x8BB0;&#x5F55;&#x4E86;&#x5F15;&#x7528;&#x7C7B;&#x7684;&#x5730;&#x5740;&#xFF0C;<code>__DATA __objc_classlist</code>&#x6BB5;&#x8BB0;&#x5F55;&#x4E86;&#x6240;&#x6709;&#x7C7B;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x53D6;&#x5DEE;&#x96C6;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x672A;&#x4F7F;&#x7528;&#x7684;&#x7C7B;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x7B26;&#x53F7;&#x5316;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x672A;&#x88AB;&#x5F15;&#x7528;&#x7684;&#x7C7B;&#x4FE1;&#x606F;&#x3002;</p>
+<h3 id="&#x5F15;&#x7528;&#x7C7B;&#x5730;&#x5740;">&#x5F15;&#x7528;&#x7C7B;&#x5730;&#x5740;</h3>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7; Mac &#x81EA;&#x5E26;&#x7684;&#x5DE5;&#x5177;<code>otool</code>&#x6253;&#x5370;<code>Mach-o</code>&#x4E2D;&#x7684;&#x6BB5;&#x4FE1;&#x606F;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x6A21;&#x62DF;&#x5668;&#x548C;&#x771F;&#x673A;&#x5BF9;&#x5E94;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x6570;&#x636E;&#x7684;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;&#x4E0D;&#x540C;&#x9700;&#x8981;&#x52A0;&#x4EE5;&#x533A;&#x5206;&#x3002; &#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>file</code>&#x547D;&#x4EE4;&#x83B7;&#x53D6;&#x5230;<code>arch</code>&#x3002;</p>
+<pre><code>#binary_file_arch: distinguish Big-Endian and Little-Endian
+#file -b output example: Mach-O 64-bit executable arm64
+binary_file_arch = os.popen(&apos;file -b &apos; + path).read().split(&apos; &apos;)[-1].strip()
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x5728;&#x53D6;&#x7C7B;&#x5730;&#x5740;&#x7684;&#x65F6;&#x5019;&#x533A;&#x5206;<code>x86_64</code>&#x548C;<code>arm</code>&#x3002;</p>
+<pre><code>def pointers_from_binary(line, binary_file_arch):
+    line = line[16:].strip().split(&apos; &apos;)
+    pointers = set()
+    if binary_file_arch == &apos;x86_64&apos;:
+        #untreated line example:00000001030cec80    d8 75 15 03 01 00 00 00 68 77 15 03 01 00 00 00
+        pointers.add(&apos;&apos;.join(line[4:8][::-1] + line[0:4][::-1]))
+        pointers.add(&apos;&apos;.join(line[12:16][::-1] + line[8:12][::-1]))
+        return pointers
+    #arm64 confirmed,armv7 arm7s unconfirmed
+    if binary_file_arch.startswith(&apos;arm&apos;):
+        #untreated line example:00000001030bcd20    03138580 00000001 03138878 00000001
+        pointers.add(line[1] + line[0])
+        pointers.add(line[3] + line[2])
+        return pointers
+    return None
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x901A;&#x8FC7;<code>otool -v -s __DATA __objc_classrefs</code>&#x83B7;&#x53D6;&#x5230;&#x5F15;&#x7528;&#x7C7B;&#x7684;&#x5730;&#x5740;&#x3002;</p>
+<pre><code>def class_ref_pointers(path, binary_file_arch):
+    ref_pointers = set()
+    lines = os.popen(&apos;/usr/bin/otool -v -s __DATA __objc_classrefs %s&apos; % path).readlines()
+    for line in lines:
+        pointers = pointers_from_binary(line, binary_file_arch)
+        ref_pointers = ref_pointers.union(pointers)
+    return ref_pointers
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><h3 id="&#x6240;&#x6709;&#x7C7B;&#x5730;&#x5740;">&#x6240;&#x6709;&#x7C7B;&#x5730;&#x5740;</h3>
+<p>&#x901A;&#x8FC7;<code>otool -v -s __DATA __objc_classlist</code>&#x83B7;&#x53D6;&#x6240;&#x6709;&#x7C7B;&#x7684;&#x5730;&#x5740;&#x3002;</p>
+<pre><code>def class_list_pointers(path, binary_file_arch):
+    list_pointers = set()
+    lines = os.popen(&apos;/usr/bin/otool -v -s __DATA __objc_classlist %s&apos; % path).readlines()
+    for line in lines:
+        pointers = pointers_from_binary(line, binary_file_arch)
+        list_pointers = list_pointers.union(pointers)
+    return list_pointers
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><h3 id="&#x53D6;&#x5DEE;&#x96C6;">&#x53D6;&#x5DEE;&#x96C6;</h3>
+<p>&#x7528;&#x6240;&#x6709;&#x7C7B;&#x4FE1;&#x606F;&#x51CF;&#x53BB;&#x5F15;&#x7528;&#x7C7B;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x62FF;&#x5230;&#x672A;&#x4F7F;&#x7528;&#x7C7B;&#x7684;&#x5730;&#x5740;&#x4FE1;&#x606F;&#x3002;</p>
+<pre><code>unref_pointers = class_list_pointers(path, binary_file_arch) - class_ref_pointers(path, binary_file_arch)
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><h3 id="&#x7B26;&#x53F7;&#x5316;">&#x7B26;&#x53F7;&#x5316;</h3>
+<p>&#x901A;&#x8FC7;<code>nm -nm</code>&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x5730;&#x5740;&#x548C;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x540D;&#x5B57;&#x3002;</p>
+<pre><code>def class_symbols(path):
+    symbols = {}
+    #class symbol format from nm: 0000000103113f68 (__DATA,__objc_data) external _OBJC_CLASS_$_EpisodeStatusDetailItemView
+    re_class_name = re.compile(&apos;(\w{16}) .* _OBJC_CLASS_\$_(.+)&apos;)
+    lines = os.popen(&apos;nm -nm %s&apos; % path).readlines()
+    for line in lines:
+        result = re_class_name.findall(line)
+        if result:
+            (address, symbol) = result[0]
+            symbols[address] = symbol
+    return symbols
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><h3 id="&#x8FC7;&#x6EE4;">&#x8FC7;&#x6EE4;</h3>
+<p>&#x5728;&#x5B9E;&#x9645;&#x5206;&#x6790;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D1;&#x73B0;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5B50;&#x7C7B;&#x88AB;&#x5B9E;&#x4F8B;&#x5316;&#xFF0C;&#x7236;&#x7C7B;&#x672A;&#x88AB;&#x5B9E;&#x4F8B;&#x5316;&#xFF0C;&#x6B64;&#x65F6;&#x7236;&#x7C7B;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x5728;<code>__objc_classrefs</code>&#x8FD9;&#x4E2A;&#x6BB5;&#x91CC;&#xFF0C;&#x5728;&#x672A;&#x4F7F;&#x7528;&#x7684;&#x7C7B;&#x4E2D;&#x9700;&#x8981;&#x5C06;&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x7236;&#x7C7B;&#x8FC7;&#x6EE4;&#x51FA;&#x53BB;&#x3002;&#x4F7F;&#x7528;<code>otool -oV</code>&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x7C7B;&#x7684;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#x3002;</p>
+<pre><code>def filter_super_class(unref_symbols):
+    re_subclass_name = re.compile(&quot;\w{16} 0x\w{9} _OBJC_CLASS_\$_(.+)&quot;)
+    re_superclass_name = re.compile(&quot;\s*superclass 0x\w{9} _OBJC_CLASS_\$_(.+)&quot;)
+    #subclass example: 0000000102bd8070 0x103113f68 _OBJC_CLASS_$_TTEpisodeStatusDetailItemView
+    #superclass example: superclass 0x10313bb80 _OBJC_CLASS_$_TTBaseControl
+    lines = os.popen(&quot;/usr/bin/otool -oV %s&quot; % path).readlines()
+    subclass_name = &quot;&quot;
+    superclass_name = &quot;&quot;
+    for line in lines:
+        subclass_match_result = re_subclass_name.findall(line)
+        if subclass_match_result:
+            subclass_name = subclass_match_result[0]
+        superclass_match_result = re_superclass_name.findall(line)
+        if superclass_match_result:
+            superclass_name = superclass_match_result[0]
+
+        if len(subclass_name) &gt; 0 and len(superclass_name) &gt; 0:
+            if superclass_name in unref_symbols and subclass_name not in unref_symbols:
+                unref_symbols.remove(superclass_name)
+            superclass_name = &quot;&quot;
+            subclass_name = &quot;&quot;
+    return unref_symbols
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x4E00;&#x4E9B;&#x4E09;&#x65B9;&#x5E93;&#x7684;&#x8BEF;&#x4F24;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x53BB;&#x8FC7;&#x6EE4;&#x4E00;&#x4E9B;&#x524D;&#x7F00;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x662F;&#x4EC5;&#x4FDD;&#x7559;&#x5E26;&#x6709;&#x67D0;&#x4E9B;&#x524D;&#x7F00;&#x7684;&#x7C7B;&#x3002;</p>
+<pre><code>for unref_pointer in unref_pointers:
+        if unref_pointer in symbols:
+            unref_symbol = symbols[unref_pointer]
+            if len(reserved_prefix) &gt; 0 and not unref_symbol.startswith(reserved_prefix):
+                continue
+            if len(filter_prefix) &gt; 0 and unref_symbol.startswith(filter_prefix):
+                continue
+            unref_symbols.add(unref_symbol)
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5728;&#x811A;&#x672C;&#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+<pre><code>script_path = sys.path[0].strip()
+f = open(script_path+&quot;/result.txt&quot;,&quot;w&quot;)
+f.write( &quot;unref class number:   %d\n&quot; % len(unref_symbles))
+f.write(&quot;\n&quot;)
+for unref_symble in unref_symbles:
+    f.write(unref_symble+&quot;\n&quot;)
+f.close()
+&#x590D;&#x5236;&#x4EE3;&#x7801;
+</code></pre><p>&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x80FD;&#x591F;&#x51CF;&#x5C11;&#x4EE3;&#x7801;&#x7684;&#x5197;&#x4F59;&#xFF0C;&#x51CF;&#x5C0F;&#x5305;&#x7684;&#x4F53;&#x79EF;&#x3002;&#x56E0;&#x4E3A;&#x662F;&#x9759;&#x6001;&#x5206;&#x6790;&#xFF0C;&#x4E0D;&#x80FD;&#x5305;&#x62EC;&#x52A8;&#x6001;&#x8C03;&#x7528;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x5220;&#x9664;&#x7684;&#x7C7B;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x786E;&#x8BA4;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="iOSUIResponderChain.html" class="navigation navigation-prev " aria-label="Previous page: iOS事件处理，看我就够了~">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../iOS/ReadME.html" class="navigation navigation-next " aria-label="Next page: iOS技术总结">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"iOS 代码瘦身实践_ 删除无用的类","level":"1.2.15","depth":2,"next":{"title":"iOS技术总结","level":"2.1","depth":1,"path":"iOS/ReadME.md","ref":"iOS/ReadME.md","articles":[{"title":"第一章 UIKit","level":"2.1.1","depth":2,"ref":"","articles":[{"title":"UI触摸事件与事件响应","level":"2.1.1.1","depth":3,"path":"iOS/UIKit/UIResponder.md","ref":"iOS/UIKit/UIResponder.md","articles":[]},{"title":"iOS 离屏渲染","level":"2.1.1.2","depth":3,"path":"iOS/UIKit/UIOffScreenRendering.md","ref":"iOS/UIKit/UIOffScreenRendering.md","articles":[]},{"title":"iOS UIView刷新与渲染机制","level":"2.1.1.3","depth":3,"path":"iOS/UIKit/UIViewRender.md","ref":"iOS/UIKit/UIViewRender.md","articles":[]},{"title":"iOS 图片的加载与渲染过程","level":"2.1.1.4","depth":3,"path":"iOS/UIKit/UIImageRender.md","ref":"iOS/UIKit/UIImageRender.md","articles":[]}]},{"title":"第二章 Memory","level":"2.1.2","depth":2,"ref":"","articles":[{"title":"iOS结构体内存对齐","level":"2.1.2.1","depth":3,"path":"iOS/Memory/StructMemoryAligned.md","ref":"iOS/Memory/StructMemoryAligned.md","articles":[]},{"title":"内存中的5大区","level":"2.1.2.2","depth":3,"path":"iOS/Memory/MemoryFiveMainSection.md","ref":"iOS/Memory/MemoryFiveMainSection.md","articles":[]},{"title":"Tagged Pointer","level":"2.1.2.3","depth":3,"path":"iOS/Memory/TaggedPointer.md","ref":"iOS/Memory/TaggedPointer.md","articles":[]},{"title":"SideTables","level":"2.1.2.4","depth":3,"path":"iOS/Memory/SideTables.md","ref":"iOS/Memory/SideTables.md","articles":[]},{"title":"RetainCount","level":"2.1.2.5","depth":3,"path":"iOS/Memory/RetainCount.md","ref":"iOS/Memory/RetainCount.md","articles":[]},{"title":"WeakTable","level":"2.1.2.6","depth":3,"path":"iOS/Memory/WeakTable.md","ref":"iOS/Memory/WeakTable.md","articles":[]}]},{"title":"第三章 Objc_Object","level":"2.1.3","depth":2,"ref":"","articles":[{"title":"Propety属性","level":"2.1.3.1","depth":3,"path":"iOS/Objc_Object/Property.md","ref":"iOS/Objc_Object/Property.md","articles":[]},{"title":"isa","level":"2.1.3.2","depth":3,"path":"iOS/Objc_Object/isa.md","ref":"iOS/Objc_Object/isa.md","articles":[]},{"title":"ObjectClass","level":"2.1.3.3","depth":3,"path":"iOS/Objc_Object/ObjectClass.md","ref":"iOS/Objc_Object/ObjectClass.md","articles":[]},{"title":"ClassRWT","level":"2.1.3.4","depth":3,"path":"iOS/Objc_Object/ClassRWT.md","ref":"iOS/Objc_Object/ClassRWT.md","articles":[]},{"title":"AllocInit","level":"2.1.3.5","depth":3,"path":"iOS/Objc_Object/OCAllocInit.md","ref":"iOS/Objc_Object/OCAllocInit.md","articles":[]},{"title":"Category","level":"2.1.3.6","depth":3,"path":"iOS/Objc_Object/Category.md","ref":"iOS/Objc_Object/Category.md","articles":[]},{"title":"AssociatedObject","level":"2.1.3.7","depth":3,"path":"iOS/Objc_Object/AssociatedObject.md","ref":"iOS/Objc_Object/AssociatedObject.md","articles":[]}]},{"title":"第四章 OC Foundation","level":"2.1.4","depth":2,"ref":"","articles":[{"title":"Block","level":"2.1.4.1","depth":3,"path":"iOS/OCFoundation/Block.md","ref":"iOS/OCFoundation/Block.md","articles":[]},{"title":"Method","level":"2.1.4.2","depth":3,"path":"iOS/OCFoundation/Method.md","ref":"iOS/OCFoundation/Method.md","articles":[]},{"title":"MessageForwarding","level":"2.1.4.3","depth":3,"path":"iOS/OCFoundation/MessageForwarding.md","ref":"iOS/OCFoundation/MessageForwarding.md","articles":[]},{"title":"KVC","level":"2.1.4.4","depth":3,"path":"iOS/OCFoundation/KVC.md","ref":"iOS/OCFoundation/KVC.md","articles":[]},{"title":"KVO","level":"2.1.4.5","depth":3,"path":"iOS/OCFoundation/KVO.md","ref":"iOS/OCFoundation/KVO.md","articles":[]},{"title":"Runloop","level":"2.1.4.6","depth":3,"path":"iOS/OCFoundation/Runloop.md","ref":"iOS/OCFoundation/Runloop.md","articles":[]},{"title":"MultiThreading","level":"2.1.4.7","depth":3,"path":"iOS/OCFoundation/MultiThreading.md","ref":"iOS/OCFoundation/MultiThreading.md","articles":[]},{"title":"GCD-Usage","level":"2.1.4.8","depth":3,"path":"iOS/OCFoundation/GCDUsage.md","ref":"iOS/OCFoundation/GCDUsage.md","articles":[]},{"title":"GCD-Thread","level":"2.1.4.9","depth":3,"path":"iOS/OCFoundation/GCDThread.md","ref":"iOS/OCFoundation/GCDThread.md","articles":[]},{"title":"Lock","level":"2.1.4.10","depth":3,"path":"iOS/OCFoundation/Lock.md","ref":"iOS/OCFoundation/Lock.md","articles":[]},{"title":"AutoReleasePool","level":"2.1.4.11","depth":3,"path":"iOS/OCFoundation/AutoReleasePool.md","ref":"iOS/OCFoundation/AutoReleasePool.md","articles":[]}]},{"title":"第五章 源码","level":"2.1.5","depth":2,"ref":"","articles":[{"title":"YYAsyncLayer","level":"2.1.5.1","depth":3,"path":"iOS/SourceCode/YYASyncLayer.md","ref":"iOS/SourceCode/YYASyncLayer.md","articles":[]},{"title":"FluentDarkModeKit ","level":"2.1.5.2","depth":3,"path":"iOS/SourceCode/FluentDarkModeKit.md","ref":"iOS/SourceCode/FluentDarkModeKit.md","articles":[]}]}]},"previous":{"title":"iOS事件处理，看我就够了~","level":"1.2.14","depth":2,"path":"Article/iOSUIResponderChain.md","ref":"./Article/iOSUIResponderChain.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Article/iOS 代码瘦身实践_ 删除无用的类.md","mtime":"2021-04-09T06:53:26.487Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-09T06:53:54.165Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
