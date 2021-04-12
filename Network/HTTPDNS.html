@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Https · GitBook</title>
+        <title>HTTPDNS · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="TCPHandShake.html" />
     
-    
-    <link rel="prev" href="TCPMessageFrame.html" />
+    <link rel="prev" href="TCPUDP" />
     
 
     </head>
@@ -925,7 +923,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.1.2" data-path="Https.html">
+        <li class="chapter " data-level="3.1.2" data-path="Https.html">
             
                 <a href="Https.html">
             
@@ -964,7 +962,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.5" data-path="HTTPDNS.html">
+        <li class="chapter active" data-level="3.1.5" data-path="HTTPDNS.html">
             
                 <a href="HTTPDNS.html">
             
@@ -1044,7 +1042,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Https</a>
+        <a href=".." >HTTPDNS</a>
     </h1>
 </div>
 
@@ -1059,71 +1057,20 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="https">Https</h1>
-<p>HTTP&#x534F;&#x8BAE;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x90FD;&#x662F;&#x672A;&#x52A0;&#x5BC6;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x660E;&#x6587;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528;HTTP&#x534F;&#x8BAE;&#x4F20;&#x8F93;&#x9690;&#x79C1;&#x4FE1;&#x606F;&#x975E;&#x5E38;&#x4E0D;&#x5B89;&#x5168;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x8FD9;&#x4E9B;&#x9690;&#x79C1;&#x6570;&#x636E;&#x80FD;&#x52A0;&#x5BC6;&#x4F20;&#x8F93;&#xFF0C;&#x4E8E;&#x662F;&#x7F51;&#x666F;&#x516C;&#x53F8;&#x8BBE;&#x8BA1;&#x4E86;SSL&#xFF08;Secure Sockets Layer&#xFF09;&#x534F;&#x8BAE;&#x7528;&#x4E8E;&#x5BF9;HTTP&#x534F;&#x8BAE;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;</p>
-<p>HTTPS &#x5373; HTTP over TLS&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x5728;&#x52A0;&#x5BC6;&#x4FE1;&#x9053;&#x8FDB;&#x884C; HTTP &#x5185;&#x5BB9;&#x4F20;&#x8F93;&#x7684;&#x534F;&#x8BAE;&#x3002;</p>
-<blockquote>
-<p>TLS &#x7684;&#x65E9;&#x671F;&#x7248;&#x672C;&#x53EB;&#x505A; SSL&#x3002;SSL &#x7684; 1.0, 2.0, 3.0 &#x7248;&#x672C;&#x5747;&#x5DF2;&#x7ECF;&#x88AB;&#x5E9F;&#x5F03;&#xFF0C;&#x51FA;&#x4E8E;&#x5B89;&#x5168;&#x95EE;&#x9898;&#x8003;&#x8651;&#x5E7F;&#x5927;&#x6D4F;&#x89C8;&#x5668;&#x4E5F;&#x4E0D;&#x518D;&#x5BF9;&#x8001;&#x65E7;&#x7684; SSL &#x7248;&#x672C;&#x8FDB;&#x884C;&#x652F;&#x6301;&#x4E86;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5C31;&#x7EDF;&#x4E00;&#x4F7F;&#x7528; TLS &#x540D;&#x79F0;&#x4E86;&#x3002;</p>
-</blockquote>
-<p>HTTPS = HTTP + SSL/TLS
-HTTPS&#x662F;&#x5B89;&#x5168;&#x7684;HTTP.</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135046.jpg" alt=""></p>
-<p>HTTPS&#x548C;HTTP&#x7684;&#x533A;&#x522B;&#x4E3B;&#x8981;&#x5982;&#x4E0B;&#xFF1A;</p>
-<p>&#x3000;&#x3000;1&#x3001;https&#x534F;&#x8BAE;&#x9700;&#x8981;&#x5230;ca&#x7533;&#x8BF7;&#x8BC1;&#x4E66;&#xFF0C;&#x4E00;&#x822C;&#x514D;&#x8D39;&#x8BC1;&#x4E66;&#x8F83;&#x5C11;&#xFF0C;&#x56E0;&#x800C;&#x9700;&#x8981;&#x4E00;&#x5B9A;&#x8D39;&#x7528;&#x3002;</p>
-<p>&#x3000;&#x3000;2&#x3001;http&#x662F;&#x8D85;&#x6587;&#x672C;&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#xFF0C;&#x4FE1;&#x606F;&#x662F;&#x660E;&#x6587;&#x4F20;&#x8F93;&#xFF0C;https&#x5219;&#x662F;&#x5177;&#x6709;&#x5B89;&#x5168;&#x6027;&#x7684;ssl&#x52A0;&#x5BC6;&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#x3002;</p>
-<p>&#x3000;&#x3000;3&#x3001;http&#x548C;https&#x4F7F;&#x7528;&#x7684;&#x662F;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x7684;&#x8FDE;&#x63A5;&#x65B9;&#x5F0F;&#xFF0C;&#x7528;&#x7684;&#x7AEF;&#x53E3;&#x4E5F;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x524D;&#x8005;&#x662F;80&#xFF0C;&#x540E;&#x8005;&#x662F;443&#x3002;</p>
-<p>&#x3000;&#x3000;4&#x3001;http&#x7684;&#x8FDE;&#x63A5;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x662F;&#x65E0;&#x72B6;&#x6001;&#x7684;&#xFF1B;HTTPS&#x534F;&#x8BAE;&#x662F;&#x7531;SSL+HTTP&#x534F;&#x8BAE;&#x6784;&#x5EFA;&#x7684;&#x53EF;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#x4F20;&#x8F93;&#x3001;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x7684;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#xFF0C;&#x6BD4;http&#x534F;&#x8BAE;&#x5B89;&#x5168;&#x3002;</p>
-<h2 id="https-&#x8FDE;&#x63A5;&#x7ECF;&#x5386;&#x6D41;&#x7A0B;&#x662F;&#x600E;&#x4E48;&#x6837;&#x7684;">HTTPS &#x8FDE;&#x63A5;&#x7ECF;&#x5386;&#x6D41;&#x7A0B;&#x662F;&#x600E;&#x4E48;&#x6837;&#x7684;</h2>
-<p>HTTPS &#x5728;&#x5185;&#x5BB9;&#x4F20;&#x8F93;&#x7684;&#x52A0;&#x5BC6;&#x4E0A;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#xFF0C;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x53EA;&#x4F5C;&#x7528;&#x5728;&#x8BC1;&#x4E66;&#x9A8C;&#x8BC1;&#x9636;&#x6BB5;&#x3002;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135050.jpg" alt=""></p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-12-093253.jpg" alt="img"></p>
-<h3 id="&#x4F1A;&#x8BDD;&#x79D8;&#x94A5;">&#x4F1A;&#x8BDD;&#x79D8;&#x94A5;</h3>
-<p>&#x4F1A;&#x8BDD;&#x79D8;&#x94A5; = randomS + randomC + &#x9884;&#x4E3B;&#x79D8;&#x94A5;</p>
-<h3 id="tls-&#x7684;&#x57FA;&#x672C;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;">TLS &#x7684;&#x57FA;&#x672C;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;</h3>
-<p>&#xFF08;&#x53D6;&#x81EA; <a href="https://github.com/skyline75489/what-happens-when-zh_CN#tls" target="_blank">what-happens-when-zh_CN</a>&#xFF09;&#xFF1A;</p>
+                                <h1 id="httpdns">HTTPDNS</h1>
+<p>HTTPDNS&#x4F7F;&#x7528;HTTP&#x534F;&#x8BAE;&#x8FDB;&#x884C;&#x57DF;&#x540D;&#x89E3;&#x6790;&#xFF0C;&#x4EE3;&#x66FF;&#x73B0;&#x6709;&#x57FA;&#x4E8E;UDP&#x7684;DNS&#x534F;&#x8BAE;&#xFF0C;&#x57DF;&#x540D;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x76F4;&#x63A5;&#x53D1;&#x9001;&#x5230;&#x963F;&#x91CC;&#x4E91;&#x7684;HTTPDNS&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4ECE;&#x800C;&#x7ED5;&#x8FC7;&#x8FD0;&#x8425;&#x5546;&#x7684;Local DNS&#xFF0C;&#x80FD;&#x591F;&#x907F;&#x514D;Local DNS&#x9020;&#x6210;&#x7684;&#x57DF;&#x540D;&#x52AB;&#x6301;&#x95EE;&#x9898;&#x548C;&#x8C03;&#x5EA6;&#x4E0D;&#x7CBE;&#x51C6;&#x95EE;&#x9898;&#x3002;</p>
+<p>HTTPDNS&#x662F;&#x4E00;&#x6B3E;&#x9012;&#x5F52;DNS&#x670D;&#x52A1;&#xFF0C;&#x4E0E;&#x6743;&#x5A01;DNS&#x4E0D;&#x540C;&#xFF0C;HTTPDNS&#x5E76;&#x4E0D;&#x5177;&#x5907;&#x51B3;&#x5B9A;&#x89E3;&#x6790;&#x7ED3;&#x679C;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x800C;&#x662F;&#x4E3B;&#x8981;&#x8D1F;&#x8D23;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x4F20;&#x7EDF;&#x7684;DNS&#x7CFB;&#x7EDF;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x95EE;&#x9898;&#xFF0C;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x5C31;&#x662F;DNS&#x52AB;&#x6301;&#x3001;&#x5E73;&#x5747;&#x8BBF;&#x95EE;&#x5EF6;&#x8FDF;&#x8F83;&#x9AD8;&#x3001;&#x7528;&#x6237;&#x8FDE;&#x63A5;&#x5931;&#x8D25;&#x7387;&#x8F83;&#x9AD8;&#x8FD9;&#x4E09;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x5176;&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x7684;&#x662F;DNS&#x52AB;&#x6301;&#xFF0C;&#x56E0;&#x4E3A;DNS&#x89E3;&#x6790;&#x662F;&#x4EA4;&#x7ED9;&#x8FD0;&#x8425;&#x5546;&#x6765;&#x505A;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x89E3;&#x6790;&#x7ED3;&#x679C;&#x88AB;&#x8FD0;&#x8425;&#x5546;&#x52AB;&#x6301;&#x63D2;&#x5165;&#x5E7F;&#x544A;&#xFF0C;&#x89E3;&#x6790;&#x7ED3;&#x679C;&#x4E0D;&#x6309; TTL &#x7F13;&#x5B58;&#xFF0C;&#x89E3;&#x6790;&#x88AB;&#x9519;&#x8BEF;&#x9012;&#x5F52;&#xFF08;&#x8DE8;&#x5730;&#x533A;&#x751A;&#x81F3;&#x8DE8;&#x8FD0;&#x8425;&#x5546;&#xFF09;&#x7B49;&#x95EE;&#x9898;&#x5BFC;&#x81F4;&#x6211;&#x4EEC;&#x4E0D;&#x5F97;&#x4E0D;&#x53BB;&#x5BFB;&#x627E;&#x4E00;&#x79CD;&#x53EF;&#x4EE5;&#x7ED5;&#x5F00;&#x8FD0;&#x8425;&#x5546;&#x7684;&#x529E;&#x6CD5;&#x6765;&#x505A;&#x3010;&#x57DF;&#x540D;-&gt;IP&#x3011;&#x7684;&#x6620;&#x5C04;&#x65B9;&#x5F0F;&#xFF0C;&#x90A3;&#x5C31;&#x662F;HttpDNS&#x3002;</p>
+<p>HttpDNS&#x662F;&#x901A;&#x8FC7;ip&#x76F4;&#x63A5;&#x8BF7;&#x6C42;http&#x83B7;&#x53D6;&#x670D;&#x52A1;&#x5668;A&#x8BB0;&#x5F55;&#x5730;&#x5740;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x5411;&#x672C;&#x5730;&#x8FD0;&#x8425;&#x5546;&#x8BE2;&#x95EE;domain&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5;&#x4ECE;&#x6839;&#x672C;&#x907F;&#x514D;&#x4E86;&#x52AB;&#x6301;&#x95EE;&#x9898;&#x3002;&#x540C;&#x65F6;&#x7531;&#x4E8E;&#x662F;ip&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x7701;&#x6389;&#x4E86;&#x4E00;&#x6B21;domain&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x964D;&#x4F4E;&#x5E73;&#x5747;&#x8BBF;&#x95EE;&#x5EF6;&#x8FDF;&#x3002;HttpDNS&#x548C;LocalDNS&#x6700;&#x5927;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E0E;&#xFF1A;&#x524D;&#x8005;&#x4F7F;&#x7528;HTTP&#x534F;&#x8BAE;&#x8FDB;&#x884C;&#x57DF;&#x540D;&#x89E3;&#x6790;&#xFF1B;&#x540E;&#x8005;&#x534F;&#x8BAE;&#x8FD0;&#x884C;&#x5728;UDP&#x534F;&#x8BAE;&#x4E4B;&#x4E0A;&#xFF0C;&#x4F7F;&#x7528;&#x7AEF;&#x53E3;&#x53F7;53&#x3002;</p>
+<h2 id="&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;">&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;</h2>
+<p>&#x4F7F;&#x7528;HttpDns&#xFF0C;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x89E3;&#x51B3;&#x4F20;&#x7EDF;DNS&#x7684;DNS&#x52AB;&#x6301;&#x3001;&#x8BBF;&#x95EE;&#x65F6;&#x95F4;&#x5EF6;&#x8FDF;&#x7B49;&#x95EE;&#x9898;&#x3002;</p>
 <ul>
-<li>&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x4E00;&#x4E2A; <code>ClientHello</code> &#x6D88;&#x606F;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#xFF0C;&#x6D88;&#x606F;&#x4E2D;&#x540C;&#x65F6;&#x5305;&#x542B;&#x4E86;&#x5B83;&#x7684; Transport Layer Security (TLS) &#x7248;&#x672C;&#xFF0C;&#x53EF;&#x7528;&#x7684;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#x548C;&#x538B;&#x7F29;&#x7B97;&#x6CD5;&#x3002;</li>
-<li>&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; <code>ServerHello</code> &#x6D88;&#x606F;&#xFF0C;&#x6D88;&#x606F;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684; TLS &#x7248;&#x672C;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x6240;&#x9009;&#x62E9;&#x7684;&#x52A0;&#x5BC6;&#x548C;&#x538B;&#x7F29;&#x7B97;&#x6CD5;&#xFF0C;&#x4EE5;&#x53CA;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x8BA4;&#x8BC1;&#x673A;&#x6784;&#xFF08;Certificate Authority&#xFF0C;&#x7F29;&#x5199; CA&#xFF09;&#x7B7E;&#x53D1;&#x7684;&#x670D;&#x52A1;&#x5668;&#x516C;&#x5F00;&#x8BC1;&#x4E66;&#xFF0C;&#x8BC1;&#x4E66;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x516C;&#x94A5;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x516C;&#x94A5;&#x52A0;&#x5BC6;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x63E1;&#x624B;&#x8FC7;&#x7A0B;&#xFF0C;&#x76F4;&#x5230;&#x534F;&#x5546;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x3002;&#x8BC1;&#x4E66;&#x4E2D;&#x8FD8;&#x5305;&#x542B;&#x4E86;&#x8BE5;&#x8BC1;&#x4E66;&#x6240;&#x5E94;&#x7528;&#x7684;&#x57DF;&#x540D;&#x8303;&#x56F4;&#xFF08;Common Name&#xFF0C;&#x7B80;&#x79F0; CN&#xFF09;&#xFF0C;&#x7528;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x9A8C;&#x8BC1;&#x8EAB;&#x4EFD;&#x3002;</li>
-<li>&#x5BA2;&#x6237;&#x7AEF;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x4FE1;&#x4EFB; CA &#x5217;&#x8868;&#xFF0C;&#x9A8C;&#x8BC1;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x8BC1;&#x4E66;&#x662F;&#x5426;&#x53EF;&#x4FE1;&#x3002;&#x5982;&#x679C;&#x8BA4;&#x4E3A;&#x53EF;&#x4FE1;&#xFF08;&#x5177;&#x4F53;&#x7684;&#x9A8C;&#x8BC1;&#x8FC7;&#x7A0B;&#x5728;&#x4E0B;&#x4E00;&#x8282;&#x8BB2;&#x89E3;&#xFF09;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E32;&#x4F2A;&#x968F;&#x673A;&#x6570;&#xFF0C;&#x4F7F;&#x7528;&#x670D;&#x52A1;&#x5668;&#x7684;&#x516C;&#x94A5;&#x52A0;&#x5BC6;&#x5B83;&#x3002;&#x8FD9;&#x4E32;&#x968F;&#x673A;&#x6570;&#x4F1A;&#x88AB;&#x7528;&#x4E8E;&#x751F;&#x6210;&#x65B0;&#x7684;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;</li>
-<li>&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x79C1;&#x94A5;&#x89E3;&#x5BC6;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x968F;&#x673A;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x8FD9;&#x4E32;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x81EA;&#x5DF1;&#x7684;&#x5BF9;&#x79F0;&#x4E3B;&#x5BC6;&#x94A5;</li>
-<li>&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x4E00;&#x4E2A; <code>Finished</code> &#x6D88;&#x606F;&#x7ED9;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#xFF0C;&#x4F7F;&#x7528;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x52A0;&#x5BC6;&#x8FD9;&#x6B21;&#x901A;&#x8BAF;&#x7684;&#x4E00;&#x4E2A;&#x6563;&#x5217;&#x503C;</li>
-<li>&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x751F;&#x6210;&#x81EA;&#x5DF1;&#x7684; hash &#x503C;&#xFF0C;&#x7136;&#x540E;&#x89E3;&#x5BC6;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x6765;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x68C0;&#x67E5;&#x8FD9;&#x4E24;&#x4E2A;&#x503C;&#x662F;&#x5426;&#x5BF9;&#x5E94;&#x3002;&#x5982;&#x679C;&#x5BF9;&#x5E94;&#xFF0C;&#x5C31;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x4E00;&#x4E2A; <code>Finished</code> &#x6D88;&#x606F;&#xFF0C;&#x4E5F;&#x4F7F;&#x7528;&#x534F;&#x5546;&#x597D;&#x7684;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x52A0;&#x5BC6;</li>
-<li>&#x4ECE;&#x73B0;&#x5728;&#x5F00;&#x59CB;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6574;&#x4E2A; TLS &#x4F1A;&#x8BDD;&#x90FD;&#x4F7F;&#x7528;&#x5BF9;&#x79F0;&#x79D8;&#x94A5;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#xFF0C;&#x4F20;&#x8F93;&#x5E94;&#x7528;&#x5C42;&#xFF08;HTTP&#xFF09;&#x5185;&#x5BB9;</li>
+<li><strong>Local DNS &#x52AB;&#x6301;</strong>&#xFF1A;&#x7531;&#x4E8E; HttpDns &#x662F;&#x901A;&#x8FC7; IP &#x76F4;&#x63A5;&#x8BF7;&#x6C42; HTTP &#x83B7;&#x53D6;&#x670D;&#x52A1;&#x5668; A &#x8BB0;&#x5F55;&#x5730;&#x5740;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x5411;&#x672C;&#x5730;&#x8FD0;&#x8425;&#x5546;&#x8BE2;&#x95EE; domain &#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5;&#x4ECE;&#x6839;&#x672C;&#x907F;&#x514D;&#x4E86;&#x52AB;&#x6301;&#x95EE;&#x9898;&#x3002;</li>
+<li><strong>&#x5E73;&#x5747;&#x8BBF;&#x95EE;&#x5EF6;&#x8FDF;&#x4E0B;&#x964D;</strong>&#xFF1A;&#x7531;&#x4E8E;&#x662F; IP &#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x7701;&#x6389;&#x4E86;&#x4E00;&#x6B21; domain &#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#xFF0C;&#x901A;&#x8FC7;&#x667A;&#x80FD;&#x7B97;&#x6CD5;&#x6392;&#x5E8F;&#x540E;&#x627E;&#x5230;&#x6700;&#x5FEB;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#x3002;</li>
+<li><strong>&#x7528;&#x6237;&#x8FDE;&#x63A5;&#x5931;&#x8D25;&#x7387;&#x4E0B;&#x964D;</strong>&#xFF1A;&#x901A;&#x8FC7;&#x7B97;&#x6CD5;&#x964D;&#x4F4E;&#x4EE5;&#x5F80;&#x5931;&#x8D25;&#x7387;&#x8FC7;&#x9AD8;&#x7684;&#x670D;&#x52A1;&#x5668;&#x6392;&#x5E8F;&#xFF0C;&#x901A;&#x8FC7;&#x65F6;&#x95F4;&#x8FD1;&#x671F;&#x8BBF;&#x95EE;&#x8FC7;&#x7684;&#x6570;&#x636E;&#x63D0;&#x9AD8;&#x670D;&#x52A1;&#x5668;&#x6392;&#x5E8F;&#xFF0C;&#x901A;&#x8FC7;&#x5386;&#x53F2;&#x8BBF;&#x95EE;&#x6210;&#x529F;&#x8BB0;&#x5F55;&#x63D0;&#x9AD8;&#x670D;&#x52A1;&#x5668;&#x6392;&#x5E8F;&#x3002;</li>
 </ul>
-<p>&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;TLS &#x7684;&#x5B8C;&#x6574;&#x8FC7;&#x7A0B;&#x9700;&#x8981;&#x4E09;&#x4E2A;&#x7B97;&#x6CD5;&#xFF08;&#x534F;&#x8BAE;&#xFF09;&#xFF0C;&#x5BC6;&#x94A5;&#x4EA4;&#x4E92;&#x7B97;&#x6CD5;&#xFF0C;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#xFF0C;&#x548C;&#x6D88;&#x606F;&#x8BA4;&#x8BC1;&#x7B97;&#x6CD5;&#xFF08;TLS &#x7684;&#x4F20;&#x8F93;&#x4F1A;&#x4F7F;&#x7528; MAC(message authentication code) &#x8FDB;&#x884C;&#x5B8C;&#x6574;&#x6027;&#x68C0;&#x67E5;&#xFF09;&#x3002;</p>
-<h2 id="https&#x7684;&#x9A8C;&#x8BC1;&#x6D41;&#x7A0B;">HTTPS&#x7684;&#x9A8C;&#x8BC1;&#x6D41;&#x7A0B;</h2>
-<p>&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x770B;&#x7684;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x4E3B;&#x8981;&#x5F52;&#x7EB3;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x5206;5&#x6761;&#x3002;</p>
-<p>1&#xFF09;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x8D77;&#x4E00;&#x4E2A;http&#x8BF7;&#x6C42;&#xFF0C;&#x8FDE;&#x63A5;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7684;443&#x7AEF;&#x53E3;&#x3002;</p>
-<p>2&#xFF09;&#x670D;&#x52A1;&#x7AEF;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x4FE1;&#x606F;&#x4EE5;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x7684;&#x5F62;&#x5F0F;&#x8FD4;&#x56DE;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x8BC1;&#x4E66;&#x5185;&#x5BB9;&#x6709;&#x5BC6;&#x94A5;&#x516C;&#x94A5;&#xFF0C;&#x7F51;&#x7AD9;&#x5730;&#x5740;&#xFF0C;&#x8BC1;&#x4E66;&#x9881;&#x53D1;&#x673A;&#x6784;&#xFF0C;&#x5931;&#x6548;&#x65E5;&#x671F;&#x7B49;&#xFF09;&#x3002;&#x8BC1;&#x4E66;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x516C;&#x94A5;&#x6765;&#x52A0;&#x5BC6;&#x4FE1;&#x606F;&#xFF0C;&#x79C1;&#x94A5;&#x7531;&#x670D;&#x52A1;&#x5668;&#x6301;&#x6709;&#x3002;</p>
-<p>3&#xFF09;&#x9A8C;&#x8BC1;&#x8BC1;&#x4E66;&#x7684;&#x5408;&#x6CD5;&#x6027;</p>
-<p>&#x5BA2;&#x6237;&#x7AEF;&#x6536;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7684;&#x54CD;&#x5E94;&#x540E;&#x4F1A;&#x5148;&#x9A8C;&#x8BC1;&#x8BC1;&#x4E66;&#x7684;&#x5408;&#x6CD5;&#x6027;&#xFF08;&#x8BC1;&#x4E66;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x5730;&#x5740;&#x4E0E;&#x6B63;&#x5728;&#x8BBF;&#x95EE;&#x7684;&#x5730;&#x5740;&#x662F;&#x5426;&#x4E00;&#x81F4;&#xFF0C;&#x8BC1;&#x4E66;&#x662F;&#x5426;&#x8FC7;&#x671F;&#xFF09;&#x3002;</p>
-<p>4&#xFF09;&#x751F;&#x6210;&#x968F;&#x673A;&#x5BC6;&#x7801;&#xFF08;RSA&#x7B7E;&#x540D;&#xFF09;</p>
-<p>&#x5982;&#x679C;&#x9A8C;&#x8BC1;&#x901A;&#x8FC7;&#xFF0C;&#x6216;&#x7528;&#x6237;&#x63A5;&#x53D7;&#x4E86;&#x4E0D;&#x53D7;&#x4FE1;&#x4EFB;&#x7684;&#x8BC1;&#x4E66;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x5C31;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x7684;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#xFF08;session key&#xFF09;&#x5E76;&#x7528;&#x516C;&#x94A5;&#x52A0;&#x5BC6;&#xFF0C;&#x8BA9;&#x670D;&#x52A1;&#x7AEF;&#x7528;&#x79C1;&#x94A5;&#x89E3;&#x5BC6;&#xFF0C;&#x89E3;&#x5BC6;&#x540E;&#x5C31;&#x7528;&#x8FD9;&#x4E2A;&#x5BF9;&#x79F0;&#x5BC6;&#x94A5;&#x8FDB;&#x884C;&#x4F20;&#x8F93;&#x4E86;&#xFF0C;&#x5E76;&#x4E14;&#x80FD;&#x591F;&#x8BF4;&#x660E;&#x670D;&#x52A1;&#x7AEF;&#x786E;&#x5B9E;&#x662F;&#x79C1;&#x94A5;&#x7684;&#x6301;&#x6709;&#x8005;&#x3002;</p>
-<p>5&#xFF09;&#x751F;&#x6210;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;</p>
-<p>&#x9A8C;&#x8BC1;&#x5B8C;&#x670D;&#x52A1;&#x7AEF;&#x8EAB;&#x4EFD;&#x540E;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7684;&#x7B97;&#x6CD5;&#x548C;&#x5BF9;&#x5E94;&#x5BC6;&#x94A5;&#xFF0C;&#x4EE5;&#x516C;&#x94A5;&#x52A0;&#x5BC6;&#x4E4B;&#x540E;&#x53D1;&#x9001;&#x7ED9;&#x670D;&#x52A1;&#x7AEF;&#x3002;&#x6B64;&#x65F6;&#x88AB;&#x9ED1;&#x5BA2;&#x622A;&#x83B7;&#x4E5F;&#x6CA1;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x53EA;&#x6709;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x79C1;&#x94A5;&#x624D;&#x53EF;&#x4EE5;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x89E3;&#x5BC6;&#x3002;&#x4E4B;&#x540E;&#x5BA2;&#x6237;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x7AEF;&#x53EF;&#x4EE5;&#x7528;&#x8FD9;&#x4E2A;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#x6765;&#x52A0;&#x5BC6;&#x548C;&#x89E3;&#x5BC6;&#x901A;&#x4FE1;&#x5185;&#x5BB9;&#x4E86;&#x3002;</p>
-<h2 id="https&#x90FD;&#x662F;&#x7528;&#x4E86;&#x54EA;&#x4E9B;&#x52A0;&#x5BC6;&#x624B;&#x6BB5;">HTTPS&#x90FD;&#x662F;&#x7528;&#x4E86;&#x54EA;&#x4E9B;&#x52A0;&#x5BC6;&#x624B;&#x6BB5;?</h2>
-<h3 id="&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#xFF08;&#x516C;&#x94A5;&#x52A0;&#x5BC6;&#xFF09;">&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#xFF08;&#x516C;&#x94A5;&#x52A0;&#x5BC6;&#xFF09;</h3>
-<p>&#x6709;RSA&#x3001;DSA/DSS&#x3001;Elgamal&#x3001;Rabin&#x3001;D-H&#x3001;ECC&#x7B49;&#x3002;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x76F8;&#x4E92;&#x9A8C;&#x8BC1;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x7528;&#x7684;&#x5C31;&#x662F;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;
-RSA&#x5BC6;&#x7801;&#x4F53;&#x5236;&#x5C31;&#x662F;&#x516C;&#x94A5;&#x5BC6;&#x7801;&#x4F53;&#x5236;&#xFF0C;RSA&#x7684;&#x4E00;&#x5BF9;&#x516C;&#x94A5;&#x548C;&#x79C1;&#x94A5;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x52A0;&#x5BC6;&#x548C;&#x89E3;&#x5BC6;&#x3002;
-&#x6BD4;&#x5982;&#x516C;&#x94A5;&#x52A0;&#x5BC6;&#x540E;&#x53EA;&#x80FD;&#x7531;&#x79C1;&#x94A5;&#x89E3;&#x5BC6;&#xFF1B;&#x79C1;&#x94A5;&#x52A0;&#x5BC6;&#x540E;&#x53EA;&#x80FD;&#x7531;&#x516C;&#x94A5;&#x89E3;&#x5BC6;&#x3002;&#x4E14;&#x4E00;&#x65B9;&#x52A0;&#x5BC6;&#x7684;&#x5185;&#x5BB9;&#x53EA;&#x80FD;&#x7531;&#x5BF9;&#x65B9;&#x8FDB;&#x884C;&#x89E3;&#x5BC6;&#x3002;</p>
-<h3 id="&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#xFF08;&#x79C1;&#x94A5;&#x52A0;&#x5BC6;&#xFF09;">&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#xFF08;&#x79C1;&#x94A5;&#x52A0;&#x5BC6;&#xFF09;</h3>
-<p>&#x6709;AES&#x3001;DES&#x3001;3DES&#x3001;TDEA&#x3001;Blowfish&#x3001;RC4&#x3001;RC5&#x3001;IDEA&#x7B49;&#x3002;&#x52A0;&#x5BC6;&#x4F7F;&#x7528;&#x7684;&#x5BC6;&#x94A5;&#x548C;&#x89E3;&#x5BC6;&#x4F7F;&#x7528;&#x7684;&#x5BC6;&#x94A5;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x5BC6;&#x94A5;&#x3002;&#x7531;&#x4E8E;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#x662F;&#x516C;&#x5F00;&#x7684;&#xFF0C;&#x82E5;&#x8981;&#x4FDD;&#x8BC1;&#x5B89;&#x5168;&#x6027;&#xFF0C;&#x5BC6;&#x94A5;&#x4E0D;&#x80FD;&#x5BF9;&#x5916;&#x516C;&#x5F00;&#x3002;&#x901A;&#x5E38;&#x7528;&#x6765;&#x52A0;&#x5BC6;&#x6D88;&#x606F;&#x4F53;&#x3002;</p>
-<h3 id="hash&#x7B97;&#x6CD5;">HASH&#x7B97;&#x6CD5;</h3>
-<p>&#x6709;MD5&#xFF0C;SHA1&#xFF0C;SHA256&#x3002;&#x7528;&#x6765;&#x786E;&#x8BA4;&#x4FE1;&#x606F;&#x6CA1;&#x6709;&#x88AB;&#x7BE1;&#x6539;&#x3002;&#x4E3B;&#x8981;&#x7528;&#x6765;&#x751F;&#x6210;&#x7B7E;&#x540D;&#xFF0C;&#x7B7E;&#x540D;&#x662F;&#x52A0;&#x5728;&#x4FE1;&#x606F;&#x540E;&#x9762;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x8BC1;&#x660E;&#x4FE1;&#x606F;&#x6CA1;&#x6709;&#x88AB;&#x4FEE;&#x6539;&#x8FC7;&#x3002;&#x4E00;&#x822C;&#x5BF9;&#x4FE1;&#x606F;&#x5148;&#x505A;hash&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#x4E00;&#x4E2A;hash&#x503C;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x79C1;&#x94A5;&#x52A0;&#x5BC6;&#xFF08;&#x8FD9;&#x4E2A;&#x52A0;&#x5BC6;&#x4E00;&#x822C;&#x662F;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#xFF09;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7B7E;&#x540D;&#x548C;&#x4FE1;&#x606F;&#x4E00;&#x8D77;&#x53D1;&#x9001;&#x3002;&#x63A5;&#x6536;&#x65B9;&#x6536;&#x5230;&#x4FE1;&#x606F;&#x540E;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x4FE1;&#x606F;&#x7684;hash&#x503C;&#xFF0C;&#x4E14;&#x548C;&#x4FE1;&#x606F;&#x6240;&#x9644;&#x5E26;&#x7684;hash&#x503C;&#x89E3;&#x5BC6;&#x540E;&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#x3002;&#x5982;&#x679C;&#x4E00;&#x6837;&#x5219;&#x8BA4;&#x4E3A;&#x6CA1;&#x6709;&#x88AB;&#x4FEE;&#x6539;&#xFF0C;&#x53CD;&#x4E4B;&#x5219;&#x8BA4;&#x4E3A;&#x4FEE;&#x6539;&#x8FC7;&#xFF0C;&#x4E0D;&#x505A;&#x5904;&#x7406;&#x3002;&#x53EF;&#x80FD;&#x6709;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x9ED1;&#x5BA2;&#x4FEE;&#x6539;&#x4E86;&#x4FE1;&#x606F;&#x5E76;&#x628A;hash&#x503C;&#x4E5F;&#x6539;&#x4E86;&#xFF0C;&#x4ECE;&#x800C;&#x8BA9;&#x4ED6;&#x4EEC;&#x76F8;&#x5339;&#x914D;&#x3002;&#x6240;&#x4EE5;hash&#x503C;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x52A0;&#x5BC6;&#x540E;&#xFF08;&#x751F;&#x6210;&#x7B7E;&#x540D;&#xFF09;&#x518D;&#x548C;&#x4FE1;&#x606F;&#x4E00;&#x8D77;&#x53D1;&#x9001;&#xFF0C;&#x786E;&#x4FDD;hash&#x503C;&#x4E0D;&#x4F1A;&#x88AB;&#x4FEE;&#x6539;&#x3002;</p>
-<h3 id="&#x6570;&#x5B57;&#x8BC1;&#x4E66;">&#x6570;&#x5B57;&#x8BC1;&#x4E66;</h3>
-<p>&#x4E3B;&#x8981;&#x5305;&#x542B;&#x8BC1;&#x4E66;&#x53D1;&#x5E03;&#x673A;&#x6784;&#xFF0C;&#x8BC1;&#x4E66;&#x6709;&#x6548;&#x671F;&#xFF0C;&#x516C;&#x94A5;&#xFF0C;&#x8BC1;&#x4E66;&#x6240;&#x6709;&#x8005;&#xFF0C;&#x7B7E;&#x540D;&#x4F7F;&#x7528;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x6307;&#x7EB9;&#x4EE5;&#x53CA;&#x6307;&#x7EB9;&#x7B97;&#x6CD5;&#x3002;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x91CC;&#x9762;&#x7684;&#x516C;&#x94A5;&#x4E00;&#x5B9A;&#x662F;&#x8BC1;&#x4E66;&#x6301;&#x6709;&#x8005;&#x7684;&#x3002;</p>
-<ul>
-<li>&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x8FC7;&#x7A0B;&#x4E2D;&#x662F;&#x7528;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#xFF0C;&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x5F88;&#x8017;&#x65F6;</li>
-<li>&#x540E;&#x7EED;&#x901A;&#x8BAF;&#x8FC7;&#x7A0B;&#x662F;&#x7528;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;</li>
-</ul>
-<h3 id="&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;">&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;</h3>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135055.jpg" alt=""></p>
-<h3 id="&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;">&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;</h3>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135100.jpg" alt=""></p>
 <h2 id="reference">Reference</h2>
-<p><a href="https://hit-alibaba.github.io/interview/basic/network/HTTPS.html" target="_blank">1. HTTPS &#x57FA;&#x672C;&#x8FC7;&#x7A0B;</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/60033345" target="_blank">2. HTTPS&#x8FD0;&#x884C;&#x6D41;&#x7A0B;</a></p>
-<p><a href="http://time.geekbang.org/column/article/9492" target="_blank">3. &#x7B2C;15&#x8BB2; | HTTPS&#x534F;&#x8BAE;&#xFF1A;&#x70B9;&#x5916;&#x5356;&#x7684;&#x8FC7;&#x7A0B;&#x539F;&#x6765;&#x8FD9;&#x4E48;&#x590D;&#x6742;</a></p>
+<p><a href="https://segmentfault.com/a/1190000021588066" target="_blank">HTTPDNS&#x6DF1;&#x5EA6;&#x89E3;&#x6790;</a></p>
 
                                 
                                 </section>
@@ -1151,14 +1098,10 @@ RSA&#x5BC6;&#x7801;&#x4F53;&#x5236;&#x5C31;&#x662F;&#x516C;&#x94A5;&#x5BC6;&#x78
 
             
                 
-                <a href="TCPMessageFrame.html" class="navigation navigation-prev " aria-label="Previous page: TCP粘包">
+                <a href="TCPUDP" class="navigation navigation-prev navigation-unique" aria-label="Previous page: TCP&UDP">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="TCPHandShake.html" class="navigation navigation-next " aria-label="Next page: TCPHandShake">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1167,7 +1110,7 @@ RSA&#x5BC6;&#x7801;&#x4F53;&#x5236;&#x5C31;&#x662F;&#x516C;&#x94A5;&#x5BC6;&#x78
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Https","level":"3.1.2","depth":2,"next":{"title":"TCPHandShake","level":"3.1.3","depth":2,"path":"Network/TCPHandShake.md","ref":"Network/TCPHandShake.md","articles":[]},"previous":{"title":"TCP粘包","level":"3.1.1","depth":2,"path":"Network/TCPMessageFrame.md","ref":"Network/TCPMessageFrame.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Network/Https.md","mtime":"2021-04-12T03:52:18.370Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-12T03:52:48.685Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"HTTPDNS","level":"3.1.5","depth":2,"next":{"title":"算法","level":"3.2","depth":1,"ref":"","articles":[{"title":"二分法插入排序","level":"3.2.1","depth":2,"path":"Algorithm/BinaryInsertSort.md","ref":"./Algorithm/BinaryInsertSort.md","articles":[]}]},"previous":{"title":"TCP&UDP","level":"3.1.4","depth":2,"path":"Network/TCPUDP","ref":"Network/TCPUDP","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Network/HTTPDNS.md","mtime":"2021-04-12T03:52:18.370Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-12T03:52:48.685Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
