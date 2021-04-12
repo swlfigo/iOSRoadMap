@@ -30,6 +30,45 @@
 
 
 
+## Xcode Build 的流程
+
+我们在 Xcode 中使用 **Command + B** 或 **Command + R** 时，即完成了一次编译，来看下这个过程做了哪些事情。
+
+编译过程分为四个步骤：
+
+- 预编译（Pre-process）：宏替换、删除注释、展开头文件，产生 .i 文件。
+- 编译（Compliling）：把前面生成的 .i 文件转化为汇编语言，产生 .s 文件。
+- 汇编（Asembly）：把汇编语言 .s 文件转化为机器码文件，产生 .0 文件。
+- 链接（Link）：对 .o 文件中的对于其他库的引用的地方进行引用，生成最后的可执行文件。也包括多个 .o 文件进行 link。
+
+通过解析 Xcode 编译 log，可以发现 Xcode 是根据 Target 进行编译的。我们可以通过 Xcode 中的 Build Phases、Build Settings 及 Build Rules 来控制编译过程。
+
+- Build Settings：这一栏下是对编译的细节进行设定，包含 build 过程的每个阶段的设置选项（包含编译、链接、代码签名、打包）。
+- Build Phases：用于控制从源文件到可执行文件的整个过程，如编译哪些文件，编译过程中执行哪些自定义脚本。例如 CocoaPods 在这里会进行相关配置。
+- Build Rules：指定了不同的文件类型该如何编译。一般我们不需要修改这里的内容。如果需要对特定类型的文件添加处理方法，可以在这里添加规则。
+
+每个 Target 的具体编译过程也可以通过 log 日志获得。大致过程为：
+
+- 编译信息写入辅助文件（如Entitlements.plist），创建编译后的文件架构
+- 写入辅助信息（.hmap 文件）。将项目的文件结构对应表、将要执行的脚本、项目依赖库的文件结构对应表写成文件。
+- 运行预设的脚本。如 Cocoapods 会在 Build Phases 中预设一些脚本（CheckPods Manifest.lock）。
+- 编译 .m 文件，生成可执行文件 Mach-O。每次进行了 LLVM 的完整流程：前端（词法分析 - 语法分析 - 生成 IR）、优化器（优化 IR）、后端（生成汇编 - 生成目标文件 - 生成可执行文件）。使用 `CompileC` 和 `clang` 命令。
+  CompileC 是 xcodebuild 内部函数的日志记录表示形式，它是 build.log 文件中有关编译的基本信息来源。
+- 链接需要的库。如 Foundation.framework，AFNetworking.framework…
+- 拷贝资源文件到目标包
+- 编译 storyboard 文件
+- 链接 storyboard 文件
+- 编译 Asset 文件。如果使用 Asset.xcassets 来管理图片，这些图片会被编译为机器码，除了 icon 和 launchIamge。
+- 处理 infoplist
+- 执行 CocoaPods 脚本，将在编译项目前已编译好的依赖库和相关资源拷贝到包中。
+- 拷贝 Swift 标准库
+- 创建 .app 文件并对其签名
 
 
-https://blog.jonyfang.com/2019/09/14/2019-09-14-ios-analyse-llvm/
+
+# Reference
+
+[1 iOS 编译过程梳理](https://blog.jonyfang.com/2019/09/14/2019-09-14-ios-analyse-llvm/)
+
+
+
