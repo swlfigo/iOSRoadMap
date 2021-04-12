@@ -84,8 +84,8 @@
     
   * 第六章 iOS知识点
     * [Dyld](iOS/Knowledge/Dyld.md)
-      * [Mach-O](iOS/Knowledge/MachO.md)
-      * [PreMain](iOS/Knowledge/PreMain.md)
+    * [Mach-O](iOS/Knowledge/MachO.md)
+    * [PreMain](iOS/Knowledge/PreMain.md)
 
 
 * 网络
