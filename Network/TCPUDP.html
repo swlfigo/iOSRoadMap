@@ -1,0 +1,1277 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TCP&UDP · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="HTTPDNS.html" />
+    
+    
+    <link rel="prev" href="TCPHandShake.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Article/ReadME.html">
+            
+                <a href="../Article/ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../Article/谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../Article/谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../Article/面试驱动技术 - Category 相关考点.html">
+            
+                <a href="../Article/面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../Article/iOS 编译过程的原理和应用.html">
+            
+                <a href="../Article/iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../Article/Objective-C Runtime 机制简析.html">
+            
+                <a href="../Article/Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../Article/OC 消息机制和 super 关键字.html">
+            
+                <a href="../Article/OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../Article/UIViewController 预加载方案浅谈.html">
+            
+                <a href="../Article/UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../Article/深入了解 iOS 的初始化.html">
+            
+                <a href="../Article/深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../Article/App 启动时间：过去，现在和未来.html">
+            
+                <a href="../Article/App 启动时间：过去，现在和未来.html">
+            
+                    
+                    App 启动时间：过去，现在和未来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="../Article/iOSUIResponderChain.html">
+            
+                <a href="../Article/iOSUIResponderChain.html">
+            
+                    
+                    iOS事件处理，看我就够了~
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="../Article/iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                <a href="../Article/iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                    
+                    iOS 代码瘦身实践_ 删除无用的类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../iOS/ReadME.html">
+            
+                <a href="../iOS/ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1.1" data-path="../iOS/UIKit/UIResponder.html">
+            
+                <a href="../iOS/UIKit/UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                <a href="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="../iOS/UIKit/UIViewRender.html">
+            
+                <a href="../iOS/UIKit/UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.4" data-path="../iOS/UIKit/UIImageRender.html">
+            
+                <a href="../iOS/UIKit/UIImageRender.html">
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" >
+            
+                <span>
+            
+                    
+                    第二章 Memory
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.2.1" data-path="../iOS/Memory/StructMemoryAligned.html">
+            
+                <a href="../iOS/Memory/StructMemoryAligned.html">
+            
+                    
+                    iOS结构体内存对齐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.2" data-path="../iOS/Memory/MemoryFiveMainSection.html">
+            
+                <a href="../iOS/Memory/MemoryFiveMainSection.html">
+            
+                    
+                    内存中的5大区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.3" data-path="../iOS/Memory/TaggedPointer.html">
+            
+                <a href="../iOS/Memory/TaggedPointer.html">
+            
+                    
+                    Tagged Pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.4" data-path="../iOS/Memory/SideTables.html">
+            
+                <a href="../iOS/Memory/SideTables.html">
+            
+                    
+                    SideTables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.5" data-path="../iOS/Memory/RetainCount.html">
+            
+                <a href="../iOS/Memory/RetainCount.html">
+            
+                    
+                    RetainCount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2.6" data-path="../iOS/Memory/WeakTable.html">
+            
+                <a href="../iOS/Memory/WeakTable.html">
+            
+                    
+                    WeakTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" >
+            
+                <span>
+            
+                    
+                    第三章 Objc_Object
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.3.1" data-path="../iOS/Objc_Object/Property.html">
+            
+                <a href="../iOS/Objc_Object/Property.html">
+            
+                    
+                    Propety属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.2" data-path="../iOS/Objc_Object/isa.html">
+            
+                <a href="../iOS/Objc_Object/isa.html">
+            
+                    
+                    isa
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.3" data-path="../iOS/Objc_Object/ObjectClass.html">
+            
+                <a href="../iOS/Objc_Object/ObjectClass.html">
+            
+                    
+                    ObjectClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.4" data-path="../iOS/Objc_Object/ClassRWT.html">
+            
+                <a href="../iOS/Objc_Object/ClassRWT.html">
+            
+                    
+                    ClassRWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.5" data-path="../iOS/Objc_Object/OCAllocInit.html">
+            
+                <a href="../iOS/Objc_Object/OCAllocInit.html">
+            
+                    
+                    AllocInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.6" data-path="../iOS/Objc_Object/Category.html">
+            
+                <a href="../iOS/Objc_Object/Category.html">
+            
+                    
+                    Category
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3.7" data-path="../iOS/Objc_Object/AssociatedObject.html">
+            
+                <a href="../iOS/Objc_Object/AssociatedObject.html">
+            
+                    
+                    AssociatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" >
+            
+                <span>
+            
+                    
+                    第四章 OC Foundation
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.4.1" data-path="../iOS/OCFoundation/Block.html">
+            
+                <a href="../iOS/OCFoundation/Block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.2" data-path="../iOS/OCFoundation/Method.html">
+            
+                <a href="../iOS/OCFoundation/Method.html">
+            
+                    
+                    Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.3" data-path="../iOS/OCFoundation/MessageForwarding.html">
+            
+                <a href="../iOS/OCFoundation/MessageForwarding.html">
+            
+                    
+                    MessageForwarding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.4" data-path="../iOS/OCFoundation/KVC.html">
+            
+                <a href="../iOS/OCFoundation/KVC.html">
+            
+                    
+                    KVC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.5" data-path="../iOS/OCFoundation/KVO.html">
+            
+                <a href="../iOS/OCFoundation/KVO.html">
+            
+                    
+                    KVO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.6" data-path="../iOS/OCFoundation/Runloop.html">
+            
+                <a href="../iOS/OCFoundation/Runloop.html">
+            
+                    
+                    Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.7" data-path="../iOS/OCFoundation/MultiThreading.html">
+            
+                <a href="../iOS/OCFoundation/MultiThreading.html">
+            
+                    
+                    MultiThreading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.8" data-path="../iOS/OCFoundation/GCDUsage.html">
+            
+                <a href="../iOS/OCFoundation/GCDUsage.html">
+            
+                    
+                    GCD-Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.9" data-path="../iOS/OCFoundation/GCDThread.html">
+            
+                <a href="../iOS/OCFoundation/GCDThread.html">
+            
+                    
+                    GCD-Thread
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.10" data-path="../iOS/OCFoundation/Lock.html">
+            
+                <a href="../iOS/OCFoundation/Lock.html">
+            
+                    
+                    Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4.11" data-path="../iOS/OCFoundation/AutoReleasePool.html">
+            
+                <a href="../iOS/OCFoundation/AutoReleasePool.html">
+            
+                    
+                    AutoReleasePool
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" >
+            
+                <span>
+            
+                    
+                    第五章 源码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.5.1" data-path="../iOS/SourceCode/YYASyncLayer.html">
+            
+                <a href="../iOS/SourceCode/YYASyncLayer.html">
+            
+                    
+                    YYAsyncLayer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5.2" data-path="../iOS/SourceCode/FluentDarkModeKit.html">
+            
+                <a href="../iOS/SourceCode/FluentDarkModeKit.html">
+            
+                    
+                    FluentDarkModeKit 
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" >
+            
+                <span>
+            
+                    
+                    第六章 iOS知识点
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.6.1" data-path="../iOS/Knowledge/Dyld.html">
+            
+                <a href="../iOS/Knowledge/Dyld.html">
+            
+                    
+                    Dyld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6.2" data-path="../iOS/Knowledge/MachO.html">
+            
+                <a href="../iOS/Knowledge/MachO.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6.3" data-path="../iOS/Knowledge/PreMain.html">
+            
+                <a href="../iOS/Knowledge/PreMain.html">
+            
+                    
+                    PreMain
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    网络
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="TCPMessageFrame.html">
+            
+                <a href="TCPMessageFrame.html">
+            
+                    
+                    TCP粘包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="Https.html">
+            
+                <a href="Https.html">
+            
+                    
+                    Https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="TCPHandShake.html">
+            
+                <a href="TCPHandShake.html">
+            
+                    
+                    TCPHandShake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.1.4" data-path="TCPUDP.html">
+            
+                <a href="TCPUDP.html">
+            
+                    
+                    TCP&UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="HTTPDNS.html">
+            
+                <a href="HTTPDNS.html">
+            
+                    
+                    HTTPDNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../Algorithm/BinaryInsertSort.html">
+            
+                <a href="../Algorithm/BinaryInsertSort.html">
+            
+                    
+                    二分法插入排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >TCP&UDP</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="tcp--udp">TCP &amp; UDP</h1>
+<h2 id="tcp&#x534F;&#x8BAE;&#x7684;&#x7279;&#x70B9;">TCP&#x534F;&#x8BAE;&#x7684;&#x7279;&#x70B9;</h2>
+<ul>
+<li><p>&#x9762;&#x5411;&#x8FDE;&#x63A5;</p>
+<p>&#x9762;&#x5411;&#x8FDE;&#x63A5;&#xFF0C;&#x662F;&#x6307;&#x53D1;&#x9001;&#x6570;&#x636E;&#x4E4B;&#x524D;&#x5FC5;&#x987B;&#x5728;&#x4E24;&#x7AEF;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x3002;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x201C;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x201D;&#xFF0C;&#x8FD9;&#x6837;&#x80FD;&#x5EFA;&#x7ACB;&#x53EF;&#x9760;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;&#x662F;&#x4E3A;&#x6570;&#x636E;&#x7684;&#x53EF;&#x9760;&#x4F20;&#x8F93;&#x6253;&#x4E0B;&#x4E86;&#x57FA;&#x7840;&#x3002;</p>
+</li>
+<li><p>&#x4EC5;&#x652F;&#x6301;&#x5355;&#x64AD;&#x4F20;&#x8F93;</p>
+</li>
+</ul>
+<p>&#x6BCF;&#x6761;TCP&#x4F20;&#x8F93;&#x8FDE;&#x63A5;&#x53EA;&#x80FD;&#x6709;&#x4E24;&#x4E2A;&#x7AEF;&#x70B9;&#xFF0C;&#x53EA;&#x80FD;&#x8FDB;&#x884C;&#x70B9;&#x5BF9;&#x70B9;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C;&#x4E0D;&#x652F;&#x6301;&#x591A;&#x64AD;&#x548C;&#x5E7F;&#x64AD;&#x4F20;&#x8F93;&#x65B9;&#x5F0F;&#x3002;</p>
+<ul>
+<li>&#x9762;&#x5411;&#x5B57;&#x8282;&#x6D41;</li>
+</ul>
+<p>TCP&#x4E0D;&#x50CF;UDP&#x4E00;&#x6837;&#x90A3;&#x6837;&#x4E00;&#x4E2A;&#x4E2A;&#x62A5;&#x6587;&#x72EC;&#x7ACB;&#x5730;&#x4F20;&#x8F93;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x4E0D;&#x4FDD;&#x7559;&#x62A5;&#x6587;&#x8FB9;&#x754C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4EE5;&#x5B57;&#x8282;&#x6D41;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x4F20;&#x8F93;&#x3002;</p>
+<ul>
+<li><p>&#x53EF;&#x9760;&#x4F20;&#x8F93;</p>
+<p>&#x5BF9;&#x4E8E;&#x53EF;&#x9760;&#x4F20;&#x8F93;&#xFF0C;&#x5224;&#x65AD;&#x4E22;&#x5305;&#xFF0C;&#x8BEF;&#x7801;&#x9760;&#x7684;&#x662F;TCP&#x7684;&#x6BB5;&#x7F16;&#x53F7;&#x4EE5;&#x53CA;&#x786E;&#x8BA4;&#x53F7;&#x3002;TCP&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x62A5;&#x6587;&#x4F20;&#x8F93;&#x7684;&#x53EF;&#x9760;&#xFF0C;&#x5C31;&#x7ED9;&#x6BCF;&#x4E2A;&#x5305;&#x4E00;&#x4E2A;&#x5E8F;&#x53F7;&#xFF0C;&#x540C;&#x65F6;&#x5E8F;&#x53F7;&#x4E5F;&#x4FDD;&#x8BC1;&#x4E86;&#x4F20;&#x9001;&#x5230;&#x63A5;&#x6536;&#x7AEF;&#x5B9E;&#x4F53;&#x7684;&#x5305;&#x7684;&#x6309;&#x5E8F;&#x63A5;&#x6536;&#x3002;&#x7136;&#x540E;&#x63A5;&#x6536;&#x7AEF;&#x5B9E;&#x4F53;&#x5BF9;&#x5DF2;&#x6210;&#x529F;&#x6536;&#x5230;&#x7684;&#x5B57;&#x8282;&#x53D1;&#x56DE;&#x4E00;&#x4E2A;&#x76F8;&#x5E94;&#x7684;&#x786E;&#x8BA4;(ACK)&#xFF1B;&#x5982;&#x679C;&#x53D1;&#x9001;&#x7AEF;&#x5B9E;&#x4F53;&#x5728;&#x5408;&#x7406;&#x7684;&#x5F80;&#x8FD4;&#x65F6;&#x5EF6;(RTT)&#x5185;&#x672A;&#x6536;&#x5230;&#x786E;&#x8BA4;&#xFF0C;&#x90A3;&#x4E48;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#xFF08;&#x5047;&#x8BBE;&#x4E22;&#x5931;&#x4E86;&#xFF09;&#x5C06;&#x4F1A;&#x88AB;&#x91CD;&#x4F20;&#x3002;</p>
+</li>
+<li><p>&#x63D0;&#x4F9B;&#x62E5;&#x585E;&#x63A7;&#x5236;</p>
+</li>
+</ul>
+<p>&#x5F53;&#x7F51;&#x7EDC;&#x51FA;&#x73B0;&#x62E5;&#x585E;&#x7684;&#x65F6;&#x5019;&#xFF0C;TCP&#x80FD;&#x591F;&#x51CF;&#x5C0F;&#x5411;&#x7F51;&#x7EDC;&#x6CE8;&#x5165;&#x6570;&#x636E;&#x7684;&#x901F;&#x7387;&#x548C;&#x6570;&#x91CF;&#xFF0C;&#x7F13;&#x89E3;&#x62E5;&#x585E;</p>
+<ul>
+<li>TCP&#x63D0;&#x4F9B;&#x5168;&#x53CC;&#x5DE5;&#x901A;&#x4FE1;</li>
+</ul>
+<p>TCP&#x5141;&#x8BB8;&#x901A;&#x4FE1;&#x53CC;&#x65B9;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x90FD;&#x80FD;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x4E3A;TCP&#x8FDE;&#x63A5;&#x7684;&#x4E24;&#x7AEF;&#x90FD;&#x8BBE;&#x6709;&#x7F13;&#x5B58;&#xFF0C;&#x7528;&#x6765;&#x4E34;&#x65F6;&#x5B58;&#x653E;&#x53CC;&#x5411;&#x901A;&#x4FE1;&#x7684;&#x6570;&#x636E;&#x3002;&#x5F53;&#x7136;&#xFF0C;TCP&#x53EF;&#x4EE5;&#x7ACB;&#x5373;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x6BB5;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7F13;&#x5B58;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x4EE5;&#x4FBF;&#x4E00;&#x6B21;&#x53D1;&#x9001;&#x66F4;&#x591A;&#x7684;&#x6570;&#x636E;&#x6BB5;&#xFF08;&#x6700;&#x5927;&#x7684;&#x6570;&#x636E;&#x6BB5;&#x5927;&#x5C0F;&#x53D6;&#x51B3;&#x4E8E;MSS&#xFF09;</p>
+<h2 id="udp&#x534F;&#x8BAE;&#x7684;&#x7279;&#x70B9;">UDP&#x534F;&#x8BAE;&#x7684;&#x7279;&#x70B9;</h2>
+<h4 id="1-&#x9762;&#x5411;&#x65E0;&#x8FDE;&#x63A5;">1. &#x9762;&#x5411;&#x65E0;&#x8FDE;&#x63A5;</h4>
+<p>&#x9996;&#x5148; UDP &#x662F;&#x4E0D;&#x9700;&#x8981;&#x548C; TCP&#x4E00;&#x6837;&#x5728;&#x53D1;&#x9001;&#x6570;&#x636E;&#x524D;&#x8FDB;&#x884C;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x7684;&#xFF0C;&#x60F3;&#x53D1;&#x6570;&#x636E;&#x5C31;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x53D1;&#x9001;&#x4E86;&#x3002;&#x5E76;&#x4E14;&#x4E5F;&#x53EA;&#x662F;&#x6570;&#x636E;&#x62A5;&#x6587;&#x7684;&#x642C;&#x8FD0;&#x5DE5;&#xFF0C;&#x4E0D;&#x4F1A;&#x5BF9;&#x6570;&#x636E;&#x62A5;&#x6587;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x62C6;&#x5206;&#x548C;&#x62FC;&#x63A5;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x5728;&#x53D1;&#x9001;&#x7AEF;&#xFF0C;&#x5E94;&#x7528;&#x5C42;&#x5C06;&#x6570;&#x636E;&#x4F20;&#x9012;&#x7ED9;&#x4F20;&#x8F93;&#x5C42;&#x7684; UDP &#x534F;&#x8BAE;&#xFF0C;UDP &#x53EA;&#x4F1A;&#x7ED9;&#x6570;&#x636E;&#x589E;&#x52A0;&#x4E00;&#x4E2A; UDP &#x5934;&#x6807;&#x8BC6;&#x4E0B;&#x662F; UDP &#x534F;&#x8BAE;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x4F20;&#x9012;&#x7ED9;&#x7F51;&#x7EDC;&#x5C42;&#x4E86;</li>
+<li>&#x5728;&#x63A5;&#x6536;&#x7AEF;&#xFF0C;&#x7F51;&#x7EDC;&#x5C42;&#x5C06;&#x6570;&#x636E;&#x4F20;&#x9012;&#x7ED9;&#x4F20;&#x8F93;&#x5C42;&#xFF0C;UDP &#x53EA;&#x53BB;&#x9664; IP &#x62A5;&#x6587;&#x5934;&#x5C31;&#x4F20;&#x9012;&#x7ED9;&#x5E94;&#x7528;&#x5C42;&#xFF0C;&#x4E0D;&#x4F1A;&#x4EFB;&#x4F55;&#x62FC;&#x63A5;&#x64CD;&#x4F5C;</li>
+</ul>
+<h4 id="2-&#x6709;&#x5355;&#x64AD;&#xFF0C;&#x591A;&#x64AD;&#xFF0C;&#x5E7F;&#x64AD;&#x7684;&#x529F;&#x80FD;">2. &#x6709;&#x5355;&#x64AD;&#xFF0C;&#x591A;&#x64AD;&#xFF0C;&#x5E7F;&#x64AD;&#x7684;&#x529F;&#x80FD;</h4>
+<p>UDP &#x4E0D;&#x6B62;&#x652F;&#x6301;&#x4E00;&#x5BF9;&#x4E00;&#x7684;&#x4F20;&#x8F93;&#x65B9;&#x5F0F;&#xFF0C;&#x540C;&#x6837;&#x652F;&#x6301;&#x4E00;&#x5BF9;&#x591A;&#xFF0C;&#x591A;&#x5BF9;&#x591A;&#xFF0C;&#x591A;&#x5BF9;&#x4E00;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; UDP &#x63D0;&#x4F9B;&#x4E86;&#x5355;&#x64AD;&#xFF0C;&#x591A;&#x64AD;&#xFF0C;&#x5E7F;&#x64AD;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<h4 id="3-udp&#x662F;&#x9762;&#x5411;&#x62A5;&#x6587;&#x7684;">3. UDP&#x662F;&#x9762;&#x5411;&#x62A5;&#x6587;&#x7684;</h4>
+<p>&#x53D1;&#x9001;&#x65B9;&#x7684;UDP&#x5BF9;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4EA4;&#x4E0B;&#x6765;&#x7684;&#x62A5;&#x6587;&#xFF0C;&#x5728;&#x6DFB;&#x52A0;&#x9996;&#x90E8;&#x540E;&#x5C31;&#x5411;&#x4E0B;&#x4EA4;&#x4ED8;IP&#x5C42;&#x3002;UDP&#x5BF9;&#x5E94;&#x7528;&#x5C42;&#x4EA4;&#x4E0B;&#x6765;&#x7684;&#x62A5;&#x6587;&#xFF0C;&#x65E2;&#x4E0D;&#x5408;&#x5E76;&#xFF0C;&#x4E5F;&#x4E0D;&#x62C6;&#x5206;&#xFF0C;&#x800C;&#x662F;&#x4FDD;&#x7559;&#x8FD9;&#x4E9B;&#x62A5;&#x6587;&#x7684;&#x8FB9;&#x754C;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5FC5;&#x987B;&#x9009;&#x62E9;&#x5408;&#x9002;&#x5927;&#x5C0F;&#x7684;&#x62A5;&#x6587;</p>
+<h4 id="4-&#x4E0D;&#x53EF;&#x9760;&#x6027;">4. &#x4E0D;&#x53EF;&#x9760;&#x6027;</h4>
+<p>&#x9996;&#x5148;&#x4E0D;&#x53EF;&#x9760;&#x6027;&#x4F53;&#x73B0;&#x5728;&#x65E0;&#x8FDE;&#x63A5;&#x4E0A;&#xFF0C;&#x901A;&#x4FE1;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;&#x60F3;&#x53D1;&#x5C31;&#x53D1;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x60C5;&#x51B5;&#x80AF;&#x5B9A;&#x4E0D;&#x53EF;&#x9760;&#x3002;</p>
+<p>&#x5E76;&#x4E14;&#x6536;&#x5230;&#x4EC0;&#x4E48;&#x6570;&#x636E;&#x5C31;&#x4F20;&#x9012;&#x4EC0;&#x4E48;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4E14;&#x4E5F;&#x4E0D;&#x4F1A;&#x5907;&#x4EFD;&#x6570;&#x636E;&#xFF0C;&#x53D1;&#x9001;&#x6570;&#x636E;&#x4E5F;&#x4E0D;&#x4F1A;&#x5173;&#x5FC3;&#x5BF9;&#x65B9;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x6B63;&#x786E;&#x63A5;&#x6536;&#x5230;&#x6570;&#x636E;&#x4E86;&#x3002;</p>
+<p>&#x518D;&#x8005;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x65F6;&#x597D;&#x65F6;&#x574F;&#xFF0C;&#x4F46;&#x662F; UDP &#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x62E5;&#x585E;&#x63A7;&#x5236;&#xFF0C;&#x4E00;&#x76F4;&#x4F1A;&#x4EE5;&#x6052;&#x5B9A;&#x7684;&#x901F;&#x5EA6;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;&#x5373;&#x4F7F;&#x7F51;&#x7EDC;&#x6761;&#x4EF6;&#x4E0D;&#x597D;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x5BF9;&#x53D1;&#x9001;&#x901F;&#x7387;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#x3002;&#x8FD9;&#x6837;&#x5B9E;&#x73B0;&#x7684;&#x5F0A;&#x7AEF;&#x5C31;&#x662F;&#x5728;&#x7F51;&#x7EDC;&#x6761;&#x4EF6;&#x4E0D;&#x597D;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x4E22;&#x5305;&#xFF0C;&#x4F46;&#x662F;&#x4F18;&#x70B9;&#x4E5F;&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x5728;&#x67D0;&#x4E9B;&#x5B9E;&#x65F6;&#x6027;&#x8981;&#x6C42;&#x9AD8;&#x7684;&#x573A;&#x666F;&#xFF08;&#x6BD4;&#x5982;&#x7535;&#x8BDD;&#x4F1A;&#x8BAE;&#xFF09;&#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528; UDP &#x800C;&#x4E0D;&#x662F; TCP&#x3002;</p>
+<h2 id="tcp&#x548C;udp&#x7684;&#x6BD4;&#x8F83;">TCP&#x548C;UDP&#x7684;&#x6BD4;&#x8F83;</h2>
+<h4 id="1-&#x5BF9;&#x6BD4;">1. &#x5BF9;&#x6BD4;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">UDP</th>
+<th style="text-align:left">TCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x662F;&#x5426;&#x8FDE;&#x63A5;</td>
+<td style="text-align:left">&#x65E0;&#x8FDE;&#x63A5;</td>
+<td style="text-align:left">&#x9762;&#x5411;&#x8FDE;&#x63A5;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x662F;&#x5426;&#x53EF;&#x9760;</td>
+<td style="text-align:left">&#x4E0D;&#x53EF;&#x9760;&#x4F20;&#x8F93;&#xFF0C;&#x4E0D;&#x4F7F;&#x7528;&#x6D41;&#x91CF;&#x63A7;&#x5236;&#x548C;&#x62E5;&#x585E;&#x63A7;&#x5236;</td>
+<td style="text-align:left">&#x53EF;&#x9760;&#x4F20;&#x8F93;&#xFF0C;&#x4F7F;&#x7528;&#x6D41;&#x91CF;&#x63A7;&#x5236;&#x548C;&#x62E5;&#x585E;&#x63A7;&#x5236;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2A;&#x6570;</td>
+<td style="text-align:left">&#x652F;&#x6301;&#x4E00;&#x5BF9;&#x4E00;&#xFF0C;&#x4E00;&#x5BF9;&#x591A;&#xFF0C;&#x591A;&#x5BF9;&#x4E00;&#x548C;&#x591A;&#x5BF9;&#x591A;&#x4EA4;&#x4E92;&#x901A;&#x4FE1;</td>
+<td style="text-align:left">&#x53EA;&#x80FD;&#x662F;&#x4E00;&#x5BF9;&#x4E00;&#x901A;&#x4FE1;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x4F20;&#x8F93;&#x65B9;&#x5F0F;</td>
+<td style="text-align:left">&#x9762;&#x5411;&#x62A5;&#x6587;</td>
+<td style="text-align:left">&#x9762;&#x5411;&#x5B57;&#x8282;&#x6D41;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x9996;&#x90E8;&#x5F00;&#x9500;</td>
+<td style="text-align:left">&#x9996;&#x90E8;&#x5F00;&#x9500;&#x5C0F;&#xFF0C;&#x4EC5;8&#x5B57;&#x8282;</td>
+<td style="text-align:left">&#x9996;&#x90E8;&#x6700;&#x5C0F;20&#x5B57;&#x8282;&#xFF0C;&#x6700;&#x5927;60&#x5B57;&#x8282;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x9002;&#x7528;&#x573A;&#x666F;</td>
+<td style="text-align:left">&#x9002;&#x7528;&#x4E8E;&#x5B9E;&#x65F6;&#x5E94;&#x7528;&#xFF08;IP&#x7535;&#x8BDD;&#x3001;&#x89C6;&#x9891;&#x4F1A;&#x8BAE;&#x3001;&#x76F4;&#x64AD;&#x7B49;&#xFF09;</td>
+<td style="text-align:left">&#x9002;&#x7528;&#x4E8E;&#x8981;&#x6C42;&#x53EF;&#x9760;&#x4F20;&#x8F93;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x4F8B;&#x5982;&#x6587;&#x4EF6;&#x4F20;&#x8F93;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tcpudp&#x533A;&#x522B;&#x4EE5;&#x53CA;udp&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x53EF;&#x9760;&#x4F20;&#x8F93;">TCP/UDP&#x533A;&#x522B;&#x4EE5;&#x53CA;UDP&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x53EF;&#x9760;&#x4F20;&#x8F93;</h2>
+<p>TCP&#x548C;UDP&#x662F;OSI&#x6A21;&#x578B;&#x4E2D;&#x7684;&#x8FD0;&#x8F93;&#x5C42;&#x4E2D;&#x7684;&#x534F;&#x8BAE;&#x3002;TCP&#x63D0;&#x4F9B;&#x53EF;&#x9760;&#x7684;&#x901A;&#x4FE1;&#x4F20;&#x8F93;&#xFF0C;&#x800C;UDP&#x5219;&#x5E38;&#x88AB;&#x7528;&#x4E8E;&#x8BA9;&#x5E7F;&#x64AD;&#x548C;&#x7EC6;&#x8282;&#x63A7;&#x5236;&#x4EA4;&#x7ED9;&#x5E94;&#x7528;&#x7684;&#x901A;&#x4FE1;&#x4F20;&#x8F93;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135126.jpg" alt=""></p>
+<h3 id="udp&#x7528;&#x6237;&#x6570;&#x636E;&#x62A5;&#x534F;&#x8BAE;">UDP(&#x7528;&#x6237;&#x6570;&#x636E;&#x62A5;&#x534F;&#x8BAE;)</h3>
+<h4 id="&#x7279;&#x70B9;">&#x7279;&#x70B9;:</h4>
+<ul>
+<li>&#x65E0;&#x8FDE;&#x63A5;</li>
+<li>&#x5C3D;&#x6700;&#x5927;&#x52AA;&#x529B;&#x4EA4;&#x4ED8;</li>
+<li>&#x9762;&#x5411;&#x62A5;&#x6587;(&#x65E2;&#x4E0D;&#x5408;&#x5E76;&#xFF0C;&#x4E5F;&#x4E0D;&#x62C6;&#x5206;)</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135131.jpg" alt=""></p>
+<h4 id="&#x529F;&#x80FD;">&#x529F;&#x80FD;:</h4>
+<p>&#x590D;&#x7528;&#xFF0C;&#x5206;&#x7528;&#xFF0C;&#x5DEE;&#x9519;&#x68C0;&#x6D4B;</p>
+<h3 id="tcp&#x4F20;&#x8F93;&#x63A7;&#x5236;&#x534F;&#x8BAE;">TCP(&#x4F20;&#x8F93;&#x63A7;&#x5236;&#x534F;&#x8BAE;)</h3>
+<h4 id="&#x7279;&#x70B9;">&#x7279;&#x70B9;</h4>
+<ul>
+<li>&#x9762;&#x5411;&#x8FDE;&#x63A5;<ul>
+<li>&#x6570;&#x636E;&#x4F20;&#x8F93;&#x524D;&#x9700;&#x8981;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</li>
+<li>&#x6570;&#x636E;&#x4F20;&#x8F93;&#x7ED3;&#x675F;&#x540E;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;</li>
+</ul>
+</li>
+<li>&#x53EF;&#x9760;&#x4F20;&#x8F93;</li>
+<li>&#x9762;&#x5411;&#x5B57;&#x8282;&#x6D41;</li>
+<li>&#x6D41;&#x91CF;&#x63A7;&#x5236;</li>
+<li>&#x62E5;&#x585E;&#x63A7;&#x5236;</li>
+</ul>
+<h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FDB;&#x884C;&#x4E09;&#x6B21;&#x63E1;&#x624B;">&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FDB;&#x884C;&#x4E09;&#x6B21;&#x63E1;&#x624B;</h3>
+<p>&#x8D85;&#x65F6;&#x95EE;&#x9898;,&#x5BA2;&#x6237;&#x7AEF;&#x8D85;&#x65F6;&#x91CD;&#x4F20;&#x7B56;&#x7565;&#xFF0C;&#x53C8;&#x53D1;&#x4E00;&#x6B21;sync&#xFF0C;&#x9020;&#x6210;&#x591A;&#x6B21;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</p>
+<h3 id="&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x53EF;&#x9760;&#x4F20;&#x8F93;">&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x53EF;&#x9760;&#x4F20;&#x8F93;</h3>
+<p>&#x4E3B;&#x8981;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x62A5;&#x6587;&#x65E0;&#x5DEE;&#x9519;&#xFF0C;&#x4E0D;&#x4E22;&#x5931;&#xFF0C;&#x4E0D;&#x91CD;&#x590D;&#xFF0C;&#x6309;&#x5E8F;&#x5230;&#x8FBE;&#x3002;
+TCP&#x4E3B;&#x8981;&#x9760;<code>&#x505C;&#x6B62;&#x7B49;&#x5F85;&#x534F;&#x8BAE;</code>&#x5B9E;&#x73B0;&#x7684;</p>
+<ul>
+<li>&#x65E0;&#x5DEE;&#x9519;&#x60C5;&#x51B5;</li>
+<li>&#x8D85;&#x65F6;&#x91CD;&#x4F20;</li>
+<li>&#x786E;&#x8BA4;&#x4E22;&#x5931;</li>
+<li>&#x786E;&#x8BA4;&#x8FDF;&#x5230;</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135135.jpg" alt=""></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135139.jpg" alt=""></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135143.jpg" alt=""></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-135147.jpg" alt=""></p>
+<h2 id="tcp&#x4E0E;udp&#x533A;&#x522B;&#x603B;&#x7ED3;">TCP&#x4E0E;UDP&#x533A;&#x522B;&#x603B;&#x7ED3;</h2>
+<p>1&#x3001;TCP&#x9762;&#x5411;&#x8FDE;&#x63A5;&#xFF08;&#x5982;&#x6253;&#x7535;&#x8BDD;&#x8981;&#x5148;&#x62E8;&#x53F7;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF09;;UDP&#x662F;&#x65E0;&#x8FDE;&#x63A5;&#x7684;&#xFF0C;&#x5373;&#x53D1;&#x9001;&#x6570;&#x636E;&#x4E4B;&#x524D;&#x4E0D;&#x9700;&#x8981;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</p>
+<p>2&#x3001;TCP&#x63D0;&#x4F9B;&#x53EF;&#x9760;&#x7684;&#x670D;&#x52A1;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x901A;&#x8FC7;TCP&#x8FDE;&#x63A5;&#x4F20;&#x9001;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x65E0;&#x5DEE;&#x9519;&#xFF0C;&#x4E0D;&#x4E22;&#x5931;&#xFF0C;&#x4E0D;&#x91CD;&#x590D;&#xFF0C;&#x4E14;&#x6309;&#x5E8F;&#x5230;&#x8FBE;;UDP&#x5C3D;&#x6700;&#x5927;&#x52AA;&#x529B;&#x4EA4;&#x4ED8;&#xFF0C;&#x5373;&#x4E0D;&#x4FDD;&#x8BC1;&#x53EF;&#x9760;&#x4EA4;&#x4ED8;
+3&#x3001;TCP&#x9762;&#x5411;&#x5B57;&#x8282;&#x6D41;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;TCP&#x628A;&#x6570;&#x636E;&#x770B;&#x6210;&#x4E00;&#x8FDE;&#x4E32;&#x65E0;&#x7ED3;&#x6784;&#x7684;&#x5B57;&#x8282;&#x6D41;;UDP&#x662F;&#x9762;&#x5411;&#x62A5;&#x6587;&#x7684;
+UDP&#x6CA1;&#x6709;&#x62E5;&#x585E;&#x63A7;&#x5236;&#xFF0C;&#x56E0;&#x6B64;&#x7F51;&#x7EDC;&#x51FA;&#x73B0;&#x62E5;&#x585E;&#x4E0D;&#x4F1A;&#x4F7F;&#x6E90;&#x4E3B;&#x673A;&#x7684;&#x53D1;&#x9001;&#x901F;&#x7387;&#x964D;&#x4F4E;&#xFF08;&#x5BF9;&#x5B9E;&#x65F6;&#x5E94;&#x7528;&#x5F88;&#x6709;&#x7528;&#xFF0C;&#x5982;IP&#x7535;&#x8BDD;&#xFF0C;&#x5B9E;&#x65F6;&#x89C6;&#x9891;&#x4F1A;&#x8BAE;&#x7B49;&#xFF09;
+4&#x3001;&#x6BCF;&#x4E00;&#x6761;TCP&#x8FDE;&#x63A5;&#x53EA;&#x80FD;&#x662F;&#x70B9;&#x5230;&#x70B9;&#x7684;;UDP&#x652F;&#x6301;&#x4E00;&#x5BF9;&#x4E00;&#xFF0C;&#x4E00;&#x5BF9;&#x591A;&#xFF0C;&#x591A;&#x5BF9;&#x4E00;&#x548C;&#x591A;&#x5BF9;&#x591A;&#x7684;&#x4EA4;&#x4E92;&#x901A;&#x4FE1;
+5&#x3001;TCP&#x9996;&#x90E8;&#x5F00;&#x9500;20&#x5B57;&#x8282;;UDP&#x7684;&#x9996;&#x90E8;&#x5F00;&#x9500;&#x5C0F;&#xFF0C;&#x53EA;&#x6709;8&#x4E2A;&#x5B57;&#x8282;
+6&#x3001;TCP&#x7684;&#x903B;&#x8F91;&#x901A;&#x4FE1;&#x4FE1;&#x9053;&#x662F;&#x5168;&#x53CC;&#x5DE5;&#x7684;&#x53EF;&#x9760;&#x4FE1;&#x9053;&#xFF0C;UDP&#x5219;&#x662F;&#x4E0D;&#x53EF;&#x9760;&#x4FE1;&#x9053;</p>
+<h2 id="udp&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x53EF;&#x9760;&#x4F20;&#x8F93;">UDP&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x53EF;&#x9760;&#x4F20;&#x8F93;</h2>
+<p>&#x7531;&#x4E8E;&#x5728;&#x4F20;&#x8F93;&#x5C42;UDP&#x5DF2;&#x7ECF;&#x662F;&#x4E0D;&#x53EF;&#x9760;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x90A3;&#x5C31;&#x8981;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x4E9B;&#x4FDD;&#x969C;&#x53EF;&#x9760;&#x4F20;&#x8F93;&#x7684;&#x673A;&#x5236;</p>
+<p>&#x7B80;&#x5355;&#x6765;&#x8BB2;&#xFF0C;&#x8981;&#x4F7F;&#x7528;UDP&#x6765;&#x6784;&#x5EFA;&#x53EF;&#x9760;&#x7684;&#x9762;&#x5411;&#x8FDE;&#x63A5;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C;&#x5C31;&#x8981;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C;&#x4E8E;TCP&#x534F;&#x8BAE;&#x7684;</p>
+<p>&#x8D85;&#x65F6;&#x91CD;&#x4F20;&#xFF08;&#x5B9A;&#x65F6;&#x5668;&#xFF09;</p>
+<p>&#x6709;&#x5E8F;&#x63A5;&#x53D7; &#xFF08;&#x6DFB;&#x52A0;&#x5305;&#x5E8F;&#x53F7;&#xFF09;</p>
+<p>&#x5E94;&#x7B54;&#x786E;&#x8BA4; &#xFF08;Seq/Ack&#x5E94;&#x7B54;&#x673A;&#x5236;&#xFF09;</p>
+<p>&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x6D41;&#x91CF;&#x63A7;&#x5236;&#x7B49;&#x673A;&#x5236; &#xFF08;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x534F;&#x8BAE;&#xFF09;</p>
+<p>&#x7B49;&#x4E8E;&#x8BF4;&#x8981;&#x5728;&#x4F20;&#x8F93;&#x5C42;&#x7684;&#x4E0A;&#x4E00;&#x5C42;&#xFF08;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x5728;&#x5E94;&#x7528;&#x5C42;&#xFF09;&#x5B9E;&#x73B0;TCP&#x534F;&#x8BAE;&#x7684;&#x53EF;&#x9760;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x673A;&#x5236;&#xFF0C;&#x6BD4;&#x5982;&#x4F7F;&#x7528;UDP&#x6570;&#x636E;&#x5305;+&#x5E8F;&#x5217;&#x53F7;&#xFF0C;UDP&#x6570;&#x636E;&#x5305;+&#x65F6;&#x95F4;&#x6233;&#x7B49;&#x65B9;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="TCPHandShake.html" class="navigation navigation-prev " aria-label="Previous page: TCPHandShake">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="HTTPDNS.html" class="navigation navigation-next " aria-label="Next page: HTTPDNS">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"TCP&UDP","level":"3.1.4","depth":2,"next":{"title":"HTTPDNS","level":"3.1.5","depth":2,"path":"Network/HTTPDNS.md","ref":"./Network/HTTPDNS.md","articles":[]},"previous":{"title":"TCPHandShake","level":"3.1.3","depth":2,"path":"Network/TCPHandShake.md","ref":"Network/TCPHandShake.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Network/TCPUDP.md","mtime":"2021-04-12T03:53:53.712Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-12T03:54:31.955Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
