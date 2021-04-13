@@ -1,40 +1,5 @@
 # Summary
 
-* [简介](ReadME.md)
-
-* [技术文章收集](Article/ReadME.md)
-  * [贝聊 IAP 实战之满地是坑](Article/贝聊 IAP 实战之满地是坑.md)
-  
-  * [关于离屏渲染的深入研究  - Medium](Article/关于离屏渲染的深入研究  - Medium.md)
-  
-  * [谜一样的 Runloop(1_2) ](Article/谜一样的 Runloop(1_2) .md)
-  
-  * [谜一样的 Runloop(2_2) ](Article/谜一样的 Runloop(2_2) .md)
-  
-  * [面试驱动技术 - Category 相关考点](Article/面试驱动技术 - Category 相关考点.md)
-
-  * [iOS 编译过程的原理和应用](Article/iOS 编译过程的原理和应用.md)
-  
-  * [Objective-C Runtime 机制简析](Article/Objective-C Runtime 机制简析.md)
-  
-  * [OC 消息机制和 super 关键字](Article/OC 消息机制和 super 关键字.md)
-  
-  * [UIViewController 预加载方案浅谈](Article/UIViewController 预加载方案浅谈.md)
-  
-  * [有赞移动 iOS 组件化（模块化）架构设计实践](Article/有赞移动 iOS 组件化（模块化）架构设计实践.md)
-  
-  * [为什么你应该使用 Git 进行版本控制 · Why's THE Design?](Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.md)
-  
-  * [深入了解 iOS 的初始化.md](./Article/深入了解 iOS 的初始化.md)
-  
-  * [App 启动时间：过去，现在和未来](./Article/App 启动时间：过去，现在和未来.md)
-  
-  * [iOS事件处理，看我就够了~](./Article/iOSUIResponderChain.md)
-  
-  * [iOS 代码瘦身实践_ 删除无用的类](./Article/iOS 代码瘦身实践_ 删除无用的类.md)
-  
-    
-  
 * [iOS技术总结](iOS/ReadME.md)
 
   * 第一章 UIKit
@@ -86,6 +51,7 @@
     * [Dyld](iOS/Knowledge/Dyld.md)
     * [Mach-O](iOS/Knowledge/MachO.md)
     * [PreMain](iOS/Knowledge/PreMain.md)
+    * [iOS 编译过程](iOS/Knowledge/Complie.md)
 
 
 * 网络
@@ -99,9 +65,45 @@
 
     * [二分法插入排序](./Algorithm/BinaryInsertSort.md)
 
+
+
+-  [技术文章收集](Article/ReadME.md)
+
+  - [贝聊 IAP 实战之满地是坑](Article/贝聊 IAP 实战之满地是坑.md)
+
+  - [关于离屏渲染的深入研究  - Medium](Article/关于离屏渲染的深入研究  - Medium.md)
+
+  - [谜一样的 Runloop(1_2) ](Article/谜一样的 Runloop(1_2) .md)
+
+  - [谜一样的 Runloop(2_2) ](Article/谜一样的 Runloop(2_2) .md)
+
+  - [面试驱动技术 - Category 相关考点](Article/面试驱动技术 - Category 相关考点.md)
+
+  - [iOS 编译过程的原理和应用](Article/iOS 编译过程的原理和应用.md)
+
+  - [Objective-C Runtime 机制简析](Article/Objective-C Runtime 机制简析.md)
+
+  - [OC 消息机制和 super 关键字](Article/OC 消息机制和 super 关键字.md)
+
+  - [UIViewController 预加载方案浅谈](Article/UIViewController 预加载方案浅谈.md)
+
+  - [有赞移动 iOS 组件化（模块化）架构设计实践](Article/有赞移动 iOS 组件化（模块化）架构设计实践.md)
+
+  - [为什么你应该使用 Git 进行版本控制 · Why's THE Design?](Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.md)
+
+  - [深入了解 iOS 的初始化.md](./Article/深入了解 iOS 的初始化.md)
+
+  - [App 启动时间：过去，现在和未来](./Article/App 启动时间：过去，现在和未来.md)
+
+  - [iOS事件处理，看我就够了~](./Article/iOSUIResponderChain.md)
+
+  - [iOS 代码瘦身实践_ 删除无用的类](./Article/iOS 代码瘦身实践_ 删除无用的类.md)
+
+  - [深夜暗坑 - iOS启动图异常修复方案](./Article/iOSLaunchScreenBug.md)
+
+    
+
   
-
-
 
 
 
