@@ -532,7 +532,7 @@ static inline id *autoreleaseFast(id obj)
 
 ## 总结
 
-1.子线程在使用autorelease对象时，如果没有autoreleasepool会在autoreleaseNoPage中懒加载一个出来。
+1.**子线程在使用autorelease对象时，如果没有autoreleasepool会在autoreleaseNoPage中懒加载一个出来。**
 2.在runloop的run:beforeDate，以及一些source的callback中，有autoreleasepool的push和pop操作，总结就是系统在很多地方都差不多autorelease的管理操作。
 3.就算插入没有pop也没关系，在线程exit的时候会释放资源，执行AutoreleasePoolPage::tls_dealloc，在这里面会清空autoreleasepool。
 
