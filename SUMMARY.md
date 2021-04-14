@@ -52,6 +52,7 @@
     * [Mach-O](iOS/Knowledge/MachO.md)
     * [PreMain](iOS/Knowledge/PreMain.md)
     * [iOS 编译过程](iOS/Knowledge/Complie.md)
+    * [二进制重排](iOS/Knowledge/BinaryOrder.md)
 
 
 * 网络
