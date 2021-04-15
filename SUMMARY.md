@@ -53,6 +53,8 @@
     * [PreMain](iOS/Knowledge/PreMain.md)
     * [iOS 编译过程](iOS/Knowledge/Complie.md)
     * [二进制重排](iOS/Knowledge/BinaryOrder.md)
+    * [self class && super class](./iOS/Knowledge/RuntimeSuper.md)
+    * [isKindOfClass && isMemberOfClass](./iOS/Knowledge/RuntimeCls.md)
 
 
 * 网络
