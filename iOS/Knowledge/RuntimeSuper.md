@@ -88,3 +88,11 @@ struct objc_super {
 
 
 从定义可以得知：当利用 super 调用方法时，只要编译器看到super这个标志，就会让当前对象去调用父类方法，本质还是当前对象在调用，是去父类找实现，super 仅仅是一个编译指示器。但是消息的接收者 receiver 依然是self。最终在 NSObject 获取 isa 指针的时候，获取到的依旧是 self 的 isa，所以，我们得到的结果是：Son。
+
+
+
+## Reference
+
+[Runtime学习：面试题狙击](https://cloud.tencent.com/developer/article/1449795)
+
+[iOS:关于super 关键字(使用runtime分析)](https://www.jianshu.com/p/6da99ddc0b60)

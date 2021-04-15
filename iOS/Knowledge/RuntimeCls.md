@@ -53,3 +53,10 @@ int main(int argc, const char * argv[]) {
 2. isa 指向 NSObject 的 Meta Class，所以和 NSObject Class不相等。
 3. Sark class 执行完之后调用 isKindOfClass，第一次 for 循环，Sark 的 Meta Class 与 Sark class 不等，第二次 for 循环，Sark Meta Class 的 super class 指向的是 NSObject Meta Class， 和 Sark Class 不相等。第三次 for 循环，NSObject Meta Class 的 super class 指向的是 NSObject Class，和 Sark Class 不相等。第四次循环，NSObject Class 的super class 指向 nil， 和 Sark Class 不相等。第四次循环之后，退出循环，所以第三行的 res3 输出为 NO。
 4. isa 指向 Sark 的 Meta Class，和 Sark Class 也不等。
+
+
+
+## Reference
+
+[Runtime学习：面试题狙击](https://cloud.tencent.com/developer/article/1449795)
+
