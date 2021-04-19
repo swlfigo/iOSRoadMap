@@ -1,0 +1,1528 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>@synchronized · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="AutoReleasePool.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../ReadME.html">
+            
+                <a href="../ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../UIKit/UIResponder.html">
+            
+                <a href="../UIKit/UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../UIKit/UIOffScreenRendering.html">
+            
+                <a href="../UIKit/UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../UIKit/UIViewRender.html">
+            
+                <a href="../UIKit/UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../UIKit/UIImageRender.html">
+            
+                <a href="../UIKit/UIImageRender.html">
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" >
+            
+                <span>
+            
+                    
+                    第二章 Memory
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../Memory/StructMemoryAligned.html">
+            
+                <a href="../Memory/StructMemoryAligned.html">
+            
+                    
+                    iOS结构体内存对齐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../Memory/MemoryFiveMainSection.html">
+            
+                <a href="../Memory/MemoryFiveMainSection.html">
+            
+                    
+                    内存中的5大区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../Memory/TaggedPointer.html">
+            
+                <a href="../Memory/TaggedPointer.html">
+            
+                    
+                    Tagged Pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="../Memory/SideTables.html">
+            
+                <a href="../Memory/SideTables.html">
+            
+                    
+                    SideTables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.5" data-path="../Memory/RetainCount.html">
+            
+                <a href="../Memory/RetainCount.html">
+            
+                    
+                    RetainCount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.6" data-path="../Memory/WeakTable.html">
+            
+                <a href="../Memory/WeakTable.html">
+            
+                    
+                    WeakTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    第三章 Objc_Object
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../Objc_Object/Property.html">
+            
+                <a href="../Objc_Object/Property.html">
+            
+                    
+                    Propety属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="../Objc_Object/isa.html">
+            
+                <a href="../Objc_Object/isa.html">
+            
+                    
+                    isa
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="../Objc_Object/ObjectClass.html">
+            
+                <a href="../Objc_Object/ObjectClass.html">
+            
+                    
+                    ObjectClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.4" data-path="../Objc_Object/ClassRWT.html">
+            
+                <a href="../Objc_Object/ClassRWT.html">
+            
+                    
+                    ClassRWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.5" data-path="../Objc_Object/OCAllocInit.html">
+            
+                <a href="../Objc_Object/OCAllocInit.html">
+            
+                    
+                    AllocInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.6" data-path="../Objc_Object/Category.html">
+            
+                <a href="../Objc_Object/Category.html">
+            
+                    
+                    Category
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.7" data-path="../Objc_Object/AssociatedObject.html">
+            
+                <a href="../Objc_Object/AssociatedObject.html">
+            
+                    
+                    AssociatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    第四章 OC Foundation
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="Block.html">
+            
+                <a href="Block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="Method.html">
+            
+                <a href="Method.html">
+            
+                    
+                    Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="MessageForwarding.html">
+            
+                <a href="MessageForwarding.html">
+            
+                    
+                    MessageForwarding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="KVC.html">
+            
+                <a href="KVC.html">
+            
+                    
+                    KVC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="KVO.html">
+            
+                <a href="KVO.html">
+            
+                    
+                    KVO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="Runloop.html">
+            
+                <a href="Runloop.html">
+            
+                    
+                    Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.7" data-path="MultiThreading.html">
+            
+                <a href="MultiThreading.html">
+            
+                    
+                    MultiThreading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.8" data-path="GCDUsage.html">
+            
+                <a href="GCDUsage.html">
+            
+                    
+                    GCD-Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.9" data-path="GCDThread.html">
+            
+                <a href="GCDThread.html">
+            
+                    
+                    GCD-Thread
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.10" data-path="Lock.html">
+            
+                <a href="Lock.html">
+            
+                    
+                    Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.11" data-path="AutoReleasePool.html">
+            
+                <a href="AutoReleasePool.html">
+            
+                    
+                    AutoReleasePool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4.12" data-path="@synchronized.html">
+            
+                <a href="@synchronized.html">
+            
+                    
+                    @synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    第五章 源码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../SourceCode/YYASyncLayer.html">
+            
+                <a href="../SourceCode/YYASyncLayer.html">
+            
+                    
+                    YYAsyncLayer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../SourceCode/FluentDarkModeKit.html">
+            
+                <a href="../SourceCode/FluentDarkModeKit.html">
+            
+                    
+                    FluentDarkModeKit 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" >
+            
+                <span>
+            
+                    
+                    第六章 iOS知识点
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../Knowledge/Dyld.html">
+            
+                <a href="../Knowledge/Dyld.html">
+            
+                    
+                    Dyld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="../Knowledge/MachO.html">
+            
+                <a href="../Knowledge/MachO.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="../Knowledge/PreMain.html">
+            
+                <a href="../Knowledge/PreMain.html">
+            
+                    
+                    PreMain
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.4" data-path="../Knowledge/Complie.html">
+            
+                <a href="../Knowledge/Complie.html">
+            
+                    
+                    iOS 编译过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.5" data-path="../Knowledge/BinaryOrder.html">
+            
+                <a href="../Knowledge/BinaryOrder.html">
+            
+                    
+                    二进制重排
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.6" data-path="../Knowledge/RuntimeSuper.html">
+            
+                <a href="../Knowledge/RuntimeSuper.html">
+            
+                    
+                    self class && super class
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.7" data-path="../Knowledge/RuntimeCls.html">
+            
+                <a href="../Knowledge/RuntimeCls.html">
+            
+                    
+                    isKindOfClass && isMemberOfClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    网络
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../../Network/TCPMessageFrame.html">
+            
+                <a href="../../Network/TCPMessageFrame.html">
+            
+                    
+                    TCP粘包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../../Network/Https.html">
+            
+                <a href="../../Network/Https.html">
+            
+                    
+                    Https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../../Network/TCPHandShake.html">
+            
+                <a href="../../Network/TCPHandShake.html">
+            
+                    
+                    TCPHandShake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../../Network/TCPUDP.html">
+            
+                <a href="../../Network/TCPUDP.html">
+            
+                    
+                    TCP&UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../../Network/HTTPDNS.html">
+            
+                <a href="../../Network/HTTPDNS.html">
+            
+                    
+                    HTTPDNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../../Algorithm/BinaryInsertSort.html">
+            
+                <a href="../../Algorithm/BinaryInsertSort.html">
+            
+                    
+                    二分法插入排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../Article/ReadME.html">
+            
+                <a href="../../Article/ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="../../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="../../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../Article/谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../Article/谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../Article/面试驱动技术 - Category 相关考点.html">
+            
+                <a href="../../Article/面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../../Article/iOS 编译过程的原理和应用.html">
+            
+                <a href="../../Article/iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../../Article/Objective-C Runtime 机制简析.html">
+            
+                <a href="../../Article/Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.8" data-path="../../Article/OC 消息机制和 super 关键字.html">
+            
+                <a href="../../Article/OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.9" data-path="../../Article/UIViewController 预加载方案浅谈.html">
+            
+                <a href="../../Article/UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.10" data-path="../../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="../../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.11" data-path="../../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="../../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.12" data-path="../../Article/深入了解 iOS 的初始化.html">
+            
+                <a href="../../Article/深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.13" data-path="../../Article/App 启动时间：过去，现在和未来.html">
+            
+                <a href="../../Article/App 启动时间：过去，现在和未来.html">
+            
+                    
+                    App 启动时间：过去，现在和未来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.14" data-path="../../Article/iOSUIResponderChain.html">
+            
+                <a href="../../Article/iOSUIResponderChain.html">
+            
+                    
+                    iOS事件处理，看我就够了~
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.15" data-path="../../Article/iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                <a href="../../Article/iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                    
+                    iOS 代码瘦身实践_ 删除无用的类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.16" data-path="../../Article/iOSLaunchScreenBug.html">
+            
+                <a href="../../Article/iOSLaunchScreenBug.html">
+            
+                    
+                    深夜暗坑 - iOS启动图异常修复方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >@synchronized</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="synchronized">@synchronized</h1>
+<p><strong><code>@synchronized</code></strong> &#x662F; iOS &#x591A;&#x7EBF;&#x7A0B;&#x540C;&#x6B65;&#x9501;&#x4E2D;&#x6027;&#x80FD;&#x6700;&#x5DEE;&#x7684;&#x4E00;&#x4E2A;&#x3002;&#x4F46;&#x662F;&#x5374;&#x662F;&#x6240;&#x6709;&#x9501;&#x4E2D;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x6700;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x4E2A;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x50CF;&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x4E00;&#x6837;&#x6765;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-objective-c">@synchronized (self) {
+
+}
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1; <code>{}</code> &#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x7EBF;&#x7A0B;&#x5B89;&#x5168; &#xFF1F;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;<code>?</code> &#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5408;&#x7406;&#x7684;&#x4F7F;&#x7528; <strong><code>@synchronized</code></strong> &#x540C;&#x6837;&#x4F1A;&#x5BFC;&#x81F4;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="synchronized-&#x539F;&#x7406;"><strong><code>@synchronized</code></strong> &#x539F;&#x7406;</h2>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x63A2;&#x7A76;&#x67D0;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x5E95;&#x5C42;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6C47;&#x7F16;&#x90E8;&#x5206;&#x6765;&#x63A2;&#x7A76;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x6765;&#x67E5;&#x770B;&#x6C47;&#x7F16;&#x90E8;&#x5206;</p>
+<ul>
+<li><code>Xcode</code>--&gt; <code>Debug</code> --&gt;<code>Debug Workflow</code> --&gt; <code>Always Show Disassembly</code> &#x663E;&#x793A;&#x6C47;&#x7F16;&#xFF0C;&#x7136;&#x540E;&#x6302;&#x4E0A;&#x65AD;&#x70B9;&#xFF0C;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;</li>
+<li><code>Xcode</code>--&gt; <code>Product</code>--&gt;<code>Perform Action</code> --&gt; <code>Assemble **.m</code> &#x6587;&#x4EF6;</li>
+</ul>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x6D4B;&#x8BD5;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x952E;&#x5165;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-objective-c">- (void)viewDidLoad {
+    [super viewDidLoad];
+    @synchronized (self) {
+        NSLog(@&quot;iOS &#x6210;&#x957F;&#x6307;&#x5317;&quot;);
+    }
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x6765;&#x67E5;&#x770B;&#x6C47;&#x7F16;&#x90E8;&#x5206;&#xFF0C;&#x4F7F;&#x7528;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;&#x6709;&#x4FBF;&#x4E8E;&#x6211;&#x4EEC;&#x67E5;&#x627E;&#x4EE3;&#x7801;&#x7684;<strong>&#x5177;&#x4F53;&#x4F4D;&#x7F6E;</strong>&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x641C;&#x7D22; <code>:&#x884C;&#x6570;</code> &#x65F6;&#xFF0C;&#x627E;&#x5230;&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x7684;&#x6C47;&#x7F16;&#x5199;&#x6CD5;&#xFF0C;&#x5982;&#x540C;&#x7EA2;&#x6846;&#x4E2D;&#x7684;&#x793A;&#x4F8B;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-19-030733.png" alt="img"></p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x8C03;&#x7528; <code>NSLog</code> &#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5B58;&#x5728;&#x4E00;&#x4E2A;<code>_objc_sync_enter</code> &#x548C;&#x4E24;&#x4E2A;<code>_objc_sync_exit</code>&#x3002;&#x7531;&#x6B64;&#x53EF;&#x77E5;&#xFF0C;&#x5F53;&#x4EE3;&#x7801;&#x79BB;&#x5F00; <code>{}</code> &#x95ED;&#x5305;&#x65F6;&#xFF0C;&#x4F1A;&#x518D;&#x6267;&#x884C;&#x4E00;&#x6B21; <code>_objc_sync_exit</code>&#x3002;</p>
+<p>&#x8427;&#x7389;&#x5927;&#x4F6C;&#x5728;&#x5176;&#x300A;&#x5173;&#x4E8E; @synchronized&#xFF0C;&#x8FD9;&#x513F;&#x6BD4;&#x4F60;&#x60F3;&#x77E5;&#x9053;&#x7684;&#x8FD8;&#x8981;&#x591A; &#x4E2D;&#x8BF4; <code>@synchronized</code> block &#x4F1A;&#x53D8;&#x6210; <code>objc_sync_enter</code> &#x548C; <code>objc_sync_exit</code> &#x7684;&#x6210;&#x5BF9;&#x8C03;&#x7528;&#x3002;&#x4ECE;&#x6C47;&#x7F16;&#x8C03;&#x7528;&#x4E0A;&#x770B;&#xFF0C;&#x4F3C;&#x4E4E;&#x5E76;&#x4E0D;&#x662F;&#xFF1F;</p>
+<p>&#x5F53;&#x6267;&#x884C; <code>release</code> &#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#xFF0C;&#x8FD8;&#x4F1A;<strong>&#x8C03;&#x7528;&#x4E00;&#x6B21;</strong> <code>objc_sync_exit</code>&#x3002;</p>
+<h3 id="&#x6E90;&#x7801;&#x89E3;&#x6790;">&#x6E90;&#x7801;&#x89E3;&#x6790;</h3>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x67E5;&#x627E;&#x4E0A;&#x8FF0;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x6700;&#x7EC8;&#x5728; <code>&lt;objc/objc-sync.h&gt;</code> &#x4E2D;&#x627E;&#x5230;&#x4E86;<code>_objc_sync_enter</code> &#x548C;<code>_objc_sync_exit</code>&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x5176;&#x5177;&#x4F53;&#x5B9E;&#x73B0;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> SyncData {
+    <span class="hljs-keyword">struct</span> SyncData* nextData;
+    DisguisedPtr&lt;objc_object&gt; object;
+    <span class="hljs-keyword">int32_t</span> threadCount;  
+    <span class="hljs-keyword">recursive_mutex_t</span> mutex;
+} SyncData;
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">objc_sync_enter</span><span class="hljs-params">(id obj)</span>
+</span>{
+    <span class="hljs-keyword">int</span> result = OBJC_SYNC_SUCCESS;
+
+    <span class="hljs-keyword">if</span> (obj) {
+        SyncData* data = id2data(obj, ACQUIRE);
+        assert(data);
+        data-&gt;mutex.lock();
+    } <span class="hljs-keyword">else</span> {
+
+        <span class="hljs-keyword">if</span> (DebugNilSync) {
+            _objc_inform(<span class="hljs-string">&quot;NIL SYNC DEBUG: @synchronized(nil); set a breakpoint on objc_sync_nil to debug&quot;</span>);
+        }
+        objc_sync_nil();
+    }
+
+    <span class="hljs-keyword">return</span> result;
+}
+
+
+
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">objc_sync_exit</span><span class="hljs-params">(id obj)</span>
+</span>{
+    <span class="hljs-keyword">int</span> result = OBJC_SYNC_SUCCESS;
+
+    <span class="hljs-keyword">if</span> (obj) {
+        SyncData* data = id2data(obj, RELEASE); 
+        <span class="hljs-keyword">if</span> (!data) {
+            result = OBJC_SYNC_NOT_OWNING_THREAD_ERROR;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">bool</span> okay = data-&gt;mutex.tryUnlock();
+            <span class="hljs-keyword">if</span> (!okay) {
+                result = OBJC_SYNC_NOT_OWNING_THREAD_ERROR;
+            }
+        }
+    } <span class="hljs-keyword">else</span> {
+
+    }
+
+
+    <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<p>&#x4ECE;&#x6E90;&#x4EE3;&#x7801;&#x548C;&#x6CE8;&#x91CA;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF1A;</p>
+<ul>
+<li><strong><code>@synchronized</code></strong> &#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E; <code>obj</code> &#x4E3A; <code>key</code> &#x7684;&#x9012;&#x5F52;&#x4E92;&#x65A5;&#x7684;&#x9501; <strong>recursive_mutex_t</strong> <code>mutex</code></li>
+<li>&#x5F53; <code>obj</code> &#x4E3A; <code>nil</code> &#x65F6;&#xFF0C;<code>_objc_sync_enter</code> &#x548C;<code>_objc_sync_exit</code> &#x5E76;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;</li>
+<li>&#x6211;&#x4EEC;&#x6700;&#x7EC8;&#x52A0;&#x9501;&#x89E3;&#x9501;&#x7684;&#x662F; <code>SyncData</code> &#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x662F;&#x5229;&#x7528; <code>id2data(obj, usage)</code> &#x6765;&#x83B7;&#x53D6;&#x7684;</li>
+<li><code>SyncData</code> &#x5176;&#x672C;&#x8D28;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x7684;&#x5934;&#x7ED3;&#x70B9;&#xFF0C;&#x56E0;&#x4E3A;&#x4F7F;&#x7528; <code>nextData</code> &#x5BFB;&#x627E;&#x786E;&#x5B9A;&#x5BF9;&#x5E94;&#x503C;</li>
+</ul>
+<h4 id="obj-&#x7684;&#x4F5C;&#x7528;"><code>obj</code> &#x7684;&#x4F5C;&#x7528;</h4>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x4EEC;&#x8981;&#x5728;&#x4F7F;&#x7528; <strong><code>@synchronized</code></strong> &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4F20;&#x4E00;&#x4E2A;<code>obj</code> &#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;&#x4F7F;&#x7528;&#x7684; <code>obj</code> &#x7684;&#x65F6;&#x673A;</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">static</span> SyncData* <span class="hljs-title">id2data</span><span class="hljs-params">(id object, <span class="hljs-keyword">enum</span> usage why)</span>
+</span>{
+    <span class="hljs-keyword">spinlock_t</span> *lockp = &amp;LOCK_FOR_OBJ(object);
+    SyncData **listp = &amp;LIST_FOR_OBJ(object);
+    SyncData* result = <span class="hljs-literal">NULL</span>;
+    ...
+}
+</code></pre>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x901A;&#x8FC7; <code>StripedMap</code> &#x6765;&#x83B7;&#x53D6;&#x5BF9;&#x5E94; <code>obj</code> &#x7684; <code>SyncData</code> &#x548C;&#x5176;&#x88AB;&#x52A0;&#x7684;&#x81EA;&#x65CB;&#x9501; <code>spinlock_t</code>&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> SyncList {
+    SyncData *data;
+    <span class="hljs-keyword">spinlock_t</span> lock;
+
+    SyncList() : data(nil), lock(fork_unsafe_lock) { }
+};
+
+
+
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LOCK_FOR_OBJ(obj) sDataLists[obj].lock</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LIST_FOR_OBJ(obj) sDataLists[obj].data</span>
+<span class="hljs-keyword">static</span> StripedMap&lt;SyncList&gt; sDataLists;
+</code></pre>
+<p><code>StripedMap</code> &#x5176;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x8868;&#xFF0C;&#x5916;&#x5C42;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x6570;&#x7EC4;&#x91CC;&#x7684;&#x6BCF;&#x4E2A;&#x4F4D;&#x7F6E;&#x5B58;&#x50A8;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x94FE;&#x8868;&#x7684;&#x7ED3;&#x6784; <code>SyncList</code>&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x539F;&#x56E0;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x591A;&#x4E2A;<code>obj</code>&#x4E4B;&#x95F4;&#x7684;&#x7ADE;&#x4E89;&#xFF0C;&#x5176;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x662F;&#x57FA;&#x4E8E;<code>obj</code>&#x800C;&#x4E0D;&#x662F;&#x5176;&#x4ED6;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>id2data(obj, usage)</code> &#x51FD;&#x6570;&#x83B7;&#x53D6;&#x786E;&#x5B9A;&#x7684; <code>SyncData</code> &#x65F6;&#xFF0C;&#x9996;&#x5148;&#x5148;&#x6839;&#x636E;<code>hash(obj)</code> &#x83B7;&#x53D6;&#x5BF9;&#x5E94; <code>SyncList</code> &#x7684;&#x5934;&#x8282;&#x70B9;<code>SyncData</code>&#xFF0C;&#x90A3;&#x4E48;&#x540E;&#x7EED;&#x505A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
+<p>&#x6211;&#x4EEC;&#x770B;&#x770B; <code>id2data(obj, usage)</code> &#x7684;&#x5176;&#x4ED6;&#x5B9E;&#x73B0;</p>
+<h4 id="id2dataobj-usage"><code>id2data(obj, usage)</code></h4>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x8981;&#x4E86;&#x89E3;&#x5177;&#x4F53;&#x5982;&#x4F55;&#x83B7;&#x53D6;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x67E5;&#x770B;</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">static</span> SyncData* <span class="hljs-title">id2data</span><span class="hljs-params">(id object, <span class="hljs-keyword">enum</span> usage why)</span>
+</span>{
+  ...
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> SUPPORT_DIRECT_THREAD_KEYS</span>
+
+    <span class="hljs-keyword">bool</span> fastCacheOccupied = NO;
+    SyncData *data = (SyncData *)tls_get_direct(SYNC_DATA_DIRECT_KEY);
+    <span class="hljs-keyword">if</span> (data) {
+        fastCacheOccupied = YES;
+
+        <span class="hljs-keyword">if</span> (data-&gt;object == object) {
+
+            <span class="hljs-keyword">uintptr_t</span> lockCount;
+
+            result = data;
+            lockCount = (<span class="hljs-keyword">uintptr_t</span>)tls_get_direct(SYNC_COUNT_DIRECT_KEY);
+            <span class="hljs-keyword">switch</span>(why) {
+            <span class="hljs-keyword">case</span> ACQUIRE: {
+
+                lockCount++;
+                tls_set_direct(SYNC_COUNT_DIRECT_KEY, (<span class="hljs-keyword">void</span>*)lockCount);
+                <span class="hljs-keyword">break</span>;
+            }
+            <span class="hljs-keyword">case</span> RELEASE:
+
+                lockCount--;
+                tls_set_direct(SYNC_COUNT_DIRECT_KEY, (<span class="hljs-keyword">void</span>*)lockCount);
+                <span class="hljs-keyword">if</span> (lockCount == <span class="hljs-number">0</span>) {
+
+                    tls_set_direct(SYNC_DATA_DIRECT_KEY, <span class="hljs-literal">NULL</span>);
+
+                    OSAtomicDecrement32Barrier(&amp;result-&gt;threadCount);
+                }
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> CHECK:
+
+                <span class="hljs-keyword">break</span>;
+            }
+
+            <span class="hljs-keyword">return</span> result;
+        }
+    }
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+
+
+    SyncCache *cache = fetch_cache(NO);
+    <span class="hljs-keyword">if</span> (cache) {
+      <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i;
+        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; cache-&gt;used; i++) {
+            SyncCacheItem *item = &amp;cache-&gt;<span class="hljs-built_in">list</span>[i];
+            <span class="hljs-keyword">if</span> (item-&gt;data-&gt;object != object) <span class="hljs-keyword">continue</span>;
+
+
+            result = item-&gt;data;
+            <span class="hljs-keyword">if</span> (result-&gt;threadCount &lt;= <span class="hljs-number">0</span>  ||  item-&gt;lockCount &lt;= <span class="hljs-number">0</span>) {
+                _objc_fatal(<span class="hljs-string">&quot;id2data cache is buggy&quot;</span>);
+            }
+
+            <span class="hljs-keyword">switch</span>(why) {
+            <span class="hljs-keyword">case</span> ACQUIRE:
+                item-&gt;lockCount++;
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> RELEASE:
+                item-&gt;lockCount--;
+                <span class="hljs-keyword">if</span> (item-&gt;lockCount == <span class="hljs-number">0</span>) {
+
+                    cache-&gt;<span class="hljs-built_in">list</span>[i] = cache-&gt;<span class="hljs-built_in">list</span>[--cache-&gt;used];
+
+                    OSAtomicDecrement32Barrier(&amp;result-&gt;threadCount);
+                }
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> CHECK:
+
+                <span class="hljs-keyword">break</span>;
+            }
+
+            <span class="hljs-keyword">return</span> result;
+        }
+
+    }
+
+    lockp-&gt;lock();
+
+    {
+        ...
+
+        <span class="hljs-keyword">goto</span> done;
+    }
+
+
+
+
+ done:
+    lockp-&gt;unlock();
+    <span class="hljs-keyword">if</span> (result) {
+
+
+
+        <span class="hljs-keyword">if</span> (why == RELEASE) {
+
+
+            <span class="hljs-keyword">return</span> nil;
+        }
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> SUPPORT_DIRECT_THREAD_KEYS</span>
+        <span class="hljs-keyword">if</span> (!fastCacheOccupied) {
+
+            tls_set_direct(SYNC_DATA_DIRECT_KEY, result);
+            tls_set_direct(SYNC_COUNT_DIRECT_KEY, (<span class="hljs-keyword">void</span>*)<span class="hljs-number">1</span>);
+        } <span class="hljs-keyword">else</span> 
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+        {
+
+            <span class="hljs-keyword">if</span> (!cache) cache = fetch_cache(YES);
+            cache-&gt;<span class="hljs-built_in">list</span>[cache-&gt;used].data = result;
+            cache-&gt;<span class="hljs-built_in">list</span>[cache-&gt;used].lockCount = <span class="hljs-number">1</span>;
+            cache-&gt;used++;
+        }
+    }
+
+    <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<ul>
+<li>&#x5F53;&#x6211;&#x4EEC;&#x62FF;&#x5230; <code>SyncList</code> &#x4E2D; <code>SyncData</code> &#x7684;&#x5934;&#x7ED3;&#x70B9;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x67E5;&#x627E;&#x94FE;&#x8868;&#x4E2D;&#x5BF9;&#x5E94;&#x7684; <code>SyncData</code>&#x3002;</li>
+<li>&#x5F53;&#x5B58;&#x5728;&#x7F13;&#x5B58;&#x65F6;&#xFF0C;&#x6839;&#x636E;&#x662F;&#x5426;&#x652F;&#x6301; <code>SUPPORT_DIRECT_THREAD_KEYS</code> &#xFF0C;&#x5BFB;&#x627E;&#x5BF9;&#x5E94;&#x7684; <code>SyncData</code> &#x7684;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x3002;&#x4E00;&#x4E2A;&#x662F;&#x6839;&#x636E; <strong><code>tls</code></strong> &#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x4F7F;&#x7528; <strong><code>for&#x5FAA;&#x73AF;</code></strong> &#x6765;&#x67E5;&#x627E;&#x3002;</li>
+<li>&#x5F53;&#x6CA1;&#x6709;&#x6CA1;&#x6709;&#x7F13;&#x5B58;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x7F13;&#x5B58;&#x3002;<ul>
+<li>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x8BF4;&#x8FC7;&#xFF0C;<code>SyncList</code> &#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x81EA;&#x65CB;&#x9501; <code>spinlock_t lock</code>&#xFF0C;&#x5176;&#x52A0;&#x51CF;&#x9501;&#x7684;&#x65F6;&#x673A;&#x662F;&#x5728;&#x52A0;&#x5165;&#x7F13;&#x5B58;&#x7684;&#x65F6;&#x5019;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x7EBF;&#x7A0B;&#x7F13;&#x5B58;&#x627E;&#x4E0D;&#x5230;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;&#x65F6;&#xFF0C;&#x4F1A;&#x52A0;&#x4E00;&#x4E2A;&#x81EA;&#x65CB;&#x9501;&#x3002;&#x4F46;&#x662F; <code>spinlock_t lock</code> &#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x4E3A;&#x81EA;&#x65CB;&#x9501;&#x7684;&#x4E92;&#x65A5;&#x9501; <code>os_unfair_lock</code> &#x7F62;&#x4E86;&#x3002;</li>
+<li>&#x4E00;&#x4E2A;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x591A;&#x7EBF;&#x7A0B;&#x5904;&#x7406;&#x65F6;&#xFF0C;&#x5BF9;&#x5E94;&#x7EBF;&#x7A0B;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;<code>obj</code> &#x6765;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x6CA1;&#x6709;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7F13;&#x5B58;&#xFF0C;&#x5373; <code>SyncData</code> &#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x662F;&#x7EBF;&#x7A0B;&#x7F13;&#x5B58;&#x4E0D;&#x5B58;&#x5728;&#x3002;&#x5982;&#x679C; <code>SyncData</code> &#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684;<code>SyncData</code>&#x3002;&#x6700;&#x540E;&#x521B;&#x5EFA; <code>SyncData</code> &#x7684;&#x7EBF;&#x7A0B;&#x7F13;&#x5B58;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x7684; <code>SyncData</code> &#xFF0C;&#x5E76;&#x52A0;&#x9012;&#x5F52;&#x4E92;&#x65A5;&#x9501;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-csharp"><span class="hljs-number">1</span>  <span class="hljs-comment">// obj&#x4F20;&#x5165;sDataLists</span>
+<span class="hljs-number">2</span>  <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LIST_FOR_OBJ(obj) sDataLists[obj].data</span>
+<span class="hljs-number">3</span>
+<span class="hljs-number">4</span>  <span class="hljs-comment">// &#x54C8;&#x5E0C;&#x8868;&#x7ED3;&#x6784;&#xFF0C;&#x5185;&#x90E8;&#x5B58;SyncList</span>
+<span class="hljs-number">5</span>  <span class="hljs-keyword">static</span> StripedMap&lt;SyncList&gt; sDataLists;
+<span class="hljs-number">6</span>
+<span class="hljs-number">7</span>  <span class="hljs-comment">// SyncList&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5185;&#x90E8;data&#x5C31;&#x662F;SyncData</span>
+<span class="hljs-number">8</span>  <span class="hljs-keyword">struct</span> SyncList {
+<span class="hljs-number">9</span>      SyncData *data;
+<span class="hljs-number">10</span>    spinlock_t <span class="hljs-keyword">lock</span>;
+<span class="hljs-number">11</span>    <span class="hljs-function">constexpr <span class="hljs-title">SyncList</span>(<span class="hljs-params"></span>) : <span class="hljs-title">data</span>(<span class="hljs-params">nil</span>), <span class="hljs-title">lock</span>(<span class="hljs-params">fork_unsafe_lock</span>) </span>{ }
+<span class="hljs-number">12</span>  };
+<span class="hljs-number">13</span>
+<span class="hljs-number">14</span>  <span class="hljs-comment">// &#x54C8;&#x5E0C;&#x8868;&#x7ED3;&#x6784;</span>
+<span class="hljs-number">15</span>  <span class="hljs-keyword">class</span> <span class="hljs-title">StripedMap</span> {
+<span class="hljs-number">16</span>      <span class="hljs-keyword">enum</span> { StripeCount = <span class="hljs-number">64</span> };
+<span class="hljs-number">17</span>
+<span class="hljs-number">18</span>    <span class="hljs-keyword">struct</span> PaddedT {
+<span class="hljs-number">19</span>        <span class="hljs-function">T <span class="hljs-keyword">value</span> <span class="hljs-title">alignas</span>(<span class="hljs-params">CacheLineSize</span>)</span>;
+<span class="hljs-number">20</span>    };
+<span class="hljs-number">21</span>
+<span class="hljs-number">22</span>    PaddedT array[StripeCount];
+<span class="hljs-number">23</span>
+<span class="hljs-number">24</span>    <span class="hljs-comment">// &#x54C8;&#x5E0C;&#x51FD;&#x6570;</span>
+<span class="hljs-number">25</span>    <span class="hljs-function"><span class="hljs-keyword">static</span> unsigned <span class="hljs-keyword">int</span> <span class="hljs-title">indexForPointer</span>(<span class="hljs-params"><span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *p</span>) </span>{
+<span class="hljs-number">26</span>        uintptr_t addr = reinterpret_cast&lt;uintptr_t&gt;(p);
+<span class="hljs-number">27</span>        <span class="hljs-keyword">return</span> ((addr &gt;&gt; <span class="hljs-number">4</span>) ^ (addr &gt;&gt; <span class="hljs-number">9</span>)) % StripeCount; 
+<span class="hljs-number">28</span>
+<span class="hljs-number">29</span>    }
+<span class="hljs-number">30</span>
+<span class="hljs-number">31</span>   <span class="hljs-keyword">public</span>:
+<span class="hljs-number">32</span>     <span class="hljs-comment">// &#x6B64;&#x5904;&#x7684;p&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x7684;obj&#xFF0C;&#x4E5F;&#x5C31;&#x662F;obj&#x6267;&#x884C;&#x4E0A;&#x9762;&#x7684;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x5BF9;&#x5E94;&#x5230;&#x6570;&#x7EC4;&#x7684;index</span>
+<span class="hljs-number">33</span>    T&amp; <span class="hljs-keyword">operator</span>[] (<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *p) { 
+<span class="hljs-number">34</span>        <span class="hljs-keyword">return</span> array[indexForPointer(p)].<span class="hljs-keyword">value</span>; 
+<span class="hljs-number">35</span>    }
+</code></pre>
+<p>&#x4ECE;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x770B;&#x51FA;&#x6574;&#x4F53;<code>StripedMap</code>&#x662F;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x8868;&#x7ED3;&#x6784;&#xFF0C;&#x8868;&#x5916;&#x5C42;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x6570;&#x7EC4;&#x91CC;&#x7684;&#x6BCF;&#x4E2A;&#x4F4D;&#x7F6E;&#x5B58;&#x50A8;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x94FE;&#x8868;&#x7684;&#x7ED3;&#x6784;&#xFF08;<code>SyncList</code>&#xFF09;&#xFF0C;<code>SyncData</code> &#x5B58;&#x50A8;&#x7684;&#x4F4D;&#x7F6E;&#x5177;&#x4F53;&#x4F9D;&#x8D56;&#x7B2C;<code>25</code>&#x884C;&#x5904;&#x7684;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x56FE;&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-19-032026.jpg" alt=""></p>
+<p><code>obj1</code>  &#x5904;&#xFF0C;&#x7ECF;&#x8FC7;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x8BA1;&#x7B97;&#x5F97;&#x51FA;&#x7D22;&#x5F15;<code>2</code>&#xFF0C;&#x8D77;&#x521D;&#x6211;&#x4EEC;&#x8981;&#x987A;&#x7740;&#x4E0A;&#x9762;&#x7684; <code>A</code> &#x7EBF;&#x5BF9;<code>List</code>&#x8FDB;&#x884C;&#x67E5;&#x627E;&#xFF0C;&#x6CA1;&#x627E;&#x5230;&#xFF0C;&#x5C06;&#x5F53;&#x524D;&#x7684;<code>obj</code>&#x63D2;&#x5165;&#x5230;&#x6700;&#x524D;&#x9762;,&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x66F4;&#x5FEB;&#x7684;&#x627E;&#x5230;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x800C;&#x8FD9;&#x4E48;&#x8BBE;&#x8BA1;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-comment">// Allocate a new SyncData and add to list.</span>
+    <span class="hljs-comment">// XXX allocating memory with a global lock held is bad practice,</span>
+    <span class="hljs-comment">// might be worth releasing the lock, allocating, and searching again.</span>
+    <span class="hljs-comment">// But since we never free these guys we won&apos;t be stuck in allocation very often.</span>
+    posix_memalign((void **)&amp;result, alignof(SyncData), sizeof(SyncData));
+    result-&gt;object = (objc_object *)object;
+    result-&gt;threadCount = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">new</span> (&amp;result-&gt;mutex) recursive_mutex_t(fork_unsafe_lock);
+    result-&gt;nextData = *listp;
+    *listp = result;
+</code></pre>
+<h2 id="&#x614E;&#x7528;-synchronizedobj">&#x614E;&#x7528; @synchronized(obj)</h2>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x4EEC;&#x5728;&#x5F00;&#x5934;&#x6211;&#x4EEC;&#x8BF4; <strong><code>@synchronized</code></strong> &#x5E76;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x53D8;&#x6210; <code>nil</code> &#x7684;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A; <code>obj</code> &#x65F6;&#xFF0C;&#x4F1A;&#x53D1;&#x751F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x95EE;&#x9898;&#x3002;</p>
+<pre><code class="lang-objective-c">for (NSInteger i = 0; i &lt; 10000; i ++) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            @synchronized (self.array) {
+                self.array = [NSMutableArray array];
+            }
+        });
+    }
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x6765;&#x81EA;&#x4E8E;&#x53C2;&#x8003;&#x8D44;&#x6599; &#xFF0C;&#x7A0D;&#x5FAE;&#x4FEE;&#x6539;&#x4E86;&#x4E00;&#x4E0B;&#x521B;&#x5EFA;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x771F;&#x673A;&#x8C03;&#x8BD5;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x66F4;&#x5C11;&#x7684;&#x8C03;&#x8BD5;&#x6B21;&#x6570;&#xFF0C;&#x6A21;&#x62DF;&#x5668;&#x7684;&#x8BDD;&#x5176;&#x652F;&#x6301;&#x7684;&#x6B21;&#x6570;&#x4F1A;&#x6BD4;&#x8F83;&#x591A;&#x4E00;&#x70B9;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4F1A;&#x53D1;&#x751F;&#x5D29;&#x6E83;&#xFF0C;&#x662F;&#x56E0;&#x4E3A; ARC &#x4E0B; <code>setArray:</code> &#x7684;&#x65B9;&#x6CD5;&#x4F1A;&#x6267;&#x884C;&#x4E00;&#x4E2A; <code>release</code> &#x64CD;&#x4F5C;&#xFF0C;&#x5728;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x4F1A;&#x51FA;&#x73B0; <code>self.array</code> &#x4E3A; <code>nil</code> &#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x800C; <code>@synchronized (nil)</code>&#x5E76;&#x4E0D;&#x6267;&#x884C;<strong>&#x52A0;&#x9501;&#x89E3;&#x9501;</strong>&#x64CD;&#x4F5C;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x7EBF;&#x7A0B;&#x5D29;&#x6E83;&#x3002;</p>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<p>&#x5728;&#x6240;&#x6709;&#x7684;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x65B9;&#x6848;&#x4E2D;&#xFF0C;<strong><code>@synchronized</code></strong> &#x4EE5;&#x5176;<strong>&#x4F7F;&#x7528;&#x6210;&#x672C;</strong>&#x6210;&#x4E3A;&#x5927;&#x90E8;&#x5206;&#x7528;&#x6237;&#x9009;&#x62E9;&#xFF0C;&#x4F46;&#x662F;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x5374;&#x4E00;&#x76F4;&#x6210;&#x4E3A;&#x4ED6;&#x4EBA;&#x7684;&#x8BDF;&#x75C5;&#x3002;</p>
+<p>&#x4E3A;&#x4EC0;&#x4E48; <strong><code>@synchronized</code></strong> &#x662F;&#x6027;&#x80FD;&#x6700;&#x5DEE;&#x7684;&#x5462;&#xFF1F;&#x56E0;&#x4E3A;&#x5176;&#x5305;&#x542B;&#x7684;&#x64CD;&#x4F5C;&#x6781;&#x4E3A;&#x590D;&#x6742;&#xFF0C;&#x9664;&#x4E86;&#x5E38;&#x89C4;&#x7684;&#x52A0;&#x9501;&#x89E3;&#x9501;&#x64CD;&#x4F5C;&#x4EE5;&#x5916;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x8003;&#x8651;&#x54C8;&#x5E0C;&#x8868;&#x5BFB;&#x5740;&#xFF0C;&#x7F13;&#x5B58;&#x83B7;&#x53D6; / &#x521B;&#x5EFA;&#x7F13;&#x5B58;&#x7B49;&#xFF0C;&#x6700;&#x5DEE;&#x60C5;&#x51B5;&#x4E0B;&#x5373; N &#x4E2A; &#x4E0D;&#x540C;&#x7684; <code>obj</code> &#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7684; <code>SyncData</code>&#xFF0C;&#x5E76;&#x4E14;&#x4F1A;&#x8C03;&#x7528;&#x547D;&#x540D;&#x4E3A;&#x81EA;&#x65CB;&#x9501;&#x7684;&#x4E92;&#x65A5;&#x9501; <code>os_unfair_lock</code> &#x6765;&#x5B9E;&#x73B0;&#x7F13;&#x5B58;&#x3002;</p>
+<h2 id="reference">Reference</h2>
+<p><a href="https://www.jianshu.com/p/56f9cfd94146" target="_blank">IOS - @synchronized&#x8BE6;&#x89E3;</a></p>
+<p><a href="http://yulingtianxia.com/blog/2015/11/01/More-than-you-want-to-know-about-synchronized/" target="_blank">&#x5173;&#x4E8E; @synchronized&#xFF0C;&#x8FD9;&#x513F;&#x6BD4;&#x4F60;&#x60F3;&#x77E5;&#x9053;&#x7684;&#x8FD8;&#x8981;&#x591A;</a></p>
+<p><a href="https://juejin.cn/post/6951675270906511391" target="_blank">iOS &#x6027;&#x80FD;&#x5DEE;&#x7684; @synchronized &#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x70B9;&#x5417;</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="AutoReleasePool.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: AutoReleasePool">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"@synchronized","level":"1.2.4.12","depth":3,"next":{"title":"第五章 源码","level":"1.3","depth":1,"ref":"","articles":[{"title":"YYAsyncLayer","level":"1.3.1","depth":2,"path":"iOS/SourceCode/YYASyncLayer.md","ref":"iOS/SourceCode/YYASyncLayer.md","articles":[]},{"title":"FluentDarkModeKit ","level":"1.3.2","depth":2,"path":"iOS/SourceCode/FluentDarkModeKit.md","ref":"iOS/SourceCode/FluentDarkModeKit.md","articles":[]},{"title":"第六章 iOS知识点","level":"1.3.3","depth":2,"ref":"","articles":[{"title":"Dyld","level":"1.3.3.1","depth":3,"path":"iOS/Knowledge/Dyld.md","ref":"iOS/Knowledge/Dyld.md","articles":[]},{"title":"Mach-O","level":"1.3.3.2","depth":3,"path":"iOS/Knowledge/MachO.md","ref":"iOS/Knowledge/MachO.md","articles":[]},{"title":"PreMain","level":"1.3.3.3","depth":3,"path":"iOS/Knowledge/PreMain.md","ref":"iOS/Knowledge/PreMain.md","articles":[]},{"title":"iOS 编译过程","level":"1.3.3.4","depth":3,"path":"iOS/Knowledge/Complie.md","ref":"iOS/Knowledge/Complie.md","articles":[]},{"title":"二进制重排","level":"1.3.3.5","depth":3,"path":"iOS/Knowledge/BinaryOrder.md","ref":"iOS/Knowledge/BinaryOrder.md","articles":[]},{"title":"self class && super class","level":"1.3.3.6","depth":3,"path":"iOS/Knowledge/RuntimeSuper.md","ref":"./iOS/Knowledge/RuntimeSuper.md","articles":[]},{"title":"isKindOfClass && isMemberOfClass","level":"1.3.3.7","depth":3,"path":"iOS/Knowledge/RuntimeCls.md","ref":"./iOS/Knowledge/RuntimeCls.md","articles":[]}]}]},"previous":{"title":"AutoReleasePool","level":"1.2.4.11","depth":3,"path":"iOS/OCFoundation/AutoReleasePool.md","ref":"iOS/OCFoundation/AutoReleasePool.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/@synchronized.md","mtime":"2021-04-19T03:25:08.999Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T03:25:44.129Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
