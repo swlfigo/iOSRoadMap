@@ -48,7 +48,7 @@
     * [YYAsyncLayer](iOS/SourceCode/YYASyncLayer.md)
     * [FluentDarkModeKit ](iOS/SourceCode/FluentDarkModeKit.md)
     
-  * 第六章 iOS知识点
+* 第六章 iOS知识点
     * [Dyld](iOS/Knowledge/Dyld.md)
     * [Mach-O](iOS/Knowledge/MachO.md)
     * [PreMain](iOS/Knowledge/PreMain.md)
