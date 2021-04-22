@@ -69,6 +69,7 @@
 * 算法
 
     * [二分法插入排序](./Algorithm/BinaryInsertSort.md)
+    * [二叉树排序](./Algorithm/BinarySort.md)
 
 
 
