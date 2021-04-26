@@ -120,13 +120,6 @@ void _objc_init(void)
 
 **类的load方法中，能调用分类的方法。**
 
-作者：水煮杰尼龟
-链接：https://www.jianshu.com/p/fd176e806cf3
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
-
-
 
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-01-05-033906.jpg)
