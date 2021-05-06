@@ -1,0 +1,1581 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>iOS界面渲染流程分析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="UIImageRender.html" />
+    
+    
+    <link rel="prev" href="UIViewRender.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../ReadME.html">
+            
+                <a href="../ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="UIResponder.html">
+            
+                <a href="UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="UIOffScreenRendering.html">
+            
+                <a href="UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="UIViewRender.html">
+            
+                <a href="UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.1.4" data-path="UIViewRenderProcess.html">
+            
+                <a href="UIViewRenderProcess.html">
+            
+                    
+                    iOS界面渲染流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="UIImageRender.html">
+            
+                <a href="UIImageRender.html">
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    第二章 Memory
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../Memory/StructMemoryAligned.html">
+            
+                <a href="../Memory/StructMemoryAligned.html">
+            
+                    
+                    iOS结构体内存对齐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="../Memory/MemoryFiveMainSection.html">
+            
+                <a href="../Memory/MemoryFiveMainSection.html">
+            
+                    
+                    内存中的5大区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="../Memory/TaggedPointer.html">
+            
+                <a href="../Memory/TaggedPointer.html">
+            
+                    
+                    Tagged Pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.4" data-path="../Memory/SideTables.html">
+            
+                <a href="../Memory/SideTables.html">
+            
+                    
+                    SideTables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.5" data-path="../Memory/RetainCount.html">
+            
+                <a href="../Memory/RetainCount.html">
+            
+                    
+                    RetainCount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.6" data-path="../Memory/WeakTable.html">
+            
+                <a href="../Memory/WeakTable.html">
+            
+                    
+                    WeakTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    第三章 Objc_Object
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../Objc_Object/Property.html">
+            
+                <a href="../Objc_Object/Property.html">
+            
+                    
+                    Propety属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../Objc_Object/isa.html">
+            
+                <a href="../Objc_Object/isa.html">
+            
+                    
+                    isa
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="../Objc_Object/ObjectClass.html">
+            
+                <a href="../Objc_Object/ObjectClass.html">
+            
+                    
+                    ObjectClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="../Objc_Object/ClassRWT.html">
+            
+                <a href="../Objc_Object/ClassRWT.html">
+            
+                    
+                    ClassRWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="../Objc_Object/OCAllocInit.html">
+            
+                <a href="../Objc_Object/OCAllocInit.html">
+            
+                    
+                    AllocInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="../Objc_Object/Category.html">
+            
+                <a href="../Objc_Object/Category.html">
+            
+                    
+                    Category
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.7" data-path="../Objc_Object/AssociatedObject.html">
+            
+                <a href="../Objc_Object/AssociatedObject.html">
+            
+                    
+                    AssociatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" >
+            
+                <span>
+            
+                    
+                    第四章 OC Foundation
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1" data-path="../OCFoundation/Runtime.html">
+            
+                <a href="../OCFoundation/Runtime.html">
+            
+                    
+                    Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.2" data-path="../OCFoundation/Block.html">
+            
+                <a href="../OCFoundation/Block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.3" data-path="../OCFoundation/Method.html">
+            
+                <a href="../OCFoundation/Method.html">
+            
+                    
+                    Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.4" data-path="../OCFoundation/MessageForwarding.html">
+            
+                <a href="../OCFoundation/MessageForwarding.html">
+            
+                    
+                    MessageForwarding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.5" data-path="../OCFoundation/KVC.html">
+            
+                <a href="../OCFoundation/KVC.html">
+            
+                    
+                    KVC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.6" data-path="../OCFoundation/KVO.html">
+            
+                <a href="../OCFoundation/KVO.html">
+            
+                    
+                    KVO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.7" data-path="../OCFoundation/Runloop.html">
+            
+                <a href="../OCFoundation/Runloop.html">
+            
+                    
+                    Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.8" data-path="../OCFoundation/MultiThreading.html">
+            
+                <a href="../OCFoundation/MultiThreading.html">
+            
+                    
+                    MultiThreading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.9" data-path="../OCFoundation/GCDUsage.html">
+            
+                <a href="../OCFoundation/GCDUsage.html">
+            
+                    
+                    GCD-Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.10" data-path="../OCFoundation/GCDThread.html">
+            
+                <a href="../OCFoundation/GCDThread.html">
+            
+                    
+                    GCD-Thread
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.11" data-path="../OCFoundation/Lock.html">
+            
+                <a href="../OCFoundation/Lock.html">
+            
+                    
+                    Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.12" data-path="../OCFoundation/AutoReleasePool.html">
+            
+                <a href="../OCFoundation/AutoReleasePool.html">
+            
+                    
+                    AutoReleasePool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.13" data-path="../OCFoundation/@synchronized.html">
+            
+                <a href="../OCFoundation/@synchronized.html">
+            
+                    
+                    @synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    第五章 源码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../SourceCode/YYASyncLayer.html">
+            
+                <a href="../SourceCode/YYASyncLayer.html">
+            
+                    
+                    YYAsyncLayer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../SourceCode/FluentDarkModeKit.html">
+            
+                <a href="../SourceCode/FluentDarkModeKit.html">
+            
+                    
+                    FluentDarkModeKit 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../SourceCode/KTVHttpCache.html">
+            
+                <a href="../SourceCode/KTVHttpCache.html">
+            
+                    
+                    KTVHttpCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    第六章 iOS知识点
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../Knowledge/Dyld.html">
+            
+                <a href="../Knowledge/Dyld.html">
+            
+                    
+                    Dyld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../Knowledge/MachO.html">
+            
+                <a href="../Knowledge/MachO.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../Knowledge/PreMain.html">
+            
+                <a href="../Knowledge/PreMain.html">
+            
+                    
+                    PreMain
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../Knowledge/Complie.html">
+            
+                <a href="../Knowledge/Complie.html">
+            
+                    
+                    iOS 编译过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../Knowledge/BinaryOrder.html">
+            
+                <a href="../Knowledge/BinaryOrder.html">
+            
+                    
+                    二进制重排
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../Knowledge/RuntimeSuper.html">
+            
+                <a href="../Knowledge/RuntimeSuper.html">
+            
+                    
+                    self class && super class
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../Knowledge/RuntimeCls.html">
+            
+                <a href="../Knowledge/RuntimeCls.html">
+            
+                    
+                    isKindOfClass && isMemberOfClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    网络
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../../Network/TCPMessageFrame.html">
+            
+                <a href="../../Network/TCPMessageFrame.html">
+            
+                    
+                    TCP粘包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../../Network/Https.html">
+            
+                <a href="../../Network/Https.html">
+            
+                    
+                    Https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../../Network/TCPHandShake.html">
+            
+                <a href="../../Network/TCPHandShake.html">
+            
+                    
+                    TCPHandShake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../../Network/TCPUDP.html">
+            
+                <a href="../../Network/TCPUDP.html">
+            
+                    
+                    TCP&UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../../Network/HTTPDNS.html">
+            
+                <a href="../../Network/HTTPDNS.html">
+            
+                    
+                    HTTPDNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../../Algorithm/BinaryInsertSort.html">
+            
+                <a href="../../Algorithm/BinaryInsertSort.html">
+            
+                    
+                    二分法插入排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../../Algorithm/BinarySort.html">
+            
+                <a href="../../Algorithm/BinarySort.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../Article/ReadME.html">
+            
+                <a href="../../Article/ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="../../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="../../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../Article/谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../Article/谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../Article/面试驱动技术 - Category 相关考点.html">
+            
+                <a href="../../Article/面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../../Article/iOS 编译过程的原理和应用.html">
+            
+                <a href="../../Article/iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../../Article/Objective-C Runtime 机制简析.html">
+            
+                <a href="../../Article/Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.8" data-path="../../Article/OC 消息机制和 super 关键字.html">
+            
+                <a href="../../Article/OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.9" data-path="../../Article/UIViewController 预加载方案浅谈.html">
+            
+                <a href="../../Article/UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.10" data-path="../../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="../../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.11" data-path="../../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="../../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.12" data-path="../../Article/深入了解 iOS 的初始化.html">
+            
+                <a href="../../Article/深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.13" data-path="../../Article/App 启动时间：过去，现在和未来.html">
+            
+                <a href="../../Article/App 启动时间：过去，现在和未来.html">
+            
+                    
+                    App 启动时间：过去，现在和未来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.14" data-path="../../Article/iOSUIResponderChain.html">
+            
+                <a href="../../Article/iOSUIResponderChain.html">
+            
+                    
+                    iOS事件处理，看我就够了~
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.15" data-path="../../Article/iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                <a href="../../Article/iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                    
+                    iOS 代码瘦身实践_ 删除无用的类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.16" data-path="../../Article/iOSLaunchScreenBug.html">
+            
+                <a href="../../Article/iOSLaunchScreenBug.html">
+            
+                    
+                    深夜暗坑 - iOS启动图异常修复方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >iOS界面渲染流程分析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="ios&#x754C;&#x9762;&#x6E32;&#x67D3;&#x6D41;&#x7A0B;&#x5206;&#x6790;">iOS&#x754C;&#x9762;&#x6E32;&#x67D3;&#x6D41;&#x7A0B;&#x5206;&#x6790;</h1>
+<h2 id="&#x9762;&#x8BD5;&#x9898;">&#x9762;&#x8BD5;&#x9898;</h2>
+<p>&#x672C;&#x6587;&#x53EF;&#x4E3A;&#x4EE5;&#x4E0B;&#x9762;&#x8BD5;&#x9898;&#x63D0;&#x4F9B;&#x53C2;&#x8003;&#xFF1A;</p>
+<ol>
+<li>app&#x4ECE;&#x70B9;&#x51FB;&#x5C4F;&#x5E55;&#xFF08;&#x786C;&#x4EF6;&#xFF09;&#x5230;&#x5B8C;&#x5168;&#x6E32;&#x67D3;&#xFF0C;&#x4E2D;&#x95F4;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#xFF1F;&#x8D8A;&#x8BE6;&#x7EC6;&#x8D8A;&#x597D; &#x8981;&#x6C42;&#x8BB2;&#x5230;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#xFF1F;<a href="https://www.jianshu.com/p/7b0eb24b567b" target="_blank">&#x51FA;&#x5904;</a></li>
+<li>&#x4E00;&#x4E2A;UIImageView&#x6DFB;&#x52A0;&#x5230;&#x89C6;&#x56FE;&#x4E0A;&#x4EE5;&#x540E;,&#x5185;&#x90E8;&#x662F;&#x5982;&#x4F55;&#x6E32;&#x67D3;&#x5230;&#x624B;&#x673A;&#x4E0A;&#x7684;,&#x8BF7;&#x7B80;&#x8FF0;&#x5176;&#x6D41;&#x7A0B;&#xFF1F;</li>
+<li>&#x5728;&#x4E00;&#x4E2A;&#x8868;&#x5185;&#x6709;&#x5F88;&#x591A;cell,&#x6BCF;&#x4E2A;cell&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x4E2A;&#x89C6;&#x56FE;,&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x5361;&#x987F;&#x95EE;&#x9898;&#xFF1F;</li>
+<li>UIView&#x4E0E;CALayer&#x7684;&#x533A;&#x522B;&#xFF1F;</li>
+</ol>
+<h2 id="&#x7B80;&#x7B54;">&#x7B80;&#x7B54;</h2>
+<p>iOS&#x6E32;&#x67D3;&#x89C6;&#x56FE;&#x7684;&#x6838;&#x5FC3;&#x662F;Core Animation
+ &#x5176;&#x6E32;&#x67D3;&#x5C42;&#x6B21;&#x4F9D;&#x6B21;&#x4E3A;&#xFF1A;<code>&#x56FE;&#x5C42;&#x6811;-&gt;&#x5448;&#x73B0;&#x6811;-&gt;&#x6E32;&#x67D3;&#x6811;</code></p>
+<ol>
+<li>CPU&#x9636;&#x6BB5;<ol>
+<li>&#x5E03;&#x5C40;&#xFF08;Frame&#xFF09;</li>
+<li>&#x663E;&#x793A;&#xFF08;Core Graphics&#xFF09;</li>
+<li>&#x51C6;&#x5907;&#xFF08;QuartzCore/Core Animation&#xFF09;</li>
+<li>&#x901A;&#x8FC7;IPC&#x63D0;&#x4EA4;(&#x6253;&#x5305;&#x597D;&#x7684;&#x56FE;&#x5C42;&#x6811;&#x4EE5;&#x53CA;&#x52A8;&#x753B;&#x5C5E;&#x6027;)</li>
+</ol>
+</li>
+<li>OpenGL ES&#x9636;&#x6BB5;<ol>
+<li>&#x751F;&#x6210;(Generate)</li>
+<li>&#x7ED1;&#x5B9A;(Bind)</li>
+<li>&#x7F13;&#x5B58;&#x6570;&#x636E;(Buffer Data)</li>
+<li>&#x542F;&#x7528;(Enable)</li>
+<li>&#x8BBE;&#x7F6E;&#x6307;&#x9488;(Set Pointers)</li>
+<li>&#x7ED8;&#x56FE;(Draw)</li>
+<li>&#x6E05;&#x9664;(Delete)</li>
+</ol>
+</li>
+<li>GPU&#x9636;&#x6BB5;<ol>
+<li>&#x63A5;&#x6536;&#x63D0;&#x4EA4;&#x7684;&#x7EB9;&#x7406;&#xFF08;Texture&#xFF09;&#x548C;&#x9876;&#x70B9;&#x63CF;&#x8FF0;&#xFF08;&#x4E09;&#x89D2;&#x5F62;&#xFF09;</li>
+<li>&#x5E94;&#x7528;&#x53D8;&#x6362;&#xFF08;transform&#xFF09;</li>
+<li>&#x5408;&#x5E76;&#x6E32;&#x67D3;&#xFF08;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#x7B49;&#xFF09;</li>
+</ol>
+</li>
+</ol>
+<p>&#x5176;iOS&#x5E73;&#x53F0;&#x6E32;&#x67D3;&#x6838;&#x5FC3;&#x539F;&#x7406;&#x7684;&#x91CD;&#x70B9;&#x4E3B;&#x8981;&#x56F4;&#x7ED5;<strong><code>&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x3001;Vsync&#x4FE1;&#x53F7;&#x3001;CADisplayLink</code></strong></p>
+<p>&#x6587;&#x5B57;&#x7B80;&#x7B54;&#xFF1A;</p>
+<ol>
+<li>&#x9996;&#x5148;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#x7531;CPU&#x8FDB;&#x884C;Frame&#x5E03;&#x5C40;&#xFF0C;&#x51C6;&#x5907;&#x89C6;&#x56FE;&#x548C;&#x56FE;&#x5C42;&#x7684;&#x5C42;&#x7EA7;&#x5173;&#x7CFB;&#xFF0C;&#x67E5;&#x8BE2;&#x662F;&#x5426;&#x6709;&#x91CD;&#x5199;<code>drawRect:</code>&#x6216;<code>drawLayer:inContext:</code>&#x65B9;&#x6CD5;&#xFF0C;<code>&#x6CE8;&#x610F;&#xFF1A;&#x5982;&#x679C;&#x6709;&#x91CD;&#x5199;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x6E32;&#x67D3;&#x662F;&#x4F1A;&#x5360;&#x7528;CPU&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;</code>&#x3002;</li>
+<li>CPU&#x4F1A;&#x5C06;&#x5904;&#x7406;&#x89C6;&#x56FE;&#x548C;&#x56FE;&#x5C42;&#x7684;&#x5C42;&#x7EA7;&#x5173;&#x7CFB;&#x6253;&#x5305;&#xFF0C;&#x901A;&#x8FC7;IPC&#xFF08;&#x5185;&#x90E8;&#x5904;&#x7406;&#x901A;&#x4FE1;&#xFF09;&#x901A;&#x9053;&#x63D0;&#x4EA4;&#x7ED9;&#x6E32;&#x67D3;&#x670D;&#x52A1;&#xFF0C;&#x6E32;&#x67D3;&#x670D;&#x52A1;&#x7531;OpenGL ES&#x548C;GPU&#x7EC4;&#x6210;&#x3002;</li>
+<li>&#x6E32;&#x67D3;&#x670D;&#x52A1;&#x9996;&#x5148;&#x5C06;&#x56FE;&#x5C42;&#x6570;&#x636E;&#x4EA4;&#x7ED9;OpenGL ES&#x8FDB;&#x884C;&#x7EB9;&#x7406;&#x751F;&#x6210;&#x548C;&#x7740;&#x8272;&#x3002;&#x751F;&#x6210;&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#xFF0C;&#x518D;&#x6839;&#x636E;&#x663E;&#x793A;&#x786C;&#x4EF6;&#x7684;&#x5237;&#x65B0;&#x9891;&#x7387;&#xFF0C;&#x4E00;&#x822C;&#x4EE5;&#x8BBE;&#x5907;&#x7684;<code>VSync&#x4FE1;&#x53F7;</code>&#x548C;<code>CADisplayLink</code>&#x4E3A;&#x6807;&#x51C6;&#xFF0C;&#x8FDB;&#x884C;&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x7684;&#x5207;&#x6362;&#x3002;</li>
+<li>&#x6700;&#x540E;&#xFF0C;&#x5C06;&#x6700;&#x7EC8;&#x8981;&#x663E;&#x793A;&#x5728;&#x753B;&#x9762;&#x4E0A;&#x7684;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x4EA4;&#x7ED9;GPU&#xFF0C;&#x8FDB;&#x884C;&#x91C7;&#x96C6;&#x56FE;&#x7247;&#x548C;&#x5F62;&#x72B6;&#xFF0C;&#x8FD0;&#x884C;&#x53D8;&#x6362;&#xFF0C;&#x5E94;&#x7528;&#x7EB9;&#x7406;&#x548C;&#x6DF7;&#x5408;&#x3002;&#x6700;&#x7EC8;&#x663E;&#x793A;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x3002;</li>
+</ol>
+<p>&#x4EE5;&#x4E0A;&#x4EC5;&#x4EC5;&#x662F;&#x5BF9;&#x8BE5;&#x9898;&#x7B80;&#x5355;&#x56DE;&#x7B54;&#xFF0C;&#x5176;&#x4E2D;&#x7684;&#x539F;&#x7406;&#x4EE5;&#x53CA;&#x74F6;&#x9888;&#x548C;&#x4F18;&#x5316;&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x3002;</p>
+<hr>
+<h2 id="&#x77E5;&#x8BC6;&#x70B9;">&#x77E5;&#x8BC6;&#x70B9;</h2>
+<ol>
+<li>&#x91CD;&#x65B0;&#x8BA4;&#x8BC6;Core Animation</li>
+<li>CPU&#x6E32;&#x67D3;&#x804C;&#x80FD;</li>
+<li>OpenGL ES&#x6E32;&#x67D3;&#x804C;&#x80FD;</li>
+<li>GPU&#x6E32;&#x67D3;&#x804C;&#x80FD;</li>
+<li>IPC&#x5185;&#x90E8;&#x901A;&#x4FE1;&#xFF08;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#xFF09;</li>
+<li>&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;&amp;Vsync&#x4FE1;&#x53F7;</li>
+<li>&#x89C6;&#x56FE;&#x6E32;&#x67D3;&#x4F18;&#x5316;&amp;&#x5361;&#x987F;&#x4F18;&#x5316;</li>
+<li>Metal&#x6E32;&#x67D3;&#x5F15;&#x64CE;</li>
+<li>&#x4E8B;&#x4EF6;&#x54CD;&#x5E94;&#x94FE;&amp;Runloop&#x539F;&#x7406;</li>
+<li>CALayer&#x7684;&#x804C;&#x80FD;</li>
+</ol>
+<h3 id="&#x91CD;&#x65B0;&#x8BA4;&#x8BC6;core-animation">&#x91CD;&#x65B0;&#x8BA4;&#x8BC6;Core Animation</h3>
+<p><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html" target="_blank">&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x6863;-Core Animation</a>
+ Core Animation&#x5E76;&#x4EC5;&#x4EC5;&#x662F;&#x5B57;&#x9762;&#x610F;&#x601D;&#x7684;&#x6838;&#x5FC3;&#x52A8;&#x753B;&#xFF0C;&#x800C;&#x662F;&#x6574;&#x4E2A;&#x663E;&#x793A;&#x6838;&#x5FC3;&#x90FD;&#x662F;&#x56F4;&#x7ED5;QuartzCore&#x6846;&#x67B6;&#x4E2D;&#x7684;Core Animation</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-06-032154.jpg" alt="img"></p>
+<p>Core Animation&#x662F;&#x4F9D;&#x8D56;&#x4E8E;OpenGL ES&#x505A;GPU&#x6E32;&#x67D3;&#xFF0C;CoreGraphics&#x505A;CPU&#x6E32;&#x67D3;&#xFF0C;&#x4F46;&#x5728;&#x672C;&#x6587;&#x4E2D;&#xFF0C;&#x4EE5;&#x53CA;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x90FD;&#x662F;&#x5C06;OpenGL&#x4E0E;GPU&#x5206;&#x5F00;&#x8BF4;&#x660E;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-06-032222.png" alt="img"></p>
+<p>Core Animation &#x5728; RunLoop &#x4E2D;&#x6CE8;&#x518C;&#x4E86;&#x4E00;&#x4E2A; Observer&#xFF0C;&#x76D1;&#x542C;&#x4E86; BeforeWaiting &#x548C; Exit &#x4E8B;&#x4EF6;&#x3002;&#x8FD9;&#x4E2A; Observer &#x7684;&#x4F18;&#x5148;&#x7EA7;&#x662F; 2000000&#xFF0C;&#x4F4E;&#x4E8E;&#x5E38;&#x89C1;&#x7684;&#x5176;&#x4ED6; Observer&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x5230;&#x6765;&#x65F6;&#xFF0C;RunLoop &#x88AB;&#x5524;&#x9192;&#xFF0C;App &#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x521B;&#x5EFA;&#x548C;&#x8C03;&#x6574;&#x89C6;&#x56FE;&#x5C42;&#x7EA7;&#x3001;&#x8BBE;&#x7F6E; UIView &#x7684; frame&#x3001;&#x4FEE;&#x6539; CALayer &#x7684;&#x900F;&#x660E;&#x5EA6;&#x3001;&#x4E3A;&#x89C6;&#x56FE;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#xFF1B;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x6700;&#x7EC8;&#x90FD;&#x4F1A;&#x88AB; CALayer &#x6355;&#x83B7;&#xFF0C;&#x5E76;&#x901A;&#x8FC7; CATransaction &#x63D0;&#x4EA4;&#x5230;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x53BB;&#xFF08;CATransaction &#x7684;&#x6587;&#x6863;&#x7565;&#x6709;&#x63D0;&#x5230;&#x8FD9;&#x4E9B;&#x5185;&#x5BB9;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x5B8C;&#x6574;&#xFF09;&#x3002;&#x5F53;&#x4E0A;&#x9762;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x7ED3;&#x675F;&#x540E;&#xFF0C;RunLoop &#x5373;&#x5C06;&#x8FDB;&#x5165;&#x4F11;&#x7720;&#xFF08;&#x6216;&#x8005;&#x9000;&#x51FA;&#xFF09;&#x65F6;&#xFF0C;&#x5173;&#x6CE8;&#x8BE5;&#x4E8B;&#x4EF6;&#x7684; Observer &#x90FD;&#x4F1A;&#x5F97;&#x5230;&#x901A;&#x77E5;&#x3002;&#x8FD9;&#x65F6; CA &#x6CE8;&#x518C;&#x7684;&#x90A3;&#x4E2A; Observer &#x5C31;&#x4F1A;&#x5728;&#x56DE;&#x8C03;&#x4E2D;&#xFF0C;&#x628A;&#x6240;&#x6709;&#x7684;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x5408;&#x5E76;&#x63D0;&#x4EA4;&#x5230; GPU &#x53BB;&#x663E;&#x793A;&#xFF1B;&#x5982;&#x679C;&#x6B64;&#x5904;&#x6709;&#x52A8;&#x753B;&#xFF0C;CA &#x4F1A;&#x901A;&#x8FC7; DisplayLink &#x7B49;&#x673A;&#x5236;&#x591A;&#x6B21;&#x89E6;&#x53D1;&#x76F8;&#x5173;&#x6D41;&#x7A0B;&#x3002;</p>
+<h3 id="cpu&#x6E32;&#x67D3;&#x804C;&#x80FD;">CPU&#x6E32;&#x67D3;&#x804C;&#x80FD;</h3>
+<p>&#x5728;&#x8FD9;&#x91CC;&#x63A8;&#x8350;&#x5927;&#x5BB6;&#x53BB;&#x9605;&#x8BFB;<a href="https://www.jianshu.com/u/815d10a4bdce" target="_blank">&#x843D;&#x5F71;loyinglin</a>&#x7684;&#x6587;&#x7AE0;<a href="https://www.jianshu.com/p/748f9abafff8" target="_blank">iOS&#x5F00;&#x53D1;-&#x89C6;&#x56FE;&#x6E32;&#x67D3;&#x4E0E;&#x6027;&#x80FD;&#x4F18;&#x5316;</a></p>
+<ul>
+<li>&#x663E;&#x793A;&#x903B;&#x8F91;<ul>
+<li>CoreAnimation&#x63D0;&#x4EA4;&#x4F1A;&#x8BDD;&#xFF0C;&#x5305;&#x62EC;&#x81EA;&#x5DF1;&#x548C;&#x5B50;&#x6811;&#xFF08;view hierarchy&#xFF09;&#x7684;layout&#x72B6;&#x6001;&#x7B49;&#xFF1B;</li>
+<li>RenderServer&#x89E3;&#x6790;&#x63D0;&#x4EA4;&#x7684;&#x5B50;&#x6811;&#x72B6;&#x6001;&#xFF0C;&#x751F;&#x6210;&#x7ED8;&#x5236;&#x6307;&#x4EE4;</li>
+<li>GPU&#x6267;&#x884C;&#x7ED8;&#x5236;&#x6307;&#x4EE4;</li>
+<li>&#x663E;&#x793A;&#x6E32;&#x67D3;&#x540E;&#x7684;&#x6570;&#x636E;</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-06-032252.jpg" alt="img"></p>
+<ul>
+<li>&#x63D0;&#x4EA4;&#x6D41;&#x7A0B;<ul>
+<li>&#x5E03;&#x5C40;&#xFF08;Layout&#xFF09;<ul>
+<li>&#x8C03;&#x7528;layoutSubviews&#x65B9;&#x6CD5;</li>
+<li>&#x8C03;&#x7528;addSubview:&#x65B9;&#x6CD5;</li>
+</ul>
+</li>
+<li>&#x663E;&#x793A;&#xFF08;Display&#xFF09;<ul>
+<li>&#x901A;&#x8FC7;drawRect&#x7ED8;&#x5236;&#x89C6;&#x56FE;&#xFF1B;</li>
+<li>&#x7ED8;&#x5236;string&#xFF08;&#x5B57;&#x7B26;&#x4E32;&#xFF09;&#xFF1B;</li>
+</ul>
+</li>
+<li>&#x51C6;&#x5907;&#x63D0;&#x4EA4;&#xFF08;Prepare&#xFF09;<ul>
+<li>&#x89E3;&#x7801;&#x56FE;&#x7247;&#xFF1B;</li>
+<li>&#x56FE;&#x7247;&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#xFF1B;</li>
+</ul>
+</li>
+<li>&#x63D0;&#x4EA4;&#xFF08;Commit&#xFF09;<ul>
+<li>&#x6253;&#x5305;layers&#x5E76;&#x53D1;&#x9001;&#x5230;&#x6E32;&#x67D3;server&#xFF1B;</li>
+<li>&#x9012;&#x5F52;&#x63D0;&#x4EA4;&#x5B50;&#x6811;&#x7684;layers&#xFF1B;</li>
+<li>&#x5982;&#x679C;&#x5B50;&#x6811;&#x592A;&#x590D;&#x6742;&#xFF0C;&#x4F1A;&#x6D88;&#x8017;&#x5F88;&#x5927;&#xFF0C;&#x5BF9;&#x6027;&#x80FD;&#x9020;&#x6210;&#x5F71;&#x54CD;&#xFF1B;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>CPU&#x6E32;&#x67D3;&#x804C;&#x80FD;&#x4E3B;&#x8981;&#x4F53;&#x73B0;&#x5728;&#x4EE5;&#x4E0B;5&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
+<blockquote>
+<p><strong>&#x5E03;&#x5C40;&#x8BA1;&#x7B97;</strong>
+ &#x5982;&#x679C;&#x4F60;&#x7684;&#x89C6;&#x56FE;&#x5C42;&#x7EA7;&#x8FC7;&#x4E8E;&#x590D;&#x6742;&#xFF0C;&#x5F53;&#x89C6;&#x56FE;&#x5448;&#x73B0;&#x6216;&#x8005;&#x4FEE;&#x6539;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BA1;&#x7B97;&#x56FE;&#x5C42;&#x5E27;&#x7387;&#x5C31;&#x4F1A;&#x6D88;&#x8017;&#x4E00;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x3002;&#x7279;&#x522B;&#x662F;&#x4F7F;&#x7528;iOS6&#x7684;&#x81EA;&#x52A8;&#x5E03;&#x5C40;&#x673A;&#x5236;&#x5C24;&#x4E3A;&#x660E;&#x663E;&#xFF0C;&#x5B83;&#x5E94;&#x8BE5;&#x662F;&#x6BD4;&#x8001;&#x7248;&#x7684;&#x81EA;&#x52A8;&#x8C03;&#x6574;&#x903B;&#x8F91;&#x52A0;&#x5F3A;&#x4E86;CPU&#x7684;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p><strong>&#x89C6;&#x56FE;&#x61D2;&#x52A0;&#x8F7D;</strong>
+ iOS&#x53EA;&#x4F1A;&#x5F53;&#x89C6;&#x56FE;&#x63A7;&#x5236;&#x5668;&#x7684;&#x89C6;&#x56FE;&#x663E;&#x793A;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x65F6;&#x624D;&#x4F1A;&#x52A0;&#x8F7D;&#x5B83;&#x3002;&#x8FD9;&#x5BF9;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x548C;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x5F88;&#x6709;&#x597D;&#x5904;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x5448;&#x73B0;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x4E4B;&#x524D;&#xFF0C;&#x6309;&#x4E0B;&#x6309;&#x94AE;&#x5BFC;&#x81F4;&#x7684;&#x8BB8;&#x591A;&#x5DE5;&#x4F5C;&#x90FD;&#x4F1A;&#x4E0D;&#x80FD;&#x88AB;&#x53CA;&#x65F6;&#x54CD;&#x5E94;&#x3002;&#x6BD4;&#x5982;&#x63A7;&#x5236;&#x5668;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x6216;&#x8005;&#x89C6;&#x56FE; &#x4ECE;&#x4E00;&#x4E2A;nib&#x6587;&#x4EF6;&#x4E2D;&#x52A0;&#x8F7D;&#xFF0C;&#x6216;&#x8005;&#x6D89;&#x53CA;IO&#x7684;&#x56FE;&#x7247;&#x663E;&#x793A;&#xFF0C;&#x90FD;&#x4F1A;&#x6BD4;CPU&#x6B63;&#x5E38;&#x64CD;&#x4F5C;&#x6162;&#x5F97;&#x591A;&#x3002;</p>
+<p><strong>Core Graphics&#x7ED8;&#x5236;</strong>
+ &#x5982;&#x679C;&#x5BF9;&#x89C6;&#x56FE;&#x5B9E;&#x73B0;&#x4E86;<code>drawRect:</code>&#x6216;<code>drawLayer:inContext:</code>&#x65B9;&#x6CD5;&#xFF0C;&#x6216;&#x8005; CALayerDelegate &#x7684; &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x7ED8;&#x5236;&#x4EFB;&#x4F55;&#x4E1C; &#x897F;&#x4E4B;&#x524D;&#x90FD;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x5DE8;&#x5927;&#x7684;&#x6027;&#x80FD;&#x5F00;&#x9500;&#x3002;&#x4E3A;&#x4E86;&#x652F;&#x6301;&#x5BF9;&#x56FE;&#x5C42;&#x5185;&#x5BB9;&#x7684;&#x4EFB;&#x610F;&#x7ED8;&#x5236;&#xFF0C;Core Animation&#x5FC5;&#x987B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5185;&#x5B58;&#x4E2D;&#x7B49;&#x5927;&#x5C0F;&#x7684;&#x5BC4;&#x5BBF;&#x56FE;&#x7247;&#x3002;&#x7136;&#x540E;&#x4E00;&#x65E6;&#x7ED8;&#x5236;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#xFF0C; &#x5FC5;&#x987B;&#x628A;&#x56FE;&#x7247;&#x6570;&#x636E;&#x901A;&#x8FC7;IPC&#x4F20;&#x5230;&#x6E32;&#x67D3;&#x670D;&#x52A1;&#x5668;&#x3002;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;Core Graphics&#x7ED8;&#x5236;&#x5C31;&#x4F1A;&#x53D8;&#x5F97;&#x5341;&#x5206;&#x7F13;&#x6162;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x4E00;&#x4E2A;&#x5BF9;&#x6027;&#x80FD;&#x5341;&#x5206;&#x6311;&#x5254;&#x7684;&#x573A;&#x666F;&#x4E0B;&#x8FD9;&#x6837;&#x505A;&#x5341;&#x5206;&#x4E0D;&#x597D;&#x3002;</p>
+<p><strong>&#x89E3;&#x538B;&#x56FE;&#x7247;</strong>
+ PNG&#x6216;&#x8005;JPEG&#x538B;&#x7F29;&#x4E4B;&#x540E;&#x7684;&#x56FE;&#x7247;&#x6587;&#x4EF6;&#x4F1A;&#x6BD4;&#x540C;&#x8D28;&#x91CF;&#x7684;&#x4F4D;&#x56FE;&#x5C0F;&#x5F97;&#x591A;&#x3002;&#x4F46;&#x662F;&#x5728;&#x56FE;&#x7247;&#x7ED8;&#x5236;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x4E4B;&#x524D;&#xFF0C;&#x5FC5;&#x987B;&#x628A;&#x5B83;&#x6269;&#x5C55;&#x6210;&#x5B8C;&#x6574;&#x7684;&#x672A;&#x89E3;&#x538B;&#x7684;&#x5C3A;&#x5BF8;(&#x901A;&#x5E38;&#x7B49;&#x540C;&#x4E8E;&#x56FE;&#x7247;&#x5BBD; x &#x957F; x 4&#x4E2A;&#x5B57;&#x8282;)&#x3002;&#x4E3A;&#x4E86;&#x8282;&#x7701;&#x5185;&#x5B58;&#xFF0C;iOS&#x901A;&#x5E38;&#x76F4;&#x5230;&#x771F;&#x6B63;&#x7ED8;&#x5236;&#x7684;&#x65F6;&#x5019;&#x624D;&#x53BB;&#x89E3;&#x7801;&#x56FE;&#x7247;&#x3002;&#x6839;&#x636E;&#x4F60;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x5BF9; &#x56FE;&#x5C42;&#x5185;&#x5BB9;&#x8D4B;&#x503C;&#x7684;&#x65F6;&#x5019;(&#x76F4;&#x63A5;&#x6216;&#x8005;&#x95F4;&#x63A5;&#x4F7F;&#x7528; UIImageView )&#x6216;&#x8005;&#x628A;&#x5B83;&#x7ED8;&#x5236;&#x5230; Core Graphics&#x4E2D;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x5BF9;&#x5B83;&#x89E3;&#x538B;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x8F83;&#x5927;&#x7684;&#x56FE;&#x7247;&#xFF0C;&#x90FD;&#x4F1A;&#x5360;&#x7528;&#x4E00;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x3002;</p>
+<p><strong>&#x56FE;&#x5C42;&#x6253;&#x5305;</strong>
+ &#x5F53;&#x56FE;&#x5C42;&#x88AB;&#x6210;&#x529F;&#x6253;&#x5305;&#xFF0C;&#x53D1;&#x9001;&#x5230;&#x6E32;&#x67D3;&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x540E;&#xFF0C;CPU&#x4ECD;&#x7136;&#x8981;&#x505A;&#x5982;&#x4E0B;&#x5DE5;&#x4F5C;:&#x4E3A;&#x4E86;&#x663E;&#x793A; &#x5C4F;&#x5E55;&#x4E0A;&#x7684;&#x56FE;&#x5C42;&#xFF0C;Core Animation&#x5FC5;&#x987B;&#x5BF9;&#x6E32;&#x67D3;&#x6811;&#x79CD;&#x7684;&#x6BCF;&#x4E2A;&#x53EF;&#x89C1;&#x56FE;&#x5C42;&#x901A;&#x8FC7;OpenGL&#x5FAA;&#x73AF; &#x8F6C;&#x6362;&#x6210;&#x7EB9;&#x7406;&#x4E09;&#x89D2;&#x677F;&#x3002;&#x7531;&#x4E8E;GPU&#x5E76;&#x4E0D;&#x77E5;&#x6653;Core Animation&#x56FE;&#x5C42;&#x7684;&#x4EFB;&#x4F55;&#x7ED3;&#x6784;&#xFF0C;&#x6240;&#x4EE5;&#x5FC5;&#x987B; &#x8981;&#x7531;CPU&#x505A;&#x8FD9;&#x4E9B;&#x4E8B;&#x60C5;&#x3002;&#x8FD9;&#x91CC;CPU&#x6D89;&#x53CA;&#x7684;&#x5DE5;&#x4F5C;&#x548C;&#x56FE;&#x5C42;&#x4E2A;&#x6570;&#x6210;&#x6B63;&#x6BD4;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x5728;&#x4F60;&#x7684;&#x5C42; &#x7EA7;&#x5173;&#x7CFB;&#x4E2D;&#x6709;&#x592A;&#x591A;&#x7684;&#x56FE;&#x5C42;&#xFF0C;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;CPU&#x6CA1;&#x4E00;&#x5E27;&#x7684;&#x6E32;&#x67D3;&#xFF0C;&#x5373;&#x4F7F;&#x8FD9;&#x4E9B;&#x4E8B;&#x60C5;&#x4E0D;&#x662F;&#x4F60;&#x7684;&#x5E94;&#x7528; &#x7A0B;&#x5E8F;&#x53EF;&#x63A7;&#x7684;&#x3002;</p>
+</blockquote>
+<h3 id="opengl-es&#x6E32;&#x67D3;&#x804C;&#x80FD;">OpenGL ES&#x6E32;&#x67D3;&#x804C;&#x80FD;</h3>
+<p>&#x8FD9;&#x91CC;&#x63A8;&#x8350;&#x5927;&#x5BB6;&#x53BB;&#x770B;&#x300A;OpenGL ES&#x5E94;&#x7528;&#x5F00;&#x53D1;&#x5B9E;&#x8DF5;&#x6307;&#x5357;&#xFF1A;iOS&#x5377;&#x300B;&#xFF0C;&#x56E0;&#x4E3A;&#x7BC7;&#x5E45;&#x8FC7;&#x957F;&#xFF0C;&#x5C31;&#x4E0D;&#x8D58;&#x8FF0;OpenGL&#x7684;&#x539F;&#x7406;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-06-032318.jpg" alt="img"></p>
+<p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;OpenGL ES&#x662F;&#x5BF9;&#x56FE;&#x5C42;&#x8FDB;&#x884C;&#x53D6;&#x8272;&#xFF0C;&#x91C7;&#x6837;&#xFF0C;&#x751F;&#x6210;&#x7EB9;&#x7406;&#xFF0C;&#x7ED1;&#x5B9A;&#x6570;&#x636E;&#xFF0C;&#x751F;&#x6210;&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x3002;</p>
+<p>&#x7EB9;&#x7406;&#x7684;&#x6982;&#x5FF5;&#xFF1A;&#x7EB9;&#x7406;&#x662F;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x56FE;&#x50CF;&#x7684;&#x989C;&#x8272;&#x5143;&#x10FC08;&#x503C;&#x7684; OpenGL ES &#x7F13;&#x5B58;&#xFF0C;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7406;&#x89E3;&#x4E3A;&#x4E00;&#x4E2A;&#x5355;&#x4F4D;&#x3002;</p>
+<pre><code class="lang-dart"><span class="hljs-number">1</span>)&#x751F;&#x6210;(Generate)&#x2014; &#x8BF7; OpenGL ES &#x4E3A;&#x56FE;&#x5F62;&#x5904;&#x7406;&#x5668;&#x5236;&#x7684;&#x7F13;&#x5B58;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x72EC;&#x4E00;&#x65E0;&#x4E8C;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#x3002; 
+<span class="hljs-number">2</span>)&#x7ED1;&#x5B9A;(Bind)&#x2014; &#x544A;&#x8BC9; OpenGL ES &#x4E3A;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x8FD0;&#x7B97;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#x3002; 
+<span class="hljs-number">3</span>)&#x7F13;&#x5B58;&#x6570;&#x636E;(Buffer Data)&#x2014; &#x8BA9; OpenGL ES &#x4E3A;&#x5F53;&#x524D;&#x5B9A;&#x7684;&#x7F13;&#x5B58;&#x5206;&#x914D;&#x5E76;&#x521D;&#x59CB;&#x5316; &#x591F;&#x7684;&#x5185;&#x5B58;(&#x901A;&#x5E38;&#x662F;&#x4ECE; CPU &#x5236;&#x7684;&#x5185;&#x5B58;&#x590D;&#x5236;&#x6570;&#x636E;&#x5230;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;)&#x3002; 
+<span class="hljs-number">4</span>)&#x542F;&#x7528;(Enable)&#x6216;&#x8005;(Disable)&#x2014; &#x544A;&#x8BC9; OpenGL ES &#x5728;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x6E32;&#x67D3;&#x4E2D;&#x662F; &#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x3002; 
+<span class="hljs-number">5</span>)&#x8BBE;&#x7F6E;&#x6307;(<span class="hljs-built_in">Set</span> Pointers)&#x2014; &#x544A;&#x8BC9; Open-GL ES &#x5728;&#x7F13;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x7684;&#x7C7B;&#x578B;&#x548C;&#x6240;&#x6709;&#x9700; &#x8981;&#x7684;&#x6570;&#x636E;&#x7684;&#x5185;&#x5B58;&#x79FB;&#x503C;&#x3002; 
+<span class="hljs-number">6</span>)&#x7ED8;&#x56FE;(Draw) &#x2014; &#x544A;&#x8BC9; OpenGL ES &#x4F7F;&#x7528;&#x5F53;&#x524D;&#x5B9A;&#x5E76;&#x542F;&#x7528;&#x7684;&#x7F13;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x6E32;&#x67D3; &#x6574;&#x4E2A;&#x573A;&#x666F;&#x6216;&#x8005;&#x67D0;&#x4E2A;&#x573A;&#x666F;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002; 
+<span class="hljs-number">7</span>)&#x5220;&#x9664;&#x9664;(Delete)&#x2014; &#x544A;&#x8BC9; OpenGL ES &#x9664;&#x4EE5;&#x524D;&#x751F;&#x6210;&#x7684;&#x7F13;&#x5B58;&#x5E76;&#x91CA;&#x76F8;&#x5173;&#x7684;&#x8D44;&#x6E90;&#x3002;
+</code></pre>
+<p>&#x5F53;&#x663E;&#x793A;&#x4E00;&#x4E2A;UIImageView&#x65F6;&#xFF0C;Core Animation&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;OpenGL ES&#x7EB9;&#x7406;&#xFF0C;&#x5E76;&#x786E;&#x4FDD;&#x5728;&#x8FD9;&#x4E2A;&#x56FE;&#x5C42;&#x4E2D;&#x7684;&#x4F4D;&#x56FE;&#x88AB;&#x4E0A;&#x4F20;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x7EB9;&#x7406;&#x4E2D;&#x3002;&#x5F53;&#x4F60;&#x91CD;&#x5199;<code>-drawInContext</code>&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;Core Animation&#x4F1A;&#x8BF7;&#x6C42;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x7EB9;&#x7406;&#xFF0C;&#x540C;&#x65F6;&#x786E;&#x4FDD;Core Graphics&#x4F1A;&#x5C06;&#x4F60;&#x5728;<code>-drawInContext</code>&#x4E2D;&#x7ED8;&#x5236;&#x7684;&#x4E1C;&#x897F;&#x653E;&#x5165;&#x5230;&#x7EB9;&#x7406;&#x7684;&#x4F4D;&#x56FE;&#x6570;&#x636E;&#x4E2D;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-06-032340.jpg" alt="img"></p>
+<p>iOS &#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E0D;&#x4F1A;&#x8BA9;&#x5E94;&#x7528;&#x76F4;&#x63A5;&#x5411;&#x524D;&#x5E27;&#x7F13;&#x5B58;&#x6216;&#x8005; &#x540E;&#x5E27;&#x7F13;&#x5B58;&#x7ED8;&#x56FE;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x8BA9;&#x5E94;&#x7528;&#x76F4;&#x63A5;&#x590D;&#x5236;&#x524D;&#x5E27;&#x7F13;&#x5B58;&#x548C;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x4E4B;&#x95F4;&#x7684;&#x5207;&#x6362;&#x3002;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E3A;&#x81EA; &#x5DF1;&#x4FDD;&#x7559;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#xFF0C;&#x4EE5;&#x4FBF;&#x5B83;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x4F7F;&#x7528; Core Animation &#x5408;&#x6210;&#x5668;&#x6765;&#x63A7;&#x5236;&#x663E;&#x793A;&#x7684;&#x6700;&#x7EC8;&#x5916;&#x89C2;</p>
+<p>&#x6700;&#x7EC8;&#xFF0C;&#x751F;&#x6210;&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x4F1A;&#x518D;&#x4EA4;&#x7531;GPU&#x8FDB;&#x884C;&#x6700;&#x540E;&#x4E00;&#x6B65;&#x7684;&#x5DE5;&#x4F5C;&#x3002;</p>
+<h3 id="gpu&#x6E32;&#x67D3;&#x804C;&#x80FD;">GPU&#x6E32;&#x67D3;&#x804C;&#x80FD;</h3>
+<p>GPU&#x4F1A;&#x6839;&#x636E;&#x751F;&#x6210;&#x7684;&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x5408;&#x6210;&#xFF0C;&#x5176;&#x4E2D;&#x9020;&#x6210;GPU&#x6E32;&#x67D3;&#x8D1F;&#x62C5;&#x7684;&#x4E00;&#x822C;&#x662F;&#xFF1A;&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#xFF0C;&#x56FE;&#x5C42;&#x6DF7;&#x5408;&#xFF0C;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-06-032411.jpg" alt="img"></p>
+<ul>
+<li>&#x666E;&#x901A;&#x7684;Tile-Based&#x6E32;&#x67D3;&#x6D41;&#x7A0B;<ul>
+<li>CommandBuffer&#xFF0C;&#x63A5;&#x53D7;OpenGL ES&#x5904;&#x7406;&#x5B8C;&#x6BD5;&#x7684;&#x6E32;&#x67D3;&#x6307;&#x4EE4;&#xFF1B;</li>
+<li>Tiler&#xFF0C;&#x8C03;&#x7528;&#x9876;&#x70B9;&#x7740;&#x8272;&#x5668;&#xFF0C;&#x628A;&#x9876;&#x70B9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5206;&#x5757;&#xFF08;Tiling&#xFF09;&#xFF1B;</li>
+<li>ParameterBuffer&#xFF0C;&#x63A5;&#x53D7;&#x5206;&#x5757;&#x5B8C;&#x6BD5;&#x7684;tile&#x548C;&#x5BF9;&#x5E94;&#x7684;&#x6E32;&#x67D3;&#x53C2;&#x6570;&#xFF1B;</li>
+<li>Renderer&#xFF0C;&#x8C03;&#x7528;&#x7247;&#x5143;&#x7740;&#x8272;&#x5668;&#xFF0C;&#x8FDB;&#x884C;&#x50CF;&#x7D20;&#x6E32;&#x67D3;&#xFF1B;
+ -RenderBuffer&#xFF0C;&#x5B58;&#x50A8;&#x6E32;&#x67D3;&#x5B8C;&#x6BD5;&#x7684;&#x50CF;&#x7D20;&#xFF1B;</li>
+</ul>
+</li>
+<li>&#x79BB;&#x5C4F;&#x6E32;&#x67D3; &#x2014;&#x2014; &#x906E;&#x7F69;&#xFF08;Mask&#xFF09;<ul>
+<li>&#x6E32;&#x67D3;layer&#x7684;mask&#x7EB9;&#x7406;&#xFF0C;&#x540C;Tile-Based&#x7684;&#x57FA;&#x672C;&#x6E32;&#x67D3;&#x903B;&#x8F91;&#xFF1B;</li>
+<li>&#x6E32;&#x67D3;layer&#x7684;content&#x7EB9;&#x7406;&#xFF0C;&#x540C;Tile-Based&#x7684;&#x57FA;&#x672C;&#x6E32;&#x67D3;&#x903B;&#x8F91;&#xFF1B;</li>
+<li>Compositing&#x64CD;&#x4F5C;&#xFF0C;&#x5408;&#x5E76;1&#x3001;2&#x7684;&#x7EB9;&#x7406;&#xFF1B;</li>
+</ul>
+</li>
+<li>&#x79BB;&#x5C4F;&#x6E32;&#x67D3; &#x2014;&#x2014;UIVisiualEffectView</li>
+<li>&#x6E32;&#x67D3;&#x7B49;&#x5F85;</li>
+<li>&#x5149;&#x6805;&#x5316;</li>
+<li>&#x7EC4;&#x900F;&#x660E;&#x5EA6;</li>
+</ul>
+<p>GPU&#x7528;&#x6765;&#x91C7;&#x96C6;&#x56FE;&#x7247;&#x548C;&#x5F62;&#x72B6;&#xFF0C;&#x8FD0;&#x884C;&#x53D8;&#x6362;&#xFF0C;&#x5E94;&#x7528;&#x6587;&#x7406;&#x548C;&#x6DF7;&#x5408;&#xFF0C;&#x6700;&#x7EC8;&#x628A;&#x5B83;&#x4EEC;&#x8F93;&#x9001;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x3002;</p>
+<p>&#x592A;&#x591A;&#x7684;&#x51E0;&#x4F55;&#x7ED3;&#x6784;&#x4F1A;&#x5F71;&#x54CD;GPU&#x901F;&#x5EA6;&#xFF0C;&#x4F46;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;GPU&#x7684;&#x74F6;&#x9888;&#x9650;&#x5236;&#x539F;&#x56E0;&#xFF0C;&#x4F46;&#x7531;&#x4E8E;&#x56FE;&#x5C42;&#x5728;&#x663E;&#x793A;&#x4E4B;&#x524D;&#x8981;&#x901A;&#x8FC7;IPC&#x53D1;&#x9001;&#x5230;&#x6E32;&#x67D3;&#x670D;&#x52A1;&#x5668;&#x7684;&#x65F6;&#x5019;&#xFF08;&#x56FE;&#x5C42;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x7531;&#x5F88;&#x591A;&#x5C0F;&#x7269;&#x4F53;&#x7EC4;&#x6210;&#x7684;&#x7279;&#x522B;&#x91CD;&#x91CF;&#x7EA7;&#x7684;&#x5BF9;&#x8C61;&#xFF09;&#xFF0C;&#x592A;&#x591A;&#x7684;&#x56FE;&#x5C42;&#x5C31;&#x4F1A;&#x5F15;&#x8D77;CPU&#x7684;&#x74F6;&#x9888;&#x3002;</p>
+<p>&#x91CD;&#x7ED8;&#x3002;&#x4E3B;&#x8981;&#x7531;&#x91CD;&#x53E0;&#x7684;&#x534A;&#x900F;&#x660E;&#x56FE;&#x5C42;&#x5F15;&#x8D77;&#x3002;GPU&#x7684;&#x586B;&#x5145;&#x6BD4;&#x7387;&#xFF08;&#x7528;&#x989C;&#x8272;&#x586B;&#x5145;&#x50CF;&#x7D20;&#x7684;&#x6BD4;&#x7387;&#xFF09;&#x662F;&#x6709;&#x9650;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x907F;&#x514D;&#x91CD;&#x7ED8;&#x3002;</p>
+<hr>
+<h3 id="ipc&#x5185;&#x90E8;&#x901A;&#x4FE1;&#xFF08;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#xFF09;">IPC&#x5185;&#x90E8;&#x901A;&#x4FE1;&#xFF08;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#xFF09;</h3>
+<p>&#x5728;&#x7814;&#x7A76;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x6709;&#x60F3;&#x8FC7;&#x53BB;&#x770B;&#x4E00;&#x4E0B;&#x6E90;&#x7801;&#xFF0C;&#x8BD5;&#x7740;&#x53BB;&#x7406;&#x89E3;&#x5728;&#x89C6;&#x56FE;&#x5B8C;&#x5168;&#x6E32;&#x67D3;&#x4E4B;&#x524D;&#xFF0C;IPC&#x662F;&#x5982;&#x4F55;&#x8C03;&#x5EA6;&#x7684;&#xFF0C;&#x53EF;&#x60DC;&#x82F9;&#x679C;&#x5E76;&#x6CA1;&#x6709;&#x5F00;&#x6E90;&#x7ED8;&#x5236;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x8FD9;&#x91CC;&#x63A8;&#x8350;&#x5B98;&#x65B9;&#x6587;&#x7AE0;&#x7ED9;&#x5927;&#x5BB6;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;iOS&#x4E2D;IPC&#x662F;&#x5982;&#x4F55;&#x8FD0;&#x4F5C;&#x7684;&#x3002;</p>
+<p><a href="https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/KernelProgramming/Mach/Mach.html" target="_blank">&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x6863;-Mach&#x5185;&#x6838;&#x7F16;&#x7A0B; IPC&#x901A;&#x4FE1;</a></p>
+<h3 id="&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;vsync&#x4FE1;&#x53F7;">&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;&amp;Vsync&#x4FE1;&#x53F7;</h3>
+<p>&#x867D;&#x7136;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x770B;&#x5230;&#x82F9;&#x679C;&#x5185;&#x90E8;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;<code>VSync&#x4FE1;&#x53F7;</code>&#x548C;<code>CADisplayLink</code>&#x5BF9;&#x8C61;&#x3002;</p>
+<p>iOS &#x7684;&#x663E;&#x793A;&#x7CFB;&#x7EDF;&#x662F;&#x7531; VSync &#x4FE1;&#x53F7;&#x9A71;&#x52A8;&#x7684;&#xFF0C;VSync &#x4FE1;&#x53F7;&#x7531;&#x786C;&#x4EF6;&#x65F6;&#x949F;&#x751F;&#x6210;&#xFF0C;&#x6BCF;&#x79D2;&#x949F;&#x53D1;&#x51FA; 60 &#x6B21;&#xFF08;&#x8FD9;&#x4E2A;&#x503C;&#x53D6;&#x51B3;&#x8BBE;&#x5907;&#x786C;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982; iPhone &#x771F;&#x673A;&#x4E0A;&#x901A;&#x5E38;&#x662F; 59.97&#xFF09;&#x3002;iOS &#x56FE;&#x5F62;&#x670D;&#x52A1;&#x63A5;&#x6536;&#x5230; VSync &#x4FE1;&#x53F7;&#x540E;&#xFF0C;&#x4F1A;&#x901A;&#x8FC7; IPC &#x901A;&#x77E5;&#x5230; App &#x5185;&#x3002;App &#x7684; Runloop &#x5728;&#x542F;&#x52A8;&#x540E;&#x4F1A;&#x6CE8;&#x518C;&#x5BF9;&#x5E94;&#x7684; CFRunLoopSource &#x901A;&#x8FC7; mach_port &#x63A5;&#x6536;&#x4F20;&#x8FC7;&#x6765;&#x7684;&#x65F6;&#x949F;&#x4FE1;&#x53F7;&#x901A;&#x77E5;&#xFF0C;&#x968F;&#x540E; Source &#x7684;&#x56DE;&#x8C03;&#x4F1A;&#x9A71;&#x52A8;&#x6574;&#x4E2A; App &#x7684;&#x52A8;&#x753B;&#x4E0E;&#x663E;&#x793A;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-06-032436.jpg" alt="img"></p>
+<p>&#x5E27;&#x7F13;&#x5B58;&#xFF1A;&#x63A5;&#x6536;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x7684;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x4E3A;GPU&#x6307;&#x5B9A;&#x5B58;&#x50A8;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x7684;&#x533A;&#x57DF;</p>
+<p>&#x5E27;&#x7F13;&#x5B58;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x5B58;&#x5728;&#x591A;&#x4E2A;&#xFF0C;&#x4F46;&#x662F;&#x5C4F;&#x5E55;&#x663E;&#x793A;&#x50CF;&#x7D20;&#x53D7;&#x5230;&#x4FDD;&#x5B58;&#x5728;&#x524D;&#x5E27;&#x7F13;&#x5B58;&#xFF08;front frame buffer&#xFF09;&#x7684;&#x7279;&#x5B9A;&#x5E27;&#x7F13;&#x5B58;&#x4E2D;&#x7684;&#x50CF;&#x7D20;&#x989C;&#x8272;&#x5143;&#x7D20;&#x7684;&#x63A7;&#x5236;&#x3002;
+ &#x7A0B;&#x5E8F;&#x7684;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x901A;&#x5E38;&#x4FDD;&#x5B58;&#x5728;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#xFF08;back frame buffer&#xFF09;&#x5728;&#x5185;&#x7684;&#x5176;&#x4ED6;&#x5E27;&#x7F13;&#x5B58;&#xFF0C;&#x5F53;&#x6E32;&#x67D3;&#x540E;&#x7684;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x4F1A;&#x4E92;&#x6362;&#x3002;&#xFF08;&#x8FD9;&#x90E8;&#x5206;&#x64CD;&#x4F5C;&#x7531;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6765;&#x5B8C;&#x6210;&#xFF09;</p>
+<p>&#x524D;&#x5E27;&#x7F13;&#x5B58;&#x51B3;&#x5B9A;&#x4E86;&#x5C4F;&#x5E55;&#x4E0A;&#x663E;&#x793A;&#x7684;&#x50CF;&#x7D20;&#x989C;&#x8272;&#xFF0C;&#x4F1A;&#x5728;&#x9002;&#x5F53;&#x7684;&#x65F6;&#x5019;&#x4E0E;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x5207;&#x6362;&#x3002;</p>
+<p>Core Animation&#x7684;&#x5408;&#x6210;&#x5668;&#x4F1A;&#x8054;&#x5408;OpenGL ES&#x5C42;&#x548C;UIView&#x5C42;&#x3001;StatusBar&#x5C42;&#x7B49;&#xFF0C;&#x5728;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#x6DF7;&#x5408;&#x4EA7;&#x751F;&#x6700;&#x7EC8;&#x7684;&#x989C;&#x8272;&#xFF0C;&#x5E76;&#x5207;&#x6362;&#x524D;&#x540E;&#x5E27;&#x7F13;&#x5B58;&#xFF1B;
+ OpenGL ES&#x5750;&#x6807;&#x662F;&#x4EE5;&#x6D6E;&#x70B9;&#x6570;&#x6765;&#x5B58;&#x50A8;&#xFF0C;&#x5373;&#x4F7F;&#x662F;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x9876;&#x70B9;&#x6570;&#x636E;&#x4E5F;&#x4F1A;&#x88AB;&#x8F6C;&#x5316;&#x6210;&#x6D6E;&#x70B9;&#x578B;&#xFF1B;</p>
+<hr>
+<h3 id="&#x89C6;&#x56FE;&#x52A0;&#x8F7D;">&#x89C6;&#x56FE;&#x52A0;&#x8F7D;</h3>
+<p>&#x90A3;&#x4E48;&#x5728;&#x4E86;&#x89E3;iOS&#x89C6;&#x56FE;&#x6E32;&#x67D3;&#x6D41;&#x7A0B;&#x4EE5;&#x540E;&#xFF0C;&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x7B2C;&#x4E8C;&#x9898;&#xFF1A;
+ <code>&#x4E00;&#x4E2A;UIImageView&#x6DFB;&#x52A0;&#x5230;&#x89C6;&#x56FE;&#x4E0A;&#x4EE5;&#x540E;,&#x5185;&#x90E8;&#x662F;&#x5982;&#x4F55;&#x6E32;&#x67D3;&#x5230;&#x624B;&#x673A;&#x4E0A;&#x7684;,&#x8BF7;&#x7B80;&#x8FF0;&#x5176;&#x6D41;&#x7A0B;&#xFF1F;</code></p>
+<blockquote>
+<p>&#x56FE;&#x7247;&#x7684;&#x663E;&#x793A;&#x5206;&#x4E3A;&#x4E09;&#x6B65;&#xFF1A;&#x52A0;&#x8F7D;&#x3001;&#x89E3;&#x7801;&#x3001;&#x6E32;&#x67D3;&#x3002;
+ &#x901A;&#x5E38;&#xFF0C;&#x6211;&#x4EEC;&#x64CD;&#x4F5C;&#x7684;&#x53EA;&#x6709;&#x52A0;&#x8F7D;&#xFF0C;&#x89E3;&#x7801;&#x548C;&#x6E32;&#x67D3;&#x662F;&#x7531;UIKit&#x8FDB;&#x884C;&#x3002;
+ &#x4EE5;UIImageView&#x4E3A;&#x4F8B;&#x3002;&#x5F53;&#x5176;&#x663E;&#x793A;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x65F6;&#xFF0C;&#x9700;&#x8981;UIImage&#x4F5C;&#x4E3A;&#x6570;&#x636E;&#x6E90;&#x3002;
+ UIImage&#x6301;&#x6709;&#x7684;&#x6570;&#x636E;&#x662F;&#x672A;&#x89E3;&#x7801;&#x7684;&#x538B;&#x7F29;&#x6570;&#x636E;&#xFF0C;&#x80FD;&#x8282;&#x7701;&#x8F83;&#x591A;&#x7684;&#x5185;&#x5B58;&#x548C;&#x52A0;&#x5FEB;&#x5B58;&#x50A8;&#x3002;
+ &#x5F53;UIImage&#x88AB;&#x8D4B;&#x503C;&#x7ED9;UIImage&#x65F6;&#xFF08;&#x4F8B;&#x5982;imageView.image = image;&#xFF09;&#xFF0C;&#x56FE;&#x50CF;&#x6570;&#x636E;&#x4F1A;&#x88AB;&#x89E3;&#x7801;&#xFF0C;&#x53D8;&#x6210;RGB&#x7684;&#x989C;&#x8272;&#x6570;&#x636E;&#x3002;
+ &#x89E3;&#x7801;&#x662F;&#x4E00;&#x4E2A;&#x8BA1;&#x7B97;&#x91CF;&#x8F83;&#x5927;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x4E14;&#x9700;&#x8981;CPU&#x6765;&#x6267;&#x884C;&#xFF1B;&#x5E76;&#x4E14;&#x89E3;&#x7801;&#x51FA;&#x6765;&#x7684;&#x56FE;&#x7247;&#x4F53;&#x79EF;&#x4E0E;&#x56FE;&#x7247;&#x7684;&#x5BBD;&#x9AD8;&#x6709;&#x5173;&#x7CFB;&#xFF0C;&#x800C;&#x4E0E;&#x56FE;&#x7247;&#x539F;&#x6765;&#x7684;&#x4F53;&#x79EF;&#x65E0;&#x5173;&#x3002;
+ &#x6B64;&#x5904;&#x5F15;&#x7528;--&gt;<a href="https://www.jianshu.com/p/7d8a82115060" target="_blank">iOS&#x6027;&#x80FD;&#x4F18;&#x5316;&#x2014;&#x2014;&#x56FE;&#x7247;&#x52A0;&#x8F7D;&#x548C;&#x5904;&#x7406;</a></p>
+</blockquote>
+<p>&#x6211;&#x67E5;&#x770B;&#x4E86;&#x8F83;&#x4E3A;&#x6D41;&#x884C;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x6E90;&#x7801;&#xFF0C;&#x4F8B;&#x5982;<code>YYImage&#x3001;SDWebImage&#x3001;FastImageCache</code>&#xFF0C;&#x5176;&#x4E2D;&#x52A0;&#x8F7D;&#x4E00;&#x4E2A;&#x56FE;&#x7247;&#x7684;&#x6D41;&#x7A0B;&#x5927;&#x81F4;&#x4E3A;&#xFF1A;</p>
+<ol>
+<li>&#x67E5;&#x770B;UIImageView&#x7684;API&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;UIImage&#x5C01;&#x88C5;&#x4E86;&#x4E00;&#x4E2A;<code>CoreGraphics/CGImage</code>&#x7684;&#x5BF9;&#x8C61;&#x3002;
+ 1.<code>+[UIImage imageWithContentsOfFile:]</code>&#x4F7F;&#x7528;Image I/O&#x521B;&#x5EFA;CGImageRef&#x5185;&#x5B58;&#x6620;&#x5C04;&#x6570;&#x636E;&#x3002;&#x6B64;&#x65F6;&#xFF0C;&#x56FE;&#x50CF;&#x5C1A;&#x672A;&#x89E3;&#x7801;&#x3002;</li>
+<li>&#x8FD4;&#x56DE;&#x7684;&#x56FE;&#x50CF;&#x88AB;&#x5206;&#x914D;&#x7ED9;UIImageView&#x3002;</li>
+<li>&#x5982;&#x679C;&#x56FE;&#x50CF;&#x6570;&#x636E;&#x4E3A;&#x672A;&#x89E3;&#x7801;&#x7684;PNG/JPG&#xFF0C;&#x89E3;&#x7801;&#x4E3A;&#x4F4D;&#x56FE;&#x6570;&#x636E;</li>
+<li>&#x9690;&#x5F0F;CATransaction&#x6355;&#x83B7;&#x5230;UIImageView layer&#x6811;&#x7684;&#x53D8;&#x5316;</li>
+<li>&#x5728;&#x4E3B;&#x8FD0;&#x884C;&#x5FAA;&#x73AF;&#x7684;&#x4E0B;&#x4E00;&#x6B21;&#x8FED;&#x4EE3;&#x4E2D;&#xFF0C;Core Animation&#x63D0;&#x4EA4;&#x9690;&#x5F0F;&#x4E8B;&#x52A1;&#xFF0C;&#x8FD9;&#x4F1A;&#x6D89;&#x53CA;&#x521B;&#x5EFA;&#x5DF2;&#x8BBE;&#x7F6E;&#x4E3A;&#x5C42;&#x5185;&#x5BB9;&#x7684;&#x6240;&#x6709;&#x56FE;&#x50CF;&#x7684;&#x526F;&#x672C;&#xFF0C;&#x6839;&#x636E;&#x56FE;&#x50CF;:<ol>
+<li>&#x7F13;&#x51B2;&#x533A;&#x88AB;&#x5206;&#x914D;&#x7528;&#x4E8E;&#x7BA1;&#x7406;&#x6587;&#x4EF6;IO&#x548C;&#x89E3;&#x538B;&#x7F29;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>&#x6587;&#x4EF6;&#x6570;&#x636E;&#x4ECE;&#x78C1;&#x76D8;&#x8BFB;&#x5165;&#x5185;&#x5B58;&#x3002;</li>
+<li>&#x538B;&#x7F29;&#x7684;&#x56FE;&#x50CF;&#x6570;&#x636E;&#x88AB;&#x89E3;&#x7801;&#x6210;&#x5176;&#x672A;&#x538B;&#x7F29;&#x7684;&#x4F4D;&#x56FE;&#x5F62;&#x5F0F;</li>
+<li>Core Animation&#x4F7F;&#x7528;&#x672A;&#x538B;&#x7F29;&#x7684;&#x4F4D;&#x56FE;&#x6570;&#x636E;&#x6765;&#x6E32;&#x67D3;&#x56FE;&#x5C42;&#x3002;</li>
+</ol>
+</li>
+</ol>
+<p>&#x518D;&#x770B;&#x4E00;&#x4E0B;YYImage&#x7684;&#x6E90;&#x7801;&#xFF0C;&#x5176;&#x6D41;&#x7A0B;&#x4E5F;&#x5927;&#x81F4;&#x4E3A;&#xFF1A;</p>
+<ol>
+<li>&#x83B7;&#x53D6;&#x56FE;&#x7247;&#x4E8C;&#x8FDB;&#x5236;&#x6570;&#x636E;</li>
+<li>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;CGImageRef&#x5BF9;&#x8C61;</li>
+<li>&#x4F7F;&#x7528;<code>CGBitmapContextCreate()</code>&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E0A;&#x4E0B;&#x6587;&#x5BF9;&#x8C61;</li>
+<li>&#x4F7F;&#x7528;<code>CGContextDrawImage()</code>&#x65B9;&#x6CD5;&#x7ED8;&#x5236;&#x5230;&#x4E0A;&#x4E0B;&#x6587;</li>
+<li>&#x4F7F;&#x7528;<code>CGBitmapContextCreateImage()</code>&#x751F;&#x6210;CGImageRef&#x5BF9;&#x8C61;&#x3002;</li>
+<li>&#x6700;&#x540E;&#x4F7F;&#x7528;<code>imageWithCGImage()</code>&#x65B9;&#x6CD5;&#x5C06;CGImage&#x8F6C;&#x5316;&#x4E3A;UIImage&#x3002;</li>
+</ol>
+<p>&#x5F53;&#x7136;YYImage&#x4E0D;&#x6B62;&#x505A;&#x4E86;&#x8FD9;&#x4E9B;&#xFF0C;&#x8FD8;&#x6709;&#x89E3;&#x7801;&#x5668;&#x7F16;&#x7801;&#x5668;&#xFF0C;&#x652F;&#x6301;webP&#x7B49;&#x591A;&#x79CD;&#x683C;&#x5F0F;&#xFF0C;&#x5E76;&#x4E14;&#x8FD8;&#x5199;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x64CD;&#x4F5C;&#x961F;&#x5217;&#xFF0C;&#x5BF9;&#x7F51;&#x7EDC;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#x8FDB;&#x884C;&#x4E86;&#x4F18;&#x5316;&#x3002;&#x5728;&#x6B64;&#x4E0D;&#x8D58;&#x8FF0;&#x3002;</p>
+<p>&#x63A8;&#x8350;&#x6587;&#x7AE0;&#xFF1A;
+ <a href="https://developer.apple.com/documentation/coregraphics/cgimage" target="_blank">&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x6863;-CGImage&#x4F4D;&#x56FE;</a>
+ <a href="http://blog.cnbang.net/tech/2578/" target="_blank">iOS&#x56FE;&#x7247;&#x52A0;&#x8F7D;&#x901F;&#x5EA6;&#x6781;&#x9650;&#x4F18;&#x5316;&#x2014;FastImageCache&#x89E3;&#x6790;</a>
+ <a href="http://ios.jobbole.com/87233/" target="_blank">Image I/O&#x8BE6;&#x89E3;&#x7684;&#x6587;&#x7AE0;</a>
+ &#x5728;&#x8FD9;&#x91CC;&#x540C;&#x65F6;&#x63A8;&#x8350;Y&#x5927;&#x7684;&#x4E24;&#x7BC7;&#x6587;&#x7AE0;
+ <a href="https://blog.ibireme.com/2015/11/02/mobile_image_benchmark/" target="_blank">&#x79FB;&#x52A8;&#x7AEF;&#x56FE;&#x7247;&#x683C;&#x5F0F;&#x8C03;&#x7814;</a>
+ <a href="https://blog.ibireme.com/2015/11/02/ios_image_tips/" target="_blank">iOS &#x5904;&#x7406;&#x56FE;&#x7247;&#x7684;&#x4E00;&#x4E9B;&#x5C0F; Tip</a></p>
+<h3 id="&#x89C6;&#x56FE;&#x6E32;&#x67D3;&#x4F18;&#x5316;&#x5361;&#x987F;&#x4F18;&#x5316;">&#x89C6;&#x56FE;&#x6E32;&#x67D3;&#x4F18;&#x5316;&amp;&#x5361;&#x987F;&#x4F18;&#x5316;</h3>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;&#x7B2C;&#x4E09;&#x9898;&#xFF1A;<code>&#x5728;&#x4E00;&#x4E2A;&#x8868;&#x5185;&#x6709;&#x5F88;&#x591A;cell,&#x6BCF;&#x4E2A;cell&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x4E2A;&#x89C6;&#x56FE;,&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x5361;&#x987F;&#x95EE;&#x9898;&#xFF1F;</code></p>
+<p><strong>&#x4EC0;&#x4E48;&#x662F;&#x5361;&#x987F;?</strong><a href="https://developer.apple.com/library/archive/documentation/3DDrawing/Conceptual/MTLBestPracticesGuide/FrameRate.html" target="_blank">&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x7AE0;-&#x663E;&#x793A;&#x5E27;&#x7387;</a></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-06-032506.jpg" alt="img"></p>
+<p>&#x5F53;&#x4F60;&#x7684;&#x4E3B;&#x7EBF;&#x7A0B;&#x64CD;&#x4F5C;&#x5361;&#x987F;&#x8D85;&#x8FC7;16.67ms&#x4EE5;&#x540E;&#xFF0C;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x6389;&#x5E27;&#xFF0C;&#x4E22;&#x5E27;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x5361;&#x987F;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x9020;&#x6210;&#x5361;&#x987F;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x5C31;&#x662F;CPU&#x8D1F;&#x62C5;&#x8FC7;&#x91CD;&#xFF0C;&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#x8FC7;&#x957F;&#x3002;&#x4E3B;&#x8981;&#x539F;&#x56E0;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>&#x9690;&#x5F0F;&#x7ED8;&#x5236; CGContext</li>
+<li>&#x6587;&#x672C;CATextLayer &#x548C; UILabel</li>
+<li>&#x5149;&#x6805;&#x5316; shouldRasterize</li>
+<li>&#x79BB;&#x5C4F;&#x6E32;&#x67D3;</li>
+<li>&#x53EF;&#x4F38;&#x7F29;&#x56FE;&#x7247;</li>
+<li>shadowPath</li>
+<li>&#x6DF7;&#x5408;&#x548C;&#x8FC7;&#x5EA6;&#x7ED8;&#x5236;</li>
+<li>&#x51CF;&#x5C11;&#x56FE;&#x5C42;&#x6570;&#x91CF;</li>
+<li>&#x88C1;&#x5207;</li>
+<li>&#x5BF9;&#x8C61;&#x56DE;&#x6536;</li>
+<li>Core Graphics&#x7ED8;&#x5236;</li>
+<li>-renderInContext: &#x65B9;&#x6CD5;</li>
+</ul>
+<p>&#x5176;&#x4E2D;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x95EE;&#x9898;&#x5C31;&#x662F;<strong>&#x79BB;&#x5C4F;&#x6E32;&#x67D3;</strong>&#xFF1A;</p>
+<blockquote>
+<p>&#x79BB;&#x5C4F;&#x6E32;&#x67D3;&#xFF1A;&#x79BB;&#x5C4F;&#x7ED8;&#x5236;&#x53D1;&#x751F;&#x5728;&#x57FA;&#x4E8E;CPU&#x6216;&#x8005;&#x662F;GPU&#x7684;&#x6E32;&#x67D3;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4E3A;&#x79BB;&#x5C4F;&#x56FE; &#x7247;&#x5206;&#x914D;&#x989D;&#x5916;&#x5185;&#x5B58;&#xFF0C;&#x4EE5;&#x53CA;&#x5207;&#x6362;&#x7ED8;&#x5236;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x8FD9;&#x4E9B;&#x90FD;&#x4F1A;&#x964D;&#x4F4E;GPU&#x6027;&#x80FD;&#x3002;&#x5BF9;&#x4E8E;&#x7279;&#x5B9A;&#x56FE; &#x5C42;&#x6548;&#x679C;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#x5706;&#x89D2;&#xFF0C;&#x56FE;&#x5C42;&#x906E;&#x7F69;&#xFF0C;&#x9634;&#x5F71;&#x6216;&#x8005;&#x662F;&#x56FE;&#x5C42;&#x5149;&#x6805;&#x5316;&#x90FD;&#x4F1A;&#x5F3A;&#x5236;Core Animation&#x63D0;&#x524D;&#x6E32;&#x67D3;&#x56FE;&#x5C42;&#x7684;&#x79BB;&#x5C4F;&#x7ED8;&#x5236;&#x3002;</p>
+</blockquote>
+<p>&#x5982;&#x679C;&#x89C6;&#x56FE;&#x7ED8;&#x5236;&#x8D85;&#x51FA;GPU&#x652F;&#x6301;&#x7684;2048x2048&#x6216;&#x8005;4096x4096&#x5C3A;&#x5BF8;&#x7684; &#x7EB9;&#x7406;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x8981;&#x7528;CPU&#x5728;&#x56FE;&#x5C42;&#x6BCF;&#x6B21;&#x663E;&#x793A;&#x4E4B;&#x524D;&#x5BF9;&#x56FE;&#x7247;&#x9884;&#x5904;&#x7406;&#xFF0C;&#x540C;&#x6837;&#x4E5F;&#x4F1A;&#x964D;&#x4F4E;&#x6027;&#x80FD;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x5728;&#x9700;&#x8981;&#x6E32;&#x67D3;&#x5927;&#x91CF;&#x89C6;&#x56FE;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD8;&#x80FD;&#x4FDD;&#x8BC1;&#x6D41;&#x7545;&#x5EA6;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4FDD;&#x8BC1;FPS&#x3002;
+ &#x5728;&#x8FD9;&#x91CC;&#x63A8;&#x8350;&#x9605;&#x8BFB;<a href="https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank">&#x90ED;&#x66DC;&#x6E90;&#x524D;&#x8F88;&#x7684;iOS &#x4FDD;&#x6301;&#x754C;&#x9762;&#x6D41;&#x7545;&#x7684;&#x6280;&#x5DE7;</a>
+ &#x4EE5;&#x53CA;<a href="https://www.jianshu.com/p/154451e4bd42" target="_blank">indulge_in&#x7684;YYAsyncLayer&#x5256;&#x6790;</a>
+ &#x6211;&#x53C2;&#x8003;&#x4E86;YYAsyncLayer&#xFF0C;&#x4ED6;&#x5176;&#x4E2D;&#x7684;&#x539F;&#x7406;&#x5927;&#x81F4;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<h4 id="yyasynclayer&#x539F;&#x7406;">YYAsyncLayer&#x539F;&#x7406;</h4>
+<p>YYAsyncLayer &#x662F; CALayer &#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x5F53;&#x5B83;&#x9700;&#x8981;&#x663E;&#x793A;&#x5185;&#x5BB9;&#xFF08;&#x6BD4;&#x5982;&#x8C03;&#x7528;&#x4E86; [layer setNeedDisplay]&#xFF09;&#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x5411; delegate&#xFF0C;&#x4E5F;&#x5C31;&#x662F; UIView &#x8BF7;&#x6C42;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x7ED8;&#x5236;&#x7684;&#x4EFB;&#x52A1;&#x3002;&#x5728;&#x5F02;&#x6B65;&#x7ED8;&#x5236;&#x65F6;&#xFF0C;Layer &#x4F1A;&#x4F20;&#x9012;&#x4E00;&#x4E2A; BOOL(^isCancelled)() &#x8FD9;&#x6837;&#x7684; block&#xFF0C;&#x7ED8;&#x5236;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x8C03;&#x7528;&#x8BE5; block &#x5224;&#x65AD;&#x7ED8;&#x5236;&#x4EFB;&#x52A1;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x88AB;&#x53D6;&#x6D88;&#x3002;</p>
+<p>&#x5F53; TableView &#x5FEB;&#x901F;&#x6ED1;&#x52A8;&#x65F6;&#xFF0C;&#x4F1A;&#x6709;&#x5927;&#x91CF;&#x5F02;&#x6B65;&#x7ED8;&#x5236;&#x4EFB;&#x52A1;&#x63D0;&#x4EA4;&#x5230;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x53BB;&#x6267;&#x884C;&#x3002;&#x4F46;&#x662F;&#x6709;&#x65F6;&#x6ED1;&#x52A8;&#x901F;&#x5EA6;&#x8FC7;&#x5FEB;&#x65F6;&#xFF0C;&#x7ED8;&#x5236;&#x4EFB;&#x52A1;&#x8FD8;&#x6CA1;&#x6709;&#x5B8C;&#x6210;&#x5C31;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x88AB;&#x53D6;&#x6D88;&#x4E86;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x65F6;&#x4ECD;&#x7136;&#x7EE7;&#x7EED;&#x7ED8;&#x5236;&#xFF0C;&#x5C31;&#x4F1A;&#x9020;&#x6210;&#x5927;&#x91CF;&#x7684; CPU &#x8D44;&#x6E90;&#x6D6A;&#x8D39;&#xFF0C;&#x751A;&#x81F3;&#x963B;&#x585E;&#x7EBF;&#x7A0B;&#x5E76;&#x9020;&#x6210;&#x540E;&#x7EED;&#x7684;&#x7ED8;&#x5236;&#x4EFB;&#x52A1;&#x8FDF;&#x8FDF;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x3002;&#x6211;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x5C3D;&#x91CF;&#x5FEB;&#x901F;&#x3001;&#x63D0;&#x524D;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x7ED8;&#x5236;&#x4EFB;&#x52A1;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x88AB;&#x53D6;&#x6D88;&#xFF1B;&#x5728;&#x7ED8;&#x5236;&#x6BCF;&#x4E00;&#x884C;&#x6587;&#x672C;&#x524D;&#xFF0C;&#x6211;&#x90FD;&#x4F1A;&#x8C03;&#x7528; isCancelled() &#x6765;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF0C;&#x4FDD;&#x8BC1;&#x88AB;&#x53D6;&#x6D88;&#x7684;&#x4EFB;&#x52A1;&#x80FD;&#x53CA;&#x65F6;&#x9000;&#x51FA;&#xFF0C;&#x4E0D;&#x81F3;&#x4E8E;&#x5F71;&#x54CD;&#x540E;&#x7EED;&#x64CD;&#x4F5C;&#x3002;</p>
+<h4 id="asyncdisplaykit&#x539F;&#x7406;">AsyncDisplayKit&#x539F;&#x7406;</h4>
+<p>ASDK &#x5728;&#x6B64;&#x5904;&#x6A21;&#x62DF;&#x4E86; Core Animation &#x7684;&#x8FD9;&#x4E2A;&#x673A;&#x5236;&#xFF1A;&#x6240;&#x6709;&#x9488;&#x5BF9; ASNode &#x7684;&#x4FEE;&#x6539;&#x548C;&#x63D0;&#x4EA4;&#xFF0C;&#x603B;&#x6709;&#x4E9B;&#x4EFB;&#x52A1;&#x662F;&#x5FC5;&#x9700;&#x653E;&#x5165;&#x4E3B;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x7684;&#x3002;&#x5F53;&#x51FA;&#x73B0;&#x8FD9;&#x79CD;&#x4EFB;&#x52A1;&#x65F6;&#xFF0C;ASNode &#x4F1A;&#x628A;&#x4EFB;&#x52A1;&#x7528; ASAsyncTransaction(Group) &#x5C01;&#x88C5;&#x5E76;&#x63D0;&#x4EA4;&#x5230;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7684;&#x5BB9;&#x5668;&#x53BB;&#x3002;ASDK &#x4E5F;&#x5728; RunLoop &#x4E2D;&#x6CE8;&#x518C;&#x4E86;&#x4E00;&#x4E2A; Observer&#xFF0C;&#x76D1;&#x89C6;&#x7684;&#x4E8B;&#x4EF6;&#x548C; CA &#x4E00;&#x6837;&#xFF0C;&#x4F46;&#x4F18;&#x5148;&#x7EA7;&#x6BD4; CA &#x8981;&#x4F4E;&#x3002;&#x5F53; RunLoop &#x8FDB;&#x5165;&#x4F11;&#x7720;&#x524D;&#x3001;CA &#x5904;&#x7406;&#x5B8C;&#x4E8B;&#x4EF6;&#x540E;&#xFF0C;ASDK &#x5C31;&#x4F1A;&#x6267;&#x884C;&#x8BE5; loop &#x5185;&#x63D0;&#x4EA4;&#x7684;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x3002;</p>
+<h4 id="tips">Tips</h4>
+<p>&#x4F18;&#x5316;&#x65B9;&#x6848;&#x56F4;&#x7ED5;&#x7740; &#x4F7F;&#x7528;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;&#xFF0C;&#x5408;&#x7406;&#x5229;&#x7528;CPU&#x8BA1;&#x7B97;&#x4F4D;&#x7F6E;&#xFF0C;&#x5E03;&#x5C40;&#xFF0C;&#x5C42;&#x6B21;&#xFF0C;&#x89E3;&#x538B;&#x7B49;&#xFF0C;&#x518D;&#x5408;&#x7406;&#x8C03;&#x5EA6;GPU&#x8FDB;&#x884C;&#x6E32;&#x67D3;&#xFF0C;GPU&#x8D1F;&#x62C5;&#x5E38;&#x5E38;&#x8981;&#x6BD4;CPU&#x5927;&#xFF0C;&#x5408;&#x7406;&#x8C03;&#x5EA6;CPU&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x53EF;&#x4EE5;&#x51CF;&#x8F7B;GPU&#x6E32;&#x67D3;&#x8D1F;&#x62C5;&#xFF0C;&#x4F7F;&#x5E94;&#x7528;&#x66F4;&#x52A0;&#x6D41;&#x7545;&#x3002;</p>
+<hr>
+<h3 id="metal&#x6E32;&#x67D3;&#x5F15;&#x64CE;">Metal&#x6E32;&#x67D3;&#x5F15;&#x64CE;</h3>
+<p>&#x5F53;&#x4F60;&#x73B0;&#x5728;&#x518D;&#x53BB;&#x67E5;&#x9605;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x65F6;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x5DF2;&#x7ECF;&#x4F7F;&#x7528;Metal&#x53BB;&#x66FF;&#x4EE3;OpenGL ES&#x4F5C;&#x4E3A;Core Animation&#x7684;&#x6E32;&#x67D3;&#x3002;
+ &#x770B;&#x4E00;&#x4E0B;<a href="https://developer.apple.com/documentation/metal" target="_blank">&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x6863;-Metal</a>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;&#x65E9;&#x5728;</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1776554-efe389294be8f73f.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp" alt="img"></p>
+<p>&#x82F9;&#x679C;&#x5C06;Metal&#x4F5C;&#x4E3A;&#x65B0;&#x7684;&#x6E32;&#x67D3;&#x5F15;&#x64CE;&#xFF0C;&#x66F4;&#x597D;&#x7684;&#x5229;&#x7528;&#x4E86;GPU&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x540C;&#x65F6;&#x4FDD;&#x8BC1;&#x4E86;&#x4F4E;&#x5185;&#x5B58;&#x5360;&#x7528;&#x548C;&#x7701;&#x7535;&#xFF0C;&#x4F46;&#x6211;&#x4E2A;&#x4EBA;&#x5E76;&#x6CA1;&#x6709;&#x6DF1;&#x5165;&#x7814;&#x7A76;Metal&#xFF0C;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x6709;&#x5174;&#x8DA3;&#x7684;&#x540C;&#x5B66;&#x53EF;&#x4EE5;&#x770B;&#x4E00;&#x4E0B;<a href="https://www.jianshu.com/u/815d10a4bdce" target="_blank">&#x843D;&#x5F71;&#x524D;&#x8F88;</a>&#x7684;&#x6587;&#x7AE0;&#xFF1A;
+ <a href="https://www.jianshu.com/p/625fb38eb411" target="_blank">Metal&#x5165;&#x95E8;&#x6559;&#x7A0B;&#x603B;&#x7ED3;</a>
+ <a href="https://www.jianshu.com/p/0aedfca971fa" target="_blank">Metal&#x5165;&#x95E8;&#x6559;&#x7A0B;&#xFF08;&#x516B;&#xFF09;Metal&#x4E0E;OpenGL ES&#x4EA4;&#x4E92;</a>
+ <a href="https://www.jianshu.com/nb/2135411" target="_blank">OpenGL &#x4E13;&#x9898;</a></p>
+<hr>
+<h3 id="&#x4E8B;&#x4EF6;&#x54CD;&#x5E94;&#x94FE;&#x539F;&#x7406;">&#x4E8B;&#x4EF6;&#x54CD;&#x5E94;&#x94FE;&amp;&#x539F;&#x7406;</h3>
+<p>&#x6700;&#x540E;&#x4E00;&#x9898;&#xFF1A;<code>UIView&#x548C;CALayer&#x7684;&#x533A;&#x522B;&#xFF1F;</code></p>
+<p>&#x5982;&#x679C;&#x4F60;&#x5DF2;&#x7ECF;&#x505A;&#x4E86;&#x51E0;&#x5E74;iOS&#x5F00;&#x53D1;&#xFF0C;&#x76F8;&#x6BD4;&#x5BF9;&#x4E8E;&#x8FD9;&#x9053;&#x9898;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x5F88;&#x719F;&#x6089;&#x3002;
+ &#x6700;&#x76F4;&#x63A5;&#x7684;&#x56DE;&#x7B54;&#x5C31;&#x662F;<code>UIView&#x53EF;&#x4EE5;&#x54CD;&#x5E94;&#x7528;&#x6237;&#x4E8B;&#x4EF6;&#xFF0C;&#x800C;CALayer&#x4E0D;&#x80FD;&#x5904;&#x7406;&#x4E8B;&#x4EF6;</code></p>
+<p>&#x9996;&#x5148;&#x8981;&#x8BB2;&#x4E00;&#x4E0B;App&#x4E2D;&#x7684;&#x4E8B;&#x4EF6;&#x54CD;&#x5E94;&#x94FE;&#xFF0C;&#x5B83;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#xFF1A;Hit-Testing&#x4E8B;&#x4EF6;&#x4F20;&#x9012; &amp; Runloop&#x539F;&#x7406;</p>
+<p>&#x5F53;&#x7528;&#x6237;&#x5BF9;&#x5C4F;&#x5E55;&#x8FDB;&#x884C;&#x4E86;&#x64CD;&#x4F5C;&#xFF0C;&#x4EA7;&#x751F;&#x4E86;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x4E8B;&#x4EF6;&#x3002;</p>
+<blockquote>
+<p>&#x82F9;&#x679C;&#x6CE8;&#x518C;&#x4E86;&#x4E00;&#x4E2A; Source1 (&#x57FA;&#x4E8E; mach port &#x7684;) &#x7528;&#x6765;&#x63A5;&#x6536;&#x7CFB;&#x7EDF;&#x4E8B;&#x4EF6;&#xFF0C;&#x5176;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E3A; <code>__IOHIDEventSystemClientQueueCallback()</code></p>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x786C;&#x4EF6;&#x4E8B;&#x4EF6;(&#x89E6;&#x6478;/&#x9501;&#x5C4F;/&#x6447;&#x6643;&#x7B49;)&#x53D1;&#x751F;&#x540E;&#xFF0C;&#x9996;&#x5148;&#x7531; IOKit.framework &#x751F;&#x6210;&#x4E00;&#x4E2A; IOHIDEvent &#x4E8B;&#x4EF6;&#x5E76;&#x7531; SpringBoard &#x63A5;&#x6536;&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x7684;&#x8BE6;&#x7EC6;&#x60C5;&#x51B5;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://iphonedevwiki.net/index.php/IOHIDFamily" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;SpringBoard &#x53EA;&#x63A5;&#x6536;&#x6309;&#x952E;(&#x9501;&#x5C4F;/&#x9759;&#x97F3;&#x7B49;)&#xFF0C;&#x89E6;&#x6478;&#xFF0C;&#x52A0;&#x901F;&#xFF0C;&#x63A5;&#x8FD1;&#x4F20;&#x611F;&#x5668;&#x7B49;&#x51E0;&#x79CD; Event&#xFF0C;&#x968F;&#x540E;&#x7528; mach port &#x8F6C;&#x53D1;&#x7ED9;&#x9700;&#x8981;&#x7684;App&#x8FDB;&#x7A0B;&#x3002;&#x968F;&#x540E;&#x82F9;&#x679C;&#x6CE8;&#x518C;&#x7684;&#x90A3;&#x4E2A; Source1 &#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x56DE;&#x8C03;&#xFF0C;&#x5E76;&#x8C03;&#x7528; <code>_UIApplicationHandleEventQueue()</code>&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x5185;&#x90E8;&#x7684;&#x5206;&#x53D1;&#x3002;</p>
+<p><code>_UIApplicationHandleEventQueue()</code>&#x4F1A;&#x628A; IOHIDEvent &#x5904;&#x7406;&#x5E76;&#x5305;&#x88C5;&#x6210; UIEvent &#x8FDB;&#x884C;&#x5904;&#x7406;&#x6216;&#x5206;&#x53D1;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x8BC6;&#x522B; UIGesture/&#x5904;&#x7406;&#x5C4F;&#x5E55;&#x65CB;&#x8F6C;/&#x53D1;&#x9001;&#x7ED9; UIWindow &#x7B49;&#x3002;&#x901A;&#x5E38;&#x4E8B;&#x4EF6;&#x6BD4;&#x5982; UIButton &#x70B9;&#x51FB;&#x3001;<code>touchesBegin</code>/<code>Move</code>/<code>End</code>/<code>Cancel</code>&#x4E8B;&#x4EF6;&#x90FD;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x56DE;&#x8C03;&#x4E2D;&#x5B8C;&#x6210;&#x7684;&#x3002;
+ &#x6B64;&#x5904;&#x5F15;&#x7528;--&gt;<a href="https://blog.ibireme.com/2015/05/18/runloop/#event" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;Runloop-&#x4E8B;&#x4EF6;&#x54CD;&#x5E94;</a></p>
+</blockquote>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-06-032557.jpg" alt="img"></p>
+<p>&#x5F53;&#x524D;&#x524D;&#x53F0;&#x8FD0;&#x884C;&#x4E2D;&#x5E94;&#x7528;&#x63A5;&#x6536;&#x5230;UIEvent&#x4EE5;&#x540E;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x5BF9;&#x5C4F;&#x5E55;&#x8FDB;&#x884C;&#x4E86;&#x64CD;&#x4F5C;&#xFF0C;&#x7CFB;&#x7EDF;&#x5148;&#x5FAA;&#x73AF;&#x8C03;&#x7528;Hit-test&#x904D;&#x5386;&#x89C6;&#x56FE;&#x6808;&#x91CC;&#x7684;&#x89C6;&#x56FE;&#xFF0C;&#x987A;&#x5E8F;&#x4E3A;&#x89C6;&#x56FE;&#x5C42;&#x6B21;&#x7684;&#x9006;&#x987A;&#x5E8F;&#xFF0C;&#x7528;Responder Chain&#x54CD;&#x5E94;&#x94FE;&#x4F20;&#x9012;&#x4E00;&#x5C42;&#x5C42;&#x7ED9;&#x6839;&#x89C6;&#x56FE;AppDelegate&#x5904;&#x7406;&#x3002;--&gt;<a href="https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/using_responders_and_the_responder_chain_to_handle_events" target="_blank">&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x6863;-&#x4F7F;&#x7528;&#x54CD;&#x5E94;&#x8005;&#x548C;&#x54CD;&#x5E94;&#x8005;&#x94FE;&#x6765;&#x5904;&#x7406;&#x4E8B;&#x4EF6;</a></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-06-032625.jpg" alt="img"></p>
+<p>&#x63A8;&#x8350;&#x4E24;&#x7BC7;&#x6587;&#x7AE0;&#xFF1A;
+ <a href="https://www.jianshu.com/p/098db08b71cb" target="_blank">iOS &#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x673A;&#x5236;&#x4E0E;&#x56FE;&#x50CF;&#x6E32;&#x67D3;&#x8FC7;&#x7A0B;</a>
+ <a href="https://www.jianshu.com/p/d8512dff2b3e" target="_blank">iOS&#x4E8B;&#x4EF6;&#x54CD;&#x5E94;&#x94FE;&#x4E2D;Hit-Test View&#x7684;&#x5E94;&#x7528;</a></p>
+<h3 id="calayer&#x7684;&#x804C;&#x80FD;">CALayer&#x7684;&#x804C;&#x80FD;</h3>
+<p>CALayer &#x5E76;&#x4E0D;&#x6E05;&#x695A;&#x5177;&#x4F53;&#x7684;&#x54CD;&#x5E94;&#x94FE;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5904;&#x7406;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x6216;&#x8005;&#x624B;&#x52BF;&#x3002;&#x4F46;&#x662F;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;<code>-containsPoint:</code>&#x548C;<code>-hitTest:</code>&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E00;&#x4E2A;&#x89E6;&#x70B9;&#x5728;&#x56FE;&#x5C42;&#x7684;&#x8303;&#x56F4;&#x4E4B;&#x5185;&#x3002;</p>
+<p>&#x4E0E;UIView&#x4E0D;&#x540C;&#xFF0C;CALayer&#x7740;&#x91CD;&#x4E8E;&#x56FE;&#x5C42;&#x7684;&#x7ED8;&#x5236;&#xFF0C;&#x5927;&#x81F4;&#x4E3A;&#x4EE5;&#x4E0B;&#x804C;&#x80FD;&#xFF1A;</p>
+<ul>
+<li>&#x9634;&#x5F71;&#x3001;&#x5706;&#x89D2;&#x3001;&#x8FB9;&#x6846;&#x3001;&#x8499;&#x7248;&#x3001;&#x62C9;&#x4F38;&#x3001;transform&#x3001;&#x52A8;&#x753B;&#x3002;</li>
+<li>&#x5BC4;&#x5BBF;&#x56FE;&#xFF1A;&#x4F60;&#x53EF;&#x4EE5;&#x7ED9;CALayer.contents&#x4F20;&#x9012;&#x4E00;&#x4E2A;CGImage&#x6765;&#x8FDB;&#x884C;&#x6E32;&#x67D3;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8C03;&#x7528;<code>- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx;</code>&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x7ED8;&#x5236;&#x3002;<code>&#x4F46;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x4F1A;&#x4F7F;&#x7528;UIView&#x7684;drawRect&#x65B9;&#x6CD5;</code></li>
+<li>CATextLayer:&#x76F4;&#x63A5;&#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x4F7F;&#x7528;Core Graphics&#x5199;&#x5165;&#x56FE;&#x5C42;</li>
+<li>CATransformLayer:&#x80FD;&#x591F;&#x7528;&#x4E8E;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x5C42;&#x7EA7;&#x7684;3D&#x7ED3;&#x6784;</li>
+</ul>
+<blockquote>
+<p>CALayer &#x5185;&#x90E8;&#x5E76;&#x6CA1;&#x6709;&#x5C5E;&#x6027;&#xFF0C;&#x5F53;&#x8C03;&#x7528;&#x5C5E;&#x6027;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5B83;&#x5185;&#x90E8;&#x662F;&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x65F6; <code>resolveInstanceMethod</code>&#x4E3A;&#x5BF9;&#x8C61;&#x4E34;&#x65F6;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x628A;&#x5BF9;&#x5E94;&#x5C5E;&#x6027;&#x503C;&#x4FDD;&#x5B58;&#x5230;&#x5185;&#x90E8;&#x7684;&#x4E00;&#x4E2A; Dictionary &#x91CC;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x4F1A;&#x901A;&#x77E5; delegate&#x3001;&#x521B;&#x5EFA;&#x52A8;&#x753B;&#x7B49;&#x7B49;&#xFF0C;&#x975E;&#x5E38;&#x6D88;&#x8017;&#x8D44;&#x6E90;&#x3002;UIView &#x7684;&#x5173;&#x4E8E;&#x663E;&#x793A;&#x76F8;&#x5173;&#x7684;&#x5C5E;&#x6027;&#xFF08;&#x6BD4;&#x5982; <code>frame</code>/<code>bounds</code>/<code>transform</code>&#xFF09;&#x7B49;&#x5B9E;&#x9645;&#x4E0A;&#x90FD;&#x662F; CALayer &#x5C5E;&#x6027;&#x6620;&#x5C04;&#x6765;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5BF9; UIView &#x7684;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#x65F6;&#xFF0C;&#x6D88;&#x8017;&#x7684;&#x8D44;&#x6E90;&#x8981;&#x8FDC;&#x5927;&#x4E8E;&#x4E00;&#x822C;&#x7684;&#x5C5E;&#x6027;&#x3002;&#x5BF9;&#x6B64;&#x4F60;&#x5728;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x51CF;&#x5C11;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5C5E;&#x6027;&#x4FEE;&#x6539;&#x3002;</p>
+<p>&#x5F53;&#x89C6;&#x56FE;&#x5C42;&#x6B21;&#x8C03;&#x6574;&#x65F6;&#xFF0C;UIView&#x3001;CALayer &#x4E4B;&#x95F4;&#x4F1A;&#x51FA;&#x73B0;&#x5F88;&#x591A;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x4E0E;&#x901A;&#x77E5;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x4F18;&#x5316;&#x6027;&#x80FD;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x907F;&#x514D;&#x8C03;&#x6574;&#x89C6;&#x56FE;&#x5C42;&#x6B21;&#x3001;&#x6DFB;&#x52A0;&#x548C;&#x79FB;&#x9664;&#x89C6;&#x56FE;&#x3002;</p>
+</blockquote>
+<p>&#x4F7F;&#x7528;&#x56FE;&#x5C42;&#x5173;&#x8054;&#x7684;&#x89C6;&#x56FE;&#x800C;&#x4E0D;&#x662F;&#x5355;&#x72EC;&#x4F7F;&#x7528; CALayer &#x7684;&#x597D;&#x5904;&#x5728;&#x4E8E;&#xFF0C;&#x4F60;&#x80FD;&#x5728;&#x4F7F;&#x7528;&#x6240;
+ &#x6709; CALayer &#x5E95;&#x5C42;&#x7279;&#x6027;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; UIView &#x7684;&#x9AD8;&#x7EA7;API(&#x6BD4;&#x5982;&#x81EA;&#x52A8;&#x6392;&#x7248;&#xFF0C; &#x5E03;&#x5C40;&#x548C;&#x4E8B;&#x4EF6;&#x5904;&#x7406;)&#x3002;&#x505A;&#x4E00;&#x4E9B;&#x5BF9;&#x6027;&#x80FD;&#x7279;&#x522B;&#x6311;&#x5254;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x5BF9; UIView &#x4E00;&#x4E9B;&#x53EF;&#x5FFD;&#x7565;&#x4E0D;&#x8BA1;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x4F1A;&#x5F15; &#x8D77;&#x663E;&#x8457;&#x7684;&#x4E0D;&#x540C;</p>
+<p>&#x5173;&#x4E8E;UIView&#x52A8;&#x753B;&#x4EE5;&#x53CA;CALayer&#x7684;&#x52A8;&#x753B;&#x8FD9;&#x91CC;&#x63A8;&#x8350;&#x4E24;&#x7BC7;&#x6587;&#x7AE0;&#xFF1A;
+ <a href="https://www.jianshu.com/p/3a1f06c6183c" target="_blank">iOS-UIView&#x4E0E;CALayer&#x52A8;&#x753B;&#x539F;&#x7406;</a>
+ <a href="https://blog.csdn.net/zmmzxxx/article/details/74276077" target="_blank">CALayer&#x4E0E;iOS&#x52A8;&#x753B; &#x8BB2;&#x89E3;&#x53CA;&#x4F7F;&#x7528;</a></p>
+<h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
+<p>&#x672C;&#x6587;&#x5927;&#x91CF;&#x501F;&#x52A9;&#x4E86;&#x5F15;&#x7528;&#x6587;&#x7AE0;&#x7684;&#x6587;&#x5B57;&#x63CF;&#x8FF0;&#xFF0C;&#x5728;&#x6B64;&#x611F;&#x8C22;&#x5404;&#x4F4D;&#x4F5C;&#x8005;&#x7684;&#x6587;&#x7AE0;&#x5BF9;&#x672C;&#x95EE;&#x9898;&#x7684;&#x7406;&#x89E3;&#x8D77;&#x4E86;&#x5F88;&#x5927;&#x7684;&#x5E2E;&#x52A9;&#x3002;&#x4E5F;&#x5E0C;&#x671B;&#x5404;&#x4F4D;&#x80FD;&#x53BB;&#x539F;&#x6587;&#x53D1;&#x8868;&#x81EA;&#x5DF1;&#x7684;&#x770B;&#x6CD5;&#x3002;&#x8C22;&#x8C22;~</p>
+<ul>
+<li><a href="https://developer.apple.com/videos/play/wwdc2014/419/" target="_blank">&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x89C6;&#x9891;-WWDC2014-Session419</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/Displays/Displays.html" target="_blank">&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x7AE0;-&#x663E;&#x793A;&#x5E27;&#x7387;</a></li>
+<li><a href="https://www.jianshu.com/u/815d10a4bdce" target="_blank">&#x843D;&#x5F71;loyinglin</a>&#x7684;&#x6587;&#x7AE0;<a href="https://www.jianshu.com/p/748f9abafff8" target="_blank">iOS&#x5F00;&#x53D1;-&#x89C6;&#x56FE;&#x6E32;&#x67D3;&#x4E0E;&#x6027;&#x80FD;&#x4F18;&#x5316;</a></li>
+<li>&#x90ED;&#x66DC;&#x6E90;&#x524D;&#x8F88;&#x7684;&#x6587;&#x7AE0;&#xFF1A;<a href="https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank">iOS &#x4FDD;&#x6301;&#x754C;&#x9762;&#x6D41;&#x7545;&#x7684;&#x6280;&#x5DE7;</a></li>
+<li><a href="https://www.jianshu.com/p/098db08b71cb" target="_blank">iOS &#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x673A;&#x5236;&#x4E0E;&#x56FE;&#x50CF;&#x6E32;&#x67D3;&#x8FC7;&#x7A0B;</a></li>
+<li>&#x63A8;&#x8350;&#x9605;&#x8BFB;&#xFF1A;&#x300A;iOS&#x548C;MacOS&#x6027;&#x80FD;&#x4F18;&#x5316;&#x300B;&#x5BF9;&#x4E8E;&#x56FE;&#x50CF;I/O&#x65B9;&#x9762;&#xFF0C;&#x4E66;&#x4E2D;&#x6700;&#x540E;&#x6709;&#x8BE6;&#x7EC6;&#x89E3;&#x91CA;&#x3002;</li>
+</ul>
+<p>&#x4F5C;&#x8005;&#xFF1A;&#x7B51;&#x68A6;&#x5E08;Winston
+&#x94FE;&#x63A5;&#xFF1A;<a href="https://www.jianshu.com/p/39b91ecaaac8" target="_blank">https://www.jianshu.com/p/39b91ecaaac8</a>
+&#x6765;&#x6E90;&#xFF1A;&#x7B80;&#x4E66;
+&#x8457;&#x4F5C;&#x6743;&#x5F52;&#x4F5C;&#x8005;&#x6240;&#x6709;&#x3002;&#x5546;&#x4E1A;&#x8F6C;&#x8F7D;&#x8BF7;&#x8054;&#x7CFB;&#x4F5C;&#x8005;&#x83B7;&#x5F97;&#x6388;&#x6743;&#xFF0C;&#x975E;&#x5546;&#x4E1A;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="UIViewRender.html" class="navigation navigation-prev " aria-label="Previous page: iOS UIView刷新与渲染机制">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="UIImageRender.html" class="navigation navigation-next " aria-label="Next page: iOS 图片的加载与渲染过程">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"iOS界面渲染流程分析","level":"1.2.1.4","depth":3,"next":{"title":"iOS 图片的加载与渲染过程","level":"1.2.2","depth":2,"path":"iOS/UIKit/UIImageRender.md","ref":"iOS/UIKit/UIImageRender.md","articles":[]},"previous":{"title":"iOS UIView刷新与渲染机制","level":"1.2.1.3","depth":3,"path":"iOS/UIKit/UIViewRender.md","ref":"iOS/UIKit/UIViewRender.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/UIKit/UIViewRenderProcess.md","mtime":"2021-05-06T03:35:30.676Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-06T03:35:59.857Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
