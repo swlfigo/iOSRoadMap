@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>MessageForwarding · GitBook</title>
+        <title>Runtime · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="KVC.html" />
+    <link rel="next" href="Block.html" />
     
-    
-    <link rel="prev" href="Method.html" />
     
 
     </head>
@@ -408,7 +406,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.4.1" data-path="Runtime.html">
+        <li class="chapter active" data-level="1.2.4.1" data-path="Runtime.html">
             
                 <a href="Runtime.html">
             
@@ -447,7 +445,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.4.4" data-path="MessageForwarding.html">
+        <li class="chapter " data-level="1.2.4.4" data-path="MessageForwarding.html">
             
                 <a href="MessageForwarding.html">
             
@@ -1155,7 +1153,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >MessageForwarding</a>
+        <a href="../.." >Runtime</a>
     </h1>
 </div>
 
@@ -1170,73 +1168,25 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="message-forwarding">Message Forwarding</h1>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-19-061727.jpg" alt=""></p>
-<p>&#x53D1;&#x9001;&#x6D88;&#x606F;&#x4F1A;&#x6709;&#x4EE5;&#x4E0B;&#x2F0F;&#x4E2A;&#x6D41;&#x7A0B;&#xFF1A;</p>
-<ol>
-<li>&#x5FEB;&#x901F;&#x67E5;&#x627E;&#x6D41;&#x7A0B;&#x2014;&#x2014;&#x901A;&#x8FC7;&#x6C47;&#x7F16;<code>objc_msgSend</code>&#x67E5;&#x627E;&#x7F13;&#x5B58;<code>cache_t</code>&#x662F;&#x5426;&#x6709;imp&#x5B9E;&#x73B0;</li>
-<li>&#x6162;&#x901F;&#x67E5;&#x627E;&#x6D41;&#x7A0B;&#x2014;&#x2014;&#x901A;&#x8FC7;C++&#x4E2D;<code>lookUpImpOrForward</code>&#x9012;&#x5F52;&#x67E5;&#x627E;<code>&#x5F53;&#x524D;&#x7C7B;&#x548C;&#x7236;&#x7C7B;&#x7684;rw</code>&#x4E2D;<code>methodlist</code>&#x7684;&#x65B9;&#x6CD5;</li>
-<li>&#x52A8;&#x6001;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x2014;&#x2014;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>resolveInstanceMethod</code>&#x548C;<code>resolveClassMethod</code>&#x6765;&#x52A8;&#x6001;&#x65B9;&#x6CD5;&#x51B3;&#x8BAE;&#x2014;&#x2014;&#x5B9E;&#x73B0;&#x6D88;&#x606F;&#x52A8;&#x6001;&#x5904;&#x7406;</li>
-<li>&#x5FEB;&#x901F;&#x8F6C;&#x53D1;&#x6D41;&#x7A0B;&#x2014;&#x2014;&#x901A;&#x8FC7;<code>CoreFoundation</code>&#x6765;&#x89E6;&#x53D1;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x6D41;&#x7A0B;&#xFF0C;<code>forwardingTargetForSelector</code>&#x5B9E;&#x73B0;&#x5FEB;&#x901F;&#x8F6C;&#x53D1;&#xFF0C;&#x7531;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x6765;&#x5B9E;&#x73B0;&#x5904;&#x7406;&#x65B9;&#x6CD5;</li>
-<li>&#x6162;&#x901F;&#x8F6C;&#x53D1;&#x6D41;&#x7A0B;&#x2014;&#x2014;&#x5148;&#x8C03;&#x7528;<code>methodSignatureForSelector</code>&#x83B7;&#x53D6;&#x5230;&#x65B9;&#x6CD5;&#x7684;&#x7B7E;&#x540D;&#xFF0C;&#x751F;&#x6210;&#x5BF9;&#x5E94;&#x7684;<code>invocation</code>&#xFF1B;&#x518D;&#x901A;&#x8FC7;<code>forwardInvocation</code>&#x6765;&#x8FDB;&#x884C;&#x5904;&#x7406;</li>
-<li>&#x4EE5;&#x4E0A;&#x6D41;&#x7A0B;&#x5747;&#x65E0;&#x6CD5;&#x633D;&#x6551;&#x5C31;&#x5D29;&#x6E83;&#x5E76;&#x62A5;&#x9519;</li>
-</ol>
-<p>&#x5F53;&#x4E00;&#x4E2A; OC &#x5BF9;&#x8C61;&#xFF08;receiver&#xFF09;&#x63A5;&#x6536;&#x5230; Unknown selector &#x65F6;&#xFF0C;&#x4F1A;&#x8FDB;&#x5165;&#x5982;&#x56FE;&#x6D41;&#x7A0B;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E09;&#x4E2A;&#x6B65;&#x9AA4;&#x4E2D; override receiver &#x7684;&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#xFF0C;&#x8FDB;&#x800C;&#x907F;&#x514D;<code>doesNotRecognizeSelector:</code>&#x5F02;&#x5E38;&#x3002;</p>
-<p>&#x300A;Effective Objective-C 2.0&#x300B;&#x7684;&#x63CF;&#x8FF0;&#x662F;&#xFF1A;</p>
-<blockquote>
-<p>&#x6B65;&#x9AA4;&#x8D8A;&#x5F80;&#x540E;&#xFF0C;&#x5904;&#x7406;&#x6D88;&#x606F;&#x7684;&#x4EE3;&#x4EF7;&#x5C31;&#x8D8A;&#x5927;&#xFF1B;&#x6700;&#x597D;&#x80FD;&#x5728;&#x7B2C;&#x4E00;&#x6B65;&#x5C31;&#x5904;&#x7406;&#x5B8C;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#xFF0C;runtime &#x7CFB;&#x7EDF;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x6B64;&#x65B9;&#x6CD5;&#x7F13;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x8FDB;&#x800C;&#x63D0;&#x9AD8;&#x6548;&#x7387;&#x3002;&#x82E5;&#x60F3;&#x5728;&#x7B2C;&#x4E09;&#x6B65;&#x91CC;&#x628A;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x7ED9;&#x5907;&#x63F4;&#x7684; receiver&#xFF0C;&#x90A3;&#x8FD8;&#x4E0D;&#x5982;&#x628A;&#x8F6C;&#x53D1;&#x64CD;&#x4F5C;&#x63D0;&#x524D;&#x5230;&#x7B2C;&#x4E8C;&#x6B65;&#x3002;&#x56E0;&#x4E3A;&#x7B2C;&#x4E09;&#x6B65;&#x53EA;&#x662F;&#x4FEE;&#x6539;&#x4E86;&#x8C03;&#x7528;&#x76EE;&#x6807;&#xFF0C;&#x8FD9;&#x9879;&#x6539;&#x52A8;&#x653E;&#x5728;&#x7B2C;&#x4E8C;&#x6B65;&#x4F1A;&#x66F4;&#x4E3A;&#x7B80;&#x5355;&#xFF0C;&#x4E0D;&#x7136;&#x7684;&#x8BDD;&#xFF0C;&#x8FD8;&#x5F97;&#x521B;&#x5EFA;&#x5E76;&#x5904;&#x7406;&#x5B8C;&#x6574;&#x7684;<code>NSInvocation</code>&#x3002;</p>
-</blockquote>
-<h2 id="resolveinstancemethod">+resolveInstanceMethod</h2>
-<p>Receiver &#x5728;&#x6536;&#x5230; unknown selector &#x540E;&#xFF0C;&#x9996;&#x5148;&#x5C06;&#x8C03;&#x7528;&#x5176;&#x672C;&#x7C7B;&#x7684;<code>resolveInstanceMethod:</code>&#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-objectivec">+ (<span class="hljs-built_in">BOOL</span>)resolveInstanceMethod:(SEL)sel;
-</code></pre>
-<p>&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x90A3;&#x4E2A; unknown selector&#xFF0C;&#x5176;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;<code>Boolean</code>&#x7C7B;&#x578B;&#xFF0C;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x7C7B;&#x662F;&#x5426;&#x80FD;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x7528;&#x4EE5;&#x5904;&#x7406;&#x8BE5; unknown selector&#x3002;&#x5728;&#x7EE7;&#x7EED;&#x5F80;&#x4E0B;&#x6267;&#x884C;&#x8F6C;&#x53D1;&#x673A;&#x5236;&#x4E4B;&#x524D;&#xFF0C;&#x672C;&#x7C7B;&#x6709;&#x673A;&#x4F1A;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x6B64; selector &#x7684;&#x65B9;&#x6CD5;&#x3002;&#x6240;&#x4EE5;<code>resolveInstanceMethod:</code>&#x7684;&#x4E00;&#x822C;&#x4F7F;&#x7528;&#x5957;&#x8DEF;&#x662F;&#xFF1A;</p>
-<pre><code class="lang-objectivec">+ (<span class="hljs-built_in">BOOL</span>)resolveInstanceMethod:(SEL)aSelector {
-    <span class="hljs-keyword">if</span> (<span class="hljs-comment">/* aSelector&#x6EE1;&#x8DB3;&#x67D0;&#x4E2A;&#x6761;&#x4EF6;  */</span>) {
-        <span class="hljs-comment">/*
-         &#x8C03;&#x7528;class_addMethod&#x4E3A;&#x8BE5;&#x7C7B;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5904;&#x7406;aSelector&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8B6C;&#x5982;&#xFF1A;
-         class_addMethod(self, aSelector, aImp, @&quot;v@:@&quot;);
-         */</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">YES</span>;
-    }
-    <span class="hljs-keyword">return</span> [<span class="hljs-keyword">super</span> resolveInstanceMethod:aSelector];
-}
-</code></pre>
-<p>&#x5047;&#x5982;&#x5C1A;&#x672A;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x4E0D;&#x662F;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x800C;&#x662F;&#x7C7B;&#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48; runtime &#x7CFB;&#x7EDF;&#x4F1A;&#x8C03;&#x7528;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x4E0E;<code>resolveInstanceMethod:</code>&#x7C7B;&#x4F3C;&#x7684;&#x65B9;&#x6CD5;<code>resolveClassMethod:</code>&#x3002;</p>
-<p>&#x5C31;&#x6211;&#x7ECF;&#x9A8C;&#x800C;&#x8A00;&#xFF0C;<code>resolveInstanceMethod:</code>&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E00;&#x822C;&#x7528;&#x6765;&#x52A8;&#x6001;&#x6DFB;&#x52A0; setter &#x548C; getter&#x3002;</p>
-<h2 id="forwardingtargetforselector"><a href="https://zhangbuhuai.com/post/message-forwarding.html#forwardingtargetforselector" target="_blank">#</a>-forwardingTargetForSelector</h2>
-<p>&#x5F53;&#x524D; receiver &#x8FD8;&#x6709;&#x7B2C;&#x4E8C;&#x6B21;&#x673A;&#x4F1A;&#x80FD;&#x5904;&#x7406; unknown selector&#xFF0C;&#x5728;&#x8FD9;&#x4E00;&#x6B65;&#x4E2D;&#xFF0C;runtime &#x7CFB;&#x7EDF;&#x4F1A;&#x95EE;&#x5B83;&#xFF1A;&#x53EF;&#x5426;&#x628A;&#x8FD9;&#x6761;&#x6D88;&#x606F;&#x8F6C;&#x7ED9;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x5904;&#x7406;&#xFF1F;&#x8BE5;&#x6B65;&#x9AA4;&#x5BF9;&#x5E94;&#x7684;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x662F;<code>forwardingTargetForSelector:</code>&#xFF0C;&#x5B9A;&#x4E49;&#x4E8E;<code>&lt;objc/NSObject.h&gt;</code>&#x4E2D;&#xFF1A;</p>
-<pre><code class="lang-objectivec">- (<span class="hljs-keyword">id</span>)forwardingTargetForSelector:(SEL)aSelector;
-</code></pre>
-<p>&#x82E5;&#x5F53;&#x524D; receiver &#x80FD;&#x627E;&#x5230;&#x5907;&#x63F4;&#x5BF9;&#x8C61;&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x8FD4;&#x56DE;&#xFF0C;&#x5F53;&#x7136;&#xFF0C;&#x5907;&#x63F4;&#x5BF9;&#x8C61;&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x54CD;&#x5E94; aSelector&#xFF0C;&#x5426;&#x5219;&#x4F9D;&#x7136;&#x4F1A;&#x629B;&#x51FA;<code>doesNotRecognizeSelector:</code>&#x5F02;&#x5E38;&#xFF1B;&#x82E5;&#x627E;&#x4E0D;&#x5230;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;<code>nil</code>&#x3002;</p>
-<p><code>-forwardingTargetForSelector:</code>&#x7684;&#x4F7F;&#x7528;&#x903B;&#x8F91;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x5E94;&#x7528;&#x573A;&#x666F;&#x5305;&#x62EC;&#xFF1A;</p>
+                                <h1 id="runtime">RunTime</h1>
+<h2 id="runtime&#x7B80;&#x4ECB;">Runtime&#x7B80;&#x4ECB;</h2>
 <ul>
-<li>&#x5B9E;&#x73B0;&#x591A;&#x7EE7;&#x627F;&#x3002;Objective-C &#x4E0D;&#x5141;&#x8BB8;&#x591A;&#x7EE7;&#x627F;&#xFF0C;&#x57FA;&#x4E8E;<code>-forwardingTargetForSelector:</code>&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7EC4;&#x5408;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6A21;&#x62DF;&#x51FA;&#x591A;&#x7EE7;&#x627F;&#x7684;&#x67D0;&#x4E9B;&#x7279;&#x6027;&#x3002;</li>
-<li>&#x4E3A;&#x534F;&#x8BAE;&#x9075;&#x5FAA;&#x8005;&#x63D0;&#x4F9B;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x3002;&#x8B6C;&#x5982;&#x67D0;&#x4E2A;&#x534F;&#x8BAE;&#x5B9A;&#x4E49;&#x4E86;&#x591A;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x5FC5;&#x8981;&#x4E3A;&#x8FD9;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x63D0;&#x4F9B;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF1B;&#x5177;&#x4F53;&#x505A;&#x6CD5;&#x662F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7C7B;&#xFF08;&#x5047;&#x8BBE;&#x4E3A; Implement&#xFF09;&#xFF0C;&#x7528;&#x4E8E;&#x5B9E;&#x73B0;&#x8FD9;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x7136;&#x540E; override &#x534F;&#x8BAE;&#x9075;&#x5FAA;&#x8005;&#x7684;<code>-forwardingTargetForSelector:</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x534F;&#x8BAE;&#x65B9;&#x6CD5;&#x7684; receiver &#x5B9A;&#x4F4D;&#x5230; Implement &#x5BF9;&#x8C61;&#x3002;</li>
+<li><p>RunTime&#x7B80;&#x79F0;&#x8FD0;&#x884C;&#x65F6;,&#x5176;&#x4E2D;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x662F;&#x6D88;&#x606F;&#x673A;&#x5236;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;C&#x8BED;&#x8A00;&#xFF0C;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x5728;&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x51B3;&#x5B9A;&#x8C03;&#x7528;&#x54EA;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x76F4;&#x63A5;&#x987A;&#x5E8F;&#x6267;&#x884C;&#xFF0C;&#x65E0;&#x4EFB;&#x4F55;&#x4E8C;&#x4E49;&#x6027;&#x3002;</p>
+<p>OC&#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6210;&#x4E3A;&#x6D88;&#x606F;&#x53D1;&#x9001;&#xFF0C;&#x5C5E;&#x4E8E;&#x52A8;&#x6001;&#x8C03;&#x7528;&#x8FC7;&#x7A0B;&#x3002;&#x5728;&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#x5E76;&#x4E0D;&#x80FD;&#x51B3;&#x5B9A;&#x771F;&#x6B63;&#x8C03;&#x7528;&#x54EA;&#x4E2A;&#x51FD;&#x6570;&#xFF08;&#x4E8B;&#x5B9E;&#x8BC1;&#x660E;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x9636;&#x6BB5;&#xFF0C;OC&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x4EFB;&#x4F55;&#x51FD;&#x6570;&#xFF0C;&#x5373;&#x4F7F;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5E76;&#x672A;&#x5B9E;&#x73B0;&#xFF0C;&#x53EA;&#x8981;&#x58F0;&#x660E;&#x8FC7;&#x5C31;&#x4E0D;&#x4F1A;&#x62A5;&#x9519;&#x3002;&#x800C;C&#x8BED;&#x8A00;&#x5728;&#x7F16;&#x8BD1;&#x9636;&#x6BB5;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#xFF09;&#x3002;</p>
+<p>&#x53EA;&#x6709;&#x5728;&#x771F;&#x6B63;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x6839;&#x636E;&#x51FD;&#x6570;&#x7684;&#x540D;&#x79F0;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x51FD;&#x6570;&#x6765;&#x8C03;&#x7528;&#x3002;</p>
+</li>
 </ul>
-<h2 id="forwardinvocation"><a href="https://zhangbuhuai.com/post/message-forwarding.html#forwardinvocation" target="_blank">#</a>-forwardInvocation</h2>
-<p><code>-forwardInvocation:</code>&#x8981;&#x548C;<code>-methodSignatureForSelector:</code>&#x914D;&#x5957;&#x4F7F;&#x7528;&#xFF0C;&#x540E;&#x8005;&#x4E3A;<code>NSMethodSignature</code>&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x643A;&#x5E26; selector &#x7684;&#x7B7E;&#x540D;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x3001;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x548C;&#x957F;&#x5EA6;&#x7B49;&#x3002;Runtime &#x5185;&#x90E8;&#x4F1A;&#x57FA;&#x4E8E;<code>NSMethodSignature</code>&#x5B9E;&#x4F8B;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;<code>NSInvocation</code>&#x5BF9;&#x8C61;&#xFF0C;&#x4F5C;&#x4E3A;&#x56DE;&#x8C03;<code>-forwardInvocation:</code>&#x7684;&#x5165;&#x53C2;&#x3002;</p>
-<p>&#x53EA;&#x8981;&#x56DE;&#x8C03;<code>-methodSignatureForSelector:</code>&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;&#x5C31;&#x4F1A;&#x8FDB;&#x5165;<code>-forwardInvocation:</code>&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5728;&#x6B64;&#x8FC7;&#x7A0B;&#x4E2D;&#x4FEE;&#x6539; invocation &#x7684; target&#xFF0C;&#x5C06; receiver &#x5B9A;&#x4F4D;&#x5230;&#x522B;&#x5904;&#xFF1A;</p>
-<pre><code class="lang-objectivec">- (<span class="hljs-keyword">void</span>)forwardInvocation:(<span class="hljs-built_in">NSInvocation</span> *)invocation {
-    [invocation setTarget:<span class="hljs-keyword">self</span>.target];  <span class="hljs-comment">// &#x8BA9;self.target&#x6210;&#x4E3A;&#x6D88;&#x606F;&#x7684;receiver</span>
-    [invocation invoke];
-}
-</code></pre>
-<p>&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x9664;&#x4E86;&#x4FEE;&#x6539; receiver&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x5165;&#x53C2;&#xFF0C;&#x751A;&#x81F3;&#x662F;&#x8FD4;&#x56DE;&#x503C;&#x3002;<code>NSInvocation#invoke</code>&#x4F1A;&#x89E6;&#x53D1; receiver &#x7684; selector &#x7684;&#x8C03;&#x7528;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x8C03;&#x7528;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x6CA1;&#x600E;&#x4E48;&#x529E;&#xFF0C;&#x53EA;&#x8981;&#x786E;&#x4FDD; invocation &#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF08;<code>NSInvocation#setReturnValue:</code>&#xFF09;&#x7684;&#x7C7B;&#x578B;&#x548C;&#x957F;&#x5EA6;&#x4E00;&#x81F4;&#x5373;&#x53EF;&#x3002;</p>
-<p>Unknown selector &#x89E6;&#x53D1;&#x7684;&#x4E09;&#x4E2A;&#x56DE;&#x8C03;&#x4ECB;&#x7ECD;&#x5B8C;&#x6BD5;&#xFF0C;&#x7B80;&#x5355;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x3002;</p>
-<p>&#x5C31;&#x4F5C;&#x7528;&#x800C;&#x8A00;&#xFF0C;<code>+resolveInstanceMethod:</code>&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x4E3A;&#x7C7B;&#x52A8;&#x6001;&#x589E;&#x52A0;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#xFF1B;<code>-forwardingTargetForSelector:</code>&#x7528;&#x4E8E;&#x5C06; selector &#x7684; receiver &#x4ECE;<code>self</code>&#x5B9A;&#x4F4D;&#x5230;&#x522B;&#x7684; target&#xFF1B;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x4F7F;&#x7528;&#x90FD;&#x6BD4;&#x8F83;&#x76F4;&#x63A5;&#x7B80;&#x5355;&#xFF0C;&#x4E0D;&#x592A;&#x80FD;&#x6574;&#x51FA;&#x82B1;&#x6837;&#x3002;<code>-forwardInvocation:</code>&#x5C31;&#x4E0D;&#x540C;&#x4E86;&#xFF0C;&#x5728;&#x5B83;&#x8EAB;&#x4E0A;&#x53EF;&#x4EE5;&#x52A8;&#x7684;&#x624B;&#x811A;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x4E0D;&#x5149;&#x53EF;&#x4EE5;&#x4FEE;&#x6539; receiver&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x7BE1;&#x6539;&#x5165;&#x53C2;&#x3001;&#x8FD4;&#x56DE;&#x503C;&#xFF1B;&#x5F53;&#x7136;&#xFF0C;<code>-forwardInvocation:</code>&#x7684;&#x4EE3;&#x4EF7;&#x6BD4;&#x8F83;&#x5927;&#x4E00;&#x4E9B;&#xFF0C;&#x6BD5;&#x7ADF;&#x8FD8;&#x4F1A;&#x89E6;&#x53D1;<code>-methodSignatureForSelector:</code>&#xFF0C;&#x6784;&#x5EFA;<code>NSMethodSignature</code>&#x548C;<code>NSInvocation</code>&#x5B9E;&#x4F8B;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x52A8;&#x6001;&#x65B0;&#x589E;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;<code>+resolveInstanceMethod:</code>&#x9636;&#x6BB5;&#x5B8C;&#x6210;&#xFF1B;&#x5982;&#x679C;&#x53EA;&#x662F;&#x9700;&#x8981;&#x7BE1;&#x6539; receiver&#xFF0C;&#x5728;<code>-forwardingTargetForSelector:</code>&#x9636;&#x6BB5;&#x5B8C;&#x6210;&#x66F4;&#x7701;&#x4E8B;&#x513F;&#xFF1B;&#x5982;&#x679C;&#x9700;&#x8981;&#x66F4;&#x9AD8;&#x9636;&#x7684;&#x73A9;&#x6CD5;&#xFF0C;&#x6216;&#x8BB8;&#x771F;&#x7684;&#x53EA;&#x6709;<code>-forwardInvocation:</code>&#x80FD;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x3002;</p>
-<h2 id="nsproxy">NSProxy</h2>
+<ul>
+<li><p>&#x5176;&#x52A8;&#x6001;&#x6027;&#x4F53;&#x73B0;&#x5728;&#x51E0;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
 <blockquote>
-<p>NSProxy is an abstract superclass defining an API for objects that act as stand-ins for other objects or for objects that don&#x2019;t exist yet. Typically, a message to a proxy is forwarded to the real object or causes the proxy to load (or transform itself into) the real object. Subclasses of NSProxy can be used to implement transparent distributed messaging (for example, NSDistantObject) or for lazy instantiation of objects that are expensive to create.</p>
+<p>1.&#x52A8;&#x6001;&#x7C7B;&#x578B;&#xFF1A;
+ &#x5373;&#x8FD0;&#x884C;&#x65F6;&#x518D;&#x51B3;&#x5B9A;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x7B80;&#x5355;&#x8BF4;&#x5C31;&#x662F;id&#x7C7B;&#x578B;&#xFF0C;&#x4EFB;&#x4F55;&#x5BF9;&#x8C61;&#x90FD;&#x53EF;&#x4EE5;&#x88AB;id&#x6307;&#x9488;&#x6240;&#x6307;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x624D;&#x80FD;&#x51B3;&#x5B9A;&#x662F;&#x4EC0;&#x4E48;&#x7C7B;&#x578B;&#x3002;&#x50CF;&#x5185;&#x7F6E;&#x7684;&#x660E;&#x786E;&#x7684;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x90FD;&#x5C5E;&#x4E8E;&#x9759;&#x6001;&#x7C7B;&#x578B;(int&#x3001;NSString&#x7B49;)&#x3002;&#x9759;&#x6001;&#x7C7B;&#x578B;&#x5728;&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x80FD;&#x88AB;&#x8BC6;&#x522B;&#x51FA;&#x6765;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x82E5;&#x7A0B;&#x5E8F;&#x53D1;&#x751F;&#x4E86;&#x7C7B;&#x578B;&#x4E0D;&#x5BF9;&#x5E94;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x5C31;&#x4F1A;&#x53D1;&#x51FA;&#x8B66;&#x544A;&#x3002;&#x800C;&#x52A8;&#x6001;&#x7C7B;&#x578B;&#x5C31;&#x7F16;&#x8BD1;&#x5668;&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#x662F;&#x4E0D;&#x80FD;&#x88AB;&#x8BC6;&#x522B;&#x7684;&#xFF0C;&#x8981;&#x7B49;&#x5230;&#x8FD0;&#x884C;&#x65F6;(run time)&#xFF0C;&#x5373;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x6839;&#x636E;&#x8BED;&#x5883;&#x6765;&#x8BC6;&#x522B;&#x3002;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x9762;&#x5C31;&#x6709;&#x4E24;&#x4E2A;&#x6982;&#x5FF5;&#x8981;&#x5206;&#x6E05;&#xFF1A;&#x7F16;&#x8BD1;&#x65F6;&#x8DDF;&#x8FD0;&#x884C;&#x65F6;&#x3002;
+ 2.&#x52A8;&#x6001;&#x7ED1;&#x5B9A;&#xFF1A;
+ &#x57FA;&#x4E8E;&#x52A8;&#x6001;&#x7C7B;&#x578B;&#xFF0C;&#x5728;&#x67D0;&#x4E2A;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x88AB;&#x786E;&#x5B9A;&#x540E;&#xFF0C;&#x5176;&#x7C7B;&#x578B;&#x4FBF;&#x88AB;&#x786E;&#x5B9A;&#x4E86;&#x3002;&#x8BE5;&#x5BF9;&#x8C61;&#x5BF9;&#x5E94;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x54CD;&#x5E94;&#x7684;&#x6D88;&#x606F;&#x4E5F;&#x88AB;&#x5B8C;&#x5168;&#x786E;&#x5B9A;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x52A8;&#x6001;&#x7ED1;&#x5B9A;&#x3002;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x5411;&#x4E00;&#x4E2A;NSObject&#x5BF9;&#x8C61;&#x53D1;&#x9001;-respondsToSelector:&#x6216;&#x8005; -instancesRespondToSelector:&#x7B49;&#x6765;&#x786E;&#x5B9A;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5BF9;&#x67D0;&#x4E2A;SEL&#x505A;&#x51FA;&#x54CD;&#x5E94;&#xFF0C;&#x800C;&#x5728;OC&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;&#x88AB;&#x89E6;&#x53D1;&#x4E4B;&#x524D;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x7C7B; &#x7684;+resolveClassMethod:&#x548C;+resolveInstanceMethod:&#x5C06;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5728;&#x6B64;&#x65F6;&#x6709;&#x673A;&#x4F1A;&#x52A8;&#x6001;&#x5730;&#x5411;&#x7C7B;&#x6216;&#x8005;&#x5B9E;&#x4F8B;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x65B9; &#x6CD5;&#xFF0C;&#x4E5F;&#x5373;&#x7C7B;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x7ED1;&#x5B9A;&#x7684;&#xFF1B;isKindOfClass&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x7684;&#x9053;&#x7406;&#x3002;</p>
 </blockquote>
-<p>NSProxy&#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7684;&#x8D85;&#x7C7B;&#xFF0C;&#x5B83;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;API&#xFF0C;&#x7528;&#x6765;&#x5145;&#x5F53;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x6216;&#x8005;&#x4E00;&#x4E9B;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x66FF;&#x8EAB;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x53D1;&#x9001;&#x7ED9;Proxy&#x7684;&#x6D88;&#x606F;&#x4F1A;&#x88AB;&#x8F6C;&#x53D1;&#x7ED9;&#x5B9E;&#x9645;&#x5BF9;&#x8C61;&#xFF0C;&#x6216;&#x4F7F;Proxy&#x52A0;&#x8F7D;&#xFF08;&#x8F6C;&#x5316;&#x4E3A;&#xFF09;&#x5B9E;&#x9645;&#x5BF9;&#x8C61;&#x3002; NSProxy&#x7684;&#x5B50;&#x7C7B;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5B9E;&#x73B0;&#x900F;&#x660E;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x6D88;&#x606F;&#x4F20;&#x9012;(&#x4F8B;&#x5982;&#xFF0C;NSDistantObject)&#xFF0C;&#x6216;&#x8005;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x5F00;&#x9500;&#x8F83;&#x5927;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x60F0;&#x6027;&#x5B9E;&#x4F8B;&#x5316;&#x3002;</p>
-<p>&#x4F5C;&#x4E3A;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x5B83;&#x4E0D;&#x5B9E;&#x73B0;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x4F1A;&#x5728;&#x6536;&#x5230;&#x4EFB;&#x4F55;&#x5B83;&#x4E0D;&#x54CD;&#x5E94;&#x7684;&#x6D88;&#x606F;&#x65F6;&#x5F15;&#x53D1;&#x5F02;&#x5E38;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5177;&#x4F53;&#x5B50;&#x7C7B;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x521D;&#x59CB;&#x5316;&#x6216;&#x8005;&#x521B;&#x5EFA;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x91CD;&#x5199;- (void)forwardInvocation:(NSInvocation <em>)invocation;&#x548C;- (nullable NSMethodSignature </em>)methodSignatureForSelector:(SEL)sel&#x65B9;&#x6CD5;&#xFF0C;&#x6765;&#x8F6C;&#x53D1;&#x5B83;&#x6CA1;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x8FD9;&#x4E5F;&#x662F;NSProxy&#x7684;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#xFF0C;&#x8D1F;&#x8D23;&#x628A;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x7ED9;&#x771F;&#x6B63;&#x7684;target&#x7684;&#x4EE3;&#x7406;&#x7C7B;&#xFF0C;NSProxy&#x6B63;&#x662F;&#x4EE3;&#x7406;&#x7684;&#x610F;&#x601D;&#x3002;</p>
-<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;:</h3>
-<p><strong>NSProxy&#x4E13;&#x95E8;&#x4E3A;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x800C;&#x751F;</strong></p>
-<h2 id="reference">Reference</h2>
-<p><a href="https://zhangbuhuai.com/post/message-forwarding.html" target="_blank">1.NSObject &#x7684;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;</a></p>
-<p><a href="https://juejin.cn/post/6844903606483681288" target="_blank">2.NSProxy&#x7684;&#x7406;&#x89E3;&#x548C;&#x4F7F;&#x7528;</a></p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -1264,12 +1214,8 @@
 
             
                 
-                <a href="Method.html" class="navigation navigation-prev " aria-label="Previous page: Method">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="KVC.html" class="navigation navigation-next " aria-label="Next page: KVC">
+                <a href="Block.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Block">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1280,7 +1226,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"MessageForwarding","level":"1.2.4.4","depth":3,"next":{"title":"KVC","level":"1.2.4.5","depth":3,"path":"iOS/OCFoundation/KVC.md","ref":"iOS/OCFoundation/KVC.md","articles":[]},"previous":{"title":"Method","level":"1.2.4.3","depth":3,"path":"iOS/OCFoundation/Method.md","ref":"iOS/OCFoundation/Method.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/MessageForwarding.md","mtime":"2021-05-06T02:52:19.119Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-06T02:52:55.319Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Runtime","level":"1.2.4.1","depth":3,"next":{"title":"Block","level":"1.2.4.2","depth":3,"path":"iOS/OCFoundation/Block.md","ref":"iOS/OCFoundation/Block.md","articles":[]},"previous":{"title":"第四章 OC Foundation","level":"1.2.4","depth":2,"ref":"","articles":[{"title":"Runtime","level":"1.2.4.1","depth":3,"path":"iOS/OCFoundation/Runtime.md","ref":"iOS/OCFoundation/Runtime.md","articles":[]},{"title":"Block","level":"1.2.4.2","depth":3,"path":"iOS/OCFoundation/Block.md","ref":"iOS/OCFoundation/Block.md","articles":[]},{"title":"Method","level":"1.2.4.3","depth":3,"path":"iOS/OCFoundation/Method.md","ref":"iOS/OCFoundation/Method.md","articles":[]},{"title":"MessageForwarding","level":"1.2.4.4","depth":3,"path":"iOS/OCFoundation/MessageForwarding.md","ref":"iOS/OCFoundation/MessageForwarding.md","articles":[]},{"title":"KVC","level":"1.2.4.5","depth":3,"path":"iOS/OCFoundation/KVC.md","ref":"iOS/OCFoundation/KVC.md","articles":[]},{"title":"KVO","level":"1.2.4.6","depth":3,"path":"iOS/OCFoundation/KVO.md","ref":"iOS/OCFoundation/KVO.md","articles":[]},{"title":"Runloop","level":"1.2.4.7","depth":3,"path":"iOS/OCFoundation/Runloop.md","ref":"iOS/OCFoundation/Runloop.md","articles":[]},{"title":"MultiThreading","level":"1.2.4.8","depth":3,"path":"iOS/OCFoundation/MultiThreading.md","ref":"iOS/OCFoundation/MultiThreading.md","articles":[]},{"title":"GCD-Usage","level":"1.2.4.9","depth":3,"path":"iOS/OCFoundation/GCDUsage.md","ref":"iOS/OCFoundation/GCDUsage.md","articles":[]},{"title":"GCD-Thread","level":"1.2.4.10","depth":3,"path":"iOS/OCFoundation/GCDThread.md","ref":"iOS/OCFoundation/GCDThread.md","articles":[]},{"title":"Lock","level":"1.2.4.11","depth":3,"path":"iOS/OCFoundation/Lock.md","ref":"iOS/OCFoundation/Lock.md","articles":[]},{"title":"AutoReleasePool","level":"1.2.4.12","depth":3,"path":"iOS/OCFoundation/AutoReleasePool.md","ref":"iOS/OCFoundation/AutoReleasePool.md","articles":[]},{"title":"@synchronized","level":"1.2.4.13","depth":3,"path":"iOS/OCFoundation/@synchronized.md","ref":"iOS/OCFoundation/@synchronized.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/Runtime.md","mtime":"2021-05-06T02:52:19.119Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-06T02:52:55.319Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
