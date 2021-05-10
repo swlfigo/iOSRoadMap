@@ -54,6 +54,7 @@
   * 第六章 iOS知识点
 
     * [Dyld](iOS/Knowledge/Dyld.md)
+    * [Dyld](iOS/Knowledge/Dyld.md)
     * [Mach-O](iOS/Knowledge/MachO.md)
     * [PreMain](iOS/Knowledge/PreMain.md)
     * [iOS 编译过程](iOS/Knowledge/Complie.md)
