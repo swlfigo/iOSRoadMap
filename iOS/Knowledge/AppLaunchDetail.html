@@ -1,0 +1,1528 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>App启动详细 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="MachO.html" />
+    
+    
+    <link rel="prev" href="Dyld.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../ReadME.html">
+            
+                <a href="../ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../UIKit/UIResponder.html">
+            
+                <a href="../UIKit/UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../UIKit/UIOffScreenRendering.html">
+            
+                <a href="../UIKit/UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../UIKit/UIViewRender.html">
+            
+                <a href="../UIKit/UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../UIKit/UIViewRenderProcess.html">
+            
+                <a href="../UIKit/UIViewRenderProcess.html">
+            
+                    
+                    iOS界面渲染流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5" data-path="../UIKit/UIImageRender.html">
+            
+                <a href="../UIKit/UIImageRender.html">
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" >
+            
+                <span>
+            
+                    
+                    第二章 Memory
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../Memory/StructMemoryAligned.html">
+            
+                <a href="../Memory/StructMemoryAligned.html">
+            
+                    
+                    iOS结构体内存对齐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../Memory/MemoryFiveMainSection.html">
+            
+                <a href="../Memory/MemoryFiveMainSection.html">
+            
+                    
+                    内存中的5大区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../Memory/TaggedPointer.html">
+            
+                <a href="../Memory/TaggedPointer.html">
+            
+                    
+                    Tagged Pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="../Memory/SideTables.html">
+            
+                <a href="../Memory/SideTables.html">
+            
+                    
+                    SideTables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.5" data-path="../Memory/RetainCount.html">
+            
+                <a href="../Memory/RetainCount.html">
+            
+                    
+                    RetainCount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.6" data-path="../Memory/WeakTable.html">
+            
+                <a href="../Memory/WeakTable.html">
+            
+                    
+                    WeakTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    第三章 Objc_Object
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../Objc_Object/Property.html">
+            
+                <a href="../Objc_Object/Property.html">
+            
+                    
+                    Propety属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="../Objc_Object/isa.html">
+            
+                <a href="../Objc_Object/isa.html">
+            
+                    
+                    isa
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="../Objc_Object/ObjectClass.html">
+            
+                <a href="../Objc_Object/ObjectClass.html">
+            
+                    
+                    ObjectClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.4" data-path="../Objc_Object/ClassRWT.html">
+            
+                <a href="../Objc_Object/ClassRWT.html">
+            
+                    
+                    ClassRWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.5" data-path="../Objc_Object/OCAllocInit.html">
+            
+                <a href="../Objc_Object/OCAllocInit.html">
+            
+                    
+                    AllocInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.6" data-path="../Objc_Object/Category.html">
+            
+                <a href="../Objc_Object/Category.html">
+            
+                    
+                    Category
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.7" data-path="../Objc_Object/AssociatedObject.html">
+            
+                <a href="../Objc_Object/AssociatedObject.html">
+            
+                    
+                    AssociatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    第四章 OC Foundation
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../OCFoundation/Runtime.html">
+            
+                <a href="../OCFoundation/Runtime.html">
+            
+                    
+                    Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../OCFoundation/Block.html">
+            
+                <a href="../OCFoundation/Block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="../OCFoundation/Method.html">
+            
+                <a href="../OCFoundation/Method.html">
+            
+                    
+                    Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="../OCFoundation/MessageForwarding.html">
+            
+                <a href="../OCFoundation/MessageForwarding.html">
+            
+                    
+                    MessageForwarding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="../OCFoundation/KVC.html">
+            
+                <a href="../OCFoundation/KVC.html">
+            
+                    
+                    KVC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="../OCFoundation/KVO.html">
+            
+                <a href="../OCFoundation/KVO.html">
+            
+                    
+                    KVO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.7" data-path="../OCFoundation/Runloop.html">
+            
+                <a href="../OCFoundation/Runloop.html">
+            
+                    
+                    Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.8" data-path="../OCFoundation/MultiThreading.html">
+            
+                <a href="../OCFoundation/MultiThreading.html">
+            
+                    
+                    MultiThreading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.9" data-path="../OCFoundation/GCDUsage.html">
+            
+                <a href="../OCFoundation/GCDUsage.html">
+            
+                    
+                    GCD-Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.10" data-path="../OCFoundation/GCDThread.html">
+            
+                <a href="../OCFoundation/GCDThread.html">
+            
+                    
+                    GCD-Thread
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.11" data-path="../OCFoundation/Lock.html">
+            
+                <a href="../OCFoundation/Lock.html">
+            
+                    
+                    Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.12" data-path="../OCFoundation/AutoReleasePool.html">
+            
+                <a href="../OCFoundation/AutoReleasePool.html">
+            
+                    
+                    AutoReleasePool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.13" data-path="../OCFoundation/@synchronized.html">
+            
+                <a href="../OCFoundation/@synchronized.html">
+            
+                    
+                    @synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" >
+            
+                <span>
+            
+                    
+                    第五章 源码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1" data-path="../SourceCode/YYASyncLayer.html">
+            
+                <a href="../SourceCode/YYASyncLayer.html">
+            
+                    
+                    YYAsyncLayer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.2" data-path="../SourceCode/FluentDarkModeKit.html">
+            
+                <a href="../SourceCode/FluentDarkModeKit.html">
+            
+                    
+                    FluentDarkModeKit 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.3" data-path="../SourceCode/KTVHttpCache.html">
+            
+                <a href="../SourceCode/KTVHttpCache.html">
+            
+                    
+                    KTVHttpCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" >
+            
+                <span>
+            
+                    
+                    第六章 iOS知识点
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.6.1" data-path="Dyld.html">
+            
+                <a href="Dyld.html">
+            
+                    
+                    Dyld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.6.2" data-path="AppLaunchDetail.html">
+            
+                <a href="AppLaunchDetail.html">
+            
+                    
+                    App启动详细
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.3" data-path="MachO.html">
+            
+                <a href="MachO.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.4" data-path="PreMain.html">
+            
+                <a href="PreMain.html">
+            
+                    
+                    PreMain
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.5" data-path="Complie.html">
+            
+                <a href="Complie.html">
+            
+                    
+                    iOS 编译过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.6" data-path="BinaryOrder.html">
+            
+                <a href="BinaryOrder.html">
+            
+                    
+                    二进制重排
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.7" data-path="RuntimeSuper.html">
+            
+                <a href="RuntimeSuper.html">
+            
+                    
+                    self class && super class
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.8" data-path="RuntimeCls.html">
+            
+                <a href="RuntimeCls.html">
+            
+                    
+                    isKindOfClass && isMemberOfClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    网络
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../../Network/TCPMessageFrame.html">
+            
+                <a href="../../Network/TCPMessageFrame.html">
+            
+                    
+                    TCP粘包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../../Network/Https.html">
+            
+                <a href="../../Network/Https.html">
+            
+                    
+                    Https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../../Network/TCPHandShake.html">
+            
+                <a href="../../Network/TCPHandShake.html">
+            
+                    
+                    TCPHandShake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../../Network/TCPUDP.html">
+            
+                <a href="../../Network/TCPUDP.html">
+            
+                    
+                    TCP&UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../../Network/HTTPDNS.html">
+            
+                <a href="../../Network/HTTPDNS.html">
+            
+                    
+                    HTTPDNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../../Algorithm/BinaryInsertSort.html">
+            
+                <a href="../../Algorithm/BinaryInsertSort.html">
+            
+                    
+                    二分法插入排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../../Algorithm/BinarySort.html">
+            
+                <a href="../../Algorithm/BinarySort.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../Article/ReadME.html">
+            
+                <a href="../../Article/ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="../../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="../../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../Article/谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../Article/谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../Article/面试驱动技术 - Category 相关考点.html">
+            
+                <a href="../../Article/面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../../Article/iOS 编译过程的原理和应用.html">
+            
+                <a href="../../Article/iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../../Article/Objective-C Runtime 机制简析.html">
+            
+                <a href="../../Article/Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.8" data-path="../../Article/OC 消息机制和 super 关键字.html">
+            
+                <a href="../../Article/OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.9" data-path="../../Article/UIViewController 预加载方案浅谈.html">
+            
+                <a href="../../Article/UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.10" data-path="../../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="../../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.11" data-path="../../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="../../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.12" data-path="../../Article/深入了解 iOS 的初始化.html">
+            
+                <a href="../../Article/深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.13" data-path="../../Article/App 启动时间：过去，现在和未来.html">
+            
+                <a href="../../Article/App 启动时间：过去，现在和未来.html">
+            
+                    
+                    App 启动时间：过去，现在和未来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.14" data-path="../../Article/iOSUIResponderChain.html">
+            
+                <a href="../../Article/iOSUIResponderChain.html">
+            
+                    
+                    iOS事件处理，看我就够了~
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.15" data-path="../../Article/iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                <a href="../../Article/iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                    
+                    iOS 代码瘦身实践_ 删除无用的类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.16" data-path="../../Article/iOSLaunchScreenBug.html">
+            
+                <a href="../../Article/iOSLaunchScreenBug.html">
+            
+                    
+                    深夜暗坑 - iOS启动图异常修复方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >App启动详细</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="app-launch-detail">App Launch Detail</h1>
+<h2 id="&#x57FA;&#x672C;&#x6982;&#x5FF5;">&#x57FA;&#x672C;&#x6982;&#x5FF5;</h2>
+<h3 id="&#x542F;&#x52A8;&#x7684;&#x5B9A;&#x4E49;">&#x542F;&#x52A8;&#x7684;&#x5B9A;&#x4E49;</h3>
+<p>&#x542F;&#x52A8;&#x6709;&#x4E24;&#x79CD;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<ul>
+<li>&#x5E7F;&#x4E49;&#xFF1A;&#x70B9;&#x51FB;&#x56FE;&#x6807;&#x5230;&#x9996;&#x9875;&#x6570;&#x636E;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;</li>
+<li>&#x72ED;&#x4E49;&#xFF1A;&#x70B9;&#x51FB;&#x56FE;&#x6807;&#x5230; Launch Image &#x5B8C;&#x5168;&#x6D88;&#x5931;&#x7B2C;&#x4E00;&#x5E27;</li>
+</ul>
+<p>&#x8FD9;&#x662F;&#x4ECE;&#x7528;&#x6237;&#x611F;&#x77E5;&#x7EF4;&#x5EA6;&#x5B9A;&#x4E49;&#x542F;&#x52A8;&#xFF0C;&#x90A3;&#x4E48;&#x4EE3;&#x7801;&#x4E0A;&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x542F;&#x52A8;&#x5462;&#xFF1F;Apple &#x5728; MetricKit &#x4E2D;&#x7ED9;&#x51FA;&#x4E86;&#x5B98;&#x65B9;&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li>&#x8D77;&#x70B9;&#xFF1A;&#x8FDB;&#x7A0B;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x95F4;</li>
+<li>&#x7EC8;&#x70B9;&#xFF1A;&#x7B2C;&#x4E00;&#x4E2A;<code>CA::Transaction::commit()</code></li>
+</ul>
+<blockquote>
+<p>Tips&#xFF1A;<code>CATransaction</code> &#x662F; Core Animation &#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x79CD;&#x4E8B;&#x52A1;&#x673A;&#x5236;&#xFF0C;&#x628A;&#x4E00;&#x7EC4; UI &#x4E0A;&#x7684;&#x4FEE;&#x6539;&#x6253;&#x5305;&#xFF0C;&#x4E00;&#x8D77;&#x53D1;&#x7ED9; Render Server &#x6E32;&#x67D3;&#x3002;</p>
+</blockquote>
+<h3 id="&#x542F;&#x52A8;&#x7684;&#x79CD;&#x7C7B;">&#x542F;&#x52A8;&#x7684;&#x79CD;&#x7C7B;</h3>
+<p>&#x6839;&#x636E;&#x573A;&#x666F;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x542F;&#x52A8;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E09;&#x79CD;&#xFF1A;&#x51B7;&#x542F;&#x52A8;&#xFF0C;&#x70ED;&#x542F;&#x52A8;&#x548C;&#x56DE;&#x524D;&#x53F0;&#x3002;</p>
+<ul>
+<li>&#x51B7;&#x542F;&#x52A8;&#xFF1A;&#x7CFB;&#x7EDF;&#x91CC;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x8FDB;&#x7A0B;&#x7684;&#x7F13;&#x5B58;&#x4FE1;&#x606F;&#xFF0C;&#x5178;&#x578B;&#x7684;&#x662F;&#x91CD;&#x542F;&#x624B;&#x673A;&#x540E;&#x76F4;&#x63A5;&#x542F;&#x52A8; App</li>
+<li>&#x70ED;&#x542F;&#x52A8;&#xFF1A;&#x5982;&#x679C;&#x628A; App &#x8FDB;&#x7A0B;&#x6740;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x7ACB;&#x523B;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#xFF0C;&#x8FD9;&#x6B21;&#x542F;&#x52A8;&#x5C31;&#x662F;&#x70ED;&#x542F;&#x52A8;&#xFF0C;&#x56E0;&#x4E3A;&#x8FDB;&#x7A0B;&#x7F13;&#x5B58;&#x8FD8;&#x5728;</li>
+<li>&#x56DE;&#x524D;&#x53F0;&#xFF1A;&#x5927;&#x591A;&#x6570;&#x65F6;&#x5019;&#x4E0D;&#x4F1A;&#x88AB;&#x5B9A;&#x4E49;&#x4E3A;&#x542F;&#x52A8;&#xFF0C;&#x56E0;&#x4E3A;&#x6B64;&#x65F6; App &#x4ECD;&#x7136;&#x6D3B;&#x7740;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x5904;&#x4E8E; suspended &#x72B6;&#x6001;</li>
+</ul>
+<h3 id="mach-o">Mach-O</h3>
+<p>Mach-O &#x662F; iOS &#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x5178;&#x578B;&#x7684; Mach-O &#x662F;&#x4E3B;&#x4E8C;&#x8FDB;&#x5236;&#x548C;&#x52A8;&#x6001;&#x5E93;&#x3002;Mach-O &#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E09;&#x90E8;&#x5206;&#xFF1A;</p>
+<ul>
+<li>Header</li>
+<li>Load Commands</li>
+<li>Data</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-29-094446.jpg" alt="&#x56FE;&#x7247;"></p>
+<p>Header &#x7684;&#x6700;&#x5F00;&#x59CB;&#x662F; Magic Number&#xFF0C;&#x8868;&#x793A;&#x8FD9;&#x662F;&#x4E00;&#x4E2A; Mach-O &#x6587;&#x4EF6;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#x8FD8;&#x5305;&#x542B;&#x4E00;&#x4E9B; Flags&#xFF0C;&#x8FD9;&#x4E9B; flags &#x4F1A;&#x5F71;&#x54CD; Mach-O &#x7684;&#x89E3;&#x6790;&#x3002;</p>
+<p><strong>Load Commands &#x5B58;&#x50A8; Mach-O &#x7684;&#x5E03;&#x5C40;&#x4FE1;&#x606F;</strong>&#xFF0C;&#x6BD4;&#x5982; Segment command &#x548C; Data &#x4E2D;&#x7684; Segment/Section &#x662F;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#x3002;&#x9664;&#x4E86;&#x5E03;&#x5C40;&#x4FE1;&#x606F;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x5305;&#x542B;&#x4E86;&#x4F9D;&#x8D56;&#x7684;&#x52A8;&#x6001;&#x5E93;&#x7B49;&#x542F;&#x52A8; App &#x9700;&#x8981;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<p><strong>Data &#x90E8;&#x5206;&#x5305;&#x542B;&#x4E86;&#x5B9E;&#x9645;&#x7684;&#x4EE3;&#x7801;&#x548C;&#x6570;&#x636E;</strong>&#xFF0C;Data &#x88AB;&#x5206;&#x5272;&#x6210;&#x5F88;&#x591A;&#x4E2A; Segment&#xFF0C;&#x6BCF;&#x4E2A; Segment &#x53C8;&#x88AB;&#x5212;&#x5206;&#x6210;&#x5F88;&#x591A;&#x4E2A; Section&#xFF0C;&#x5206;&#x522B;&#x5B58;&#x653E;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x6807;&#x51C6;&#x7684;&#x4E09;&#x4E2A; Segment &#x662F; TEXT&#xFF0C;DATA&#xFF0C;LINKEDIT&#xFF0C;&#x4E5F;&#x652F;&#x6301;&#x81EA;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<ul>
+<li><strong>TEXT</strong>&#xFF0C;&#x4EE3;&#x7801;&#x6BB5;&#xFF0C;&#x53EA;&#x8BFB;&#x53EF;&#x6267;&#x884C;&#xFF0C;&#x5B58;&#x50A8;&#x51FD;&#x6570;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x4EE3;&#x7801;(<strong>text)&#xFF0C;&#x5E38;&#x91CF;&#x5B57;&#x7B26;&#x4E32;(</strong>cstring)&#xFF0C;Objective C &#x7684;&#x7C7B;/&#x65B9;&#x6CD5;&#x540D;&#x7B49;&#x4FE1;&#x606F;</li>
+<li><strong>DATA</strong>&#xFF0C;&#x6570;&#x636E;&#x6BB5;&#xFF0C;&#x8BFB;&#x5199;&#xFF0C;&#x5B58;&#x50A8; Objective C &#x7684;&#x5B57;&#x7B26;&#x4E32;(__cfstring)&#xFF0C;&#x4EE5;&#x53CA;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x5143;&#x6570;&#x636E;&#xFF1A;class/protocol/method&#x2026;</li>
+<li><strong>LINKEDIT</strong>&#xFF0C;&#x542F;&#x52A8; App &#x9700;&#x8981;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5982; bind &amp; rebase &#x7684;&#x5730;&#x5740;&#xFF0C;&#x4EE3;&#x7801;&#x7B7E;&#x540D;&#xFF0C;&#x7B26;&#x53F7;&#x8868;&#x2026;</li>
+</ul>
+<h3 id="dyld">dyld</h3>
+<p>dyld &#x662F;&#x542F;&#x52A8;&#x7684;&#x8F85;&#x52A9;&#x7A0B;&#x5E8F;&#xFF0C;&#x662F; in-process &#x7684;&#xFF0C;&#x5373;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x628A; dyld &#x52A0;&#x8F7D;&#x5230;&#x8FDB;&#x7A0B;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x91CC;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x540E;&#x7EED;&#x7684;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4EA4;&#x7ED9; dyld&#x3002;dyld &#x4E3B;&#x8981;&#x6709;&#x4E24;&#x4E2A;&#x7248;&#x672C;&#xFF1A;dyld2 &#x548C; dyld3&#x3002;</p>
+<p>dyld2 &#x662F;&#x4ECE; iOS 3.1 &#x5F15;&#x5165;&#xFF0C;&#x4E00;&#x76F4;&#x6301;&#x7EED;&#x5230; iOS 12&#x3002;dyld2 &#x6709;&#x4E2A;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x4F18;&#x5316;&#x662F; <strong>dyld shared cache</strong>[1]&#xFF0C;&#x4EC0;&#x4E48;&#x662F; shared cache &#x5462;&#xFF1F;</p>
+<ul>
+<li>shared cache &#x5C31;&#x662F;&#x628A;&#x7CFB;&#x7EDF;&#x5E93;(UIKit &#x7B49;)&#x5408;&#x6210;&#x4E00;&#x4E2A;&#x5927;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x63D0;&#x9AD8;&#x52A0;&#x8F7D;&#x6027;&#x80FD;&#x7684;&#x7F13;&#x5B58;&#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<p>iOS 13 &#x5F00;&#x59CB; Apple &#x5BF9;&#x4E09;&#x65B9; App &#x542F;&#x7528;&#x4E86; dyld3&#xFF0C;dyld3 &#x7684;&#x6700;&#x91CD;&#x8981;&#x7684;&#x7279;&#x6027;&#x5C31;&#x662F;&#x542F;&#x52A8;&#x95ED;&#x5305;&#xFF0C;&#x95ED;&#x5305;&#x91CC;&#x5305;&#x542B;&#x4E86;&#x542F;&#x52A8;&#x6240;&#x9700;&#x8981;&#x7684;&#x7F13;&#x5B58;&#x4FE1;&#x606F;&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x9AD8;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x3002;</p>
+<h3 id="&#x865A;&#x62DF;&#x5185;&#x5B58;">&#x865A;&#x62DF;&#x5185;&#x5B58;</h3>
+<p>&#x5185;&#x5B58;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x548C;&#x7269;&#x7406;&#x5185;&#x5B58;&#xFF0C;&#x5176;&#x4E2D;&#x7269;&#x7406;&#x5185;&#x5B58;&#x662F;&#x5B9E;&#x9645;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x662F;&#x5728;&#x7269;&#x7406;&#x5185;&#x5B58;&#x4E4B;&#x4E0A;&#x5EFA;&#x7ACB;&#x7684;&#x4E00;&#x5C42;&#x903B;&#x8F91;&#x5730;&#x5740;&#xFF0C;&#x4FDD;&#x8BC1;&#x5185;&#x5B58;&#x8BBF;&#x95EE;&#x5B89;&#x5168;&#x7684;&#x540C;&#x65F6;&#x4E3A;&#x5E94;&#x7528;&#x63D0;&#x4F9B;&#x4E86;&#x8FDE;&#x7EED;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x3002;</p>
+<p>&#x7269;&#x7406;&#x5185;&#x5B58;&#x548C;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x4EE5;&#x9875;&#x4E3A;&#x5355;&#x4F4D;&#x6620;&#x5C04;&#xFF0C;&#x4F46;&#x8FD9;&#x4E2A;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x4E0D;&#x662F;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#xFF1A;&#x4E00;&#x9875;&#x7269;&#x7406;&#x5185;&#x5B58;&#x53EF;&#x80FD;&#x5BF9;&#x5E94;&#x591A;&#x9875;&#x865A;&#x62DF;&#x5185;&#x5B58;&#xFF1B;&#x4E00;&#x9875;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x4E5F;&#x53EF;&#x80FD;&#x4E0D;&#x5360;&#x7528;&#x7269;&#x7406;&#x5185;&#x5B58;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-29-100734.jpg" alt="&#x56FE;&#x7247;"><strong>iPhone 6s &#x5F00;&#x59CB;&#xFF0C;&#x7269;&#x7406;&#x5185;&#x5B58;&#x7684; Page &#x5927;&#x5C0F;&#x662F; 16K&#xFF0C;6 &#x548C;&#x4E4B;&#x524D;&#x7684;&#x8BBE;&#x5907;&#x90FD;&#x662F; 4K&#xFF0C;&#x8FD9;&#x662F; iPhone 6 &#x76F8;&#x6BD4; 6s &#x542F;&#x52A8;&#x901F;&#x5EA6;&#x65AD;&#x5D16;&#x5F0F;&#x4E0B;&#x964D;&#x7684;&#x539F;&#x56E0;&#x4E4B;&#x4E00;</strong>&#x3002;</p>
+<h3 id="mmap">mmap</h3>
+<p>mmap &#x7684;&#x5168;&#x79F0;&#x662F; memory map&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x5185;&#x5B58;&#x6620;&#x5C04;&#x6280;&#x672F;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x6587;&#x4EF6;&#x6620;&#x5C04;&#x5230;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x91CC;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x50CF;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;&#x5185;&#x5B58;&#x90A3;&#x6837;&#x6765;&#x8BFB;&#x5199;&#x6587;&#x4EF6;&#x3002;<strong>&#x5F53;&#x8BFB;&#x53D6;&#x865A;&#x62DF;&#x5185;&#x5B58;&#xFF0C;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5728;&#x7269;&#x7406;&#x5185;&#x5B58;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF1A;File Backed Page In&#xFF0C;&#x628A;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x8BFB;&#x5165;&#x7269;&#x7406;&#x5185;&#x5B58;</strong>&#x3002;</p>
+<p>&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;Mach-O &#x5C31;&#x662F;&#x901A;&#x8FC7; mmap &#x6620;&#x5C04;&#x5230;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x91CC;&#x7684;(&#x5982;&#x4E0B;&#x56FE;)&#x3002;&#x4E0B;&#x56FE;&#x4E2D;&#x90E8;&#x5206;&#x9875;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; zero fill&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x521D;&#x59CB;&#x503C;&#x5F80;&#x5F80;&#x90FD;&#x662F; 0&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E9B; 0 &#x5C31;&#x6CA1;&#x5FC5;&#x8981;&#x5B58;&#x50A8;&#x5728;&#x4E8C;&#x8FDB;&#x5236;&#x91CC;&#xFF0C;&#x589E;&#x52A0;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x3002;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4F1A;&#x8BC6;&#x522B;&#x51FA;&#x8FD9;&#x4E9B;&#x9875;&#xFF0C;&#x5728; Page In &#x4E4B;&#x540E;&#x5BF9;&#x5176;&#x7F6E;&#x4E3A; 0&#xFF0C;&#x8FD9;&#x4E2A;&#x884C;&#x4E3A;&#x53EB;&#x505A; zero fill&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-29-100752.jpg" alt="&#x56FE;&#x7247;"></p>
+<h3 id="page-in">Page In</h3>
+<p>&#x542F;&#x52A8;&#x7684;&#x8DEF;&#x5F84;&#x4E0A;&#x4F1A;&#x89E6;&#x53D1;&#x5F88;&#x591A;&#x6B21; Page In&#xFF0C;&#x5176;&#x5B9E;&#x4E5F;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#xFF0C;&#x56E0;&#x4E3A;&#x542F;&#x52A8;&#x7684;&#x4F1A;&#x8BFB;&#x5199;&#x4E8C;&#x8FDB;&#x5236;&#x4E2D;&#x7684;&#x5F88;&#x591A;&#x5185;&#x5BB9;&#x3002;<strong>Page In &#x4F1A;&#x5360;&#x53BB;&#x542F;&#x52A8;&#x8017;&#x65F6;&#x7684;&#x5F88;&#x5927;&#x4E00;&#x90E8;&#x5206;</strong>&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x5355;&#x4E2A; Page In &#x7684;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-29-100903.png" alt="&#x56FE;&#x7247;"></p>
+<ul>
+<li>MMU &#x627E;&#x5230;&#x7A7A;&#x95F2;&#x7684;&#x7269;&#x7406;&#x5185;&#x5B58;&#x9875;&#x9762;</li>
+<li>&#x89E6;&#x53D1;&#x78C1;&#x76D8; IO&#xFF0C;&#x628A;&#x6570;&#x636E;&#x8BFB;&#x5165;&#x7269;&#x7406;&#x5185;&#x5B58;</li>
+<li>&#x5982;&#x679C;&#x662F; TEXT &#x6BB5;&#x7684;&#x9875;&#xFF0C;&#x8981;&#x8FDB;&#x884C;&#x89E3;&#x5BC6;</li>
+<li>&#x5BF9;&#x89E3;&#x5BC6;&#x540E;&#x7684;&#x9875;&#xFF0C;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#x9A8C;&#x8BC1;</li>
+</ul>
+<p>&#x5176;&#x4E2D;<strong>&#x89E3;&#x5BC6;&#x662F;&#x5927;&#x5934;&#xFF0C;IO &#x5176;&#x6B21;</strong>&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x89E3;&#x5BC6;&#x5462;&#xFF1F;</p>
+<p>&#x56E0;&#x4E3A; iTunes Connect &#x4F1A;&#x5BF9;&#x4E0A;&#x4F20; Mach-O &#x7684; TEXT &#x6BB5;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#xFF0C;&#x9632;&#x6B62; IPA &#x4E0B;&#x8F7D;&#x4E0B;&#x6765;&#x5C31;&#x76F4;&#x63A5;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4EE3;&#x7801;&#x3002;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x9006;&#x5411;&#x91CC;&#x4F1A;&#x6709;&#x4E2A;&#x6982;&#x5FF5;&#x53EB;&#x505A;&#x201C;&#x7838;&#x58F3;&#x201D;&#xFF0C;&#x7838;&#x7684;&#x5C31;&#x662F;&#x8FD9;&#x4E00;&#x5C42; TEXT &#x6BB5;&#x52A0;&#x5BC6;&#x3002;<strong>iOS 13 &#x5BF9;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x8FDB;&#x884C;&#x4E86;&#x4F18;&#x5316;&#xFF0C;Page In &#x7684;&#x65F6;&#x5019;&#x4E0D;&#x9700;&#x8981;&#x89E3;&#x5BC6;&#x4E86;</strong>&#x3002;</p>
+<h3 id="&#x4E8C;&#x8FDB;&#x5236;&#x91CD;&#x6392;">&#x4E8C;&#x8FDB;&#x5236;&#x91CD;&#x6392;</h3>
+<p>&#x65E2;&#x7136; Page In &#x8017;&#x65F6;&#xFF0C;&#x6709;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x529E;&#x6CD5;&#x4F18;&#x5316;&#x5462;&#xFF1F;</p>
+<p>&#x542F;&#x52A8;&#x5177;&#x6709;<strong>&#x5C40;&#x90E8;&#x6027;&#x7279;&#x5F81;</strong>&#xFF0C;&#x5373;&#x53EA;&#x6709;&#x5C11;&#x90E8;&#x5206;&#x51FD;&#x6570;&#x5728;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x7528;&#x5230;&#xFF0C;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x5728;&#x4E8C;&#x8FDB;&#x5236;&#x4E2D;&#x7684;&#x5206;&#x5E03;&#x662F;&#x96F6;&#x6563;&#x7684;&#xFF0C;&#x6240;&#x4EE5; Page In &#x8BFB;&#x5165;&#x7684;&#x6570;&#x636E;&#x5229;&#x7528;&#x7387;&#x5E76;&#x4E0D;&#x9AD8;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x542F;&#x52A8;&#x7528;&#x5230;&#x7684;&#x51FD;&#x6570;&#x6392;&#x5217;&#x5230;&#x4E8C;&#x8FDB;&#x5236;&#x7684;&#x8FDE;&#x7EED;&#x533A;&#x95F4;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x53EF;&#x4EE5;&#x51CF;&#x5C11; Page In &#x7684;&#x6B21;&#x6570;&#xFF0C;&#x4ECE;&#x800C;&#x4F18;&#x5316;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#xFF1A;</p>
+<p>&#x4EE5;&#x4E0B;&#x56FE;&#x4E3A;&#x4F8B;&#xFF0C;&#x65B9;&#x6CD5; 1 &#x548C;&#x65B9;&#x6CD5; 3 &#x662F;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x7528;&#x5230;&#x7684;&#xFF0C;&#x4E3A;&#x4E86;&#x6267;&#x884C;&#x5BF9;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x4E24;&#x6B21; Page In&#x3002;&#x5047;&#x5982;&#x6211;&#x4EEC;&#x628A;&#x65B9;&#x6CD5; 1 &#x548C; 3 &#x6392;&#x5217;&#x5230;&#x4E00;&#x8D77;&#xFF0C;&#x90A3;&#x4E48;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x6B21; Page In&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x5347;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-29-100931.jpg" alt="&#x56FE;&#x7247;">&#x94FE;&#x63A5;&#x5668; ld &#x6709;&#x4E2A;&#x53C2;&#x6570;-order_file &#x652F;&#x6301;&#x6309;&#x7167;&#x7B26;&#x53F7;&#x7684;&#x65B9;&#x5F0F;&#x6392;&#x5217;&#x4E8C;&#x8FDB;&#x5236;&#x3002;&#x83B7;&#x53D6;&#x542F;&#x52A8;&#x65F6;&#x5019;&#x7528;&#x5230;&#x7684;&#x7B26;&#x53F7;&#x7684;&#x6709;&#x5F88;&#x591A;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x540C;&#x5B66;&#x53EF;&#x4EE5;&#x770B;&#x770B;&#x6296;&#x97F3;&#x4E4B;&#x524D;&#x7684;&#x6587;&#x7AE0;&#xFF1A;<a href="http://mp.weixin.qq.com/s?__biz=MzI1MzYzMjE0MQ==&amp;mid=2247485101&amp;idx=1&amp;sn=abbbb6da1aba37a04047fc210363bcc9&amp;chksm=e9d0cd4fdea7445989cf26623a16fc8ce2876bf3bda95a5532bb0e5e5b1420765653df0b94d1&amp;scene=21#wechat_redirect" target="_blank"><strong>&#x57FA;&#x4E8E;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x91CD;&#x6392;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848; APP &#x542F;&#x52A8;&#x901F;&#x5EA6;&#x63D0;&#x5347;&#x8D85; 15%</strong></a>&#x3002;</p>
+<h2 id="ipa-&#x6784;&#x5EFA;">IPA &#x6784;&#x5EFA;</h2>
+<h3 id="pipeline">pipeline</h3>
+<p>&#x65E2;&#x7136;&#x8981;&#x6784;&#x5EFA;&#xFF0C;&#x90A3;&#x4E48;&#x5FC5;&#x7136;&#x4F1A;&#x6709;&#x4E00;&#x4E9B;&#x5730;&#x65B9;&#x53BB;&#x5B9A;&#x4E49;&#x5982;&#x4F55;&#x6784;&#x5EFA;&#xFF0C;&#x5BF9;&#x5E94; Xcode &#x4E2D;&#x7684;&#x4E24;&#x4E2A;&#x914D;&#x7F6E;&#x9879;&#xFF1A;</p>
+<ul>
+<li><strong>Build Phase&#xFF1A;&#x4EE5; Target &#x4E3A;&#x7EF4;&#x5EA6;&#x5B9A;&#x4E49;&#x4E86;&#x6784;&#x5EFA;&#x7684;&#x6D41;&#x7A0B;</strong>&#x3002;&#x53EF;&#x4EE5;&#x5728; Build Phase &#x4E2D;&#x63D2;&#x5165;&#x811A;&#x672C;&#xFF0C;&#x6765;&#x505A;&#x4E00;&#x4E9B;&#x5B9A;&#x5236;&#x5316;&#x7684;&#x6784;&#x5EFA;&#xFF0C;&#x6BD4;&#x5982; CocoaPod &#x7684;&#x62F7;&#x8D1D;&#x8D44;&#x6E90;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x811A;&#x672C;&#x7684;&#x65B9;&#x5F0F;&#x5B8C;&#x6210;&#x7684;&#x3002;</li>
+<li><strong>Build Settings&#xFF1A;&#x914D;&#x7F6E;&#x7F16;&#x8BD1;&#x548C;&#x94FE;&#x63A5;&#x76F8;&#x5173;&#x7684;&#x53C2;&#x6570;</strong>&#x3002;&#x7279;&#x522B;&#x8981;&#x63D0;&#x5230;&#x7684;&#x662F; other link flags &#x548C; other c flags&#xFF0C;&#x56E0;&#x4E3A;&#x7F16;&#x8BD1;&#x548C;&#x94FE;&#x63A5;&#x7684;&#x53C2;&#x6570;&#x975E;&#x5E38;&#x591A;&#xFF0C;&#x6709;&#x4E9B;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5728;&#x8FD9;&#x91CC;&#x914D;&#x7F6E;&#x3002;&#x5F88;&#x591A;&#x9879;&#x76EE;&#x7528;&#x7684; CocoaPod &#x505A;&#x7684;&#x7EC4;&#x4EF6;&#x5316;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x5728;&#x5BF9;&#x5E94;&#x7684;.xcconfig &#x6587;&#x4EF6;&#x91CC;&#x3002;</li>
+</ul>
+<p>&#x4EE5;&#x5355; Target &#x4E3A;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x6784;&#x5EFA;&#x6D41;&#x7A0B;&#xFF1A;<img src="https://mmbiz.qpic.cn/mmbiz_png/5EcwYhllQOhKWibuGWDU1lBFc20nxt254glw8jJgPqxq5o7ZrkAZVHianfbichVEDwSfkf9iaRq3dATHgVtz0iawo0Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="&#x56FE;&#x7247;"></p>
+<ul>
+<li>&#x6E90;&#x6587;&#x4EF6;(.m/.c/.swift &#x7B49;)&#x662F;&#x5355;&#x72EC;&#x7F16;&#x8BD1;&#x7684;&#xFF0C;&#x8F93;&#x51FA;&#x5BF9;&#x5E94;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;(.o)</li>
+<li>&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x548C;&#x9759;&#x6001;&#x5E93;/&#x52A8;&#x6001;&#x5E93;&#x4E00;&#x8D77;&#xFF0C;&#x94FE;&#x63A5;&#x51FA;&#x6700;&#x540E;&#x7684; Mach-O</li>
+<li>Mach-O &#x4F1A;&#x88AB;&#x88C1;&#x526A;&#xFF0C;&#x53BB;&#x6389;&#x4E00;&#x4E9B;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x4FE1;&#x606F;</li>
+<li>&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5982; storyboard&#xFF0C;asset &#x4E5F;&#x4F1A;&#x7F16;&#x8BD1;&#xFF0C;&#x7F16;&#x8BD1;&#x540E;&#x52A0;&#x8F7D;&#x901F;&#x5EA6;&#x4F1A;&#x53D8;&#x5FEB;</li>
+<li>Mach-O &#x548C;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x4E00;&#x8D77;&#xFF0C;&#x6253;&#x5305;&#x51FA;&#x6700;&#x540E;&#x7684;.app</li>
+<li>&#x5BF9;.app &#x7B7E;&#x540D;&#xFF0C;&#x9632;&#x7BE1;&#x6539;</li>
+</ul>
+<h3 id="&#x7F16;&#x8BD1;">&#x7F16;&#x8BD1;</h3>
+<p>&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E24;&#x5927;&#x90E8;&#x5206;&#xFF1A;&#x524D;&#x7AEF;&#x548C;&#x540E;&#x7AEF;&#xFF0C;&#x4E8C;&#x8005;&#x4EE5; IR&#xFF08;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#xFF09;&#x4F5C;&#x4E3A;&#x5A92;&#x4ECB;&#x3002;&#x8FD9;&#x6837;&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;&#xFF0C;&#x4F7F;&#x5F97;&#x524D;&#x540E;&#x7AEF;&#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x4E92;&#x4E0D;&#x5F71;&#x54CD;&#x3002;C &#x8BED;&#x8A00;&#x5BB6;&#x65CF;&#x7684;&#x524D;&#x7AEF;&#x662F; clang&#xFF0C;swift &#x7684;&#x524D;&#x7AEF;&#x662F; swiftc&#xFF0C;&#x4E8C;&#x8005;&#x7684;&#x540E;&#x7AEF;&#x90FD;&#x662F; llvm&#x3002;</p>
+<ul>
+<li>&#x524D;&#x7AEF;&#x8D1F;&#x8D23;&#x9884;&#x5904;&#x7406;&#xFF0C;&#x8BCD;&#x6CD5;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#xFF0C;&#x751F;&#x6210; IR</li>
+<li>&#x540E;&#x7AEF;&#x57FA;&#x4E8E; IR &#x505A;&#x4F18;&#x5316;&#xFF0C;&#x751F;&#x6210;&#x673A;&#x5668;&#x7801;</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/5EcwYhllQOhKWibuGWDU1lBFc20nxt254icA9NhyYqAjNHAsZPyxNyCE7zoABd4petfF4nf8urvyjJQYYOHMHiceg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="&#x56FE;&#x7247;">&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x5229;&#x7528;&#x7F16;&#x8BD1;&#x4F18;&#x5316;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x5462;&#xFF1F;</p>
+<p><strong>&#x4EE3;&#x7801;&#x6570;&#x91CF;&#x4F1A;&#x5F71;&#x54CD;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#xFF0C;&#x4E3A;&#x4E86;&#x63D0;&#x5347;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x4E00;&#x4E9B;&#x65E0;&#x7528;&#x4EE3;&#x7801;&#x4E0B;&#x6389;</strong>&#x3002;&#x90A3;&#x600E;&#x4E48;&#x7EDF;&#x8BA1;&#x54EA;&#x4E9B;&#x4EE3;&#x7801;&#x6CA1;&#x6709;&#x7528;&#x5230;&#x5462;&#xFF1F;&#x53EF;&#x4EE5;&#x5229;&#x7528; LLVM &#x63D2;&#x6869;&#x6765;&#x5B9E;&#x73B0;&#x3002;LLVM &#x7684;&#x4EE3;&#x7801;&#x4F18;&#x5316;&#x6D41;&#x7A0B;&#x662F;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A; Pass&#xFF0C;&#x7531;&#x4E8E; LLVM &#x662F;&#x5F00;&#x6E90;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684; Pass&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x7684;&#x5934;&#x90E8;&#x63D2;&#x5165;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#xFF0C;&#x8FD9;&#x4E9B;&#x4EE3;&#x7801;&#x4F1A;&#x8BB0;&#x5F55;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x7EDF;&#x8BA1;&#x5230;&#x7684;&#x6570;&#x636E;&#x4E0A;&#x4F20;&#x5206;&#x6790;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x54EA;&#x4E9B;&#x4EE3;&#x7801;&#x662F;&#x7528;&#x4E0D;&#x5230;&#x7684;&#x4E86; &#x3002;</p>
+<p>Facebook &#x7ED9; LLVM &#x63D0;&#x7684; <strong>order_file</strong>[2]&#x7684; feature &#x5C31;&#x662F;&#x5B9E;&#x73B0;&#x4E86;&#x7C7B;&#x4F3C;&#x7684;&#x63D2;&#x6869;&#x3002;</p>
+<h3 id="&#x94FE;&#x63A5;">&#x94FE;&#x63A5;</h3>
+<p>&#x7ECF;&#x8FC7;&#x7F16;&#x8BD1;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x5F88;&#x591A;&#x4E2A;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#xFF0C;&#x63A5;&#x7740;&#x8FD9;&#x4E9B;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x4F1A;&#x548C;&#x9759;&#x6001;&#x5E93;&#xFF0C;&#x52A8;&#x6001;&#x5E93;&#x4E00;&#x8D77;&#xFF0C;&#x94FE;&#x63A5;&#x51FA;&#x4E00;&#x4E2A; Mach-O&#x3002;&#x94FE;&#x63A5;&#x7684;&#x8FC7;&#x7A0B;&#x5E76;&#x4E0D;&#x4EA7;&#x751F;&#x65B0;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x53EA;&#x4F1A;&#x505A;&#x4E00;&#x4E9B;&#x79FB;&#x52A8;&#x548C;&#x8865;&#x4E01;&#x3002;<img src="https://mmbiz.qpic.cn/mmbiz_png/5EcwYhllQOhKWibuGWDU1lBFc20nxt254FlTjFwZibehWfy900icNRR7tEopibAn56mqtLgTiaBTehl6sPibe8UhnHzQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="&#x56FE;&#x7247;"></p>
+<ul>
+<li>tbd &#x7684;&#x5168;&#x79F0;&#x662F; text-based stub library&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x94FE;&#x63A5;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EA;&#x9700;&#x8981;&#x7B26;&#x53F7;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x6240;&#x4EE5; Xcode 6 &#x5F00;&#x59CB;&#xFF0C;&#x50CF; UIKit &#x7B49;&#x7CFB;&#x7EDF;&#x5E93;&#x5C31;&#x4E0D;&#x63D0;&#x4F9B;&#x5B8C;&#x6574;&#x7684; Mach-O&#xFF0C;&#x800C;&#x662F;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x53EA;&#x5305;&#x542B;&#x7B26;&#x53F7;&#x7B49;&#x4FE1;&#x606F;&#x7684; tbd &#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<h2 id="dyld3-&#x542F;&#x52A8;&#x6D41;&#x7A0B;">dyld3 &#x542F;&#x52A8;&#x6D41;&#x7A0B;</h2>
+<p>Apple &#x5728; iOS 13 &#x4E0A;&#x5BF9;&#x7B2C;&#x4E09;&#x65B9; App &#x542F;&#x7528;&#x4E86; dyld3&#xFF0C;<strong>&#x5B98;&#x65B9;&#x6570;&#x636E;</strong>[3]&#x663E;&#x793A;&#xFF0C;&#x8FC7;&#x53BB;&#x56DB;&#x5E74;&#x65B0;&#x53D1;&#x5E03;&#x7684;&#x8BBE;&#x5907;&#x4E2D;&#x6709; 93%&#x7684;&#x8BBE;&#x5907;&#x662F; iOS 13&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x91CD;&#x70B9;&#x770B;&#x4E0B; dyld3 &#x7684;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x3002;</p>
+<h3 id="before-dyld">Before dyld</h3>
+<p>&#x7528;&#x6237;&#x70B9;&#x51FB;&#x56FE;&#x6807;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528; execve &#x5230;&#x5185;&#x6838;&#xFF0C;&#x5185;&#x6838;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;&#x3002;<strong>&#x63A5;&#x7740;&#x4F1A;&#x628A;&#x4E3B;&#x4E8C;&#x8FDB;&#x5236; mmap &#x8FDB;&#x6765;&#xFF0C;&#x8BFB;&#x53D6; load command &#x4E2D;&#x7684; LC_LOAD_DYLINKER&#xFF0C;&#x627E;&#x5230; dyld &#x7684;&#x7684;&#x8DEF;&#x5F84;</strong>&#x3002;&#x7136;&#x540E; mmap dyld &#x5230;&#x865A;&#x62DF;&#x5185;&#x5B58;&#xFF0C;&#x627E;&#x5230; dyld &#x7684;&#x5165;&#x53E3;&#x51FD;&#x6570;<code>_dyld_start</code>&#xFF0C;&#x628A; PC &#x5BC4;&#x5B58;&#x5668;&#x8BBE;&#x7F6E;&#x6210;<code>_dyld_start</code>&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x4EA4;&#x7ED9;&#x4E86; dyld&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x90FD;&#x662F;&#x5728;&#x5185;&#x6838;&#x6001;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x63D0;&#x5230;&#x4E86; PC &#x5BC4;&#x5B58;&#x5668;&#xFF0C;PC &#x5BC4;&#x5B58;&#x5668;&#x5B58;&#x50A8;&#x4E86;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x5C31;&#x662F;&#x4E0D;&#x65AD;&#x4FEE;&#x6539;&#x548C;&#x8BFB;&#x53D6; PC &#x5BC4;&#x5B58;&#x5668;&#x6765;&#x5B8C;&#x6210;&#x7684;&#x3002;</p>
+<h3 id="dyld">dyld</h3>
+<h4 id="&#x521B;&#x5EFA;&#x542F;&#x52A8;&#x95ED;&#x5305;">&#x521B;&#x5EFA;&#x542F;&#x52A8;&#x95ED;&#x5305;</h4>
+<p>dyld &#x4F1A;&#x9996;&#x5148;&#x521B;&#x5EFA;&#x542F;&#x52A8;&#x95ED;&#x5305;&#xFF0C;&#x95ED;&#x5305;&#x662F;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#xFF0C;&#x7528;&#x6765;&#x63D0;&#x5347;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x7684;&#x3002;&#x65E2;&#x7136;&#x662F;&#x7F13;&#x5B58;&#xFF0C;&#x90A3;&#x4E48;&#x5FC5;&#x7136;&#x4E0D;&#x662F;&#x6BCF;&#x6B21;&#x542F;&#x52A8;&#x90FD;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x91CD;&#x542F;&#x624B;&#x673A;&#x6216;&#x8005;&#x66F4;&#x65B0;/&#x4E0B;&#x8F7D; App &#x7684;&#x7B2C;&#x4E00;&#x6B21;&#x542F;&#x52A8;&#x624D;&#x4F1A;&#x521B;&#x5EFA;&#x3002;<strong>&#x95ED;&#x5305;&#x5B58;&#x50A8;&#x5728;&#x6C99;&#x76D2;&#x7684; tmp/com.apple.dyld &#x76EE;&#x5F55;&#xFF0C;&#x6E05;&#x7406;&#x7F13;&#x5B58;&#x7684;&#x65F6;&#x5019;&#x5207;&#x8BB0;&#x4E0D;&#x8981;&#x6E05;&#x7406;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;</strong>&#x3002;</p>
+<p>&#x95ED;&#x5305;&#x662F;&#x600E;&#x4E48;&#x63D0;&#x5347;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x7684;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x95ED;&#x5305;&#x91CC;&#x90FD;&#x6709;&#x4EC0;&#x4E48;&#x5185;&#x5BB9;&#xFF1A;</p>
+<ul>
+<li>dependends&#xFF0C;&#x4F9D;&#x8D56;&#x52A8;&#x6001;&#x5E93;&#x5217;&#x8868;</li>
+<li>fixup&#xFF1A;bind &amp; rebase &#x7684;&#x5730;&#x5740;</li>
+<li>initializer-order&#xFF1A;&#x521D;&#x59CB;&#x5316;&#x8C03;&#x7528;&#x987A;&#x5E8F;</li>
+<li>optimizeObjc: Objective C &#x7684;&#x5143;&#x6570;&#x636E;</li>
+<li>&#x5176;&#x4ED6;&#xFF1A;main entry, uuid&#x2026;</li>
+</ul>
+<p>&#x52A8;&#x6001;&#x5E93;&#x7684;&#x4F9D;&#x8D56;&#x662F;&#x6811;&#x72B6;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x7684;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x662F;&#x5148;&#x8C03;&#x7528;&#x6811;&#x7684;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x5C42;&#x5C42;&#x5411;&#x4E0A;&#xFF0C;&#x6700;&#x5148;&#x8C03;&#x7528;&#x7684;&#x662F; libSystem&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x662F;&#x6240;&#x6709;&#x4F9D;&#x8D56;&#x7684;&#x6E90;&#x5934;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-30-081301.jpg" alt="&#x56FE;&#x7247;"></p>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x95ED;&#x5305;&#x80FD;&#x63D0;&#x9AD8;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x5462;&#xFF1F;</p>
+<p><strong>&#x56E0;&#x4E3A;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x662F;&#x6BCF;&#x6B21;&#x542F;&#x52A8;&#x90FD;&#x9700;&#x8981;&#x7684;&#xFF0C;&#x628A;&#x4FE1;&#x606F;&#x5B58;&#x50A8;&#x5230;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#x6587;&#x4EF6;&#x5C31;&#x80FD;&#x907F;&#x514D;&#x6BCF;&#x6B21;&#x90FD;&#x89E3;&#x6790;&#xFF0C;&#x5C24;&#x5176;&#x662F; Objective C &#x7684;&#x8FD0;&#x884C;&#x65F6;&#x6570;&#x636E;&#xFF08;Class/Method**</strong>&#x2026;&#xFF09;&#x89E3;&#x6790;&#x975E;&#x5E38;<strong>**&#x6162;&#x3002;</strong></p>
+<h4 id="fixup">fixup</h4>
+<p>&#x6709;&#x4E86;&#x95ED;&#x5305;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x95ED;&#x5305;&#x542F;&#x52A8; App &#x4E86;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x5F88;&#x591A;&#x52A8;&#x6001;&#x5E93;&#x8FD8;&#x6CA1;&#x6709;&#x52A0;&#x8F7D;&#x8FDB;&#x6765;&#xFF0C;&#x4F1A;&#x9996;&#x5148;&#x5BF9;&#x8FD9;&#x4E9B;&#x52A8;&#x6001;&#x5E93; mmap &#x52A0;&#x8F7D;&#x5230;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x91CC;&#x3002;&#x63A5;&#x7740;&#x4F1A;&#x5BF9;&#x6BCF;&#x4E2A; Mach-O &#x505A; fixup&#xFF0C;&#x5305;&#x62EC; Rebase &#x548C; Bind&#x3002;</p>
+<ul>
+<li><strong>Rebase&#xFF1A;&#x4FEE;&#x590D;&#x5185;&#x90E8;&#x6307;&#x9488;</strong>&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A; Mach-O &#x5728; mmap &#x5230;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x7684;&#x504F;&#x79FB;&#x91CF; slide&#xFF0C;&#x9700;&#x8981;&#x628A;&#x5185;&#x90E8;&#x7684;&#x6307;&#x9488;&#x6307;&#x5411;&#x52A0;&#x4E0A;&#x8FD9;&#x4E2A; slide&#x3002;</li>
+<li><strong>Bind&#xFF1A;&#x4FEE;&#x590D;&#x5916;&#x90E8;&#x6307;&#x9488;</strong>&#x3002;&#x8FD9;&#x4E2A;&#x6BD4;&#x8F83;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x56E0;&#x4E3A;&#x50CF; printf &#x7B49;&#x5916;&#x90E8;&#x51FD;&#x6570;&#xFF0C;&#x53EA;&#x6709;&#x8FD0;&#x884C;&#x65F6;&#x624D;&#x77E5;&#x9053;&#x5B83;&#x7684;&#x5730;&#x5740;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;bind &#x5C31;&#x662F;&#x628A;&#x6307;&#x9488;&#x6307;&#x5411;&#x8FD9;&#x4E2A;&#x5730;&#x5740;&#x3002;</li>
+</ul>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;&#x4E00;&#x4E2A; Objective C &#x5B57;&#x7B26;&#x4E32;@&quot;1234&quot;&#xFF0C;&#x7F16;&#x8BD1;&#x5230;&#x6700;&#x540E;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x7684;&#x65F6;&#x5019;&#x662F;&#x4F1A;&#x5B58;&#x50A8;&#x5728;&#x4E24;&#x4E2A; section &#x91CC;&#x7684;</p>
+<ul>
+<li><code>__TEXT&#xFF0C;__cstring</code>&#xFF0C;&#x5B58;&#x50A8;&#x5B9E;&#x9645;&#x7684;&#x5B57;&#x7B26;&#x4E32;&quot;1234&quot;</li>
+<li><code>__DATA&#xFF0C;__cfstring</code>&#xFF0C;&#x5B58;&#x50A8; Objective C &#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x6BCF;&#x4E2A;&#x5143;&#x6570;&#x636E;&#x5360;&#x7528; 32Byte&#xFF0C;&#x91CC;&#x9762;&#x6709;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#xFF1A;&#x5185;&#x90E8;&#x6307;&#x9488;&#xFF0C;&#x6307;&#x5411;<code>__TEXT&#xFF0C;__cstring</code>&#x4E2D;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x4F4D;&#x7F6E;&#xFF1B;&#x5916;&#x90E8;&#x6307;&#x9488; isa&#xFF0C;&#x6307;&#x5411;&#x7C7B;&#x5BF9;&#x8C61;&#x7684;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x53EF;&#x4EE5;&#x5BF9; Objective C &#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x91CF;&#x53D1;&#x6D88;&#x606F;&#x7684;&#x539F;&#x56E0;&#x3002;</li>
+</ul>
+<p>&#x5982;&#x4E0B;&#x56FE;&#xFF0C;&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5B57;&#x7B26;&#x4E32; 1234 &#x5728;<code>__cstring</code>&#x7684; 0x10 &#x5904;&#xFF0C;&#x6240;&#x4EE5; DATA &#x6BB5;&#x7684;&#x6307;&#x9488;&#x6307;&#x5411; 0x10&#x3002;&#x4F46;&#x662F; mmap &#x4E4B;&#x540E;&#x6709;&#x4E00;&#x4E2A;&#x504F;&#x79FB;&#x91CF; slide=0x1000&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5B57;&#x7B26;&#x4E32;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x5730;&#x5740;&#x5C31;&#x662F; 0x1010&#xFF0C;&#x90A3;&#x4E48; DATA &#x6BB5;&#x7684;&#x6307;&#x9488;&#x6307;&#x5411;&#x5C31;&#x4E0D;&#x5BF9;&#x4E86;&#x3002;<strong>Rebase &#x7684;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x628A;&#x6307;&#x9488;&#x4ECE; 0x10&#xFF0C;&#x52A0;&#x4E0A; slide &#x53D8;&#x6210; 0x1010&#x3002;&#x8FD0;&#x884C;&#x65F6;&#x7C7B;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#x4E86;&#xFF0C;bind &#x5C31;&#x662F;&#x628A; isa &#x6307;&#x5411;&#x5B9E;&#x9645;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;</strong>&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-30-082142.jpg" alt="&#x56FE;&#x7247;"></p>
+<h4 id="libsystem-initializer">LibSystem Initializer</h4>
+<p>Bind &amp; Rebase &#x4E4B;&#x540E;&#xFF0C;&#x9996;&#x5148;&#x4F1A;&#x6267;&#x884C; LibSystem &#x7684; Initializer&#xFF0C;&#x505A;&#x4E00;&#x4E9B;&#x6700;&#x57FA;&#x672C;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
+<ul>
+<li>&#x521D;&#x59CB;&#x5316; libdispatch</li>
+<li>&#x521D;&#x59CB;&#x5316; objc runtime&#xFF0C;&#x6CE8;&#x518C; sel&#xFF0C;&#x52A0;&#x8F7D; category</li>
+</ul>
+<p>&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x6CA1;&#x6709;&#x521D;&#x59CB;&#x5316; objc &#x7684;&#x7C7B;&#x65B9;&#x6CD5;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x542F;&#x52A8;&#x95ED;&#x5305;&#x7684;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x4E86; optimizeObjc&#x3002;</p>
+<h4 id="load--static-initializer">Load &amp; Static Initializer</h4>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x4F1A;&#x8FDB;&#x884C; main &#x51FD;&#x6570;&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x62EC;+load &#x548C; static initializer&#x3002;&#x8FD9;&#x4E24;&#x7C7B;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x90FD;&#x6709;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;<strong>&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x4E0D;&#x786E;&#x5B9A;&#xFF0C;&#x548C;&#x5BF9;&#x5E94;&#x6587;&#x4EF6;&#x7684;&#x94FE;&#x63A5;&#x987A;&#x5E8F;&#x6709;&#x5173;&#x7CFB;</strong>&#x3002;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x9690;&#x85CF;&#x7684;&#x5751;&#xFF1A;&#x6709;&#x4E9B;&#x6CE8;&#x518C;&#x903B;&#x8F91;&#x5728;+load &#x91CC;&#xFF0C;&#x5BF9;&#x5E94;&#x4F1A;&#x6709;&#x4E00;&#x4E9B;&#x5730;&#x65B9;&#x8BFB;&#x53D6;&#x8FD9;&#x4E9B;&#x6CE8;&#x518C;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x5728;+load &#x4E2D;&#x8BFB;&#x53D6;&#xFF0C;&#x5F88;&#x6709;&#x53EF;&#x80FD;&#x8BFB;&#x53D6;&#x7684;&#x65F6;&#x5019;&#x8FD8;&#x6CA1;&#x6709;&#x6CE8;&#x518C;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#xFF0C;&#x5982;&#x4F55;&#x627E;&#x5230;&#x4EE3;&#x7801;&#x91CC;&#x6709;&#x54EA;&#x4E9B; load &#x548C; static initializer &#x5462;&#xFF1F;</p>
+<p>&#x5728; Build Settings &#x91CC;&#x53EF;&#x4EE5;&#x914D;&#x7F6E; write linkmap&#xFF0C;&#x8FD9;&#x6837;&#x5728;&#x751F;&#x6210;&#x7684; linkmap &#x6587;&#x4EF6;&#x91CC;&#x5C31;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x6709;&#x54EA;&#x4E9B;&#x6587;&#x4EF6;&#x91CC;&#x5305;&#x542B; load &#x6216;&#x8005; static initializer&#xFF1A;</p>
+<ul>
+<li><code>__mod_init_func</code>&#xFF0C;static initializer</li>
+<li><code>__objc_nlclslist</code>&#xFF0C;&#x5B9E;&#x73B0;+load &#x7684;&#x7C7B;</li>
+<li><code>__objc_nlcatlist</code>&#xFF0C;&#x5B9E;&#x73B0;+load &#x7684; Category</li>
+</ul>
+<h4 id="load-&#x4E3E;&#x4F8B;">load &#x4E3E;&#x4F8B;</h4>
+<p>&#x5982;&#x679C;+load &#x65B9;&#x6CD5;&#x91CC;&#x7684;&#x5185;&#x5BB9;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4F1A;&#x5F71;&#x54CD;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x4E48;&#xFF1F;&#x6BD4;&#x5982;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;+load &#x65B9;&#x6CD5;&#xFF1F;</p>
+<pre><code>+ (void)load { printf(&quot;1234&quot;); }
+</code></pre><p>&#x7F16;&#x8BD1;&#x5B8C;&#x4E86;&#x4E4B;&#x540E;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x5728;&#x4E8C;&#x8FDB;&#x5236;&#x4E2D;&#x7684; TEXT &#x4E24;&#x4E2A;&#x6BB5;&#x5B58;&#x5728;&#xFF1A;<code>__text</code><strong>&#x5B58;&#x51FD;&#x6570;&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;</strong><code>cstring</code><strong>&#x5B58;&#x50A8;&#x5B57;&#x7B26;&#x4E32; 1234</strong>&#x3002;&#x4E3A;&#x4E86;&#x6267;&#x884C;&#x51FD;&#x6570;&#xFF0C;&#x9996;&#x5148;&#x8981;&#x8BBF;&#x95EE;<code>__text</code>&#x89E6;&#x53D1;&#x4E00;&#x6B21; Page In &#x8BFB;&#x5165;&#x7269;&#x7406;&#x5185;&#x5B58;&#xFF0C;&#x4E3A;&#x4E86;&#x6253;&#x5370;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x8981;&#x8BBF;&#x95EE;<code>__cstring</code>&#xFF0C;&#x8FD8;&#x4F1A;&#x89E6;&#x53D1;&#x4E00;&#x6B21; Page In&#x3002;</p>
+<ul>
+<li>&#x4E3A;&#x4E86;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x51FD;&#x6570;&#xFF0C;<strong>&#x7CFB;&#x7EDF;&#x8981;&#x989D;&#x5916;&#x4ED8;&#x51FA;&#x4E24;&#x6B21; Page In &#x7684;&#x4EE3;&#x4EF7;</strong>&#xFF0C;&#x6240;&#x4EE5; load &#x51FD;&#x6570;&#x591A;&#x4E86;&#xFF0C;page in &#x4F1A;&#x6210;&#x4E3A;&#x542F;&#x52A8;&#x6027;&#x80FD;&#x7684;&#x74F6;&#x9888;&#x3002;</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-30-082924.png" alt="&#x56FE;&#x7247;"></p>
+<h4 id="static-initializer-&#x4EA7;&#x751F;&#x7684;&#x6761;&#x4EF6;">static initializer &#x4EA7;&#x751F;&#x7684;&#x6761;&#x4EF6;</h4>
+<p>&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#x662F;&#x4ECE;&#x54EA;&#x6765;&#x7684;&#x5462;&#xFF1F;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x4EE3;&#x7801;&#x4F1A;&#x5BFC;&#x81F4;&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;</p>
+<ul>
+<li><code>__attribute__((constructor))</code></li>
+<li><code>static class object</code></li>
+<li><code>static object in global namespace</code></li>
+</ul>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684; static &#x53D8;&#x91CF;&#x90FD;&#x4F1A;&#x4EA7;&#x751F;&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x5F88;&#x667A;&#x80FD;&#xFF0C;&#x5BF9;&#x4E8E;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x95F4;&#x5C31;&#x80FD;&#x786E;&#x5B9A;&#x7684;&#x53D8;&#x91CF;&#x662F;&#x4F1A;&#x76F4;&#x63A5; inline&#x3002;</p>
+<pre><code>//&#x4F1A;&#x4EA7;&#x751F;&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;
+class Demo{ 
+static const std::string var_1; 
+};
+const std::string var_2 = &quot;1234&quot;; 
+static Logger logger;//&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;
+static const int var_3 = 4; 
+static const char * var_4 = &quot;1234&quot;;
+</code></pre><p>std::string &#x4F1A;&#x5408;&#x6210; static initializer &#x662F;&#x56E0;&#x4E3A;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#x5FC5;&#x987B;&#x6267;&#x884C;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x7F16;&#x8BD1;&#x5668;&#x5C31;&#x4E0D;&#x77E5;&#x9053;&#x600E;&#x4E48;&#x505A;&#x4E86;&#xFF0C;&#x53EA;&#x80FD;&#x5EF6;&#x8FDF;&#x5230;&#x8FD0;&#x884C;&#x65F6;&#xFF5E;</p>
+<h3 id="uikit-init">UIKit Init</h3>
+<p>+load &#x548C; static initializer &#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;dyld &#x4F1A;&#x628A;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x4EA4;&#x7ED9; App&#xFF0C;&#x5F00;&#x59CB;&#x6267;&#x884C; main &#x51FD;&#x6570;&#x3002;main &#x51FD;&#x6570;&#x91CC;&#x8981;&#x505A;&#x7684;&#x6700;&#x91CD;&#x8981;&#x7684;&#x4E8B;&#x60C5;&#x5C31;&#x662F;&#x521D;&#x59CB;&#x5316; UIKit&#x3002;UIKit &#x4E3B;&#x8981;&#x4F1A;&#x505A;&#x4E24;&#x4E2A;&#x5927;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
+<ul>
+<li>&#x521D;&#x59CB;&#x5316; UIApplication</li>
+<li>&#x542F;&#x52A8;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684; Runloop</li>
+</ul>
+<p><strong>&#x7531;&#x4E8E;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684; dispatch_async &#x662F;&#x57FA;&#x4E8E; runloop &#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5728;+load &#x91CC;&#x5982;&#x679C;&#x8C03;&#x7528;&#x4E86; dispatch_async &#x4F1A;&#x5728;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x6267;&#x884C;&#x3002;</strong></p>
+<h4 id="runloop">Runloop</h4>
+<p>&#x7EBF;&#x7A0B;&#x5728;&#x6267;&#x884C;&#x5B8C;&#x4EE3;&#x7801;&#x5C31;&#x4F1A;&#x9000;&#x51FA;&#xFF0C;&#x5F88;&#x660E;&#x663E;&#x4E3B;&#x7EBF;&#x7A0B;&#x662F;&#x4E0D;&#x80FD;&#x9000;&#x51FA;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9700;&#x8981;&#x4E00;&#x79CD;&#x673A;&#x5236;&#xFF1A;&#x4E8B;&#x4EF6;&#x6765;&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#xFF0C;&#x5426;&#x5219;&#x8BA9;&#x7EBF;&#x7A0B;&#x4F11;&#x7720;&#xFF0C;Runloop &#x5C31;&#x662F;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x7684;&#x3002;</p>
+<p>Runloop &#x672C;&#x8D28;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;<code>While</code> &#x5FAA;&#x73AF;&#xFF0C;&#x5728;&#x56FE;&#x4E2D;&#x6A59;&#x8272;&#x90E8;&#x5206;&#x7684; <code>mach_msg_trap</code> &#x5C31;&#x662F;&#x89E6;&#x53D1;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x8BA9;&#x7EBF;&#x7A0B;&#x4F11;&#x7720;&#xFF0C;&#x7B49;&#x5F85;&#x4E8B;&#x4EF6;&#x5230;&#x6765;&#xFF0C;&#x5524;&#x9192; Runloop&#xFF0C;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x8FD9;&#x4E2A; <code>while</code>&#x5FAA;&#x73AF;&#x3002;</p>
+<p>Runloop &#x4E3B;&#x8981;&#x5904;&#x7406;&#x51E0;&#x79CD;&#x4EFB;&#x52A1;&#xFF1A;Source0&#xFF0C;Source1&#xFF0C;Timer&#xFF0C;GCD MainQueue&#xFF0C;Block&#x3002;&#x5728;&#x5FAA;&#x73AF;&#x7684;&#x5408;&#x9002;&#x65F6;&#x673A;&#xFF0C;&#x4F1A;&#x4EE5; Observer &#x7684;&#x65B9;&#x5F0F;&#x901A;&#x77E5;&#x5916;&#x90E8;&#x6267;&#x884C;&#x5230;&#x4E86;&#x54EA;&#x91CC;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-30-083020.png" alt="&#x56FE;&#x7247;">&#x90A3;&#x4E48;&#xFF0C;Runloop &#x4E0E;&#x542F;&#x52A8;&#x53C8;&#x6709;&#x4EC0;&#x4E48;&#x5173;&#x7CFB;&#x5462;&#xFF1F;</p>
+<ul>
+<li><strong>App &#x7684; LifeCycle &#x65B9;&#x6CD5;&#x662F;&#x57FA;&#x4E8E; Runloop &#x7684; Source0 &#x7684;</strong></li>
+<li><strong>&#x9996;&#x5E27;&#x6E32;&#x67D3;&#x662F;&#x57FA;&#x4E8E; Runloop Block &#x7684;</strong></li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-30-083051.png" alt="&#x56FE;&#x7247;">Runloop &#x5728;&#x542F;&#x52A8;&#x4E0A;&#x4E3B;&#x8981;&#x6709;&#x51E0;&#x70B9;&#x5E94;&#x7528;&#xFF1A;</p>
+<ul>
+<li>&#x7CBE;&#x51C6;&#x7EDF;&#x8BA1;&#x542F;&#x52A8;&#x65F6;&#x95F4;</li>
+<li>&#x627E;&#x5230;&#x4E00;&#x4E2A;&#x65F6;&#x673A;&#xFF0C;&#x5728;&#x542F;&#x52A8;&#x7ED3;&#x675F;&#x53BB;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x9884;&#x70ED;&#x4EFB;&#x52A1;</li>
+<li>&#x5229;&#x7528; Runloop &#x6253;&#x6563;&#x8017;&#x65F6;&#x7684;&#x542F;&#x52A8;&#x9884;&#x70ED;&#x4EFB;&#x52A1;</li>
+</ul>
+<blockquote>
+<p><strong>Tips :</strong> &#x4F1A;&#x6709;&#x4E00;&#x4E9B;&#x903B;&#x8F91;&#x8981;&#x5728;&#x542F;&#x52A8;&#x4E4B;&#x540E; delay &#x4E00;&#x5C0F;&#x6BB5;&#x65F6;&#x95F4;&#x518D;&#x56DE;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0A;&#x6267;&#x884C;&#xFF0C;&#x5BF9;&#x4E8E;&#x6027;&#x80FD;&#x8F83;&#x5DEE;&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x4E3B;&#x7EBF;&#x7A0B; Runloop &#x53EF;&#x80FD;&#x4E00;&#x76F4;&#x5904;&#x4E8E;&#x5FD9;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A; delay &#x7684;&#x4EFB;&#x52A1;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x80FD;&#x6309;&#x65F6;&#x6267;&#x884C;&#x3002;</p>
+</blockquote>
+<h3 id="applifecycle">AppLifeCycle</h3>
+<p>UIKit &#x521D;&#x59CB;&#x5316;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x8FDB;&#x5165;&#x4E86;&#x6211;&#x4EEC;&#x719F;&#x6089;&#x7684; UIApplicationDelegate &#x56DE;&#x8C03;&#x4E86;&#xFF0C;&#x5728;&#x8FD9;&#x4E9B;&#x4F1A;&#x8C03;&#x91CC;&#x53BB;&#x505A;&#x4E00;&#x4E9B;&#x4E1A;&#x52A1;&#x4E0A;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
+<ul>
+<li><code>willFinishLaunch</code></li>
+<li><code>didFinishLaunch</code></li>
+<li><code>didFinishLaunchNotification</code></li>
+</ul>
+<p>&#x8981;&#x7279;&#x522B;&#x63D0;&#x4E00;&#x4E0B; <code>didFinishLaunchNotification</code>&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x5927;&#x5BB6;&#x5728;&#x57CB;&#x70B9;&#x7684;&#x65F6;&#x5019;&#x901A;&#x5E38;&#x4F1A;&#x5FFD;&#x7565;&#x8FD8;&#x6709;&#x8FD9;&#x4E2A;&#x901A;&#x77E5;&#x7684;&#x5B58;&#x5728;&#xFF0C;&#x5BFC;&#x81F4;&#x628A;&#x8FD9;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x7B97;&#x5230; UI &#x6E32;&#x67D3;&#x91CC;&#x3002;</p>
+<h3 id="first-frame-render">First Frame Render</h3>
+<p>&#x4E00;&#x822C;&#x4F1A;&#x7528; Root Controller &#x7684; viewDidApper &#x4F5C;&#x4E3A;&#x6E32;&#x67D3;&#x7684;&#x7EC8;&#x70B9;&#xFF0C;&#x4F46;&#x5176;&#x5B9E;&#x8FD9;&#x65F6;&#x5019;&#x9996;&#x5E27;&#x5DF2;&#x7ECF;&#x6E32;&#x67D3;&#x5B8C;&#x6210;&#x4E00;&#x5C0F;&#x6BB5;&#x65F6;&#x95F4;&#x4E86;&#xFF0C;Apple &#x5728; MetricsKit &#x91CC;&#x5BF9;&#x542F;&#x52A8;&#x7EC8;&#x70B9;&#x5B9A;&#x4E49;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;<code>CA::Transaction::commit()</code>&#x3002;</p>
+<p>&#x4EC0;&#x4E48;&#x662F; CATransaction &#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x6E32;&#x67D3;&#x7684;&#x5927;&#x81F4;&#x6D41;&#x7A0B;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-30-094925.jpg" alt="&#x56FE;&#x7247;"></p>
+<p>iOS &#x7684;&#x6E32;&#x67D3;&#x662F;&#x5728;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x8FDB;&#x7A0B; RenderServer &#x505A;&#x7684;&#xFF0C;App &#x4F1A;&#x628A; Render Tree &#x7F16;&#x7801;&#x6253;&#x5305;&#x7ED9; RenderServer&#xFF0C;RenderServer &#x518D;&#x8C03;&#x7528;&#x6E32;&#x67D3;&#x6846;&#x67B6;(Metal/OpenGL ES)&#x6765;&#x751F;&#x6210; bitmap&#xFF0C;&#x653E;&#x5230;&#x5E27;&#x7F13;&#x51B2;&#x533A;&#x91CC;&#xFF0C;&#x786C;&#x4EF6;&#x6839;&#x636E;&#x65F6;&#x949F;&#x4FE1;&#x53F7;&#x8BFB;&#x53D6;&#x5E27;&#x7F13;&#x51B2;&#x533A;&#x5185;&#x5BB9;&#xFF0C;&#x5B8C;&#x6210;&#x5C4F;&#x5E55;&#x5237;&#x65B0;&#x3002;CATransaction &#x5C31;&#x662F;&#x628A;&#x4E00;&#x7EC4; UI &#x4E0A;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x5408;&#x5E76;&#x6210;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#xFF0C;&#x901A;&#x8FC7; commit &#x63D0;&#x4EA4;&#x3002;</p>
+<p>&#x6E32;&#x67D3;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;</p>
+<ul>
+<li><strong>Layout</strong>&#xFF08;&#x5E03;&#x5C40;&#xFF09;&#xFF0C;&#x6E90;&#x5934;&#x662F; Root Layer &#x8C03;&#x7528;<code>[CALayer layoutSubLayers]</code>&#xFF0C;&#x8FD9;&#x65F6;&#x5019; <code>UIViewController</code> &#x7684; <code>viewDidLoad</code> &#x548C; <code>LayoutSubViews</code> &#x4F1A;&#x8C03;&#x7528;&#xFF0C;<code>autolayout</code> &#x4E5F;&#x662F;&#x5728;&#x8FD9;&#x4E00;&#x6B65;&#x751F;&#x6548;</li>
+<li><strong>Display</strong>&#xFF08;&#x7ED8;&#x5236;&#xFF09;&#xFF0C;&#x6E90;&#x5934;&#x662F; Root Layer &#x8C03;&#x7528;<code>[CALayer display]</code>&#xFF0C;&#x5982;&#x679C; View &#x5B9E;&#x73B0;&#x4E86; <code>drawRect</code> &#x65B9;&#x6CD5;&#xFF0C;&#x4F1A;&#x5728;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x8C03;&#x7528;</li>
+<li><strong>Prepare</strong>&#xFF08;&#x51C6;&#x5907;&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x5B8C;&#x6210;&#x56FE;&#x7247;&#x7684;&#x89E3;&#x7801;</li>
+<li><strong>Commit</strong>&#xFF08;&#x63D0;&#x4EA4;&#xFF09;&#xFF0C;&#x6253;&#x5305; Render Tree &#x901A;&#x8FC7; XPC &#x7684;&#x65B9;&#x5F0F;&#x53D1;&#x7ED9; Render Server</li>
+</ul>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-30-094919.jpg" alt="&#x56FE;&#x7247;"></p>
+<h3 id="&#x542F;&#x52A8;-pipeline">&#x542F;&#x52A8; Pipeline</h3>
+<p>&#x8BE6;&#x7EC6;&#x56DE;&#x987E;&#x4E0B;&#x6574;&#x4E2A;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#xFF0C;&#x4EE5;&#x53CA;&#x5404;&#x4E2A;&#x9636;&#x6BB5;&#x8017;&#x65F6;&#x7684;&#x5F71;&#x54CD;&#x56E0;&#x7D20;&#xFF1A;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-04-30-094912.jpg" alt="&#x56FE;&#x7247;"></p>
+<ol>
+<li>&#x70B9;&#x51FB;&#x56FE;&#x6807;&#xFF0C;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;</li>
+<li>mmap &#x4E3B;&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;&#x627E;&#x5230; dyld &#x7684;&#x8DEF;&#x5F84;</li>
+<li>mmap dyld&#xFF0C;&#x628A;&#x5165;&#x53E3;&#x5730;&#x5740;&#x8BBE;&#x4E3A;<code>_dyld_start</code></li>
+<li>&#x91CD;&#x542F;&#x624B;&#x673A;/&#x66F4;&#x65B0;/&#x4E0B;&#x8F7D; App &#x7684;&#x7B2C;&#x4E00;&#x6B21;&#x542F;&#x52A8;&#xFF0C;&#x4F1A;&#x521B;&#x5EFA;&#x542F;&#x52A8;&#x95ED;&#x5305;</li>
+<li>&#x628A;&#x6CA1;&#x6709;&#x52A0;&#x8F7D;&#x7684;&#x52A8;&#x6001;&#x5E93; mmap &#x8FDB;&#x6765;&#xFF0C;&#x52A8;&#x6001;&#x5E93;&#x7684;&#x6570;&#x91CF;&#x4F1A;&#x5F71;&#x54CD;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;</li>
+<li>&#x5BF9;&#x6BCF;&#x4E2A;&#x4E8C;&#x8FDB;&#x5236;&#x505A; bind &#x548C; rebase&#xFF0C;&#x4E3B;&#x8981;&#x8017;&#x65F6;&#x5728; Page In&#xFF0C;&#x5F71;&#x54CD; Page In &#x6570;&#x91CF;&#x7684;&#x662F; objc &#x7684;&#x5143;&#x6570;&#x636E;</li>
+<li>&#x521D;&#x59CB;&#x5316; objc &#x7684; runtime&#xFF0C;&#x7531;&#x4E8E;&#x95ED;&#x5305;&#x5DF2;&#x7ECF;&#x521D;&#x59CB;&#x5316;&#x4E86;&#x5927;&#x90E8;&#x5206;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x4F1A;&#x6CE8;&#x518C; sel &#x548C;&#x88C5;&#x8F7D; category</li>
+<li>+load &#x548C;&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x9664;&#x4E86;&#x65B9;&#x6CD5;&#x672C;&#x8EAB;&#x8017;&#x65F6;&#xFF0C;&#x8FD9;&#x91CC;&#x8FD8;&#x4F1A;&#x5F15;&#x8D77;&#x5927;&#x91CF; Page In</li>
+<li>&#x521D;&#x59CB;&#x5316; <code>UIApplication</code>&#xFF0C;&#x542F;&#x52A8; Main Runloop</li>
+<li>&#x6267;&#x884C; <code>will/didFinishLaunch</code>&#xFF0C;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x662F;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x8017;&#x65F6;</li>
+<li>Layout&#xFF0C;<code>viewDidLoad</code> &#x548C;<code>Layoutsubviews</code> &#x4F1A;&#x5728;&#x8FD9;&#x91CC;&#x8C03;&#x7528;&#xFF0C;<code>Autolayout</code> &#x592A;&#x591A;&#x4F1A;&#x5F71;&#x54CD;&#x8FD9;&#x90E8;&#x5206;&#x65F6;&#x95F4;</li>
+<li>Display&#xFF0C;<code>drawRect</code> &#x4F1A;&#x8C03;&#x7528;</li>
+<li>Prepare&#xFF0C;&#x56FE;&#x7247;&#x89E3;&#x7801;&#x53D1;&#x751F;&#x5728;&#x8FD9;&#x4E00;&#x6B65;</li>
+<li>Commit&#xFF0C;&#x9996;&#x5E27;&#x6E32;&#x67D3;&#x6570;&#x636E;&#x6253;&#x5305;&#x53D1;&#x7ED9; RenderServer&#xFF0C;&#x542F;&#x52A8;&#x7ED3;&#x675F;</li>
+</ol>
+<h2 id="dyld2">dyld2</h2>
+<p>dyld2 &#x548C; dyld3 &#x7684;&#x4E3B;&#x8981;&#x533A;&#x522B;&#x5C31;&#x662F;&#x6CA1;&#x6709;&#x542F;&#x52A8;&#x95ED;&#x5305;&#xFF0C;&#x5C31;&#x5BFC;&#x81F4;&#x6BCF;&#x6B21;&#x542F;&#x52A8;&#x90FD;&#x8981;&#xFF1A;</p>
+<ul>
+<li>&#x89E3;&#x6790;&#x52A8;&#x6001;&#x5E93;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;</li>
+<li>&#x89E3;&#x6790; LINKEDIT&#xFF0C;&#x627E;&#x5230; bind &amp; rebase &#x7684;&#x6307;&#x9488;&#x5730;&#x5740;&#xFF0C;&#x627E;&#x5230; bind &#x7B26;&#x53F7;&#x7684;&#x5730;&#x5740;</li>
+<li>&#x6CE8;&#x518C; objc &#x7684; Class/Method &#x7B49;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x5BF9;&#x5927;&#x578B;&#x5DE5;&#x7A0B;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x8017;&#x65F6;&#x4F1A;&#x5F88;&#x957F;</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI1MzYzMjE0MQ==&amp;mid=2247486932&amp;idx=1&amp;sn=eb4d294e00375d506b93a00b535c6b05&amp;chksm=e9d0c636dea74f20ec800af333d1ee94969b74a92f3f9a5a66a479380d1d9a4dbb8ffd4574ca&amp;scene=21#wechat_redirect" target="_blank">1 &#x6296;&#x97F3;&#x54C1;&#x8D28;&#x5EFA;&#x8BBE; - iOS&#x542F;&#x52A8;&#x4F18;&#x5316;&#x300A;&#x539F;&#x7406;&#x7BC7;&#x300B;</a></p>
+<p><a href="../../Article/&#x6296;&#x97F3;&#x54C1;&#x8D28;&#x5EFA;&#x8BBE;%20-%20iOS%20&#x542F;&#x52A8;&#x4F18;&#x5316;&#x300A;&#x539F;&#x7406;&#x7BC7;&#x300B;.md">&#x672C;&#x5730;&#x79BB;&#x7EBF;&#x7F13;&#x5B58;&#x6587;&#x7AE0;</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Dyld.html" class="navigation navigation-prev " aria-label="Previous page: Dyld">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="MachO.html" class="navigation navigation-next " aria-label="Next page: Mach-O">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"App启动详细","level":"1.2.6.2","depth":3,"next":{"title":"Mach-O","level":"1.2.6.3","depth":3,"path":"iOS/Knowledge/MachO.md","ref":"iOS/Knowledge/MachO.md","articles":[]},"previous":{"title":"Dyld","level":"1.2.6.1","depth":3,"path":"iOS/Knowledge/Dyld.md","ref":"iOS/Knowledge/Dyld.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Knowledge/AppLaunchDetail.md","mtime":"2021-05-10T07:45:02.966Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-10T07:45:37.490Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
