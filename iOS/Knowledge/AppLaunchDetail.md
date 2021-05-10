@@ -1,4 +1,4 @@
-# App Launch Optimize
+# App Launch Detail
 
 ## 基本概念
 
@@ -348,4 +348,10 @@ dyld2 和 dyld3 的主要区别就是没有启动闭包，就导致每次启动�
 - 注册 objc 的 Class/Method 等元数据，对大型工程来说，这部分耗时会很长
 
 
+
+## Reference
+
+[1 抖音品质建设 - iOS启动优化《原理篇》](https://mp.weixin.qq.com/s?__biz=MzI1MzYzMjE0MQ==&mid=2247486932&idx=1&sn=eb4d294e00375d506b93a00b535c6b05&chksm=e9d0c636dea74f20ec800af333d1ee94969b74a92f3f9a5a66a479380d1d9a4dbb8ffd4574ca&scene=21#wechat_redirect)
+
+[本地离线缓存文章](../../Article/抖音品质建设 - iOS 启动优化《原理篇》.md)
 
