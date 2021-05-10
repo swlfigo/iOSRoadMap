@@ -120,7 +120,15 @@ block->FuncPtr(block);
 
 ```
 
-看出block的本质就是一个结构体对象，结构体`__main_block_impl_0`代码如下
+
+
+
+
+**看出block的本质就是一个结构体对象**，结构体`__main_block_impl_0`代码如下
+
+
+
+
 
 ```cpp
 struct __main_block_impl_0 {
@@ -139,6 +147,8 @@ struct __main_block_impl_0 {
 
 ```
 
+
+
 结构体中第一个是`struct __block_impl impl;`
 
 ```cpp
@@ -151,6 +161,8 @@ struct __block_impl {
 
 ```
 
+
+
 结构体中第二个是`__main_block_desc_0;`
 
 ```cpp
@@ -162,6 +174,8 @@ static struct __main_block_desc_0 {
 ```
 
 结构体中第三个是`age`
+
+
 
 也就是捕获的局部变量 `age`
 
@@ -191,6 +205,10 @@ static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
 | 局部变量 static | √               | 指针传递 |
 | 全局变量        | ×               | 直接访问 |
 
+
+
+
+
 ### 3.1 局部变量auto(自动变量)
 
 - 我们平时写的局部变量，默认就有 auto(自动变量，离开作用域就销毁)
@@ -219,7 +237,6 @@ void (^block)(void) =  ^{
 age = 25;
        
 block();
-复制代码
 ```
 
 输出
@@ -238,7 +255,7 @@ block();
 
 
 
-```
+```cpp
 int age = 20;
 void (*block)(void) = ((void (*)())&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA, age));
 age = 25;
@@ -248,10 +265,16 @@ age = 25;
 struct __main_block_impl_0 *blockStruct = (__bridge struct __main_block_impl_0 *)block;
 
 NSLog((NSString *)&__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb32m0000gn_T_main_d36452_mi_5);
-复制代码
+
 ```
 
+
+
 可以知道，直接把age的值 20传到了结构体`__main_block_impl_0`中，后面再修改`age = 25`并不能改变block里面的值
+
+
+
+
 
 ### 3.2 局部变量 static
 
@@ -319,6 +342,10 @@ int main(int argc, const char * argv[]) {
 ```
 
 如图所示，`age`是直接值传递，`height`传递的是`*height` 也就是说直接把内存地址传进去进行修改了。
+
+
+
+
 
 ### 3.3 全局变量
 
@@ -395,6 +422,8 @@ int main(int argc, const char * argv[]) {
 
 从cpp文件可以看出来，并没有捕获全局变量age1和height1,访问的时候，是直接去访问的，根本不需要捕获
 
+
+
 #### 小结
 
 | 变量类型        | 捕获到block内部 | 访问方式 |
@@ -410,7 +439,7 @@ int main(int argc, const char * argv[]) {
 
 
 
-## 4 block有3种类型
+## 4  block有3种类型
 
 #### block也是一个OC对象
 
@@ -476,7 +505,43 @@ block有3种类型，可以通过调用class方法或者isa指针查看具体类
 | copy函数    | 栈上的Block复制到堆上 |
 | dispose函数 | 堆上的block被废弃时   |
 
+
+
+
+
+weak的实现原理，在原对象释放之后，weak对象就会变成null，防止野指针。所以就输出了null了。
+
+那么我们怎么才能在weakSelf之后，block里面还能继续使用weakSelf之后的对象呢？
+
+究其根本原因就是weakSelf之后，无法控制什么时候会被释放，为了保证在block内不会被释放，需要添加_strong。
+
+在block里面使用的_strong修饰的weakSelf是为了在函数生命周期中防止self提前释放。strongSelf是一个自动变量当block执行完毕就会释放自动变量strongSelf不会对self进行一直进行强引用。
+
+
+
+
+
+
+
 ## 6 __block 修饰符
+
+**__block修饰符原理：**
+
+编译器会将`__block`变量包装成一个结构体`__Block_byref_age_0`，结构体内部`*__forwarding`是指向自身的指针，内部还存储着外部`auto变量`的值
+
+一开始，栈空间的block有一个`__Block_byref_a_0`结构体，
+ 指向外部`__Block_byref_a_0`的地址，
+ 其中它的__forwarding指针指向自身，
+
+当block从栈copy到堆时，
+
+堆空间的block有一个`__Block_byref_a_0`结构体，
+ 指向外部`__Block_byref_a_0`的地址，
+ 其中它的__forwarding指针指向自身
+
+
+
+
 
 **一般情况下**，对被截获变量进行**赋值**操作需要添加 `__block` 修饰符(**注意是赋值!!**, 赋值≠使用)
 
@@ -568,24 +633,13 @@ __Block_byref_a_0 *__forwarding;
 
 
 
-首先说明一点，
- 在block初始化过程中，有一个由栈block指向堆block的过程。
-
-一开始，栈空间的block有一个`__Block_byref_a_0`结构体，
- 指向外部`__Block_byref_a_0`的地址，
- 其中它的__forwarding指针指向自身，
-
-当block从栈copy到堆时，
-
-堆空间的block有一个`__Block_byref_a_0`结构体，
- 指向外部`__Block_byref_a_0`的地址，
- 其中它的__forwarding指针指向自身（复读机）
-
 ## 如何从栈指向堆，并建立联系呢？
 
 apple源码，如图：
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-085605.jpg)
+
+
 
 copy->forwarding = copy;
  就是将堆结构体的__forwarding指针指向自身
