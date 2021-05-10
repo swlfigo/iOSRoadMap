@@ -1299,7 +1299,7 @@ block();
 <span class="hljs-comment">// block&#x7684;&#x8C03;&#x7528;</span>
 block-&gt;FuncPtr(block);
 </code></pre>
-<p>&#x770B;&#x51FA;block&#x7684;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x5BF9;&#x8C61;&#xFF0C;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<p><strong>&#x770B;&#x51FA;block&#x7684;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x5BF9;&#x8C61;</strong>&#xFF0C;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
 <pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> __main_block_impl_0 {
   <span class="hljs-keyword">struct</span> __block_impl impl;
   <span class="hljs-keyword">struct</span> __main_block_desc_0* Desc;
@@ -1390,7 +1390,6 @@ void (^block)(void) =  ^{
 age = 25;
 
 block();
-&#x590D;&#x5236;&#x4EE3;&#x7801;
 </code></pre>
 <p>&#x8F93;&#x51FA;</p>
 <blockquote>
@@ -1403,17 +1402,17 @@ block();
 <p>&#x751F;&#x6210;<code>main.cpp</code></p>
 <p>&#x5982;&#x56FE;&#x6240;&#x793A;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-04-152053.jpg" alt="img"></p>
-<pre><code>int age = 20;
-void (*block)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, age));
-age = 25;
+<pre><code class="lang-cpp"><span class="hljs-keyword">int</span> age = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">void</span> (*block)(<span class="hljs-keyword">void</span>) = ((<span class="hljs-keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="hljs-keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, age));
+age = <span class="hljs-number">25</span>;
 
-((void (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);
+((<span class="hljs-keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);
 
-struct __main_block_impl_0 *blockStruct = (__bridge struct __main_block_impl_0 *)block;
+<span class="hljs-keyword">struct</span> __main_block_impl_0 *blockStruct = (__bridge <span class="hljs-keyword">struct</span> __main_block_impl_0 *)block;
 
 NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb32m0000gn_T_main_d36452_mi_5);
-&#x590D;&#x5236;&#x4EE3;&#x7801;
-</code></pre><p>&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;&#x76F4;&#x63A5;&#x628A;age&#x7684;&#x503C; 20&#x4F20;&#x5230;&#x4E86;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x4E2D;&#xFF0C;&#x540E;&#x9762;&#x518D;&#x4FEE;&#x6539;<code>age = 25</code>&#x5E76;&#x4E0D;&#x80FD;&#x6539;&#x53D8;block&#x91CC;&#x9762;&#x7684;&#x503C;</p>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;&#x76F4;&#x63A5;&#x628A;age&#x7684;&#x503C; 20&#x4F20;&#x5230;&#x4E86;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x4E2D;&#xFF0C;&#x540E;&#x9762;&#x518D;&#x4FEE;&#x6539;<code>age = 25</code>&#x5E76;&#x4E0D;&#x80FD;&#x6539;&#x53D8;block&#x91CC;&#x9762;&#x7684;&#x503C;</p>
 <h3 id="32-&#x5C40;&#x90E8;&#x53D8;&#x91CF;-static">3.2 &#x5C40;&#x90E8;&#x53D8;&#x91CF; static</h3>
 <p>static&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x4E0D;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;</p>
 <h5 id="&#x8FD0;&#x884C;&#x4EE3;&#x7801;">&#x8FD0;&#x884C;&#x4EE3;&#x7801;</h5>
@@ -1552,7 +1551,7 @@ int main(int argc, const char * argv[]) {
 <li>static&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x662F;&#x6307;&#x9488;&#x4F20;&#x9012;</li>
 </ul>
 <p>&#x5176;&#x5B9E;&#x4E5F;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x56E0;&#x4E3A;auto&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x79BB;&#x5F00;&#x4F5C;&#x7528;&#x57DF;&#x5C31;&#x9500;&#x6BC1;&#x4E86;&#x3002;&#x90A3;&#x5982;&#x679C;&#x662F;&#x6307;&#x9488;&#x4F20;&#x9012;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BE5;&#x53D8;&#x91CF;&#x5DF2;&#x7ECF;&#x9500;&#x6BC1;&#x4E86;&#x3002;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A;&#x51FA;&#x95EE;&#x9898;&#x3002;&#x800C;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x672C;&#x6765;&#x5C31;&#x662F;&#x5728;&#x54EA;&#x91CC;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x65E0;&#x9700;&#x6355;&#x83B7;&#x3002;</p>
-<h2 id="4-block&#x6709;3&#x79CD;&#x7C7B;&#x578B;">4 block&#x6709;3&#x79CD;&#x7C7B;&#x578B;</h2>
+<h2 id="4--block&#x6709;3&#x79CD;&#x7C7B;&#x578B;">4  block&#x6709;3&#x79CD;&#x7C7B;&#x578B;</h2>
 <h4 id="block&#x4E5F;&#x662F;&#x4E00;&#x4E2A;oc&#x5BF9;&#x8C61;">block&#x4E5F;&#x662F;&#x4E00;&#x4E2A;OC&#x5BF9;&#x8C61;</h4>
 <p>block&#x6709;3&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;class&#x65B9;&#x6CD5;&#x6216;&#x8005;isa&#x6307;&#x9488;&#x67E5;&#x770B;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#xFF0C;&#x6700;&#x7EC8;&#x90FD;&#x662F;&#x7EE7;&#x627F;&#x81EA;NSBlock&#x7C7B;&#x578B;</p>
 <ul>
@@ -1660,7 +1659,20 @@ int main(int argc, const char * argv[]) {
 </tr>
 </tbody>
 </table>
+<p>weak&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#xFF0C;&#x5728;&#x539F;&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x4E4B;&#x540E;&#xFF0C;weak&#x5BF9;&#x8C61;&#x5C31;&#x4F1A;&#x53D8;&#x6210;null&#xFF0C;&#x9632;&#x6B62;&#x91CE;&#x6307;&#x9488;&#x3002;&#x6240;&#x4EE5;&#x5C31;&#x8F93;&#x51FA;&#x4E86;null&#x4E86;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x600E;&#x4E48;&#x624D;&#x80FD;&#x5728;weakSelf&#x4E4B;&#x540E;&#xFF0C;block&#x91CC;&#x9762;&#x8FD8;&#x80FD;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;weakSelf&#x4E4B;&#x540E;&#x7684;&#x5BF9;&#x8C61;&#x5462;&#xFF1F;</p>
+<p>&#x7A76;&#x5176;&#x6839;&#x672C;&#x539F;&#x56E0;&#x5C31;&#x662F;weakSelf&#x4E4B;&#x540E;&#xFF0C;&#x65E0;&#x6CD5;&#x63A7;&#x5236;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F1A;&#x88AB;&#x91CA;&#x653E;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x5728;block&#x5185;&#x4E0D;&#x4F1A;&#x88AB;&#x91CA;&#x653E;&#xFF0C;&#x9700;&#x8981;&#x6DFB;&#x52A0;_strong&#x3002;</p>
+<p>&#x5728;block&#x91CC;&#x9762;&#x4F7F;&#x7528;&#x7684;_strong&#x4FEE;&#x9970;&#x7684;weakSelf&#x662F;&#x4E3A;&#x4E86;&#x5728;&#x51FD;&#x6570;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x9632;&#x6B62;self&#x63D0;&#x524D;&#x91CA;&#x653E;&#x3002;strongSelf&#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x5F53;block&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x5C31;&#x4F1A;&#x91CA;&#x653E;&#x81EA;&#x52A8;&#x53D8;&#x91CF;strongSelf&#x4E0D;&#x4F1A;&#x5BF9;self&#x8FDB;&#x884C;&#x4E00;&#x76F4;&#x8FDB;&#x884C;&#x5F3A;&#x5F15;&#x7528;&#x3002;</p>
 <h2 id="6-block-&#x4FEE;&#x9970;&#x7B26;">6 __block &#x4FEE;&#x9970;&#x7B26;</h2>
+<p><strong>__block&#x4FEE;&#x9970;&#x7B26;&#x539F;&#x7406;&#xFF1A;</strong></p>
+<p>&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x5C06;<code>__block</code>&#x53D8;&#x91CF;&#x5305;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;<code>__Block_byref_age_0</code>&#xFF0C;&#x7ED3;&#x6784;&#x4F53;&#x5185;&#x90E8;<code>*__forwarding</code>&#x662F;&#x6307;&#x5411;&#x81EA;&#x8EAB;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x5185;&#x90E8;&#x8FD8;&#x5B58;&#x50A8;&#x7740;&#x5916;&#x90E8;<code>auto&#x53D8;&#x91CF;</code>&#x7684;&#x503C;</p>
+<p>&#x4E00;&#x5F00;&#x59CB;&#xFF0C;&#x6808;&#x7A7A;&#x95F4;&#x7684;block&#x6709;&#x4E00;&#x4E2A;<code>__Block_byref_a_0</code>&#x7ED3;&#x6784;&#x4F53;&#xFF0C;
+ &#x6307;&#x5411;&#x5916;&#x90E8;<code>__Block_byref_a_0</code>&#x7684;&#x5730;&#x5740;&#xFF0C;
+ &#x5176;&#x4E2D;&#x5B83;&#x7684;__forwarding&#x6307;&#x9488;&#x6307;&#x5411;&#x81EA;&#x8EAB;&#xFF0C;</p>
+<p>&#x5F53;block&#x4ECE;&#x6808;copy&#x5230;&#x5806;&#x65F6;&#xFF0C;</p>
+<p>&#x5806;&#x7A7A;&#x95F4;&#x7684;block&#x6709;&#x4E00;&#x4E2A;<code>__Block_byref_a_0</code>&#x7ED3;&#x6784;&#x4F53;&#xFF0C;
+ &#x6307;&#x5411;&#x5916;&#x90E8;<code>__Block_byref_a_0</code>&#x7684;&#x5730;&#x5740;&#xFF0C;
+ &#x5176;&#x4E2D;&#x5B83;&#x7684;__forwarding&#x6307;&#x9488;&#x6307;&#x5411;&#x81EA;&#x8EAB;</p>
 <p><strong>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;</strong>&#xFF0C;&#x5BF9;&#x88AB;&#x622A;&#x83B7;&#x53D8;&#x91CF;&#x8FDB;&#x884C;<strong>&#x8D4B;&#x503C;</strong>&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x6DFB;&#x52A0; <code>__block</code> &#x4FEE;&#x9970;&#x7B26;(<strong>&#x6CE8;&#x610F;&#x662F;&#x8D4B;&#x503C;!!</strong>, &#x8D4B;&#x503C;&#x2260;&#x4F7F;&#x7528;)</p>
 <pre><code>NSMutableArray *array = [NSMutableArray array];
 void(^Block)(void) = ^{
@@ -1727,15 +1739,6 @@ __Block_byref_a_0 *__forwarding;
 <p>&#x4E3B;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x7684;&#x53D8;&#x5316;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-085104.jpg" alt=""></p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-085118.jpg" alt=""></p>
-<p>&#x9996;&#x5148;&#x8BF4;&#x660E;&#x4E00;&#x70B9;&#xFF0C;
- &#x5728;block&#x521D;&#x59CB;&#x5316;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x7531;&#x6808;block&#x6307;&#x5411;&#x5806;block&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
-<p>&#x4E00;&#x5F00;&#x59CB;&#xFF0C;&#x6808;&#x7A7A;&#x95F4;&#x7684;block&#x6709;&#x4E00;&#x4E2A;<code>__Block_byref_a_0</code>&#x7ED3;&#x6784;&#x4F53;&#xFF0C;
- &#x6307;&#x5411;&#x5916;&#x90E8;<code>__Block_byref_a_0</code>&#x7684;&#x5730;&#x5740;&#xFF0C;
- &#x5176;&#x4E2D;&#x5B83;&#x7684;__forwarding&#x6307;&#x9488;&#x6307;&#x5411;&#x81EA;&#x8EAB;&#xFF0C;</p>
-<p>&#x5F53;block&#x4ECE;&#x6808;copy&#x5230;&#x5806;&#x65F6;&#xFF0C;</p>
-<p>&#x5806;&#x7A7A;&#x95F4;&#x7684;block&#x6709;&#x4E00;&#x4E2A;<code>__Block_byref_a_0</code>&#x7ED3;&#x6784;&#x4F53;&#xFF0C;
- &#x6307;&#x5411;&#x5916;&#x90E8;<code>__Block_byref_a_0</code>&#x7684;&#x5730;&#x5740;&#xFF0C;
- &#x5176;&#x4E2D;&#x5B83;&#x7684;__forwarding&#x6307;&#x9488;&#x6307;&#x5411;&#x81EA;&#x8EAB;&#xFF08;&#x590D;&#x8BFB;&#x673A;&#xFF09;</p>
 <h2 id="&#x5982;&#x4F55;&#x4ECE;&#x6808;&#x6307;&#x5411;&#x5806;&#xFF0C;&#x5E76;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x5462;&#xFF1F;">&#x5982;&#x4F55;&#x4ECE;&#x6808;&#x6307;&#x5411;&#x5806;&#xFF0C;&#x5E76;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x5462;&#xFF1F;</h2>
 <p>apple&#x6E90;&#x7801;&#xFF0C;&#x5982;&#x56FE;&#xFF1A;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-085605.jpg" alt=""></p>
@@ -1811,7 +1814,7 @@ __Block_byref_a_0 *__forwarding;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Block","level":"1.2.4.2","depth":3,"next":{"title":"Method","level":"1.2.4.3","depth":3,"path":"iOS/OCFoundation/Method.md","ref":"iOS/OCFoundation/Method.md","articles":[]},"previous":{"title":"Runtime","level":"1.2.4.1","depth":3,"path":"iOS/OCFoundation/Runtime.md","ref":"iOS/OCFoundation/Runtime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/Block.md","mtime":"2021-05-10T07:50:50.455Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-10T07:51:17.649Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Block","level":"1.2.4.2","depth":3,"next":{"title":"Method","level":"1.2.4.3","depth":3,"path":"iOS/OCFoundation/Method.md","ref":"iOS/OCFoundation/Method.md","articles":[]},"previous":{"title":"Runtime","level":"1.2.4.1","depth":3,"path":"iOS/OCFoundation/Runtime.md","ref":"iOS/OCFoundation/Runtime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/Block.md","mtime":"2021-05-10T10:09:54.390Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-10T10:10:22.601Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
