@@ -112,8 +112,10 @@
 
   - [深夜暗坑 - iOS启动图异常修复方案](./Article/iOSLaunchScreenBug.md)
 
-    
+  - [抖音品质建设 - iOS 启动优化《原理篇》](./Article/抖音品质建设 - iOS 启动优化《原理篇》.md)
 
+    
+  
   
 
 

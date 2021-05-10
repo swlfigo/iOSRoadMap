@@ -120,7 +120,9 @@ mmap 的全称是 memory map，是一种内存映射技术，可以把文件映�
 - **Build Phase：以 Target 为维度定义了构建的流程**。可以在 Build Phase 中插入脚本，来做一些定制化的构建，比如 CocoaPod 的拷贝资源就是通过脚本的方式完成的。
 - **Build Settings：配置编译和链接相关的参数**。特别要提到的是 other link flags 和 other c flags，因为编译和链接的参数非常多，有些需要手动在这里配置。很多项目用的 CocoaPod 做的组件化，这时候编译选项在对应的.xcconfig 文件里。
 
-以单 Target 为例，我们来看下构建流程：![图片](https://mmbiz.qpic.cn/mmbiz_png/5EcwYhllQOhKWibuGWDU1lBFc20nxt254glw8jJgPqxq5o7ZrkAZVHianfbichVEDwSfkf9iaRq3dATHgVtz0iawo0Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+以单 Target 为例，我们来看下构建流程：
+
+![图片](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-10-074756.jpg)
 
 - 源文件(.m/.c/.swift 等)是单独编译的，输出对应的目标文件(.o)
 - 目标文件和静态库/动态库一起，链接出最后的 Mach-O
@@ -136,7 +138,7 @@ mmap 的全称是 memory map，是一种内存映射技术，可以把文件映�
 - 前端负责预处理，词法语法分析，生成 IR
 - 后端基于 IR 做优化，生成机器码
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/5EcwYhllQOhKWibuGWDU1lBFc20nxt254icA9NhyYqAjNHAsZPyxNyCE7zoABd4petfF4nf8urvyjJQYYOHMHiceg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)那么如何利用编译优化启动速度呢？
+![图片](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-10-074803.jpg)那么如何利用编译优化启动速度呢？
 
 **代码数量会影响启动速度，为了提升启动速度，我们可以把一些无用代码下掉**。那怎么统计哪些代码没有用到呢？可以利用 LLVM 插桩来实现。LLVM 的代码优化流程是一个一个 Pass，由于 LLVM 是开源的，我们可以添加一个自定义的 Pass，在函数的头部插入一些代码，这些代码会记录这个函数被调用了，然后把统计到的数据上传分析，就可以知道哪些代码是用不到的了 。
 
@@ -144,7 +146,9 @@ Facebook 给 LLVM 提的 **order_file**[2]的 feature 就是实现了类似的�
 
 ### 链接
 
-经过编译后，我们有很多个目标文件，接着这些目标文件会和静态库，动态库一起，链接出一个 Mach-O。链接的过程并不产生新的代码，只会做一些移动和补丁。![图片](https://mmbiz.qpic.cn/mmbiz_png/5EcwYhllQOhKWibuGWDU1lBFc20nxt254FlTjFwZibehWfy900icNRR7tEopibAn56mqtLgTiaBTehl6sPibe8UhnHzQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+经过编译后，我们有很多个目标文件，接着这些目标文件会和静态库，动态库一起，链接出一个 Mach-O。链接的过程并不产生新的代码，只会做一些移动和补丁。
+
+![图片](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-10-074810.png)
 
 - tbd 的全称是 text-based stub library，是因为链接的过程中只需要符号就可以了，所以 Xcode 6 开始，像 UIKit 等系统库就不提供完整的 Mach-O，而是提供一个只包含符号等信息的 tbd 文件。
 
