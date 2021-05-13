@@ -75,6 +75,7 @@
 
     * [二分法插入排序](./Algorithm/BinaryInsertSort.md)
     * [二叉树排序](./Algorithm/BinarySort.md)
+    * [删除有序数组中的重复项](./Algorithm/remove-duplicates-from-sorted-array.md)
 
 
 
