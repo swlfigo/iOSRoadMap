@@ -22,6 +22,14 @@ HttpDNS是通过ip直接请求http获取服务器A记录地址，不存在向本
 
 
 
+IP直连方案有下面几大优势： 
+
+1. 摒弃了系统DNS，减少外界干扰，摆脱DNS劫持困扰。 
+2. 自建DNS更新时机可以控制。 
+3. IP列表更换方便。
+
+
+
 ## Reference
 
 [HTTPDNS深度解析](https://segmentfault.com/a/1190000021588066)
