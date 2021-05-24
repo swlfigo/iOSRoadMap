@@ -2,6 +2,12 @@
 
 二叉树的前中后序遍历的非递归实现
 
+
+
+前，中，后只是指父节点遍历的顺序，前序就是 父节点->左子树->右子树，中序是 左子树->父节点->右子树，后序是 左子树 -> 右子树 ->父节点
+
+
+
 ## 二叉树定义
 
 ```python
@@ -158,6 +164,38 @@ class Solution(object):
                 stack1.append(cur.right)
         return stack2[::-1]
 ```
+
+
+
+方法二:
+
+```python
+class Solution:
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return list()
+        
+        res = list()
+        stack = list()
+        prev = None
+
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if not root.right or root.right == prev:
+                res.append(root.val)
+                prev = root
+                root = None
+            else:
+                stack.append(root)
+                root = root.right
+        
+        return res
+```
+
+
 
 
 
