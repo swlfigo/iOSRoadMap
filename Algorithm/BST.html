@@ -1,0 +1,1430 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>二叉搜索树与平衡二叉树 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Article/ReadME.html" />
+    
+    
+    <link rel="prev" href="QuickSort.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../iOS/ReadME.html">
+            
+                <a href="../iOS/ReadME.html">
+            
+                    
+                    iOS技术总结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    第一章 UIKit
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../iOS/UIKit/UIResponder.html">
+            
+                <a href="../iOS/UIKit/UIResponder.html">
+            
+                    
+                    UI触摸事件与事件响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                <a href="../iOS/UIKit/UIOffScreenRendering.html">
+            
+                    
+                    iOS 离屏渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../iOS/UIKit/UIViewRender.html">
+            
+                <a href="../iOS/UIKit/UIViewRender.html">
+            
+                    
+                    iOS UIView刷新与渲染机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../iOS/UIKit/UIViewRenderProcess.html">
+            
+                <a href="../iOS/UIKit/UIViewRenderProcess.html">
+            
+                    
+                    iOS界面渲染流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5" data-path="../iOS/UIKit/UIImageRender.html">
+            
+                <a href="../iOS/UIKit/UIImageRender.html">
+            
+                    
+                    iOS 图片的加载与渲染过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" >
+            
+                <span>
+            
+                    
+                    第二章 Memory
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../iOS/Memory/StructMemoryAligned.html">
+            
+                <a href="../iOS/Memory/StructMemoryAligned.html">
+            
+                    
+                    iOS结构体内存对齐
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../iOS/Memory/MemoryFiveMainSection.html">
+            
+                <a href="../iOS/Memory/MemoryFiveMainSection.html">
+            
+                    
+                    内存中的5大区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../iOS/Memory/TaggedPointer.html">
+            
+                <a href="../iOS/Memory/TaggedPointer.html">
+            
+                    
+                    Tagged Pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="../iOS/Memory/SideTables.html">
+            
+                <a href="../iOS/Memory/SideTables.html">
+            
+                    
+                    SideTables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.5" data-path="../iOS/Memory/RetainCount.html">
+            
+                <a href="../iOS/Memory/RetainCount.html">
+            
+                    
+                    RetainCount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.6" data-path="../iOS/Memory/WeakTable.html">
+            
+                <a href="../iOS/Memory/WeakTable.html">
+            
+                    
+                    WeakTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    第三章 Objc_Object
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../iOS/Objc_Object/Property.html">
+            
+                <a href="../iOS/Objc_Object/Property.html">
+            
+                    
+                    Propety属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="../iOS/Objc_Object/isa.html">
+            
+                <a href="../iOS/Objc_Object/isa.html">
+            
+                    
+                    isa
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="../iOS/Objc_Object/ObjectClass.html">
+            
+                <a href="../iOS/Objc_Object/ObjectClass.html">
+            
+                    
+                    ObjectClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.4" data-path="../iOS/Objc_Object/ClassRWT.html">
+            
+                <a href="../iOS/Objc_Object/ClassRWT.html">
+            
+                    
+                    ClassRWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.5" data-path="../iOS/Objc_Object/OCAllocInit.html">
+            
+                <a href="../iOS/Objc_Object/OCAllocInit.html">
+            
+                    
+                    AllocInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.6" data-path="../iOS/Objc_Object/Category.html">
+            
+                <a href="../iOS/Objc_Object/Category.html">
+            
+                    
+                    Category
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.7" data-path="../iOS/Objc_Object/AssociatedObject.html">
+            
+                <a href="../iOS/Objc_Object/AssociatedObject.html">
+            
+                    
+                    AssociatedObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" >
+            
+                <span>
+            
+                    
+                    第四章 OC Foundation
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../iOS/OCFoundation/Runtime.html">
+            
+                <a href="../iOS/OCFoundation/Runtime.html">
+            
+                    
+                    Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../iOS/OCFoundation/Block.html">
+            
+                <a href="../iOS/OCFoundation/Block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="../iOS/OCFoundation/Method.html">
+            
+                <a href="../iOS/OCFoundation/Method.html">
+            
+                    
+                    Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="../iOS/OCFoundation/MessageForwarding.html">
+            
+                <a href="../iOS/OCFoundation/MessageForwarding.html">
+            
+                    
+                    MessageForwarding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="../iOS/OCFoundation/KVC.html">
+            
+                <a href="../iOS/OCFoundation/KVC.html">
+            
+                    
+                    KVC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="../iOS/OCFoundation/KVO.html">
+            
+                <a href="../iOS/OCFoundation/KVO.html">
+            
+                    
+                    KVO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.7" data-path="../iOS/OCFoundation/Runloop.html">
+            
+                <a href="../iOS/OCFoundation/Runloop.html">
+            
+                    
+                    Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.8" data-path="../iOS/OCFoundation/MultiThreading.html">
+            
+                <a href="../iOS/OCFoundation/MultiThreading.html">
+            
+                    
+                    MultiThreading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.9" data-path="../iOS/OCFoundation/GCDUsage.html">
+            
+                <a href="../iOS/OCFoundation/GCDUsage.html">
+            
+                    
+                    GCD-Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.10" data-path="../iOS/OCFoundation/GCDThread.html">
+            
+                <a href="../iOS/OCFoundation/GCDThread.html">
+            
+                    
+                    GCD-Thread
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.11" data-path="../iOS/OCFoundation/Lock.html">
+            
+                <a href="../iOS/OCFoundation/Lock.html">
+            
+                    
+                    Lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.12" data-path="../iOS/OCFoundation/AutoReleasePool.html">
+            
+                <a href="../iOS/OCFoundation/AutoReleasePool.html">
+            
+                    
+                    AutoReleasePool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.13" data-path="../iOS/OCFoundation/@synchronized.html">
+            
+                <a href="../iOS/OCFoundation/@synchronized.html">
+            
+                    
+                    @synchronized
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" >
+            
+                <span>
+            
+                    
+                    第五章 源码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1" data-path="../iOS/SourceCode/YYASyncLayer.html">
+            
+                <a href="../iOS/SourceCode/YYASyncLayer.html">
+            
+                    
+                    YYAsyncLayer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.2" data-path="../iOS/SourceCode/FluentDarkModeKit.html">
+            
+                <a href="../iOS/SourceCode/FluentDarkModeKit.html">
+            
+                    
+                    FluentDarkModeKit 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5.3" data-path="../iOS/SourceCode/KTVHttpCache.html">
+            
+                <a href="../iOS/SourceCode/KTVHttpCache.html">
+            
+                    
+                    KTVHttpCache
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" >
+            
+                <span>
+            
+                    
+                    第六章 iOS知识点
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.6.1" data-path="../iOS/Knowledge/Dyld.html">
+            
+                <a href="../iOS/Knowledge/Dyld.html">
+            
+                    
+                    Dyld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.2" data-path="../iOS/Knowledge/AppLaunchDetail.html">
+            
+                <a href="../iOS/Knowledge/AppLaunchDetail.html">
+            
+                    
+                    App启动详细
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.3" data-path="../iOS/Knowledge/MachO.html">
+            
+                <a href="../iOS/Knowledge/MachO.html">
+            
+                    
+                    Mach-O
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.4" data-path="../iOS/Knowledge/PreMain.html">
+            
+                <a href="../iOS/Knowledge/PreMain.html">
+            
+                    
+                    PreMain
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.5" data-path="../iOS/Knowledge/Complie.html">
+            
+                <a href="../iOS/Knowledge/Complie.html">
+            
+                    
+                    iOS 编译过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.6" data-path="../iOS/Knowledge/BinaryOrder.html">
+            
+                <a href="../iOS/Knowledge/BinaryOrder.html">
+            
+                    
+                    二进制重排
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.7" data-path="../iOS/Knowledge/RuntimeSuper.html">
+            
+                <a href="../iOS/Knowledge/RuntimeSuper.html">
+            
+                    
+                    self class && super class
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.8" data-path="../iOS/Knowledge/RuntimeCls.html">
+            
+                <a href="../iOS/Knowledge/RuntimeCls.html">
+            
+                    
+                    isKindOfClass && isMemberOfClass
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    网络
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../Network/TCPMessageFrame.html">
+            
+                <a href="../Network/TCPMessageFrame.html">
+            
+                    
+                    TCP粘包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../Network/Https.html">
+            
+                <a href="../Network/Https.html">
+            
+                    
+                    Https
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../Network/TCPHandShake.html">
+            
+                <a href="../Network/TCPHandShake.html">
+            
+                    
+                    TCPHandShake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../Network/TCPUDP.html">
+            
+                <a href="../Network/TCPUDP.html">
+            
+                    
+                    TCP&UDP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../Network/HTTPDNS.html">
+            
+                <a href="../Network/HTTPDNS.html">
+            
+                    
+                    HTTPDNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    数据结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../Struct/BinaryTree.html">
+            
+                <a href="../Struct/BinaryTree.html">
+            
+                    
+                    二叉树
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    算法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="BinaryInsertSort.html">
+            
+                <a href="BinaryInsertSort.html">
+            
+                    
+                    二分法插入排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="BinarySort.html">
+            
+                <a href="BinarySort.html">
+            
+                    
+                    二叉树排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="remove-duplicates-from-sorted-array.html">
+            
+                <a href="remove-duplicates-from-sorted-array.html">
+            
+                    
+                    删除有序数组中的重复项
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="QuickSort.html">
+            
+                <a href="QuickSort.html">
+            
+                    
+                    快速排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.1.5" data-path="BST.html">
+            
+                <a href="BST.html">
+            
+                    
+                    二叉搜索树与平衡二叉树
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../Article/ReadME.html">
+            
+                <a href="../Article/ReadME.html">
+            
+                    
+                    技术文章收集
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                <a href="../Article/贝聊 IAP 实战之满地是坑.html">
+            
+                    
+                    贝聊 IAP 实战之满地是坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                <a href="../Article/关于离屏渲染的深入研究  - Medium.html">
+            
+                    
+                    关于离屏渲染的深入研究  - Medium
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../Article/谜一样的 Runloop(1_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(1_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../Article/谜一样的 Runloop(2_2">
+            
+                <span>
+            
+                    
+                    谜一样的 Runloop(2_2) 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../Article/面试驱动技术 - Category 相关考点.html">
+            
+                <a href="../Article/面试驱动技术 - Category 相关考点.html">
+            
+                    
+                    面试驱动技术 - Category 相关考点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../Article/iOS 编译过程的原理和应用.html">
+            
+                <a href="../Article/iOS 编译过程的原理和应用.html">
+            
+                    
+                    iOS 编译过程的原理和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="../Article/Objective-C Runtime 机制简析.html">
+            
+                <a href="../Article/Objective-C Runtime 机制简析.html">
+            
+                    
+                    Objective-C Runtime 机制简析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="../Article/OC 消息机制和 super 关键字.html">
+            
+                <a href="../Article/OC 消息机制和 super 关键字.html">
+            
+                    
+                    OC 消息机制和 super 关键字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="../Article/UIViewController 预加载方案浅谈.html">
+            
+                <a href="../Article/UIViewController 预加载方案浅谈.html">
+            
+                    
+                    UIViewController 预加载方案浅谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.10" data-path="../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                <a href="../Article/有赞移动 iOS 组件化（模块化）架构设计实践.html">
+            
+                    
+                    有赞移动 iOS 组件化（模块化）架构设计实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.11" data-path="../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                <a href="../Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.html">
+            
+                    
+                    为什么你应该使用 Git 进行版本控制 · Why's THE Design?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.12" data-path="../Article/深入了解 iOS 的初始化.html">
+            
+                <a href="../Article/深入了解 iOS 的初始化.html">
+            
+                    
+                    深入了解 iOS 的初始化.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.13" data-path="../Article/App 启动时间：过去，现在和未来.html">
+            
+                <a href="../Article/App 启动时间：过去，现在和未来.html">
+            
+                    
+                    App 启动时间：过去，现在和未来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.14" data-path="../Article/iOSUIResponderChain.html">
+            
+                <a href="../Article/iOSUIResponderChain.html">
+            
+                    
+                    iOS事件处理，看我就够了~
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.15" data-path="../Article/iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                <a href="../Article/iOS 代码瘦身实践_ 删除无用的类.html">
+            
+                    
+                    iOS 代码瘦身实践_ 删除无用的类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.16" data-path="../Article/iOSLaunchScreenBug.html">
+            
+                <a href="../Article/iOSLaunchScreenBug.html">
+            
+                    
+                    深夜暗坑 - iOS启动图异常修复方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.17" data-path="../Article/抖音品质建设 - iOS 启动优化《原理篇》.html">
+            
+                <a href="../Article/抖音品质建设 - iOS 启动优化《原理篇》.html">
+            
+                    
+                    抖音品质建设 - iOS 启动优化《原理篇》
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >二叉搜索树与平衡二叉树</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x3001;&#x5E73;&#x8861;&#x6811;&#xFF08;avl">&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x3001;&#x5E73;&#x8861;&#x6811;&#xFF08;AVL)</h1>
+<p><strong>&#x4E3A;&#x4EC0;&#x4E48;&#x6709;&#x4E86;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;/&#x5E73;&#x8861;&#x6811;&#x8FD8;&#x9700;&#x8981;&#x7EA2;&#x9ED1;&#x6811;</strong></p>
+<h2 id="&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;-binary-search-tree">&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811; (Binary Search Tree)</h2>
+<p>&#x6982;&#x5FF5;
+&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x53C8;&#x79F0;&#x4E8C;&#x53C9;&#x641C;&#x7D22;&#x6811;&#xFF0C;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#xFF0C;&#x7279;&#x70B9;&#x5982;&#x4E0B;:</p>
+<ol>
+<li>&#x5DE6;&#x5B50;&#x6811;&#x4E0A;&#x6240;&#x6709;&#x7ED3;&#x70B9;&#x503C;&#x5747;&#x5C0F;&#x4E8E;&#x6839;&#x7ED3;&#x70B9;</li>
+<li>&#x53F3;&#x5B50;&#x6811;&#x4E0A;&#x6240;&#x6709;&#x7ED3;&#x70B9;&#x503C;&#x5747;&#x5927;&#x4E8E;&#x6839;&#x7ED3;&#x70B9;</li>
+<li>&#x7ED3;&#x70B9;&#x7684;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#x672C;&#x8EAB;&#x53C8;&#x662F;&#x4E00;&#x9897;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;</li>
+<li>&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x4E2D;&#x5E8F;&#x904D;&#x5386;&#x5F97;&#x5230;&#x7ED3;&#x679C;&#x662F;&#x9012;&#x589E;&#x6392;&#x5E8F;&#x7684;&#x7ED3;&#x70B9;&#x5E8F;&#x5217;&#x3002;</li>
+</ol>
+<h3 id="1&#x3001;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x7684;&#x7F3A;&#x70B9;">1&#x3001;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x7684;&#x7F3A;&#x70B9;</h3>
+<p>&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#xFF0C;&#x76F8;&#x4FE1;&#x5927;&#x5BB6;&#x90FD;&#x63A5;&#x89E6;&#x8FC7;&#xFF0C;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x7684;&#x7279;&#x70B9;&#x5C31;&#x662F;<strong>&#x5DE6;&#x5B50;&#x6811;&#x7684;&#x8282;&#x70B9;&#x503C;&#x6BD4;&#x7236;&#x4EB2;&#x8282;&#x70B9;&#x5C0F;&#xFF0C;&#x800C;&#x53F3;&#x5B50;&#x6811;&#x7684;&#x8282;&#x70B9;&#x503C;&#x6BD4;&#x7236;&#x4EB2;&#x8282;&#x70B9;&#x5927;</strong>&#xFF0C;&#x5982;&#x56FE;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-25-145439.jpg" alt="img"></p>
+<p>&#x57FA;&#x4E8E;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x7684;&#x8FD9;&#x79CD;&#x7279;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x67E5;&#x627E;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x53D6;&#x7C7B;&#x4F3C;&#x4E8E;<strong>&#x4E8C;&#x5206;&#x67E5;&#x627E;</strong>&#x7684;&#x601D;&#x60F3;&#xFF0C;&#x5FEB;&#x901F;&#x627E;&#x5230;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x3002;n &#x4E2A;&#x8282;&#x70B9;&#x7684;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#xFF0C;&#x6B63;&#x5E38;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x67E5;&#x627E;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A; O&#xFF08;logn&#xFF09;&#x3002;</p>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x8BF4;&#x662F;<strong>&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;</strong>&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x6709;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x4E00;&#x79CD;&#x6781;&#x7AEF;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4F8B;&#x5982;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-25-145506.jpg" alt="img"></p>
+<p>&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E5F;&#x662F;&#x6EE1;&#x8DB3;<strong>&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;</strong>&#x7684;&#x6761;&#x4EF6;&#xFF0C;&#x7136;&#x800C;&#xFF0C;&#x6B64;&#x65F6;&#x7684;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x5DF2;&#x7ECF;&#x8FD1;&#x4F3C;&#x9000;&#x5316;&#x4E3A;&#x4E00;&#x6761;&#x94FE;&#x8868;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x7684;&#x67E5;&#x627E;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x987F;&#x65F6;&#x53D8;&#x6210;&#x4E86; O(n)&#xFF0C;&#x53EF;&#x60F3;&#x800C;&#x77E5;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x4E0D;&#x80FD;&#x8BA9;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x53D1;&#x751F;&#xFF0C;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x4E8E;&#x662F;&#x6211;&#x4EEC;&#x5F15;&#x7533;&#x51FA;&#x4E86;<strong>&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;</strong>&#x3002;</p>
+<h3 id="2&#x3001;&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;">2&#x3001;&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;</h3>
+<p><strong>&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x9000;&#x5316;&#x6210;&#x4E00;&#x9897;&#x94FE;&#x8868;&#x800C;&#x8BDE;&#x751F;&#x4E86;</strong>&#xFF0C;&#x5E73;&#x8861;&#x6811;&#x5177;&#x6709;&#x5982;&#x4E0B;&#x7279;&#x70B9;</p>
+<p>1&#x3001;&#x5177;&#x6709;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x7684;&#x5168;&#x90E8;&#x7279;&#x6027;&#x3002;</p>
+<p>2&#x3001;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5DE6;&#x5B50;&#x6811;&#x548C;&#x53F3;&#x5B50;&#x6811;&#x7684;&#x9AD8;&#x5EA6;&#x5DEE;&#x81F3;&#x591A;&#x7B49;&#x4E8E;1&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;&#x56FE;&#x4E00;&#x5C31;&#x662F;&#x4E00;&#x9897;&#x5E73;&#x8861;&#x6811;&#x4E86;&#xFF0C;&#x800C;&#x56FE;&#x4E8C;&#x5219;&#x4E0D;&#x662F;(&#x8282;&#x70B9;&#x53F3;&#x8FB9;&#x6807;&#x7684;&#x662F;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x9AD8;&#x5EA6;)</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-25-145615.jpg" alt="img"></p>
+<p>&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-25-145611.jpg" alt="img"></p>
+<p>&#x5BF9;&#x4E8E;&#x56FE;&#x4E8C;&#xFF0C;&#x56E0;&#x4E3A;&#x8282;&#x70B9;9&#x7684;&#x5DE6;&#x5B69;&#x5B50;&#x9AD8;&#x5EA6;&#x4E3A;2&#xFF0C;&#x800C;&#x53F3;&#x5B69;&#x5B50;&#x9AD8;&#x5EA6;&#x4E3A;0&#x3002;&#x4ED6;&#x4EEC;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x503C;&#x8D85;&#x8FC7;1&#x4E86;&#x3002;</p>
+<p>&#x5E73;&#x8861;&#x6811;&#x57FA;&#x4E8E;&#x8FD9;&#x79CD;&#x7279;&#x70B9;&#x5C31;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x5927;&#x91CF;&#x8282;&#x70B9;&#x504F;&#x5411;&#x4E8E;&#x4E00;&#x8FB9;&#x7684;&#x60C5;&#x51B5;&#x4E86;&#x3002;&#x5173;&#x4E8E;&#x5E73;&#x8861;&#x6811;&#x5982;&#x4F55;&#x6784;&#x5EFA;&#x3001;&#x63D2;&#x5165;&#x3001;&#x5220;&#x9664;&#x3001;&#x5DE6;&#x65CB;&#x3001;&#x53F3;&#x65CB;&#x7B49;&#x64CD;&#x4F5C;&#x8FD9;&#x91CC;&#x4E0D;&#x5728;&#x8BF4;&#x660E;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x770B;&#x6211;&#x4E4B;&#x524D;&#x5199;&#x7684;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#xFF1A;<a href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s/dYP5-fM22BgM3viWg4V44A" target="_blank">&#x3010;&#x6F2B;&#x753B;&#x3011;&#x4EE5;&#x540E;&#x5728;&#x6709;&#x9762;&#x8BD5;&#x5B98;&#x95EE;&#x4F60;AVL&#x6811;&#xFF0C;&#x4F60;&#x5C31;&#x628A;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x6254;&#x7ED9;&#x4ED6;&#x3002;</a></p>
+<p>&#x4E8E;&#x662F;&#xFF0C;&#x901A;&#x8FC7;&#x5E73;&#x8861;&#x6811;&#xFF0C;&#x6211;&#x4EEC;&#x89E3;&#x51B3;&#x4E86;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x7684;&#x7F3A;&#x70B9;&#x3002;&#x5BF9;&#x4E8E;&#x6709; n &#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5E73;&#x8861;&#x6811;&#xFF0C;&#x6700;&#x574F;&#x7684;&#x67E5;&#x627E;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E5F;&#x4E3A; O(logn)&#x3002;</p>
+<h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x6709;&#x4E86;&#x5E73;&#x8861;&#x6811;&#x8FD8;&#x9700;&#x8981;&#x7EA2;&#x9ED1;&#x6811;&#xFF1F;">&#x4E3A;&#x4EC0;&#x4E48;&#x6709;&#x4E86;&#x5E73;&#x8861;&#x6811;&#x8FD8;&#x9700;&#x8981;&#x7EA2;&#x9ED1;&#x6811;&#xFF1F;</h3>
+<p>&#x867D;&#x7136;&#x5E73;&#x8861;&#x6811;&#x89E3;&#x51B3;&#x4E86;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x9000;&#x5316;&#x4E3A;&#x8FD1;&#x4F3C;&#x94FE;&#x8868;&#x7684;&#x7F3A;&#x70B9;&#xFF0C;&#x80FD;&#x591F;&#x628A;&#x67E5;&#x627E;&#x65F6;&#x95F4;&#x63A7;&#x5236;&#x5728; O(logn)&#xFF0C;&#x4E0D;&#x8FC7;&#x5374;&#x4E0D;&#x662F;&#x6700;&#x4F73;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x5E73;&#x8861;&#x6811;&#x8981;&#x6C42;<strong>&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5DE6;&#x5B50;&#x6811;&#x548C;&#x53F3;&#x5B50;&#x6811;&#x7684;&#x9AD8;&#x5EA6;&#x5DEE;&#x81F3;&#x591A;&#x7B49;&#x4E8E;1</strong>&#xFF0C;&#x8FD9;&#x4E2A;&#x8981;&#x6C42;&#x5B9E;&#x5728;&#x662F;&#x592A;&#x4E25;&#x4E86;&#xFF0C;&#x5BFC;&#x81F4;&#x6BCF;&#x6B21;&#x8FDB;&#x884C;&#x63D2;&#x5165;/&#x5220;&#x9664;&#x8282;&#x70B9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x51E0;&#x4E4E;&#x90FD;&#x4F1A;&#x7834;&#x574F;&#x5E73;&#x8861;&#x6811;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x89C4;&#x5219;&#xFF0C;&#x8FDB;&#x800C;&#x6211;&#x4EEC;&#x90FD;&#x9700;&#x8981;&#x901A;&#x8FC7;<strong>&#x5DE6;&#x65CB;</strong>&#x548C;<strong>&#x53F3;&#x65CB;</strong>&#x6765;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x4F7F;&#x4E4B;&#x518D;&#x6B21;&#x6210;&#x4E3A;&#x4E00;&#x9897;&#x7B26;&#x5408;&#x8981;&#x6C42;&#x7684;&#x5E73;&#x8861;&#x6811;&#x3002;</p>
+<p>&#x663E;&#x7136;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x90A3;&#x79CD;&#x63D2;&#x5165;&#x3001;&#x5220;&#x9664;&#x5F88;&#x9891;&#x7E41;&#x7684;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x5E73;&#x8861;&#x6811;&#x9700;&#x8981;&#x9891;&#x7E41;&#x7740;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x8FD9;&#x4F1A;&#x4F7F;&#x5E73;&#x8861;&#x6811;&#x7684;&#x6027;&#x80FD;&#x5927;&#x6253;&#x6298;&#x6263;&#xFF0C;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x4E8E;&#x662F;&#x6709;&#x4E86;<strong>&#x7EA2;&#x9ED1;&#x6811;</strong>&#xFF0C;&#x7EA2;&#x9ED1;&#x6811;&#x5177;&#x6709;&#x5982;&#x4E0B;&#x7279;&#x70B9;&#xFF1A;</p>
+<p>1&#x3001;&#x5177;&#x6709;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x7684;&#x7279;&#x70B9;&#x3002;</p>
+<p>2&#x3001;&#x6839;&#x8282;&#x70B9;&#x662F;&#x9ED1;&#x8272;&#x7684;&#xFF1B;</p>
+<p>3&#x3001;&#x6BCF;&#x4E2A;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x90FD;&#x662F;&#x9ED1;&#x8272;&#x7684;&#x7A7A;&#x8282;&#x70B9;&#xFF08;NIL&#xFF09;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x4E0D;&#x5B58;&#x6570;&#x636E;&#x3002;</p>
+<p>4&#x3001;&#x4EFB;&#x4F55;&#x76F8;&#x90BB;&#x7684;&#x8282;&#x70B9;&#x90FD;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x4E3A;&#x7EA2;&#x8272;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x7EA2;&#x8272;&#x8282;&#x70B9;&#x662F;&#x88AB;&#x9ED1;&#x8272;&#x8282;&#x70B9;&#x9694;&#x5F00;&#x7684;&#x3002;</p>
+<p>5&#x3001;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x4ECE;&#x8BE5;&#x8282;&#x70B9;&#x5230;&#x8FBE;&#x5176;&#x53EF;&#x8FBE;&#x7684;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x662F;&#x6240;&#x6709;&#x8DEF;&#x5F84;&#xFF0C;&#x90FD;&#x5305;&#x542B;&#x76F8;&#x540C;&#x6570;&#x76EE;&#x7684;&#x9ED1;&#x8272;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x56FE;&#x7247;&#xFF08;&#x6CE8;&#x610F;&#xFF0C;&#x56FE;&#x7247;&#x4E2D;&#x9ED1;&#x8272;&#x7684;&#x3001;&#x7A7A;&#x7684;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x6CA1;&#x6709;&#x753B;&#x51FA;&#xFF09;&#xFF08;&#x56FE;&#x7247;&#x6765;&#x81EA;&#x6781;&#x5BA2;&#x65F6;&#x95F4;&#xFF09;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-05-25-145730.jpg" alt="img"></p>
+<p>&#x6B63;&#x662F;&#x7531;&#x4E8E;&#x7EA2;&#x9ED1;&#x6811;&#x7684;&#x8FD9;&#x79CD;&#x7279;&#x70B9;&#xFF0C;&#x4F7F;&#x5F97;&#x5B83;&#x80FD;&#x591F;&#x5728;&#x6700;&#x574F;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E5F;&#x80FD;&#x5728; O(logn) &#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x67E5;&#x627E;&#x5230;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x3002;&#x81F3;&#x4E8E;&#x4E3A;&#x4EC0;&#x4E48;&#x5C31;&#x80FD;&#x591F;&#x4FDD;&#x8BC1;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A; O(logn)&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x7EC6;&#x8BB2;&#x4E86;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x6587;&#x7AE0;&#x53EF;&#x80FD;&#x4F1A;&#x8BB2;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x4E0E;&#x5E73;&#x8861;&#x6811;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x7EA2;&#x9ED1;&#x6811;&#x5728;&#x63D2;&#x5165;&#x3001;&#x5220;&#x9664;&#x7B49;&#x64CD;&#x4F5C;&#xFF0C;<strong>&#x4E0D;&#x4F1A;&#x50CF;&#x5E73;&#x8861;&#x6811;&#x90A3;&#x6837;&#xFF0C;&#x9891;&#x7E41;&#x7740;&#x7834;&#x574F;&#x7EA2;&#x9ED1;&#x6811;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x9891;&#x7E41;&#x7740;&#x8C03;&#x6574;</strong>&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x6211;&#x4EEC;&#x4E3A;&#x4EC0;&#x4E48;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#x7EA2;&#x9ED1;&#x6811;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x8981;&#x8BF4;&#xFF0C;&#x5355;&#x5355;&#x5728;&#x67E5;&#x627E;&#x65B9;&#x9762;&#x7684;&#x6548;&#x7387;&#x7684;&#x8BDD;&#xFF0C;&#x5E73;&#x8861;&#x6811;&#x6BD4;&#x7EA2;&#x9ED1;&#x6811;&#x5FEB;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x8BF4;&#xFF0C;<strong>&#x7EA2;&#x9ED1;&#x6811;&#x662F;&#x4E00;&#x79CD;&#x4E0D;&#x5927;&#x4E25;&#x683C;&#x7684;&#x5E73;&#x8861;&#x6811;</strong>&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x8BF4;&#x662F;&#x4E00;&#x4E2A;&#x6298;&#x4E2D;&#x53D1;&#x65B9;&#x6848;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4E0A;&#x9762;&#x8BB2;&#x7684;&#xFF0C;&#x4F60;&#x90FD;&#x61C2;&#xFF0C;&#x90FD;&#x80FD;&#x591F;&#x5728;&#x9762;&#x8BD5;&#x4E2D;&#x8BF4;&#x51FA;&#x6765;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x8DB3;&#x591F;&#x7684;&#x4E86;&#x3002;&#x6211;&#x5F53;&#x65F6;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x56DE;&#x7B54;&#x7684;&#x3002;</p>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x6700;&#x540E;&#x7684;&#x7B54;&#x6848;&#x662F;&#xFF0C;&#x5E73;&#x8861;&#x6811;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x9000;&#x5316;&#x4E3A;&#x94FE;&#x8868;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x800C;&#x7EA2;&#x9ED1;&#x6811;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x5E73;&#x8861;&#x6811;&#x5728;&#x63D2;&#x5165;&#x3001;&#x5220;&#x9664;&#x7B49;&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x9891;&#x7E41;&#x8C03;&#x6574;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<p><strong>BST &#x67E5;&#x627E;</strong></p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">searchBST</span><span class="hljs-params">(self, root: TreeNode, val: int)</span> -&gt; TreeNode:</span>
+        <span class="hljs-keyword">if</span> root <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span> <span class="hljs-keyword">or</span> val == root.val:
+            <span class="hljs-keyword">return</span> root
+
+        <span class="hljs-keyword">return</span> self.searchBST(root.left, val) <span class="hljs-keyword">if</span> val &lt; root.val \
+            <span class="hljs-keyword">else</span> self.searchBST(root.right, val)
+
+
+&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#xFF1A;O(H)&#xFF0C;&#x5176;&#x4E2D; H &#x662F;&#x6811;&#x9AD8;&#x3002;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A; O(logN)&#xFF0C;&#x6700;&#x574F;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A; O(N) [&#x9000;&#x5316;&#x6210;&#x94FE;&#x8868;]&#x3002;
+
+&#x4F5C;&#x8005;&#xFF1A;LeetCode
+&#x94FE;&#x63A5;&#xFF1A;https://leetcode-cn.com/problems/search-<span class="hljs-keyword">in</span>-a-binary-search-tree/solution/er-cha-sou-suo-shu-zhong-de-sou-suo-by-leetcode/
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="QuickSort.html" class="navigation navigation-prev " aria-label="Previous page: 快速排序">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Article/ReadME.html" class="navigation navigation-next " aria-label="Next page: 技术文章收集">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"二叉搜索树与平衡二叉树","level":"3.1.5","depth":2,"next":{"title":"技术文章收集","level":"4.1","depth":1,"path":"Article/ReadME.md","ref":"Article/ReadME.md","articles":[{"title":"贝聊 IAP 实战之满地是坑","level":"4.1.1","depth":2,"path":"Article/贝聊 IAP 实战之满地是坑.md","ref":"Article/贝聊 IAP 实战之满地是坑.md","articles":[]},{"title":"关于离屏渲染的深入研究  - Medium","level":"4.1.2","depth":2,"path":"Article/关于离屏渲染的深入研究  - Medium.md","ref":"Article/关于离屏渲染的深入研究  - Medium.md","articles":[]},{"title":"谜一样的 Runloop(1_2) ","level":"4.1.3","depth":2,"path":"Article/谜一样的 Runloop(1_2","ref":"Article/谜一样的 Runloop(1_2","articles":[]},{"title":"谜一样的 Runloop(2_2) ","level":"4.1.4","depth":2,"path":"Article/谜一样的 Runloop(2_2","ref":"Article/谜一样的 Runloop(2_2","articles":[]},{"title":"面试驱动技术 - Category 相关考点","level":"4.1.5","depth":2,"path":"Article/面试驱动技术 - Category 相关考点.md","ref":"Article/面试驱动技术 - Category 相关考点.md","articles":[]},{"title":"iOS 编译过程的原理和应用","level":"4.1.6","depth":2,"path":"Article/iOS 编译过程的原理和应用.md","ref":"Article/iOS 编译过程的原理和应用.md","articles":[]},{"title":"Objective-C Runtime 机制简析","level":"4.1.7","depth":2,"path":"Article/Objective-C Runtime 机制简析.md","ref":"Article/Objective-C Runtime 机制简析.md","articles":[]},{"title":"OC 消息机制和 super 关键字","level":"4.1.8","depth":2,"path":"Article/OC 消息机制和 super 关键字.md","ref":"Article/OC 消息机制和 super 关键字.md","articles":[]},{"title":"UIViewController 预加载方案浅谈","level":"4.1.9","depth":2,"path":"Article/UIViewController 预加载方案浅谈.md","ref":"Article/UIViewController 预加载方案浅谈.md","articles":[]},{"title":"有赞移动 iOS 组件化（模块化）架构设计实践","level":"4.1.10","depth":2,"path":"Article/有赞移动 iOS 组件化（模块化）架构设计实践.md","ref":"Article/有赞移动 iOS 组件化（模块化）架构设计实践.md","articles":[]},{"title":"为什么你应该使用 Git 进行版本控制 · Why's THE Design?","level":"4.1.11","depth":2,"path":"Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.md","ref":"Article/为什么你应该使用 Git 进行版本控制 · Why's THE Design_.md","articles":[]},{"title":"深入了解 iOS 的初始化.md","level":"4.1.12","depth":2,"path":"Article/深入了解 iOS 的初始化.md","ref":"./Article/深入了解 iOS 的初始化.md","articles":[]},{"title":"App 启动时间：过去，现在和未来","level":"4.1.13","depth":2,"path":"Article/App 启动时间：过去，现在和未来.md","ref":"./Article/App 启动时间：过去，现在和未来.md","articles":[]},{"title":"iOS事件处理，看我就够了~","level":"4.1.14","depth":2,"path":"Article/iOSUIResponderChain.md","ref":"./Article/iOSUIResponderChain.md","articles":[]},{"title":"iOS 代码瘦身实践_ 删除无用的类","level":"4.1.15","depth":2,"path":"Article/iOS 代码瘦身实践_ 删除无用的类.md","ref":"./Article/iOS 代码瘦身实践_ 删除无用的类.md","articles":[]},{"title":"深夜暗坑 - iOS启动图异常修复方案","level":"4.1.16","depth":2,"path":"Article/iOSLaunchScreenBug.md","ref":"./Article/iOSLaunchScreenBug.md","articles":[]},{"title":"抖音品质建设 - iOS 启动优化《原理篇》","level":"4.1.17","depth":2,"path":"Article/抖音品质建设 - iOS 启动优化《原理篇》.md","ref":"./Article/抖音品质建设 - iOS 启动优化《原理篇》.md","articles":[]}]},"previous":{"title":"快速排序","level":"3.1.4","depth":2,"path":"Algorithm/QuickSort.md","ref":"./Algorithm/QuickSort.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Algorithm/BST.md","mtime":"2021-05-25T15:24:13.101Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-25T15:24:49.408Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
