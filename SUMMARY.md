@@ -71,13 +71,18 @@
     * [TCP&UDP](Network/TCPUDP.md)
     * [HTTPDNS](./Network/HTTPDNS.md)
 
+* 数据结构
+
+    * [二叉树](Struct/BinaryTree.md)
+
+
 * 算法
 
     * [二分法插入排序](./Algorithm/BinaryInsertSort.md)
     * [二叉树排序](./Algorithm/BinarySort.md)
     * [删除有序数组中的重复项](./Algorithm/remove-duplicates-from-sorted-array.md)
     * [快速排序](./Algorithm/QuickSort.md)
-
+    * [二叉搜索树与平衡二叉树](./Algorithm/BST.md)
 
 
 -  [技术文章收集](Article/ReadME.md)
