@@ -416,3 +416,6 @@ void PostOrderTraverse(BiTree T)
 ## Reference
 
 [深入学习二叉树(一) 二叉树基础](https://www.jianshu.com/p/bf73c8d50dc2)
+
+[3 分钟理解完全二叉树、平衡二叉树、二叉查找树](https://juejin.cn/post/6844903606408183815)
+

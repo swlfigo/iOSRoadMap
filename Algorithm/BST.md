@@ -125,3 +125,9 @@ class Solution:
 
 
 
+
+
+## Reference
+
+[记一次腾讯面试：有了二叉查找树、平衡树（AVL）为啥还需要红黑树？](https://zhuanlan.zhihu.com/p/72505589)
+
