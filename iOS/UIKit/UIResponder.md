@@ -1,8 +1,14 @@
 # iOS 事件响应链
 
-## 什么是 iOS 的事件响应链机制？
 
-iOS 的事件响应链（Responder Chain）就是**当 UI 收到某个信号的响应后这种控件间自上到下消息传递的链路**。其中最重要的就是**事件传递流程**以及**如何找到第一响应者**。
+
+iOS 事件的主要由：响应连 和 传递链 构成。一般事件先通过传递链，传递下去。响应链，如果上层不能响应，那么一层一层通过响应链找到能响应的`UIResponse`
+
+
+
+* 响应连：由最基础的`view`向系统传递，`first view` -> `super view` -> ... -> `view controller` -> `window` -> `Application` -> `AppDelegate`
+
+* 传递链：有系统向最上层`view`传递，`Application` -> `window` -> `root view` -> ... -> `first view`
 
 
 
@@ -10,11 +16,35 @@ iOS 的事件响应链（Responder Chain）就是**当 UI 收到某个信号的�
 
 
 
+
+
+## 什么是 iOS 的事件响应链机制？
+
+
+
+当事件发生了，必须知道有谁来响应。在iOS中，由响应者链来对事件进行响应。
+
+响应者链是由一个不同对象组成的层次结构，其中的每个对象将依次获得响应事件的机会。当发生事件时，事件首先将被发送到第一响应者，第一响应者基本是事件发生的视图，也就是用户触摸屏幕的地方。事件将沿着响应者链一直向下传递，直到被接受并作出处理。
+
+一般来说，第一响应者是个视图对象或者其子类对象，当其被触摸后事件被交由它处理，如果它不处理，事件就会被传递给它的视图控制器对象 ViewController（如果存在），然后是它的父视图（superview）对象（如果存在），以此类推，直到顶层视图。接下来会沿着顶层视图（top view）到窗口（UIWindow 对象）再到程序（UIApplication 对象）。如果整个过程都没有响应这个事件，该事件就被丢弃。
+
+基本上，在响应者链只要有对象处理事件，事件就停止传递。
+
+```markdown
+First Response -> Window -> Application -> nil
+```
+
+
+
 ## 事件传递
 
-可以使得一个触摸事件选择多个对象来处理，简单来说系统是通过 `hitTest:withEvent:` 方法找到此次触摸事件的响应视图，然后调用视图的 `touchesBegan:withEvent:` 方法来处理事件。
+**First Response（第一响应者）**，指的是当前接受触摸的响应者对象，是响应者的开端。响应者链和事件分发的使命都是找出第一响应者。
 
-事件产生之后，会被加入到由UIApplication管理的事件队列里，接下来开始自UIApplication往下传递，首先会传递给主window，然后按照view的层级结构一层层往下传递，一直找到最合适的view（发生touch的那个view）来处理事件。查找最合适的view的过程是一个递归的过程，其中涉及到两个重要的方法 `hitTest:withEvent:`和`pointInside:withEvent:`
+
+
+iOS 检测到手指触摸操作（Touch）时，会将其打包成一个 `UIEvent` 对象，并放入当前活动`Application`的事件队列中去。接下来开始自UIApplication往下传递，首先会传递给主window，然后按照view的层级结构一层层往下传递，一直找到最合适的view（发生touch的那个view）来处理事件。查找最合适的view的过程是一个递归的过程，其中涉及到两个重要的方法 `hitTest:withEvent:`和`pointInside:withEvent:`方法寻找出操作初始点所在视图。查找最合适的view的过程是一个递归的过程。
+
+
 
 当我们点击屏幕时候的事件传递
 
@@ -34,13 +64,23 @@ UIApplication -> UIWindow -> hitTest:withEvent:
 //控制响应的范围，扩大 or 缩小。
 ```
 
+其中UIView不接受事件处理的情况有
+
+```shell
+1. hidden ＝ YES,隐藏的视图.
+2. userInteractionEnabled = NO,禁止用户操作的视图.
+3. alpha <= 0.01, 透明视图
+```
+
+
+
+
+
 ![image-20190312105858402](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024827.png)
 
 
 
-- ~~首先判断当前视图  `!hidden`  &&  `userInteractionEnable` &&  `alpha > 0.01` 条件通过的时候，到下一步. 否则返回nil，找不到当前视图~~
-- ~~通过 pointInside 判断点击的点是否在当前范围内，为YES直接下一步. 不在则直接返回nil。~~
-- ~~`倒序遍历`所有子视图，同时调用 hitTest 方法，如果某一个子视图返回了对应的响应视图，这个子视图会直接作为最终的响应视图给响应方，如果为 nil 则继续遍历下一个子视图。如果全部遍历结束都返回nil，那会返回当前点击位置在当前的视图范围内的视图作为最终响应视图~~
+
 
 更好的原理解析如下:
 
