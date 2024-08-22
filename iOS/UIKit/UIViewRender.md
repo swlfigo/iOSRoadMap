@@ -136,7 +136,7 @@ CGContextRef con = UIGraphicsGetCurrentContext();
 
 
 
-## View布局与约束时机
+## 4. View布局与约束时机
 
 一个视图的布局指的是它在屏幕上的的大小和位置。每个 view 都有一个 frame 属性，用来表示在父 view 坐标系中的位置和具体的大小。`UIView` 给你提供了用来通知系统某个 view 布局发生变化的方法，也提供了在 view 布局重新计算后调用的可重写的方法。
 
@@ -245,7 +245,7 @@ Update cycle 是当应用完成了你的所有事件处理代码后控制流回�
 
 
 
-## View绘制渲染机制和Runloop什么关系
+## 5. View绘制渲染机制和Runloop什么关系
 
 
 
@@ -281,7 +281,7 @@ CA::Layer::display_if_needed();
 
 
 
-## UI 卡顿,列表卡顿、掉帧原理
+## 6. UI 卡顿,列表卡顿、掉帧原理
 
 ![image-20190312140156990](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024849.png)
 
@@ -309,7 +309,11 @@ iOS的 `mainRunloop`是一个60fps的回调，也就是说每16.7ms(VSync信号�
 
 
 
+## 7. 结合阅读
 
+YYAsyncLayer基于异步绘制:
+
+[YYAsyncLayer 异步绘制原理解析](../SourceCode/YYAsyncLayer.md)
 
 
 
