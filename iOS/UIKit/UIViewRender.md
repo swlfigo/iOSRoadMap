@@ -1,14 +1,32 @@
 # iOS UIView刷新与渲染机制
 
-## CALayer 与 UIView
 
-- UIView 为CALayer提供内容，专门负责处理触摸等事件，参与响应链
-- CALayer 全权负责显示内容 contents
+
+## 1. UIView 与 CALayer 
+
+- UIView 为 CALayer提供内容，专门负责处理触摸等事件，参与响应链
+- CALayer基于CoreAnimation, 全权负责显示内容 contents
 - 单一原则，设计模式（负责相应的功能）
 
-## 图像显示原理
+
+
+## 2. 图像渲染流水线
 
 ![image-20190312112603570](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024844.png)
+
+图像渲染流程粗粒度地大概分为下面这些步骤：
+
+![在这里插入图片描述](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/a959d58c9c084ae2a7de5a8df07ae056~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp)
+
+上述图像渲染流水线中，除了第一部分 Application 阶段，后续主要都由 GPU 负责。
+
+
+
+CALayer 是显示的基础：存储 bitmap
+
+CALayer 中的 contents 属性保存了由设备渲染流水线渲染好的位图 bitmap（通常也被称为 backing store），而当设备屏幕进行刷新时，会从 CALayer 中读取生成好的 bitmap，进而呈现到屏幕上
+
+
 
 CPU和GPU通过总线连接，CPU中计算出的往往是`bitmap`位图，通过总线由合适的时机传递给GPU，GPU拿到位图后，渲染到帧缓存区`FrameBuffer`,然后由视频控制器根据`Vsync`信号在指定时间之前去帧缓冲区提取内容，显示到屏幕上。
 
@@ -21,66 +39,114 @@ CPU和GPU通过总线连接，CPU中计算出的往往是`bitmap`位图，通过
 
 `GPU工作内容:` 顶点着色，图元装配，光栅化，片段着色，片段处理，最后提交帧缓冲区
 
-## View绘制渲染机制和Runloop什么关系
 
-例如有以下 `UIView`
 
-```objective-c
-@implementation ZYYView
-- (void)drawRect:(CGRect)rect {
-    CGContextRef con = UIGraphicsGetCurrentContext();
-    CGContextAddEllipseInRect(con, CGRectMake(0,0,100,200));
-    CGContextSetRGBFillColor(con, 0, 0, 1, 1);
-    CGContextFillPath(con);
-}
-@end
-  
-  
-@implementation ViewController
+## 3. UIView的绘制原理
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    ZYYView *view = [[ZYYView alloc] init];
-    view.backgroundColor = [UIColor whiteColor];
-    view.bounds = CGRectMake(0, 0, 100, 100);
-    view.center = CGPointMake(100, 100);
-    [self.view addSubview:view];
-}
+![image-20190312141642996](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024854.png)
 
-@end
-```
 
-重写了 `UIView` 的 `DrawRect`方法.展现在屏幕前经历以下堆栈
 
-![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-03-03-093059.jpg)
+![2251862-1023aed5f7fa5d34.png](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/b7faae9221b545a19cb2fcb06603922d~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp)
 
-### 底层原理
+`[UIView setNeedsDisplay]` 并没有发生当前视图立即绘制工作,打上需要重绘的脏标记，最后是在某个时机完成
 
-当在操作 UI 时，比如改变了`Frame` 、更新了 `UIView/CALayer` 的层次时，或者手动调用了 `UIView/CALayer` 的 `setNeedsLayout/setNeedsDisplay` 方法后，这个 `UIView/CALayer` 就被标记为待处理，并被提交到一个全局的容器去。
-苹果注册了一个 Observer 监听 BeforeWaiting(即将进入休眠) 和 Exit (即将退出Loop) 事件，回调去执行一个很长的函数：
-`_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv()`。这个函数里会遍历所有待处理的 UIView/CAlayer 以执行实际的绘制和调整，并更新 UI 界面。
+`[UIView setLayoutIfNeed]` 立即重新布局视图(下一个Runloop)
+
+`[view layouIfNeeded]` 当前RunLoop休眠前更新
+
+当我们调用UIView的`setNeedsDisplay`的方法时候，会调用`layer`的同名方法，相当于在当前`layer`打上绘制标记，在当前`runloop`将要结束的时候，才会调用CALayer的`display`方法进入到真正的绘制当中。
+
+CALayer的`display`方法中，首先会判断layer的delegate方法`displayLayer：`是否实现，如果代理没有响应这个方法，则进入到系统绘制流程；如果代理响应了这个方法，则进入到异步绘制流程
+
+
+
+### 3.1 系统绘制流程
+
+![image-20190312142115333](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024857.png)
+
+
+
+Drawrect方法内为何第一行代码总要获取图形的上下文?
+
+**系统绘制的流程** 本质是创建一个 backing storage 的流程.
 
 ```objective-c
-
-_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv()
-QuartzCore:CA::Transaction::observer_callback:
-CA::Transaction::commit();
-CA::Context::commit_transaction();
-CA::Layer::layout_and_display_if_needed();
-CA::Layer::layout_if_needed();
-[CALayer layoutSublayers];
-[UIView layoutSubviews];
-CA::Layer::display_if_needed();
-[CALayer display];
-[UIView drawRect];
-
+CGContextRef con = UIGraphicsGetCurrentContext();
 ```
 
-![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-03-04-A4.png)
+![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-03-04-082448.jpg)
+
+每一个UIView都有一个layer，每一个layer都有个content，这个content指向的是一块缓存，叫做backing store
+当UIView被绘制时（从 CA::Transaction::commit:以后），CPU执行drawRect，通过context将数据写入backing store
+当backing store写完后，通过render server交给GPU去渲染，将backing store中的bitmap数据显示在屏幕上
+所以在 drawRect 方法中 要首先获取 context
+
+
+
+在CALayer内部，系统会创建一个backingStore（可以理解为CGContextRef，drawRect中取到的currentRef就是这个东西），然后layer回判断是否有delegate，如果没有代理，就调用CALayer的`drawInContext：`方法；如果有代理，则调用layer代理的`drawLayer:inContext:`方法，这一步发生在系统内部，然后在合适的时间给与我们回调一个熟悉的UIView的`drawRect：`方法。也就是在系统内部的绘制之上，允许我们再做一些额外的绘制。最后CALayer把backting store（位图）传给GPU。
+
+
+
+### 3.2 异步绘制流程
+
+- UIView 中有一个 CALayer 的属性，负责 UIView 具体内容的显示。
+- 具体过程是系统会把 UIView 显示的内容（包括 UILabel 的文字，UIImageView 的图片等）绘制在一张画布上，完成后倒出图片赋值给 CALayer 的 contents 属性，完成显示。
+
+这其中的工作都是在主线程中完成的，这就导致了主线程频繁的处理 UI 绘制的工作，如果要绘制的元素过多，过于频繁，就会造成卡顿。
+
+解决方案使用异步绘制就是：
+
+- 把 UIView 显示的内容（包括 UILabel 的文字，UIImageView 的图片等）绘制生成的 bitmap 在子线程完成。
+- 然后在回到主线程把 bitmap 赋值给 view.layer.content 属性。
+
+
+
+### 
+
+![image-20190312142425272](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024902.png)
+
+1. 首先在主线程调用 setNeedsdispay 方法
+2. 系统会在 runloop 将要结束的时候调用 [CAlayer display] 方法
+3. 如果我们的代理实现了dispayLayer 这个方法，会调用 dispayLayer 这个方法。我们可以去子线程里面进行异步绘制。子线程主要做的工作：
+   - 创建上下文
+   - UI控件的绘制工作
+   - 生成对应的图片（bitmap）
+4. 主线程可以做其他工作
+5. 异步绘制完事之后，回到主线程，把绘制的 bitmap 赋值 view.layer.contents 属性中
+
+
+
+![img](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/3vszdqr4ae.png)
+
+
+
+
+
+##### **▐**  **是否知道异步绘制？如何进行异步绘制？**
+
+- 基于系统开的口子 [layer.delegate dispayLayer:] 方法。
+- 并且实现/遵从了 dispayLayer 这个方法，我们就可以进行异步绘制： 
+  - 1）代理负责生产对应的 bitmap 
+  - 2）设置 bitmap 作为 layer.contents 属性的值
+
+
+
+
+
+
 
 ## View布局与约束时机
 
 一个视图的布局指的是它在屏幕上的的大小和位置。每个 view 都有一个 frame 属性，用来表示在父 view 坐标系中的位置和具体的大小。`UIView` 给你提供了用来通知系统某个 view 布局发生变化的方法，也提供了在 view 布局重新计算后调用的可重写的方法。
+
+
+
+### Update Cycle
+
+Update cycle 是当应用完成了你的所有事件处理代码后控制流回到主 RunLoop 时的那个时间点。正是在这个时间点上系统开始更新布局、显示和设置约束。如果你在处理事件的代码中请求修改了一个 view，那么系统就会把这个 view 标记为需要重画（redraw）。在**接下来**的 Update cycle 中，系统就会执行这些 view 上的更改。用户交互和布局更新间的延迟几乎不会被用户察觉到。iOS 应用一般以 60 fps 的速度展示动画，就是说每个更新周期只需要 1/60 秒。这个更新的过程很快，所以用户在和应用交互时感觉不到 UI 中的更新延迟。但是由于在处理事件和对应 view 重画间存在着一个间隔，RunLoop 中的某时刻的 view 更新可能不是你想要的那样。如果你的代码中的某些计算依赖于当下的 view 内容或者是布局，那么就有在过时 view 信息上操作的风险。理解 RunLoop、update cycle 和 `UIView` 中具体的方法可以帮助避免或者可以调试这类问题。下面的图展示出了 update cycle 发生在 RunLoop 的尾部。
+
+![Update Cycle](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/161d67701eda3640~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png)
 
 
 
@@ -161,6 +227,58 @@ CA::Layer::display_if_needed();
 
 
 
+如下图，分别为 布局，显示，约束 3个阶段方法；不同方法在不同周期会刷新布局显示出来。
+
+
+
+![屏幕快照 2017-10-16 上午12.43.38.png](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/161d67701eeb4352~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png)
+
+
+
+##### **▐**  **我们调用 [UIView setNeedsDisplay] 方法的时候，不会立马发送对应视图的绘制工作，为什么？**
+
+- 调用 [UIView setNeedsDisplay] 后，
+- 然后会调用系统的同名方法 [view.layer setNeedsDisplay] 方法并在当前 view 上面打上一个脏标记
+- 当前 Runloop 将要结束的时候才会调用 [CALyer display] 方法，然后进入到视图真正的绘制工作当中。
+
+
+
+
+
+## View绘制渲染机制和Runloop什么关系
+
+
+
+### 底层原理
+
+当在操作 UI 时，，比如修改了frame、调整了UI层级（UIView/CALayer）或者手动设置了setNeedsDisplay:/setNeedsLayout:，这些调整操作会触发transaction commit，这个 `UIView/CALayer` 就被标记为待处理，并被提交到一个全局的容器去。向渲染服务器提交图层树。当这个 Observer 监听了主线程 RunLoop 的即将进入休眠和退出状态，则会遍历所有的UI更新并提交进行实际绘制更新。
+
+
+苹果注册了一个 Observer 监听 BeforeWaiting(即将进入休眠) 和 Exit (即将退出Loop) 事件，回调去执行一个很长的函数：
+`_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv()`。这个函数里会遍历所有待处理的 UIView/CAlayer 以执行实际的绘制和调整，并更新 UI 界面。
+
+```objective-c
+
+_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv()
+QuartzCore:CA::Transaction::observer_callback:
+CA::Transaction::commit();
+CA::Context::commit_transaction();
+CA::Layer::layout_and_display_if_needed();
+CA::Layer::layout_if_needed();
+[CALayer layoutSublayers];
+[UIView layoutSubviews];
+CA::Layer::display_if_needed();
+[CALayer display];
+[UIView drawRect];
+
+```
+
+
+
+
+
+
+
 
 
 ## UI 卡顿,列表卡顿、掉帧原理
@@ -187,67 +305,9 @@ iOS的 `mainRunloop`是一个60fps的回调，也就是说每16.7ms(VSync信号�
   - 视图混合。减少视图层级的复杂性，减少透明视图；不透明的opaque设置为YES
   - GPU能处理的最大纹理是4096 * 4096，一旦超过这个尺寸就会调用CPU进行资源处理，所以纹理尽量不要超过这个尺寸
 
-## UIView的绘制原理
-
-![image-20190312141642996](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024854.png)
-
-`[UIView setNeedsDisplay]` 并没有发生当前视图立即绘制工作,打上需要重绘的脏标记，最后是在某个时机完成
-
-`[UIView setLayoutIfNeed]` 立即重新布局视图(下一个Runloop)
-
-`[view layouIfNeeded]` 当前RunLoop休眠前更新
-
-当我们调用UIView的`setNeedsDisplay`的方法时候，会调用`layer`的同名方法，相当于在当前`layer`打上绘制标记，在当前`runloop`将要结束的时候，才会调用CALayer的`display`方法进入到真正的绘制当中。
-
-CALayer的`display`方法中，首先会判断layer的delegate方法`displayLayer：`是否实现，如果代理没有响应这个方法，则进入到系统绘制流程；如果代理响应了这个方法，则进入到异步绘制流程
 
 
 
-### 系统绘制流程
-
-![image-20190312142115333](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024857.png)
-
-
-
-在CALayer内部，系统会创建一个backingStore（可以理解为CGContextRef，drawRect中取到的currentRef就是这个东西），然后layer回判断是否有delegate，如果没有代理，就调用CALayer的`drawInContext：`方法；如果有代理，则调用layer代理的`drawLayer:inContext:`方法，这一步发生在系统内部，然后在合适的时间给与我们回调一个熟悉的UIView的`drawRect：`方法。也就是在系统内部的绘制之上，允许我们再做一些额外的绘制。最后CALayer把backting store（位图）传给GPU。
-
-
-
-![15420320733034](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134925.jpg)
-
-1. 首先一个视图由 CPU 进行 Frame 布局，准备视图和图层的层级关系，查询是否有重写 `drawRect:` 或 `drawLayer:inContext: `方法，**注意：如果有重写的话，这里的渲染是会占用CPU进行处理的。**
-2. CPU 会将处理视图和图层的层级关系打包，通过 IPC（内部处理通信）通道提交给渲染服务，渲染服务由 OpenGL ES 和 GPU 组成。
-3. 渲染服务首先将图层数据交给 OpenGL ES 进行纹理生成和着色。生成前后帧缓存，再根据显示硬件的刷新频率，一般以设备的Vsync信号和CADisplayLink为标准，进行前后帧缓存的切换。
-4. 最后，将最终要显示在画面上的后帧缓存交给 GPU，进行采集图片和形状，运行变换，应用文理和混合。最终显示在屏幕上。
-
-> 在iOS中是双缓冲机制，有前帧缓存、后帧缓存，即GPU会预先渲染好一帧放入一个缓冲区内（前帧缓存），让视频控制器读取，当下一帧渲染好后，GPU会直接把视频控制器的指针指向第二个缓冲器（后帧缓存）。当你视频控制器已经读完一帧，准备读下一帧的时候，GPU会等待显示器的VSync信号发出后，前帧缓存和后帧缓存会瞬间切换，后帧缓存会变成新的前帧缓存，同时旧的前帧缓存会变成新的后帧缓存。
-
-
-
-
-
-### 异步绘制流程
-
-![image-20190312142425272](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024902.png)
-
-layer的delegate如果实现了`displayLayer:`方法，就会进入到异步绘制的流程。在异步绘制的过程中，需要代理来生成对应的bitmap位图文件，并把此bitmap作为layer的contents属性
-
-![image-20190312142514299](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-22-024910.png)
-
-
-
-## Drawrect方法内为何第一行代码总要获取图形的上下文
-
-```objective-c
-CGContextRef con = UIGraphicsGetCurrentContext();
-```
-
-![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-03-04-082448.jpg)
-
-每一个UIView都有一个layer，每一个layer都有个content，这个content指向的是一块缓存，叫做backing store
-当UIView被绘制时（从 CA::Transaction::commit:以后），CPU执行drawRect，通过context将数据写入backing store
-当backing store写完后，通过render server交给GPU去渲染，将backing store中的bitmap数据显示在屏幕上
-所以在 drawRect 方法中 要首先获取 context
 
 
 
