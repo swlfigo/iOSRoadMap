@@ -4,11 +4,28 @@
 
 
 
-Tagged Pointer是苹果在64bit设备提出的一种存储小对象的技术，它具有以下特点
+Tagged Pointer是苹果在64bit设备提出的一种存储小对象的技术，用于优化NSNumber、NSDate、NSString等小对象的储存
+
+主要解决 **内存浪费** 和 **访问效率** 的问题
+
+它具有以下特点
 
 - Tagged Pointer指针的值不再是地址了，而是真正的值。所以，实际上它不再是一个对象了，它只是一个披着对象皮的普通变量而已。
 - 它的内存并不存储在堆中，也不需要 malloc 和 free，不走引用计数那一套逻辑，由系统来处理释放
 - 可以通过设置环境变量`OBJC_DISABLE_TAGGED_POINTERS`来有开发者决定是否使用这项技术
+- 专门用于储存小对象
+
+
+
+**未引入Tagged Pointer**
+
+![img](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/4ffec3cac54d4d5988ffea716c17c021~tplv-k3u1fbpfcp-zoom-1.png)
+
+**引入Tagged Pointer**
+
+![img](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/9ce0544f0bb14364bf1adc63b0cde0ed~tplv-k3u1fbpfcp-zoom-1.png)
+
+
 
 
 从32位迁移到64位CPU，逻辑上虽然不会有任何变化，但是所占有的内存空间却会**翻倍**。下面以NSNumber对象为例，大家可以清晰看出NSNumber对象在内存空间上的变化情况：
@@ -88,44 +105,7 @@ _objc_isTaggedPointer(const void * _Nullable ptr)
 
 
 
-##### 系统对tagged pointer的加密
-
-在iOS12系统之前，发现是可以直接打印tagged pointer的值的，可读性非常好，但是12之后再打印就发现完全看不懂了。
-
-```objectivec
-- (void)testCase {
-	NSString *stringWithFormat1 = [NSString stringWithFormat:@"y"];
-    [self formatedLogObject:stringWithFormat1];
-}
-
-- (void)formatedLogObject:(id)object {
-    if (@available(iOS 12.0, *)) {
-        NSLog(@"%p %@ %@", object, object, object_getClass(object));
-    } else {
-        NSLog(@"0x%6lx %@ %@", object, object, object_getClass(object));
-    }
-}
-
-复制代码
-```
-
-上面的测试代码，在12之前输出： 0x79是ASCII对应的y字符的值
-
-```powershell
-0xa000000000000791 y NSTaggedPointerString
-```
-
-iOS12之后输出：
-
-```powershell
-0xcb47b8d98a2fa15f y NSTaggedPointerString
-```
-
-iOS12之前打印指针的值能很清晰的看到数据等信息，iOS12之后系统则打印的完全看不懂了，看了源代码发现苹果是做了混淆，让我们不能直接得到值，从而避免我们去很容易就伪造出一个tagged pointer对象
-
-
-
-##### Tagged Pointer对象
+##### 支持 Tagged Pointer 对象类型
 
 系统通过3bit的标记位来标识tagged pointer对象的类，它的定义在`objc_tag_index_t`中 比如2表示是NSString、6表示是NSDate，我们知道3bit能表示的最大值是7，这个7系统用来预留，用来标记是否有额外的标记位，这样就能支持更多的类支持tagged pointer
 
@@ -174,6 +154,51 @@ enum
 typedef enum objc_tag_index_t objc_tag_index_t;
 #endif
 ```
+
+即针对`NSString`、`NSNumber`、`NSDate`、`NSIndexPath`这些类型，都支持Tagged Pointer技术。
+
+
+
+##### 系统对tagged pointer的加密
+
+在iOS12系统之前，发现是可以直接打印tagged pointer的值的，可读性非常好，但是12之后再打印就发现完全看不懂了。
+
+```objectivec
+- (void)testCase {
+	NSString *stringWithFormat1 = [NSString stringWithFormat:@"y"];
+    [self formatedLogObject:stringWithFormat1];
+}
+
+- (void)formatedLogObject:(id)object {
+    if (@available(iOS 12.0, *)) {
+        NSLog(@"%p %@ %@", object, object, object_getClass(object));
+    } else {
+        NSLog(@"0x%6lx %@ %@", object, object, object_getClass(object));
+    }
+}
+
+复制代码
+```
+
+上面的测试代码，在12之前输出： 0x79是ASCII对应的y字符的值
+
+```powershell
+0xa000000000000791 y NSTaggedPointerString
+```
+
+iOS12之后输出：
+
+```powershell
+0xcb47b8d98a2fa15f y NSTaggedPointerString
+```
+
+iOS12之前打印指针的值能很清晰的看到数据等信息，iOS12之后系统则打印的完全看不懂了，看了源代码发现苹果是做了混淆，让我们不能直接得到值，从而避免我们去很容易就伪造出一个tagged pointer对象
+
+
+
+## 内存管理
+
+![img](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/02ae03e4ec2a4d808bd1976b916b65d1~tplv-k3u1fbpfcp-zoom-1.png)
 
 
 
