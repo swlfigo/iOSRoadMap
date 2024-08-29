@@ -660,7 +660,7 @@ imageData:(nullable NSData *)imageData
 
 ## Reference
 
-[SDWebImage源码学习 | 江涛的博客 (coderjtao.github.io)](https://coderjtao.github.io/2020/04/26/SDWebImage源码学习/#下载数据)
+[SDWebImage源码学习 | 江涛的博客 (coderjtao.github.io)](https://coderjtao.github.io/2020/04/26/SDWebImage源码学习)
 
 [SDWebImage (5.0.6) 图片加载奇淫巧技 | Charles' Blog (icloudart.com)](http://icloudart.com/2019/07/29/SDWebImage (5.0.6) 图片加载奇淫巧技/)
 
