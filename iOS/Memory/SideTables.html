@@ -1314,82 +1314,12 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="sidetables-&#x6563;&#x5217;&#x8868;">SideTables &#x6563;&#x5217;&#x8868;</h1>
-<p><strong>NONPOINTER_ISA</strong> &#x8FD9;&#x4E2A;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x8DDF;TaggetPointer&#x7C7B;&#x4F3C;&#xFF0C;ISA&#x5176;&#x5B9E;&#x5E76;&#x4E0D;&#x5355;&#x5355;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x3002;</p>
-<p>arm64&#x67B6;&#x6784;isa&#x5360;64&#x4F4D;&#xFF0C;&#x82F9;&#x679C;&#x4E3A;&#x4E86;&#x4F18;&#x5316;&#x6027;&#x80FD;&#xFF0C;&#x5B58;&#x50A8;&#x7C7B;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x53EA;&#x7528;&#x4E86;33&#x4F4D;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x4F4D;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x4E00;&#x4E9B;&#x5176;&#x5B83;&#x4FE1;&#x606F;&#xFF0C;&#x6BD4;&#x5982;&#x672C;&#x6587;&#x8BA8;&#x8BBA;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;</p>
-<p>&#x5176;&#x4E2D;&#x4E00;&#x4E9B;&#x4F4D;&#x4ECD;&#x65E7;&#x7F16;&#x7801;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x3002;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#x5E76;&#x4E0D;&#x4F1A;&#x4F7F;&#x7528;&#x6240;&#x6709;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;Objective-C &#x8FD0;&#x884C;&#x65F6;&#x4F1A;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x989D;&#x5916;&#x7684;&#x4F4D;&#x53BB;&#x5B58;&#x50A8;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x6570;&#x636E;&#x5C31;&#x50CF;&#x5B83;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x548C;&#x662F;&#x5426;&#x5B83;&#x5DF2;&#x7ECF;&#x88AB;&#x5F31;&#x5F15;&#x7528;&#x3002;</p>
-<p>&#x67E5;&#x770B;isa&#x7684;&#x5B9A;&#x4E49;,&#x5B83;&#x91CC;&#x9762;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x4F4D;&#x57DF;&#xFF1A;ISA_BITFIELD&#xFF0C;&#x70B9;&#x51FB;&#x67E5;&#x770B;&#x8FD9;&#x4E2A;&#x5B8F;&#xFF1A;</p>
-<pre><code class="lang-objective-c"># if __arm64__
-#   define ISA_BITFIELD                                                      \
-      uintptr_t nonpointer        : 1;                                       \
-      uintptr_t has_assoc         : 1;                                       \
-      uintptr_t has_cxx_dtor      : 1;                                       \
-      uintptr_t shiftcls          : 33; /*MACH_VM_MAX_ADDRESS 0x1000000000*/ \
-      uintptr_t magic             : 6;                                       \
-      uintptr_t weakly_referenced : 1;                                       \
-      uintptr_t deallocating      : 1;                                       \
-      uintptr_t has_sidetable_rc  : 1;                                       \
-      uintptr_t extra_rc          : 19
-# elif __x86_64__
-#   define ISA_BITFIELD                                                        \
-      uintptr_t nonpointer        : 1;                                         \
-      uintptr_t has_assoc         : 1;                                         \
-      uintptr_t has_cxx_dtor      : 1;                                         \
-      uintptr_t shiftcls          : 44; /*MACH_VM_MAX_ADDRESS 0x7fffffe00000*/ \
-      uintptr_t magic             : 6;                                         \
-      uintptr_t weakly_referenced : 1;                                         \
-      uintptr_t deallocating      : 1;                                         \
-      uintptr_t has_sidetable_rc  : 1;                                         \
-      uintptr_t extra_rc          : 8
-</code></pre>
-<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;<strong>x86_64</strong>&#x548C;<strong>arm64</strong>&#x4E0B;&#x7684;&#x4F4D;&#x57DF;&#x5B9A;&#x4E49;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x90FD;&#x662F;&#x5360;&#x6EE1;&#x4E86;&#x6240;&#x6709;&#x7684;64&#x4F4D;&#xFF08;1+1+1+33+6+1+1+1+19 = 64&#xFF0C;<strong>x86_64</strong>&#x540C;&#x7406;&#xFF09;&#xFF0C;</p>
-<pre><code class="lang-objective-c">union isa_t {  
-  Class cls;  ...  (&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x5176;&#x4ED6;&#x7684;&#x6210;&#x5458;&#xFF0C;&#x5305;&#x62EC;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x6570;&#x91CF;) 
-}
-</code></pre>
-<p> <strong>nonpointer</strong>&#xFF1A;&#x8868;&#x793A;&#x662F;&#x5426;&#x5BF9;isa&#x5F00;&#x542F;&#x6307;&#x9488;&#x4F18;&#x5316; &#x3002;0&#x4EE3;&#x8868;&#x662F;&#x7EAF;isa&#x6307;&#x9488;&#xFF0C;1&#x4EE3;&#x8868;&#x9664;&#x4E86;&#x5730;&#x5740;&#x5916;&#xFF0C;&#x8FD8;&#x5305;&#x542B;&#x4E86;&#x7C7B;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#x3001;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7B49;&#x3002; &#x5982;&#x679C;&#x8BE5;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x542F;&#x7528;&#x4E86;Non-pointer&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x5BF9;isa&#x7684;&#x5176;&#x4ED6;&#x6210;&#x5458;&#x8D4B;&#x503C;&#xFF0C;&#x5426;&#x5219;&#x53EA;&#x4F1A;&#x5BF9;cls&#x8D4B;&#x503C;&#x3002;</p>
-<p>&#x662F;&#x5426;&#x5173;&#x95ED;Non-pointer&#x76EE;&#x524D;&#x6709;&#x8FD9;&#x4E48;&#x51E0;&#x4E2A;&#x5224;&#x65AD;&#x6761;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E9B;&#x90FD;&#x53EF;&#x4EE5;&#x5728;runtime&#x6E90;&#x7801;objc-runtime-new.m&#x4E2D;&#x627E;&#x5230;&#x903B;&#x8F91;&#x3002;</p>
-<pre><code class="lang-objective-c">1&#xFF1A;&#x5305;&#x542B;swift&#x4EE3;&#x7801;&#xFF1B;
-2&#xFF1A;sdk&#x7248;&#x672C;&#x4F4E;&#x4E8E;10.11&#xFF1B;
-3&#xFF1A;runtime&#x8BFB;&#x53D6;image&#x65F6;&#x53D1;&#x73B0;&#x8FD9;&#x4E2A;image&#x5305;&#x542B;__objc_rawisa&#x6BB5;&#xFF1B;
-4&#xFF1A;&#x5F00;&#x53D1;&#x8005;&#x81EA;&#x5DF1;&#x6DFB;&#x52A0;&#x4E86;OBJC_DISABLE_NONPOINTER_ISA=YES&#x5230;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x4E2D;&#xFF1B;
-5&#xFF1A;&#x67D0;&#x4E9B;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;Non-pointer&#x7684;&#x7C7B;&#xFF0C;GCD&#x7B49;&#xFF1B;
-6&#xFF1A;&#x7236;&#x7C7B;&#x5173;&#x95ED;&#x3002;
-</code></pre>
-<p><strong>has_assoc</strong>&#xFF1A;&#x5173;&#x8054;&#x5BF9;&#x8C61;&#x6807;&#x5FD7;&#x4F4D; </p>
-<p><strong>has_cxx_dtor</strong>&#xFF1A;&#x8BE5;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x6709;C++&#x6216;Objc&#x7684;&#x6790;&#x6784;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x6790;&#x6784;&#x51FD;&#x6570;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x505A;&#x4E00;&#x4E9B;&#x6790;&#x6784;&#x7684;&#x903B;&#x8F91;&#x5904;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x66F4;&#x5FEB;&#x7684;&#x91CA;&#x653E;&#x5BF9;&#x8C61; </p>
-<p><strong>shiftcls</strong>&#xFF1A;&#x5B58;&#x5728;&#x7C7B;&#x6307;&#x9488;&#x7684;&#x503C;&#xFF0C;&#x5F00;&#x542F;&#x6307;&#x9488;&#x4F18;&#x5316;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;arm64&#x4F4D;&#x4E2D;&#x6709;33&#x4F4D;&#x6765;&#x5B58;&#x50A8;&#x7C7B;&#x7684;&#x6307;&#x9488;</p>
-<p><strong>magic</strong>&#xFF1A;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x662F;&#x771F;&#x7684;&#x5BF9;&#x8C61;&#x8FD8;&#x662F;&#x4E00;&#x6BB5;&#x6CA1;&#x6709;&#x521D;&#x59CB;&#x5316;&#x7684;&#x7A7A;&#x95F4;</p>
-<p><strong>weakly_referenced</strong>&#xFF1A;&#x662F;&#x5426;&#x88AB;&#x6307;&#x5411;&#x6216;&#x8005;&#x66FE;&#x7ECF;&#x6307;&#x5411;&#x4E00;&#x4E2A;ARC&#x7684;&#x5F31;&#x53D8;&#x91CF;&#xFF0C;&#x6CA1;&#x6709;&#x5F31;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x7684;&#x66F4;&#x5FEB;</p>
-<p><strong>deallocating</strong>&#xFF1A;&#x662F;&#x5426;&#x6B63;&#x5728;&#x91CA;&#x653E; </p>
-<p><strong>has_sidetable_rc</strong>&#xFF1A;&#x5F53;&#x5BF9;&#x8C61;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5927;&#x4E8E;10&#x65F6;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x8FDB;&#x4F4D;</p>
-<p> <strong>extra_rc</strong>&#xFF1A;&#x8868;&#x793A;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x503C;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x51CF;&#x4E00;&#x3002;&#x4F8B;&#x5982;&#xFF1A;&#x5982;&#x679C;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A;10&#xFF0C;&#x90A3;&#x4E48;extra_rc&#x4E3A;9&#x3002;<del>&#x5982;&#x679C;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5927;&#x4E8E;10&#xFF0C;&#x5219;&#x9700;&#x8981;&#x4F7F;&#x7528;<strong>has_sidetable_rc</strong></del></p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-11-02-094715.png" alt=""></p>
-<h2 id="extrarc">extra_rc</h2>
-<p>&#x90A3;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5B58;&#x5728;&#x54EA;&#x91CC;&#x5462;&#xFF1F;&#x79D8;&#x5BC6;&#x5C31;&#x5728;<code>extra_rc</code>&#x4E2D;&#x3002;</p>
-<blockquote>
-<p>extra_rc&#x53EA;&#x662F;&#x5B58;&#x50A8;&#x4E86;&#x989D;&#x5916;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x5B9E;&#x9645;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#xFF1A;<code>&#x5F15;&#x7528;&#x8BA1;&#x6570;=extra_rc+1</code>&#x3002;</p>
-</blockquote>
-<p><code>extra_rc</code>&#x5360;&#x4E86;19&#x4F4D;&#xFF0C;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;&#x7684;&#x6700;&#x5927;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF1A;$2^{19}-1+1=524288$&#xFF0C;&#x8D85;&#x8FC7;&#x5B83;&#x5C31;&#x9700;&#x8981;&#x8FDB;&#x4F4D;&#x5230;<code>SideTables</code>&#x3002;SideTables&#x662F;&#x4E00;&#x4E2A;Hash&#x8868;&#xFF0C;&#x6839;&#x636E;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;<code>SideTable</code>&#xFF0C;<code>SideTable</code>&#x5185;&#x5305;&#x542B;&#x4E00;&#x4E2A;<code>RefcountMap</code>&#xFF0C;&#x6839;&#x636E;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x53D6;&#x51FA;&#x5176;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x7C7B;&#x578B;&#x662F;<code>size_t</code>&#x3002;
-&#x5B83;&#x662F;&#x4E00;&#x4E2A;<code>unsigned long</code>&#xFF0C;&#x6700;&#x4F4E;&#x4E24;&#x4F4D;&#x662F;&#x6807;&#x5FD7;&#x4F4D;&#xFF0C;&#x5269;&#x4E0B;&#x7684;62&#x4F4D;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x51FA;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7684;&#x7406;&#x8BBA;&#x6700;&#x5927;&#x503C;&#xFF1A;$2^{62+19}=2.417851639229258e24$&#x3002;</p>
-<blockquote>
-<p>&#x5176;&#x5B9E;isa&#x80FD;&#x5B58;&#x50A8;&#x7684;524288&#x5728;&#x65E5;&#x5E38;&#x5F00;&#x53D1;&#x5DF2;&#x7ECF;&#x5B8C;&#x5168;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x8FD8;&#x8981;&#x641E;&#x4E2A;Side Table&#xFF1F;&#x6211;&#x731C;&#x6D4B;&#x662F;&#x56E0;&#x4E3A;&#x5386;&#x53F2;&#x95EE;&#x9898;&#xFF0C;&#x4EE5;&#x524D;cpu&#x662F;32&#x4F4D;&#x7684;&#xFF0C;isa&#x4E2D;&#x80FD;&#x5B58;&#x50A8;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5C31;&#x53EA;&#x6709;$2^{7}=128$&#x3002;&#x56E0;&#x6B64;&#x5728;arm64&#x4E0B;&#xFF0C;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x901A;&#x5E38;<strong>&#x662F;&#x5B58;&#x50A8;&#x5728;isa&#x4E2D;</strong>&#x7684;&#x3002;</p>
-<p>&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5B58;&#x5728;&#x54EA;&#xFF1F;</p>
-</blockquote>
-<ol>
-<li><code>Tagged Pointer</code>&#x4E0D;&#x9700;&#x8981;&#x5F15;&#x7528;&#x8BA1;&#x6570;</li>
-<li><code>NONPOINTER ISA</code>(isa&#x7684;&#x7B2C;&#x4E00;&#x4F4D;&#x4E3A;1)&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4F18;&#x5148;&#x5B58;&#x5728;isa&#x4E2D;(extra_rc)&#xFF0C;&#x5927;&#x4E8E;524288&#x4E86;&#x8FDB;&#x4F4D;&#x5230;<code>Side Tables</code></li>
-<li>&#x975E;<code>NONPOINTER ISA</code>&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5B58;&#x5728;<code>Side Tables</code></li>
-</ol>
-<pre><code class="lang-shell">1&#xFF1A;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x662F;Tagged Pointer&#x5BF9;&#x8C61;&#xFF1B;
-2&#xFF1A;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x542F;&#x7528;&#x4E86;Non-pointer&#xFF1B;
-3&#xFF1A;&#x5BF9;&#x8C61;&#x672A;&#x542F;&#x7528;Non-pointer&#x3002;
-</code></pre>
-<p>&#x6EE1;&#x8DB3;1&#x5219;&#x4E0D;&#x5224;&#x65AD;2&#xFF0C;&#x4F9D;&#x6B21;&#x7C7B;&#x63A8;&#x3002;</p>
-<h3 id="&#x6563;&#x5217;&#x8868;--sidetables">&#x6563;&#x5217;&#x8868;  SideTables</h3>
+<h1 id="sidetables">SideTables</h1>
+<h2 id="&#x7B80;&#x4ECB;">&#x7B80;&#x4ECB;</h2>
+<p>SideTables &#x662F;&#x4E00;&#x4E2A; <strong>&#x54C8;&#x5E0C;&#x6570;&#x7EC4;</strong> &#x5305;&#x542B; 64 &#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x91CC;&#x9762;&#x5B58;&#x50A8;&#x4E86;<code>SideTable</code>,&#x5143;&#x7D20;&#x7684;&#x5185;&#x5BB9;&#x4E3A; <code>SideTable</code> &#x7684;&#x5730;&#x5740;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A; SideTable &#x53C8;&#x5305;&#x542B;&#x6709;&#x4E00;&#x4E2A;&#x81EA;&#x9009;&#x9501;&#x3001;&#x4E00;&#x5F20;&#x5168;&#x5C40;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#x3001;&#x4E00;&#x5F20;&#x5168;&#x5C40;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x8868;&#x3002;</p>
 <p>&#x5728;runtime&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;SideTables&#x662F;&#x4E00;&#x4E2A;hash&#x6570;&#x7EC4;&#xFF0C;&#x91CC;&#x9762;&#x5B58;&#x50A8;&#x4E86;SideTable&#x3002;SideTables&#x7684;hash&#x952E;&#x503C;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;obj&#x7684;address&#x3002; &#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;obj&#xFF0C;&#x5BF9;&#x5E94;&#x4E86;&#x4E00;&#x4E2A;SideTable&#x3002;&#x4F46;&#x662F;&#x4E00;&#x4E2A;SideTable&#xFF0C;&#x4F1A;&#x5BF9;&#x5E94;&#x591A;&#x4E2A;obj&#x3002;&#x56E0;&#x4E3A;SideTable&#x7684;&#x6570;&#x91CF;&#x6709;&#x9650;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x6709;&#x5F88;&#x591A;obj&#x5171;&#x7528;&#x540C;&#x4E00;&#x4E2A;SideTable&#x3002;</p>
+<h2 id="&#x7ED3;&#x6784;">&#x7ED3;&#x6784;</h2>
 <p><strong>&#x5982;&#x679C;&#x8BE5;&#x5BF9;&#x8C61;&#x4E0D;&#x662F;Tagged Pointer&#x4E14;&#x5173;&#x95ED;&#x4E86;Non-pointer&#xFF0C;&#x90A3;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5C31;&#x4F7F;&#x7528;SideTable&#x6765;&#x5B58;&#x3002;</strong></p>
-<p><code>SideTables</code>&#x662F;&#x4E00;&#x4E2A;<del>64&#x4E2A;&#x5143;&#x7D20;&#x957F;&#x5EA6;</del>8&#x4E2A;&#x5143;&#x7D20;&#x957F;&#x5EA6; &#x7684;hash&#x6570;&#x7EC4;&#xFF0C;&#x91CC;&#x9762;&#x5B58;&#x50A8;&#x4E86;<code>SideTable</code>&#x3002;<code>SideTables</code>&#x7684;hash&#x952E;&#x503C;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;<code>obj</code>&#x7684;<code>address</code>&#x3002;</p>
-<p>value&#x5305;&#x542B;&#x4E86; &#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E0E;&#x5F31;&#x5F15;&#x7528;&#x8868;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085318.jpg" alt="image-20190324165113450"></p>
 <p>SideTable&#x7684;&#x7ED3;&#x6784;</p>
 <pre><code class="lang-objective-c">struct SideTable {
@@ -1398,8 +1328,57 @@
     weak_table_t weak_table;  //&#x5F31;&#x5F15;&#x7528;&#x8868;
 </code></pre>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085324.jpg" alt="image-20190324165155926"></p>
+<h3 id="sidetable-&#x7684;&#x9501;-slock">SideTable &#x7684;&#x9501; slock</h3>
+<pre><code>spinlock_t slock;
+</code></pre><p>&#x4F7F;&#x7528;&#x7684;&#x662F; <strong>&#x81EA;&#x65CB;&#x9501;</strong>&#xFF0C;&#x800C;&#x4E14;&#x662F; <strong>&#x975E;&#x516C;&#x5E73; <code>unfair</code></strong> &#x9501;&#x3002;</p>
+<p>&#x81EA;&#x65CB;&#x9501; - &#x5FD9;&#x7B49;&#x5F85;&#xFF0C;&#x76F4;&#x5230;&#x9501;&#x88AB;&#x91CA;&#x653E;&#xFF08;&#x533A;&#x522B;&#x4E8E;&#x4E92;&#x65A5;&#x9501;&#x7684;&#x4F11;&#x7720;&#x7B49;&#x5F85;&#xFF09;&#x3002;</p>
+<p>&#x975E;&#x516C;&#x5E73;&#x9501; - &#x83B7;&#x53D6;&#x9501;&#x7684;&#x987A;&#x5E8F;&#x548C;&#x7533;&#x8BF7;&#x7684;&#x987A;&#x5E8F;&#x65E0;&#x5173;&#xFF0C;&#x5373;&#x53EF;&#x80FD; A &#x7EBF;&#x7A0B;&#x7B2C;&#x4E00;&#x4E2A;&#x7533;&#x8BF7;&#x9501;&#xFF0C;&#x5374;&#x5728; B&#x3001;C &#x83B7;&#x5F97;&#x9501;&#x4E4B;&#x540E; A &#x624D;&#x83B7;&#x5F97;&#x9501;&#x3002;</p>
+<h3 id="sidetable-&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;-refcnts">SideTable &#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868; refcnts</h3>
+<pre><code>RefcountMap refcnts;
+</code></pre><p>&#x54C8;&#x5E0C;&#x8868;&#xFF0C;key &#x4E3A; <code>objc_object</code>&#xFF0C;&#x5373; OC &#x5BF9;&#x8C61;&#xFF0C;value &#x4E3A;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x3002;</p>
+<p>&#x5F53; value &#x4E3A; 0 &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x5C06;&#x8BE5;&#x8BB0;&#x5F55;&#x4ECE;&#x8868;&#x4E2D;&#x79FB;&#x9664;&#x3002;</p>
+<h3 id="sidetable-&#x7684;&#x5F31;&#x5F15;&#x7528;&#x8868;-weaktable">SideTable &#x7684;&#x5F31;&#x5F15;&#x7528;&#x8868; weak_table</h3>
+<pre><code>weak_table_t weak_table;
+</code></pre><p><code>weak_table_t</code> &#x662F;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5176;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>1/**
+2 * The global weak references table. Stores object ids as keys,
+3 * and weak_entry_t structs as their values.
+4 */
+5struct weak_table_t {
+6    weak_entry_t *weak_entries;
+7    size_t    num_entries;
+8    uintptr_t mask;
+9    uintptr_t max_hash_displacement;
+10};
+</code></pre><p>&#x5176;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x6210;&#x5458; <code>weak_entries</code> &#x5B58;&#x653E;&#x7740;&#x82E5;&#x5E72;&#x4E2A;&#x6570;&#x636E;&#xFF0C;&#x5176;&#x4F59;&#x7684;&#x6210;&#x5458;&#x90FD;&#x662F;&#x7528;&#x6765;&#x505A;&#x54C8;&#x5E0C;&#x5B9A;&#x4F4D;&#x7684;&#xFF0C;</p>
+<p>&#x54C8;&#x5E0C;&#x6570;&#x636E;&#x4F7F;&#x7528; <code>weak_entry_t</code> &#x7ED3;&#x6784;&#x4F53;&#x4FDD;&#x5B58;&#xFF0C;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>1struct weak_entry_t {
+2    DisguisedPtr&lt;objc_object&gt; referent;
+3    union {
+4        struct {
+5            weak_referrer_t *referrers;
+6            uintptr_t        out_of_line_ness : 2;
+7            uintptr_t        num_refs : PTR_MINUS_2;
+8            uintptr_t        mask;
+9            uintptr_t        max_hash_displacement;
+10        };
+11        struct {
+12            // out_of_line_ness field is low bits of inline_referrers[1]
+13            weak_referrer_t  inline_referrers[WEAK_INLINE_COUNT];
+14        };
+15    };
+16    ......
+17}
+</code></pre><ul>
+<li><code>referent</code> &#x88AB;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x7684; <strong>&#x5185;&#x5B58;&#x5730;&#x5740;</strong></li>
+<li><code>referrers</code> &amp; <code>inline_referrers</code> &#xFF08;&#x6240;&#x6709;&#x6307;&#x5411;&#x88AB;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#xFF09;&#x5F31;&#x5F15;&#x7528;&#x6307;&#x9488;</li>
+</ul>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765; <code>weak_entry_t</code> &#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210;&#x4E00;&#x4E2A;&#x5B57;&#x5178;&#x7ED3;&#x6784;&#xFF0C;&#x5C06; <strong>&#x88AB;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;&#x4F5C;&#x4E3A; key</strong>&#xFF0C;<strong>&#x6240;&#x6709;&#x6307;&#x5411;&#x5B83;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x6307;&#x9488;&#x6570;&#x7EC4;&#x4F5C;&#x4E3A; value</strong>&#xFF0C;&#x4FDD;&#x5B58;&#x7740; <strong>&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x6240;&#x6709;&#x6307;&#x5411;&#x5B83;&#x7684; weak &#x6307;&#x9488;</strong>&#x3002;</p>
+<p>&#x5728;&#x5BF9; <code>weak_table_t</code> &#x8FDB;&#x884C;&#x54C8;&#x5E0C;&#x67E5;&#x627E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x5C06;&#x8981;&#x67E5;&#x627E;&#x7684;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x901A;&#x8FC7; mask&#xFF0C;&#x53BB;&#x5BF9;&#x6BD4;&#x8868;&#x4E2D;&#x6BCF;&#x4E2A; <code>weak_entry_t</code> &#x7684; <code>referent</code>&#xFF0C;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684; <code>weak_entry_t</code>&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x5176;&#x5F31;&#x5F15;&#x7528;&#x6307;&#x9488;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="&#x83B7;&#x53D6;sidetable">&#x83B7;&#x53D6;SideTable</h3>
 <p>&#x5982;&#x4F55;&#x4ECE;sideTables&#x91CC;&#x627E;&#x5230;&#x7279;&#x5B9A;&#x7684;sideTable&#x5462;&#xFF0C;&#x8FD9;&#x5C31;&#x7528;&#x5230;&#x4E86;&#x6563;&#x5217;&#x51FD;&#x6570;&#x3002;runtime&#x662F;&#x901A;&#x8FC7;&#x8FD9;&#x4E48;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x83B7;&#x53D6;&#x5230;&#x76F8;&#x5E94;&#x7684;sideTable&#xFF1A;</p>
-<pre><code class="lang-objective-c">table = &amp;SideTables()[obj];
+<pre><code class="lang-objective-c">
+table = &amp;SideTables()[obj];
 
 
 static StripedMap&lt;SideTable&gt;&amp; SideTables() {
@@ -1434,7 +1413,7 @@ public:
     }
 </code></pre>
 <p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5728;&#x5BF9;StripeCount&#x53D6;&#x4F59;&#x540E;&#xFF0C;&#x6240;&#x5F97;&#x5230;&#x7684;&#x503C;&#x6839;&#x636E;&#x673A;&#x5668;&#x4E0D;&#x540C;&#xFF0C;&#x4F1A;&#x5728;0-7&#x6216;&#x8005;0-63&#x4E4B;&#x95F4;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x6765;&#x83B7;&#x53D6;&#x5230;&#x4E86;sideTable&#x7684;&#x4E0B;&#x6807;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6839;&#x636E;value&#x53D6;&#x5230;&#x6240;&#x9700;&#x7684;sideTable&#x3002;</p>
-<p>&#x6267;&#x884C;<strong>table = &amp;SideTables()[obj];\</strong>&#x4E4B;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x5230;&#x4E86;*<em>array[indexForPointer(p)].value;*</em>&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x83B7;&#x53D6;&#x5230;&#x4E0B;&#x6807;&#xFF0C;&#x518D;&#x8FD4;&#x56DE;&#x6240;&#x9700;&#x7684;sideTable</p>
+<p>&#x6267;&#x884C;table = &amp;SideTables()[obj];&#x4E4B;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x5230;&#x4E86;array[indexForPointer(p)].value;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x83B7;&#x53D6;&#x5230;&#x4E0B;&#x6807;&#xFF0C;&#x518D;&#x8FD4;&#x56DE;&#x6240;&#x9700;&#x7684;sideTable</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-11-02-093727.jpg" alt=""></p>
 <h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x76F4;&#x63A5;&#x7528;&#x4E00;&#x5F20;sidetable&#xFF0C;&#x800C;&#x662F;&#x7528;sidetables&#x53BB;&#x7BA1;&#x7406;&#x591A;&#x4E2A;sidetable&#xFF1F;"><strong>&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x76F4;&#x63A5;&#x7528;&#x4E00;&#x5F20;SideTable&#xFF0C;&#x800C;&#x662F;&#x7528;SideTables&#x53BB;&#x7BA1;&#x7406;&#x591A;&#x4E2A;SideTable&#xFF1F;</strong></h3>
 <p>SideTable&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x81EA;&#x65CB;&#x9501;&#xFF0C;&#x5982;&#x679C;&#x628A;&#x6240;&#x6709;&#x7684;&#x7C7B;&#x90FD;&#x653E;&#x5728;&#x540C;&#x4E00;&#x4E2A;SideTable&#xFF0C;&#x6709;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x7C7B;&#x6709;&#x6539;&#x52A8;&#x90FD;&#x4F1A;&#x5BF9;&#x6574;&#x4E2A;table&#x505A;&#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x64CD;&#x4F5C;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x64CD;&#x4F5C;&#x522B;&#x7684;&#x7C7B;&#x4F1A;&#x88AB;&#x9501;&#x4F4F;&#x7B49;&#x5F85;&#xFF0C;&#x8FD9;&#x6837;&#x4F1A;&#x5BFC;&#x81F4;&#x64CD;&#x4F5C;&#x6548;&#x7387;&#x548C;&#x67E5;&#x8BE2;&#x6548;&#x7387;&#x90FD;&#x5F88;&#x4F4E;&#x3002;&#x800C;&#x6709;&#x591A;&#x4E2A;SideTable&#x7684;&#x8BDD;&#xFF0C;&#x64CD;&#x4F5C;&#x7684;&#x90FD;&#x662F;&#x5355;&#x4E2A;Table&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5176;&#x4ED6;&#x7684;table&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x5206;&#x79BB;&#x9501;&#x3002;</p>
@@ -1485,7 +1464,7 @@ public:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SideTables","level":"1.2.2.4","depth":3,"next":{"title":"RetainCount","level":"1.2.2.5","depth":3,"path":"iOS/Memory/RetainCount.md","ref":"iOS/Memory/RetainCount.md","articles":[]},"previous":{"title":"Tagged Pointer","level":"1.2.2.3","depth":3,"path":"iOS/Memory/TaggedPointer.md","ref":"iOS/Memory/TaggedPointer.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Memory/SideTables.md","mtime":"2024-08-29T08:14:24.712Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-08-29T08:14:50.241Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SideTables","level":"1.2.2.4","depth":3,"next":{"title":"RetainCount","level":"1.2.2.5","depth":3,"path":"iOS/Memory/RetainCount.md","ref":"iOS/Memory/RetainCount.md","articles":[]},"previous":{"title":"Tagged Pointer","level":"1.2.2.3","depth":3,"path":"iOS/Memory/TaggedPointer.md","ref":"iOS/Memory/TaggedPointer.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Memory/SideTables.md","mtime":"2024-08-29T14:46:43.040Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-08-29T14:47:08.447Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
