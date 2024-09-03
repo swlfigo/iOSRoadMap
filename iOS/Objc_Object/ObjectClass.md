@@ -8,35 +8,9 @@
 typedef struct objc_class *Class;
 ```
 
-不少网上文章都是复制粘贴错的,如下
 
-\#if !**OBJC2** 在2006年7月WWDC中，Apple发布了“Objective-C 2.0”。2.0有很多的语法改进、runtime改进、垃圾回收机制（已废弃）、支持64 等。
 
-上面“! **OBJC2** ” 之间的代码是Objective-C 2.0之前1.0版本的东西。2.0已经不支持了。
-
-## 1.OBJC1 objc_class 结构（过时）
-
-```cpp
-struct objc_class {
-    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;
-
-#if !__OBJC2__
-    Class _Nullable super_class                              OBJC2_UNAVAILABLE;
-    const char * _Nonnull name                               OBJC2_UNAVAILABLE;
-    long version                                             OBJC2_UNAVAILABLE;
-    long info                                                OBJC2_UNAVAILABLE;
-    long instance_size                                       OBJC2_UNAVAILABLE;
-    struct objc_ivar_list * _Nullable ivars                  OBJC2_UNAVAILABLE;
-    struct objc_method_list * _Nullable * _Nullable methodLists                    OBJC2_UNAVAILABLE;
-    struct objc_cache * _Nonnull cache                       OBJC2_UNAVAILABLE;
-    struct objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;
-#endif
-
-} OBJC2_UNAVAILABLE;
-/* Use `Class` instead of `struct objc_class *` */
-```
-
-## 2. OBJC2 结构
+## OBJC2 结构
 
 **objc_class**的真实定义实际的代码我们可以从 [objc-runtime-new.h](https://opensource.apple.com/source/objc4/objc4-750.1/runtime/objc-runtime-new.h.auto.html) 中看到(中间代码省略)：
 
@@ -58,9 +32,13 @@ objc_object中有一个isa指针，那么objc_class继承objc_object，也就同
 - `cache` 用于缓存指针和 `vtable`，加速方法的调用
 - `bits` 就是存储类的方法、属性、遵循的协议等信息的地方
 
-## 3. class_rw_t
+
+
+## class_rw_t
 
 **objc_class** 中的 data 返回 `class_rw_t` 结构，此结构定义如下：
+
+
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144757.png)
 
@@ -81,7 +59,7 @@ objc_object中有一个isa指针，那么objc_class继承objc_object，也就同
 
 
 
-## 4. 总结
+## 总结
 
 ![](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-145054.jpg)
 
