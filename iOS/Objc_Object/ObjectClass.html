@@ -1317,29 +1317,7 @@
 <p>&#x4E0D;&#x7BA1;&#x662F;&#x7C7B;&#x5BF9;&#x8C61;&#x8FD8;&#x662F;&#x5143;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x7C7B;&#x578B;&#x90FD;&#x662F; Class&#xFF0C;class &#x548C; mete-class &#x7684;&#x5E95;&#x5C42;&#x90FD;&#x662F; objc_class &#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6307;&#x9488;&#x3002;</p>
 <pre><code class="lang-objective-c">typedef struct objc_class *Class;
 </code></pre>
-<p>&#x4E0D;&#x5C11;&#x7F51;&#x4E0A;&#x6587;&#x7AE0;&#x90FD;&#x662F;&#x590D;&#x5236;&#x7C98;&#x8D34;&#x9519;&#x7684;,&#x5982;&#x4E0B;</p>
-<p>#if !<strong>OBJC2</strong> &#x5728;2006&#x5E74;7&#x6708;WWDC&#x4E2D;&#xFF0C;Apple&#x53D1;&#x5E03;&#x4E86;&#x201C;Objective-C 2.0&#x201D;&#x3002;2.0&#x6709;&#x5F88;&#x591A;&#x7684;&#x8BED;&#x6CD5;&#x6539;&#x8FDB;&#x3001;runtime&#x6539;&#x8FDB;&#x3001;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#xFF08;&#x5DF2;&#x5E9F;&#x5F03;&#xFF09;&#x3001;&#x652F;&#x6301;64 &#x7B49;&#x3002;</p>
-<p>&#x4E0A;&#x9762;&#x201C;! <strong>OBJC2</strong> &#x201D; &#x4E4B;&#x95F4;&#x7684;&#x4EE3;&#x7801;&#x662F;Objective-C 2.0&#x4E4B;&#x524D;1.0&#x7248;&#x672C;&#x7684;&#x4E1C;&#x897F;&#x3002;2.0&#x5DF2;&#x7ECF;&#x4E0D;&#x652F;&#x6301;&#x4E86;&#x3002;</p>
-<h2 id="1objc1-objcclass-&#x7ED3;&#x6784;&#xFF08;&#x8FC7;&#x65F6;&#xFF09;">1.OBJC1 objc_class &#x7ED3;&#x6784;&#xFF08;&#x8FC7;&#x65F6;&#xFF09;</h2>
-<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> objc_class {
-    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;
-
-<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> !__OBJC2__</span>
-    Class _Nullable super_class                              OBJC2_UNAVAILABLE;
-    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * _Nonnull name                               OBJC2_UNAVAILABLE;
-    <span class="hljs-keyword">long</span> version                                             OBJC2_UNAVAILABLE;
-    <span class="hljs-keyword">long</span> info                                                OBJC2_UNAVAILABLE;
-    <span class="hljs-keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;
-    <span class="hljs-keyword">struct</span> objc_ivar_list * _Nullable ivars                  OBJC2_UNAVAILABLE;
-    <span class="hljs-keyword">struct</span> objc_method_list * _Nullable * _Nullable methodLists                    OBJC2_UNAVAILABLE;
-    <span class="hljs-keyword">struct</span> objc_cache * _Nonnull cache                       OBJC2_UNAVAILABLE;
-    <span class="hljs-keyword">struct</span> objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
-
-} OBJC2_UNAVAILABLE;
-<span class="hljs-comment">/* Use `Class` instead of `struct objc_class *` */</span>
-</code></pre>
-<h2 id="2-objc2-&#x7ED3;&#x6784;">2. OBJC2 &#x7ED3;&#x6784;</h2>
+<h2 id="objc2-&#x7ED3;&#x6784;">OBJC2 &#x7ED3;&#x6784;</h2>
 <p><strong>objc_class</strong>&#x7684;&#x771F;&#x5B9E;&#x5B9A;&#x4E49;&#x5B9E;&#x9645;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ECE; <a href="https://opensource.apple.com/source/objc4/objc4-750.1/runtime/objc-runtime-new.h.auto.html" target="_blank">objc-runtime-new.h</a> &#x4E2D;&#x770B;&#x5230;(&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x7701;&#x7565;)&#xFF1A;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-143952.jpg" alt=""></p>
 <p><strong>objc_object</strong>&#x7684;&#x771F;&#x5B9E;&#x5B9A;&#x4E49; &#x8BE6;&#x89C1; <a href="https://opensource.apple.com/source/objc4/objc4-750.1/runtime/objc-private.h.auto.html" target="_blank">objc-private.h&#x6587;&#x4EF6;</a></p>
@@ -1352,7 +1330,7 @@
 <li><code>cache</code> &#x7528;&#x4E8E;&#x7F13;&#x5B58;&#x6307;&#x9488;&#x548C; <code>vtable</code>&#xFF0C;&#x52A0;&#x901F;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;</li>
 <li><code>bits</code> &#x5C31;&#x662F;&#x5B58;&#x50A8;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3001;&#x5C5E;&#x6027;&#x3001;&#x9075;&#x5FAA;&#x7684;&#x534F;&#x8BAE;&#x7B49;&#x4FE1;&#x606F;&#x7684;&#x5730;&#x65B9;</li>
 </ul>
-<h2 id="3-classrwt">3. class_rw_t</h2>
+<h2 id="classrwt">class_rw_t</h2>
 <p><strong>objc_class</strong> &#x4E2D;&#x7684; data &#x8FD4;&#x56DE; <code>class_rw_t</code> &#x7ED3;&#x6784;&#xFF0C;&#x6B64;&#x7ED3;&#x6784;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144757.png" alt=""></p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-144612.jpg" alt=""></p>
@@ -1361,7 +1339,7 @@
 <p>&#x800C;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#x5219;&#x662F;&#x5B58;&#x50A8;&#x5728;<code>class_ro_t</code>&#x5185;&#x90E8;&#x4E2D;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5230;<code>class_ro_t</code>&#x5185;&#x67E5;&#x770B;&#x3002;
 <code>class_rw_t</code> &#x8868;&#x793A;<strong>read write</strong>&#xFF0C;<code>class_ro_t</code> &#x8868;&#x793A; <strong>read only</strong>&#x3002;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-145011.jpg" alt=""></p>
-<h2 id="4-&#x603B;&#x7ED3;">4. &#x603B;&#x7ED3;</h2>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2020-04-23-145054.jpg" alt=""></p>
 <p>&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x7ED3;&#x6784;&#x5982;&#x4E0B;,</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-085229.jpg" alt="image-20190324153451659"></p>
@@ -1417,7 +1395,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ObjectClass","level":"1.2.3.3","depth":3,"next":{"title":"ClassRWT","level":"1.2.3.4","depth":3,"path":"iOS/Objc_Object/ClassRWT.md","ref":"iOS/Objc_Object/ClassRWT.md","articles":[]},"previous":{"title":"isa","level":"1.2.3.2","depth":3,"path":"iOS/Objc_Object/isa.md","ref":"iOS/Objc_Object/isa.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Objc_Object/ObjectClass.md","mtime":"2024-09-03T03:09:06.977Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-03T03:09:32.960Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ObjectClass","level":"1.2.3.3","depth":3,"next":{"title":"ClassRWT","level":"1.2.3.4","depth":3,"path":"iOS/Objc_Object/ClassRWT.md","ref":"iOS/Objc_Object/ClassRWT.md","articles":[]},"previous":{"title":"isa","level":"1.2.3.2","depth":3,"path":"iOS/Objc_Object/isa.md","ref":"iOS/Objc_Object/isa.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Objc_Object/ObjectClass.md","mtime":"2024-09-03T03:11:03.815Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-03T03:11:28.355Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
