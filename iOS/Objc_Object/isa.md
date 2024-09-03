@@ -153,6 +153,64 @@ struct {
 
 
 
+## 什么是元类（meta-class）？
+
+Objective-C 的一个类也是一个对象。这意味着你可以发送消息给一个类。
+
+```
+NSStringEncoding defaultStringEncoding = [NSString defaultStringEncoding];
+```
+
+在这个示例里，`defaultStringEncoding`被发送给了`NSString`类。
+
+之所以能成功是因为 Objective-C 中每个类本身也是一个对象。如上面所看到的，这意味着类结构也必须以一个isa指针开始，从而可以和`objc_object`在二进制层面兼容，之后这个结构的下一字段必须是一个指向父类的指针（对于基类则为nil）。
+
+正如我上周展示的，定义一个`Class`有很多种方式，取决于你的运行时库版本，但有一点，它们都以`isa`字段开始，并且仅跟着一个`superclass`字段。
+
+```
+typedef struct objc_class *Class;
+struct objc_class {
+    Class isa;
+    Class super_class;
+    /* followed by runtime specific details... */
+};
+```
+
+为了调用`Class`里的方法，该`Class`的`isa`指针也必须指向一个包含了该`Class`方法列表的`Class`。
+
+这就引出了元类的定义：元类是`Class`的类。
+
+简单来说就是：
+
+- 当你给对象发送消息时，消息是在寻找这个对象的类的方法列表;
+- 当你给类发消息时，消息是在寻找这个类的元类的方法列表。
+
+元类是必不可少的，因为它存储了类的类方法。每个类都必须有独一无二的元类，因为每个类都有独一无二的类方法。
+
+
+
+## 元类的类是什么？
+
+元类，就像之前的类一样，它也是一个对象。你也可以调用它的方法。自然的，这就意味着他必须也有一个类。
+
+所有的元类都使用根元类（继承体系中处于顶端的类的元类）作为他们的类。这就意味着所有`NSObject`的子类（大多数类）的元类都会以`NSObject`的元类作为他们的类
+
+根据这个规则，所有的元类使用根元类作为他们的类，根元类的元类则就是它自己。也就是说基类的元类的isa指针指向他自己。
+
+
+
+## 类和元类的继承
+
+类用`super_class`指针指向了父类，同样的，元类用`super_class`指向类的`super_class`的元类。
+
+说的更拗口一点就是，根元类把它自己的基类设置成了`super_class`。
+
+在这样的继承体系下，所有实例、类以及元类都继承自一个基类。
+
+这意味着对于继承于`NSObject`的所有实例、类和元类，他们可以使用`NSObject`的所有实例方法，类和元类可以使用NSObject的所有类方法
+
+
+
 ## 为什么要设计metaclass
 
 metaClass是单一职责和扩展性:  instance的信息由Class所有;  Class的信息则由metaClass所有;
@@ -164,8 +222,15 @@ metaClass是单一职责和扩展性:  instance的信息由Class所有;  Class�
 
 
 
+## 类对象和元类对象分别是什么，他们之间有什么区别？
 
 
+
+实例对象可以通过isa指针找到它的类对象，类对象存储实例方法列表等信息。类对象可以通过isa指针找到它的元类对象，从而可以访问类方法列表等相关信息
+
+
+
+类对象或是元类对象都是objc_class数据结构的，objc_class由于继承自objc_object,所以他们都有isa指针，所有实例可以找到类，类可以找到元类
 
 
 
@@ -175,3 +240,5 @@ metaClass是单一职责和扩展性:  instance的信息由Class所有;  Class�
 [从 NSObject 的初始化了解 isa](https://draveness.me/isa/)
 
 [iOS底层探索：isa结构分析](https://juejin.im/post/6871047381450752013)
+
+[【译】Objective-C 中的元类（meta-class） | 土丘上的蒲公英 (dracarys.github.io)](https://dracarys.github.io/2018/07/31/What-is-a-mate-class-in-Objective-C/)
