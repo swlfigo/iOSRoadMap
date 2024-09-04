@@ -703,3 +703,5 @@ __block修饰的变量成了对象
 [4 iOS探索 全方位解读Block](https://juejin.cn/post/6844904181778612231)
 
 [5 iOS - block原理解读（三）](https://www.jianshu.com/p/9af777c7d222)
+
+[探寻Block的本质（6）—— __block的深入分析__block的使用场景 大家应该都知道，如果想在block - 掘金 (juejin.cn)](https://juejin.cn/post/6968314665667395620)
