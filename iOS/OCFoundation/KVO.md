@@ -45,7 +45,7 @@ KVO使用三部曲：
 
 `Key-Value Observing Programming Guide`是这么描述`context`的
 
-> ![img](https://user-gold-cdn.xitu.io/2020/3/14/170d77a1fa7cf438?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+> ![img](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/170d77a1fa7cf438~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png)
 >
 > 消息中的上下文指针包含任意数据，这些数据将在相应的更改通知中传递回观察者；您可以指定NULL并完全依赖键路径字符串来确定更改通知的来源，但是这种方法可能会导致对象的父类由于不同的原因而观察到相同的键路径，因此可能会出现问题；一种更安全，更可扩展的方法是使用上下文确保您收到的通知是发给观察者的，而不是超类的。
 
