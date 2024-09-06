@@ -1314,36 +1314,19 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="block">Block</h1>
-<h2 id="1-block&#x6784;&#x9020;">1. Block&#x6784;&#x9020;</h2>
+<h2 id="block&#x672C;&#x8D28;">Block&#x672C;&#x8D28;</h2>
 <blockquote>
 <p>In programming languages, a closure is a function or reference to a function together with a referencing environment&#x2014;a table storing a reference to each of the non-local variables (also called free variables or upvalues) of that function.</p>
 </blockquote>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-03-082510.png" alt="img"></p>
 <ul>
 <li><code>Block</code> &#x662F;&#x5C06;&#x51FD;&#x6570;&#x53CA;&#x5176;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x5C01;&#x88C5;&#x8D77;&#x6765;&#x7684;<code>&#x5BF9;&#x8C61;</code></li>
 <li><code>Block</code>&#x7684;&#x8C03;&#x7528;&#x5373;&#x662F;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;</li>
 <li><code>Block</code>&#x672C;&#x8D28;&#x4E0A;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;OC&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x5185;&#x90E8;&#x4E5F;&#x6709;&#x4E2A;isa&#x6307;&#x9488;</li>
 <li><code>Block</code>&#x662F;&#x5C01;&#x88C5;&#x4E86;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4EE5;&#x53CA;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x73AF;&#x5883;&#x7684;OC&#x5BF9;&#x8C61;</li>
 </ul>
-<p>Block&#x5728;OC&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">struct Block_layout {
-    void *isa;
-    int flags;
-    int reserved;
-    void (*invoke)(void *, ...);
-    struct Block_descriptor *descriptor;
-    /* Imported variables. */
-};
-
-struct Block_descriptor {
-    unsigned long int reserved;
-    unsigned long int size;
-    void (*copy)(void *dst, void *src);
-    void (*dispose)(void *);
-};
-</code></pre>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-03-082510.png" alt="img"></p>
-<p>&#x4ECE;&#x7ED3;&#x6784;&#x56FE;&#x4E2D;&#x5F88;&#x5BB9;&#x6613;&#x770B;&#x5230;isa&#xFF0C;&#x6240;&#x4EE5;OC&#x5904;&#x7406;Block&#x662F;&#x6309;&#x7167;&#x5BF9;&#x8C61;&#x6765;&#x5904;&#x7406;&#x7684;&#x3002;&#x5728;iOS&#x4E2D;&#xFF0C;isa&#x5E38;&#x89C1;&#x7684;&#x5C31;&#x662F;<code>_NSConcreteStackBlock</code>&#xFF0C;<code>_NSConcreteMallocBlock</code>&#xFF0C;<code>_NSConcreteGlobalBlock</code>&#x8FD9;3&#x79CD;</p>
-<h2 id="2-block-&#x5199;&#x6CD5;">2. Block &#x5199;&#x6CD5;</h2>
+<p>block&#x5730;&#x5C42;&#x7ED3;&#x6784;&#x56FE;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x5C31;&#x662F;&#x4E00;&#x4E2A;isa&#x6307;&#x9488;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;block&#x5F53;&#x6210;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6765;&#x770B;&#x5F85;&#x3002;isa&#x5E38;&#x89C1;&#x7684;&#x5C31;&#x662F;<code>_NSConcreteStackBlock</code>&#xFF0C;<code>_NSConcreteMallocBlock</code>&#xFF0C;<code>_NSConcreteGlobalBlock</code>&#x8FD9;3&#x79CD;</p>
+<h2 id="block-&#x5199;&#x6CD5;">Block &#x5199;&#x6CD5;</h2>
 <pre><code class="lang-objective-c">
 @property (nonatomic, copy)void (^addBlockResult)(BOOL) ;
 
@@ -1352,376 +1335,453 @@ int(^Block)(int) = ^int(int num){
     return num * multiplier;
 }
 </code></pre>
-<h2 id="3-clang-&#x91CD;&#x5199;block">3. Clang &#x91CD;&#x5199;Block</h2>
-<h3 id="block&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x5B9E;&#x8D28;">Block&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x5B9E;&#x8D28;</h3>
-<p>&#x8BF4;&#x5230;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x5148;&#x8BF4;&#x4E00;&#x4E0B;C&#x8BED;&#x8A00;&#x4E2D;&#x53D8;&#x91CF;&#x6709;&#x54EA;&#x51E0;&#x79CD;&#x3002;&#x4E00;&#x822C;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E00;&#x4E0B;5&#x79CD;&#xFF1A;</p>
-<ul>
-<li>&#x81EA;&#x52A8;&#x53D8;&#x91CF;</li>
-<li>&#x51FD;&#x6570;&#x53C2;&#x6570;</li>
-<li>&#x9759;&#x6001;&#x53D8;&#x91CF;</li>
-<li>&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-<li>&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-</ul>
-<p>&#x7814;&#x7A76;Block&#x7684;&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x5C31;&#x8981;&#x9664;&#x53BB;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x8FD9;&#x4E00;&#x9879;&#xFF0C;&#x4E0B;&#x9762;&#x4E00;&#x4E00;&#x6839;&#x636E;&#x8FD9;4&#x79CD;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x7684;&#x6355;&#x83B7;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x5148;&#x6839;&#x636E;&#x8FD9;4&#x79CD;&#x7C7B;&#x578B;</p>
-<ul>
-<li>&#x81EA;&#x52A8;&#x53D8;&#x91CF;</li>
-<li>&#x9759;&#x6001;&#x53D8;&#x91CF;</li>
-<li>&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-<li>&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-</ul>
-<p>&#x5982;&#x4E0B;&#x4EE3;&#x7801;</p>
-<pre><code class="lang-objective-c">int age = 20;
-void (^block)(void) =  ^{
-     NSLog(@&quot;age is %d&quot;,age);
- };
+<h2 id="block-&#x7ED3;&#x6784;">Block &#x7ED3;&#x6784;</h2>
+<pre><code class="lang-objective-c">//&#x5982;&#x4E0B;&#x4EE3;&#x7801;
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        int a = 10;
+        void (^block)(int, int) = ^(int c, int b){
+            NSLog(@&quot;I am a block!&quot;);
+            NSLog(@&quot;I am a block!&quot;);
+            NSLog(@&quot;c = %d&quot;,c);
+            NSLog(@&quot;b = %d&quot;,b);
+            NSLog(@&quot;a&#x7684;&#x503C;&#x4E3A;%d&quot;,a);
+        };
+        block(50,100);
+    }
+    return 0;
+}
+</code></pre>
+<p>&#x901A;&#x8FC7;</p>
+<pre><code class="lang-shell"> xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
+</code></pre>
+<p>&#x5C06;OC&#x6587;&#x4EF6;&#x7528;Clang&#x91CD;&#x5199;</p>
+<pre><code class="lang-objective-c">#import &lt;Foundation/Foundation.h&gt;
 
-block();
-</code></pre>
-<ul>
-<li>&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#xFF0C;cd&#x5230;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;</li>
-</ul>
-<blockquote>
-<p>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m</p>
-</blockquote>
-<p>&#x751F;&#x6210;<code>main.cpp</code></p>
-<h4 id="block-&#x7ED3;&#x6784;&#x5206;&#x6790;">block &#x7ED3;&#x6784;&#x5206;&#x6790;</h4>
-<pre><code class="lang-cpp"><span class="hljs-keyword">int</span> age = <span class="hljs-number">20</span>;
+//&#x5C06;block&#x7684;&#x5E95;&#x5C42;&#x7ED3;&#x6784;struct __main_block_impl_0&#x76F4;&#x63A5;&#x822C;&#x5230;main.m&#x91CC;&#x9762;
 
-<span class="hljs-comment">// block&#x7684;&#x5B9A;&#x4E49;</span>
-<span class="hljs-keyword">void</span> (*block)(<span class="hljs-keyword">void</span>) = ((<span class="hljs-keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="hljs-keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, age));
-<span class="hljs-comment">// block&#x7684;&#x8C03;&#x7528;</span>
-((<span class="hljs-keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);
+struct __block_impl {
+    void *isa;
+    int Flags;
+    int Reserved;
+    void *FuncPtr;
+};
+
+struct __main_block_desc_0 {
+    size_t reserved;
+    size_t Block_size;
+};
+
+struct __main_block_impl_0 {
+    struct __block_impl impl;
+    struct __main_block_desc_0* Desc;
+    int a;
+
+};
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+
+
+        int a = 10;
+
+        void (^block)(int, int) = ^(int c, int b){
+            NSLog(@&quot;I am a block!&quot;);
+            NSLog(@&quot;I am a block!&quot;);
+            NSLog(@&quot;c = %d&quot;,c);
+            NSLog(@&quot;b = %d&quot;,b);
+            NSLog(@&quot;a&#x7684;&#x503C;&#x4E3A;%d&quot;,a);
+
+        };
+
+        struct __main_block_impl_0 *tmpBlock = (__bridge struct __main_block_impl_0 *)block;
+
+        block(50,100);
+
+
+    }
+    return 0;
+}
 </code></pre>
-<p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5220;&#x9664;&#x6389;&#x4E00;&#x4E9B;&#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x5C31;&#x5269;&#x4E0B;&#x5982;&#x4E0B;&#x6240;&#x793A;</p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">int</span> age = <span class="hljs-number">20</span>;
-<span class="hljs-keyword">void</span> (*block)(<span class="hljs-keyword">void</span>) = &amp;__main_block_impl_0(
-                        __main_block_func_0, 
-                        &amp;__main_block_desc_0_DATA, 
-                        age
-                        );
-<span class="hljs-comment">// block&#x7684;&#x8C03;&#x7528;</span>
-block-&gt;FuncPtr(block);
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/232592486bdb48339722e47dde38b11c~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="&#x8FD0;&#x884C;&#x65F6;&#x4E0B;block&#x5185;&#x90E8;&#x7684;&#x4FE1;&#x606F;"></p>
+<h3 id="block-&#x5E95;&#x5C42;&#x4EE3;&#x7801;">Block &#x5E95;&#x5C42;&#x4EE3;&#x7801;</h3>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/47de259461274c8d8e83ce3afa7f5d71~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<h2 id="block-&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;">Block &#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;</h2>
+<h3 id="block-&#x6355;&#x83B7;&#x57FA;&#x7840;&#x7C7B;&#x578B;">Block &#x6355;&#x83B7;&#x57FA;&#x7840;&#x7C7B;&#x578B;</h3>
+<h4 id="block&#x6355;&#x83B7;auto&#x53D8;&#x91CF;">Block&#x6355;&#x83B7;auto&#x53D8;&#x91CF;</h4>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;</p>
+<pre><code class="lang-Objc"><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span>
+
+<span class="hljs-keyword">int</span> main(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[]) {
+    <span class="hljs-keyword">@autoreleasepool</span> {
+        <span class="hljs-keyword">int</span> age = <span class="hljs-number">10</span>;
+        <span class="hljs-comment">//Block&#x7684;&#x5B9A;&#x4E49;</span>
+        <span class="hljs-keyword">void</span> (^block)(<span class="hljs-keyword">void</span>) = ^(){
+            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Age is %d&quot;</span>, age);
+        };
+        <span class="hljs-comment">//&#x5148;&#x4FEE;&#x6539;age&#x7684;&#x503C;</span>
+        age = <span class="hljs-number">20</span>;
+        <span class="hljs-comment">//Block&#x7684;&#x8C03;&#x7528;</span>
+        block();
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
 </code></pre>
-<p><strong>&#x770B;&#x51FA;block&#x7684;&#x672C;&#x8D28;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x5BF9;&#x8C61;</strong>&#xFF0C;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> __main_block_impl_0 {
+<p>&#x5728;block&#x4E4B;&#x524D;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;<code>int a = 10</code>&#xFF0C;&#x7136;&#x540E;&#x5728;block&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x4E86;&#x8FD9;&#x4E2A;<code>age</code>&#xFF0C;&#x800C;&#x4E14;&#x6211;&#x5728;&#x8C03;&#x7528;block&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x5C06;<code>age</code>&#x7684;&#x503C;&#x4FEE;&#x6539;&#x6210;&#x4E86;<code>20</code>&#xFF0C;&#x90A3;&#x4E48;&#x6B64;&#x65F6;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x4F1A;&#x662F;&#x4EC0;&#x4E48;&#x7ED3;&#x679C;&#x5462;</p>
+<pre><code class="lang-c">Interview03-block[<span class="hljs-number">4064</span>:<span class="hljs-number">375528</span>] Age is <span class="hljs-number">10</span>
+Program ended with <span class="hljs-built_in">exit</span> code: <span class="hljs-number">0</span>
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x662F;block&#x4E2D;&#x6253;&#x5370;&#x51FA;&#x7684;<code>a</code>&#x662F;<code>10</code>&#xFF0C;&#x6211;&#x4EEC;&#x5728;block&#x5916;&#x90E8;&#x5BF9;<code>age</code>&#x7684;&#x4FEE;&#x6539;&#x7ED3;&#x679C;&#x5E76;&#x6CA1;&#x6709;&#x5BF9;block&#x7684;&#x5185;&#x90E8;&#x6253;&#x5370;&#x4EA7;&#x751F;&#x5F71;&#x54CD;</p>
+<p><strong>(1)&#x9996;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x6B64;&#x65F6;block&#x5BF9;&#x5E94;&#x7684;&#x7ED3;&#x6784;&#x4F53;</strong></p>
+<p> <img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/5c029bf36ba947bb9d5a273384e93756~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x6709;&#x4E09;&#x5904;&#x53D8;&#x5316;</p>
+<ul>
+<li>&#x65B0;&#x589E;&#x4E86;&#x4E00;&#x4E2A;<code>int age</code>&#x6210;&#x5458;&#x53D8;&#x91CF;</li>
+<li>&#x6784;&#x9020;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x591A;&#x4E86;&#x4E00;&#x4E2A;&#x53C2;&#x6570; <code>int _age</code></li>
+<li>&#x6784;&#x9020;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x53C2;&#x6570;&#x5C3E;&#x90E8;&#x591A;&#x4E86;&#x4E00;&#x4E2A;<code>: age(_age)</code>&#xFF0C;&#x8FD9;&#x662F;c++&#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x4F5C;&#x7528;&#x65F6;&#x5C06;&#x53C2;&#x6570;<code>_age</code>&#x81EA;&#x52A8;&#x8D4B;&#x503C;&#x7ED9;&#x6210;&#x5458;&#x53D8;&#x91CF;<code>age</code></li>
+</ul>
+<p><strong>(2)&#x518D;&#x770B;&#x4E00;&#x4E0B;main&#x51FD;&#x6570;&#x4E2D;&#x7684;block&#x5B9A;&#x4E49;&#x4EE5;&#x53CA;&#x8D4B;&#x503C;&#x7684;&#x4EE3;&#x7801;</strong></p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/99f0f5408908484c8b75a79073ed7a06~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>&#x5728;&#x7528;<code>block</code>&#x6784;&#x9020;&#x51FD;&#x6570;&#x751F;&#x6210;<code>block</code>&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;&#x5916;&#x90E8;&#x5B9A;&#x4E49;&#x7684; <code>int a = 10</code>,&#x56E0;&#x4E3A;c&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x503C;&#x4F20;&#x9012;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x662F;&#x5C06;&#x6B64;&#x65F6;&#x5916;&#x90E8;&#x53D8;&#x91CF;<code>a</code>&#x7684;&#x503C;<code>10</code>&#x4F20;&#x7ED9;&#x4E86;<code>block</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;<code>__main_block_impl_0</code>&#xFF0C;&#x56E0;&#x6B64;block&#x5185;&#x90E8;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;<code>age</code>&#x4F1A;&#x88AB;&#x8D4B;&#x503C;&#x6210;<code>10</code>&#x3002;</p>
+<p><strong>(3)&#x518D;&#x770B;&#x4E00;&#x4E0B;block&#x5185;&#x90E8;&#x5C01;&#x88C5;&#x7684;&#x51FD;&#x6570;</strong><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/fcab6d4d243e467581f1b89aadfa6a4f~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6253;&#x5370;&#x4EE3;&#x7801;&#x91CC;&#x9762;&#x4F7F;&#x7528;&#x7684;<code>age</code>&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;block&#x5185;&#x90E8;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;<code>age</code>&#xFF0C;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x5728;&#x5916;&#x9762;&#x5B9A;&#x4E49;&#x7684;&#x90A3;&#x4E2A;<code>age</code>&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5F53;block&#x88AB;&#x8D4B;&#x503C;&#x4E4B;&#x540E;&#xFF0C;&#x5176;&#x6210;&#x5458;&#x53D8;&#x91CF;<code>age</code>&#x88AB;&#x8D4B;&#x503C;&#x6210;&#x4E86;&#x5F53;&#x65F6;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4F20;&#x8FDB;&#x6765;&#x7684;&#x53C2;&#x6570;<code>10</code>&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x7EC8;&#x6253;&#x5370;&#x51FA;&#x6765;&#x503C;&#x5C31;&#x662F;<code>10</code>&#xFF0C;<strong>&#x4E0D;&#x8BBA;&#x5916;&#x90E8;&#x7684;<code>age</code>&#x518D;&#x5982;&#x4F55;&#x7684;&#x4FEE;&#x6539;&#x3002;&#x5916;&#x90E8;&#x7684;<code>age</code>&#x8DDF;block&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;<code>age</code>&#x662F;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x4E92;&#x4E0D;&#x5F71;&#x54CD;&#x3002;</strong></p>
+<p>&#x5176;&#x5B9E;&#xFF0C;&#x4E0A;&#x9762;&#x6211;&#x95E8;&#x8BA8;&#x8BBA;&#x7684;&#x8FD9;&#x4E2A;block&#x5916;&#x90E8;&#x53D8;&#x91CF;<code>age</code>&#x662F;&#x4E00;&#x4E2A;<strong>&#x5C40;&#x90E8;auto&#x53D8;&#x91CF;</strong>&#xFF0C;&#x4E5F;&#x53EB;<strong>&#x81EA;&#x52A8;&#x53D8;&#x91CF;</strong>&#x3002;&#x9664;&#x4E86;<code>auto&#x53D8;&#x91CF;</code>&#xFF0C;C&#x8BED;&#x8A00;&#x91CC;&#x9762;&#x8FD8;&#x6709;&#x5C40;&#x90E8;<code>static&#x53D8;&#x91CF;</code>&#xFF08;<strong>&#x9759;&#x6001;&#x53D8;&#x91CF;</strong>&#xFF09;&#x548C;<strong>&#x5168;&#x5C40;&#x53D8;&#x91CF;</strong>&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x770B;&#x770B;&#xFF0C;<strong>Block</strong>&#x5BF9;&#x4E8E;&#x8FD9;&#x51E0;&#x79CD;&#x53D8;&#x91CF;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x505A;&#x4E86;&#x5982;&#x4F55;&#x7684;&#x5904;&#x7406;&#x3002;</p>
+<h4 id="block&#x6355;&#x83B7;&#x5C40;&#x90E8;static&#x53D8;&#x91CF;">Block&#x6355;&#x83B7;&#x5C40;&#x90E8;static&#x53D8;&#x91CF;</h4>
+<p>&#x9996;&#x5148;&#x6211;&#x4EEC;&#x5C06;&#x4E0A;&#x9762;&#x7684;OC&#x4EE3;&#x7801;&#x6539;&#x9020;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-Objc"><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span>
+
+<span class="hljs-keyword">int</span> main(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[]) {
+    <span class="hljs-keyword">@autoreleasepool</span> {
+        <span class="hljs-keyword">int</span> age = <span class="hljs-number">10</span>;
+        <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> height = <span class="hljs-number">10</span>;
+        <span class="hljs-comment">//Block&#x7684;&#x5B9A;&#x4E49;</span>
+        <span class="hljs-keyword">void</span> (^block)(<span class="hljs-keyword">void</span>) = ^(){
+            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Age is %d, height is %d&quot;</span>, age, height);
+        };
+        <span class="hljs-comment">//&#x5148;&#x4FEE;&#x6539;age&#x548C;height&#x7684;&#x503C;</span>
+        age = <span class="hljs-number">20</span>;
+        height = <span class="hljs-number">20</span>;
+        <span class="hljs-comment">//Block&#x7684;&#x8C03;&#x7528;</span>
+        block();
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x6709;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;<code>static</code>&#x53D8;&#x91CF;<code>height</code>&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x540C;&#x6837;&#x7684;&#x5730;&#x65B9;&#x4FEE;&#x6539;<code>height</code>&#x7684;&#x503C;&#xFF0C;&#x4FBF;&#x4E8E;&#x548C;&#x4E4B;&#x524D;&#x7684;<code>age</code>&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#x3002;&#x9996;&#x5148;&#x8FD0;&#x884C;&#x4EE3;&#x7801;&#x770B;&#x4E00;&#x4E0B;&#x7ED3;&#x679C;</p>
+<pre><code class="lang-c">Interview03-block[<span class="hljs-number">4725</span>:<span class="hljs-number">476530</span>] Age is <span class="hljs-number">10</span>, height is <span class="hljs-number">20</span>
+Program ended with <span class="hljs-built_in">exit</span> code: <span class="hljs-number">0</span>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;block&#x8F93;&#x51FA;&#x7684; <code>height</code>&#x503C;&#x662F;&#x6211;&#x4EEC;&#x5728;&#x5916;&#x90E8;&#x91CD;&#x65B0;&#x4E3A;&#x5176;&#x8D4B;&#x7684;<code>20</code>&#x3002; </p>
+<p><strong>(1)&#x501F;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x5206;&#x6790;&#x6D41;&#x7A0B;&#x4E00;&#x6837;&#xFF0C;&#x5148;&#x770B;&#x4E00;&#x4E0B;block&#x5BF9;&#x5E94;&#x7684;&#x7ED3;&#x6784;&#x4F53;</strong></p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/609162bfd8cd485180b756c2e76cc3ad~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>&#x9488;&#x5BF9;static&#x53D8;&#x91CF;height, block&#x5185;&#x90E8;&#x4E3A;&#x5176;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;<code>int *height;</code>&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x6784;&#x9020;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x5BF9;&#x5E94;&#x7684;&#x53C2;&#x6570;&#x662F;<code>int *_height</code>&#x3002;&#x770B;&#x5230;&#x8FD9;&#x91CC;&#x8FD9;&#x91CC;&#x8981;&#x5B58;&#x50A8;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#xFF0C;&#x8BE5;&#x5730;&#x5740;&#x5E94;&#x8BE5;&#x5C31;&#x662F;&#x5916;&#x90E8;<code>static</code>&#x53D8;&#x91CF;<code>height</code>&#x7684;&#x5730;&#x5740;&#x503C;&#x3002;</p>
+<p><strong>(2)main&#x51FD;&#x6570;&#x91CC;&#x7684;block&#x8D4B;&#x503C;&#x8FC7;&#x7A0B;</strong></p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/23a8d3d5111b4931a9e1fa8f2839ff0e~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="&#x5BF9;&#x4E8E;static&#x53D8;&#x91CF;&#xFF0C;block&#x6355;&#x83B7;&#x7684;&#x662F;&#x5B83;&#x7684;&#x5730;&#x5740;"></p>
+<p>block&#x6784;&#x9020;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x4F20;&#x5165;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x5916;&#x90E8;&#x7684;&#x8FD9;&#x4E2A;height&#x7684;&#x5730;&#x5740;&#x503C;&#x3002;</p>
+<p><strong>(3)block&#x5185;&#x90E8;&#x7684;&#x51FD;&#x6570;</strong></p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/4a95ec27fd494cadb3d8445563438c36~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;block&#x5185;&#x90E8;&#x7684;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x901A;&#x8FC7;block&#x6240;&#x5B58;&#x50A8;&#x7684;&#x5730;&#x5740;&#x503C;<code>*height</code>&#x8BBF;&#x95EE;&#x4E86;&#x5916;&#x90E8;&#x7684;<code>static</code>&#x53D8;&#x91CF;<code>height</code>&#x7684;&#x503C;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x4ECE;&#x5916;&#x90E8;&#x4FEE;&#x6539;<code>height</code>&#x7684;&#x503C;&#x4E4B;&#x540E;&#xFF0C;&#x8C03;&#x7528;block&#x6253;&#x5370;&#x51FA;&#x7684;<code>height</code>&#x7684;&#x503C;&#x4E5F;&#x76F8;&#x5E94;&#x7684;&#x6539;&#x53D8;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;block&#x5185;&#x90E8;&#x662F;&#x901A;&#x8FC7; <strong>&#x6307;&#x9488;</strong> &#x5F15;&#x7528;&#x4E86;&#x5916;&#x90E8;&#x7684;&#x8FD9;&#x4E2A;<code>static</code>&#x53D8;&#x91CF;<code>height</code>&#x3002;</p>
+<h4 id="&#x5BF9;&#x4E8E;auto&#x3001;static&#x53D8;&#x91CF;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;block&#x9009;&#x62E9;&#x7528;&#x4E0D;&#x540C;&#x65B9;&#x5F0F;&#x5904;&#x7406;&#x5B83;&#x4EEC;&#x5462;&#xFF1F;">&#x5BF9;&#x4E8E;<code>auto</code>&#x3001;<code>static</code>&#x53D8;&#x91CF;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;<strong>block</strong>&#x9009;&#x62E9;&#x7528;&#x4E0D;&#x540C;&#x65B9;&#x5F0F;&#x5904;&#x7406;&#x5B83;&#x4EEC;&#x5462;&#xFF1F;</h4>
+<p>&#x4E00;&#x4E2A;<strong>&#x81EA;&#x52A8;&#x53D8;&#x91CF;</strong>&#xFF08;<code>auto</code>&#xFF09;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x4F4D;&#x4E8E;&#x51FD;&#x6570;&#x6808;&#x7A7A;&#x95F4;&#x4E0A;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x5F00;&#x8F9F;&#x6808;&#x7A7A;&#x95F4;&#x65F6;&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x7ED3;&#x675F;&#x65F6;&#x9500;&#x6BC1;&#xFF0C;&#x800C;<strong>block</strong>&#x7684;&#x8C03;&#x7528;&#x65F6;&#x673A;&#x6709;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x5728;&#x51FD;&#x6570;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5C31;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x5728;<strong>block</strong>&#x4E00;&#x5F00;&#x59CB;&#x5B9A;&#x4E49;&#x8D4B;&#x503C;&#x7684;&#x8FC7;&#x7A0B;&#x91CC;&#xFF0C;&#x5C31;&#x5C06;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x62F7;&#x8D1D;&#x5230;&#x4ED6;&#x81EA;&#x5DF1;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x4E0A;&#x3002; &#x800C;&#x5BF9;&#x4E8E;&#x5C40;&#x90E8;&#x9759;&#x6001;&#x53D8;&#x91CF;&#xFF08;<code>static</code>&#xFF09;&#xFF0C;C&#x8BED;&#x6CD5;&#x4E0B;<code>static</code>&#x4F1A;&#x6539;&#x53D8;&#x6240;&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x4F7F;&#x5176;&#x5728;  <strong>&#x7A0B;&#x5E8F;&#x6574;&#x4E2A;&#x8FD0;&#x884C;&#x671F;&#x95F4;&#x90FD;&#x5B58;&#x5728;</strong>  &#xFF0C;&#x6240;&#x4EE5;<strong>block</strong>&#x9009;&#x62E9;&#x6301;&#x6709;&#x5B83;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x5728;<strong>block</strong>&#x88AB;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x6307;&#x9488;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x5185;&#x5BB9;&#x5C31;&#x884C;&#x3002;</p>
+<h4 id="block&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x53D8;&#x91CF;">Block&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x53D8;&#x91CF;</h4>
+<p>&#x4E0A;&#x9762;&#x8BA8;&#x8BBA;block&#x5BF9;&#x4E8E;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x5728;&#x770B;&#x4E00;&#x770B;&#x5BF9;&#x4E8E;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x60C5;&#x51B5;&#x53C8;&#x662F;&#x5982;&#x4F55;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/0f909ae551b5422daa0d833fd61515fc~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-c">Interview03-block[<span class="hljs-number">13997</span>:<span class="hljs-number">1263406</span>] Age is <span class="hljs-number">20</span>, height is <span class="hljs-number">20</span>
+Program ended with <span class="hljs-built_in">exit</span> code: <span class="hljs-number">0</span>
+</code></pre>
+<p>&#x5728;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x751F;&#x6210;&#x4E00;&#x4E0B;&#x7F16;&#x8BD1;&#x540E;&#x7684;C++&#x6587;&#x4EF6;&#xFF0C;&#x540C;&#x6837;&#x8FD8;&#x662F;&#x5728;&#x6587;&#x4EF6;&#x5E95;&#x90E8;&#x53BB;&#x770B;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/36bc8f341ec8400cbe3b146a272f0374~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="block&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x53D8;&#x91CF;"></p>
+<p><strong>block</strong>&#x6CA1;&#x6709;&#x5BF9;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x6355;&#x83B7;&#x884C;&#x4E3A;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;&#x8981;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x53D8;&#x91CF;&#x540D;&#x8BBF;&#x95EE;&#x5C31;&#x884C;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x65F6;&#x8DE8;&#x51FD;&#x6570;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x53D8;&#x91CF;&#x7684;&#x540D;&#x5B57;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x3002; &#x540C;&#x6837;&#xFF0C;&#x8005;&#x4E5F;&#x5E2E;&#x6211;&#x6211;&#x4EEC;&#x7406;&#x89E3;&#x4E86;&#x4E3A;&#x4EC0;&#x4E48;&#x5BF9;&#x4E8E;&#x5C40;&#x90E8;&#x7684;&#x53D8;&#x91CF;&#xFF0C;<strong>block</strong>&#x9700;&#x8981;&#x5BF9;&#x5176;&#x91C7;&#x53D6;&#x201C;&#x6355;&#x83B7;&#x201D;&#x884C;&#x4E3A;&#xFF0C;&#x6B63;&#x662F;&#x56E0;&#x4E3A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x5B9A;&#x5728;&#x4E0E;&#x51FD;&#x6570;&#x5185;&#x90E8;&#xFF0C;&#x65E0;&#x6CD5;&#x8DE8;&#x51FD;&#x6570;&#x4F7F;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x6839;&#x636E;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x4E0D;&#x540C;&#x7684;&#x5B58;&#x50A8;&#x5C5E;&#x6027;&#xFF0C;&#x8981;&#x4E48;&#x5C06;&#x5176;&#x503C;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x62F7;&#x8D1D;&#xFF08;<code>auto</code>&#xFF09;&#xFF0C;&#x8981;&#x4E48;&#x5BF9;&#x5176;&#x5730;&#x5740;&#x8FDB;&#x884C;&#x62F7;&#x8D1D;&#xFF08;<code>static</code>)&#x3002;</p>
+<h4 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h4>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/4f3765d51d9e4b958d9fa7de0e96f8fe~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<ol>
+<li><p><strong>&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x4F1A;&#x88AB;block&#x6355;&#x83B7;</strong></p>
+</li>
+<li><p>&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#xFF08;<code>auto</code>&#xFF09;&#xFF0C;<strong>block</strong>&#x901A;&#x8FC7;&#x503C;&#x62F7;&#x8D1D;&#x65B9;&#x5F0F;&#x6355;&#x83B7;&#xFF0C;&#x5728;&#x5176;&#x5185;&#x90E8;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540C;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#xFF0C;&#x5E76;&#x4E14;&#x5C06;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x62F7;&#x8D1D;&#x7ED9;<strong>block</strong>&#x7684;&#x5185;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;<strong>block</strong>&#x4EE3;&#x7801;&#x5757;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x5B83;&#x7684;&#x8FD9;&#x4E2A;<strong><em>&#x5185;&#x90E8;&#x53D8;&#x91CF;</em></strong>&#x3002;</p>
+</li>
+<li><p>&#x9759;&#x6001;&#x53D8;&#x91CF;&#xFF08;<code>static</code>&#xFF09;&#xFF0C;<strong>block</strong>&#x901A;&#x8FC7;&#x5730;&#x5740;&#x62F7;&#x8D1D;&#x65B9;&#x5F0F;&#x6355;&#x83B7;&#xFF0C;&#x5728;&#x5176;&#x5185;&#x90E8;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x540C;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x7684;&#x6307;&#x9488;&#xFF0C; &#x5C06;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#x503C;&#x62F7;&#x8D1D;&#x7ED9;<strong>block</strong>&#x5185;&#x90E8;&#x7684;&#x8FD9;&#x4E2A;&#x6307;&#x9488;&#xFF0C;<strong>block</strong>&#x4EE3;&#x7801;&#x5757;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x901A;&#x8FC7;&#x5185;&#x90E8;&#x5B58;&#x50A8;&#x7684;&#x6307;&#x9488;<strong><em>&#x95F4;&#x63A5;&#x8BBF;&#x95EE;&#x9759;&#x6001;&#x53D8;&#x91CF;</em></strong>&#x3002;</p>
+</li>
+<li><p><strong>&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0D;&#x4F1A;&#x88AB;block&#x6355;&#x83B7;</strong>,    block&#x4EE3;&#x7801;&#x5757;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x901A;&#x8FC7;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x540D;<strong><em>&#x76F4;&#x63A5;&#x8BBF;&#x95EE;</em></strong>&#x3002;</p>
+</li>
+</ol>
+<h4 id="block&#x5BF9;&#x4E8E;self&#x7684;&#x5904;&#x7406;">Block&#x5BF9;&#x4E8E;self&#x7684;&#x5904;&#x7406;</h4>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/a2899927dade46ad8cee33769a27da14~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"> </p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/52077c6863b94f299038ed875a0174d3~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>&#x7F16;&#x8BD1;&#x7ED3;&#x679C;&#x663E;&#x793A;<strong>block</strong>&#x5BF9;<code>self</code>&#x8FDB;&#x884C;&#x4E86;&#x6355;&#x83B7;&#x3002;But why&#xFF1F; &#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x56FE;&#x4E2D;&#x7684;<strong>block</strong>&#x4F4D;&#x4E8E;<code>test</code>&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x4EFB;&#x4F55;&#x7684;oc&#x65B9;&#x6CD5;&#xFF0C;&#x8F6C;&#x6362;&#x6210;&#x5E95;&#x5C42;&#x7684;c&#x51FD;&#x6570;&#xFF0C;&#x91CC;&#x9762;&#x90FD;&#x6709;&#x4E24;&#x4E2A;&#x9ED8;&#x8BA4;</p>
+<p>&#x7684;&#x53C2;&#x6570;&#xFF0C;<code>self</code> &#x548C; <code>_cmd</code></p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/7d7b27a9efb34d6db729048a3ca7aa79~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>&#x6240;&#x4EE5;&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x7684;<code>self</code>&#x7684;&#x5B9E;&#x9645;&#x4E0A;&#x4E5F;&#x662F;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x6839;&#x636E;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x603B;&#x7ED3;&#x7684;&#x539F;&#x5219;&#xFF0C;&#x53EA;&#x8981;&#x662F;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;<strong>block</strong>&#x90FD;&#x4F1A;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x6355;&#x83B7;&#xFF0C;&#x8FD9;&#x5C31;&#x89E3;&#x91CA;&#x901A;&#x4E86;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x60C5;&#x51B5;&#x5462;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/eecbec499b74418bb3a740c453e30440~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"> </p>
+<p>&#x5148;&#x770B;&#x7F16;&#x8BD1;&#x7ED3;&#x679C;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/9b6f09a9b4d94d4eb9d0965c5f89ce22~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>&#x770B;&#x5F97;&#x51FA;&#x6765;&#xFF0C;&#x8FD8;&#x662F;&#x8FDB;&#x884C;&#x4E86;&#x6355;&#x83B7;&#xFF0C;&#x5728;&#x56FE;&#x4E2D;&#x6807;&#x660E;&#x7684;&#x9EC4;&#x8272;&#x6846;&#x6846;&#xFF0C;&#x5C31;&#x5F88;&#x597D;&#x7406;&#x89E3;&#x4E86;&#xFF0C;<strong>block</strong>&#x6700;&#x7EC8;&#x8BBF;&#x95EE;<code>CLPerson</code>&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;<code>_age</code>&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x901A;&#x8FC7;<code>self</code> +<code>_age&#x504F;&#x79FB;&#x91CF;</code>&#xFF0C;&#x83B7;&#x5F97;<code>_age</code>&#x7684;&#x5730;&#x5740;&#x540E;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x95F4;&#x63A5;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5728;oc&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;<code>_age</code> &#x7684;&#x5199;&#x6CD5;&#x7B49;&#x540C;&#x4E0E;<code>self-&gt;_age</code>&#xFF0C;&#x8BF4;&#x767D;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x7528;&#x5230;<code>self</code>&#xFF0C;&#x56E0;&#x6B64;<strong>block</strong>&#x8FD8;&#x662F;&#x9700;&#x8981;&#x5BF9;<code>self</code>&#x8FDB;&#x884C;&#x6355;&#x83B7;&#x7684;&#x3002;</p>
+<h3 id="block&#x6355;&#x83B7;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;">Block&#x6355;&#x83B7;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;</h3>
+<p>&#x6709;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;:</p>
+<pre><code class="lang-objective-c">typedef void(^CLBlock)(void);//&#x2795;&#x2795;&#x2795;
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+
+        CLBlock myBlock;
+        {//&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x5F00;&#x59CB;
+            CLPerson *person = [[CLPerson alloc] init];
+            person.age = 10;
+
+             myBlock = ^{
+                NSLog(@&quot;---------%d&quot;,person.age);
+            };
+        }//&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x7ED3;&#x675F;
+
+        NSLog(@&quot;-----------flag1&quot;);
+    }
+    return 0;
+}
+</code></pre>
+<p>&#x7531;&#x4E8E;&#x73B0;&#x5728;&#x662F;<strong>ARC</strong>&#x73AF;&#x5883;&#xFF0C;<code>myBlock</code>&#x5C5E;&#x4E8E;&#x5F3A;&#x6307;&#x9488;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x5C06;<strong>block</strong>&#x5BF9;&#x8C61;&#x8D4B;&#x503C;&#x7ED9;<code>myBlock</code>&#x6307;&#x9488;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x5BF9;<strong>block</strong>&#x5BF9;&#x8C61;&#x6267;&#x884C;<code>copy</code>&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;&#x8D4B;&#x503C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;<code>myBlock</code>&#x6307;&#x5411;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5806;&#x7A7A;&#x95F4;&#x4E0A;&#x7684;<strong>block</strong>&#x5BF9;&#x8C61;&#x526F;&#x672C;</p>
+<p>&#x901A;&#x8FC7;Clang&#x91CD;&#x5199;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">struct</span> __main_block_impl_0 {
   <span class="hljs-keyword">struct</span> __block_impl impl;
   <span class="hljs-keyword">struct</span> __main_block_desc_0* Desc;
-  <span class="hljs-keyword">int</span> age;
-    <span class="hljs-comment">//&#x6784;&#x9020;&#x51FD;&#x6570;(&#x7C7B;&#x4F3C;&#x4E8E;OC&#x4E2D;&#x7684;init&#x65B9;&#x6CD5;) _age&#x662F;&#x5916;&#x9762;&#x4F20;&#x5165;&#x7684;</span>
-  __main_block_impl_0(<span class="hljs-keyword">void</span> *fp, <span class="hljs-keyword">struct</span> __main_block_desc_0 *desc, <span class="hljs-keyword">int</span> _age, <span class="hljs-keyword">int</span> flags=<span class="hljs-number">0</span>) : age(_age) {
-    <span class="hljs-comment">//isa&#x6307;&#x5411;_NSConcreteStackBlock &#x8BF4;&#x660E;&#x8FD9;&#x4E2A;block&#x5C31;&#x662F;_NSConcreteStackBlock&#x7C7B;&#x578B;&#x7684;</span>
+  CLPerson *person;
+
+  __main_block_impl_0(<span class="hljs-keyword">void</span> *fp, <span class="hljs-keyword">struct</span> __main_block_desc_0 *desc, CLPerson *_person, <span class="hljs-keyword">int</span> flags=<span class="hljs-number">0</span>) : person(_person) {
     impl.isa = &amp;_NSConcreteStackBlock;
     impl.Flags = flags;
     impl.FuncPtr = fp;
     Desc = desc;
   }
 };
-</code></pre>
-<p>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;<code>struct __block_impl impl;</code></p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> __block_impl {
-      <span class="hljs-keyword">void</span> *isa;
-      <span class="hljs-keyword">int</span> Flags;
-      <span class="hljs-keyword">int</span> Reserved;
-      <span class="hljs-keyword">void</span> *FuncPtr;
-};
-</code></pre>
-<p>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;<code>__main_block_desc_0;</code></p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> __main_block_desc_0 {
-  <span class="hljs-keyword">size_t</span> reserved;
-  <span class="hljs-keyword">size_t</span> Block_size; <span class="hljs-comment">// &#x7ED3;&#x6784;&#x4F53;__main_block_impl_0 &#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;</span>
-}
-</code></pre>
-<p>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7B2C;&#x4E09;&#x4E2A;&#x662F;<code>age</code></p>
-<p>&#x4E5F;&#x5C31;&#x662F;&#x6355;&#x83B7;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF; <code>age</code></p>
-<pre><code class="lang-cpp">__main_block_func_0
-<span class="hljs-comment">//&#x5C01;&#x88C5;&#x4E86;block&#x6267;&#x884C;&#x903B;&#x8F91;&#x7684;&#x51FD;&#x6570;</span>
+
+
 <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __main_block_func_0(<span class="hljs-keyword">struct</span> __main_block_impl_0 *__cself) {
-    <span class="hljs-keyword">int</span> age = __cself-&gt;age; <span class="hljs-comment">// bound by copy</span>
+  CLPerson *person = __cself-&gt;person; <span class="hljs-comment">// bound by copy</span>
 
-    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb32m0000gn_T_main_7f3f1b_mi_0,age);
+                NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_7__p19yp82j0xd2m_1k8fpr77z40000gn_T_main_2cca58_mi_0,((<span class="hljs-keyword">int</span> (*)(id, SEL))(<span class="hljs-keyword">void</span> *)objc_msgSend)((id)person, sel_registerName(<span class="hljs-string">&quot;age&quot;</span>)));
+            }
+
+
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __main_block_copy_0(<span class="hljs-keyword">struct</span> __main_block_impl_0*dst, <span class="hljs-keyword">struct</span> __main_block_impl_0*src) {
+            _Block_object_assign((<span class="hljs-keyword">void</span>*)&amp;dst-&gt;person, (<span class="hljs-keyword">void</span>*)src-&gt;person, <span class="hljs-number">3</span><span class="hljs-comment">/*BLOCK_FIELD_IS_OBJECT*/</span>);
 }
-</code></pre>
-<p>&#x7528;&#x4E00;&#x5E45;&#x56FE;&#x6765;&#x8868;&#x793A;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-04-151812.jpg" alt="img"></p>
-<h3 id="&#x53D8;&#x91CF;&#x6355;&#x83B7;">&#x53D8;&#x91CF;&#x6355;&#x83B7;</h3>
-<p>&#x5176;&#x5B9E;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x770B;&#x5F97;&#x51FA;&#x6765;&#x53D8;&#x91CF;&#x6355;&#x83B7;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x7EE7;&#x7EED;&#x8BE6;&#x7EC6;&#x5206;&#x6790;&#x4E00;&#x4E0B;</p>
-<table>
-<thead>
-<tr>
-<th>&#x53D8;&#x91CF;&#x7C7B;&#x578B;</th>
-<th>&#x6355;&#x83B7;&#x5230;block&#x5185;&#x90E8;</th>
-<th>&#x8BBF;&#x95EE;&#x65B9;&#x5F0F;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF; auto</td>
-<td>&#x221A;</td>
-<td>&#x503C;&#x4F20;&#x9012;</td>
-</tr>
-<tr>
-<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF; static</td>
-<td>&#x221A;</td>
-<td>&#x6307;&#x9488;&#x4F20;&#x9012;</td>
-</tr>
-<tr>
-<td>&#x5168;&#x5C40;&#x53D8;&#x91CF;</td>
-<td>&#xD7;</td>
-<td>&#x76F4;&#x63A5;&#x8BBF;&#x95EE;</td>
-</tr>
-</tbody>
-</table>
-<h3 id="31-&#x5C40;&#x90E8;&#x53D8;&#x91CF;auto&#x81EA;&#x52A8;&#x53D8;&#x91CF;">3.1 &#x5C40;&#x90E8;&#x53D8;&#x91CF;auto(&#x81EA;&#x52A8;&#x53D8;&#x91CF;)</h3>
-<ul>
-<li>&#x6211;&#x4EEC;&#x5E73;&#x65F6;&#x5199;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x9ED8;&#x8BA4;&#x5C31;&#x6709; auto(&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#xFF0C;&#x79BB;&#x5F00;&#x4F5C;&#x7528;&#x57DF;&#x5C31;&#x9500;&#x6BC1;)</li>
-</ul>
-<h5 id="&#x8FD0;&#x884C;&#x4EE3;&#x7801;">&#x8FD0;&#x884C;&#x4EE3;&#x7801;</h5>
-<p>&#x4F8B;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;</p>
-<pre><code class="lang-objective-c">int age = 20;
-void (^block)(void) =  ^{
-     NSLog(@&quot;age is %d&quot;,age);
-};
-age = 25;
 
-block();
-</code></pre>
-<p>&#x7B49;&#x540C;&#x4E8E;</p>
-<pre><code class="lang-objective-c">auto int age = 20;
-void (^block)(void) =  ^{
-     NSLog(@&quot;age is %d&quot;,age);
-};
-age = 25;
 
-block();
-</code></pre>
-<p>&#x8F93;&#x51FA;</p>
-<blockquote>
-<p>20</p>
-</blockquote>
-<h5 id="&#x5206;&#x6790;">&#x5206;&#x6790;</h5>
-<blockquote>
-<p>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m</p>
-</blockquote>
-<p>&#x751F;&#x6210;<code>main.cpp</code></p>
-<p>&#x5982;&#x56FE;&#x6240;&#x793A;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-04-152053.jpg" alt="img"></p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">int</span> age = <span class="hljs-number">20</span>;
-<span class="hljs-keyword">void</span> (*block)(<span class="hljs-keyword">void</span>) = ((<span class="hljs-keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="hljs-keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, age));
-age = <span class="hljs-number">25</span>;
 
-((<span class="hljs-keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);
 
-<span class="hljs-keyword">struct</span> __main_block_impl_0 *blockStruct = (__bridge <span class="hljs-keyword">struct</span> __main_block_impl_0 *)block;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __main_block_dispose_0(<span class="hljs-keyword">struct</span> __main_block_impl_0*src) {
+            _Block_object_dispose((<span class="hljs-keyword">void</span>*)src-&gt;person, <span class="hljs-number">3</span><span class="hljs-comment">/*BLOCK_FIELD_IS_OBJECT*/</span>);
+}
 
-NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb32m0000gn_T_main_d36452_mi_5);
-</code></pre>
-<p>&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;&#x76F4;&#x63A5;&#x628A;age&#x7684;&#x503C; 20&#x4F20;&#x5230;&#x4E86;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x4E2D;&#xFF0C;&#x540E;&#x9762;&#x518D;&#x4FEE;&#x6539;<code>age = 25</code>&#x5E76;&#x4E0D;&#x80FD;&#x6539;&#x53D8;block&#x91CC;&#x9762;&#x7684;&#x503C;</p>
-<h3 id="32-&#x5C40;&#x90E8;&#x53D8;&#x91CF;-static">3.2 &#x5C40;&#x90E8;&#x53D8;&#x91CF; static</h3>
-<p>static&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x4E0D;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;</p>
-<h5 id="&#x8FD0;&#x884C;&#x4EE3;&#x7801;">&#x8FD0;&#x884C;&#x4EE3;&#x7801;</h5>
-<p>eg</p>
-<pre><code class="lang-objective-c">static int height  = 30;
-int age = 20;
-void (^block)(void) =  ^{
-     NSLog(@&quot;age is %d height = %d&quot;,age,height);
-};
-age = 25;
-height = 35;
-block();
-</code></pre>
-<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E3A;</p>
-<pre><code class="lang-shell">age is 20 height = 35
-</code></pre>
-<p>&#x53EF;&#x4EE5;&#x770B;&#x5F97;&#x51FA;&#x6765;&#xFF0C;block&#x5916;&#x90E8;&#x4FEE;&#x6539;height&#x7684;&#x503C;&#xFF0C;&#x4F9D;&#x7136;&#x80FD;&#x5F71;&#x54CD;block&#x5185;&#x90E8;&#x7684;&#x503C;</p>
-<h5 id="&#x6790;">&#x6790;</h5>
-<blockquote>
-<p>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m</p>
-</blockquote>
-<p>&#x751F;&#x6210;<code>main.cpp</code></p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-04-152048.jpg" alt="img"></p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __main_block_func_0(<span class="hljs-keyword">struct</span> __main_block_impl_0 *__cself) {
-  <span class="hljs-keyword">int</span> age = __cself-&gt;age; <span class="hljs-comment">// bound by copy</span>
-  <span class="hljs-keyword">int</span> *height = __cself-&gt;height; <span class="hljs-comment">// bound by copy</span>
 
-            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb32m0000gn_T_main_3146e1_mi_4,age,(*height));
-        }
+
 
 <span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> __main_block_desc_0 {
   <span class="hljs-keyword">size_t</span> reserved;
   <span class="hljs-keyword">size_t</span> Block_size;
-} __main_block_desc_0_DATA = { <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> __main_block_impl_0)};
+  <span class="hljs-keyword">void</span> (*copy)(<span class="hljs-keyword">struct</span> __main_block_impl_0*, <span class="hljs-keyword">struct</span> __main_block_impl_0*);
+  <span class="hljs-keyword">void</span> (*dispose)(<span class="hljs-keyword">struct</span> __main_block_impl_0*);
+} __main_block_desc_0_DATA = { 
+                                <span class="hljs-number">0</span>, 
+                                <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> __main_block_impl_0), 
+                                __main_block_copy_0, 
+                                __main_block_dispose_0
+                              };
+
+
+
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
     <span class="hljs-comment">/* @autoreleasepool */</span> { __AtAutoreleasePool __autoreleasepool; 
+        CLBlock myBlock;
+
+        {
+            CLPerson * person = objc_msgSend(objc_msgSend(objc_getClass(<span class="hljs-string">&quot;CLPerson&quot;</span>), 
+                                                          sel_registerName(<span class="hljs-string">&quot;alloc&quot;</span>)
+                                                          ), 
+                                             sel_registerName(<span class="hljs-string">&quot;init&quot;</span>)
+                                             );
 
 
+            objc_msgSend(person, 
+                         sel_registerName(<span class="hljs-string">&quot;setAge:&quot;</span>), 
+                         <span class="hljs-number">30</span>
+                         );
 
-        <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> height = <span class="hljs-number">30</span>;
-        <span class="hljs-keyword">int</span> age = <span class="hljs-number">20</span>;
-        <span class="hljs-keyword">void</span> (*block)(<span class="hljs-keyword">void</span>) = ((<span class="hljs-keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="hljs-keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, age, &amp;height));
-        age = <span class="hljs-number">25</span>;
-        height = <span class="hljs-number">35</span>;
-        ((<span class="hljs-keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);
-</code></pre>
-<p>&#x5982;&#x56FE;&#x6240;&#x793A;&#xFF0C;<code>age</code>&#x662F;&#x76F4;&#x63A5;&#x503C;&#x4F20;&#x9012;&#xFF0C;<code>height</code>&#x4F20;&#x9012;&#x7684;&#x662F;<code>*height</code> &#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x76F4;&#x63A5;&#x628A;&#x5185;&#x5B58;&#x5730;&#x5740;&#x4F20;&#x8FDB;&#x53BB;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x4E86;&#x3002;</p>
-<h3 id="33-&#x5168;&#x5C40;&#x53D8;&#x91CF;">3.3 &#x5168;&#x5C40;&#x53D8;&#x91CF;</h3>
-<h5 id="&#x8FD0;&#x884C;&#x4EE3;&#x7801;">&#x8FD0;&#x884C;&#x4EE3;&#x7801;</h5>
-<pre><code class="lang-objective-c">int age1 = 11;
-static int height1 = 22;
 
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        void (^block)(void) =  ^{
-            NSLog(@&quot;age1 is %d height1 = %d&quot;,age1,height1);
-        };
-        age1 = 25;
-        height1 = 35;
-        block();
+            myBlock = objc_msgSend(&amp;__main_block_impl_0(__main_block_func_0, 
+                                                        &amp;__main_block_desc_0_DATA, 
+                                                        person, 
+                                                        <span class="hljs-number">570425344</span>), 
+                                   sel_registerName(<span class="hljs-string">&quot;copy&quot;</span>)
+                                   );
+
+
+        }
+
 
     }
-    return 0;
-}
-</code></pre>
-<p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A;</p>
-<pre><code class="lang-shell">age1 is 25 height1 = 35
-</code></pre>
-<h5 id="&#x5206;&#x6790;">&#x5206;&#x6790;</h5>
-<blockquote>
-<p>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m</p>
-</blockquote>
-<p>&#x751F;&#x6210;<code>main.cpp</code></p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-04-152316.jpg" alt="img"></p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> __main_block_impl_0 {
-    <span class="hljs-keyword">struct</span> __block_impl impl;
-    <span class="hljs-keyword">struct</span> __main_block_desc_0* Desc;
-    __main_block_impl_0(<span class="hljs-keyword">void</span> *fp, <span class="hljs-keyword">struct</span> __main_block_desc_0 *desc, <span class="hljs-keyword">int</span> flags=<span class="hljs-number">0</span>) {
-        impl.isa = &amp;_NSConcreteStackBlock;
-        impl.Flags = flags;
-        impl.FuncPtr = fp;
-        Desc = desc;
-    }
-};
-<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> __main_block_func_0(<span class="hljs-keyword">struct</span> __main_block_impl_0 *__cself) {
 
-    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_x4_920c4yq936b63mvtj4wmb32m0000gn_T_main_4e8c40_mi_4,age1,height1);
-}
 
-<span class="hljs-keyword">static</span> <span class="hljs-keyword">struct</span> __main_block_desc_0 {
-    <span class="hljs-keyword">size_t</span> reserved;
-    <span class="hljs-keyword">size_t</span> Block_size;
-} __main_block_desc_0_DATA = { <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> __main_block_impl_0)};
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
-    <span class="hljs-comment">/* @autoreleasepool */</span> { __AtAutoreleasePool __autoreleasepool; 
-
-        <span class="hljs-keyword">void</span> (*block)(<span class="hljs-keyword">void</span>) = ((<span class="hljs-keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="hljs-keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA));
-        age1 = <span class="hljs-number">25</span>;
-        height1 = <span class="hljs-number">35</span>;
-        ((<span class="hljs-keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);
-
-    }
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
-<p>&#x4ECE;cpp&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x6355;&#x83B7;&#x5168;&#x5C40;&#x53D8;&#x91CF;age1&#x548C;height1,&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x76F4;&#x63A5;&#x53BB;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x6839;&#x672C;&#x4E0D;&#x9700;&#x8981;&#x6355;&#x83B7;</p>
-<h4 id="&#x5C0F;&#x7ED3;">&#x5C0F;&#x7ED3;</h4>
-<table>
-<thead>
-<tr>
-<th>&#x53D8;&#x91CF;&#x7C7B;&#x578B;</th>
-<th>&#x6355;&#x83B7;&#x5230;block&#x5185;&#x90E8;</th>
-<th>&#x8BBF;&#x95EE;&#x65B9;&#x5F0F;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF; auto</td>
-<td>&#x221A;</td>
-<td>&#x503C;&#x4F20;&#x9012;</td>
-</tr>
-<tr>
-<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF; static</td>
-<td>&#x221A;</td>
-<td>&#x6307;&#x9488;&#x4F20;&#x9012;</td>
-</tr>
-<tr>
-<td>&#x5168;&#x5C40;&#x53D8;&#x91CF;</td>
-<td>&#xD7;</td>
-<td>&#x76F4;&#x63A5;&#x8BBF;&#x95EE;</td>
-</tr>
-</tbody>
-</table>
+<p><code>__main_block_desc_0</code>&#x7ED3;&#x6784;&#x4F53;&#x91CC;&#x9762;&#x591A;&#x4E86;&#x4E24;&#x4E2A;&#x5F69;&#x86CB;</p>
 <ul>
-<li>auto&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x662F;&#x503C;&#x4F20;&#x9012;</li>
-<li>static&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x662F;&#x6307;&#x9488;&#x4F20;&#x9012;</li>
+<li>&#x51FD;&#x6570;&#x6307;&#x9488;<code>copy</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;<code>__main_block_copy_0()</code>&#xFF0C;&#x5185;&#x90E8;&#x8C03;&#x7528;&#x4E86;<code>_Block_object_assign()</code></li>
+<li>&#x51FD;&#x6570;&#x6307;&#x9488;<code>dispose</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;<code>__main_block_dispose_0()</code>&#xFF0C;&#x5185;&#x90E8;&#x8C03;&#x7528;&#x4E86;<code>_Block_object_dispose()</code></li>
 </ul>
-<p>&#x5176;&#x5B9E;&#x4E5F;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x56E0;&#x4E3A;auto&#x4FEE;&#x9970;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x79BB;&#x5F00;&#x4F5C;&#x7528;&#x57DF;&#x5C31;&#x9500;&#x6BC1;&#x4E86;&#x3002;&#x90A3;&#x5982;&#x679C;&#x662F;&#x6307;&#x9488;&#x4F20;&#x9012;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BE5;&#x53D8;&#x91CF;&#x5DF2;&#x7ECF;&#x9500;&#x6BC1;&#x4E86;&#x3002;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A;&#x51FA;&#x95EE;&#x9898;&#x3002;&#x800C;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x672C;&#x6765;&#x5C31;&#x662F;&#x5728;&#x54EA;&#x91CC;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x65E0;&#x9700;&#x6355;&#x83B7;&#x3002;</p>
-<h2 id="4--block&#x6709;3&#x79CD;&#x7C7B;&#x578B;">4  block&#x6709;3&#x79CD;&#x7C7B;&#x578B;</h2>
-<h4 id="block&#x4E5F;&#x662F;&#x4E00;&#x4E2A;oc&#x5BF9;&#x8C61;">block&#x4E5F;&#x662F;&#x4E00;&#x4E2A;OC&#x5BF9;&#x8C61;</h4>
-<p>block&#x6709;3&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;class&#x65B9;&#x6CD5;&#x6216;&#x8005;isa&#x6307;&#x9488;&#x67E5;&#x770B;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#xFF0C;&#x6700;&#x7EC8;&#x90FD;&#x662F;&#x7EE7;&#x627F;&#x81EA;NSBlock&#x7C7B;&#x578B;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/fa7895e1bbd44546a26aba3723be24df~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="&#x6355;&#x6349;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x7684;auto&#x53D8;&#x91CF;&#x65F6;__main_block_desc_0&#x7684;&#x53D8;&#x5316;"></p>
+<p><strong>ARC</strong> &#x4E0B;<code>CLPerson *person</code>&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x5F3A;&#x6307;&#x9488;&#xFF0C;&#x7B49;&#x4EF7;&#x4E8E;<code>_strong CLPerson *person</code>&#xFF0C;&#x800C;&#x5F31;&#x6307;&#x9488;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x5730;&#x8868;&#x793A;&#x4E3A;<code>__weak CLPerson *person</code>&#x3002;&#x901A;&#x8FC7;&#x7EC8;&#x7AEF;&#x547D;&#x4EE4;<code>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc -fobjc-arc -fobjc-runtime=ios-9.0.0 main.m -o main.cpp</code>&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>block</code>&#x7684;&#x5185;&#x6355;&#x83B7;&#x5230;&#x7684;<code>person</code>&#x6307;&#x9488;&#x5982;&#x4E0B;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/8d135f2bf3b94f25ad4358f7ae63f9f6~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image"></p>
+<p>&#x4E3A;&#x4E86;&#x5BF9;&#x6BD4;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x5206;&#x522B;&#x770B;&#x4E00;&#x4E0B;&#x4E0B;&#x9762;&#x4E09;&#x79CD; &#x573A;&#x666F;&#x5206;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#x7684;&#xFF1A;</p>
 <ul>
-<li><code>__NSGlobalBlock__ &#xFF08; _NSConcreteGlobalBlock &#xFF09;</code> (&#x5168;&#x5C40;&#x7684;&#x9759;&#x6001; block&#xFF0C;&#x4E0D;&#x4F1A;&#x8BBF;&#x95EE;&#x4EFB;&#x4F55;&#x5916;&#x90E8;&#x53D8;&#x91CF;)</li>
-<li><code>__NSStackBlock__ &#xFF08; _NSConcreteStackBlock &#xFF09;</code> ( &#x4FDD;&#x5B58;&#x5728;&#x6808;&#x4E2D;&#x7684; block&#xFF0C;&#x5F53;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x65F6;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;)</li>
-<li><code>__NSMallocBlock__ &#xFF08; _NSConcreteMallocBlock &#xFF09;</code> ( &#x4FDD;&#x5B58;&#x5728;&#x5806;&#x4E2D;&#x7684; block&#xFF0C;&#x5F53;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A; 0 &#x65F6;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;)</li>
+<li><strong>ARC&#x73AF;&#x5883;--&gt;&#x5806;&#x4E0A;&#x7684;<code>block</code>--&gt;&#x5F31;&#x6307;&#x9488;<code>__weak CLPerson *person</code></strong></li>
+<li><strong>ARC&#x73AF;&#x5883;--&gt;&#x6808;&#x4E0A;&#x7684;<code>block</code>--&gt;&#x5F3A;&#x6307;&#x9488;<code>CLPerson *person</code></strong></li>
+<li><strong>ARC&#x73AF;&#x5883;--&gt;&#x6808;&#x4E0A;&#x7684;<code>block</code>--&gt;&#x5F31;&#x6307;&#x9488;<code>__weak CLPerson *person</code></strong></li>
 </ul>
-<p>&#x5176;&#x4E2D;&#x4E09;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x578B;&#x548C;&#x73AF;&#x5883;&#x5BF9;&#x5E94;&#x5982;&#x4E0B;</p>
-<table>
-<thead>
-<tr>
-<th>block&#x7C7B;&#x578B;</th>
-<th>&#x73AF;&#x5883;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>__NSGlobalBlock__</code></td>
-<td>&#x6CA1;&#x6709;&#x8BBF;&#x95EE;auto&#x53D8;&#x91CF;</td>
-</tr>
-<tr>
-<td><code>__NSStackBlock__</code></td>
-<td>&#x8BBF;&#x95EE;&#x4E86;auto&#x53D8;&#x91CF;</td>
-</tr>
-<tr>
-<td><code>__NSMallocBlock__</code></td>
-<td><code>__NSStackBlock__</code>&#x8C03;&#x7528;&#x4E86;copy</td>
-</tr>
-</tbody>
-</table>
-<p>&#x6BCF;&#x4E00;&#x79CD;&#x7C7B;&#x578B;&#x7684; block &#x8C03;&#x7528; copy &#x540E;&#x7684;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x6240;&#x793A;</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Block &#x7684;&#x7C7B;</th>
-<th style="text-align:center">&#x526F;&#x672C;&#x6E90;&#x7684;&#x914D;&#x7F6E;&#x5B58;&#x50A8;&#x57DF;</th>
-<th style="text-align:center">&#x590D;&#x5236;&#x6548;&#x679C;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>_NSConcreteGlobalBlock</code></td>
-<td style="text-align:center">&#x7A0B;&#x5E8F;&#x7684;&#x6570;&#x636E;&#x533A;&#x57DF;</td>
-<td style="text-align:center">&#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x505A;</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>_NSConcreteStackBlock</code></td>
-<td style="text-align:center">&#x6808;</td>
-<td style="text-align:center">&#x4ECE;&#x6808;&#x590D;&#x5236;&#x5230;&#x5806;</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>_NSConcreteMallocBlock</code></td>
-<td style="text-align:center">&#x5806;</td>
-<td style="text-align:center">&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x589E;&#x52A0;</td>
-</tr>
-</tbody>
-</table>
-<p>&#x5728; ARC &#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x6839;&#x636E;&#x60C5;&#x51B5;&#x81EA;&#x52A8;&#x5C06;&#x6808;&#x4E0A;&#x7684; block &#x590D;&#x5236;&#x5230;&#x5806;&#x4E0A;&#xFF0C;&#x6BD4;&#x5982;&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#xFF1A;</p>
+<p>&#x3010;<strong>ARC&#x73AF;&#x5883;--&gt;&#x5806;&#x4E0A;&#x7684;<code>block</code>--&gt;&#x5F31;&#x6307;&#x9488;<code>__weak CLPerson *person</code></strong>&#x3011; &#x6848;&#x4F8B;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-c">***********************main.m*************************
+<span class="hljs-meta">#import &lt;Foundation/Foundation.h&gt;</span>
+<span class="hljs-meta">#import <span class="hljs-string">&quot;CLPerson.h&quot;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">void</span><span class="hljs-params">(^CLBlock)</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    @autoreleasepool {
+        CLBlock myBlock;
+
+        {<span class="hljs-comment">//&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x5F00;&#x59CB;</span>
+            __weak CLPerson * person = [[CLPerson alloc] init];
+            person.age = <span class="hljs-number">30</span>;
+
+            myBlock = ^{
+                NSLog(@<span class="hljs-string">&quot;---------%d&quot;</span>,person.age);
+            } ;
+
+        }<span class="hljs-comment">//&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x7ED3;&#x675F;</span>
+
+        NSLog(@<span class="hljs-string">&quot;-------------&quot;</span>);
+
+    }
+
+    NSLog(@<span class="hljs-string">&quot;------main autoreleasepool end-------&quot;</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>block&#x7684;&#x5E95;&#x5C42;&#x7ED3;&#x6784;&#x5982;&#x4E0B;</p>
+<p> <img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/672cb3ea23714ba097c0d1ea73f7a172~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image"> </p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/303a83e7baae4b9cada6abf22e4cd35f~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="ARC-&gt;&#x5806;block-&gt;&#x5F31;&#x6307;&#x9488;&#x8FD0;&#x884C;&#x7ED3;&#x679C;"> </p>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x663E;&#x793A;&#x5806;&#x4E0A;&#x7684;<strong>block</strong>&#x4F7F;&#x7528;&#x5F31;&#x6307;&#x9488;<code>__weak CLPerson *person</code>&#xFF0C;&#x6CA1;&#x6709;&#x5F71;&#x54CD;<code>person</code>&#x6240;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x51FA;&#x4E86;&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x4E4B;&#x540E;&#x5C31;&#x88AB;&#x91CA;&#x653E;&#x4E86;&#x3002;</p>
+<p>&#x3010;<strong>ARC&#x73AF;&#x5883;--&gt;&#x6808;&#x4E0A;&#x7684;<code>block</code>--&gt;&#x5F3A;&#x6307;&#x9488;<code>CLPerson *person</code></strong>&#x3011;</p>
+<pre><code class="lang-c">***********************main.m*************************
+<span class="hljs-meta">#import &lt;Foundation/Foundation.h&gt;</span>
+<span class="hljs-meta">#import <span class="hljs-string">&quot;CLPerson.h&quot;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">void</span><span class="hljs-params">(^CLBlock)</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    @autoreleasepool {
+        CLBlock myBlock;
+
+        {<span class="hljs-comment">//&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x5F00;&#x59CB;</span>
+            CLPerson * person = [[CLPerson alloc] init];
+            person.age = <span class="hljs-number">30</span>;
+
+            ^{
+                NSLog(@<span class="hljs-string">&quot;---------%d&quot;</span>,person.age);
+            } ;
+
+        }<span class="hljs-comment">//&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x7ED3;&#x675F;</span>
+
+        NSLog(@<span class="hljs-string">&quot;-------------&quot;</span>);
+
+    }
+
+    NSLog(@<span class="hljs-string">&quot;------main autoreleasepool end-------&quot;</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>block&#x5E95;&#x5C42;&#x7ED3;&#x6784;&#x5982;&#x4E0B; <img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/f8226f12e1594970ab13d2d15c5538d3~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image"></p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/a1f3099ad5054136b6d28c56e00c8398~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="ARC-&gt;&#x6808;block-&gt;&#x5F3A;&#x6307;&#x9488;&#x8FD0;&#x884C;&#x7ED3;&#x679C;"></p>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x663E;&#x793A;&#x6808;&#x4E0A;&#x7684;<strong>block</strong>&#x4F7F;&#x7528;&#x5F3A;&#x6307;&#x9488;<code>CLPerson *person</code>&#xFF0C;&#x6CA1;&#x6709;&#x5F71;&#x54CD;<code>person</code>&#x6240;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x51FA;&#x4E86;&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x4E4B;&#x540E;&#x5C31;&#x88AB;&#x91CA;&#x653E;&#x4E86;&#x3002;</p>
+<p>&#x3010;<strong>ARC&#x73AF;&#x5883;--&gt;&#x6808;&#x4E0A;&#x7684;<code>block</code>--&gt;&#x5F31;&#x6307;&#x9488;<code>__weak CLPerson *person</code></strong>&#x3011;</p>
+<pre><code class="lang-c">***********************main.m*************************
+<span class="hljs-meta">#import &lt;Foundation/Foundation.h&gt;</span>
+<span class="hljs-meta">#import <span class="hljs-string">&quot;CLPerson.h&quot;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">void</span><span class="hljs-params">(^CLBlock)</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>{
+    @autoreleasepool {
+        CLBlock myBlock;
+
+        {<span class="hljs-comment">//&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x5F00;&#x59CB;</span>
+            __weak CLPerson * person = [[CLPerson alloc] init];
+            person.age = <span class="hljs-number">30</span>;
+
+            ^{
+                NSLog(@<span class="hljs-string">&quot;---------%d&quot;</span>,person.age);
+            } ;
+
+        }<span class="hljs-comment">//&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x7ED3;&#x675F;</span>
+
+        NSLog(@<span class="hljs-string">&quot;-------------&quot;</span>);
+
+    }
+
+    NSLog(@<span class="hljs-string">&quot;------main autoreleasepool end-------&quot;</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>block&#x5E95;&#x5C42;&#x7ED3;&#x6784;&#x4E3A; </p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/0f02a2aa0ae940a09ca40935bc5ef8c1~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image"></p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/03d9b8c0de7e468a8ff301efdac840cf~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="ARC-&gt;&#x6808;block-&gt;&#x5F31;&#x6307;&#x9488;&#x8FD0;&#x884C;&#x7ED3;&#x679C;"></p>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x663E;&#x793A;&#x6808;&#x4E0A;&#x7684;<strong>block</strong>&#x4F7F;&#x7528;&#x5F31;&#x6307;&#x9488;<code>__weak CLPerson *person</code>&#xFF0C;&#x6CA1;&#x6709;&#x5F71;&#x54CD;<code>person</code>&#x6240;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x51FA;&#x4E86;&#x4E34;&#x65F6;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x4E4B;&#x540E;&#x5C31;&#x88AB;&#x91CA;&#x653E;&#x4E86;&#x3002;</p>
+<h2 id="block&#x7C7B;&#x578B;">Block&#x7C7B;&#x578B;</h2>
+<p>Block&#x6709;3&#x79CD;&#x7C7B;&#x578B;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/945af9e471d14e7d988006092c49ca69~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="Block&#x7684;&#x7C7B;&#x578B;"></p>
+<p>&#x56DE;&#x987E;&#x4E00;&#x4E0B;&#x7A0B;&#x5E8F;&#x7684;&#x5185;&#x5B58;&#x5E03;&#x5C40;</p>
+<blockquote>
 <ul>
-<li>block &#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;&#x65F6;</li>
-<li>&#x5C06; block &#x8D4B;&#x503C;&#x7ED9; __strong &#x6307;&#x9488;&#x65F6;</li>
-<li>block &#x4F5C;&#x4E3A; Cocoa API &#x4E2D;&#x65B9;&#x6CD5;&#x540D;&#x542B;&#x6709; using Block &#x7684;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x65F6;</li>
-<li>Block &#x4F5C;&#x4E3A; GCD APIE &#x7684;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x65F6;</li>
+<li><strong>&#x4EE3;&#x7801;&#x6BB5;</strong> &#x5360;&#x7528;&#x7A7A;&#x95F4;&#x5F88;&#x5C0F;&#xFF0C;&#x4E00;&#x822C;&#x5B58;&#x653E;&#x5728;&#x5185;&#x5B58;&#x7684;&#x4F4E;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x5E73;&#x65F6;&#x7F16;&#x5199;&#x7684;&#x6240;&#x6709;&#x4EE3;&#x7801;&#xFF0C;&#x5C31;&#x662F;&#x653E;&#x5728;&#x8FD9;&#x4E2A;&#x533A;&#x57DF;</li>
+<li><strong>&#x6570;&#x636E;&#x6BB5;</strong> &#x7528;&#x6765;&#x5B58;&#x653E;&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
+<li><strong>&#x5806;&#x533A;</strong> &#x662F;&#x52A8;&#x6001;&#x5206;&#x914D;&#x5185;&#x5B58;&#x7684;&#xFF0C;&#x7528;&#x6765;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x4EE3;&#x7801;&#x4E2D;&#x901A;&#x8FC7;alloc&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x52A8;&#x6001;&#x5206;&#x914D;&#x5185;&#x5B58;&#x7684;&#x7279;&#x70B9;&#x662F;&#x9700;&#x8981;&#x7A0B;&#x5E8F;&#x5458;&#x7533;&#x8BF7;&#x5185;&#x5B58;&#x548C;&#x7BA1;&#x7406;&#x5185;&#x5B58;&#x3002;&#x4F8B;&#x5982;OC&#x4E2D;alloc&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x9700;&#x8981;&#x8C03;&#x7528;releas&#x65B9;&#x6CD5;&#x91CA;&#x653E;&#x3010;MRC&#x4E0B;&#x3011;&#xFF0C;C&#x4E2D;&#x901A;&#x8FC7;malloc&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x5FC5;&#x987B;&#x8981;&#x901A;&#x8FC7;free()&#x53BB;&#x91CA;&#x653E;&#x3002;</li>
+<li><strong>&#x6808;&#x533A;</strong> &#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x5206;&#x914D;&#x548C;&#x9500;&#x6BC1;&#x5185;&#x5B58;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x51FD;&#x6570;&#x5185;&#x751F;&#x6210;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;</li>
 </ul>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051428.jpg" alt=""></p>
-<h3 id="5-block&#x751F;&#x547D;&#x5468;&#x671F;">5 Block&#x751F;&#x547D;&#x5468;&#x671F;</h3>
+</blockquote>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/3c59a6d65fae44718ad27bf973c2b413~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="block&#x7684;&#x5B58;&#x653E;&#x533A;&#x57DF;"></p>
+<h3 id="1-nsglobalblock&#x4E5F;&#x5C31;&#x662F;nsconcreteglobalblock">(1) <strong>NSGlobalBlock</strong>(&#x4E5F;&#x5C31;&#x662F;_NSConcreteGlobalBlock)</h3>
+<blockquote>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;block&#x5185;&#x90E8;&#x6CA1;&#x6709;&#x4F7F;&#x7528;/&#x8BBF;&#x95EE; <strong><em>&#x81EA;&#x52A8;&#x53D8;&#x91CF;(auto&#x53D8;&#x91CF;)</em></strong>&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x5373;&#x4E3A;<code>__NSGlobalBlock__</code>&#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x5B58;&#x50A8;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684; <strong>&#x6570;&#x636E;&#x6BB5;</strong></p>
+</blockquote>
+<h3 id="2-nsstaticblock&#x4E5F;&#x5C31;&#x662F;nsconcretestaticblock">(2) <strong>NSStaticBlock</strong>(&#x4E5F;&#x5C31;&#x662F;_NSConcreteStaticBlock)</h3>
+<blockquote>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;block&#x6709;&#x4F7F;&#x7528;/&#x8BBF;&#x95EE; <strong><em>&#x81EA;&#x52A8;&#x53D8;&#x91CF;(auto&#x53D8;&#x91CF;)</em></strong>&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x5373;&#x4E3A;<code>__NSStaticBlock__</code>&#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x5B58;&#x50A8;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684; <strong>&#x6808;&#x533A;</strong></p>
+</blockquote>
+<h3 id="3-nsmallocblock&#x4E5F;&#x5C31;&#x662F;nsconcretemallocblock">(3) <strong>NSMallocBlock</strong>(&#x4E5F;&#x5C31;&#x662F;_NSConcreteMallocBlock)</h3>
+<blockquote>
+<p>&#x5BF9;<code>__NSMallocBlock__</code>&#x8C03;&#x7528;<code>copy</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8F6C;&#x53D8;&#x6210;<code>__NSMallocBlock__</code>&#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x5B58;&#x50A8;&#x5728;&#x5806;&#x533A;&#x4E0A;</p>
+</blockquote>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/9a944ca31af943a6bb7e836c3e42d3e5~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="block&#x7684;&#x7C7B;&#x578B;&#x603B;&#x7ED3;"> </p>
+<p>&#x5BF9;&#x6BCF;&#x4E00;&#x79CD;&#x7C7B;&#x578B;&#x7684;block&#x8C03;&#x7528;copy&#x540E;&#x7684;&#x7ED3;&#x679C;&#x5982;&#x4E0B;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/ec12027162624975bbc16054207bcbfc~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p><strong>&#x5728;ARC&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x6839;&#x636E;&#x60C5;&#x51B5;&#x81EA;&#x52A8;&#x5C06;&#x6808;&#x4E0A;&#x7684;block&#x590D;&#x5236;&#x5230;&#x5806;&#x4E0A;&#xFF0C;&#x4F8B;&#x5982;&#x4EE5;&#x4E0B;&#x7684;&#x60C5;&#x51B5;</strong></p>
+<ul>
+<li>block&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x65F6;&#x5019;</li>
+<li>&#x5C06;block&#x8D4B;&#x503C;&#x7ED9;<code>__strong</code>&#x6307;&#x9488;&#x7684;&#x65F6;&#x5019;</li>
+<li>block&#x4F5C;&#x4E3A;<strong>Cocoa API</strong>&#x4E2D;&#x65B9;&#x6CD5;&#x540D;&#x91CC;&#x9762;&#x542B;&#x6709;<code>usingBlock</code>&#x7684;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x65F6;</li>
+<li>block&#x4F5C;&#x4E3A;<strong>GCD API</strong>&#x7684;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;</li>
+</ul>
+<h2 id="block&#x751F;&#x547D;&#x5468;&#x671F;">Block&#x751F;&#x547D;&#x5468;&#x671F;</h2>
 <p><code>NSConcreteStackBlock</code> &#x662F;&#x7531;&#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x52A8;&#x7BA1;&#x7406;&#xFF0C;&#x8D85;&#x8FC7;&#x4F5C;&#x7528;&#x57DF;&#x4E4B;&#x5916;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x4E86;&#x3002;&#x800C; <code>NSConcreteMallocBlock</code> &#x662F;&#x7531;&#x7A0B;&#x5E8F;&#x5458;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x88AB;&#x5F3A;&#x5F15;&#x7528;&#x4E5F;&#x4F1A;&#x88AB;&#x6D88;&#x8017;&#x3002;<code>NSConcreteGlobalBlock</code> &#x7531;&#x4E8E;&#x5B58;&#x5728;&#x4E8E;&#x5168;&#x5C40;&#x533A;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x4E00;&#x76F4;&#x4F34;&#x968F;&#x7740;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</p>
 <p>&#x65E0;&#x8BBA;&#x662F;MAC&#x8FD8;&#x662F;ARC</p>
 <ul>
@@ -1763,12 +1823,13 @@ int main(int argc, const char * argv[]) {
 </tr>
 </tbody>
 </table>
-<p>weak&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#xFF0C;&#x5728;&#x539F;&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x4E4B;&#x540E;&#xFF0C;weak&#x5BF9;&#x8C61;&#x5C31;&#x4F1A;&#x53D8;&#x6210;null&#xFF0C;&#x9632;&#x6B62;&#x91CE;&#x6307;&#x9488;&#x3002;&#x6240;&#x4EE5;&#x5C31;&#x8F93;&#x51FA;&#x4E86;null&#x4E86;&#x3002;</p>
+<h3 id="weak&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;">weak&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;</h3>
+<p>&#x5728;&#x539F;&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x4E4B;&#x540E;&#xFF0C;weak&#x5BF9;&#x8C61;&#x5C31;&#x4F1A;&#x53D8;&#x6210;null&#xFF0C;&#x9632;&#x6B62;&#x91CE;&#x6307;&#x9488;&#x3002;&#x6240;&#x4EE5;&#x5C31;&#x8F93;&#x51FA;&#x4E86;null&#x4E86;&#x3002;</p>
 <p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x600E;&#x4E48;&#x624D;&#x80FD;&#x5728;weakSelf&#x4E4B;&#x540E;&#xFF0C;block&#x91CC;&#x9762;&#x8FD8;&#x80FD;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;weakSelf&#x4E4B;&#x540E;&#x7684;&#x5BF9;&#x8C61;&#x5462;&#xFF1F;</p>
 <p>&#x7A76;&#x5176;&#x6839;&#x672C;&#x539F;&#x56E0;&#x5C31;&#x662F;weakSelf&#x4E4B;&#x540E;&#xFF0C;&#x65E0;&#x6CD5;&#x63A7;&#x5236;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F1A;&#x88AB;&#x91CA;&#x653E;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x5728;block&#x5185;&#x4E0D;&#x4F1A;&#x88AB;&#x91CA;&#x653E;&#xFF0C;&#x9700;&#x8981;&#x6DFB;&#x52A0;_strong&#x3002;</p>
 <p>&#x5728;block&#x91CC;&#x9762;&#x4F7F;&#x7528;&#x7684;_strong&#x4FEE;&#x9970;&#x7684;weakSelf&#x662F;&#x4E3A;&#x4E86;&#x5728;&#x51FD;&#x6570;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x9632;&#x6B62;self&#x63D0;&#x524D;&#x91CA;&#x653E;&#x3002;strongSelf&#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x5F53;block&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x5C31;&#x4F1A;&#x91CA;&#x653E;&#x81EA;&#x52A8;&#x53D8;&#x91CF;strongSelf&#x4E0D;&#x4F1A;&#x5BF9;self&#x8FDB;&#x884C;&#x4E00;&#x76F4;&#x8FDB;&#x884C;&#x5F3A;&#x5F15;&#x7528;&#x3002;</p>
-<h2 id="6-block-&#x4FEE;&#x9970;&#x7B26;">6 __block &#x4FEE;&#x9970;&#x7B26;</h2>
-<p><strong>__block&#x4FEE;&#x9970;&#x7B26;&#x539F;&#x7406;&#xFF1A;</strong></p>
+<h2 id="block-&#x4FEE;&#x9970;&#x7B26;">__block &#x4FEE;&#x9970;&#x7B26;</h2>
+<h3 id="block&#x4FEE;&#x9970;&#x7B26;&#x539F;&#x7406;&#xFF1A;">__block&#x4FEE;&#x9970;&#x7B26;&#x539F;&#x7406;&#xFF1A;</h3>
 <p>&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x5C06;<code>__block</code>&#x53D8;&#x91CF;&#x5305;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;<code>__Block_byref_age_0</code>&#xFF0C;&#x7ED3;&#x6784;&#x4F53;&#x5185;&#x90E8;<code>*__forwarding</code>&#x662F;&#x6307;&#x5411;&#x81EA;&#x8EAB;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x5185;&#x90E8;&#x8FD8;&#x5B58;&#x50A8;&#x7740;&#x5916;&#x90E8;<code>auto&#x53D8;&#x91CF;</code>&#x7684;&#x503C;</p>
 <p>&#x4E00;&#x5F00;&#x59CB;&#xFF0C;&#x6808;&#x7A7A;&#x95F4;&#x7684;block&#x6709;&#x4E00;&#x4E2A;<code>__Block_byref_a_0</code>&#x7ED3;&#x6784;&#x4F53;&#xFF0C;
  &#x6307;&#x5411;&#x5916;&#x90E8;<code>__Block_byref_a_0</code>&#x7684;&#x5730;&#x5740;&#xFF0C;
@@ -1784,21 +1845,8 @@ void(^Block)(void) = ^{
 }
 
 //&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0; __block,&#x56E0;&#x4E3A;&#x662F;&#x4F7F;&#x7528;
-</code></pre><p>&#x9700;&#x8981;__block&#x4FEE;&#x9970;&#x7B26;:</p>
-<ul>
-<li>&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</li>
-<li>&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;</li>
-</ul>
-<p>&#x4E0D;&#x9700;&#x8981;__block&#x4FEE;&#x9970;&#x7B26;:</p>
-<ul>
-<li>&#x9759;&#x6001;&#x5C40;&#x90E8;&#x53D8;&#x91CF;</li>
-<li>&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-<li>&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;</li>
-</ul>
-<h3 id="61-block&#x539F;&#x7406;">6.1 __block&#x539F;&#x7406;</h3>
-<ol>
-<li>&#x5F53;__block&#x4FEE;&#x9970;&#x5916;&#x754C;&#x53D8;&#x91CF;&#x65F6;</li>
-</ol>
+</code></pre><h3 id=""> </h3>
+<p>&#x5F53;__block&#x4FEE;&#x9970;&#x5916;&#x754C;&#x53D8;&#x91CF;&#x65F6;</p>
 <pre><code>int main(){
 
     __block int a = 10;
@@ -1809,8 +1857,8 @@ void(^Block)(void) = ^{
     block();
     return 0;
 }
-</code></pre><p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-084559.jpg" alt=""></p>
-<h4 id="&#x5C06;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x6210;c&#x6E90;&#x7801;">&#x5C06;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x6210;C++&#x6E90;&#x7801;</h4>
+</code></pre><p>&#x5C06;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x6210;C++&#x6E90;&#x7801;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-084559.jpg" alt=""></p>
 <pre><code class="lang-objective-c">// &#x539F;&#x4EE3;&#x7801;
 __block int a = 10;
 // c++&#x6E90;&#x7801;
@@ -1843,7 +1891,7 @@ __Block_byref_a_0 *__forwarding;
 <p>&#x4E3B;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x7684;&#x53D8;&#x5316;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-085104.jpg" alt=""></p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-085118.jpg" alt=""></p>
-<h2 id="&#x5982;&#x4F55;&#x4ECE;&#x6808;&#x6307;&#x5411;&#x5806;&#xFF0C;&#x5E76;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x5462;&#xFF1F;">&#x5982;&#x4F55;&#x4ECE;&#x6808;&#x6307;&#x5411;&#x5806;&#xFF0C;&#x5E76;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x5462;&#xFF1F;</h2>
+<h3 id="&#x5982;&#x4F55;&#x4ECE;&#x6808;&#x6307;&#x5411;&#x5806;&#xFF0C;&#x5E76;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x5462;&#xFF1F;">&#x5982;&#x4F55;&#x4ECE;&#x6808;&#x6307;&#x5411;&#x5806;&#xFF0C;&#x5E76;&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#x5462;&#xFF1F;</h3>
 <p>apple&#x6E90;&#x7801;&#xFF0C;&#x5982;&#x56FE;&#xFF1A;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-14-085605.jpg" alt=""></p>
 <p>copy-&gt;forwarding = copy;
@@ -1858,17 +1906,16 @@ __Block_byref_a_0 *__forwarding;
   (a-&gt;__forwarding-&gt;a)++;
 }
 </code></pre>
-<p>&#x901A;&#x8FC7;&#x5F53;&#x524D;&#x6808;&#x7A7A;&#x95F4;&#x4E3B;&#x7ED3;&#x6784;&#x4F53;&#x4E0A;&#x7684;<code>__Block_byref_a_0</code>&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488;&#xFF0C;&#x8BBF;&#x95EE;&#x6307;&#x5411;&#x5806;&#x7A7A;&#x95F4;&#x7684;<code>__forwarding</code>&#x6210;&#x5458;&#xFF0C;&#x5E76;&#x83B7;&#x53D6;&#x5806;&#x7A7A;&#x95F4;&#x4E0A;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x5F53;&#x524D;&#x6808;&#x7A7A;&#x95F4;&#x4E3B;&#x7ED3;&#x6784;&#x4F53;&#x4E0A;&#x7684;<code>__Block_byref_a_0</code>&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488;&#xFF0C;&#x8BBF;&#x95EE;&#x6307;&#x5411;&#x5806;&#x7A7A;&#x95F4;&#x7684;<code>__forwarding</code>&#x6210;&#x5458;&#xFF0C;<strong>&#x5E76;&#x83B7;&#x53D6;&#x5806;&#x7A7A;&#x95F4;&#x4E0A;&#x53D8;&#x91CF;&#x7684;&#x503C;</strong>&#x3002;</p>
 <p><strong>&#x5F53;&#x7136;&#xFF0C;&#x4E0D;&#x4EC5;__block&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x4F1A;&#x8FD9;&#x6837;&#xFF0C;&#x524D;&#x6587;&#x7684;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x540C;&#x6837;&#x4F1A;&#x5728;copy&#x51FD;&#x6570;&#x5185;&#x90E8;&#x88AB;&#x8F6C;&#x5316;&#x6210;&#x7C7B;&#x4F3C;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</strong></p>
 <p><code>__block</code>&#x4FEE;&#x9970;&#x7684;&#x5C5E;&#x6027;&#x5728;&#x5E95;&#x5C42;&#x4F1A;&#x751F;&#x6210;&#x54CD;&#x5E94;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x4FDD;&#x5B58;&#x539F;&#x59CB;&#x53D8;&#x91CF;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x5E76;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x5730;&#x5740;&#x7ED9;block&#x2014;&#x2014;&#x56E0;&#x6B64;&#x662F;&#x6307;&#x9488;&#x62F7;&#x8D1D;</p>
 <p><code>__block</code> &#x6240;&#x8D77;&#x5230;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x53EA;&#x8981;&#x89C2;&#x5BDF;&#x5230;&#x8BE5;&#x53D8;&#x91CF;&#x88AB; block &#x6240;&#x6301;&#x6709;&#xFF0C;&#x5C31;&#x5C06;&#x201C;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x201D;&#x5728;&#x6808;&#x4E2D;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;&#x653E;&#x5230;&#x4E86;&#x5806;&#x4E2D;&#x3002;&#x8FDB;&#x800C;&#x5728;block&#x5185;&#x90E8;&#x4E5F;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x3002;</p>
-<p>__block&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x6210;&#x4E86;&#x5BF9;&#x8C61;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051401.jpg" alt=""></p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-20-051409.jpg" alt=""></p>
-<p><strong>&#x6808;&#x4E0A;</strong>&#x7684; __block &#x7684;  <code>__forwading</code> &#x6307;&#x9488;&#x6307;&#x5411;&#x81EA;&#x5DF1;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-23-035859.jpg" alt=""></p>
-<h3 id="63--forwarding&#x5B58;&#x5728;&#x610F;&#x4E49;">6.3  __forwarding&#x5B58;&#x5728;&#x610F;&#x4E49;</h3>
+<p>__block&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x6210;&#x4E86;&#x5BF9;&#x8C61;<img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-23-035859.jpg" alt=""></p>
+<h3 id="forwarding&#x5B58;&#x5728;&#x610F;&#x4E49;">__forwarding&#x5B58;&#x5728;&#x610F;&#x4E49;</h3>
 <p>&#x4E0D;&#x8BBA;&#x5728;&#x4EFB;&#x4F55;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;,&#x90FD;&#x53EF;&#x4EE5;&#x987A;&#x5229;&#x8BBF;&#x95EE;&#x540C;&#x4E00;&#x4E2A;__block&#x53D8;&#x91CF;.</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/a028c8db45ed474e9d8304da0dc9cf46~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="__block + &#x57FA;&#x672C;&#x7C7B;&#x578B;&#x53D8;&#x91CF;"></p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/9cc99c644b574d338181ffeb35480230~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="__block + &#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x53D8;&#x91CF;"></p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/ca9f77a55ae7451eba6aacb2ff839440~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="__block + __weak + &#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x53D8;&#x91CF;"></p>
 <h2 id="reference">Reference</h2>
 <p><a href="https://halfrost.com/ios_block/" target="_blank">1 &#x6DF1;&#x5165;&#x7814;&#x7A76; Block &#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x548C; __block &#x5B9E;&#x73B0;&#x539F;&#x7406;</a></p>
 <p><a href="https://juejin.cn/post/6844903893176958983" target="_blank">2 &#x6DF1;&#x5165;&#x7406;&#x89E3;iOS&#x7684;block</a></p>
@@ -1919,7 +1966,7 @@ __Block_byref_a_0 *__forwarding;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Block","level":"1.2.4.2","depth":3,"next":{"title":"Method","level":"1.2.4.3","depth":3,"path":"iOS/OCFoundation/Method.md","ref":"iOS/OCFoundation/Method.md","articles":[]},"previous":{"title":"Runtime","level":"1.2.4.1","depth":3,"path":"iOS/OCFoundation/Runtime.md","ref":"iOS/OCFoundation/Runtime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/Block.md","mtime":"2024-09-04T09:32:53.635Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-04T09:33:18.989Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Block","level":"1.2.4.2","depth":3,"next":{"title":"Method","level":"1.2.4.3","depth":3,"path":"iOS/OCFoundation/Method.md","ref":"iOS/OCFoundation/Method.md","articles":[]},"previous":{"title":"Runtime","level":"1.2.4.1","depth":3,"path":"iOS/OCFoundation/Runtime.md","ref":"iOS/OCFoundation/Runtime.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/Block.md","mtime":"2024-09-06T03:00:57.614Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-06T03:01:22.028Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
