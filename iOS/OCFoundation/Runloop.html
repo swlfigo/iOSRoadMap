@@ -1314,29 +1314,112 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="runloop">Runloop</h1>
-<p>NSRunLoop&#x662F;CFRunLoop&#x7684;&#x5C01;&#x88C5;,&#x63D0;&#x4F9B;&#x4E86;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;API</p>
-<p>Apple &#x5B98;&#x65B9;&#x7ED9; <code>Runloop</code> &#x7684;&#x5B9A;&#x4E49;&#xFF1A;
-Runloop &#x662F;&#x7EBF;&#x7A0B;&#x7684;&#x57FA;&#x7840;&#x652F;&#x6491;&#xFF0C;&#x662F;&#x5FAA;&#x73AF;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684; Runloop &#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5FAA;&#x73AF;&#x3002;</p>
+<h2 id="&#x5B9A;&#x4E49;">&#x5B9A;&#x4E49;</h2>
+<p>runloop&#x662F;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x7684;&#x5927;&#x5FAA;&#x73AF;&#xFF0C;&#x5B83;&#x4F1A;&#x628A;&#x6765;&#x81EA;&#x7528;&#x6237;&#x7684;&#x4EA4;&#x4E92;&#x4E8B;&#x4EF6;&#x3001;&#x7CFB;&#x7EDF;&#x5185;&#x90E8;&#x4E8B;&#x4EF6;&#x3001;&#x8BA1;&#x65F6;&#x5668;&#x4E8B;&#x4EF6;&#x52A0;&#x5165;&#x5230;&#x4E8B;&#x4EF6;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x5E76;&#x5FAA;&#x73AF;&#x5730;&#x4ECE;&#x4E8B;&#x4EF6;&#x961F;&#x5217;&#x4E2D;&#x53D6;&#x51FA;&#x4E8B;&#x4EF6;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5F53;&#x6240;&#x6709;&#x7684;&#x4E8B;&#x4EF6;&#x90FD;&#x5904;&#x7406;&#x5B8C;&#x6BD5;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x8FDB;&#x5165;&#x4F11;&#x7720;&#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x5230;&#x88AB;&#x65B0;&#x5230;&#x6765;&#x7684;&#x4E8B;&#x4EF6;&#x5524;&#x9192;&#x3002;</p>
 <p><strong>RunLoop&#x662F;&#x901A;&#x8FC7;&#x5185;&#x90E8;&#x7EF4;&#x62A4;&#x7684;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x6765;&#x5BF9;&#x4E8B;&#x4EF6;/&#x6D88;&#x606F;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x7684;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</strong></p>
 <p><strong>&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x6307;,&#x6CA1;&#x6709;&#x6D88;&#x606F;&#x9700;&#x8981;&#x5904;&#x7406;&#x65F6;,&#x4F11;&#x7720;&#x4EE5;&#x907F;&#x514D;&#x8D44;&#x6E90;&#x5360;&#x7528;,&#x6709;&#x6D88;&#x606F;&#x9700;&#x8981;&#x5904;&#x7406;&#x65F6;,&#x7ACB;&#x523B;&#x5524;&#x9192;</strong></p>
 <p><strong>Runloop &#x7684;&#x76EE;&#x7684;&#x662F;&#x4F7F;&#x7EBF;&#x7A0B;&#x5728;&#x6CA1;&#x6709;&#x4E8B;&#x60C5;&#x53EF;&#x505A;&#x65F6;&#x8FDB;&#x5165;&#x4F11;&#x7720;&#x72B6;&#x6001;&#xFF0C;&#x907F;&#x514D; CPU &#x7A7A;&#x8F6C;&#x3002;</strong></p>
-<blockquote>
-<p>Run loops are part of the fundamental infrastructure associated with threads. A run loop is an event processing loop that you use to schedule work and coordinate the receipt of incoming events. The purpose of a run loop is to keep your thread busy when there is work to do and put your thread to sleep when there is none.</p>
-</blockquote>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-23-053637.png" alt="img"></p>
 <ul>
 <li>&#x7528;&#x6237;&#x6001;: &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E00;&#x822C;&#x90FD;&#x8FD0;&#x884C;&#x5728;&#x7528;&#x6237;&#x6001;&#x4E0A;</li>
 <li>&#x5185;&#x6838;&#x6001;: &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5230;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x5E95;&#x5C42;&#x5185;&#x6838;&#x6307;&#x4EE4;&#x6216;&#x8005;API</li>
 </ul>
-<p>&#x4E00;&#x822C;&#x6765;&#x8BB2;&#xFF0C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#x7EBF;&#x7A0B;&#x5C31;&#x4F1A;&#x9000;&#x51FA;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x673A;&#x5236;&#xFF0C;&#x8BA9;&#x7EBF;&#x7A0B;&#x80FD;&#x968F;&#x65F6;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x4F46;&#x5E76;&#x4E0D;&#x9000;&#x51FA;&#xFF0C;&#x8FD9;&#x79CD;&#x6A21;&#x578B;&#x901A;&#x5E38;&#x88AB;&#x79F0;&#x4F5C; Event Loop&#x3002; iOS&#x91CC;&#x7684;<code>RunLoop</code>&#x4E5F;&#x662F;&#x3002;</p>
-<p>&#x5B9E;&#x73B0;&#x8FD9;&#x79CD;&#x6A21;&#x578B;&#x7684;&#x5173;&#x952E;&#x70B9;&#x5728;&#x4E8E;&#xFF1A;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x4E8B;&#x4EF6;/&#x6D88;&#x606F;&#xFF0C;&#x5982;&#x4F55;&#x8BA9;&#x7EBF;&#x7A0B;&#x5728;&#x6CA1;&#x6709;&#x5904;&#x7406;&#x6D88;&#x606F;&#x65F6;&#x4F11;&#x7720;&#x4EE5;&#x907F;&#x514D;&#x8D44;&#x6E90;&#x5360;&#x7528;&#x3001;&#x5728;&#x6709;&#x6D88;&#x606F;&#x5230;&#x6765;&#x65F6;&#x7ACB;&#x523B;&#x88AB;&#x5524;&#x9192;&#x3002;</p>
-<p><code>RunLoop</code>&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x5728;&#x5FAA;&#x73AF;&#x4E2D;&#x7528;&#x6765;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x5404;&#x79CD;&#x4E8B;&#x4EF6;&#xFF08;&#x6BD4;&#x5982;&#x8BF4;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x3001;UI&#x5237;&#x65B0;&#x4E8B;&#x4EF6;&#x3001;&#x5B9A;&#x65F6;&#x5668;&#x4E8B;&#x4EF6;&#x3001;Selector&#x4E8B;&#x4EF6;&#xFF09;&#xFF0C;&#x4ECE;&#x800C;&#x4FDD;&#x6301;&#x7A0B;&#x5E8F;&#x7684;&#x6301;&#x7EED;&#x8FD0;&#x884C;&#xFF1B;&#x800C;&#x4E14;&#x5728;&#x6CA1;&#x6709;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x8FDB;&#x5165;&#x7761;&#x7720;&#x6A21;&#x5F0F;&#xFF0C;&#x4ECE;&#x800C;&#x8282;&#x7701;CPU&#x8D44;&#x6E90;&#xFF0C;&#x63D0;&#x9AD8;&#x7A0B;&#x5E8F;&#x6027;&#x80FD;&#x3002;</p>
+<h2 id="&#x6E90;&#x7801;">&#x6E90;&#x7801;</h2>
+<p>&#x901A;&#x5E38;&#x6240;&#x8BF4;&#x7684;RunLoop&#x6307;&#x7684;&#x662F;NSRunloop&#x6216;&#x8005;CFRunloopRef&#xFF0C;CFRunloopRef&#x662F;&#x7EAF;C&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x800C;NSRunloop&#x4EC5;&#x4EC5;&#x662F;CFRunloopRef&#x7684;OC&#x5C01;&#x88C5;&#xFF0C;&#x5E76;&#x672A;&#x63D0;&#x4F9B;&#x989D;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x529F;&#x80FD;</p>
+<pre><code class="lang-c"><span class="hljs-keyword">int32_t</span> __CFRunLoopRun( <span class="hljs-comment">/** 5&#x4E2A;&#x53C2;&#x6570; */</span> )
+{
+    <span class="hljs-comment">// &#x901A;&#x77E5;&#x5373;&#x5C06;&#x8FDB;&#x5165;runloop</span>
+    __CFRunLoopDoObservers(KCFRunLoopEntry);
+
+    <span class="hljs-keyword">do</span>
+    {
+        <span class="hljs-comment">// &#x901A;&#x77E5;&#x5C06;&#x8981;&#x5904;&#x7406;timer&#x548C;source</span>
+        __CFRunLoopDoObservers(kCFRunLoopBeforeTimers);
+        __CFRunLoopDoObservers(kCFRunLoopBeforeSources);
+
+        <span class="hljs-comment">// &#x5904;&#x7406;&#x975E;&#x5EF6;&#x8FDF;&#x7684;&#x4E3B;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;</span>
+        __CFRunLoopDoBlocks();
+        <span class="hljs-comment">// &#x5904;&#x7406;Source0&#x4E8B;&#x4EF6;</span>
+        __CFRunLoopDoSource0();
+
+        <span class="hljs-keyword">if</span> (sourceHandledThisLoop) {
+            __CFRunLoopDoBlocks();
+         }
+        <span class="hljs-comment">// &#x5982;&#x679C;&#x6709; Source1 (&#x57FA;&#x4E8E;port) &#x5904;&#x4E8E; ready &#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x63A5;&#x5904;&#x7406;&#x8FD9;&#x4E2A; Source1 &#x7136;&#x540E;&#x8DF3;&#x8F6C;&#x53BB;&#x5904;&#x7406;&#x6D88;&#x606F;&#x3002;</span>
+        <span class="hljs-keyword">if</span> (__Source0DidDispatchPortLastTime) {
+            Boolean hasMsg = __CFRunLoopServiceMachPort();
+            <span class="hljs-keyword">if</span> (hasMsg) <span class="hljs-keyword">goto</span> handle_msg;
+        }
+
+        <span class="hljs-comment">// &#x901A;&#x77E5; Observers:&#x6CA1;&#x6709;&#x4E8B;&#x4EF6;&#x8981;&#x5904;&#x7406;&#xFF0C; RunLoop &#x7684;&#x7EBF;&#x7A0B;&#x5373;&#x5C06;&#x8FDB;&#x5165;&#x4F11;&#x7720;(sleep)&#x3002;</span>
+        <span class="hljs-keyword">if</span> (!sourceHandledThisLoop) {
+            __CFRunLoopDoObservers(runloop, currentMode, kCFRunLoopBeforeWaiting);
+        }
+
+        <span class="hljs-comment">// GCD dispatch main queue</span>
+        CheckIfExistMessagesInMainDispatchQueue();
+
+        <span class="hljs-comment">// &#x5373;&#x5C06;&#x8FDB;&#x5165;&#x4F11;&#x7720;</span>
+        __CFRunLoopDoObservers(kCFRunLoopBeforeWaiting);
+
+        <span class="hljs-comment">// &#x7B49;&#x5F85;&#x5185;&#x6838;mach_msg&#x4E8B;&#x4EF6;</span>
+        <span class="hljs-keyword">mach_port_t</span> wakeUpPort = SleepAndWaitForWakingUpPorts();
+
+        <span class="hljs-comment">// &#x7B49;&#x5F85;&#x3002;&#x3002;&#x3002;</span>
+
+        <span class="hljs-comment">// &#x4ECE;&#x7B49;&#x5F85;&#x4E2D;&#x9192;&#x6765;</span>
+        __CFRunLoopDoObservers(kCFRunLoopAfterWaiting);
+
+        <span class="hljs-comment">// &#x5904;&#x7406;&#x56E0;timer&#x7684;&#x5524;&#x9192;</span>
+        <span class="hljs-keyword">if</span> (wakeUpPort == timerPort)
+            __CFRunLoopDoTimers();
+
+        <span class="hljs-comment">// &#x5904;&#x7406;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x5524;&#x9192;,&#x5982;dispatch_async</span>
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (wakeUpPort == mainDispatchQueuePort)
+            __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__()
+
+        <span class="hljs-comment">// &#x5904;&#x7406;Source1</span>
+        <span class="hljs-keyword">else</span>
+            __CFRunLoopDoSource1();
+
+        <span class="hljs-comment">// &#x518D;&#x6B21;&#x786E;&#x4FDD;&#x662F;&#x5426;&#x6709;&#x540C;&#x6B65;&#x7684;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x8C03;&#x7528;</span>
+        __CFRunLoopDoBlocks();
+
+    } <span class="hljs-keyword">while</span> (!stop &amp;&amp; !timeout);
+
+    <span class="hljs-comment">// &#x901A;&#x77E5;&#x5373;&#x5C06;&#x9000;&#x51FA;runloop</span>
+    __CFRunLoopDoObservers(CFRunLoopExit);
+}
+</code></pre>
+<h4 id="&#x8F93;&#x5165;&#x6E90;source">&#x8F93;&#x5165;&#x6E90;source</h4>
+<p>&#x8F93;&#x5165;&#x6E90;&#x662F;&#x6307;&#x4E8B;&#x4EF6;&#x7684;&#x6765;&#x6E90;&#xFF0C;&#x8F93;&#x5165;&#x6E90;&#x5C06;&#x4E8B;&#x4EF6;&#x5F02;&#x6B65;&#x4F20;&#x9001;&#x5230;&#x60A8;&#x7684;&#x7EBF;&#x7A0B;&#x3002;&#x4E8B;&#x4EF6;&#x7684;&#x6765;&#x6E90;&#x53D6;&#x51B3;&#x4E8E;&#x8F93;&#x5165;&#x6E90;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x4E24;&#x4E2A;&#x7C7B;&#x522B;&#x4E4B;&#x4E00;&#x3002;&#x57FA;&#x4E8E;&#x7AEF;&#x53E3;&#x7684;&#x8F93;&#x5165;&#x6E90;&#x76D1;&#x89C6;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684; Mach &#x7AEF;&#x53E3;&#x3002;&#x81EA;&#x5B9A;&#x4E49;&#x8F93;&#x5165;&#x6E90;&#x76D1;&#x89C6;&#x81EA;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;&#x6E90;&#x3002;&#x57FA;&#x4E8E;&#x7AEF;&#x53E3;&#x7684;&#x6E90;&#x7531;&#x5185;&#x6838;&#x81EA;&#x52A8;&#x53D1;&#x51FA;&#x4FE1;&#x53F7;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x6E90;&#x5FC5;&#x987B;&#x4ECE;&#x53E6;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x624B;&#x52A8;&#x53D1;&#x51FA;&#x4FE1;&#x53F7;&#x3002; &#x6765;&#x770B;&#x4E00;&#x4E0B;&#x5B98;&#x65B9; Runloop &#x7ED3;&#x6784;&#x56FE;&#xFF08;&#x6CE8;&#x610F;&#x4E0B;&#x56FE;&#x7684; Input Source Port &#x548C;&#x524D;&#x9762;&#x6D41;&#x7A0B;&#x56FE;&#x4E2D;&#x5BF9;&#x5E94;Source1&#x3002;Source1&#x548C;Timer&#x90FD;&#x5C5E;&#x4E8E;&#x7AEF;&#x53E3;&#x4E8B;&#x4EF6;&#x6E90;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x6240;&#x6709;&#x7684;Timer&#x90FD;&#x5171;&#x7528;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x201C;Mode Timer Port&#x201D;&#xFF0C;&#x800C;&#x6BCF;&#x4E2A;Source1&#x90FD;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x5E94;&#x7AEF;&#x53E3;&#xFF09;&#xFF1A;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-25-092153.jpg" alt=""></p>
+<blockquote>
+<p><strong>source1&#x548C;source0&#x7684;&#x533A;&#x522B;&#xFF1A;</strong> <strong>source1:</strong> &#x57FA;&#x4E8E;mach_Port&#x7684;,&#x6765;&#x81EA;&#x7CFB;&#x7EDF;&#x5185;&#x6838;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x6216;&#x7EBF;&#x7A0B;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3B;&#x52A8;&#x5524;&#x9192;&#x4F11;&#x7720;&#x4E2D;&#x7684;RunLoop&#xFF08;iOS&#x91CC;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x4E0D;&#x4E3B;&#x52A8;&#x4F7F;&#x7528;&#xFF09;&#x3002;mach_port&#x5927;&#x5BB6;&#x5C31;&#x7406;&#x89E3;&#x6210;&#x8FDB;&#x7A0B;&#x95F4;&#x76F8;&#x4E92;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x4E00;&#x79CD;&#x673A;&#x5236;&#x5C31;&#x597D;, &#x6BD4;&#x5982;&#x5C4F;&#x5E55;&#x70B9;&#x51FB;, &#x7F51;&#x7EDC;&#x6570;&#x636E;&#x7684;&#x4F20;&#x8F93;&#x90FD;&#x4F1A;&#x89E6;&#x53D1;sourse1&#x3002; &#x82F9;&#x679C;&#x521B;&#x5EFA;&#x7528;&#x6765;&#x63A5;&#x53D7;&#x7CFB;&#x7EDF;&#x53D1;&#x51FA;&#x4E8B;&#x4EF6;&#xFF0C;&#x5F53;&#x624B;&#x673A;&#x53D1;&#x751F;&#x4E00;&#x4E2A;&#x89E6;&#x6478;&#xFF0C;&#x6447;&#x6643;&#x6216;&#x9501;&#x5C4F;&#x7B49;&#x7CFB;&#x7EDF;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x7CFB;&#x7EDF;&#x4F1A;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5230;app&#x8FDB;&#x7A0B;&#xFF08;&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;&#xFF09;&#xFF0C;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x53EB;&#x57FA;&#x4E8E;port&#x4F20;&#x9012;source1&#x7684;&#x539F;&#x56E0;; <strong>source0</strong> :&#x975E;&#x57FA;&#x4E8E;Port&#x7684; &#x5904;&#x7406;&#x4E8B;&#x4EF6;&#xFF0C;&#x4EC0;&#x4E48;&#x53EB;&#x975E;&#x57FA;&#x4E8E;Port&#x7684;&#x5462;&#xFF1F;&#x5C31;&#x662F;&#x8BF4;&#x4F60;&#x8FD9;&#x4E2A;&#x6D88;&#x606F;&#x4E0D;&#x662F;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x6216;&#x8005;&#x5185;&#x6838;&#x76F4;&#x63A5;&#x53D1;&#x9001;&#x7ED9;&#x4F60;&#x7684;&#x3002;&#x4E00;&#x822C;&#x662F;APP&#x5185;&#x90E8;&#x7684;&#x4E8B;&#x4EF6;, &#x6BD4;&#x5982;hitTest:withEvent&#x7684;&#x5904;&#x7406;, performSelectors&#x7684;&#x4E8B;&#x4EF6;. &#x7B80;&#x5355;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;&#x4E00;&#x4E2A;APP&#x5728;&#x524D;&#x53F0;&#x9759;&#x6B62;&#x7740;&#xFF0C;&#x6B64;&#x65F6;&#xFF0C;&#x7528;&#x6237;&#x7528;&#x624B;&#x6307;&#x70B9;&#x51FB;&#x4E86;&#x4E00;&#x4E0B;APP&#x754C;&#x9762;&#xFF0C;&#x90A3;&#x4E48;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x7684;&#xFF1A; &#x6211;&#x4EEC;&#x89E6;&#x6478;&#x5C4F;&#x5E55;,&#x5148;&#x6478;&#x5230;&#x786C;&#x4EF6;(&#x5C4F;&#x5E55;)&#xFF0C;&#x5C4F;&#x5E55;&#x8868;&#x9762;&#x7684;&#x4E8B;&#x4EF6;&#x4F1A;&#x88AB;IOKit&#x5148;&#x5305;&#x88C5;&#x6210;Event,&#x901A;&#x8FC7;mach_Port&#x4F20;&#x7ED9;&#x6B63;&#x5728;&#x6D3B;&#x8DC3;&#x7684;APP , Event&#x5148;&#x544A;&#x8BC9;source1&#xFF08;mach_port&#xFF09;,source1&#x5524;&#x9192;RunLoop, &#x7136;&#x540E;&#x5C06;&#x4E8B;&#x4EF6;Event&#x5206;&#x53D1;&#x7ED9;source0,&#x7136;&#x540E;&#x7531;source0&#x6765;&#x5904;&#x7406;&#x3002;</p>
+</blockquote>
+<p>&#x5E38;&#x89C1;&#x7684;&#x51E0;&#x79CD;&#x6E90;&#x6709;<strong>&#x57FA;&#x4E8E;&#x7AEF;&#x53E3;&#x7684;&#x6E90;</strong>&#x3001;<strong>&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6E90;</strong>&#x3001;<strong>performSelect&#x6E90;</strong>&#x548C;<strong>&#x8BA1;&#x65F6;&#x5668;&#x6E90;&#xFF1B;</strong></p>
 <p><strong>RunLoop&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#xFF0C;RunLoop&#x5728;&#x5FAA;&#x73AF;&#x4E2D;&#x4F1A;&#x4E0D;&#x65AD;&#x68C0;&#x6D4B;&#xFF0C;&#x901A;&#x8FC7;Input sources&#xFF08;&#x8F93;&#x5165;&#x6E90;&#xFF09;&#x548C;Timer sources&#xFF08;&#x5B9A;&#x65F6;&#x6E90;&#xFF09;&#x4E24;&#x79CD;&#x6765;&#x6E90;&#x7B49;&#x5F85;&#x63A5;&#x53D7;&#x4E8B;&#x4EF6;&#xFF1B;&#x7136;&#x540E;&#x5BF9;&#x63A5;&#x53D7;&#x5230;&#x7684;&#x4E8B;&#x4EF6;&#x901A;&#x77E5;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x5728;&#x6CA1;&#x6709;&#x4E8B;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x4F11;&#x606F;&#x3002;</strong></p>
-<h2 id="ios&#x4E2D;&#x6709;&#x4E24;&#x5957;api&#x6765;&#x8BBF;&#x95EE;&#x548C;&#x4F7F;&#x7528;runloop">iOS&#x4E2D;&#x6709;&#x4E24;&#x5957;API&#x6765;&#x8BBF;&#x95EE;&#x548C;&#x4F7F;&#x7528;Runloop</h2>
-<p>Foundation&#xFF1A; NSRunLoop</p>
-<p>Core Foundation : CFRunLoopRef</p>
-<h4 id="runloop&#x7684;&#x7ED3;&#x6784;">Runloop&#x7684;&#x7ED3;&#x6784;</h4>
+<h2 id="runloop&#x5BF9;&#x8C61;">Runloop&#x5BF9;&#x8C61;</h2>
+<h3 id="ios&#x4E2D;runloop&#x7684;api">iOS&#x4E2D;Runloop&#x7684;API</h3>
+<ul>
+<li><strong>Foundation</strong>: <code>NSRunLoop</code></li>
+<li><strong>Core Foundation</strong>: <code>CFRunLoopRef</code></li>
+</ul>
+<blockquote>
+<p><code>NSRunLoop</code> &#x548C; <code>CFRunLoopRef</code>&#x90FD;&#x4EE3;&#x8868;<strong>Runloop</strong>&#x5BF9;&#x8C61;&#xFF0C;<code>NSRunLoop</code>&#x662F;&#x57FA;&#x4E8E;<code>CFRunLoopRef</code>&#x7684;&#x4E00;&#x5C42;OC&#x5305;&#x88C5;&#xFF0C;<code>CFRunLoopRef</code>&#x662F;<a href="https://link.juejin.cn?target=https%3A%2F%2Fopensource.apple.com%2Ftarballs%2FCF%2F" target="_blank">&#x5F00;&#x6E90;&#x7684;</a></p>
+</blockquote>
+<ul>
+<li>source0
+&#x9700;&#x8981;&#x624B;&#x52A8;&#x5524;&#x9192;&#x7EBF;&#x7A0B;</li>
+<li>source1
+&#x5177;&#x5907;&#x5524;&#x9192;&#x7EBF;&#x7A0B;&#x7684;&#x80FD;&#x529B;</li>
+</ul>
+<h3 id="runloop&#x5BF9;&#x8C61;&#x7684;&#x83B7;&#x53D6;">Runloop&#x5BF9;&#x8C61;&#x7684;&#x83B7;&#x53D6;</h3>
+<ul>
+<li><strong>Foundation</strong> <code>[NSRunloop currentRunLoop];</code>&#x83B7;&#x5F97;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;RunLoop&#x5BF9;&#x8C61; <code>[NSRunLoop mainRunLoop];</code>&#x83B7;&#x5F97;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;Runloop&#x5BF9;&#x8C61;</li>
+<li><strong>Core Foundation</strong> <code>CFRunLoopGetCurrent();</code>&#x83B7;&#x5F97;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;RunLoop&#x5BF9;&#x8C61; <code>CFRunLoopGetMain();</code>&#x83B7;&#x5F97;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;Runloop&#x5BF9;&#x8C61;</li>
+</ul>
+<h3 id="runloop&#x7684;&#x7ED3;&#x6784;">Runloop&#x7684;&#x7ED3;&#x6784;</h3>
 <pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> __CFRunLoop {
     CFRuntimeBase _base;
     <span class="hljs-keyword">pthread_mutex_t</span> _lock;            <span class="hljs-comment">/* locked for accessing mode list */</span>
@@ -1356,28 +1439,49 @@ Runloop &#x662F;&#x7EBF;&#x7A0B;&#x7684;&#x57FA;&#x7840;&#x652F;&#x6491;&#xFF0C;
     CFTypeRef _counterpart;
 };
 </code></pre>
-<p>mode&#x7C7B;&#x578B;&#x7684;<code>CFRunLoopModeRef</code></p>
-<p><code>CFRunLoopModeRef</code> &#x5176;&#x5B9E;&#x662F;&#x6307;&#x5411;<code>__CFRunLoopMode</code>&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6307;&#x9488;:</p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> __CFRunLoopMode *CFRunLoopModeRef;
+<p><strong>CFRunLoopRef</strong>&#x2014;&#x2014;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;Runloop&#x5BF9;&#x8C61;</p>
+<p><strong>CFRunLoopModeRef</strong>&#x2014;&#x2014;&#x5176;&#x5185;&#x90E8;&#x4E3B;&#x8981;&#x5305;&#x62EC;&#x56DB;&#x4E2A;&#x5BB9;&#x5668;&#xFF0C;&#x5206;&#x522B;&#x7528;&#x6765;&#x5B58;&#x653E;<code>source0</code>&#x3001;<code>source1</code>&#x3001;<code>observer</code>&#x4EE5;&#x53CA;<code>timer</code></p>
+<p><strong>CFRunLoopSourceRef</strong>&#x2014;&#x2014;&#x5206;&#x4E3A;<code>source0</code>&#x548C;<code>source1</code> <code>source0</code>&#xFF1A;&#x5305;&#x62EC; &#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x3001;<code>[performSelector: onThread: ]</code> <code>source1</code>&#xFF1A;&#x5305;&#x62EC; &#x57FA;&#x4E8E;Port&#x7684;&#x7EBF;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#x3001;&#x7CFB;&#x7EDF;&#x4E8B;&#x4EF6;&#x6355;&#x6349;</p>
+<p><strong>CFRunLoopTimerRef</strong>&#x2014;&#x2014;<code>timer</code>&#x4E8B;&#x4EF6;&#xFF0C;&#x5305;&#x62EC;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x4E8B;&#x4EF6;&#x3001;<code>[performSelector: withObject: afterDelay:]</code></p>
+<p><strong>CFRunLoopObserverRef</strong>&#x2014;&#x2014;&#x76D1;&#x542C;&#x8005;&#xFF0C;<strong>Runloop</strong>&#x72B6;&#x6001;&#x53D8;&#x66F4;&#x7684;&#x65F6;&#xFF0C;&#x4F1A;&#x901A;&#x77E5;&#x76D1;&#x542C;&#x8005;&#x8FDB;&#x884C;&#x51FD;&#x6570;&#x56DE;&#x8C03;&#xFF0C;UI&#x754C;&#x9762;&#x7684;&#x5237;&#x65B0;&#x5C31;&#x662F;&#x5728;&#x76D1;&#x542C;&#x5230;Runloop&#x72B6;&#x6001;&#x4E3A;<code>BeforeWaiting</code>&#x65F6;&#x8FDB;&#x884C;&#x7684;&#x3002;</p>
+<p>&#x4E0A;&#x8FD9;&#x51E0;&#x4E2A;&#x7C7B;&#x76F8;&#x4E92;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5982;&#x4E0B;&#x7684;&#x56FE;&#x6765;&#x63CF;&#x7ED8;.</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/a8e3b590d3de447f9797def60d86e096~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
+<p>&#x4E00;&#x4E2A;<strong>RunLoop</strong>&#x5BF9;&#x8C61;&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;&#x82E5;&#x5E72;&#x4E2A;<code>RunLoopMode</code>&#xFF0C;<strong>RunLoop</strong>&#x5185;&#x90E8;&#x662F;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#x5BB9;&#x5668;<code>_modes</code>&#x6765;&#x88C5;&#x8FD9;&#x4E9B;<code>RunLoopMode</code>&#x7684;&#x3002;</p>
+<p><strong>RunLoopMode</strong>&#x5185;&#x90E8;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#x662F;4&#x4E2A;&#x6570;&#x7EC4;&#x5BB9;&#x5668;&#xFF0C;&#x5206;&#x522B;&#x7528;&#x6765;&#x88C5;<code>source0</code>&#xFF0C;<code>source1</code>&#xFF0C;<code>observer</code>&#x548C;<code>timer</code>&#xFF0C;<strong>RunLoop</strong>&#x5BF9;&#x8C61;&#x5185;&#x90E8;&#x6709;&#x4E00;&#x4E2A;<code>_currentMode</code>&#xFF0C;&#x5B83;&#x6307;&#x5411;&#x4E86;&#x8BE5;RunLoop&#x5BF9;&#x8C61;&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;<code>RunLoopMode</code>&#xFF0C;&#x5B83;&#x4EE3;&#x8868;&#x7684;&#x542B;&#x4E49;&#x662F;RunLoop&#x5F53;&#x524D;&#x6240;&#x8FD0;&#x884C;&#x7684;<code>RunLoopMode</code>&#xFF0C;&#x6240;&#x8C13;&#x201C;&#x8FD0;&#x884C;&#x201D;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;RunLoop&#x5F53;&#x524D;&#x53EA;&#x4F1A;&#x6267;&#x884C;<code>_currentMode</code>&#x6240;&#x6307;&#x5411;&#x7684;<code>RunLoopMode</code>&#x91CC;&#x9762;&#x6240;&#x5305;&#x62EC;&#x7684;&#x4E8B;&#x4EF6;&#xFF08;<code>source0&#x3001;source1&#x3001;observer&#x3001;timer</code>&#xFF09;</p>
+<p><strong>RunLoop&#x542F;&#x52A8;&#x65F6;&#x53EA;&#x80FD;&#x9009;&#x62E9;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;Mode&#x4F5C;&#x4E3A;currentMode&#x3002;</strong></p>
+<p>&#x8FD8;&#x6709;&#x5C31;&#x662F;<strong>RunLoop</strong>&#x5BF9;&#x8C61;&#x5185;&#x90E8;&#x8FD8;&#x5305;&#x62EC;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x8C61;<code>_pthread</code>&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x8DDF;&#x5B83;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#x90A3;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x8C61;&#x3002;</p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134756.jpg" style="zoom:25%;"></p>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134804.jpg" style="zoom:25%;"></p>
+<h4 id="source0">source0</h4>
+<p>&#x5305;&#x62EC;<strong>&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x5904;&#x7406;</strong>&#x3001;<code>[performSelector: onThread: ]</code></p>
+<h4 id="source1">source1</h4>
+<p><strong>source1</strong>&#x5305;&#x62EC;&#x7CFB;&#x7EDF;&#x4E8B;&#x4EF6;&#x6355;&#x6349;&#x548C;&#x57FA;&#x4E8E;<code>port</code>&#x7684;&#x7EBF;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#x3002;&#x4EC0;&#x4E48;&#x662F;<strong>&#x7CFB;&#x7EDF;&#x4E8B;&#x4EF6;&#x6355;&#x6349;</strong>&#xFF1F;&#x53C8;&#x5982;&#x4F55;&#x7406;&#x89E3;<strong>&#x57FA;&#x4E8E;<code>port</code>&#x7684;&#x7EBF;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;</strong>&#xFF1F;&#x5176;&#x5B9E;&#xFF0C;&#x6211;&#x4EEC;&#x624B;&#x6307;&#x70B9;&#x51FB;&#x5C4F;&#x5E55;&#xFF0C;&#x9996;&#x5148;&#x4EA7;&#x751F;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E8B;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;<code>source1</code>&#x6765;&#x63A5;&#x53D7;&#x6355;&#x6349;&#xFF0C;&#x7136;&#x540E;&#x7531;<strong>Springboard</strong>&#x7A0B;&#x5E8F;&#x5305;&#x88C5;&#x6210;<code>source0</code>&#x5206;&#x53D1;&#x7ED9;&#x5E94;&#x7528;&#x53BB;&#x5904;&#x7406;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5728;App&#x5185;&#x90E8;&#x63A5;&#x53D7;&#x5230;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#xFF0C;&#x5C31;&#x662F;<code>source0</code>&#xFF0C;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/ecd90a8b62674b679a171ecd40dc4f03~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img" style="zoom: 67%;"></p>
+<p><strong>&#x57FA;&#x4E8E;port&#x7684;&#x7EBF;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;</strong>&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x56FE;&#x793A;&#x5927;&#x81F4;&#x7406;&#x89E3;&#x5373;&#x53EF;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/c3ae1444230c44889f6cac0ba0d6fda9~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="image.png" style="zoom:67%;"></p>
+<h4 id=""> </h4>
+<h4 id="cfrunlooptimerref">CFRunLoopTimerRef</h4>
+<p>&#x540C;&#x6837;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;Xcode&#x91CC;&#x9762;&#x901A;&#x8FC7;<strong>LLDB</strong>&#x7684;<code>bt</code>&#x6307;&#x4EE4;&#xFF0C;&#x67E5;&#x770B;<code>NSTimer</code>&#x4E8B;&#x4EF6;&#x548C;<code>[performSelector: withObject: afterDelay]</code>&#x4E8B;&#x4EF6;&#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6808;&#xFF0C;&#x53D1;&#x73B0;&#x5B83;&#x4EEC;&#x90FD;&#x662F;&#x901A;&#x8FC7; <code>__CFRUNLOOP_IS_CALLING_OUT_TO_A_TIMER_CALLBACK_FUNCTION__</code>&#x51FD;&#x6570;&#x88AB;&#x540A;&#x8D77;&#x7684;&#x3002;&#x4ECE;&#x51FD;&#x6570;&#x540D;&#x770B;&#x51FA;&#xFF0C;&#x5B83;&#x4EEC;&#x786E;&#x5B9E;&#x662F;&#x5C5E;&#x4E8E;<strong>timer</strong>&#x4E8B;&#x4EF6;&#xFF08;<code>CFRunLoopTimerRef</code>&#xFF09;</p>
+<h4 id="cfrunloopobserverref">CFRunLoopObserverRef</h4>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;  <code>observer</code>  &#x662F;&#x7528;&#x6765;&#x76D1;&#x542C;<strong>Runloop</strong>&#x72B6;&#x6001;&#x7684;&#x3002;&#x8FD8;&#x53EF;&#x4EE5;&#x5904;&#x7406;UI&#x754C;&#x9762;&#x5237;&#x65B0;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x4E9B;&#x7684;&#x90A3;&#x4E9B;UI&#x754C;&#x9762;&#x76F8;&#x5173;&#x7684;&#x63A7;&#x5236;&#x4EE3;&#x7801;&#xFF0C;&#x662F;&#x600E;&#x4E48;&#x88AB;&#x6267;&#x884C;&#x7684;&#x5462;&#xFF1F;&#x56FE;&#x793A;&#x5982;&#x4E0B;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/4c78dfc2b9c3487592e558df0e745f15~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"> </p>
+<p><strong>Runloop&#x72B6;&#x6001;</strong>&#x603B;&#x5171;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;</p>
+<pre><code class="lang-c"><span class="hljs-comment">/* Run Loop Observer Activities */</span>
+<span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">CF_OPTIONS</span><span class="hljs-params">(CFOptionFlags, CFRunLoopActivity)</span> </span>{
+    kCFRunLoopEntry = (<span class="hljs-number">1U</span>L &lt;&lt; <span class="hljs-number">0</span>),<span class="hljs-comment">//&#x8FDB;&#x5165;runloop&#x5FAA;&#x73AF;</span>
+    kCFRunLoopBeforeTimers = (<span class="hljs-number">1U</span>L &lt;&lt; <span class="hljs-number">1</span>),<span class="hljs-comment">//&#x5373;&#x5C06;&#x5904;&#x7406;timer&#x4E8B;&#x4EF6;</span>
+    kCFRunLoopBeforeSources = (<span class="hljs-number">1U</span>L &lt;&lt; <span class="hljs-number">2</span>),<span class="hljs-comment">//&#x5373;&#x5C06;&#x5904;&#x7406;source&#x4E8B;&#x4EF6;</span>
+    kCFRunLoopBeforeWaiting = (<span class="hljs-number">1U</span>L &lt;&lt; <span class="hljs-number">5</span>),<span class="hljs-comment">//&#x5373;&#x5C06;&#x8FDB;&#x5165;&#x4F11;&#x7720;&#xFF08;&#x7B49;&#x5F85;&#x6D88;&#x606F;&#x5524;&#x9192;&#xFF09;</span>
+    kCFRunLoopAfterWaiting = (<span class="hljs-number">1U</span>L &lt;&lt; <span class="hljs-number">6</span>),<span class="hljs-comment">//&#x4F11;&#x7720;&#x7ED3;&#x675F;&#xFF08;&#x88AB;&#x6D88;&#x606F;&#x5524;&#x9192;&#xFF09;</span>
+    kCFRunLoopExit = (<span class="hljs-number">1U</span>L &lt;&lt; <span class="hljs-number">7</span>),<span class="hljs-comment">//&#x9000;&#x51FA;runloop&#x5FAA;&#x73AF;</span>
+    kCFRunLoopAllActivities = <span class="hljs-number">0x0FFFFFFF</span>U<span class="hljs-comment">//&#x96C6;&#x5408;&#x4EE5;&#x4E0A;&#x6240;&#x6709;&#x7684;&#x72B6;&#x6001;</span>
+};
 </code></pre>
-<h3 id="cfrunloop">CFRunLoop</h3>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134756.jpg" alt=""></p>
-<h3 id="cfrunloopmode">CFRunLoopMode</h3>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134804.jpg" alt=""></p>
-<ul>
-<li>source0
-&#x9700;&#x8981;&#x624B;&#x52A8;&#x5524;&#x9192;&#x7EBF;&#x7A0B;</li>
-<li>source1
-&#x5177;&#x5907;&#x5524;&#x9192;&#x7EBF;&#x7A0B;&#x7684;&#x80FD;&#x529B;</li>
-</ul>
-<h2 id="&#x5404;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E4B;&#x95F4;&#x5173;&#x7CFB;">&#x5404;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E4B;&#x95F4;&#x5173;&#x7CFB;</h2>
-<p>&#x4E00;&#x4E2A;Runloop&#x4E2D;&#x5305;&#x542B;&#x5F88;&#x591A;&#x4E2A;Mode,Mode&#x4E2D;&#x5305;&#x542B;Source,Timer&#x4E0E;Observer</p>
-<p>Input Source, Timer Source, Run Loop Observer &#x7EDF;&#x79F0;&#x4E3A; Mode Item&#xFF0C;&#x8FD9;&#x91CC;&#x7684; Mode &#x6307;&#x7684;&#x662F; Run Loop Mode&#x3002;&#x4E00;&#x4E2A; Run Loop &#x5305;&#x542B;&#x82E5;&#x5E72;&#x4E2A; Mode&#xFF0C;&#x6BCF;&#x4E2A; Mode &#x53C8;&#x5305;&#x542B;&#x82E5;&#x5E72;&#x4E2A; Item&#x3002;Item &#x4E0E; Mode &#x662F;&#x591A;&#x5BF9;&#x591A;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x6CA1;&#x6709; Item &#x7684; Mode &#x4F1A;&#x7ACB;&#x523B;&#x9000;&#x51FA;</p>
-<p><strong>CFRunLoopModeRef&#x4EE3;&#x8868;RunLoop&#x7684;&#x8FD0;&#x884C;&#x6A21;&#x5F0F;</strong></p>
-<p><strong>&#x4E00;&#x4E2A;RunLoop&#x5305;&#x542B;&#x82E5;&#x5E72;&#x4E2A;Mode&#xFF0C;&#x6BCF;&#x4E2A;Mode&#x53C8;&#x5305;&#x542B;&#x82E5;&#x5E72;&#x4E2A;Source0/Source1/Timer/Observer</strong></p>
-<p><strong>RunLoop&#x542F;&#x52A8;&#x65F6;&#x53EA;&#x80FD;&#x9009;&#x62E9;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;Mode&#x4F5C;&#x4E3A;currentMode&#x3002;</strong>
-<img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-02-25-095932.jpg" alt=""></p>
-<p>&#x4E00;&#x4E2A;RunLoop&#x5BF9;&#x8C61;&#xFF08;CFRunLoopRef&#xFF09;&#x4E2D;&#x5305;&#x542B;&#x82E5;&#x5E72;&#x4E2A;&#x8FD0;&#x884C;&#x6A21;&#x5F0F;&#xFF08;CFRunLoopModeRef&#xFF09;&#x3002;&#x800C;&#x6BCF;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x6A21;&#x5F0F;&#x4E0B;&#x53C8;&#x5305;&#x542B;&#x82E5;&#x5E72;&#x4E2A;&#x8F93;&#x5165;&#x6E90;&#xFF08;CFRunLoopSourceRef&#xFF09;&#x3001;&#x5B9A;&#x65F6;&#x6E90;&#xFF08;CFRunLoopTimerRef&#xFF09;&#x3001;&#x89C2;&#x5BDF;&#x8005;&#xFF08;CFRunLoopObserverRef&#xFF09;</p>
+<h4 id="modes&#x548C;commonmodes">_modes&#x548C;_commonModes</h4>
+<p><code>Runloop Mode</code> &#x662F;<code>&#x4E8B;&#x4EF6;&#x6E90;&#x7684;&#x96C6;&#x5408;</code> + <code>Runloop</code>&#x89C2;&#x5BDF;&#x8005;&#x7684;&#x96C6;&#x5408;&#x3002;<strong>Runloop &#x6BCF;&#x6B21;&#x90FD;&#x8FD0;&#x884C;&#x5728;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x7684; mode &#x4E0A;&#x3002;</strong></p>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x8981;&#x5F15;&#x5165; mode &#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x662F;<strong>&#x5E0C;&#x671B; Runloop &#x5728;&#x76D1;&#x542C;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FC7;&#x6EE4;&#x6389;&#x4E0D;&#x5173;&#x5FC3;&#x7684;&#x4E8B;&#x4EF6;&#x6E90;&#xFF0C;&#x53EA;&#x4E13;&#x6CE8;&#x4E8E;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x4E8B;&#x4EF6;&#x3002;</strong></p>
+<p> <code>Runloop</code>&#x603B;&#x662F;&#x8FD0;&#x884C;&#x5728;&#x67D0;&#x79CD;&#x7279;&#x5B9A;&#x7684;CFRunLoopModeRef&#x4E0B;,&#x610F;&#x601D;&#x662F;&#x6BCF;&#x6B21;<code>Runloop</code>&#x5F00;&#x59CB;&#x65F6;&#x5019;&#x4F1A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;mode&#xFF0C;&#x6267;&#x884C;&#x8FD9;&#x4E2A;mode&#x91CC;&#x9762;&#x7684; <code>block</code>,<code>timer</code>&#x7B49;&#x4E8B;&#x4EF6;.&#x8FD9;&#x53EF;&#x4EE5;&#x89E3;&#x91CA;&#x6ED1;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;<code>NSTimer</code>&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x505C;&#x6B62;,&#x56E0;&#x4E3A;&#x6ED1;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;<code>Runloop</code>&#x5904;&#x4E8E; <code>TrackingMode</code>,<code>NSTimer</code>&#x9ED8;&#x8BA4;&#x6DFB;&#x52A0;&#x5728;<code>DefaultMode</code>,&#x6240;&#x4EE5;&#x4E0D;&#x6267;&#x884C;</p>
+<p>&#x5982;&#x679C;&#x67D0;&#x4E2A; <code>input source</code> &#x6240;&#x5C5E;&#x7684; mode &#x4E0D;&#x662F;&#x5F53;&#x524D;&#x76D1;&#x542C;&#x7684; mode&#xFF0C;&#x90A3; **&#x5176;&#x4EA7;&#x751F;&#x7684;&#x6240;&#x6709;&#x4E8B;&#x4EF6;&#x90FD;&#x5C06;&#x88AB; hold &#x4F4F;&#xFF0C;&#x76F4;&#x5230; runloop &#x8FD0;&#x884C;&#x5728;&#x4E0E;&#x5176;&#x5339;&#x914D;&#x7684; mode &#x4E0A;</p>
 <p>&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x6CE8;&#x518C;&#x4E86;5&#x4E2A;Mode:</p>
 <ol>
 <li><code>kCFRunLoopDefaultMode</code>: App&#x7684;&#x9ED8;&#x8BA4; Mode&#xFF0C;&#x901A;&#x5E38;&#x4E3B;&#x7EBF;&#x7A0B;&#x662F;&#x5728;&#x8FD9;&#x4E2A; Mode &#x4E0B;&#x8FD0;&#x884C;&#x7684;&#x3002;</li>
@@ -1386,36 +1490,16 @@ Runloop &#x662F;&#x7EBF;&#x7A0B;&#x7684;&#x57FA;&#x7840;&#x652F;&#x6491;&#xFF0C;
 <li><code>GSEventReceiveRunLoopMode</code>: &#x63A5;&#x53D7;&#x7CFB;&#x7EDF;&#x4E8B;&#x4EF6;&#x7684;&#x5185;&#x90E8; Mode&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x4E0D;&#x5230;&#x3002;</li>
 <li><code>kCFRunLoopCommonModes</code>: &#x4F2A;&#x6A21;&#x5F0F;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5360;&#x4F4D;&#x7684; Mode&#xFF0C;&#x6CA1;&#x6709;&#x5B9E;&#x9645;&#x4F5C;&#x7528;&#x3002;</li>
 </ol>
-<p>&#x4F2A;&#x6A21;&#x5F0F;&#xFF08;<code>kCFRunLoopCommonModes</code>&#xFF09;&#xFF0C;&#x8FD9;&#x5176;&#x5B9E;&#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x771F;&#x5B9E;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x79CD;&#x6807;&#x8BB0;&#x6A21;&#x5F0F;&#xFF0C;&#x610F;&#x601D;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x5728;&#x6253;&#x4E0A;<code>Common Modes</code>&#x6807;&#x8BB0;&#x7684;&#x6A21;&#x5F0F;&#x4E0B;&#x8FD0;&#x884C;&#x3002;</p>
-<p>&#x90A3;&#x4E48;&#x54EA;&#x4E9B;&#x6A21;&#x5F0F;&#x88AB;&#x6807;&#x8BB0;&#x4E0A;&#x4E86;Common Modes&#x5462;&#xFF1F;</p>
-<p><code>NSDefaultRunLoopMode</code> &#x548C; <code>UITrackingRunLoopMode</code>&#x3002;</p>
-<h2 id="runloop-modes">Runloop Modes</h2>
-<p><code>Runloop Mode</code> &#x662F;<code>&#x4E8B;&#x4EF6;&#x6E90;&#x7684;&#x96C6;&#x5408;</code> + <code>Runloop</code>&#x89C2;&#x5BDF;&#x8005;&#x7684;&#x96C6;&#x5408;&#x3002;<strong>Runloop &#x6BCF;&#x6B21;&#x90FD;&#x8FD0;&#x884C;&#x5728;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x7684; mode &#x4E0A;&#x3002;</strong></p>
-<p>&#x4E4B;&#x6240;&#x4EE5;&#x8981;&#x5F15;&#x5165; mode &#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x662F;<strong>&#x5E0C;&#x671B; Runloop &#x5728;&#x76D1;&#x542C;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FC7;&#x6EE4;&#x6389;&#x4E0D;&#x5173;&#x5FC3;&#x7684;&#x4E8B;&#x4EF6;&#x6E90;&#xFF0C;&#x53EA;&#x4E13;&#x6CE8;&#x4E8E;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x4E8B;&#x4EF6;&#x3002;</strong></p>
-<p> <code>Runloop</code>&#x603B;&#x662F;&#x8FD0;&#x884C;&#x5728;&#x67D0;&#x79CD;&#x7279;&#x5B9A;&#x7684;CFRunLoopModeRef&#x4E0B;,&#x610F;&#x601D;&#x662F;&#x6BCF;&#x6B21;<code>Runloop</code>&#x5F00;&#x59CB;&#x65F6;&#x5019;&#x4F1A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;mode&#xFF0C;&#x6267;&#x884C;&#x8FD9;&#x4E2A;mode&#x91CC;&#x9762;&#x7684; <code>block</code>,<code>timer</code>&#x7B49;&#x4E8B;&#x4EF6;.&#x8FD9;&#x53EF;&#x4EE5;&#x89E3;&#x91CA;&#x6ED1;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;<code>NSTimer</code>&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x505C;&#x6B62;,&#x56E0;&#x4E3A;&#x6ED1;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;<code>Runloop</code>&#x5904;&#x4E8E; <code>TrackingMode</code>,<code>NSTimer</code>&#x9ED8;&#x8BA4;&#x6DFB;&#x52A0;&#x5728;<code>DefaultMode</code>,&#x6240;&#x4EE5;&#x4E0D;&#x6267;&#x884C;</p>
-<h4 id="commonmode&#x7684;&#x7279;&#x6B8A;&#x6027;">CommonMode&#x7684;&#x7279;&#x6B8A;&#x6027;</h4>
+<h5 id="commonmode&#x7684;&#x7279;&#x6B8A;&#x6027;">CommonMode&#x7684;&#x7279;&#x6B8A;&#x6027;</h5>
 <p><code>NSRunLoopCommonModes</code></p>
 <ul>
 <li>CommonMode&#x4E0D;&#x662F;&#x5B9E;&#x9645;&#x5B58;&#x5728;&#x7684;&#x4E00;&#x79CD;Mode</li>
 <li>&#x662F;&#x540C;&#x6B65;Source/Timer/Observer&#x5230;&#x591A;&#x4E2A;Mode&#x4E2D;&#x7684;&#x4E00;&#x79CD;&#x6280;&#x672F;&#x65B9;&#x6848;</li>
 </ul>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134817.png" alt=""></p>
-<p>&#x5982;&#x679C;&#x67D0;&#x4E2A; <code>input source</code> &#x6240;&#x5C5E;&#x7684; mode &#x4E0D;&#x662F;&#x5F53;&#x524D;&#x76D1;&#x542C;&#x7684; mode&#xFF0C;&#x90A3; <strong>&#x5176;&#x4EA7;&#x751F;&#x7684;&#x6240;&#x6709;&#x4E8B;&#x4EF6;&#x90FD;&#x5C06;&#x88AB; hold &#x4F4F;&#xFF0C;&#x76F4;&#x5230; runloop &#x8FD0;&#x884C;&#x5728;&#x4E0E;&#x5176;&#x5339;&#x914D;&#x7684; mode &#x4E0A;&#x3002;</strong></p>
-<p>&#x5E94;&#x7528;&#x573A;&#x666F;&#x4E3E;&#x4F8B;&#xFF1A;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684; RunLoop &#x91CC;&#x6709;&#x4E24;&#x4E2A;&#x9884;&#x7F6E;&#x7684; Mode&#xFF1A;<code>kCFRunLoopDefaultMode</code> &#x548C; <code>UITrackingRunLoopMode</code>&#x3002;&#x8FD9;&#x4E24;&#x4E2A; Mode &#x90FD;&#x5DF2;&#x7ECF;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;&#x201D;Common&#x201D;&#x5C5E;&#x6027;&#x3002;<code>DefaultMode</code> &#x662F; App &#x5E73;&#x65F6;&#x6240;&#x5904;&#x7684;&#x72B6;&#x6001;&#xFF0C;<code>TrackingRunLoopMode</code> &#x662F;&#x8FFD;&#x8E2A; ScrollView &#x6ED1;&#x52A8;&#x65F6;&#x7684;&#x72B6;&#x6001;&#x3002;&#x5F53;&#x4F60;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Timer &#x5E76;&#x52A0;&#x5230; <code>DefaultMode</code> &#x65F6;&#xFF0C;Timer &#x4F1A;&#x5F97;&#x5230;&#x91CD;&#x590D;&#x56DE;&#x8C03;&#xFF0C;&#x4F46;&#x6B64;&#x65F6;&#x6ED1;&#x52A8;&#x4E00;&#x4E2A;TableView&#x65F6;&#xFF0C;<strong>RunLoop &#x4F1A;&#x5C06; mode &#x5207;&#x6362;&#x4E3A;</strong><code>TrackingRunLoopMode</code>&#xFF0C;&#x8FD9;&#x65F6; Timer &#x5C31;&#x4E0D;&#x4F1A;&#x88AB;&#x56DE;&#x8C03;&#xFF0C;&#x5E76;&#x4E14;&#x4E5F;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x6ED1;&#x52A8;&#x64CD;&#x4F5C;&#x3002;</p>
-<p>&#x540C;&#x65F6;&#xFF0C;&#x5728;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;<code>NSRunLoopCommonModes</code>&#x5305;&#x542B;<code>NSEventTrackingRunLoopMode</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4E0E;<code>NSRunLoopCommonModes</code>&#x5173;&#x8054;&#x7684;&#x4E8B;&#x4EF6;&#x6E90;&#x4E5F;&#x4E0E;<code>NSEventTrackingRunLoopMode</code>&#x5173;&#x8054;&#x3002;</p>
-<p>&#x800C;&#x6B64;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5B50;&#x7EBF;&#x7A0B;&#x60F3;&#x901A;&#x8FC7;<code>performSelecorOnMainThread...</code> &#x6216; <code>dispatch_async(dispatch_get_main_queue(),^{})</code> &#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0A;&#x6267;&#x884C;&#x67D0; selector&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x4E0A;&#x8FF0;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x4EA7;&#x751F;&#x7684;&#x4E8B;&#x4EF6;&#x662F;&#x5173;&#x8054;&#x5230;<code>NSRunLoopCommonModes</code>&#xFF0C;&#x56E0;&#x6B64;&#x5728; UI &#x6ED1;&#x52A8;&#x65F6;&#x4E5F;&#x4F1A;&#x54CD;&#x5E94;&#x8BE5;&#x4E8B;&#x4EF6;&#x5E76;&#x6267;&#x884C;&#x6307;&#x5B9A;&#x7684; selector&#xFF0C;&#x4ECE;&#x800C;&#x5F71;&#x54CD;&#x6ED1;&#x52A8;&#x7684;&#x6D41;&#x7545;&#x6027;&#x3002;</p>
-<p>&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x6B64;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x5C01;&#x88C5;&#x4E0A;&#x8FF0;&#x63A5;&#x53E3;&#xFF0C;&#x4F7F;&#x5176;&#x6307;&#x5B9A;&#x7684; selector &#x8FD0;&#x884C;&#x5728; Main Runloop &#x7684;&#x5176;&#x4ED6; mode &#x4E0A;&#xFF0C;&#x5982;&#xFF1A;<code>NSDefaultRunLoopMode</code>&#x3002;</p>
-<h2 id="cfrunloopobserver-&#x89C2;&#x5BDF;&#x8005;">CFRunLoopObserver &#x89C2;&#x5BDF;&#x8005;</h2>
-<p>&#x89C2;&#x5BDF;&#x65F6;&#x95F4;&#x70B9;</p>
-<ul>
-<li>kCFRunLoopEntry</li>
-<li>kCFRunLoopBeforeTimers</li>
-<li>kCFRunLoopBeforeSources</li>
-<li>kCFRunLoopBeforeWaiting</li>
-<li>kCFRunLoopAfterWaiting</li>
-<li>kCFRunLoopExit</li>
-</ul>
-<h2 id="runtloop&#x8FD0;&#x884C;&#x6D41;&#x7A0B;">Runtloop&#x8FD0;&#x884C;&#x6D41;&#x7A0B;</h2>
+<p><code>NSRunLoopCommonModes</code>&#x5176;&#x5B9E;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#xFF0C;&#x88AB;&#x6253;&#x4E0A;&#x8FD9;&#x79CD;&#x6807;&#x7B7E;&#x7684;&#x5177;&#x4F53;Mode&#x4F1A;&#x88AB;&#x653E;&#x5165;&#x5230;<strong>RunLoop</strong>&#x5185;&#x90E8;&#x7684;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x6210;&#x5458;<code>_commonModes</code>&#x91CC;&#x9762;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;<code>CFMutableSetRef</code>&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>_commonModes</code>&#x5185;&#x90E8;&#x88C5;&#x7740;<code>kCFRunLoopDefaultMode</code> + <code>UITrakingRunLoopMode</code>&#x8FD9;&#x4E24;&#x4E2A;Mode&#xFF0C;&#x7B49;&#x4E8E;&#x8BF4;&#x8FD9;&#x4E24;&#x4E2A;Mode&#x662F;&#x5177;&#x6709;<code>NSRunLoopCommonModes</code>&#x6807;&#x8BB0;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x90FD;&#x88AB;&#x6DFB;&#x52A0;&#x8FDB;&#x4E86;<code>_commonModes</code>&#xFF0C;&#x6839;&#x636E;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;<code>timer</code>&#x5C06;&#x4E0D;&#x4F1A;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x67D0;&#x4E2A;&#x5177;&#x4F53;&#x7684;Mode&#x91CC;&#xFF0C;&#x800C;&#x662F;&#x4F1A;&#x88AB;&#x653E;&#x5165;<strong>RunLoop</strong>&#x7684;<code>_commonModeItems</code>&#x8FD9;&#x4E2A;&#x5BB9;&#x5668;&#x91CC;&#x3002;&#x53EA;&#x8981;App&#x8FD0;&#x884C;&#x5728;<code>_commonModes</code>&#x6240;&#x5305;&#x542B;&#x7684;&#x67D0;&#x4E2A;Mode&#x4E0B;&#xFF0C;&#x5C31;&#x4F1A;&#x53BB;&#x5904;&#x7406;<code>_commonModeItems</code>&#x91CC;&#x9762;&#x7684;&#x4E8B;&#x4EF6;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x6240;&#x8FD0;&#x884C;&#x7684;&#x90A3;&#x4E2A;Mode&#x81EA;&#x5DF1;&#x672C;&#x8EAB;&#x6240;&#x5305;&#x542B;&#x7684;&#x4E8B;&#x4EF6;&#x4E5F;&#x662F;&#x4F1A;&#x88AB;&#x5904;&#x7406;&#x7684;&#xFF0C;</p>
+<p>&#x5982;&#x679C;&#x6709;&#x5B50;&#x7EBF;&#x7A0B;&#x60F3;&#x901A;&#x8FC7;<code>performSelecorOnMainThread...</code> &#x6216; <code>dispatch_async(dispatch_get_main_queue(),^{})</code> &#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0A;&#x6267;&#x884C;&#x67D0; selector&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x4E0A;&#x8FF0;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x4EA7;&#x751F;&#x7684;&#x4E8B;&#x4EF6;&#x662F;&#x5173;&#x8054;&#x5230;<code>NSRunLoopCommonModes</code>&#xFF0C;&#x56E0;&#x6B64;&#x5728; UI &#x6ED1;&#x52A8;&#x65F6;&#x4E5F;&#x4F1A;&#x54CD;&#x5E94;&#x8BE5;&#x4E8B;&#x4EF6;&#x5E76;&#x6267;&#x884C;&#x6307;&#x5B9A;&#x7684; selector&#xFF0C;&#x4ECE;&#x800C;&#x5F71;&#x54CD;&#x6ED1;&#x52A8;&#x7684;&#x6D41;&#x7545;&#x6027;&#x3002;</p>
+<h3 id="runtloop&#x8FD0;&#x884C;&#x6D41;&#x7A0B;">Runtloop&#x8FD0;&#x884C;&#x6D41;&#x7A0B;</h3>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-07-23-134820.png" alt="img"></p>
 <p>Run Loop &#x63A5;&#x6536;&#x7684;&#x4E8B;&#x4EF6;&#x6765;&#x6E90; (source) &#x6709;&#x4E24;&#x79CD;&#x3002;</p>
 <ul>
@@ -1443,11 +1527,13 @@ Runloop &#x662F;&#x7EBF;&#x7A0B;&#x7684;&#x57FA;&#x7840;&#x652F;&#x6491;&#xFF0C;
 <li>UI&#x5237;&#x65B0;&#xFF08;BeforeWaiting&#xFF09;</li>
 <li><code>Autoreleasepool</code>(BeforeWaiting)</li>
 </ul>
-<h2 id="runloop--thread">Runloop &amp; Thread</h2>
+<h3 id="runloop--thread">Runloop &amp; Thread</h3>
 <p><code>Runloop</code>&#x4E0E;&#x7EBF;&#x7A0B;&#x662F;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#xFF0C;&#x4E00;&#x4E2A;runloop&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x6838;&#x5FC3;&#x7684;&#x7EBF;&#x7A0B;&#x3002;&#x6BCF;&#x4E2A; <code>thread</code> &#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684; <code>Runloop</code>&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>NSRunLoop</code>&#x7684;&#x7C7B;&#x65B9;&#x6CD5;<code>currentRunLoop</code>&#x83B7;&#x53D6;<strong>&#x5F53;&#x524D;&#x7EBF;&#x7A0B;</strong>&#x7684; <code>runloop</code>&#x3002;</p>
-<p>&#x4F46;&#x53EA;&#x6709; <code>main thread</code> &#x7684; <code>runloop</code> <strong>&#x9ED8;&#x8BA4;&#x662F;&#x5F00;&#x542F;</strong>&#x7684;&#xFF0C;<strong>&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x6301;&#x7EED;&#x5B58;&#x6D3B;&#x4E0B;&#x53BB;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5F00;&#x542F;Runloop</strong>&#x3002;&#x5BF9;&#x4E8E;&#x5B50;&#x7EBF;&#x7A0B;&#x6765;&#x8BF4;&#xFF0C;runloop&#x662F;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x521B;&#x5EFA;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x7528;&#x5B9A;&#x65F6;&#x5668;&#x8981;&#x6CE8;&#x610F;&#xFF1A;&#x786E;&#x4FDD;&#x5B50;&#x7EBF;&#x7A0B;&#x7684;runloop&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x4E0D;&#x7136;&#x5B9A;&#x65F6;&#x5668;&#x4E0D;&#x4F1A;&#x56DE;&#x8C03;&#x3002;</p>
+<p>&#x4F46;&#x53EA;&#x6709; <code>main thread</code> &#x7684; <code>runloop</code> <strong>&#x9ED8;&#x8BA4;&#x662F;&#x5F00;&#x542F;</strong>&#x7684;&#xFF0C;<strong>&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x6301;&#x7EED;&#x5B58;&#x6D3B;&#x4E0B;&#x53BB;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5F00;&#x542F;Runloop</strong>&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x5B50;&#x7EBF;&#x7A0B;&#x6765;&#x8BF4;&#xFF0C;runloop&#x662F;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x521B;&#x5EFA;&#xFF0C;</p>
+<p>&#x6240;&#x4EE5;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x7528;&#x5B9A;&#x65F6;&#x5668;&#x8981;&#x6CE8;&#x610F;&#xFF1A;&#x786E;&#x4FDD;&#x5B50;&#x7EBF;&#x7A0B;&#x7684;runloop&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x4E0D;&#x7136;&#x5B9A;&#x65F6;&#x5668;&#x4E0D;&#x4F1A;&#x56DE;&#x8C03;&#x3002;</p>
 <p><code>Runloop</code>&#x662F;&#x6765;&#x7BA1;&#x7406;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x5F53;&#x7EBF;&#x7A0B;&#x7684;runloop&#x88AB;&#x5F00;&#x542F;&#x540E;&#xFF0C;&#x7EBF;&#x7A0B;&#x4F1A;&#x5728;&#x6267;&#x884C;&#x5B8C;&#x4EFB;&#x52A1;&#x540E;&#x8FDB;&#x5165;&#x4F11;&#x7720;&#x72B6;&#x6001;&#xFF0C;&#x6709;&#x4E86;&#x4EFB;&#x52A1;&#x5C31;&#x4F1A;&#x88AB;&#x5524;&#x9192;&#x53BB;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x3002;</p>
-<h2 id="runloop&#x76F8;&#x5173;&#x7C7B;">RunLoop&#x76F8;&#x5173;&#x7C7B;</h2>
+<h3 id="runloop&#x76F8;&#x5173;&#x7C7B;">RunLoop&#x76F8;&#x5173;&#x7C7B;</h3>
 <p>Core Foundation&#x6846;&#x67B6;&#x4E0B;&#x5173;&#x4E8E;RunLoop&#x7684;5&#x4E2A;&#x7C7B;&#xFF1A;</p>
 <ol>
 <li>CFRunLoopRef&#xFF1A;&#x4EE3;&#x8868;RunLoop&#x7684;&#x5BF9;&#x8C61;</li>
@@ -1530,7 +1616,7 @@ Runloop &#x662F;&#x7EBF;&#x7A0B;&#x7684;&#x57FA;&#x7840;&#x652F;&#x6491;&#xFF0C;
 <p><strong>&#x7EBF;&#x7A0B;&#x548C; RunLoop &#x4E4B;&#x95F4;&#x662F;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#xFF0C;&#x5176;&#x5173;&#x7CFB;&#x662F;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A; Dictionary &#x91CC;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x5B50;&#x7EBF;&#x7A0B;RunLoop&#x65F6;&#xFF0C;&#x53EA;&#x9700;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x4E2D;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;RunLoop&#x5BF9;&#x8C61;&#x5373;&#x53EF;<code>[NSRunLoop currentRunLoop];</code></strong></p>
 <p><strong>&#x5982;&#x679C;&#x4E0D;&#x83B7;&#x53D6;&#xFF0C;&#x90A3;&#x5B50;&#x7EBF;&#x7A0B;&#x5C31;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA;&#x4E0E;&#x4E4B;&#x76F8;&#x5173;&#x8054;&#x7684;RunLoop&#xFF0C;&#x5E76;&#x4E14;&#x53EA;&#x80FD;&#x5728;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x5185;&#x90E8;&#x83B7;&#x53D6;&#x5176; RunLoop <code>[NSRunLoop currentRunLoop];</code></strong></p>
 <p><strong>&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x4F1A;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x5B57;&#x5178;&#x91CC;&#x6709;&#x6CA1;&#x6709;&#x5B58;&#x5B50;&#x7EBF;&#x7A0B;&#x76F8;&#x5BF9;&#x7528;&#x7684;RunLoop&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;RunLoop&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5219;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#xFF0C;&#x5E76;&#x5C06;&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#x7684;&#x5B50;&#x7EBF;&#x7A0B;&#x5B58;&#x5165;&#x5B57;&#x5178;&#x4E2D;&#x3002;&#x5F53;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;&#x65F6;&#xFF0C;RunLoop&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#x3002;</strong></p>
-<h2 id="summary">Summary</h2>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
 <ul>
 <li><p>main runloop&#x5728;&#x4E3B;&#x754C;&#x9762;&#x5373;&#x5C06;&#x663E;&#x793A;&#x524D;&#x7531;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;(&#x4E3B;&#x754C;&#x9762; controller &#x7684; viewWillAppear:&#x6267;&#x884C;&#x540E;&#x542F;&#x52A8;)&#xFF1B;</p>
 </li>
@@ -1549,12 +1635,12 @@ Runloop &#x662F;&#x7EBF;&#x7A0B;&#x7684;&#x57FA;&#x7840;&#x652F;&#x6491;&#xFF0C;
 <li><p>&#x4E00;&#x6B21; runloop &#x53EF;&#x4EE5;&#x5904;&#x7406;&#x591A;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
 </li>
 </ul>
-<h2 id="&#x6CE8;&#x610F;&#x70B9;">&#x6CE8;&#x610F;&#x70B9;</h2>
-<h3 id="timer-sourcesnstimer">Timer Sources(NSTimer)</h3>
+<h3 id="&#x6CE8;&#x610F;&#x70B9;">&#x6CE8;&#x610F;&#x70B9;</h3>
+<h4 id="timer-sourcesnstimer">Timer Sources(NSTimer)</h4>
 <p>Timer source &#x4F1A;&#x5728;&#x672A;&#x6765;&#x4E00;&#x4E2A;&#x9884;&#x5B9A;&#x65F6;&#x95F4;&#x5411;&#x7EBF;&#x7A0B;&#x540C;&#x6B65;&#x5206;&#x53D1;&#x4E8B;&#x4EF6;&#x3002;&#x7EBF;&#x7A0B;&#x53EF;&#x4EE5;&#x7528; Timer &#x6765;&#x901A;&#x77E5;&#x81EA;&#x5DF1;&#x505A;&#x4E00;&#x4E9B;&#x4E8B;&#x60C5;&#x3002;&#x6BD4;&#x5982;&#x7528;&#x6237;&#x5728;&#x641C;&#x7D22;&#x680F;&#x8F93;&#x5165;&#x4E00;&#x8FDE;&#x4E32;&#x5B57;&#x7B26;&#x4E4B;&#x540E;&#x7684;&#x67D0;&#x4E2A;&#x65F6;&#x95F4;&#x81EA;&#x52A8;&#x641C;&#x7D22;&#x4E00;&#x6B21;&#x7ED3;&#x679C;&#x3002;&#x6B63;&#x662F;&#x56E0;&#x4E3A;&#x6709;&#x4E86;&#x4E2A;&#x5EF6;&#x65F6;&#xFF0C;&#x624D;&#x8BA9;&#x7528;&#x6237;&#x6709;&#x673A;&#x4F1A;&#x5728;&#x81EA;&#x52A8;&#x641C;&#x7D22;&#x53D1;&#x751F;&#x524D;&#x5C3D;&#x53EF;&#x80FD;&#x6253;&#x51FA;&#x60F3;&#x8981;&#x7684;&#x641C;&#x7D22;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
-<p><strong>Timer &#x5E76;&#x4E0D;&#x662F;&#x5B9E;&#x65F6;&#x7684;&#xFF0C;&#x4F1A;&#x6709;&#x8BEF;&#x5DEE;</strong>&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A; timer &#x4E0D;&#x5728;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684; run loop &#x76D1;&#x63A7;&#x7684; mode &#x4E2D;&#xFF0C;&#x9700;&#x8981;&#x4E00;&#x76F4;&#x7B49;&#x5230; run loop &#x8FD0;&#x884C;&#x5728;&#x4E00;&#x4E2A;&#x652F;&#x6301;&#x8FD9;&#x4E2A; timer &#x7684; mode &#x65F6;&#xFF0C;timer &#x624D;&#x4F1A;&#x89E6;&#x53D1;&#x3002;<strong>&#x5982;&#x679C;&#x4E00;&#x4E2A; timer &#x89E6;&#x53D1;&#x7684;&#x65F6;&#x5019;&#x6070;&#x5DE7; run loop &#x6B63;&#x5FD9;&#x4E8E;&#x6267;&#x884C;&#x67D0;&#x4E2A; handler &#x7A0B;&#x5E8F;&#xFF0C;&#x8FD9;&#x4E2A; timer &#x7684; handler &#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x7B49;&#x5230;&#x4E0B;&#x6B21;&#x624D;&#x4F1A;&#x901A;&#x8FC7; run loop &#x6267;&#x884C;&#x3002;</strong>&#x5982;&#x679C; run loop &#x6839;&#x672C;&#x4E0D;&#x5728;&#x8FD0;&#x884C;&#xFF0C;timer &#x6C38;&#x8FDC;&#x90FD;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x3002;</p>
+<p><strong>Timer &#x5E76;&#x4E0D;&#x662F;&#x5B9E;&#x65F6;&#x7684;&#xFF0C;&#x4F1A;&#x6709;&#x8BEF;&#x5DEE;</strong>&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A; timer &#x4E0D;&#x5728;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684; runloop &#x76D1;&#x63A7;&#x7684; mode &#x4E2D;&#xFF0C;&#x9700;&#x8981;&#x4E00;&#x76F4;&#x7B49;&#x5230; runloop &#x8FD0;&#x884C;&#x5728;&#x4E00;&#x4E2A;&#x652F;&#x6301;&#x8FD9;&#x4E2A; timer &#x7684; mode &#x65F6;&#xFF0C;timer &#x624D;&#x4F1A;&#x89E6;&#x53D1;&#x3002;<strong>&#x5982;&#x679C;&#x4E00;&#x4E2A; timer &#x89E6;&#x53D1;&#x7684;&#x65F6;&#x5019;&#x6070;&#x5DE7; run loop &#x6B63;&#x5FD9;&#x4E8E;&#x6267;&#x884C;&#x67D0;&#x4E2A; handler &#x7A0B;&#x5E8F;&#xFF0C;&#x8FD9;&#x4E2A; timer &#x7684; handler &#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x7B49;&#x5230;&#x4E0B;&#x6B21;&#x624D;&#x4F1A;&#x901A;&#x8FC7; run loop &#x6267;&#x884C;&#x3002;</strong>&#x5982;&#x679C; runloop &#x6839;&#x672C;&#x4E0D;&#x5728;&#x8FD0;&#x884C;&#xFF0C;timer &#x6C38;&#x8FDC;&#x90FD;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x3002;</p>
 <p>&#x53EF;&#x4EE5;&#x914D;&#x7F6E; timer &#x53EA;&#x751F;&#x6210;&#x4E00;&#x6B21;&#x6216;&#x91CD;&#x590D;&#x591A;&#x6B21;&#x4E8B;&#x4EF6;&#x3002;&#x91CD;&#x590D;&#x7684; timer &#x6BCF;&#x6B21;&#x4F1A;&#x6839;&#x636E;&#x5DF2;&#x7ECF;&#x7F16;&#x6392;&#x7684;&#x89E6;&#x53D1;&#x65F6;&#x95F4;&#x81EA;&#x52A8;&#x91CD;&#x65B0;&#x7F16;&#x6392;&#x3002;&#x5982;&#x679C;&#x5B9E;&#x9645;&#x7684;&#x89E6;&#x53D1;&#x65F6;&#x95F4;&#x592A;&#x8FC7;&#x4E8E;&#x5EF6;&#x8FDF;&#xFF0C;&#x751A;&#x81F3;&#x662F;&#x665A;&#x4E86;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5468;&#x671F;&#xFF0C;&#x90A3;&#x4E48;&#x4E5F;&#x53EA;&#x4F1A;&#x89E6;&#x53D1;&#x4E00;&#x6B21;&#xFF0C;&#x800C;&#x975E;&#x8FDE;&#x7EED;&#x591A;&#x6B21;&#x3002;<strong>&#x4E4B;&#x540E;&#x4F1A;&#x91CD;&#x65B0;&#x7F16;&#x6392;&#x4E0B;&#x6B21;&#x89E6;&#x53D1;&#x65F6;&#x95F4;</strong>&#x3002;</p>
-<h2 id="runloop-&#x8FD0;&#x7528;&#x573A;&#x666F;">Runloop &#x8FD0;&#x7528;&#x573A;&#x666F;</h2>
+<h3 id="runloop-&#x8FD0;&#x7528;&#x573A;&#x666F;">Runloop &#x8FD0;&#x7528;&#x573A;&#x666F;</h3>
 <p>&#x4EE5;<code>AFNetworking2.x</code> &#x4FDD;&#x6D3B;&#x539F;&#x7406;&#x6765;&#x8BF4;:</p>
 <pre><code>/*
 AFNetworking/NSURLConnection/AFURLConnectionOperation.m
@@ -1584,7 +1670,7 @@ AFNetworking/NSURLConnection/AFURLConnectionOperation.m
     }
 }
 </code></pre><p>&#x5982;&#x4EE3;&#x7801;&#xFF0C;&#x4E3A;&#x7EBF;&#x7A0B;&#x4E2D;Runloop&#x6DFB;&#x52A0;&#x4E00;&#x4E2A; <code>[NSMachPort port]</code> <code>source1</code> &#x4E8B;&#x4EF6;&#x6E90;&#xFF0C;&#x8BA9;&#x7EBF;&#x7A0B;&#x4E0D;&#x9000;&#x51FA;&#x4E00;&#x76F4;&#x4FDD;&#x6D3B;&#x3002;&#x76F4;&#x5230; <code>AF3.x</code>,&#x5E9F;&#x5F03;&#x4E86; <code>NSURLConnection</code>&#x3002;&#x56E0;&#x4E3A;<code>NSURLConnection</code>&#x4E2D;,&#x6267;&#x884C;&#x56DE;&#x8C03;&#x7684;&#x8981;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;,&#x53EF;&#x80FD;&#x56DE;&#x8C03;&#x56DE;&#x6765;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x9500;&#x6BC1;&#x65E0;&#x6CD5;&#x505A;&#x56DE;&#x8C03;.<code>3.x</code>&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x4E86; <code>NSURLSession</code>,&#x80FD;&#x6307;&#x5B9A;<code>queue</code>&#x56DE;&#x8C03;&#xFF0C;&#x6240;&#x4EE5;&#x907F;&#x514D;&#x4E86;&#x95EE;&#x9898;</p>
-<h2 id="runloop&#x4E2D;source0&#x548C;source1&#x7684;&#x533A;&#x522B;">RunLoop&#x4E2D;Source0&#x548C;Source1&#x7684;&#x533A;&#x522B;</h2>
+<h3 id="runloop&#x4E2D;source0&#x548C;source1&#x7684;&#x533A;&#x522B;">RunLoop&#x4E2D;Source0&#x548C;Source1&#x7684;&#x533A;&#x522B;</h3>
 <p><code>Source0</code>&#x5E76;&#x4E0D;&#x80FD;&#x4E3B;&#x52A8;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x3002;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5148;&#x8C03;&#x7528;<code>CFRunLoopSourceSignal</code>&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;Source&#x6807;&#x8BB0;&#x4E3A;&#x5F85;&#x5904;&#x7406;&#xFF0C;&#x7136;&#x540E;&#x624B;&#x52A8;&#x8C03;&#x7528;<code>CFRunLoopWakeUp</code>&#x6765;&#x5524;&#x9192;RunLoop&#xFF0C;&#x8BA9;&#x5176;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
 <p><code>Source1</code>&#x80FD;&#x4E3B;&#x52A8;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x3002;&#x5176;&#x4E2D;&#x5B83;&#x6709;&#x4E00;&#x4E2A;<code>mach_port_t</code>&#xFF0C;mach_port&#x662F;&#x7528;&#x4E8E;&#x5185;&#x6838;&#x5411;&#x7EBF;&#x7A0B;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x3002;</p>
 <p>&#x4F7F;&#x7528;<code>Source0</code>&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
@@ -1597,13 +1683,13 @@ AFNetworking/NSURLConnection/AFURLConnectionOperation.m
 <li>&#x57FA;&#x4E8E;&#x7AEF;&#x53E3;&#x7684;&#x7EBF;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#xFF08;A&#x7EBF;&#x7A0B;&#x901A;&#x8FC7;&#x7AEF;&#x53E3;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x5230;B&#x7EBF;&#x7A0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x6D88;&#x606F;&#x662F;<code>Source1</code>&#x7684;&#xFF1B;</li>
 <li>&#x7CFB;&#x7EDF;&#x4E8B;&#x4EF6;&#x7684;&#x6355;&#x6349;&#xFF0C;&#x5148;&#x89E6;&#x53D1;&#x662F;<code>Source1</code>&#xFF0C;&#x63A5;&#x7740;&#x5206;&#x53D1;&#x5230;<code>Source0</code>&#x53BB;&#x5904;&#x7406;&#x3002;</li>
 </ul>
-<h2 id="runloop&#x54CD;&#x5E94;&#x7528;&#x6237;&#x64CD;&#x4F5C;">RunLoop&#x54CD;&#x5E94;&#x7528;&#x6237;&#x64CD;&#x4F5C;</h2>
+<h3 id="runloop&#x54CD;&#x5E94;&#x7528;&#x6237;&#x64CD;&#x4F5C;">RunLoop&#x54CD;&#x5E94;&#x7528;&#x6237;&#x64CD;&#x4F5C;</h3>
 <p>&#x4EE5;&#x6309;&#x94AE;&#x70B9;&#x51FB;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x4E3A;&#x4F8B;&#xFF0C;&#x70B9;&#x51FB;&#x5C4F;&#x5E55;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9996;&#x5148;&#x7CFB;&#x7EDF;&#x5185;&#x90E8;&#x6355;&#x83B7;&#x5230;&#x8FD9;&#x4E2A;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#xFF0C;&#x8FD9;&#x662F;&#x5728;<code>Source1</code>&#x4E2D;&#x5904;&#x7406;&#x7684;&#xFF0C;<code>Source1</code>&#x4F1A;&#x5305;&#x88C5;&#x6210;&#x4E8B;&#x4EF6;&#x4E22;&#x5230;&#x4E8B;&#x4EF6;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x4EA4;&#x7ED9;<code>Source0</code>&#x5904;&#x7406;&#x3002;</p>
-<h2 id="runloop&#x4E0E;ui&#x5237;&#x65B0;">RunLoop&#x4E0E;UI&#x5237;&#x65B0;</h2>
+<h3 id="runloop&#x4E0E;ui&#x5237;&#x65B0;">RunLoop&#x4E0E;UI&#x5237;&#x65B0;</h3>
 <p>&#x5F53;UI&#x9700;&#x8981;&#x66F4;&#x65B0;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6BD4;&#x5982;&#x6539;&#x53D8;&#x4E86;<code>frame</code>&#x3001;&#x66F4;&#x65B0;&#x4E86;<code>UIView</code>/<code>CALayer</code>&#x7684;&#x5C42;&#x6B21;&#x65F6;&#xFF0C;&#x6216;&#x8005;&#x624B;&#x52A8;&#x8C03;&#x7528;&#x4E86;<code>setNeedsLayout</code>/<code>setNeedsDisplay</code>&#x65B9;&#x6CD5;&#x540E;&#xFF0C;&#x8FD9;&#x4E2A;<code>UIView</code>/<code>CALayer</code>&#x5C31;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;&#x5F85;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x88AB;&#x63D0;&#x4EA4;&#x5230;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7684;&#x5BB9;&#x5668;&#x53BB;&#x3002;</p>
 <p>&#x82F9;&#x679C;&#x6CE8;&#x518C;&#x4E86;&#x4E00;&#x4E2A;<code>Observer</code>&#x76D1;&#x542C;<code>BeforeWaiting</code>(&#x5373;&#x5C06;&#x8FDB;&#x5165;&#x4F11;&#x7720;) &#x548C; <code>Exit</code>(&#x5373;&#x5C06;&#x9000;&#x51FA;Loop) &#x4E8B;&#x4EF6;&#xFF0C;&#x56DE;&#x8C03;&#x53BB;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x5F88;&#x957F;&#x7684;&#x51FD;&#x6570;&#xFF1A;<code>CA::Transaction::observer_callback(__CFRunLoopObserver*, unsigned long, void*)()</code> &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x91CC;&#x4F1A;&#x904D;&#x5386;&#x6240;&#x6709;&#x5F85;&#x5904;&#x7406;&#x7684;<code>UIView</code>/<code>CAlayer</code>&#x4EE5;&#x6267;&#x884C;&#x5B9E;&#x9645;&#x7684;&#x7ED8;&#x5236;&#x548C;&#x8C03;&#x6574;&#xFF0C;&#x5E76;&#x66F4;&#x65B0;&#x754C;&#x9762;&#x3002;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-05-032038.jpg" alt="RunLoop&#x4E0E;UI&#x5237;&#x65B0;"></p>
-<h2 id="runloop&#x4E0E;autoreleasepool">RunLoop&#x4E0E;AutoreleasePool</h2>
+<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-05-032038.jpg" alt="RunLoop&#x4E0E;UI&#x5237;&#x65B0;" style="zoom:50%;"></p>
+<h3 id="runloop&#x4E0E;autoreleasepool">RunLoop&#x4E0E;AutoreleasePool</h3>
 <p>&#x5728;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x4E4B;&#x540E;&#xFF0C;&#x4E3B;&#x7EBF;&#x7A0B;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Runloop&#xFF0C;&#x4E5F;&#x4F1A;&#x521B;&#x5EFA;&#x4E24;&#x4E2A;Observer&#xFF0C;&#x56DE;&#x8C03;&#x5DE5;&#x4F5C;&#x90FD;&#x662F;&#x5728;<code>_wrapRunLoopWithAutoreleasePoolHandler</code>&#x51FD;&#x6570;&#x4E2D;&#x3002;</p>
 <p>&#x7B2C;&#x4E00;&#x4E2A;Observer&#x76D1;&#x542C;&#x7684;&#x662F;Entry&#xFF08;&#x5373;&#x5C06;&#x8FDB;&#x5165;Loop&#xFF09;&#xFF0C;&#x56DE;&#x8C03;&#x662F;&#x5728;<code>_objc_autoreleasePoolPush()</code>&#x4E2D;&#x521B;&#x5EFA;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x7684;&#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x662F;&#x6700;&#x9AD8;&#x7684;&#xFF0C;&#x4FDD;&#x8BC1;&#x521B;&#x5EFA;&#x91CA;&#x653E;&#x6C60;&#x662F;&#x5728;&#x6240;&#x6709;&#x56DE;&#x8C03;&#x4E4B;&#x524D;&#x3002;</p>
 <p>&#x7B2C;&#x4E8C;&#x4E2A;Observer&#x76D1;&#x542C;&#x6709;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF1A;BeforeWaiting&#xFF08;&#x8FDB;&#x5165;&#x4F11;&#x7720;&#xFF09;&#x65F6;&#x8C03;&#x7528;<code>_objc_autoreleasePoolPop</code>&#x548C;<code>_objc_autoreleasePoolPush</code>&#x91CA;&#x653E;&#x65E7;&#x7684;&#x91CA;&#x653E;&#x6C60;&#x4EE5;&#x53CA;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x91CA;&#x653E;&#x6C60;&#xFF1B;Exit&#xFF08;&#x9000;&#x51FA;Loop&#xFF09;&#x8C03;&#x7528;<code>_objc_autoreleasePoolPop</code>&#x6765;&#x91CA;&#x653E;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x3002;&#x8FD9;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x662F;&#x6700;&#x4F4E;&#x7684;&#xFF0C;&#x4FDD;&#x8BC1;&#x91CA;&#x653E;&#x6C60;&#x53D1;&#x751F;&#x5728;&#x6240;&#x6709;&#x56DE;&#x8C03;&#x4E4B;&#x540E;&#x8C03;&#x7528;&#x3002;</p>
@@ -1611,6 +1697,7 @@ AFNetworking/NSURLConnection/AFURLConnectionOperation.m
 <p><a href="http://zxfcumtcs.github.io/2014/11/15/runloop/" target="_blank">1.&#x8C1C;&#x4E00;&#x6837;&#x7684; Runloop</a></p>
 <p><a href="https://blog.ibireme.com/2015/05/18/runloop/" target="_blank">2.&#x6DF1;&#x5165;&#x7406;&#x89E3;RunLoop</a></p>
 <p><a href="https://juejin.cn/post/6930891193748307981" target="_blank">3.OC&#x4E2D;&#x7684;RunLoop</a></p>
+<p><a href="https://juejin.cn/post/6965790003951566861" target="_blank">Runloop&#x7684;&#x5185;&#x90E8;&#x7ED3;&#x6784;&#x4E0E;&#x8FD0;&#x884C;&#x539F;&#x7406;&#x4EC0;&#x4E48;&#x662F;Runloop Runloop&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x5C31;&#x662F;&#x8FD0;&#x884C;&#x5FAA;&#x73AF;&#x3002;&#x9996;&#x5148;&#x5B83;&#x6839;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x6709;&#x5173;&#x7CFB; - &#x6398;&#x91D1; (juejin.cn)</a></p>
 
                                 
                                 </section>
@@ -1654,7 +1741,7 @@ AFNetworking/NSURLConnection/AFURLConnectionOperation.m
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Runloop","level":"1.2.4.7","depth":3,"next":{"title":"MultiThreading","level":"1.2.4.8","depth":3,"path":"iOS/OCFoundation/MultiThreading.md","ref":"iOS/OCFoundation/MultiThreading.md","articles":[]},"previous":{"title":"KVO","level":"1.2.4.6","depth":3,"path":"iOS/OCFoundation/KVO.md","ref":"iOS/OCFoundation/KVO.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/Runloop.md","mtime":"2024-09-06T07:33:35.282Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-06T07:34:00.372Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Runloop","level":"1.2.4.7","depth":3,"next":{"title":"MultiThreading","level":"1.2.4.8","depth":3,"path":"iOS/OCFoundation/MultiThreading.md","ref":"iOS/OCFoundation/MultiThreading.md","articles":[]},"previous":{"title":"KVO","level":"1.2.4.6","depth":3,"path":"iOS/OCFoundation/KVO.md","ref":"iOS/OCFoundation/KVO.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/Runloop.md","mtime":"2024-09-07T13:52:03.648Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-07T13:52:28.305Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
