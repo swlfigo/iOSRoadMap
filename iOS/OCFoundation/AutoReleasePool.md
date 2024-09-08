@@ -11,6 +11,24 @@
 编译器会把`@autoreleasepool{}`改写成:
 
 ```objective-c
+struct __AtAutoreleasePool {
+    //构造函数-->可以类比成OC的init方法，在创建时调用
+  __AtAutoreleasePool()
+    {
+        atautoreleasepoolobj = objc_autoreleasePoolPush();
+    }
+    
+    //析构函数-->可以类比成OC的dealloc方法，在销毁时调用
+  ~__AtAutoreleasePool()
+    {
+        objc_autoreleasePoolPop(atautoreleasepoolobj);
+    }
+    
+  void * atautoreleasepoolobj;
+};
+
+
+
 void *ctx = objc_autoreleasePoolPush();
 {}中代码
 objc_autoreleasePoolPop(ctx);
@@ -29,19 +47,37 @@ void objc_autoreleasePoolPop(void *ctxt){
 
 
 
+单层`@autoreleasepool {}`的情况，那么如果有多层`@autoreleasepool {}`嵌套在一起，就可以按照同样的规则来拆解
+
+![img](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/78d3bc4ded3341bdbe74daa6265a63b7~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp)
+
+
+
+
+
 ##  AutoreleasePoolPage 结构
+
+
 
 ```objective-c
 class AutoreleasePoolPage {
     magic_t const magic;	//用于对当前 AutoreleasePoolPage 完整性的校验
-    id *next;
-    pthread_t const thread;		//thread 保存了当前页所在的线程
-    AutoreleasePoolPage * const parent;
-    AutoreleasePoolPage *child;
+    id *next;	//指向AutoreleasePoolPage内下一个可以用来存放自动释放对象的内存地址
+    pthread_t const thread;		//thread 保存了当前页所在的线程,自动释放池所属的线程，说明它不能跟多个线程关联。
+    AutoreleasePoolPage * const parent; //指向上一页释放池的指针
+    AutoreleasePoolPage *child;	//指向下一页释放池的指针
     uint32_t const depth;
     uint32_t hiwat;
 };
 ```
+
+
+
+![AutoreleasePoolPage的begin()和end()](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/8524da26486945268aa5330ffd635d3b~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp)
+
+
+
+
 
 **每一个自动释放池都是由一系列的 AutoreleasePoolPage 组成的，并且每一个 AutoreleasePoolPage 的大小都是 4096 字节**
 
@@ -51,7 +87,11 @@ class AutoreleasePoolPage {
 
 AutoreleasePool结构如图所示：
 
-![AutoreleasePoolPage链表](http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-05-075330.jpg)
+
+
+![AutoreleasePoolPage结构示意图](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/cecf2e88ccbd4110b8175fee16d7dab2~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp)
+
+
 
 ### 双向链表
 
@@ -520,6 +560,8 @@ static inline id *autoreleaseFast(id obj)
 
 每一个线程都会维护自己的autoreleasePool堆栈，也就是说每一个autoreleasePool对应一个线程。 
 
+`@autoreleasepool{}`的作用，实际上就是在作用域的头和尾分别调用了`objc_autoreleasePoolPush();`和`objc_autoreleasePoolPop()`函数
+
 
 
 ~~每个`Runloop`中都会创建一个 `AutoReleasepool` 并在 `Runloop迭代结束`进行释放。~~何为 `迭代结束`？当前`Runloop` 进入 `Sleep mode`的时候,就结束当前 `Runloop`迭代.新的一轮`Runloop`创建一个新的 `AutoReleasepool`, `Pool`里面的临时对象在结束后得到释放(不一定即时,也有可能延后,系统决定)
@@ -565,3 +607,5 @@ static inline id *autoreleaseFast(id obj)
 [7.带着问题看源码----子线程AutoRelease对象何时释放](https://suhou.github.io/2018/01/21/%E5%B8%A6%E7%9D%80%E9%97%AE%E9%A2%98%E7%9C%8B%E6%BA%90%E7%A0%81----%E5%AD%90%E7%BA%BF%E7%A8%8BAutoRelease%E5%AF%B9%E8%B1%A1%E4%BD%95%E6%97%B6%E9%87%8A%E6%94%BE/)
 
 [8.AutoreleasePool的实现](https://juejin.cn/post/6844903783818854414)
+
+[内存管理剖析（四）——autorelease原理分析经历过MRC时代的开发者，肯定都用过autorelease方法，用于 - 掘金 (juejin.cn)](https://juejin.cn/post/6966596279228973086?searchId=2024090809575838D9FFC4087BA1803C84)
