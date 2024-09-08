@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="@synchronized.html" />
+    <link rel="next" href="MultiThreading.html" />
     
     
-    <link rel="prev" href="Lock.html" />
+    <link rel="prev" href="Runloop.html" />
     
 
     </head>
@@ -512,7 +512,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4.8" data-path="MultiThreading.html">
+        <li class="chapter active" data-level="1.2.4.8" data-path="AutoReleasePool.html">
+            
+                <a href="AutoReleasePool.html">
+            
+                    
+                    AutoReleasePool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.9" data-path="MultiThreading.html">
             
                 <a href="MultiThreading.html">
             
@@ -525,7 +538,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4.9" data-path="GCDUsage.html">
+        <li class="chapter " data-level="1.2.4.10" data-path="GCDUsage.html">
             
                 <a href="GCDUsage.html">
             
@@ -538,7 +551,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4.10" data-path="GCDThread.html">
+        <li class="chapter " data-level="1.2.4.11" data-path="GCDThread.html">
             
                 <a href="GCDThread.html">
             
@@ -551,25 +564,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4.11" data-path="Lock.html">
+        <li class="chapter " data-level="1.2.4.12" data-path="Lock.html">
             
                 <a href="Lock.html">
             
                     
                     Lock
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.2.4.12" data-path="AutoReleasePool.html">
-            
-                <a href="AutoReleasePool.html">
-            
-                    
-                    AutoReleasePool
             
                 </a>
             
@@ -1318,7 +1318,25 @@
 <p>&#x5728;&#x6CA1;&#x6709;&#x624B;&#x52A0;<code>Autorelease Pool</code>&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C; <strong>Autorelease&#x5BF9;&#x8C61;&#x662F;&#x5728;&#x5F53;&#x524D;&#x7684;runloop&#x8FED;&#x4EE3;&#x7ED3;&#x675F;&#x65F6;&#x91CA;&#x653E;&#x7684;&#xFF0C;&#x800C;&#x5B83;&#x80FD;&#x591F;&#x91CA;&#x653E;&#x7684;&#x539F;&#x56E0;&#x662F;&#x7CFB;&#x7EDF;&#x5728;&#x6BCF;&#x4E2A;runloop&#x8FED;&#x4EE3;&#x4E2D;&#x90FD;&#x52A0;&#x5165;&#x4E86;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;Push&#x548C;Pop</strong></p>
 <h2 id="autoreleasepool&#x7ED3;&#x6784;">Autoreleasepool&#x7ED3;&#x6784;</h2>
 <p>&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x628A;<code>@autoreleasepool{}</code>&#x6539;&#x5199;&#x6210;:</p>
-<pre><code class="lang-objective-c">void *ctx = objc_autoreleasePoolPush();
+<pre><code class="lang-objective-c">struct __AtAutoreleasePool {
+    //&#x6784;&#x9020;&#x51FD;&#x6570;--&gt;&#x53EF;&#x4EE5;&#x7C7B;&#x6BD4;&#x6210;OC&#x7684;init&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x521B;&#x5EFA;&#x65F6;&#x8C03;&#x7528;
+  __AtAutoreleasePool()
+    {
+        atautoreleasepoolobj = objc_autoreleasePoolPush();
+    }
+
+    //&#x6790;&#x6784;&#x51FD;&#x6570;--&gt;&#x53EF;&#x4EE5;&#x7C7B;&#x6BD4;&#x6210;OC&#x7684;dealloc&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x9500;&#x6BC1;&#x65F6;&#x8C03;&#x7528;
+  ~__AtAutoreleasePool()
+    {
+        objc_autoreleasePoolPop(atautoreleasepoolobj);
+    }
+
+  void * atautoreleasepoolobj;
+};
+
+
+
+void *ctx = objc_autoreleasePoolPush();
 {}&#x4E2D;&#x4EE3;&#x7801;
 objc_autoreleasePoolPop(ctx);
 
@@ -1332,17 +1350,20 @@ void objc_autoreleasePoolPop(void *ctxt){
 }
 </code></pre>
 <p>&#x4ECE;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x77E5;&#x9053;Push,Pop&#x90FD;&#x662F;&#x64CD;&#x4F5C; <code>AutoreleasePoolPage</code>&#x7684;</p>
+<p>&#x5355;&#x5C42;<code>@autoreleasepool {}</code>&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x679C;&#x6709;&#x591A;&#x5C42;<code>@autoreleasepool {}</code>&#x5D4C;&#x5957;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x540C;&#x6837;&#x7684;&#x89C4;&#x5219;&#x6765;&#x62C6;&#x89E3;</p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/78d3bc4ded3341bdbe74daa6265a63b7~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="img"></p>
 <h2 id="autoreleasepoolpage-&#x7ED3;&#x6784;">AutoreleasePoolPage &#x7ED3;&#x6784;</h2>
 <pre><code class="lang-objective-c">class AutoreleasePoolPage {
     magic_t const magic;    //&#x7528;&#x4E8E;&#x5BF9;&#x5F53;&#x524D; AutoreleasePoolPage &#x5B8C;&#x6574;&#x6027;&#x7684;&#x6821;&#x9A8C;
-    id *next;
-    pthread_t const thread;        //thread &#x4FDD;&#x5B58;&#x4E86;&#x5F53;&#x524D;&#x9875;&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;
-    AutoreleasePoolPage * const parent;
-    AutoreleasePoolPage *child;
+    id *next;    //&#x6307;&#x5411;AutoreleasePoolPage&#x5185;&#x4E0B;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5B58;&#x653E;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;
+    pthread_t const thread;        //thread &#x4FDD;&#x5B58;&#x4E86;&#x5F53;&#x524D;&#x9875;&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;,&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x6240;&#x5C5E;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x8BF4;&#x660E;&#x5B83;&#x4E0D;&#x80FD;&#x8DDF;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x5173;&#x8054;&#x3002;
+    AutoreleasePoolPage * const parent; //&#x6307;&#x5411;&#x4E0A;&#x4E00;&#x9875;&#x91CA;&#x653E;&#x6C60;&#x7684;&#x6307;&#x9488;
+    AutoreleasePoolPage *child;    //&#x6307;&#x5411;&#x4E0B;&#x4E00;&#x9875;&#x91CA;&#x653E;&#x6C60;&#x7684;&#x6307;&#x9488;
     uint32_t const depth;
     uint32_t hiwat;
 };
 </code></pre>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/8524da26486945268aa5330ffd635d3b~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="AutoreleasePoolPage&#x7684;begin()&#x548C;end()"></p>
 <p><strong>&#x6BCF;&#x4E00;&#x4E2A;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x90FD;&#x662F;&#x7531;&#x4E00;&#x7CFB;&#x5217;&#x7684; AutoreleasePoolPage &#x7EC4;&#x6210;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x6BCF;&#x4E00;&#x4E2A; AutoreleasePoolPage &#x7684;&#x5927;&#x5C0F;&#x90FD;&#x662F; 4096 &#x5B57;&#x8282;</strong></p>
 <ul>
 <li>AutoreleasePool&#x5E76;&#x6CA1;&#x6709;&#x7279;&#x5B9A;&#x7684;&#x5185;&#x5B58;&#x7ED3;&#x6784;&#xFF0C;&#x5B83;&#x662F;&#x901A;&#x8FC7;&#x4EE5;<code>AutoreleasePoolPage</code>&#x4E3A;&#x8282;&#x70B9;&#x7684;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x3002;</li>
@@ -1350,7 +1371,7 @@ void objc_autoreleasePoolPop(void *ctxt){
 <li>&#x4E00;&#x4E2A;<code>AutoreleasePoolPage</code>&#x8282;&#x70B9;&#x5BF9;&#x5E94;&#x7740;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x5C5E;&#x4E8E;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x3002;</li>
 </ul>
 <p>AutoreleasePool&#x7ED3;&#x6784;&#x5982;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
-<p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2021-03-05-075330.jpg" alt="AutoreleasePoolPage&#x94FE;&#x8868;"></p>
+<p><img src="https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/cecf2e88ccbd4110b8175fee16d7dab2~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp" alt="AutoreleasePoolPage&#x7ED3;&#x6784;&#x793A;&#x610F;&#x56FE;"></p>
 <h3 id="&#x53CC;&#x5411;&#x94FE;&#x8868;">&#x53CC;&#x5411;&#x94FE;&#x8868;</h3>
 <p>&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x4E2D;&#x7684; <code>AutoreleasePoolPage</code> &#x662F;&#x4EE5;<strong>&#x53CC;&#x5411;&#x94FE;&#x8868;</strong>&#x7684;&#x5F62;&#x5F0F;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x7684;&#xFF1A;</p>
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-140349.jpg" alt=""></p>
@@ -1723,6 +1744,7 @@ pop(pool1)
 <p><img src="http://sylarimage.oss-cn-shenzhen.aliyuncs.com/2019-03-24-142843.png" alt="image-20190324222842393"></p>
 <h2 id="runloop-&#x4E0E;-autoreleasepool-&#x521B;&#x5EFA;">Runloop &#x4E0E; Autoreleasepool &#x521B;&#x5EFA;</h2>
 <p>&#x6BCF;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x4F1A;&#x7EF4;&#x62A4;&#x81EA;&#x5DF1;&#x7684;autoreleasePool&#x5806;&#x6808;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x6BCF;&#x4E00;&#x4E2A;autoreleasePool&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x3002; </p>
+<p><code>@autoreleasepool{}</code>&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x5728;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x5934;&#x548C;&#x5C3E;&#x5206;&#x522B;&#x8C03;&#x7528;&#x4E86;<code>objc_autoreleasePoolPush();</code>&#x548C;<code>objc_autoreleasePoolPop()</code>&#x51FD;&#x6570;</p>
 <p><del>&#x6BCF;&#x4E2A;<code>Runloop</code>&#x4E2D;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>AutoReleasepool</code> &#x5E76;&#x5728; <code>Runloop&#x8FED;&#x4EE3;&#x7ED3;&#x675F;</code>&#x8FDB;&#x884C;&#x91CA;&#x653E;&#x3002;</del>&#x4F55;&#x4E3A; <code>&#x8FED;&#x4EE3;&#x7ED3;&#x675F;</code>&#xFF1F;&#x5F53;&#x524D;<code>Runloop</code> &#x8FDB;&#x5165; <code>Sleep mode</code>&#x7684;&#x65F6;&#x5019;,&#x5C31;&#x7ED3;&#x675F;&#x5F53;&#x524D; <code>Runloop</code>&#x8FED;&#x4EE3;.&#x65B0;&#x7684;&#x4E00;&#x8F6E;<code>Runloop</code>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>AutoReleasepool</code>, <code>Pool</code>&#x91CC;&#x9762;&#x7684;&#x4E34;&#x65F6;&#x5BF9;&#x8C61;&#x5728;&#x7ED3;&#x675F;&#x540E;&#x5F97;&#x5230;&#x91CA;&#x653E;(&#x4E0D;&#x4E00;&#x5B9A;&#x5373;&#x65F6;,&#x4E5F;&#x6709;&#x53EF;&#x80FD;&#x5EF6;&#x540E;,&#x7CFB;&#x7EDF;&#x51B3;&#x5B9A;)</p>
 <p> <code>Runloop</code>&#x7B2C;&#x4E00;&#x4E2A; Observer &#x76D1;&#x89C6;&#x7684;&#x4E8B;&#x4EF6;&#x662F; Entry(&#x5373;&#x5C06;&#x8FDB;&#x5165;Loop)&#xFF0C;&#x5176;&#x56DE;&#x8C03;&#x5185;&#x4F1A;&#x8C03;&#x7528; <code>_objc_autoreleasePoolPush()</code> &#x521B;&#x5EFA;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x3002;&#x5176; order &#x662F;-2147483647&#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x6700;&#x9AD8;&#xFF0C;&#x4FDD;&#x8BC1;&#x521B;&#x5EFA;&#x91CA;&#x653E;&#x6C60;&#x53D1;&#x751F;&#x5728;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x56DE;&#x8C03;&#x4E4B;&#x524D;&#x3002;</p>
 <p> &#x7B2C;&#x4E8C;&#x4E2A; Observer &#x76D1;&#x89C6;&#x4E86;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF1A; BeforeWaiting(&#x51C6;&#x5907;&#x8FDB;&#x5165;&#x4F11;&#x7720;) &#x65F6;&#x8C03;&#x7528;<code>_objc_autoreleasePoolPop()</code> &#x548C; <code>_objc_autoreleasePoolPush()</code> &#x91CA;&#x653E;&#x65E7;&#x7684;&#x6C60;&#x5E76;&#x521B;&#x5EFA;&#x65B0;&#x6C60;&#xFF1B;Exit(&#x5373;&#x5C06;&#x9000;&#x51FA;Loop) &#x65F6;&#x8C03;&#x7528; <code>_objc_autoreleasePoolPop()</code> &#x6765;&#x91CA;&#x653E;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x3002;&#x8FD9;&#x4E2A; Observer &#x7684; order &#x662F; 2147483647&#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x6700;&#x4F4E;&#xFF0C;&#x4FDD;&#x8BC1;&#x5176;&#x91CA;&#x653E;&#x6C60;&#x5B50;&#x53D1;&#x751F;&#x5728;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x56DE;&#x8C03;&#x4E4B;&#x540E;&#x3002;</p>
@@ -1742,6 +1764,7 @@ pop(pool1)
 <p><a href="https://blog.ibireme.com/2015/05/18/runloop/" target="_blank">6.&#x6DF1;&#x5165;&#x4E86;&#x89E3;Runloop</a></p>
 <p><a href="https://suhou.github.io/2018/01/21/%E5%B8%A6%E7%9D%80%E9%97%AE%E9%A2%98%E7%9C%8B%E6%BA%90%E7%A0%81----%E5%AD%90%E7%BA%BF%E7%A8%8BAutoRelease%E5%AF%B9%E8%B1%A1%E4%BD%95%E6%97%B6%E9%87%8A%E6%94%BE/" target="_blank">7.&#x5E26;&#x7740;&#x95EE;&#x9898;&#x770B;&#x6E90;&#x7801;----&#x5B50;&#x7EBF;&#x7A0B;AutoRelease&#x5BF9;&#x8C61;&#x4F55;&#x65F6;&#x91CA;&#x653E;</a></p>
 <p><a href="https://juejin.cn/post/6844903783818854414" target="_blank">8.AutoreleasePool&#x7684;&#x5B9E;&#x73B0;</a></p>
+<p><a href="https://juejin.cn/post/6966596279228973086?searchId=2024090809575838D9FFC4087BA1803C84" target="_blank">&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x5256;&#x6790;&#xFF08;&#x56DB;&#xFF09;&#x2014;&#x2014;autorelease&#x539F;&#x7406;&#x5206;&#x6790;&#x7ECF;&#x5386;&#x8FC7;MRC&#x65F6;&#x4EE3;&#x7684;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x80AF;&#x5B9A;&#x90FD;&#x7528;&#x8FC7;autorelease&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E; - &#x6398;&#x91D1; (juejin.cn)</a></p>
 
                                 
                                 </section>
@@ -1769,12 +1792,12 @@ pop(pool1)
 
             
                 
-                <a href="Lock.html" class="navigation navigation-prev " aria-label="Previous page: Lock">
+                <a href="Runloop.html" class="navigation navigation-prev " aria-label="Previous page: Runloop">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="@synchronized.html" class="navigation navigation-next " aria-label="Next page: @synchronized">
+                <a href="MultiThreading.html" class="navigation navigation-next " aria-label="Next page: MultiThreading">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1785,7 +1808,7 @@ pop(pool1)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AutoReleasePool","level":"1.2.4.12","depth":3,"next":{"title":"@synchronized","level":"1.2.4.13","depth":3,"path":"iOS/OCFoundation/@synchronized.md","ref":"iOS/OCFoundation/@synchronized.md","articles":[]},"previous":{"title":"Lock","level":"1.2.4.11","depth":3,"path":"iOS/OCFoundation/Lock.md","ref":"iOS/OCFoundation/Lock.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/AutoReleasePool.md","mtime":"2024-09-07T13:52:03.648Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-07T13:52:28.305Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AutoReleasePool","level":"1.2.4.8","depth":3,"next":{"title":"MultiThreading","level":"1.2.4.9","depth":3,"path":"iOS/OCFoundation/MultiThreading.md","ref":"iOS/OCFoundation/MultiThreading.md","articles":[]},"previous":{"title":"Runloop","level":"1.2.4.7","depth":3,"path":"iOS/OCFoundation/Runloop.md","ref":"iOS/OCFoundation/Runloop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/OCFoundation/AutoReleasePool.md","mtime":"2024-09-08T03:05:48.548Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-08T03:06:14.567Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
