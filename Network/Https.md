@@ -38,6 +38,12 @@ HTTPS 在内容传输的加密上使用的是对称加密，非对称加密只�
 
 
 
+
+
+![img](https://sylarimage.oss-cn-shenzhen.aliyuncs.com/uPic/735029b8e2b09390117bd40380358f18.png)
+
+
+
 ### 会话秘钥
 
 会话秘钥 = randomS + randomC + 预主秘钥
