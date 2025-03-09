@@ -55,6 +55,7 @@
     * [二进制重排](iOS/Knowledge/BinaryOrder.md)
     * [self class && super class](./iOS/Knowledge/RuntimeSuper.md)
     * [isKindOfClass && isMemberOfClass](./iOS/Knowledge/RuntimeCls.md)
+    * [iOS App 签名的原理](./knowledge/apple_signature.md)
 
 
 * 网络
